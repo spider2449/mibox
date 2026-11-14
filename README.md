@@ -11,6 +11,13 @@ passed [software restart back to Android](docs/mibox-software-return.md) on the
 physical box. Persistent installation and
 a replacement kernel remain unverified.
 
+For the A32-style host-controlled workflow, use
+`powershell -NoProfile -File scripts/ram-boot.ps1 -Action RoundTrip` from
+completed stock Android. This automates ADB loader entry, pinned RAM upload
+and readback, custom boot checks and software return to Android. `-Action Boot`
+leaves custom userspace running; the default `-Action Check` validates locally
+without device access. See [automation and evidence](docs/mibox-automated-ram-boot.md).
+
 ## Build the read-only probe
 
 Requires Rust with the `armv7-unknown-linux-musleabihf` target installed.
@@ -71,5 +78,14 @@ creates a QEMU-only initramfs and does not flash the box.
 - [Live Rust toolbox and RAM self-test](docs/mibox-live-toolbox.md)
 - [Read-only runtime follow-up](docs/mibox-runtime-followup.md)
 - [Software return interface and QEMU restart validation](docs/mibox-software-return.md)
+- [Local backup revalidation and restoration gates](docs/mibox-restoration-readiness.md)
+- [Stock recovery input mapping and interface evidence](docs/mibox-recovery-interface.md)
+- [Exact stock UCL bootloader and rescue handler analysis](docs/mibox-bootloader-ucl.md)
+- [Exact reboot-mode mapping and USB-loader entry branches](docs/mibox-loader-entry-branches.md)
+- [Stage-one shared boot information and source selection](docs/mibox-stage1-boot-info.md)
+- [Physical Android remote-input inventory](docs/mibox-remote-input.md)
+- [IR decoder comparison and sourced recovery-entry candidate](docs/mibox-ir-decoder-comparison.md)
+- [Current recovery pending-state checks and cold-entry observer](docs/mibox-recovery-cold-entry-preflight.md)
+- [Touch-remote cold-entry attempt and confirmed Android checkpoint](docs/mibox-cold-recovery-attempt.md)
 - `artifacts/probe/2026-11-13/`: actual USB execution output and build provenance.
 - `scripts/Collect-MiboxInfo.ps1`: read-only inventory, not a firmware backup.

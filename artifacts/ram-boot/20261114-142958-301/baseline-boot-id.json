@@ -1,0 +1,7 @@
+﻿{
+    "Arguments":  "-s 248243005297 shell cat /proc/sys/kernel/random/boot_id",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "Output":  "6d4f3f97-d576-4600-9c99-9d2814e07629",
+    "Error":  ""
+}

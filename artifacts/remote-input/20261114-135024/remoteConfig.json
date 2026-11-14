@@ -1,0 +1,7 @@
+﻿{
+    "Command":  "ls -l /system/etc/remote.conf",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "Output":  "/system/etc/remote.conf: No such file or directory\r\r\n",
+    "Error":  ""
+}

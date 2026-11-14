@@ -1,0 +1,104 @@
+{
+  "source_sha256": "99f701ac15a155aa07b7204d240b82a0a5c91457513ae1e246146e3f8b8753a2",
+  "derived_link_base": 2407530496,
+  "derivation": "irdetect name/usage pointer difference and command fields; corroborated by vector-area literal at file 0x40",
+  "commands": [
+    {
+      "name": "irdetect",
+      "table_offset": 721180,
+      "words": [
+        2408184767,
+        1,
+        1,
+        2407991024,
+        2408184776,
+        2408184815
+      ],
+      "function_address": 2407991024,
+      "function_file_offset": 460528
+    },
+    {
+      "name": "monitor_bt_cmdline",
+      "table_offset": 718856,
+      "words": [
+        2408112723,
+        1,
+        1,
+        2407586904,
+        2408112723,
+        2408112742
+      ],
+      "function_address": 2407586904,
+      "function_file_offset": 56408
+    },
+    {
+      "name": "saveenv",
+      "table_offset": 720032,
+      "words": [
+        2408126641,
+        1,
+        0,
+        2407617680,
+        2408126649,
+        2408123006
+      ],
+      "function_address": 2407617680,
+      "function_file_offset": 87184
+    },
+    {
+      "name": "update",
+      "table_offset": 721096,
+      "words": [
+        2408172735,
+        2,
+        0,
+        2407906504,
+        2408176651,
+        2408176676
+      ],
+      "function_address": 2407906504,
+      "function_file_offset": 376008
+    },
+    {
+      "name": "get_rebootmode",
+      "table_offset": 720340,
+      "words": [
+        2408128095,
+        1,
+        0,
+        2407621844,
+        2408128110,
+        2408128126
+      ],
+      "function_address": 2407621844,
+      "function_file_offset": 91348
+    },
+    {
+      "name": "sdc_burn",
+      "table_offset": 721068,
+      "words": [
+        2408174425,
+        5,
+        0,
+        2407892520,
+        2408174434,
+        2408174480
+      ],
+      "function_address": 2407892520,
+      "function_file_offset": 362024
+    }
+  ],
+  "device_access": false,
+  "limit": "Link addresses derived statically; actual runtime relocation and hardware behavior remain unobserved.",
+  "audited_paths": {
+    "ir_assembled_value": 2195700,
+    "ir_equality_result": 1,
+    "irdetect_command_on_detection": 0,
+    "irdetect_command_without_detection": 1,
+    "ir_value_limit": "Internal assembled IR value, not a Linux keycode or proven physical remote button.",
+    "bt_success_call_address": 2407586780,
+    "saveenv_backend_call_address": 2407617716,
+    "shared_environment_save_backend": 2407648344,
+    "bt_persistence_limit": "Success branch invokes the same backend as saveenv; no physical execution or persistence result observed."
+  }
+}

@@ -1,0 +1,7 @@
+﻿{
+    "Command":  "ls -l /sys/class/remote",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "Output":  "/sys/class/remote: No such file or directory\r\r\n",
+    "Error":  ""
+}

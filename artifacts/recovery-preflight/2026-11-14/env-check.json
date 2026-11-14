@@ -1,0 +1,44 @@
+{
+  "env_prefix_bytes": 32768,
+  "sha256": "f4ef0fc6526607b1977bcb02cd257a29ab9f69a8f3210777ab8f49fabeadcb89",
+  "device_hash_matches": true,
+  "crc32_matches": true,
+  "variables": {
+    "wipe_data": {
+      "present": false,
+      "value": null
+    },
+    "recovery_command": {
+      "present": false,
+      "value": null
+    },
+    "boot-recovery": {
+      "present": false,
+      "value": null
+    },
+    "upgrade_step": {
+      "present": true,
+      "value": "0"
+    },
+    "reboot_mode": {
+      "present": false,
+      "value": null
+    },
+    "bootcmd": {
+      "present": true,
+      "value": "hdcp prefetch emmc;run storeboot"
+    },
+    "storeboot": {
+      "present": true,
+      "value": "store read boot1 ${loadaddr} 0 800000;bootm;run recovery"
+    },
+    "update": {
+      "present": true,
+      "value": "echo update...; run usb_burning; run recovery;"
+    }
+  },
+  "scope": "Current 32768-byte env prefix only, not a full current env-partition backup",
+  "device_writes": "Scratch executable and readback/results only; no raw partition or env write",
+  "recovery_booted": false,
+  "limit": "Absence of selected saved-env keys does not prove all automatic recovery command sources inactive."
+}

@@ -1,0 +1,7 @@
+﻿{
+    "Arguments":  "-s 248243005297 shell getprop sys.boot_completed",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "Output":  "1",
+    "Error":  ""
+}

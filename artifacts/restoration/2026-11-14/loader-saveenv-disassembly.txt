@@ -1,0 +1,23 @@
+
+/mnt/f/coding/otherPrj/mibox/phone-tools/runtime/2026-11-14/bootloader-ucl/bootloader-expanded.bin:     file format binary
+
+
+Disassembly of section .data:
+
+8f815490 <.data+0x15490>:
+8f815490:	e59f202c 	ldr	r2, [pc, #44]	@ 0x8f8154c4
+8f815494:	e92d4008 	push	{r3, lr}
+8f815498:	e59f3028 	ldr	r3, [pc, #40]	@ 0x8f8154c8
+8f81549c:	e08f2002 	add	r2, pc, r2
+8f8154a0:	e59f0024 	ldr	r0, [pc, #36]	@ 0x8f8154cc
+8f8154a4:	e7923003 	ldr	r3, [r2, r3]
+8f8154a8:	e0820000 	add	r0, r2, r0
+8f8154ac:	e5931000 	ldr	r1, [r3]
+8f8154b0:	eb001582 	bl	0x8f81aac0
+8f8154b4:	eb001de7 	bl	0x8f81cc58
+8f8154b8:	e2500000 	subs	r0, r0, #0
+8f8154bc:	13a00001 	movne	r0, #1
+8f8154c0:	e8bd8008 	pop	{r3, pc}
+8f8154c4:	000969c8 	andeq	r6, r9, r8, asr #19
+8f8154c8:	0000009c 	muleq	r0, ip, r0
+8f8154cc:	fffe57a7 			@ <UNDEFINED> instruction: 0xfffe57a7

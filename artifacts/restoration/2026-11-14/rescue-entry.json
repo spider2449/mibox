@@ -1,0 +1,185 @@
+{
+  "scope": "exact saved binaries; static evidence only",
+  "commands": {
+    "preboot": "echo preboot...;if itest ${upgrade_step} == 1; then  defenv; setenv upgrade_step 2; saveenv;fi; secukey emmc; secukey updatehdcpkey;run initenv;switch_bootpart; modify_cmdline; run storeargs;if itest ${upgrade_step} == 3; then run update; fi; get_rebootmode; echo reboot_mode=${reboot_mode};run update_key; run init_display;run switch_bootmode;",
+    "bootcmd": "hdcp prefetch emmc;run storeboot",
+    "storeboot": "store read boot1 ${loadaddr} 0 800000;bootm;run recovery",
+    "recovery": "echo enter recovery...;hdcp prefetch emmc;store read recovery ${loadaddr} 0 800000; bootm",
+    "update": "echo update...; run usb_burning; run recovery;",
+    "update_key": "echo update by key...; if monitor_bt_cmdline; then run recovery; fi;if irdetect; then run recovery; fi",
+    "switch_bootmode": "echo switch_bootmode...;if test ${reboot_mode} = normal; then else if test ${reboot_mode} = charging; then else if test ${reboot_mode} = factory_reset; then run recovery;else if test ${reboot_mode} = update; then run update;else if test ${reboot_mode} = usb_burning; then run usb_burning;else   fi;fi;fi;fi;fi",
+    "usb_burning": "update 1000",
+    "storeargs": "setenv bootargs ${boot_args} vdaccfg=${vdac_config} storage=${store} logo=osd1,loaded,${fb_addr},${outputmode},full hdmimode=${hdmimode} cvbsmode=${cvbsmode} androidboot.firstboot=${firstboot} hdmitx=${cecconfig} val1=${sdioclk} sdhc_debug=0x00000200 rx_clk_phase=${rx_clk_phase} sd_clk_phase=${sd_clk_phase} androidboot.ubootversion=${ubootver}; saveenv",
+    "bootdelay": "1",
+    "upgrade_step": "0"
+  },
+  "environment_entry_file_offsets": {
+    "preboot": 2051,
+    "bootcmd": 1135,
+    "storeboot": 3072,
+    "recovery": 2404,
+    "update": 3517,
+    "update_key": 3571,
+    "switch_bootmode": 3139,
+    "usb_burning": 3713,
+    "storeargs": 2707,
+    "bootdelay": 1176,
+    "upgrade_step": 3698
+  },
+  "loader_matching_ascii_runs": [
+    {
+      "offset": 18704,
+      "text": "recovery"
+    }
+  ],
+  "loader_magic_candidates": {
+    "gzip": [],
+    "xz": [],
+    "lz4_frame": [],
+    "uimage": [],
+    "fdt": [],
+    "elf": []
+  },
+  "loader_nonzero_blocks_64KiB": [
+    {
+      "offset": 0,
+      "nonzero_bytes": 49525
+    },
+    {
+      "offset": 65536,
+      "nonzero_bytes": 64803
+    },
+    {
+      "offset": 131072,
+      "nonzero_bytes": 64829
+    },
+    {
+      "offset": 196608,
+      "nonzero_bytes": 64770
+    },
+    {
+      "offset": 262144,
+      "nonzero_bytes": 64675
+    },
+    {
+      "offset": 327680,
+      "nonzero_bytes": 27517
+    },
+    {
+      "offset": 393216,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 458752,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 524288,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 589824,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 655360,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 720896,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 786432,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 851968,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 917504,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 983040,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 1048576,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 1114112,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 1179648,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 1245184,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 1310720,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 1376256,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 1441792,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 1507328,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 1572864,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 1638400,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 1703936,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 1769472,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 1835008,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 1900544,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 1966080,
+      "nonzero_bytes": 0
+    },
+    {
+      "offset": 2031616,
+      "nonzero_bytes": 0
+    }
+  ],
+  "findings": {
+    "remote_conditions": "update_key tests monitor_bt_cmdline and irdetect; either success runs recovery",
+    "remote_key_values": "UNKNOWN",
+    "remote_cold_boot_tested": false,
+    "failed_bootm_fallback": "storeboot contains bootm;run recovery; only applies if execution returns",
+    "hung_kernel_fallback": "UNKNOWN; no evidence this script regains control",
+    "loader_entry_without_android": "UNKNOWN",
+    "persistence_hazard": "storeargs includes saveenv; preboot also has conditional defenv/saveenv",
+    "signature_scan_limit": "magic matches are candidates only; absence does not rule out compression or boot ROM entry"
+  },
+  "device_access": false,
+  "permanent_install": "NOT READY"
+}

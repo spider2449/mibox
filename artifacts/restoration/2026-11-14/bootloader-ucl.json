@@ -1,0 +1,454 @@
+{
+  "source_sha256": "a5fae79fe631cf557d06f6fda8bc5ae8bbf1eca5359f9f76b17bafaddd29068b",
+  "container_offset": 32768,
+  "container_end": 355452,
+  "flags": 1,
+  "method": 45,
+  "level": 7,
+  "block_size": 262144,
+  "blocks": [
+    {
+      "file_offset": 32794,
+      "compressed_bytes": 132406,
+      "expanded_bytes": 262144
+    },
+    {
+      "file_offset": 165208,
+      "compressed_bytes": 122997,
+      "expanded_bytes": 262144
+    },
+    {
+      "file_offset": 288213,
+      "compressed_bytes": 67231,
+      "expanded_bytes": 212528
+    }
+  ],
+  "adler32_match": true,
+  "adler32": "262f06af",
+  "expanded_bytes": 736816,
+  "expanded_sha256": "99f701ac15a155aa07b7204d240b82a0a5c91457513ae1e246146e3f8b8753a2",
+  "decoder_package_sha256": "2117fbffff0638da71bf6a741dd05e7f54f405d3070a1e5b940135260f642390",
+  "decoder_library_sha256": "e095277fd56a3a07441ebeace274d2d7a83e6cf275eac9aeebf172433b75783a",
+  "matching_strings": [
+    {
+      "expanded_file_offset": 541748,
+      "text": "U-boot-00000-g5ff8b7c(m6_casablanca@5ff8b7c0) (2015-08-12 - 17:20:46)"
+    },
+    {
+      "expanded_file_offset": 558788,
+      "text": "aml_nand_update_key"
+    },
+    {
+      "expanded_file_offset": 582111,
+      "text": " check powerkey enter recovery"
+    },
+    {
+      "expanded_file_offset": 582227,
+      "text": "monitor_bt_cmdline"
+    },
+    {
+      "expanded_file_offset": 584471,
+      "text": "U-Boot"
+    },
+    {
+      "expanded_file_offset": 590162,
+      "text": "imgread dtb     --- Load dtb from image boot.img or recovery.img"
+    },
+    {
+      "expanded_file_offset": 590552,
+      "text": "        to read recovery.img from part recovery from flash: <imgread kernel recovery loadaddr> "
+    },
+    {
+      "expanded_file_offset": 597244,
+      "text": "    - set u-boot default environment"
+    },
+    {
+      "expanded_file_offset": 597343,
+      "text": "    - defenv without specified u-boot environment variables"
+    },
+    {
+      "expanded_file_offset": 597552,
+      "text": "reboot_mode"
+    },
+    {
+      "expanded_file_offset": 597578,
+      "text": "usb_burning"
+    },
+    {
+      "expanded_file_offset": 597633,
+      "text": "This command will set 'reboot_mode'"
+    },
+    {
+      "expanded_file_offset": 597704,
+      "text": "This command will clear reboot_mode"
+    },
+    {
+      "expanded_file_offset": 600809,
+      "text": "** Invalid partition type \"%.32s\" (expect \"U-Boot\")"
+    },
+    {
+      "expanded_file_offset": 601437,
+      "text": "Remote Wakeup "
+    },
+    {
+      "expanded_file_offset": 608781,
+      "text": "u-boot"
+    },
+    {
+      "expanded_file_offset": 609150,
+      "text": "enter gdb remote debug mode"
+    },
+    {
+      "expanded_file_offset": 609298,
+      "text": "      to the monitor, the remote gdb debugger must"
+    },
+    {
+      "expanded_file_offset": 609396,
+      "text": "      if a program is loaded by the remote gdb, any args"
+    },
+    {
+      "expanded_file_offset": 609565,
+      "text": "      example program in the U-Boot examples directory)."
+    },
+    {
+      "expanded_file_offset": 620083,
+      "text": "aml_nand_update_key : save key info failed"
+    },
+    {
+      "expanded_file_offset": 636038,
+      "text": "sdcburncfg"
+    },
+    {
+      "expanded_file_offset": 636049,
+      "text": "msg:reboot_mode=0x%x"
+    },
+    {
+      "expanded_file_offset": 636102,
+      "text": "aml_sdc_burn.ini"
+    },
+    {
+      "expanded_file_offset": 636119,
+      "text": "fatexist mmc 0 ${sdcburncfg}"
+    },
+    {
+      "expanded_file_offset": 636234,
+      "text": "burn key not supported as CONFIG_UNIFY_KEY_MANAGE undef!!"
+    },
+    {
+      "expanded_file_offset": 636292,
+      "text": "Burn Reboot..."
+    },
+    {
+      "expanded_file_offset": 636407,
+      "text": "msg:PLS short-press power key to shut down"
+    },
+    {
+      "expanded_file_offset": 636496,
+      "text": "Error burn_complete flag %d"
+    },
+    {
+      "expanded_file_offset": 637223,
+      "text": "msg:Burn Start..."
+    },
+    {
+      "expanded_file_offset": 637447,
+      "text": "msg:Burn complete"
+    },
+    {
+      "expanded_file_offset": 637991,
+      "text": "Error burn sta %d"
+    },
+    {
+      "expanded_file_offset": 638500,
+      "text": "burn key failed"
+    },
+    {
+      "expanded_file_offset": 639225,
+      "text": "this burn size %d <= last left size %d, data 0x%p"
+    },
+    {
+      "expanded_file_offset": 639276,
+      "text": "Exception:siz 0x%x < burnSz 0x%x"
+    },
+    {
+      "expanded_file_offset": 640025,
+      "text": "%d chunk left, image not burn completed!!"
+    },
+    {
+      "expanded_file_offset": 641477,
+      "text": "v2_sdc_burn/optimus_sdc_update.c"
+    },
+    {
+      "expanded_file_offset": 641771,
+      "text": "fail in sdc_burn_buf_manager_init, rcode %d"
+    },
+    {
+      "expanded_file_offset": 641943,
+      "text": "BURN %s to part %s OK!"
+    },
+    {
+      "expanded_file_offset": 641976,
+      "text": "=====>Burn part %s in fmt %s %s<======"
+    },
+    {
+      "expanded_file_offset": 642170,
+      "text": "Fail to burn partition (%s) with image file (%s) in format (%s)"
+    },
+    {
+      "expanded_file_offset": 642246,
+      "text": "Burning a partition with image file in sdmmc card"
+    },
+    {
+      "expanded_file_offset": 642614,
+      "text": "        to burn partition boot with boot.img of mmc 0 : \"sdc_update boot boot.img\""
+    },
+    {
+      "expanded_file_offset": 642697,
+      "text": "        to burn partition system with system.img of mmc 0 : \"sdc_update system system.img\""
+    },
+    {
+      "expanded_file_offset": 642795,
+      "text": "v2_sdc_burn/optimus_sdc_burn.c"
+    },
+    {
+      "expanded_file_offset": 643056,
+      "text": "msg:=====>To burn part [%s]"
+    },
+    {
+      "expanded_file_offset": 643231,
+      "text": "Fail to burn part(%s) with in format (%s) before verify"
+    },
+    {
+      "expanded_file_offset": 643340,
+      "text": "Fail when burn bootloader"
+    },
+    {
+      "expanded_file_offset": 643367,
+      "text": "Fail in check burn parts"
+    },
+    {
+      "expanded_file_offset": 643393,
+      "text": "Fail to get burn parts from image"
+    },
+    {
+      "expanded_file_offset": 643450,
+      "text": "Fail in burn part %s"
+    },
+    {
+      "expanded_file_offset": 643618,
+      "text": "Fail in load dtb for sdc_burn"
+    },
+    {
+      "expanded_file_offset": 643649,
+      "text": "Fail to init stoarge for sdc burn"
+    },
+    {
+      "expanded_file_offset": 643684,
+      "text": "Fail when burn partitions"
+    },
+    {
+      "expanded_file_offset": 643711,
+      "text": "Fail to burn media partition with image %s"
+    },
+    {
+      "expanded_file_offset": 643755,
+      "text": "Fail in burn bootloader"
+    },
+    {
+      "expanded_file_offset": 643780,
+      "text": "Fail in set_burn_complete_flag"
+    },
+    {
+      "expanded_file_offset": 643812,
+      "text": "msg:======sdc burn Failed!!!!!"
+    },
+    {
+      "expanded_file_offset": 643844,
+      "text": "msg:PLS long-press power key to shut down"
+    },
+    {
+      "expanded_file_offset": 643887,
+      "text": "msg:======sdc burn SUCCESS."
+    },
+    {
+      "expanded_file_offset": 643929,
+      "text": "sdc_burn"
+    },
+    {
+      "expanded_file_offset": 643938,
+      "text": "Burning with amlogic format package in sdmmc "
+    },
+    {
+      "expanded_file_offset": 643984,
+      "text": "argv: [sdc_burn_cfg_file]"
+    },
+    {
+      "expanded_file_offset": 644010,
+      "text": "    -aml_sdc_burn.ini is usually used configure file"
+    },
+    {
+      "expanded_file_offset": 644064,
+      "text": "burn_parts"
+    },
+    {
+      "expanded_file_offset": 644075,
+      "text": "burn_num         = %d"
+    },
+    {
+      "expanded_file_offset": 644098,
+      "text": "burn_part%d       = %s"
+    },
+    {
+      "expanded_file_offset": 644123,
+      "text": "=========sdc_burn_paras=====>>>"
+    },
+    {
+      "expanded_file_offset": 644234,
+      "text": "burn_ex"
+    },
+    {
+      "expanded_file_offset": 644288,
+      "text": "<<<<=====sdc_burn_paras======"
+    },
+    {
+      "expanded_file_offset": 644320,
+      "text": "v2_sdc_burn/optimus_ini_parser.c"
+    },
+    {
+      "expanded_file_offset": 644353,
+      "text": "Please cfg burn_part%d"
+    },
+    {
+      "expanded_file_offset": 644377,
+      "text": "media can't cfg in both media_path and burn_parts"
+    },
+    {
+      "expanded_file_offset": 644480,
+      "text": "burn_num"
+    },
+    {
+      "expanded_file_offset": 644489,
+      "text": "burn_num in burn_parts can't be empty!!"
+    },
+    {
+      "expanded_file_offset": 644529,
+      "text": "value for burn_num in burn_parts in invalid"
+    },
+    {
+      "expanded_file_offset": 644574,
+      "text": "burn_num is not config or 0 ??"
+    },
+    {
+      "expanded_file_offset": 644606,
+      "text": "error burn part name [%s]"
+    },
+    {
+      "expanded_file_offset": 644633,
+      "text": "Error \"%s\", only burn_part[0~%d] is valid as burn_num is %d"
+    },
+    {
+      "expanded_file_offset": 644694,
+      "text": "key %s is duplicated in burn_parts"
+    },
+    {
+      "expanded_file_offset": 644755,
+      "text": "bootloader not need to configure at burn_parts"
+    },
+    {
+      "expanded_file_offset": 644803,
+      "text": "burn_partx"
+    },
+    {
+      "expanded_file_offset": 644822,
+      "text": "key package in burn_ex is duplicated!"
+    },
+    {
+      "expanded_file_offset": 644861,
+      "text": "value for package in set burn_ex can't be empty!"
+    },
+    {
+      "expanded_file_offset": 644911,
+      "text": "key media in burn_ex is duplicated!"
+    },
+    {
+      "expanded_file_offset": 645470,
+      "text": "Fail in check burn parts."
+    },
+    {
+      "expanded_file_offset": 646103,
+      "text": "Enter v2 usbburning mode"
+    },
+    {
+      "expanded_file_offset": 646155,
+      "text": "Enter v2 usbburning mode"
+    },
+    {
+      "expanded_file_offset": 646180,
+      "text": "usbburning timeout"
+    },
+    {
+      "expanded_file_offset": 646231,
+      "text": "burn key not supported as CONFIG_UNIFY_KEY_MANAGE undef!!"
+    },
+    {
+      "expanded_file_offset": 646870,
+      "text": "failed when burn simg!, want(0x%x), write(0x%x)"
+    },
+    {
+      "expanded_file_offset": 647184,
+      "text": "burn_complete"
+    },
+    {
+      "expanded_file_offset": 654271,
+      "text": "irdetect"
+    },
+    {
+      "expanded_file_offset": 654280,
+      "text": "Detect IR Key to start recovery system"
+    },
+    {
+      "expanded_file_offset": 695164,
+      "text": "usb_burning=update 1000"
+    },
+    {
+      "expanded_file_offset": 695188,
+      "text": "sdcburncfg=aml_sdc_burn.ini"
+    },
+    {
+      "expanded_file_offset": 695236,
+      "text": "preboot=echo preboot...;run prepare;if itest ${upgrade_step} == 1; then  defenv; setenv upgrade_step 2; saveenv;fi; secukey emmc; secukey updatehdcpkey;run initenv;switch_bootpart; modify_cmdline; run storeargs;if itest ${upgrade_step} == 3; then run update; fi; get_rebootmode; echo reboot_mode=${reboot_mode};run update_key; run switch_bootmode;"
+    },
+    {
+      "expanded_file_offset": 695584,
+      "text": "update_key=echo update by key...; if monitor_bt_cmdline; then run recovery; fi;if irdetect; then run recovery; fi"
+    },
+    {
+      "expanded_file_offset": 695698,
+      "text": "update=echo update...; run usb_burning; run recovery;"
+    },
+    {
+      "expanded_file_offset": 696195,
+      "text": "switch_bootmode=echo switch_bootmode...;if test ${reboot_mode} = normal; then else if test ${reboot_mode} = charging; then else if test ${reboot_mode} = factory_reset; then run recovery;else if test ${reboot_mode} = update; then run update;else if test ${reboot_mode} = usb_burning; then run usb_burning;else   fi;fi;fi;fi;fi"
+    },
+    {
+      "expanded_file_offset": 696729,
+      "text": "storeboot=store read boot ${loadaddr} 0 800000;bootm;run recovery"
+    },
+    {
+      "expanded_file_offset": 696795,
+      "text": "recovery=echo enter recovery...;hdcp prefetch emmc;store read recovery ${loadaddr} 0 800000; bootm"
+    },
+    {
+      "expanded_file_offset": 696894,
+      "text": "usb_burning=update 1000"
+    },
+    {
+      "expanded_file_offset": 696918,
+      "text": "sdc_burning=sdc_burn ${sdcburncfg}"
+    }
+  ],
+  "firmware_executed": false,
+  "device_access": false,
+  "execution_base": "UNKNOWN",
+  "cold_start_keys": "UNKNOWN"
+}

@@ -1,0 +1,157 @@
+{
+  "kernel_sha256": "fe6332d34fc87b758f5a6a9894c40e9e17d13a9cb586ce0aaca79103c73dfc96",
+  "elf_sha256": "efd752307251b9ec1279f5d8c586d8f6696d6cd9ada150ef9952eb7c497be16d",
+  "raw_bytes_preserved": true,
+  "table_address": 3229147424,
+  "entry_count": 29,
+  "identifier_expression": "(kernel_assembled_word >> 4) & 0xffff",
+  "entries": [
+    {
+      "index": 0,
+      "identifier": 15564,
+      "linux_keycode": 116
+    },
+    {
+      "index": 1,
+      "identifier": 34309,
+      "linux_keycode": 103
+    },
+    {
+      "index": 2,
+      "identifier": 34317,
+      "linux_keycode": 28
+    },
+    {
+      "index": 3,
+      "identifier": 34310,
+      "linux_keycode": 108
+    },
+    {
+      "index": 4,
+      "identifier": 34315,
+      "linux_keycode": 105
+    },
+    {
+      "index": 5,
+      "identifier": 34316,
+      "linux_keycode": 106
+    },
+    {
+      "index": 6,
+      "identifier": 34311,
+      "linux_keycode": 158
+    },
+    {
+      "index": 7,
+      "identifier": 34308,
+      "linux_keycode": 139
+    },
+    {
+      "index": 8,
+      "identifier": 34312,
+      "linux_keycode": 102
+    },
+    {
+      "index": 9,
+      "identifier": 34318,
+      "linux_keycode": 115
+    },
+    {
+      "index": 10,
+      "identifier": 34319,
+      "linux_keycode": 114
+    },
+    {
+      "index": 11,
+      "identifier": 34305,
+      "linux_keycode": 235
+    },
+    {
+      "index": 12,
+      "identifier": 34304,
+      "linux_keycode": 236
+    },
+    {
+      "index": 13,
+      "identifier": 34352,
+      "linux_keycode": 104
+    },
+    {
+      "index": 14,
+      "identifier": 34355,
+      "linux_keycode": 109
+    },
+    {
+      "index": 15,
+      "identifier": 34357,
+      "linux_keycode": 125
+    },
+    {
+      "index": 16,
+      "identifier": 34358,
+      "linux_keycode": 126
+    },
+    {
+      "index": 17,
+      "identifier": 52287,
+      "linux_keycode": 59
+    },
+    {
+      "index": 18,
+      "identifier": 52467,
+      "linux_keycode": 60
+    },
+    {
+      "index": 19,
+      "identifier": 53187,
+      "linux_keycode": 61
+    },
+    {
+      "index": 20,
+      "identifier": 53052,
+      "linux_keycode": 62
+    },
+    {
+      "index": 21,
+      "identifier": 15567,
+      "linux_keycode": 63
+    },
+    {
+      "index": 22,
+      "identifier": 15612,
+      "linux_keycode": 64
+    },
+    {
+      "index": 23,
+      "identifier": 62259,
+      "linux_keycode": 65
+    },
+    {
+      "index": 24,
+      "identifier": 53040,
+      "linux_keycode": 66
+    },
+    {
+      "index": 25,
+      "identifier": 13071,
+      "linux_keycode": 67
+    },
+    {
+      "index": 26,
+      "identifier": 13296,
+      "linux_keycode": 68
+    },
+    {
+      "index": 27,
+      "identifier": 52416,
+      "linux_keycode": 87
+    },
+    {
+      "index": 28,
+      "identifier": 15615,
+      "linux_keycode": 88
+    }
+  ],
+  "device_access": false,
+  "limit": "Kernel table extraction only; loader format equivalence and owner physical button mapping require separate evidence."
+}

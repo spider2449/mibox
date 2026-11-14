@@ -1,0 +1,7 @@
+﻿{
+    "Command":  "getprop sys.boot_completed",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "Output":  "1\r\r\n",
+    "Error":  ""
+}

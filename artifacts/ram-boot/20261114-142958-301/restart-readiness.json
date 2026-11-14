@@ -1,0 +1,7 @@
+﻿{
+    "Arguments":  "-s 248243005297 shell /bin/mibox reboot-android --check",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "Output":  "MIBOX_RESTART_READY boot_id=695ecb4b-717c-4b1b-8e1c-0faaeee26c2b",
+    "Error":  ""
+}

@@ -1,0 +1,7 @@
+﻿{
+    "Command":  "ls -l /dev/input",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "Output":  "crw-rw---- root     input     13,  64 2026-11-14 10:47 event0\r\r\ncrw-rw---- root     input     13,  65 2026-11-14 10:47 event1\r\r\ncrw-rw---- root     input     13,  63 2026-11-14 10:47 mice\r\r\n",
+    "Error":  ""
+}

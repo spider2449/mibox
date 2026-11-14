@@ -1,0 +1,15 @@
+﻿{
+    "StartedAt":  "2026-11-14T13:56:32.6387010+08:00",
+    "FinishedAt":  "2026-11-14T13:58:32.6607565+08:00",
+    "Command":  "-s 248243005297 shell getevent -lt -c 4 /dev/input/event0",
+    "ExitCode":  -1,
+    "TimedOut":  true,
+    "Output":  "",
+    "Error":  "",
+    "InputInjected":  false,
+    "RequestedOwnerSequence":  "BACK",
+    "OwnerSequenceConfirmed":  false,
+    "OwnerCompletionReported":  true,
+    "ObservedSequenceMatchesRequest":  false,
+    "Interpretation":  "Owner reports pressing BACK; no event0 output observed during the 120-second window. Cause UNKNOWN; other input source not monitored in this attempt."
+}

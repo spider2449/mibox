@@ -1,0 +1,85 @@
+{
+  "scope": "disposable host regular files only",
+  "device_access": false,
+  "physical_restoration_tested": false,
+  "permanent_install": "NOT READY",
+  "cases": [
+    {
+      "case": "complete-copy-flush-readback",
+      "pass": true,
+      "bytes": 8388608,
+      "sha256": "06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222",
+      "readback_match": true
+    },
+    {
+      "case": "wrong-identity",
+      "pass": true,
+      "rejected": "target identity mismatch",
+      "target_unchanged": true,
+      "restore_success": false
+    },
+    {
+      "case": "short-target",
+      "pass": true,
+      "rejected": "size mismatch",
+      "target_unchanged": true,
+      "restore_success": false
+    },
+    {
+      "case": "oversized-target",
+      "pass": true,
+      "rejected": "size mismatch",
+      "target_unchanged": true,
+      "restore_success": false
+    },
+    {
+      "case": "wrong-source-hash",
+      "pass": true,
+      "rejected": "source hash mismatch",
+      "target_unchanged": true,
+      "restore_success": false
+    },
+    {
+      "case": "source-target-alias",
+      "pass": true,
+      "rejected": "source aliases target",
+      "target_unchanged": true,
+      "restore_success": false
+    },
+    {
+      "case": "short-source",
+      "pass": true,
+      "rejected": "size mismatch",
+      "target_unchanged": true,
+      "restore_success": false
+    },
+    {
+      "case": "outside-sandbox",
+      "pass": true,
+      "rejected": "target outside disposable sandbox",
+      "target_unchanged": true
+    },
+    {
+      "case": "interruption",
+      "pass": true,
+      "rejected": "injected interruption; target is partial",
+      "target_unchanged": false,
+      "restore_success": false
+    },
+    {
+      "case": "corrupted-readback",
+      "pass": true,
+      "rejected": "readback mismatch",
+      "target_unchanged": false,
+      "restore_success": false
+    },
+    {
+      "case": "full-retry-after-failure",
+      "pass": true,
+      "bytes": 8388608,
+      "sha256": "06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222",
+      "readback_match": true
+    }
+  ],
+  "passed": 11
+}

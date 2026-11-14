@@ -1,0 +1,46 @@
+
+/mnt/f/coding/otherPrj/mibox/phone-tools/runtime/2026-11-14/bootloader-ucl/bootloader-expanded.bin:     file format binary
+
+
+Disassembly of section .data:
+
+8f85b004 <.data+0x5b004>:
+8f85b004:	e92d4070 	push	{r4, r5, r6, lr}
+8f85b008:	e1a05000 	mov	r5, r0
+8f85b00c:	e59f4050 	ldr	r4, [pc, #80]	@ 0x8f85b064
+8f85b010:	e3a00000 	mov	r0, #0
+8f85b014:	e59f604c 	ldr	r6, [pc, #76]	@ 0x8f85b068
+8f85b018:	e08f4004 	add	r4, pc, r4
+8f85b01c:	e7840006 	str	r0, [r4, r6]
+8f85b020:	ebfe953e 	bl	0x8f800520
+8f85b024:	e3500000 	cmp	r0, #0
+8f85b028:	02800001 	addeq	r0, r0, #1
+8f85b02c:	0a000001 	beq	0x8f85b038
+8f85b030:	e7940006 	ldr	r0, [r4, r6]
+8f85b034:	ebfe9539 	bl	0x8f800520
+8f85b038:	e59f2028 	ldr	r2, [pc, #40]	@ 0x8f85b068
+8f85b03c:	e3550000 	cmp	r5, #0
+8f85b040:	e0843002 	add	r3, r4, r2
+8f85b044:	e7840002 	str	r0, [r4, r2]
+8f85b048:	059f201c 	ldreq	r2, [pc, #28]	@ 0x8f85b06c
+8f85b04c:	e3a00901 	mov	r0, #16384	@ 0x4000
+8f85b050:	15835450 	strne	r5, [r3, #1104]	@ 0x450
+8f85b054:	05832450 	streq	r2, [r3, #1104]	@ 0x450
+8f85b058:	ebffe32b 	bl	0x8f853d0c
+8f85b05c:	e8bd4070 	pop	{r4, r5, r6, lr}
+8f85b060:	eaffdbd0 	b	0x8f851fa8
+8f85b064:	00050e4c 	andeq	r0, r5, ip, asr #28
+8f85b068:	000189bc 			@ <UNDEFINED> instruction: 0x000189bc
+8f85b06c:	004c4b40 	subeq	r4, ip, r0, asr #22
+8f85b070:	e59f3020 	ldr	r3, [pc, #32]	@ 0x8f85b098
+8f85b074:	e3a01c02 	mov	r1, #512	@ 0x200
+8f85b078:	e59f201c 	ldr	r2, [pc, #28]	@ 0x8f85b09c
+8f85b07c:	e92d4010 	push	{r4, lr}
+8f85b080:	e08f3003 	add	r3, pc, r3
+8f85b084:	e0833002 	add	r3, r3, r2
+8f85b088:	e2830004 	add	r0, r3, #4
+8f85b08c:	ebfeafe3 	bl	0x8f807020
+8f85b090:	e8bd4010 	pop	{r4, lr}
+8f85b094:	eafffd84 	b	0x8f85a6ac
+8f85b098:	00050de4 	andeq	r0, r5, r4, ror #27
+8f85b09c:	000189bc 			@ <UNDEFINED> instruction: 0x000189bc

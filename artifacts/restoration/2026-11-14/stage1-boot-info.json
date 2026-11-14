@@ -1,0 +1,105 @@
+{
+  "source_sha256": "a5fae79fe631cf557d06f6fda8bc5ae8bbf1eca5359f9f76b17bafaddd29068b",
+  "prefix_bytes": 32768,
+  "prefix_sha256": "3c0f1eba7a1aa6eaaaefb7c4cf5b5d86cae7f8d3cb8490a571856850542370c8",
+  "derived_stage1_link_base": 3640655872,
+  "base_evidence": "startup relocation destination at file 0x98; vector target offsets 0x124 and 0x154 corroborate",
+  "boot_info_pointer_slot": 3640656052,
+  "pointer_slot_file_offset": 180,
+  "boot_info_pointer_value_in_backup": 3640786688,
+  "consumed_field_address": 3640786692,
+  "stage2_reads_same_field": true,
+  "stage1_load_dispatch": {
+    "function_file_offset": 10856,
+    "field_value_1": {
+      "callee_file_offset": 8450,
+      "diagnostic": " ext dev "
+    },
+    "field_value_0_or_unsigned_gt_1": {
+      "callee_file_offset": 10024,
+      "diagnostic": " int dev "
+    },
+    "meaning_limit": "ext dev and int dev are actual diagnostic labels, not identification of a physical socket or USB loader mode"
+  },
+  "field_initial_writer": "UNKNOWN",
+  "field_runtime_value": "UNKNOWN",
+  "owner_cold_start_trigger": "UNKNOWN",
+  "write_analysis_limit": "Bounded consumers inspected; no whole-program proof that the field is never modified.",
+  "device_access": false,
+  "firmware_executed": false,
+  "permanent_install": "NOT READY",
+  "public_references": [
+    {
+      "path": "arch/arm/include/asm/arch-m6/romboot.h",
+      "git_blob_sha1": "22b47fa4baa9b696378a743fb70e150393315b0f",
+      "local_sha256": "ac225f8f8801b9c405af3f373a7aa324aba6ee7c8e14c5747b0f2cf16504b7b0",
+      "text_equivalence_matches": [
+        {
+          "eol": "b'\\r\\n'",
+          "terminal_newlines": 1
+        }
+      ],
+      "url": "https://github.com/codesnake/uboot-amlogic/blob/c0b0b8cc9bd5901ced2e929ea87b99fae52d528c/arch/arm/include/asm/arch-m6/romboot.h"
+    },
+    {
+      "path": "arch/arm/cpu/aml_meson/common/firmware/loaduboot.c",
+      "git_blob_sha1": "25df379572a339df43f04c4ba645125f163fcee9",
+      "local_sha256": "13adb5ff8bcf62ce3fc539239ef82ef9cc62fa4c7de7c25808ef473043a2f907",
+      "text_equivalence_matches": [
+        {
+          "eol": "b'\\n'",
+          "terminal_newlines": 1
+        }
+      ],
+      "url": "https://github.com/codesnake/uboot-amlogic/blob/c0b0b8cc9bd5901ced2e929ea87b99fae52d528c/arch/arm/cpu/aml_meson/common/firmware/loaduboot.c"
+    },
+    {
+      "path": "arch/arm/cpu/aml_meson/m6/firmware/romboot.c",
+      "git_blob_sha1": "75a5c61b372633c8e52232558a8de3b17a1f2a45",
+      "local_sha256": "87b0803ef21f74f8c080c4534249e4a28e70ad0333e82e22e4a83d6c9c82a0e1",
+      "text_equivalence_matches": [
+        {
+          "eol": "b'\\n'",
+          "terminal_newlines": 2
+        }
+      ],
+      "url": "https://github.com/codesnake/uboot-amlogic/blob/c0b0b8cc9bd5901ced2e929ea87b99fae52d528c/arch/arm/cpu/aml_meson/m6/firmware/romboot.c"
+    },
+    {
+      "path": "arch/arm/cpu/aml_meson/m6/firmware/sdio.c",
+      "git_blob_sha1": "1ec970898110cf62cc8b3bfdbddfa0fc0682d924",
+      "local_sha256": "c481363c51fbf849b72a39034f0e52b7043add70598a0d52522854b2c60e79a6",
+      "text_equivalence_matches": [
+        {
+          "eol": "b'\\n'",
+          "terminal_newlines": 2
+        }
+      ],
+      "url": "https://github.com/codesnake/uboot-amlogic/blob/c0b0b8cc9bd5901ced2e929ea87b99fae52d528c/arch/arm/cpu/aml_meson/m6/firmware/sdio.c"
+    }
+  ],
+  "reference_interpretation": "Matching layout labels field boot_id; public source is not proven exact Xiaomi source or boot ROM implementation.",
+  "external_reader": {
+    "reader_file_offset": 7092,
+    "command_helper_file_offset": 7012,
+    "controller_literal_addresses": [
+      3239087200,
+      3239087144,
+      3239087156,
+      3239087160
+    ],
+    "read_command_base": 2239826,
+    "stop_command_base": 535884,
+    "read_command_low_byte": 82,
+    "stop_command_low_byte": 76,
+    "initial_media_byte_offset": 32768,
+    "sector_bytes": 512,
+    "maximum_chunk_bytes": 65536,
+    "card_type_1_or_3_argument": "media byte offset shifted right by 9",
+    "other_card_type_argument": "media byte offset",
+    "interface_interpretation": "SD/MMC-style CMD18 read and CMD12 stop; register/command constants agree with pinned Meson6 SDIO reference",
+    "physical_slot": "UNKNOWN",
+    "boot_rom_external_selection": "UNKNOWN",
+    "limits": "Static read routine, not a complete card-image format, acceptance policy, tested cold boot or physical restore path."
+  }
+}

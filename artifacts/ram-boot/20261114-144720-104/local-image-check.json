@@ -1,0 +1,7 @@
+﻿{
+    "Arguments":  "-NoProfile -File \"F:\\coding\\otherPrj\\mibox\\scripts\\Test-MiboxLoaderRam.ps1\" -Action UploadAndBoot -Candidate Restart -VerifyOnly",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "Output":  "{\r\n    \"Candidate\":  \"Restart\",\r\n    \"Bytes\":  8388608,\r\n    \"Sha256\":  \"5608fa36caa28a7acf7a647b53db5d2775aaceb44730896f87da03f8ba6047fa\",\r\n    \"UsbAccessed\":  false\r\n}",
+    "Error":  ""
+}

@@ -17,10 +17,13 @@ fn main() -> io::Result<()> {
         ("adbpolicy", "cat /init.usb.rc; cat /sys/class/android_usb/android0/enable /sys/class/android_usb/android0/functions; getprop init.svc.adbd"),
         ("bootpath", "cat /sys/kernel/kexec_loaded /sys/kernel/kexec_crash_loaded; cat /proc/kallsyms | /system/xbin/busybox grep -E '(^| )(sys_kexec_load|machine_kexec|kernel_kexec|kexec_load|do_kexec_load|pidns_install|copy_pid_ns|create_pid_namespace)$'; ls -l /proc/self/ns"),
         ("userspace", "cat /data/local/tmp/mibox-userland-*/transcript.txt"),
+        ("recoverypending", "id; ls -ld /cache /cache/recovery; ls -l /cache/recovery/command /cache/recovery/extendedcommand /cache/recovery/openrecoveryscript; /system/xbin/busybox head -c 4096 /cache/recovery/command; ls -l /dev/block; getprop ubootenv.var.wipe_data"),
+        ("recoveryenv", "/system/xbin/busybox dd if=/dev/block/env of=/data/local/tmp/mibox-recovery-env-@PID@.img bs=32768 count=1 && chmod 644 /data/local/tmp/mibox-recovery-env-@PID@.img && /system/xbin/busybox sha256sum /data/local/tmp/mibox-recovery-env-@PID@.img"),
         ("emmcboot", "chmod 644 /data/local/tmp/mibox-boot-backup-*/mmcblk0boot0.img; cat /data/local/tmp/mibox-boot-backup-*/mmcblk0boot0.log; ls -l /data/local/tmp/mibox-boot-backup-*/mmcblk0boot*.img"),
     ].iter().enumerate() {
         if selected.as_deref().is_some_and(|filter| filter != *name) { continue; }
         executed += 1;
+        let query = query.replace("@PID@", &pid.to_string());
         let client = format!("/data/local/tmp/mibox-read-{pid}-{number}.sock");
         let output = format!("/data/local/tmp/mibox-read-{pid}-{name}.txt");
         let socket = UnixDatagram::bind(&client)?;

@@ -1,0 +1,1140 @@
+{
+  "source_sha256": "fc96df8c21e8c4904b193cc9605f3a07933fb7847d5ccead758f48e392ef2589",
+  "cpio_sha256": "8ac2cb16e5a3b56c1089ba28c0fae79e5bf9e175c42b7510cf7a97929f0c5030",
+  "recovery_sha256": "fc17c13f75a9f2909ca70a2a1339b3838e87ad165f326fa96cc50346e5d43b3e",
+  "bytes": 462104,
+  "input_related_archive_entries": [
+    {
+      "name": "etc/recovery.kl",
+      "bytes": 561,
+      "mode": "0o100644"
+    }
+  ],
+  "matching_strings": [
+    {
+      "file_offset": 366408,
+      "text": "void factory_reset_wipe_data(int*, char***)"
+    },
+    {
+      "file_offset": 366487,
+      "text": "wipe_data"
+    },
+    {
+      "file_offset": 366497,
+      "text": "fw_setenv \"wipe_data=%s\" ok"
+    },
+    {
+      "file_offset": 366526,
+      "text": "fw_setenv \"wipe_data=%s\" fail"
+    },
+    {
+      "file_offset": 366576,
+      "text": "/cache/recovery/last_log"
+    },
+    {
+      "file_offset": 366601,
+      "text": "/cache/recovery/last_log.%d"
+    },
+    {
+      "file_offset": 366727,
+      "text": "\"/sbin/recovery.data.sh / /system/customized_data.tar\""
+    },
+    {
+      "file_offset": 366959,
+      "text": "Android system recovery <3e>"
+    },
+    {
+      "file_offset": 366989,
+      "text": "I:timed out waiting for key input; rebooting."
+    },
+    {
+      "file_offset": 367134,
+      "text": "boot-recovery"
+    },
+    {
+      "file_offset": 367148,
+      "text": "recovery"
+    },
+    {
+      "file_offset": 367300,
+      "text": "/tmp/sideload"
+    },
+    {
+      "file_offset": 367733,
+      "text": "recovery"
+    },
+    {
+      "file_offset": 367805,
+      "text": "recovery_command"
+    },
+    {
+      "file_offset": 367893,
+      "text": "/cache/recovery/command"
+    },
+    {
+      "file_offset": 368097,
+      "text": "/tmp/recovery.log"
+    },
+    {
+      "file_offset": 368115,
+      "text": "/cache/recovery/log"
+    },
+    {
+      "file_offset": 368135,
+      "text": "/cache/recovery/last_install"
+    },
+    {
+      "file_offset": 368164,
+      "text": "ERR:the volume for erase is NULL! "
+    },
+    {
+      "file_offset": 368199,
+      "text": "start erase volume: %s"
+    },
+    {
+      "file_offset": 368223,
+      "text": "/cache/recovery"
+    },
+    {
+      "file_offset": 368282,
+      "text": "format volume:%s sucessed!,now fsync the format device:"
+    },
+    {
+      "file_offset": 368402,
+      "text": "format volume:%s failed!"
+    },
+    {
+      "file_offset": 368428,
+      "text": "/cache/recovery/intent"
+    },
+    {
+      "file_offset": 368473,
+      "text": "/cache/recovery/last_locale"
+    },
+    {
+      "file_offset": 368520,
+      "text": "--adbd"
+    },
+    {
+      "file_offset": 368527,
+      "text": "Starting recovery(pid: %d) on %s"
+    },
+    {
+      "file_offset": 368560,
+      "text": "---%s,wipe_data=%s"
+    },
+    {
+      "file_offset": 368580,
+      "text": "--wipe_data"
+    },
+    {
+      "file_offset": 368772,
+      "text": "E:Cache wipe (requested by package) failed."
+    },
+    {
+      "file_offset": 368845,
+      "text": "Data wipe failed."
+    },
+    {
+      "file_offset": 368888,
+      "text": "Cache wipe failed."
+    },
+    {
+      "file_offset": 368991,
+      "text": "ubootenv.var.mi-Factory"
+    },
+    {
+      "file_offset": 369056,
+      "text": "Cache wipe complete."
+    },
+    {
+      "file_offset": 369253,
+      "text": "Install from ADB complete."
+    },
+    {
+      "file_offset": 369301,
+      "text": "Data wipe complete."
+    },
+    {
+      "file_offset": 369322,
+      "text": "Rebooting..."
+    },
+    {
+      "file_offset": 369336,
+      "text": "Rebooting..."
+    },
+    {
+      "file_offset": 369349,
+      "text": "sys.powerctl"
+    },
+    {
+      "file_offset": 369362,
+      "text": "reboot,"
+    },
+    {
+      "file_offset": 369449,
+      "text": "reboot_to_factorytest"
+    },
+    {
+      "file_offset": 369483,
+      "text": "wipe_cache"
+    },
+    {
+      "file_offset": 369494,
+      "text": "usb_burning"
+    },
+    {
+      "file_offset": 369649,
+      "text": "Confirm wipe of all user data?"
+    },
+    {
+      "file_offset": 369739,
+      "text": "Reboot System"
+    },
+    {
+      "file_offset": 369753,
+      "text": " Reboot to System one (Current Running)"
+    },
+    {
+      "file_offset": 369793,
+      "text": " Reboot to System two"
+    },
+    {
+      "file_offset": 369821,
+      "text": " Reboot to System one "
+    },
+    {
+      "file_offset": 369844,
+      "text": " Reboot to System two (Current Running)"
+    },
+    {
+      "file_offset": 369884,
+      "text": "Data wipe result."
+    },
+    {
+      "file_offset": 369902,
+      "text": "Wipe cache result."
+    },
+    {
+      "file_offset": 371289,
+      "text": "/res/keys"
+    },
+    {
+      "file_offset": 371299,
+      "text": "E:Failed to load keys"
+    },
+    {
+      "file_offset": 371322,
+      "text": "I:%d key(s) loaded from %s"
+    },
+    {
+      "file_offset": 371513,
+      "text": "/etc/recovery.fstab"
+    },
+    {
+      "file_offset": 371533,
+      "text": "E:failed to read /etc/recovery.fstab, try /etc/kk.fstab"
+    },
+    {
+      "file_offset": 371686,
+      "text": "recovery filesystem table"
+    },
+    {
+      "file_offset": 371987,
+      "text": "E:unknown volume for path [%s]"
+    },
+    {
+      "file_offset": 372019,
+      "text": "E:failed to scan mounted volumes"
+    },
+    {
+      "file_offset": 372182,
+      "text": "E:unknown volume \"%s\""
+    },
+    {
+      "file_offset": 372205,
+      "text": "E:can't format_volume \"%s\""
+    },
+    {
+      "file_offset": 372232,
+      "text": "E:can't give path \"%s\" to format_volume"
+    },
+    {
+      "file_offset": 372273,
+      "text": "E:format_volume failed to unmount \"%s\""
+    },
+    {
+      "file_offset": 372313,
+      "text": "E:format_volume: no MTD partition \"%s\""
+    },
+    {
+      "file_offset": 372353,
+      "text": "W:format_volume: can't open MTD \"%s\""
+    },
+    {
+      "file_offset": 372391,
+      "text": "W:format_volume: can't erase MTD \"%s\""
+    },
+    {
+      "file_offset": 372430,
+      "text": "W:format_volume: can't close MTD \"%s\""
+    },
+    {
+      "file_offset": 372469,
+      "text": "E:format_volume: ext4_erase_volum failed on %s"
+    },
+    {
+      "file_offset": 372517,
+      "text": "E:format_volume: make_extf4fs failed on %s"
+    },
+    {
+      "file_offset": 372820,
+      "text": "E:format_volume: fs_type \"%s\" unsupported"
+    },
+    {
+      "file_offset": 372911,
+      "text": "/sys/class/android_usb/android0/state"
+    },
+    {
+      "file_offset": 372949,
+      "text": "failed to open /sys/class/android_usb/android0/state: %s"
+    },
+    {
+      "file_offset": 373007,
+      "text": "failed to close /sys/class/android_usb/android0/state: %s"
+    },
+    {
+      "file_offset": 373695,
+      "text": "I:whole-file signature verified against key %d"
+    },
+    {
+      "file_offset": 373743,
+      "text": "I:failed to verify against key %d"
+    },
+    {
+      "file_offset": 373864,
+      "text": "E:key length (%d) does not match expected size"
+    },
+    {
+      "file_offset": 373934,
+      "text": "E:unexpected character between keys"
+    },
+    {
+      "file_offset": 373971,
+      "text": "I:read key e=%d hash=%d"
+    },
+    {
+      "file_offset": 373996,
+      "text": "/sys/class/android_usb/android0/enable"
+    },
+    {
+      "file_offset": 374195,
+      "text": "to the device with \"adb sideload <filename>\"..."
+    },
+    {
+      "file_offset": 374244,
+      "text": "/sbin/recovery"
+    },
+    {
+      "file_offset": 374284,
+      "text": "Restarting adbd..."
+    },
+    {
+      "file_offset": 374492,
+      "text": "menu_reboot_both"
+    },
+    {
+      "file_offset": 374509,
+      "text": "menu_wipe_wipe_data_confirm"
+    },
+    {
+      "file_offset": 374537,
+      "text": "menu_wipe_format_data_confirm"
+    },
+    {
+      "file_offset": 374590,
+      "text": "menu_wipe_wipe_data_result_ok"
+    },
+    {
+      "file_offset": 374620,
+      "text": "menu_wipe_wipe_cache_result_ok"
+    },
+    {
+      "file_offset": 374740,
+      "text": "menu_reboot_single"
+    },
+    {
+      "file_offset": 374759,
+      "text": "menu_wipe_wipe_cache_confirm"
+    },
+    {
+      "file_offset": 374788,
+      "text": "menu_wipe_wipe_cache_result_fail"
+    },
+    {
+      "file_offset": 374821,
+      "text": "menu_wipe_wipe_data_result_fail"
+    },
+    {
+      "file_offset": 375170,
+      "text": "icon_usb_connected"
+    },
+    {
+      "file_offset": 375189,
+      "text": "icon_usb_no_connection"
+    },
+    {
+      "file_offset": 375292,
+      "text": "key_usage_all"
+    },
+    {
+      "file_offset": 375322,
+      "text": "reboot_normal"
+    },
+    {
+      "file_offset": 375336,
+      "text": "reboot_selected"
+    },
+    {
+      "file_offset": 375352,
+      "text": "wipe_normal"
+    },
+    {
+      "file_offset": 375364,
+      "text": "wipe_selected"
+    },
+    {
+      "file_offset": 375424,
+      "text": "mount_usb_normal"
+    },
+    {
+      "file_offset": 375441,
+      "text": "mount_usb_selected"
+    },
+    {
+      "file_offset": 375460,
+      "text": "power_off_normal"
+    },
+    {
+      "file_offset": 375477,
+      "text": "power_off_selected"
+    },
+    {
+      "file_offset": 375496,
+      "text": "reboot_menu"
+    },
+    {
+      "file_offset": 375508,
+      "text": "reboot_system1_normal"
+    },
+    {
+      "file_offset": 375530,
+      "text": "reboot_system1_selected"
+    },
+    {
+      "file_offset": 375554,
+      "text": "reboot_system2_normal"
+    },
+    {
+      "file_offset": 375576,
+      "text": "reboot_system2_selected"
+    },
+    {
+      "file_offset": 375600,
+      "text": "reboot_system1_latest_normal"
+    },
+    {
+      "file_offset": 375629,
+      "text": "reboot_system1_latest_selected"
+    },
+    {
+      "file_offset": 375660,
+      "text": "reboot_system2_latest_normal"
+    },
+    {
+      "file_offset": 375689,
+      "text": "reboot_system2_latest_selected"
+    },
+    {
+      "file_offset": 375756,
+      "text": "wipe_menu"
+    },
+    {
+      "file_offset": 375766,
+      "text": "wipe_cache_normal"
+    },
+    {
+      "file_offset": 375784,
+      "text": "wipe_cache_selected"
+    },
+    {
+      "file_offset": 375804,
+      "text": "wipe_data_normal"
+    },
+    {
+      "file_offset": 375821,
+      "text": "wipe_data_selected"
+    },
+    {
+      "file_offset": 375918,
+      "text": "usb_connected"
+    },
+    {
+      "file_offset": 375932,
+      "text": "usb_no_connection"
+    },
+    {
+      "file_offset": 375950,
+      "text": "usb_umount_normal"
+    },
+    {
+      "file_offset": 375968,
+      "text": "usb_umount_selected"
+    },
+    {
+      "file_offset": 376088,
+      "text": "key_usage"
+    },
+    {
+      "file_offset": 376098,
+      "text": "key_usage_power"
+    },
+    {
+      "file_offset": 376114,
+      "text": "key_usage_volume"
+    },
+    {
+      "file_offset": 376323,
+      "text": "wipe_cache_confirm"
+    },
+    {
+      "file_offset": 376342,
+      "text": "wipe_cache_processing"
+    },
+    {
+      "file_offset": 376364,
+      "text": "wipe_cache_ok"
+    },
+    {
+      "file_offset": 376378,
+      "text": "wipe_cache_fail"
+    },
+    {
+      "file_offset": 376394,
+      "text": "wipe_data_confirm"
+    },
+    {
+      "file_offset": 376412,
+      "text": "wipe_data_processing"
+    },
+    {
+      "file_offset": 376433,
+      "text": "wipe_data_ok"
+    },
+    {
+      "file_offset": 376446,
+      "text": "wipe_data_fail"
+    },
+    {
+      "file_offset": 376461,
+      "text": "wipe_all_data_ok"
+    },
+    {
+      "file_offset": 376478,
+      "text": "wipe_all_data_fail"
+    },
+    {
+      "file_offset": 376953,
+      "text": "Data wipe complete."
+    },
+    {
+      "file_offset": 376973,
+      "text": "Data wipe failed."
+    },
+    {
+      "file_offset": 377058,
+      "text": "/etc/recovery.kl"
+    },
+    {
+      "file_offset": 377075,
+      "text": "I:loaded /etc/recovery.kl"
+    },
+    {
+      "file_offset": 377113,
+      "text": "E:skipping malformed recovery.lk line: %s"
+    },
+    {
+      "file_offset": 377156,
+      "text": "E:failed to open /etc/recovery.kl, use default map"
+    },
+    {
+      "file_offset": 377208,
+      "text": "I:recovery key map table"
+    },
+    {
+      "file_offset": 377263,
+      "text": "I:  %d type:%s value:%d key:%d %d %d %d %d %d"
+    },
+    {
+      "file_offset": 377314,
+      "text": "Volume up/down to move highlight;"
+    },
+    {
+      "file_offset": 377372,
+      "text": "reboot system now"
+    },
+    {
+      "file_offset": 377390,
+      "text": "apply update from ADB"
+    },
+    {
+      "file_offset": 377458,
+      "text": "wipe data/factory reset"
+    },
+    {
+      "file_offset": 377482,
+      "text": "wipe cache partition"
+    },
+    {
+      "file_offset": 377732,
+      "text": "in cb, volume gain = %d"
+    },
+    {
+      "file_offset": 378230,
+      "text": "send down key"
+    },
+    {
+      "file_offset": 378245,
+      "text": "send up key"
+    },
+    {
+      "file_offset": 378258,
+      "text": "send ok key"
+    },
+    {
+      "file_offset": 378467,
+      "text": "bluetooth"
+    },
+    {
+      "file_offset": 383385,
+      "text": "warning: %s: Wipe via secure discard failed, used discard instead"
+    },
+    {
+      "file_offset": 384680,
+      "text": "bootable/recovery/minzip/Zip.c"
+    },
+    {
+      "file_offset": 386407,
+      "text": "mtd: MEMGETBADBLOCK returned %d at 0x%08llx (errno=%d)"
+    },
+    {
+      "file_offset": 399044,
+      "text": "recoveryonly"
+    },
+    {
+      "file_offset": 399458,
+      "text": "keycreate"
+    },
+    {
+      "file_offset": 402901,
+      "text": "Object is remote"
+    },
+    {
+      "file_offset": 403164,
+      "text": "Remote address changed"
+    },
+    {
+      "file_offset": 404409,
+      "text": "Remote I/O error"
+    },
+    {
+      "file_offset": 404494,
+      "text": "Required key not available"
+    },
+    {
+      "file_offset": 404521,
+      "text": "Key has expired"
+    },
+    {
+      "file_offset": 404537,
+      "text": "Key has been revoked"
+    },
+    {
+      "file_offset": 404558,
+      "text": "Key was rejected by service"
+    },
+    {
+      "file_offset": 405035,
+      "text": "Power failure"
+    },
+    {
+      "file_offset": 407116,
+      "text": "REG_BADBR"
+    },
+    {
+      "file_offset": 409072,
+      "text": "virtual void GraphicScreenRecoveryUI::StartMenu(const char* const*, const char* const*, int)"
+    },
+    {
+      "file_offset": 409165,
+      "text": "void GraphicScreenRecoveryUI::draw_screenview_locked(screenview*)"
+    },
+    {
+      "file_offset": 410060,
+      "text": "wipe_block_device"
+    },
+    {
+      "file_offset": 426220,
+      "text": "adb_main"
+    },
+    {
+      "file_offset": 426328,
+      "text": "ADB_TRACE"
+    },
+    {
+      "file_offset": 426380,
+      "text": "sideload"
+    },
+    {
+      "file_offset": 426412,
+      "text": "bootable/recovery/minadbd/adb.c"
+    },
+    {
+      "file_offset": 426500,
+      "text": "adb: online"
+    },
+    {
+      "file_offset": 426516,
+      "text": "adb: offline"
+    },
+    {
+      "file_offset": 426660,
+      "text": "recovery"
+    },
+    {
+      "file_offset": 426672,
+      "text": "setting connection_state to CS_RECOVERY"
+    },
+    {
+      "file_offset": 426716,
+      "text": "setting connection_state to CS_SIDELOAD"
+    },
+    {
+      "file_offset": 426864,
+      "text": "/dev/android_adb"
+    },
+    {
+      "file_offset": 426884,
+      "text": "/dev/usb-ffs/adb/ep0"
+    },
+    {
+      "file_offset": 427648,
+      "text": "register_usb_transport"
+    },
+    {
+      "file_offset": 427808,
+      "text": "bootable/recovery/minadbd/transport.c"
+    },
+    {
+      "file_offset": 427904,
+      "text": "to remote"
+    },
+    {
+      "file_offset": 428020,
+      "text": "from remote"
+    },
+    {
+      "file_offset": 428492,
+      "text": "%s: received remote packet, sending to transport"
+    },
+    {
+      "file_offset": 428588,
+      "text": "%s: remote read failed for transport"
+    },
+    {
+      "file_offset": 428956,
+      "text": "%s: transport got packet, sending to remote"
+    },
+    {
+      "file_offset": 429764,
+      "text": "transport: %p init'ing for usb_handle %p (sn='%s')"
+    },
+    {
+      "file_offset": 430244,
+      "text": "remote_write"
+    },
+    {
+      "file_offset": 430260,
+      "text": "init_usb_transport"
+    },
+    {
+      "file_offset": 430292,
+      "text": "bootable/recovery/minadbd/transport_usb.c"
+    },
+    {
+      "file_offset": 430336,
+      "text": "remote usb: 1 - write terminated"
+    },
+    {
+      "file_offset": 430372,
+      "text": "remote usb: 2 - write terminated"
+    },
+    {
+      "file_offset": 430408,
+      "text": "remote usb: read terminated (message)"
+    },
+    {
+      "file_offset": 430448,
+      "text": "remote usb: check_header failed"
+    },
+    {
+      "file_offset": 430484,
+      "text": "remote usb: terminated (data)"
+    },
+    {
+      "file_offset": 430516,
+      "text": "remote usb: check_data failed"
+    },
+    {
+      "file_offset": 430548,
+      "text": "transport: usb"
+    },
+    {
+      "file_offset": 430564,
+      "text": "remote_read"
+    },
+    {
+      "file_offset": 430628,
+      "text": "remote_socket_disconnect"
+    },
+    {
+      "file_offset": 430680,
+      "text": "remote_socket_enqueue"
+    },
+    {
+      "file_offset": 430740,
+      "text": "bootable/recovery/minadbd/sockets.c"
+    },
+    {
+      "file_offset": 431008,
+      "text": "entered remote_socket_ready RS(%d) OKAY fd=%d peer.fd=%d"
+    },
+    {
+      "file_offset": 431068,
+      "text": "entered remote_socket_enqueue RS(%d) WRITE fd=%d peer.fd=%d"
+    },
+    {
+      "file_offset": 431132,
+      "text": "remote_socket_disconnect RS(%d)"
+    },
+    {
+      "file_offset": 431168,
+      "text": "entered remote_socket_close RS(%d) CLOSE fd=%d peer->fd=%d"
+    },
+    {
+      "file_offset": 431440,
+      "text": "LS(%d): post adb_read(fd=%d,...) r=%d (errno=%d) avail=%d"
+    },
+    {
+      "file_offset": 431896,
+      "text": "Connect_to_remote call RS(%d) fd=%d"
+    },
+    {
+      "file_offset": 432232,
+      "text": "remote_socket_ready"
+    },
+    {
+      "file_offset": 432300,
+      "text": "create_remote_socket"
+    },
+    {
+      "file_offset": 432324,
+      "text": "remote_socket_close"
+    },
+    {
+      "file_offset": 432368,
+      "text": "sideload_service invoked"
+    },
+    {
+      "file_offset": 432444,
+      "text": "adbd exiting after successful sideload"
+    },
+    {
+      "file_offset": 432492,
+      "text": "sideload:"
+    },
+    {
+      "file_offset": 432572,
+      "text": "bootable/recovery/minadbd/services.c"
+    },
+    {
+      "file_offset": 432698,
+      "text": "ADB Interface"
+    },
+    {
+      "file_offset": 432712,
+      "text": "usb_ffs_open_thread"
+    },
+    {
+      "file_offset": 432732,
+      "text": "usb_adb_read"
+    },
+    {
+      "file_offset": 432748,
+      "text": "usb_adb_write"
+    },
+    {
+      "file_offset": 432840,
+      "text": "usb_ffs_init"
+    },
+    {
+      "file_offset": 432856,
+      "text": "usb_ffs_write"
+    },
+    {
+      "file_offset": 432884,
+      "text": "bootable/recovery/minadbd/usb_linux_client.c"
+    },
+    {
+      "file_offset": 433132,
+      "text": "[ usb_thread - opening device ]"
+    },
+    {
+      "file_offset": 433168,
+      "text": "/dev/android_adb"
+    },
+    {
+      "file_offset": 433236,
+      "text": "[ usb_thread - registering device ]"
+    },
+    {
+      "file_offset": 433372,
+      "text": "usb_kick"
+    },
+    {
+      "file_offset": 433396,
+      "text": "/dev/usb-ffs/adb/ep0"
+    },
+    {
+      "file_offset": 433556,
+      "text": "/dev/usb-ffs/adb/ep1"
+    },
+    {
+      "file_offset": 433580,
+      "text": "/dev/usb-ffs/adb/ep2"
+    },
+    {
+      "file_offset": 433692,
+      "text": "[ usb_init - using FunctionFS ]"
+    },
+    {
+      "file_offset": 433728,
+      "text": "[ usb_init - starting thread ]"
+    },
+    {
+      "file_offset": 433760,
+      "text": "[ cannot create usb thread ]"
+    },
+    {
+      "file_offset": 433792,
+      "text": "/dev/android_adb_enable"
+    },
+    {
+      "file_offset": 433816,
+      "text": "failed to open /dev/android_adb_enable"
+    },
+    {
+      "file_offset": 433856,
+      "text": "cannot create usb thread"
+    },
+    {
+      "file_offset": 433884,
+      "text": "usb_adb_kick"
+    },
+    {
+      "file_offset": 433912,
+      "text": "usb_adb_init"
+    },
+    {
+      "file_offset": 433944,
+      "text": "usb_ffs_read"
+    },
+    {
+      "file_offset": 433960,
+      "text": "usb_ffs_kick"
+    },
+    {
+      "file_offset": 433976,
+      "text": "usb_adb_open_thread"
+    }
+  ],
+  "recovery_keymap_text": "# This is map table for recovery, use this define the key map for recovery system\n\n# 'type' defines options for recovery, currently we have 'select','up','down','mode_switch'\n# key# defines key value map to type\n# use define in kernel/include/input.h\n# common key defines:\n# KEY_ENTER\t\t28\n# KEY_TAB\t\t\t15\n# KEY_BACK\t\t158\n# KEY_DOWN\t\t108\n# KEY_VOLUMEDOWN\t\t114\n# KEY_PAGEDOWN\t\t109\n# KEY_UP\t\t\t103\n# KEY_PAGEUP\t\t104\n# KEY_VOLUMEUP\t\t115\n\n# type\t\t\tkey1\t\t\tkey2\t\t\tkey3\t\t\tkey4\nselect\t\t\t28\t\t\t15\t\t\t158\ndown\t\t\t108\t\t\t114\t\t\t109\nup\t\t\t103\t\t\t104\t\t\t115\nback_door\t\t128\t\t\t26\t\t\t118\t\n",
+  "recovery_keymap_rows": {
+    "select": [
+      28,
+      15,
+      158
+    ],
+    "down": [
+      108,
+      114,
+      109
+    ],
+    "up": [
+      103,
+      104,
+      115
+    ],
+    "back_door": [
+      128,
+      26,
+      118
+    ]
+  },
+  "elf_sections": [
+    {
+      "name": "",
+      "type": 0,
+      "address": 0,
+      "file_offset": 0,
+      "bytes": 0
+    },
+    {
+      "name": ".text",
+      "type": 1,
+      "address": 33024,
+      "file_offset": 256,
+      "bytes": 353348
+    },
+    {
+      "name": ".note.android.ident",
+      "type": 1,
+      "address": 386372,
+      "file_offset": 353604,
+      "bytes": 24
+    },
+    {
+      "name": ".ARM.exidx",
+      "type": 1879048193,
+      "address": 386396,
+      "file_offset": 353628,
+      "bytes": 10472
+    },
+    {
+      "name": ".ARM.extab",
+      "type": 1,
+      "address": 396868,
+      "file_offset": 364100,
+      "bytes": 2304
+    },
+    {
+      "name": ".rodata",
+      "type": 1,
+      "address": 399176,
+      "file_offset": 366408,
+      "bytes": 73712
+    },
+    {
+      "name": ".eh_frame",
+      "type": 1,
+      "address": 472888,
+      "file_offset": 440120,
+      "bytes": 320
+    },
+    {
+      "name": ".eh_frame_hdr",
+      "type": 1,
+      "address": 473208,
+      "file_offset": 440440,
+      "bytes": 92
+    },
+    {
+      "name": ".data.rel.ro.local",
+      "type": 1,
+      "address": 478912,
+      "file_offset": 442048,
+      "bytes": 5608
+    },
+    {
+      "name": ".preinit_array",
+      "type": 16,
+      "address": 484520,
+      "file_offset": 447656,
+      "bytes": 8
+    },
+    {
+      "name": ".init_array",
+      "type": 14,
+      "address": 484528,
+      "file_offset": 447664,
+      "bytes": 32
+    },
+    {
+      "name": ".fini_array",
+      "type": 15,
+      "address": 484560,
+      "file_offset": 447696,
+      "bytes": 12
+    },
+    {
+      "name": ".data.rel.ro",
+      "type": 1,
+      "address": 484576,
+      "file_offset": 447712,
+      "bytes": 2432
+    },
+    {
+      "name": ".got",
+      "type": 1,
+      "address": 487008,
+      "file_offset": 450144,
+      "bytes": 416
+    },
+    {
+      "name": ".data",
+      "type": 1,
+      "address": 487424,
+      "file_offset": 450560,
+      "bytes": 10416
+    },
+    {
+      "name": ".bss",
+      "type": 8,
+      "address": 497840,
+      "file_offset": 460976,
+      "bytes": 34652
+    },
+    {
+      "name": ".comment",
+      "type": 1,
+      "address": 0,
+      "file_offset": 460976,
+      "bytes": 16
+    },
+    {
+      "name": ".note.gnu.gold-version",
+      "type": 7,
+      "address": 0,
+      "file_offset": 460992,
+      "bytes": 28
+    },
+    {
+      "name": ".ARM.attributes",
+      "type": 1879048195,
+      "address": 0,
+      "file_offset": 461020,
+      "bytes": 56
+    },
+    {
+      "name": ".shstrtab",
+      "type": 3,
+      "address": 0,
+      "file_offset": 461076,
+      "bytes": 226
+    }
+  ],
+  "elf_has_symbol_table": false,
+  "files_executed": false,
+  "device_access": false,
+  "limit": "String presence is not proof of reachable UI, input mapping, ADB startup or bootloader keys."
+}

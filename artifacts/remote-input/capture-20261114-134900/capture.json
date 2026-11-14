@@ -1,0 +1,16 @@
+﻿{
+    "StartedAt":  "2026-11-14T13:49:00.7942453+08:00",
+    "FinishedAt":  "2026-11-14T13:49:23.8336626+08:00",
+    "Command":  "-s 248243005297 shell getevent -lt -c 12 /dev/input/event0",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "Output":  "[1794635353.091898] EV_KEY       KEY_MENU             DOWN                \r\r\n[1794635353.091898] EV_SYN       SYN_REPORT           00000000            \r\r\n[1794635353.169599] EV_KEY       KEY_MENU             UP                  \r\r\n[1794635353.169599] EV_SYN       SYN_REPORT           00000000            \r\r\n[1794635354.078200] EV_KEY       KEY_MENU             DOWN                \r\r\n[1794635354.078200] EV_SYN       SYN_REPORT           00000000            \r\r\n[1794635354.279525] EV_KEY       KEY_MENU             UP                  \r\r\n[1794635354.279525] EV_SYN       SYN_REPORT           00000000            \r\r\n[1794635355.502020] EV_KEY       KEY_BACK             DOWN                \r\r\n[1794635355.502020] EV_SYN       SYN_REPORT           00000000            \r\r\n[1794635355.699536] EV_KEY       KEY_BACK             UP                  \r\r\n[1794635355.699536] EV_SYN       SYN_REPORT           00000000            \r\r\n",
+    "Error":  "",
+    "InputInjected":  false,
+    "RequestedOwnerSequence":  [
+                                   "BACK",
+                                   "UP",
+                                   "DOWN"
+                               ],
+    "OwnerSequenceConfirmed":  false
+}

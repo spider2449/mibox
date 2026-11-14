@@ -1,0 +1,7 @@
+﻿{
+    "Command":  "cat /proc/sys/kernel/random/boot_id",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "Output":  "f30c821a-8b2c-4ca0-9247-eb6b1d2203bc\r\r\n",
+    "Error":  ""
+}

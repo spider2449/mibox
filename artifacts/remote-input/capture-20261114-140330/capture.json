@@ -1,0 +1,14 @@
+﻿{
+    "StartedAt":  "2026-11-14T14:03:30.4519145+08:00",
+    "FinishedAt":  "2026-11-14T14:03:46.6432085+08:00",
+    "Command":  "-s 248243005297 shell getevent -lt -c 4",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "Output":  "add device 1: /dev/input/event0\r\r\n  name:     \"ir_meson6\"\r\r\nadd device 2: /dev/input/event1\r\r\n  name:     \"cec_input\"\r\r\ncould not get driver version for /dev/input/mice, Not a typewriter\r\r\n[1794636218.306995] /dev/input/event0: EV_KEY       KEY_BACK             DOWN                \r\r\n[1794636218.306995] /dev/input/event0: EV_SYN       SYN_REPORT           00000000            \r\r\n[1794636218.509393] /dev/input/event0: EV_KEY       KEY_BACK             UP                  \r\r\n[1794636218.509393] /dev/input/event0: EV_SYN       SYN_REPORT           00000000            \r\r\n",
+    "Error":  "",
+    "InputInjected":  false,
+    "RequestedOwnerSequence":  "BACK",
+    "OwnerSequenceConfirmed":  true,
+    "OwnerCompletionReported":  true,
+    "ObservedSequenceMatchesRequest":  true
+}

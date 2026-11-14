@@ -1,0 +1,9 @@
+﻿{
+    "ObservedAt":  "2026-11-14T13:47:21.4260770+08:00",
+    "Command":  "-s 248243005297 shell getevent -lt -c 2 /dev/input/event0",
+    "ExitCode":  -1,
+    "TimedOut":  true,
+    "Output":  "",
+    "Error":  "",
+    "InputInjected":  false
+}

@@ -1,0 +1,7 @@
+﻿{
+    "Command":  "cat /proc/bus/input/devices",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "Output":  "I: Bus=0019 Vendor=0001 Product=0001 Version=0100\r\r\nN: Name=\"ir_meson6\"\r\r\nP: Phys=keypad/input0\r\r\nS: Sysfs=/devices/platform/ir-meson6-mi/input/input0\r\r\nU: Uniq=\r\r\nH: Handlers=sysrq kbd event0 \r\r\nB: PROP=0\r\r\nB: EV=3\r\r\nB: KEY=7fffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff fffffffe\r\r\n\r\r\nI: Bus=0010 Vendor=1b8e Product=0cec Version=0001\r\r\nN: Name=\"cec_input\"\r\r\nP: Phys=\r\r\nS: Sysfs=/devices/virtual/input/input1\r\r\nU: Uniq=\r\r\nH: Handlers=kbd event1 \r\r\nB: PROP=0\r\r\nB: EV=3\r\r\nB: KEY=20000000 0 0 0 0 0 0 0 0 0 0 3c004 0 0 0 1 4 10300 11fa 40000801 1e1680 0 100000 10000ffc\r\r\n\r\r\n",
+    "Error":  ""
+}

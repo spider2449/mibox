@@ -1,0 +1,556 @@
+
+/mnt/f/coding/otherPrj/mibox/target/kernel-analysis/stock-kernel.elf:     file format elf32-littlearm
+
+
+Disassembly of section .kernel:
+
+c03f3758 <ir_fiq_interrupt>:
+c03f3758:	e1a0c00d 	mov	ip, sp
+c03f375c:	e92ddff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, ip, lr, pc}
+c03f3760:	e24cb004 	sub	fp, ip, #4
+c03f3764:	e24dd034 	sub	sp, sp, #52	@ 0x34
+c03f3768:	e52de004 	push	{lr}		@ (str lr, [sp, #-4]!)
+c03f376c:	ebf06c1b 	bl	c000e7e0 <__gnu_mcount_nc>
+c03f3770:	e24b5044 	sub	r5, fp, #68	@ 0x44
+c03f3774:	e1a00005 	mov	r0, r5
+c03f3778:	e3a01000 	mov	r1, #0
+c03f377c:	e3a0200c 	mov	r2, #12
+c03f3780:	ebfb412e 	bl	c02c3c40 <memset>
+c03f3784:	e59f37d4 	ldr	r3, [pc, #2004]	@ c03f3f60 <ir_fiq_interrupt+0x808>
+c03f3788:	e8930014 	ldm	r3, {r2, r4}
+c03f378c:	f57ff05f 	dmb	sy
+c03f3790:	e5926018 	ldr	r6, [r2, #24]
+c03f3794:	e5932000 	ldr	r2, [r3]
+c03f3798:	f57ff05f 	dmb	sy
+c03f379c:	e592a010 	ldr	sl, [r2, #16]
+c03f37a0:	e5932000 	ldr	r2, [r3]
+c03f37a4:	f57ff05f 	dmb	sy
+c03f37a8:	e592801c 	ldr	r8, [r2, #28]
+c03f37ac:	e7eb705a 	ubfx	r7, sl, #0, #12
+c03f37b0:	e7ec2858 	ubfx	r2, r8, #16, #13
+c03f37b4:	e2877001 	add	r7, r7, #1
+c03f37b8:	e3a0cffa 	mov	ip, #1000	@ 0x3e8
+c03f37bc:	e0070792 	mul	r7, r2, r7
+c03f37c0:	e55b203c 	ldrb	r2, [fp, #-60]	@ 0xffffffc4
+c03f37c4:	e7e01456 	ubfx	r1, r6, #8, #1
+c03f37c8:	e374004c 	cmn	r4, #76	@ 0x4c
+c03f37cc:	e7c02011 	bfi	r2, r1, #0, #1
+c03f37d0:	e00c079c 	mul	ip, ip, r7
+c03f37d4:	e54b203c 	strb	r2, [fp, #-60]	@ 0xffffffc4
+c03f37d8:	e50bc044 	str	ip, [fp, #-68]	@ 0xffffffbc
+c03f37dc:	e8950007 	ldm	r5, {r0, r1, r2}
+c03f37e0:	e24b502c 	sub	r5, fp, #44	@ 0x2c
+c03f37e4:	e9050007 	stmdb	r5, {r0, r1, r2}
+c03f37e8:	e5935004 	ldr	r5, [r3, #4]
+c03f37ec:	0a0001c4 	beq	c03f3f04 <ir_fiq_interrupt+0x7ac>
+c03f37f0:	e594304c 	ldr	r3, [r4, #76]	@ 0x4c
+c03f37f4:	e3530007 	cmp	r3, #7
+c03f37f8:	979ff103 	ldrls	pc, [pc, r3, lsl #2]
+c03f37fc:	ea0001b1 	b	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f3800:	c03f3820 	eorsgt	r3, pc, r0, lsr #16
+c03f3804:	c03f3898 	mlasgt	pc, r8, r8, r3	@ <UNPREDICTABLE>
+c03f3808:	c03f390c 	eorsgt	r3, pc, ip, lsl #18
+c03f380c:	c03f3980 	eorsgt	r3, pc, r0, lsl #19
+c03f3810:	c03f3ae4 	eorsgt	r3, pc, r4, ror #21
+c03f3814:	c03f3b24 	eorsgt	r3, pc, r4, lsr #22
+c03f3818:	c03f3cb8 	ldrhtgt	r3, [pc], -r8
+c03f381c:	c03f3cf4 	ldrshtgt	r3, [pc], -r4
+c03f3820:	e55b3030 	ldrb	r3, [fp, #-48]	@ 0xffffffd0
+c03f3824:	e3130001 	tst	r3, #1
+c03f3828:	0a0001a6 	beq	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f382c:	e59f3730 	ldr	r3, [pc, #1840]	@ c03f3f64 <ir_fiq_interrupt+0x80c>
+c03f3830:	e15c0003 	cmp	ip, r3
+c03f3834:	93a03000 	movls	r3, #0
+c03f3838:	9a000004 	bls	c03f3850 <ir_fiq_interrupt+0xf8>
+c03f383c:	e59f3724 	ldr	r3, [pc, #1828]	@ c03f3f68 <ir_fiq_interrupt+0x810>
+c03f3840:	e15c0003 	cmp	ip, r3
+c03f3844:	83a03000 	movhi	r3, #0
+c03f3848:	93a03001 	movls	r3, #1
+c03f384c:	eaffffff 	b	c03f3850 <ir_fiq_interrupt+0xf8>
+c03f3850:	e3530000 	cmp	r3, #0
+c03f3854:	0a00000f 	beq	c03f3898 <ir_fiq_interrupt+0x140>
+c03f3858:	e3a03000 	mov	r3, #0
+c03f385c:	e5843050 	str	r3, [r4, #80]	@ 0x50
+c03f3860:	e3a03001 	mov	r3, #1
+c03f3864:	e584304c 	str	r3, [r4, #76]	@ 0x4c
+c03f3868:	e59f36fc 	ldr	r3, [pc, #1788]	@ c03f3f6c <ir_fiq_interrupt+0x814>
+c03f386c:	e5933000 	ldr	r3, [r3]
+c03f3870:	e3530001 	cmp	r3, #1
+c03f3874:	da00017d 	ble	c03f3e70 <ir_fiq_interrupt+0x718>
+c03f3878:	e59f06f0 	ldr	r0, [pc, #1776]	@ c03f3f70 <ir_fiq_interrupt+0x818>
+c03f387c:	e1d031b2 	ldrh	r3, [r0, #18]
+c03f3880:	e3130004 	tst	r3, #4
+c03f3884:	0a000179 	beq	c03f3e70 <ir_fiq_interrupt+0x718>
+c03f3888:	e59f16e4 	ldr	r1, [pc, #1764]	@ c03f3f74 <ir_fiq_interrupt+0x81c>
+c03f388c:	e59f26e4 	ldr	r2, [pc, #1764]	@ c03f3f78 <ir_fiq_interrupt+0x820>
+c03f3890:	ebfbbbd4 	bl	c02e27e8 <__dynamic_pr_debug>
+c03f3894:	ea000175 	b	c03f3e70 <ir_fiq_interrupt+0x718>
+c03f3898:	e55b3030 	ldrb	r3, [fp, #-48]	@ 0xffffffd0
+c03f389c:	e2133001 	ands	r3, r3, #1
+c03f38a0:	1a000188 	bne	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f38a4:	e59f26d0 	ldr	r2, [pc, #1744]	@ c03f3f7c <ir_fiq_interrupt+0x824>
+c03f38a8:	e15c0002 	cmp	ip, r2
+c03f38ac:	9a000003 	bls	c03f38c0 <ir_fiq_interrupt+0x168>
+c03f38b0:	e59f36c8 	ldr	r3, [pc, #1736]	@ c03f3f80 <ir_fiq_interrupt+0x828>
+c03f38b4:	e15c0003 	cmp	ip, r3
+c03f38b8:	83a03000 	movhi	r3, #0
+c03f38bc:	93a03001 	movls	r3, #1
+c03f38c0:	e3530000 	cmp	r3, #0
+c03f38c4:	0a000010 	beq	c03f390c <ir_fiq_interrupt+0x1b4>
+c03f38c8:	e3a03002 	mov	r3, #2
+c03f38cc:	e584304c 	str	r3, [r4, #76]	@ 0x4c
+c03f38d0:	e59f3694 	ldr	r3, [pc, #1684]	@ c03f3f6c <ir_fiq_interrupt+0x814>
+c03f38d4:	e5933000 	ldr	r3, [r3]
+c03f38d8:	e3530001 	cmp	r3, #1
+c03f38dc:	da000007 	ble	c03f3900 <ir_fiq_interrupt+0x1a8>
+c03f38e0:	e59f0688 	ldr	r0, [pc, #1672]	@ c03f3f70 <ir_fiq_interrupt+0x818>
+c03f38e4:	e1d032ba 	ldrh	r3, [r0, #42]	@ 0x2a
+c03f38e8:	e3130004 	tst	r3, #4
+c03f38ec:	0a000003 	beq	c03f3900 <ir_fiq_interrupt+0x1a8>
+c03f38f0:	e2800018 	add	r0, r0, #24
+c03f38f4:	e59f1688 	ldr	r1, [pc, #1672]	@ c03f3f84 <ir_fiq_interrupt+0x82c>
+c03f38f8:	e59f2678 	ldr	r2, [pc, #1656]	@ c03f3f78 <ir_fiq_interrupt+0x820>
+c03f38fc:	ebfbbbb9 	bl	c02e27e8 <__dynamic_pr_debug>
+c03f3900:	e3a03001 	mov	r3, #1
+c03f3904:	e5c43058 	strb	r3, [r4, #88]	@ 0x58
+c03f3908:	ea00017d 	b	c03f3f04 <ir_fiq_interrupt+0x7ac>
+c03f390c:	e55b3030 	ldrb	r3, [fp, #-48]	@ 0xffffffd0
+c03f3910:	e3130001 	tst	r3, #1
+c03f3914:	0a00016b 	beq	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f3918:	e59f365c 	ldr	r3, [pc, #1628]	@ c03f3f7c <ir_fiq_interrupt+0x824>
+c03f391c:	e15c0003 	cmp	ip, r3
+c03f3920:	93a03000 	movls	r3, #0
+c03f3924:	9a000004 	bls	c03f393c <ir_fiq_interrupt+0x1e4>
+c03f3928:	e59f3650 	ldr	r3, [pc, #1616]	@ c03f3f80 <ir_fiq_interrupt+0x828>
+c03f392c:	e15c0003 	cmp	ip, r3
+c03f3930:	83a03000 	movhi	r3, #0
+c03f3934:	93a03001 	movls	r3, #1
+c03f3938:	eaffffff 	b	c03f393c <ir_fiq_interrupt+0x1e4>
+c03f393c:	e3530000 	cmp	r3, #0
+c03f3940:	0a00000e 	beq	c03f3980 <ir_fiq_interrupt+0x228>
+c03f3944:	e3a03003 	mov	r3, #3
+c03f3948:	e584304c 	str	r3, [r4, #76]	@ 0x4c
+c03f394c:	e59f3618 	ldr	r3, [pc, #1560]	@ c03f3f6c <ir_fiq_interrupt+0x814>
+c03f3950:	e5933000 	ldr	r3, [r3]
+c03f3954:	e3530001 	cmp	r3, #1
+c03f3958:	da000169 	ble	c03f3f04 <ir_fiq_interrupt+0x7ac>
+c03f395c:	e59f060c 	ldr	r0, [pc, #1548]	@ c03f3f70 <ir_fiq_interrupt+0x818>
+c03f3960:	e1d034b2 	ldrh	r3, [r0, #66]	@ 0x42
+c03f3964:	e3130004 	tst	r3, #4
+c03f3968:	0a000165 	beq	c03f3f04 <ir_fiq_interrupt+0x7ac>
+c03f396c:	e59f1614 	ldr	r1, [pc, #1556]	@ c03f3f88 <ir_fiq_interrupt+0x830>
+c03f3970:	e2800030 	add	r0, r0, #48	@ 0x30
+c03f3974:	e59f25fc 	ldr	r2, [pc, #1532]	@ c03f3f78 <ir_fiq_interrupt+0x820>
+c03f3978:	ebfbbb9a 	bl	c02e27e8 <__dynamic_pr_debug>
+c03f397c:	ea000160 	b	c03f3f04 <ir_fiq_interrupt+0x7ac>
+c03f3980:	e55b3030 	ldrb	r3, [fp, #-48]	@ 0xffffffd0
+c03f3984:	e2133001 	ands	r3, r3, #1
+c03f3988:	1a00014e 	bne	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f398c:	e59f25f8 	ldr	r2, [pc, #1528]	@ c03f3f8c <ir_fiq_interrupt+0x834>
+c03f3990:	e15c0002 	cmp	ip, r2
+c03f3994:	9a000003 	bls	c03f39a8 <ir_fiq_interrupt+0x250>
+c03f3998:	e59f35f0 	ldr	r3, [pc, #1520]	@ c03f3f90 <ir_fiq_interrupt+0x838>
+c03f399c:	e15c0003 	cmp	ip, r3
+c03f39a0:	83a03000 	movhi	r3, #0
+c03f39a4:	93a03001 	movls	r3, #1
+c03f39a8:	e3530000 	cmp	r3, #0
+c03f39ac:	15943054 	ldrne	r3, [r4, #84]	@ 0x54
+c03f39b0:	11a03103 	lslne	r3, r3, #2
+c03f39b4:	13833001 	orrne	r3, r3, #1
+c03f39b8:	1a000022 	bne	c03f3a48 <ir_fiq_interrupt+0x2f0>
+c03f39bc:	e59f25d0 	ldr	r2, [pc, #1488]	@ c03f3f94 <ir_fiq_interrupt+0x83c>
+c03f39c0:	e15c0002 	cmp	ip, r2
+c03f39c4:	9a000003 	bls	c03f39d8 <ir_fiq_interrupt+0x280>
+c03f39c8:	e59f35c8 	ldr	r3, [pc, #1480]	@ c03f3f98 <ir_fiq_interrupt+0x840>
+c03f39cc:	e15c0003 	cmp	ip, r3
+c03f39d0:	83a03000 	movhi	r3, #0
+c03f39d4:	93a03001 	movls	r3, #1
+c03f39d8:	e3530000 	cmp	r3, #0
+c03f39dc:	15943054 	ldrne	r3, [r4, #84]	@ 0x54
+c03f39e0:	11a03103 	lslne	r3, r3, #2
+c03f39e4:	13833002 	orrne	r3, r3, #2
+c03f39e8:	1a000016 	bne	c03f3a48 <ir_fiq_interrupt+0x2f0>
+c03f39ec:	e59f25a8 	ldr	r2, [pc, #1448]	@ c03f3f9c <ir_fiq_interrupt+0x844>
+c03f39f0:	e15c0002 	cmp	ip, r2
+c03f39f4:	9a000003 	bls	c03f3a08 <ir_fiq_interrupt+0x2b0>
+c03f39f8:	e59f35a0 	ldr	r3, [pc, #1440]	@ c03f3fa0 <ir_fiq_interrupt+0x848>
+c03f39fc:	e15c0003 	cmp	ip, r3
+c03f3a00:	83a03000 	movhi	r3, #0
+c03f3a04:	93a03001 	movls	r3, #1
+c03f3a08:	e3530000 	cmp	r3, #0
+c03f3a0c:	15943054 	ldrne	r3, [r4, #84]	@ 0x54
+c03f3a10:	11a03103 	lslne	r3, r3, #2
+c03f3a14:	13833003 	orrne	r3, r3, #3
+c03f3a18:	1a00000a 	bne	c03f3a48 <ir_fiq_interrupt+0x2f0>
+c03f3a1c:	e59f2558 	ldr	r2, [pc, #1368]	@ c03f3f7c <ir_fiq_interrupt+0x824>
+c03f3a20:	e15c0002 	cmp	ip, r2
+c03f3a24:	9a000003 	bls	c03f3a38 <ir_fiq_interrupt+0x2e0>
+c03f3a28:	e59f3550 	ldr	r3, [pc, #1360]	@ c03f3f80 <ir_fiq_interrupt+0x828>
+c03f3a2c:	e15c0003 	cmp	ip, r3
+c03f3a30:	83a03000 	movhi	r3, #0
+c03f3a34:	93a03001 	movls	r3, #1
+c03f3a38:	e3530000 	cmp	r3, #0
+c03f3a3c:	0a000003 	beq	c03f3a50 <ir_fiq_interrupt+0x2f8>
+c03f3a40:	e5943054 	ldr	r3, [r4, #84]	@ 0x54
+c03f3a44:	e1a03103 	lsl	r3, r3, #2
+c03f3a48:	e5843054 	str	r3, [r4, #84]	@ 0x54
+c03f3a4c:	ea00000d 	b	c03f3a88 <ir_fiq_interrupt+0x330>
+c03f3a50:	e59f3514 	ldr	r3, [pc, #1300]	@ c03f3f6c <ir_fiq_interrupt+0x814>
+c03f3a54:	e5933000 	ldr	r3, [r3]
+c03f3a58:	e3530001 	cmp	r3, #1
+c03f3a5c:	da000119 	ble	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f3a60:	e59f0508 	ldr	r0, [pc, #1288]	@ c03f3f70 <ir_fiq_interrupt+0x818>
+c03f3a64:	e1d035ba 	ldrh	r3, [r0, #90]	@ 0x5a
+c03f3a68:	e3130004 	tst	r3, #4
+c03f3a6c:	0a000115 	beq	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f3a70:	e59f152c 	ldr	r1, [pc, #1324]	@ c03f3fa4 <ir_fiq_interrupt+0x84c>
+c03f3a74:	e2800048 	add	r0, r0, #72	@ 0x48
+c03f3a78:	e59f24f8 	ldr	r2, [pc, #1272]	@ c03f3f78 <ir_fiq_interrupt+0x820>
+c03f3a7c:	e5943054 	ldr	r3, [r4, #84]	@ 0x54
+c03f3a80:	ebfbbb58 	bl	c02e27e8 <__dynamic_pr_debug>
+c03f3a84:	ea00010f 	b	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f3a88:	e5943050 	ldr	r3, [r4, #80]	@ 0x50
+c03f3a8c:	e2833001 	add	r3, r3, #1
+c03f3a90:	e3530008 	cmp	r3, #8
+c03f3a94:	e5843050 	str	r3, [r4, #80]	@ 0x50
+c03f3a98:	13a03002 	movne	r3, #2
+c03f3a9c:	1a00000e 	bne	c03f3adc <ir_fiq_interrupt+0x384>
+c03f3aa0:	e59f34c4 	ldr	r3, [pc, #1220]	@ c03f3f6c <ir_fiq_interrupt+0x814>
+c03f3aa4:	e5933000 	ldr	r3, [r3]
+c03f3aa8:	e3530001 	cmp	r3, #1
+c03f3aac:	da000008 	ble	c03f3ad4 <ir_fiq_interrupt+0x37c>
+c03f3ab0:	e59f04b8 	ldr	r0, [pc, #1208]	@ c03f3f70 <ir_fiq_interrupt+0x818>
+c03f3ab4:	e1d037b2 	ldrh	r3, [r0, #114]	@ 0x72
+c03f3ab8:	e3130004 	tst	r3, #4
+c03f3abc:	0a000004 	beq	c03f3ad4 <ir_fiq_interrupt+0x37c>
+c03f3ac0:	e2800060 	add	r0, r0, #96	@ 0x60
+c03f3ac4:	e59f14dc 	ldr	r1, [pc, #1244]	@ c03f3fa8 <ir_fiq_interrupt+0x850>
+c03f3ac8:	e59f24a8 	ldr	r2, [pc, #1192]	@ c03f3f78 <ir_fiq_interrupt+0x820>
+c03f3acc:	e5943054 	ldr	r3, [r4, #84]	@ 0x54
+c03f3ad0:	ebfbbb44 	bl	c02e27e8 <__dynamic_pr_debug>
+c03f3ad4:	e3a03004 	mov	r3, #4
+c03f3ad8:	eaffffff 	b	c03f3adc <ir_fiq_interrupt+0x384>
+c03f3adc:	e584304c 	str	r3, [r4, #76]	@ 0x4c
+c03f3ae0:	ea000107 	b	c03f3f04 <ir_fiq_interrupt+0x7ac>
+c03f3ae4:	e55b3030 	ldrb	r3, [fp, #-48]	@ 0xffffffd0
+c03f3ae8:	e3130001 	tst	r3, #1
+c03f3aec:	0a0000f5 	beq	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f3af0:	e59f3484 	ldr	r3, [pc, #1156]	@ c03f3f7c <ir_fiq_interrupt+0x824>
+c03f3af4:	e15c0003 	cmp	ip, r3
+c03f3af8:	93a0c000 	movls	ip, #0
+c03f3afc:	9a000004 	bls	c03f3b14 <ir_fiq_interrupt+0x3bc>
+c03f3b00:	e59f3478 	ldr	r3, [pc, #1144]	@ c03f3f80 <ir_fiq_interrupt+0x828>
+c03f3b04:	e15c0003 	cmp	ip, r3
+c03f3b08:	83a0c000 	movhi	ip, #0
+c03f3b0c:	93a0c001 	movls	ip, #1
+c03f3b10:	eaffffff 	b	c03f3b14 <ir_fiq_interrupt+0x3bc>
+c03f3b14:	e35c0000 	cmp	ip, #0
+c03f3b18:	0a0000ea 	beq	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f3b1c:	e3a03005 	mov	r3, #5
+c03f3b20:	eaffffed 	b	c03f3adc <ir_fiq_interrupt+0x384>
+c03f3b24:	e55b3030 	ldrb	r3, [fp, #-48]	@ 0xffffffd0
+c03f3b28:	e2133001 	ands	r3, r3, #1
+c03f3b2c:	1a0000e5 	bne	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f3b30:	e59f2454 	ldr	r2, [pc, #1108]	@ c03f3f8c <ir_fiq_interrupt+0x834>
+c03f3b34:	e15c0002 	cmp	ip, r2
+c03f3b38:	9a000003 	bls	c03f3b4c <ir_fiq_interrupt+0x3f4>
+c03f3b3c:	e59f344c 	ldr	r3, [pc, #1100]	@ c03f3f90 <ir_fiq_interrupt+0x838>
+c03f3b40:	e15c0003 	cmp	ip, r3
+c03f3b44:	83a03000 	movhi	r3, #0
+c03f3b48:	93a03001 	movls	r3, #1
+c03f3b4c:	e3530000 	cmp	r3, #0
+c03f3b50:	15943054 	ldrne	r3, [r4, #84]	@ 0x54
+c03f3b54:	11a03103 	lslne	r3, r3, #2
+c03f3b58:	13833001 	orrne	r3, r3, #1
+c03f3b5c:	1a000022 	bne	c03f3bec <ir_fiq_interrupt+0x494>
+c03f3b60:	e59f242c 	ldr	r2, [pc, #1068]	@ c03f3f94 <ir_fiq_interrupt+0x83c>
+c03f3b64:	e15c0002 	cmp	ip, r2
+c03f3b68:	9a000003 	bls	c03f3b7c <ir_fiq_interrupt+0x424>
+c03f3b6c:	e59f3424 	ldr	r3, [pc, #1060]	@ c03f3f98 <ir_fiq_interrupt+0x840>
+c03f3b70:	e15c0003 	cmp	ip, r3
+c03f3b74:	83a03000 	movhi	r3, #0
+c03f3b78:	93a03001 	movls	r3, #1
+c03f3b7c:	e3530000 	cmp	r3, #0
+c03f3b80:	15943054 	ldrne	r3, [r4, #84]	@ 0x54
+c03f3b84:	11a03103 	lslne	r3, r3, #2
+c03f3b88:	13833002 	orrne	r3, r3, #2
+c03f3b8c:	1a000016 	bne	c03f3bec <ir_fiq_interrupt+0x494>
+c03f3b90:	e59f2404 	ldr	r2, [pc, #1028]	@ c03f3f9c <ir_fiq_interrupt+0x844>
+c03f3b94:	e15c0002 	cmp	ip, r2
+c03f3b98:	9a000003 	bls	c03f3bac <ir_fiq_interrupt+0x454>
+c03f3b9c:	e59f33fc 	ldr	r3, [pc, #1020]	@ c03f3fa0 <ir_fiq_interrupt+0x848>
+c03f3ba0:	e15c0003 	cmp	ip, r3
+c03f3ba4:	83a03000 	movhi	r3, #0
+c03f3ba8:	93a03001 	movls	r3, #1
+c03f3bac:	e3530000 	cmp	r3, #0
+c03f3bb0:	15943054 	ldrne	r3, [r4, #84]	@ 0x54
+c03f3bb4:	11a03103 	lslne	r3, r3, #2
+c03f3bb8:	13833003 	orrne	r3, r3, #3
+c03f3bbc:	1a00000a 	bne	c03f3bec <ir_fiq_interrupt+0x494>
+c03f3bc0:	e59f23b4 	ldr	r2, [pc, #948]	@ c03f3f7c <ir_fiq_interrupt+0x824>
+c03f3bc4:	e15c0002 	cmp	ip, r2
+c03f3bc8:	9a000003 	bls	c03f3bdc <ir_fiq_interrupt+0x484>
+c03f3bcc:	e59f33ac 	ldr	r3, [pc, #940]	@ c03f3f80 <ir_fiq_interrupt+0x828>
+c03f3bd0:	e15c0003 	cmp	ip, r3
+c03f3bd4:	83a03000 	movhi	r3, #0
+c03f3bd8:	93a03001 	movls	r3, #1
+c03f3bdc:	e3530000 	cmp	r3, #0
+c03f3be0:	0a000003 	beq	c03f3bf4 <ir_fiq_interrupt+0x49c>
+c03f3be4:	e5943054 	ldr	r3, [r4, #84]	@ 0x54
+c03f3be8:	e1a03103 	lsl	r3, r3, #2
+c03f3bec:	e5843054 	str	r3, [r4, #84]	@ 0x54
+c03f3bf0:	ea00000a 	b	c03f3c20 <ir_fiq_interrupt+0x4c8>
+c03f3bf4:	e59f3370 	ldr	r3, [pc, #880]	@ c03f3f6c <ir_fiq_interrupt+0x814>
+c03f3bf8:	e5933000 	ldr	r3, [r3]
+c03f3bfc:	e3530001 	cmp	r3, #1
+c03f3c00:	da0000b0 	ble	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f3c04:	e59f0364 	ldr	r0, [pc, #868]	@ c03f3f70 <ir_fiq_interrupt+0x818>
+c03f3c08:	e1d038ba 	ldrh	r3, [r0, #138]	@ 0x8a
+c03f3c0c:	e3130004 	tst	r3, #4
+c03f3c10:	12800078 	addne	r0, r0, #120	@ 0x78
+c03f3c14:	159f1390 	ldrne	r1, [pc, #912]	@ c03f3fac <ir_fiq_interrupt+0x854>
+c03f3c18:	1a0000a8 	bne	c03f3ec0 <ir_fiq_interrupt+0x768>
+c03f3c1c:	ea0000a9 	b	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f3c20:	e5943050 	ldr	r3, [r4, #80]	@ 0x50
+c03f3c24:	e2833001 	add	r3, r3, #1
+c03f3c28:	e353000a 	cmp	r3, #10
+c03f3c2c:	e5843050 	str	r3, [r4, #80]	@ 0x50
+c03f3c30:	13a03004 	movne	r3, #4
+c03f3c34:	1584304c 	strne	r3, [r4, #76]	@ 0x4c
+c03f3c38:	1a000010 	bne	c03f3c80 <ir_fiq_interrupt+0x528>
+c03f3c3c:	e3a03006 	mov	r3, #6
+c03f3c40:	e584304c 	str	r3, [r4, #76]	@ 0x4c
+c03f3c44:	e5943054 	ldr	r3, [r4, #84]	@ 0x54
+c03f3c48:	e7e73653 	ubfx	r3, r3, #12, #8
+c03f3c4c:	e3530086 	cmp	r3, #134	@ 0x86
+c03f3c50:	1353003c 	cmpne	r3, #60	@ 0x3c
+c03f3c54:	1a000009 	bne	c03f3c80 <ir_fiq_interrupt+0x528>
+c03f3c58:	e59f3350 	ldr	r3, [pc, #848]	@ c03f3fb0 <ir_fiq_interrupt+0x858>
+c03f3c5c:	e5939000 	ldr	r9, [r3]
+c03f3c60:	e59f334c 	ldr	r3, [pc, #844]	@ c03f3fb4 <ir_fiq_interrupt+0x85c>
+c03f3c64:	e5930054 	ldr	r0, [r3, #84]	@ 0x54
+c03f3c68:	ebf10dfa 	bl	c0037458 <msecs_to_jiffies>
+c03f3c6c:	e0801009 	add	r1, r0, r9
+c03f3c70:	e285000c 	add	r0, r5, #12
+c03f3c74:	e5851008 	str	r1, [r5, #8]
+c03f3c78:	ebf13164 	bl	c0040210 <mod_timer>
+c03f3c7c:	eaffffff 	b	c03f3c80 <ir_fiq_interrupt+0x528>
+c03f3c80:	e59f32e4 	ldr	r3, [pc, #740]	@ c03f3f6c <ir_fiq_interrupt+0x814>
+c03f3c84:	e5933000 	ldr	r3, [r3]
+c03f3c88:	e3530001 	cmp	r3, #1
+c03f3c8c:	da00009c 	ble	c03f3f04 <ir_fiq_interrupt+0x7ac>
+c03f3c90:	e59f02d8 	ldr	r0, [pc, #728]	@ c03f3f70 <ir_fiq_interrupt+0x818>
+c03f3c94:	e1d03ab2 	ldrh	r3, [r0, #162]	@ 0xa2
+c03f3c98:	e3130004 	tst	r3, #4
+c03f3c9c:	0a000098 	beq	c03f3f04 <ir_fiq_interrupt+0x7ac>
+c03f3ca0:	e59f1310 	ldr	r1, [pc, #784]	@ c03f3fb8 <ir_fiq_interrupt+0x860>
+c03f3ca4:	e2800090 	add	r0, r0, #144	@ 0x90
+c03f3ca8:	e59f22c8 	ldr	r2, [pc, #712]	@ c03f3f78 <ir_fiq_interrupt+0x820>
+c03f3cac:	e5943054 	ldr	r3, [r4, #84]	@ 0x54
+c03f3cb0:	ebfbbacc 	bl	c02e27e8 <__dynamic_pr_debug>
+c03f3cb4:	ea000092 	b	c03f3f04 <ir_fiq_interrupt+0x7ac>
+c03f3cb8:	e55b3030 	ldrb	r3, [fp, #-48]	@ 0xffffffd0
+c03f3cbc:	e3130001 	tst	r3, #1
+c03f3cc0:	0a000080 	beq	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f3cc4:	e59f32b0 	ldr	r3, [pc, #688]	@ c03f3f7c <ir_fiq_interrupt+0x824>
+c03f3cc8:	e15c0003 	cmp	ip, r3
+c03f3ccc:	93a03000 	movls	r3, #0
+c03f3cd0:	9a000004 	bls	c03f3ce8 <ir_fiq_interrupt+0x590>
+c03f3cd4:	e59f32a4 	ldr	r3, [pc, #676]	@ c03f3f80 <ir_fiq_interrupt+0x828>
+c03f3cd8:	e15c0003 	cmp	ip, r3
+c03f3cdc:	83a03000 	movhi	r3, #0
+c03f3ce0:	93a03001 	movls	r3, #1
+c03f3ce4:	eaffffff 	b	c03f3ce8 <ir_fiq_interrupt+0x590>
+c03f3ce8:	e3530000 	cmp	r3, #0
+c03f3cec:	13a03007 	movne	r3, #7
+c03f3cf0:	1affff79 	bne	c03f3adc <ir_fiq_interrupt+0x384>
+c03f3cf4:	e55b2030 	ldrb	r2, [fp, #-48]	@ 0xffffffd0
+c03f3cf8:	e2122001 	ands	r2, r2, #1
+c03f3cfc:	1a000071 	bne	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f3d00:	e59f32b4 	ldr	r3, [pc, #692]	@ c03f3fbc <ir_fiq_interrupt+0x864>
+c03f3d04:	e15c0003 	cmp	ip, r3
+c03f3d08:	9a000062 	bls	c03f3e98 <ir_fiq_interrupt+0x740>
+c03f3d0c:	e5d43058 	ldrb	r3, [r4, #88]	@ 0x58
+c03f3d10:	e3530000 	cmp	r3, #0
+c03f3d14:	0a00006b 	beq	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f3d18:	e5943054 	ldr	r3, [r4, #84]	@ 0x54
+c03f3d1c:	e5c42058 	strb	r2, [r4, #88]	@ 0x58
+c03f3d20:	e7e3c653 	ubfx	ip, r3, #12, #4
+c03f3d24:	e7e30853 	ubfx	r0, r3, #16, #4
+c03f3d28:	e1a01223 	lsr	r1, r3, #4
+c03f3d2c:	e02c0000 	eor	r0, ip, r0
+c03f3d30:	e7e3c453 	ubfx	ip, r3, #8, #4
+c03f3d34:	e6ff9071 	uxth	r9, r1
+c03f3d38:	e020000c 	eor	r0, r0, ip
+c03f3d3c:	e201100f 	and	r1, r1, #15
+c03f3d40:	e203300f 	and	r3, r3, #15
+c03f3d44:	e0201001 	eor	r1, r0, r1
+c03f3d48:	e1530001 	cmp	r3, r1
+c03f3d4c:	1a00006c 	bne	c03f3f04 <ir_fiq_interrupt+0x7ac>
+c03f3d50:	e59f3214 	ldr	r3, [pc, #532]	@ c03f3f6c <ir_fiq_interrupt+0x814>
+c03f3d54:	e584204c 	str	r2, [r4, #76]	@ 0x4c
+c03f3d58:	e5842054 	str	r2, [r4, #84]	@ 0x54
+c03f3d5c:	e5933000 	ldr	r3, [r3]
+c03f3d60:	e3530000 	cmp	r3, #0
+c03f3d64:	da000008 	ble	c03f3d8c <ir_fiq_interrupt+0x634>
+c03f3d68:	e59f0200 	ldr	r0, [pc, #512]	@ c03f3f70 <ir_fiq_interrupt+0x818>
+c03f3d6c:	e1d03bba 	ldrh	r3, [r0, #186]	@ 0xba
+c03f3d70:	e3130004 	tst	r3, #4
+c03f3d74:	0a000004 	beq	c03f3d8c <ir_fiq_interrupt+0x634>
+c03f3d78:	e28000a8 	add	r0, r0, #168	@ 0xa8
+c03f3d7c:	e59f123c 	ldr	r1, [pc, #572]	@ c03f3fc0 <ir_fiq_interrupt+0x868>
+c03f3d80:	e59f223c 	ldr	r2, [pc, #572]	@ c03f3fc4 <ir_fiq_interrupt+0x86c>
+c03f3d84:	e1a03009 	mov	r3, r9
+c03f3d88:	ebfbba96 	bl	c02e27e8 <__dynamic_pr_debug>
+c03f3d8c:	e5d52004 	ldrb	r2, [r5, #4]
+c03f3d90:	e3520000 	cmp	r2, #0
+c03f3d94:	03a03001 	moveq	r3, #1
+c03f3d98:	0a000003 	beq	c03f3dac <ir_fiq_interrupt+0x654>
+c03f3d9c:	e5953044 	ldr	r3, [r5, #68]	@ 0x44
+c03f3da0:	e0533009 	subs	r3, r3, r9
+c03f3da4:	13a03001 	movne	r3, #1
+c03f3da8:	eaffffff 	b	c03f3dac <ir_fiq_interrupt+0x654>
+c03f3dac:	e253c000 	subs	ip, r3, #0
+c03f3db0:	0a000009 	beq	c03f3ddc <ir_fiq_interrupt+0x684>
+c03f3db4:	e3520000 	cmp	r2, #0
+c03f3db8:	0a000007 	beq	c03f3ddc <ir_fiq_interrupt+0x684>
+c03f3dbc:	e1a00005 	mov	r0, r5
+c03f3dc0:	e50bc048 	str	ip, [fp, #-72]	@ 0xffffffb8
+c03f3dc4:	ebfffd5c 	bl	c03f333c <ir_meson6_mi_do_keyup>
+c03f3dc8:	e59f01f8 	ldr	r0, [pc, #504]	@ c03f3fc8 <ir_fiq_interrupt+0x870>
+c03f3dcc:	e59f11f8 	ldr	r1, [pc, #504]	@ c03f3fcc <ir_fiq_interrupt+0x874>
+c03f3dd0:	e5952040 	ldr	r2, [r5, #64]	@ 0x40
+c03f3dd4:	eb0cd8c5 	bl	c072a0f0 <printk>
+c03f3dd8:	e51bc048 	ldr	ip, [fp, #-72]	@ 0xffffffb8
+c03f3ddc:	e3a03000 	mov	r3, #0
+c03f3de0:	e59f21e8 	ldr	r2, [pc, #488]	@ c03f3fd0 <ir_fiq_interrupt+0x878>
+c03f3de4:	e1a01183 	lsl	r1, r3, #3
+c03f3de8:	e2820054 	add	r0, r2, #84	@ 0x54
+c03f3dec:	e7900183 	ldr	r0, [r0, r3, lsl #3]
+c03f3df0:	e1500009 	cmp	r0, r9
+c03f3df4:	00822001 	addeq	r2, r2, r1
+c03f3df8:	05924058 	ldreq	r4, [r2, #88]	@ 0x58
+c03f3dfc:	0a000003 	beq	c03f3e10 <ir_fiq_interrupt+0x6b8>
+c03f3e00:	e2833001 	add	r3, r3, #1
+c03f3e04:	e353001d 	cmp	r3, #29
+c03f3e08:	1afffff4 	bne	c03f3de0 <ir_fiq_interrupt+0x688>
+c03f3e0c:	e3a04000 	mov	r4, #0
+c03f3e10:	e3540000 	cmp	r4, #0
+c03f3e14:	03a0c000 	moveq	ip, #0
+c03f3e18:	120cc001 	andne	ip, ip, #1
+c03f3e1c:	e35c0000 	cmp	ip, #0
+c03f3e20:	0a00000d 	beq	c03f3e5c <ir_fiq_interrupt+0x704>
+c03f3e24:	e3a03001 	mov	r3, #1
+c03f3e28:	e5859044 	str	r9, [r5, #68]	@ 0x44
+c03f3e2c:	e5c53004 	strb	r3, [r5, #4]
+c03f3e30:	e1a01004 	mov	r1, r4
+c03f3e34:	e5854040 	str	r4, [r5, #64]	@ 0x40
+c03f3e38:	e1a02009 	mov	r2, r9
+c03f3e3c:	e59f0190 	ldr	r0, [pc, #400]	@ c03f3fd4 <ir_fiq_interrupt+0x87c>
+c03f3e40:	e50b3048 	str	r3, [fp, #-72]	@ 0xffffffb8
+c03f3e44:	eb0cd8a9 	bl	c072a0f0 <printk>
+c03f3e48:	e51b3048 	ldr	r3, [fp, #-72]	@ 0xffffffb8
+c03f3e4c:	e1a02004 	mov	r2, r4
+c03f3e50:	e5950048 	ldr	r0, [r5, #72]	@ 0x48
+c03f3e54:	e1a01003 	mov	r1, r3
+c03f3e58:	ebfefbdc 	bl	c03b2dd0 <input_event>
+c03f3e5c:	e3a01000 	mov	r1, #0
+c03f3e60:	e5950048 	ldr	r0, [r5, #72]	@ 0x48
+c03f3e64:	e1a02001 	mov	r2, r1
+c03f3e68:	e1a03001 	mov	r3, r1
+c03f3e6c:	ebfefbd7 	bl	c03b2dd0 <input_event>
+c03f3e70:	e59f3138 	ldr	r3, [pc, #312]	@ c03f3fb0 <ir_fiq_interrupt+0x858>
+c03f3e74:	e5934000 	ldr	r4, [r3]
+c03f3e78:	e59f3134 	ldr	r3, [pc, #308]	@ c03f3fb4 <ir_fiq_interrupt+0x85c>
+c03f3e7c:	e5930054 	ldr	r0, [r3, #84]	@ 0x54
+c03f3e80:	ebf10d74 	bl	c0037458 <msecs_to_jiffies>
+c03f3e84:	e0801004 	add	r1, r0, r4
+c03f3e88:	e285000c 	add	r0, r5, #12
+c03f3e8c:	e5851008 	str	r1, [r5, #8]
+c03f3e90:	ebf130de 	bl	c0040210 <mod_timer>
+c03f3e94:	ea00001a 	b	c03f3f04 <ir_fiq_interrupt+0x7ac>
+c03f3e98:	e59f30cc 	ldr	r3, [pc, #204]	@ c03f3f6c <ir_fiq_interrupt+0x814>
+c03f3e9c:	e5933000 	ldr	r3, [r3]
+c03f3ea0:	e3530001 	cmp	r3, #1
+c03f3ea4:	da000007 	ble	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f3ea8:	e59f00c0 	ldr	r0, [pc, #192]	@ c03f3f70 <ir_fiq_interrupt+0x818>
+c03f3eac:	e1d03db2 	ldrh	r3, [r0, #210]	@ 0xd2
+c03f3eb0:	e3130004 	tst	r3, #4
+c03f3eb4:	0a000003 	beq	c03f3ec8 <ir_fiq_interrupt+0x770>
+c03f3eb8:	e59f1118 	ldr	r1, [pc, #280]	@ c03f3fd8 <ir_fiq_interrupt+0x880>
+c03f3ebc:	e28000c0 	add	r0, r0, #192	@ 0xc0
+c03f3ec0:	e59f20b0 	ldr	r2, [pc, #176]	@ c03f3f78 <ir_fiq_interrupt+0x820>
+c03f3ec4:	ebfbba47 	bl	c02e27e8 <__dynamic_pr_debug>
+c03f3ec8:	e59f309c 	ldr	r3, [pc, #156]	@ c03f3f6c <ir_fiq_interrupt+0x814>
+c03f3ecc:	e5933000 	ldr	r3, [r3]
+c03f3ed0:	e3530001 	cmp	r3, #1
+c03f3ed4:	da000007 	ble	c03f3ef8 <ir_fiq_interrupt+0x7a0>
+c03f3ed8:	e59f0090 	ldr	r0, [pc, #144]	@ c03f3f70 <ir_fiq_interrupt+0x818>
+c03f3edc:	e1d03eba 	ldrh	r3, [r0, #234]	@ 0xea
+c03f3ee0:	e3130004 	tst	r3, #4
+c03f3ee4:	0a000003 	beq	c03f3ef8 <ir_fiq_interrupt+0x7a0>
+c03f3ee8:	e28000d8 	add	r0, r0, #216	@ 0xd8
+c03f3eec:	e59f10e8 	ldr	r1, [pc, #232]	@ c03f3fdc <ir_fiq_interrupt+0x884>
+c03f3ef0:	e59f2080 	ldr	r2, [pc, #128]	@ c03f3f78 <ir_fiq_interrupt+0x820>
+c03f3ef4:	ebfbba3b 	bl	c02e27e8 <__dynamic_pr_debug>
+c03f3ef8:	e3a03000 	mov	r3, #0
+c03f3efc:	e584304c 	str	r3, [r4, #76]	@ 0x4c
+c03f3f00:	e5843054 	str	r3, [r4, #84]	@ 0x54
+c03f3f04:	e59f30d4 	ldr	r3, [pc, #212]	@ c03f3fe0 <ir_fiq_interrupt+0x888>
+c03f3f08:	e3a02902 	mov	r2, #32768	@ 0x8000
+c03f3f0c:	e5832a54 	str	r2, [r3, #2644]	@ 0xa54
+c03f3f10:	f57ff05f 	dmb	sy
+c03f3f14:	e59f3050 	ldr	r3, [pc, #80]	@ c03f3f6c <ir_fiq_interrupt+0x814>
+c03f3f18:	e5933000 	ldr	r3, [r3]
+c03f3f1c:	e3530001 	cmp	r3, #1
+c03f3f20:	da00000c 	ble	c03f3f58 <ir_fiq_interrupt+0x800>
+c03f3f24:	e59f0044 	ldr	r0, [pc, #68]	@ c03f3f70 <ir_fiq_interrupt+0x818>
+c03f3f28:	e3003102 	movw	r3, #258	@ 0x102
+c03f3f2c:	e19030b3 	ldrh	r3, [r0, r3]
+c03f3f30:	e3130004 	tst	r3, #4
+c03f3f34:	0a000007 	beq	c03f3f58 <ir_fiq_interrupt+0x800>
+c03f3f38:	e7e03456 	ubfx	r3, r6, #8, #1
+c03f3f3c:	e58d800c 	str	r8, [sp, #12]
+c03f3f40:	e88d0448 	stm	sp, {r3, r6, sl}
+c03f3f44:	e28000f0 	add	r0, r0, #240	@ 0xf0
+c03f3f48:	e59f1094 	ldr	r1, [pc, #148]	@ c03f3fe4 <ir_fiq_interrupt+0x88c>
+c03f3f4c:	e1a03007 	mov	r3, r7
+c03f3f50:	e59f2090 	ldr	r2, [pc, #144]	@ c03f3fe8 <ir_fiq_interrupt+0x890>
+c03f3f54:	ebfbba23 	bl	c02e27e8 <__dynamic_pr_debug>
+c03f3f58:	e24bd028 	sub	sp, fp, #40	@ 0x28
+c03f3f5c:	e89daff0 	ldm	sp, {r4, r5, r6, r7, r8, r9, sl, fp, sp, pc}
+c03f3f60:	c0cb48b0 	strhgt	r4, [fp], #128	@ 0x80
+c03f3f64:	000d2668 	andeq	r2, sp, r8, ror #12
+c03f3f68:	0011a2d7 			@ <UNDEFINED> instruction: 0x0011a2d7
+c03f3f6c:	c0cb4898 	smullgt	r4, fp, r8, r8
+c03f3f70:	c0b51e98 	umlalsgt	r1, r5, r8, lr
+c03f3f74:	c0919e79 	addsgt	r9, r1, r9, ror lr
+c03f3f78:	c078e0e6 	rsbsgt	lr, r8, r6, ror #1
+c03f3f7c:	0006baa8 	andeq	fp, r6, r8, lsr #21
+c03f3f80:	000b3717 	andeq	r3, fp, r7, lsl r7
+c03f3f84:	c0919e91 	umullsgt	r9, r1, r1, lr
+c03f3f88:	c0919ea9 	addsgt	r9, r1, r9, lsr #29
+c03f3f8c:	000b3718 	andeq	r3, fp, r8, lsl r7
+c03f3f90:	000fb387 	andeq	fp, pc, r7, lsl #7
+c03f3f94:	000fb388 	andeq	fp, pc, r8, lsl #7
+c03f3f98:	00142ff7 			@ <UNDEFINED> instruction: 0x00142ff7
+c03f3f9c:	00142ff8 			@ <UNDEFINED> instruction: 0x00142ff8
+c03f3fa0:	0018ac67 	andseq	sl, r8, r7, ror #24
+c03f3fa4:	c0919ebe 			@ <UNDEFINED> instruction: 0xc0919ebe
+c03f3fa8:	c0919eee 	addsgt	r9, r1, lr, ror #29
+c03f3fac:	c0919f16 	addsgt	r9, r1, r6, lsl pc
+c03f3fb0:	c0aca0c0 	adcgt	sl, ip, r0, asr #1
+c03f3fb4:	c0b1e950 	adcsgt	lr, r1, r0, asr r9
+c03f3fb8:	c0919f2d 	addsgt	r9, r1, sp, lsr #30
+c03f3fbc:	002cdc60 	eoreq	sp, ip, r0, ror #24
+c03f3fc0:	c0919f57 	addsgt	r9, r1, r7, asr pc
+c03f3fc4:	c078e0f3 	ldrshtgt	lr, [r8], #-3
+c03f3fc8:	c0919f6e 	addsgt	r9, r1, lr, ror #30
+c03f3fcc:	c078e106 	rsbsgt	lr, r8, r6, lsl #2
+c03f3fd0:	c078e0cc 	rsbsgt	lr, r8, ip, asr #1
+c03f3fd4:	c0919f94 	umullsgt	r9, r1, r4, pc	@ <UNPREDICTABLE>
+c03f3fd8:	c0919fc3 	addsgt	r9, r1, r3, asr #31
+c03f3fdc:	c0919fd9 			@ <UNDEFINED> instruction: 0xc0919fd9
+c03f3fe0:	f1109000 			@ <UNDEFINED> instruction: 0xf1109000
+c03f3fe4:	c0919fed 	addsgt	r9, r1, sp, ror #31
+c03f3fe8:	c078e208 	rsbsgt	lr, r8, r8, lsl #4

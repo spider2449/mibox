@@ -1,0 +1,103 @@
+
+/mnt/f/coding/otherPrj/mibox/phone-tools/backup/2026-11-13/bootloader.img:     file format binary
+
+
+Disassembly of section .data:
+
+00002a68 <.data+0x2a68>:
+    2a68:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+    2a6a:	4605      	mov	r5, r0
+    2a6c:	4b31      	ldr	r3, [pc, #196]	@ (0x2b34)
+    2a6e:	460f      	mov	r7, r1
+    2a70:	4831      	ldr	r0, [pc, #196]	@ (0x2b38)
+    2a72:	681b      	ldr	r3, [r3, #0]
+    2a74:	685e      	ldr	r6, [r3, #4]
+    2a76:	681c      	ldr	r4, [r3, #0]
+    2a78:	f7fd fc32 	bl	0x2e0
+    2a7c:	f44f 5080 	mov.w	r0, #4096	@ 0x1000
+    2a80:	f7ff ff21 	bl	0x28c6
+    2a84:	2004      	movs	r0, #4
+    2a86:	f7ff ff1e 	bl	0x28c6
+    2a8a:	4b2c      	ldr	r3, [pc, #176]	@ (0x2b3c)
+    2a8c:	f423 43fe 	bic.w	r3, r3, #32512	@ 0x7f00
+    2a90:	f023 03ff 	bic.w	r3, r3, #255	@ 0xff
+    2a94:	f503 43fe 	add.w	r3, r3, #32512	@ 0x7f00
+    2a98:	f8d3 20e0 	ldr.w	r2, [r3, #224]	@ 0xe0
+    2a9c:	f8d3 10e4 	ldr.w	r1, [r3, #228]	@ 0xe4
+    2aa0:	f8d3 30e8 	ldr.w	r3, [r3, #232]	@ 0xe8
+    2aa4:	1a8a      	subs	r2, r1, r2
+    2aa6:	f502 7200 	add.w	r2, r2, #512	@ 0x200
+    2aaa:	18d2      	adds	r2, r2, r3
+    2aac:	f5a2 33c8 	sub.w	r3, r2, #102400	@ 0x19000
+    2ab0:	f5b3 2f67 	cmp.w	r3, #946176	@ 0xe7000
+    2ab4:	bf88      	it	hi
+    2ab6:	463a      	movhi	r2, r7
+    2ab8:	2e01      	cmp	r6, #1
+    2aba:	d800      	bhi.n	0x2abe
+    2abc:	b936      	cbnz	r6, 0x2acc
+    2abe:	4629      	mov	r1, r5
+    2ac0:	4620      	mov	r0, r4
+    2ac2:	f7ff fe31 	bl	0x2728
+    2ac6:	2700      	movs	r7, #0
+    2ac8:	4605      	mov	r5, r0
+    2aca:	e005      	b.n	0x2ad8
+    2acc:	4629      	mov	r1, r5
+    2ace:	4620      	mov	r0, r4
+    2ad0:	f7ff fb17 	bl	0x2102
+    2ad4:	2701      	movs	r7, #1
+    2ad6:	4605      	mov	r5, r0
+    2ad8:	f7ff ffac 	bl	0x2a34
+    2adc:	f44f 5080 	mov.w	r0, #4096	@ 0x1000
+    2ae0:	f7ff ffaa 	bl	0x2a38
+    2ae4:	2004      	movs	r0, #4
+    2ae6:	f7ff ffa7 	bl	0x2a38
+    2aea:	4b15      	ldr	r3, [pc, #84]	@ (0x2b40)
+    2aec:	4a15      	ldr	r2, [pc, #84]	@ (0x2b44)
+    2aee:	2600      	movs	r6, #0
+    2af0:	f843 6b04 	str.w	r6, [r3], #4
+    2af4:	4293      	cmp	r3, r2
+    2af6:	d1f9      	bne.n	0x2aec
+    2af8:	b92d      	cbnz	r5, 0x2b06
+    2afa:	4620      	mov	r0, r4
+    2afc:	4639      	mov	r1, r7
+    2afe:	f7ff faa5 	bl	0x204c
+    2b02:	4628      	mov	r0, r5
+    2b04:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+    2b06:	4810      	ldr	r0, [pc, #64]	@ (0x2b48)
+    2b08:	f7fd fbea 	bl	0x2e0
+    2b0c:	480f      	ldr	r0, [pc, #60]	@ (0x2b4c)
+    2b0e:	f7fd fbe7 	bl	0x2e0
+    2b12:	480f      	ldr	r0, [pc, #60]	@ (0x2b50)
+    2b14:	f7fd fbe4 	bl	0x2e0
+    2b18:	207f      	movs	r0, #127	@ 0x7f
+    2b1a:	2120      	movs	r1, #32
+    2b1c:	f7fd fc1e 	bl	0x35c
+    2b20:	200a      	movs	r0, #10
+    2b22:	f7fd fbbf 	bl	0x2a4
+    2b26:	4b0b      	ldr	r3, [pc, #44]	@ (0x2b54)
+    2b28:	601e      	str	r6, [r3, #0]
+    2b2a:	4a0b      	ldr	r2, [pc, #44]	@ (0x2b58)
+    2b2c:	3b04      	subs	r3, #4
+    2b2e:	601a      	str	r2, [r3, #0]
+    2b30:	e7fe      	b.n	0x2b30
+    2b32:	bf00      	nop
+    2b34:	00b4      	lsls	r4, r6, #2
+    2b36:	d900      	bls.n	0x2b3a
+    2b38:	44fd      	add	sp, pc
+    2b3a:	d900      	bls.n	0x2b3e
+    2b3c:	2a69      	cmp	r2, #105	@ 0x69
+    2b3e:	d900      	bls.n	0x2b42
+    2b40:	8000      	strh	r0, [r0, #0]
+    2b42:	d900      	bls.n	0x2b46
+    2b44:	c000      	stmia	r0!, {}
+    2b46:	d900      	bls.n	0x2b4a
+    2b48:	4503      	cmp	r3, r0
+    2b4a:	d900      	bls.n	0x2b4e
+    2b4c:	4194      	sbcs	r4, r2
+    2b4e:	d900      	bls.n	0x2b52
+    2b50:	45f2      	cmp	sl, lr
+    2b52:	d900      	bls.n	0x2b56
+    2b54:	9904      	ldr	r1, [sp, #16]
+    2b56:	c110      	stmia	r1!, {r4}
+    2b58:	000a      	movs	r2, r1
+    2b5a:	0340      	lsls	r0, r0, #13

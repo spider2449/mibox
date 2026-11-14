@@ -1,0 +1,7 @@
+﻿{
+    "Command":  "ls -l /sys/devices/platform/ir-meson6-mi",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "Output":  "lrwxrwxrwx root     root              2026-11-14 13:46 driver -\u003e ../../../bus/platform/drivers/ir-meson6-mi\r\r\ndrwxr-xr-x root     root              2026-11-14 10:47 input\r\r\n-r--r--r-- root     root         4096 2026-11-14 13:46 modalias\r\r\ndrwxr-xr-x root     root              2026-11-14 10:47 power\r\r\nlrwxrwxrwx root     root              2026-11-14 13:46 subsystem -\u003e ../../../bus/platform\r\r\n-rw-r--r-- root     root         4096 2026-11-14 10:47 uevent\r\r\n",
+    "Error":  ""
+}

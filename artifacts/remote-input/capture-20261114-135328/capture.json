@@ -1,0 +1,19 @@
+﻿{
+    "StartedAt":  "2026-11-14T13:53:28.7472603+08:00",
+    "FinishedAt":  "2026-11-14T13:55:28.7724088+08:00",
+    "Command":  "-s 248243005297 shell getevent -lt -c 12 /dev/input/event0",
+    "ExitCode":  -1,
+    "TimedOut":  true,
+    "Output":  "[1794635627.375291] EV_KEY       KEY_DOWN             DOWN                \r\r\n[1794635627.375291] EV_SYN       SYN_REPORT           00000000            \r\r\n[1794635627.579670] EV_KEY       KEY_DOWN             UP                  \r\r\n[1794635627.579670] EV_SYN       SYN_REPORT           00000000            \r\r\n",
+    "Error":  "",
+    "InputInjected":  false,
+    "RequestedOwnerSequence":  [
+                                   "BACK",
+                                   "UP",
+                                   "DOWN"
+                               ],
+    "OwnerSequenceConfirmed":  false,
+    "OwnerCompletionReported":  true,
+    "ObservedSequenceMatchesRequest":  false,
+    "Interpretation":  "Owner reported completion; only KEY_DOWN press/release observed within capture window. BACK/UP not established."
+}

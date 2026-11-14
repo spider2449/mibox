@@ -1,0 +1,5 @@
+1+0 records in
+1+0 records out
+32768 bytes (32.0KB) copied, 0.011484 seconds, 2.7MB/s
+f4ef0fc6526607b1977bcb02cd257a29ab9f69a8f3210777ab8f49fabeadcb89  /data/local/tmp/mibox-recovery-env-19794.img
+MIBOX_READ_COMPLETE

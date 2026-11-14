@@ -9,3 +9,4 @@ __pycache__/
 /artifacts/boot-evidence/**/recovery-from-boot.p
 # Pulled runtime executables stay local; commit their recorded hashes and logs.
 /artifacts/software-return/**/*.elf
+/artifacts/ram-boot/**/*.elf

@@ -1,0 +1,55 @@
+{
+    "AdbConnected":  true,
+    "CustomOsMarkerObserved":  true,
+    "Proof":  {
+                  "cmdline":  {
+                                  "ExitCode":  0,
+                                  "TimedOut":  false,
+                                  "Output":  "init=/init console=ttyS0,115200n8 no_console_suspend androidboot.system=1 mac=10:48:b1:ec:20:eb androidboot.btmac=10:48:b1:ee:b8:ec androidboot.serialno=248243005297 vdaccfg=0x10 storage=2 logo=osd1,loaded,0x85900000,1080p,full hdmimode=1080p cvbsmode=576cvbs androidboot.firstboot=0 hdmitx=cec0 val1=95000000 sdhc_debug=0x00000200 rx_clk_phase=0 sd_clk_phase=1 androidboot.ubootversion=2876",
+                                  "Error":  ""
+                              },
+                  "kernel":  {
+                                 "ExitCode":  0,
+                                 "TimedOut":  false,
+                                 "Output":  "/system/bin/sh: uname: not found",
+                                 "Error":  ""
+                             },
+                  "bootId":  {
+                                 "ExitCode":  0,
+                                 "TimedOut":  false,
+                                 "Output":  "695ecb4b-717c-4b1b-8e1c-0faaeee26c2b",
+                                 "Error":  ""
+                             },
+                  "osRelease":  {
+                                    "ExitCode":  0,
+                                    "TimedOut":  false,
+                                    "Output":  "NAME=\"MiBOX Custom Userspace\"\r\r\nID=mibox-custom\r\r\nVERSION_ID=0.1.0",
+                                    "Error":  ""
+                                },
+                  "customTool":  {
+                                     "ExitCode":  0,
+                                     "TimedOut":  false,
+                                     "Output":  "NAME=\"MiBOX Custom Userspace\"\r\r\nID=mibox-custom\r\r\nVERSION_ID=0.1.0\r\r\nkernel=3.10.33 pid=103 uid=2000 euid=2000",
+                                     "Error":  ""
+                                 },
+                  "identity":  {
+                                   "ExitCode":  0,
+                                   "TimedOut":  false,
+                                   "Output":  "/system/bin/sh: id: not found",
+                                   "Error":  ""
+                               },
+                  "androidBootCompleted":  {
+                                               "ExitCode":  0,
+                                               "TimedOut":  false,
+                                               "Output":  "/system/bin/sh: getprop: not found",
+                                               "Error":  ""
+                                           },
+                  "pid1":  {
+                               "ExitCode":  0,
+                               "TimedOut":  false,
+                               "Output":  "init",
+                               "Error":  ""
+                           }
+              },
+    "Evidence":  "F:\\coding\\otherPrj\\mibox\\artifacts\\usb-loader-protocol\\ram-boot-20261114-145156"
+}

@@ -1,0 +1,50 @@
+{
+  "source_sha256": "99f701ac15a155aa07b7204d240b82a0a5c91457513ae1e246146e3f8b8753a2",
+  "derived_link_base": 2407530496,
+  "reboot_mode_property": "reboot_mode",
+  "reason_mapping": [
+    {
+      "reason": 16843009,
+      "mode": "normal"
+    },
+    {
+      "reason": 33686018,
+      "mode": "factory_reset"
+    },
+    {
+      "reason": 50529027,
+      "mode": "update"
+    },
+    {
+      "reason": 151587081,
+      "mode": "usb_burning"
+    }
+  ],
+  "default_mode": "charging",
+  "startup_override": {
+    "observed_read_address": 3640786692,
+    "helpers": [
+      2407864076,
+      2407864104
+    ],
+    "condition": "first helper accepts unsigned value >1; second accepts value ==1; either selects update",
+    "selected_mode": "update",
+    "cold_start_control_mechanism": "UNKNOWN",
+    "runtime_value": "UNKNOWN"
+  },
+  "usb_wait": {
+    "update_handler": 2407906504,
+    "initialization": 2407903236,
+    "poll": 2407906200,
+    "zero_argument_default_threshold": 5000000,
+    "nonzero_argument": "stored directly as threshold",
+    "guard": "timeout comparison skipped when timeout-state word is zero",
+    "expiration": "unsigned timer result strictly greater than threshold; timeout poll returns 2",
+    "timer_units": "UNKNOWN in this bounded audit",
+    "safety": "Distinct handler from sdc_burn; this bounded trace is not a no-storage-write proof for all callees or host requests."
+  },
+  "ir_physical_button": "UNKNOWN",
+  "device_access": false,
+  "register_writes_performed_by_analysis": false,
+  "permanent_install": "NOT READY"
+}

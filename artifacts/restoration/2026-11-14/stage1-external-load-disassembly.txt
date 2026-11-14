@@ -1,0 +1,44 @@
+
+/mnt/f/coding/otherPrj/mibox/phone-tools/backup/2026-11-13/bootloader.img:     file format binary
+
+
+Disassembly of section .data:
+
+00002102 <.data+0x2102>:
+    2102:	b5f7      	push	{r0, r1, r2, r4, r5, r6, r7, lr}
+    2104:	4603      	mov	r3, r0
+    2106:	f5a1 0600 	sub.w	r6, r1, #8388608	@ 0x800000
+    210a:	460c      	mov	r4, r1
+    210c:	4615      	mov	r5, r2
+    210e:	4611      	mov	r1, r2
+    2110:	4630      	mov	r0, r6
+    2112:	461a      	mov	r2, r3
+    2114:	f7ff fd4e 	bl	0x1bb4
+    2118:	4607      	mov	r7, r0
+    211a:	b9a0      	cbnz	r0, 0x2146
+    211c:	480b      	ldr	r0, [pc, #44]	@ (0x214c)
+    211e:	f7fe f8df 	bl	0x2e0
+    2122:	4620      	mov	r0, r4
+    2124:	a901      	add	r1, sp, #4
+    2126:	4632      	mov	r2, r6
+    2128:	f001 ed4a 	blx	0x3bc0
+    212c:	4607      	mov	r7, r0
+    212e:	4808      	ldr	r0, [pc, #32]	@ (0x2150)
+    2130:	f7fe f8d6 	bl	0x2e0
+    2134:	b93f      	cbnz	r7, 0x2146
+    2136:	4b07      	ldr	r3, [pc, #28]	@ (0x2154)
+    2138:	4620      	mov	r0, r4
+    213a:	462a      	mov	r2, r5
+    213c:	681b      	ldr	r3, [r3, #0]
+    213e:	8959      	ldrh	r1, [r3, #10]
+    2140:	f7ff ff6c 	bl	0x201c
+    2144:	b207      	sxth	r7, r0
+    2146:	4638      	mov	r0, r7
+    2148:	bdfe      	pop	{r1, r2, r3, r4, r5, r6, r7, pc}
+    214a:	bf00      	nop
+    214c:	444c      	add	r4, r9
+    214e:	d900      	bls.n	0x2152
+    2150:	445c      	add	r4, fp
+    2152:	d900      	bls.n	0x2156
+    2154:	00b8      	lsls	r0, r7, #2
+    2156:	d900      	bls.n	0x215a

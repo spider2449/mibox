@@ -1,0 +1,37 @@
+﻿[
+    {
+        "Case":  "valid",
+        "Pass":  true,
+        "ExitCode":  0,
+        "DeviceAccessed":  false,
+        "LoaderRequestSent":  false
+    },
+    {
+        "Case":  "wrong-hash",
+        "Pass":  true,
+        "ExitCode":  1,
+        "DeviceAccessed":  false,
+        "LoaderRequestSent":  false
+    },
+    {
+        "Case":  "wrong-size",
+        "Pass":  true,
+        "ExitCode":  1,
+        "DeviceAccessed":  false,
+        "LoaderRequestSent":  false
+    },
+    {
+        "Case":  "usb-access-claimed",
+        "Pass":  true,
+        "ExitCode":  1,
+        "DeviceAccessed":  false,
+        "LoaderRequestSent":  false
+    },
+    {
+        "Case":  "checker-failed",
+        "Pass":  true,
+        "ExitCode":  1,
+        "DeviceAccessed":  false,
+        "LoaderRequestSent":  false
+    }
+]

@@ -1,0 +1,236 @@
+{
+  "loader_sha256": "99f701ac15a155aa07b7204d240b82a0a5c91457513ae1e246146e3f8b8753a2",
+  "kernel_sha256": "fe6332d34fc87b758f5a6a9894c40e9e17d13a9cb586ce0aaca79103c73dfc96",
+  "loader_start_shift": 20,
+  "loader_shift_step": 2,
+  "loader_nonnegative_symbol_positions": [
+    20,
+    18,
+    16,
+    14,
+    12,
+    10,
+    8,
+    6,
+    4,
+    2,
+    0
+  ],
+  "kernel_symbol_count": 10,
+  "loader_target": 2195700,
+  "loader_initial_timing_pairs": [
+    [
+      305,
+      329
+    ],
+    [
+      219,
+      249
+    ],
+    [
+      271,
+      299
+    ],
+    [
+      335,
+      355
+    ],
+    [
+      399,
+      513
+    ]
+  ],
+  "timing_units": "UNKNOWN in this audit; do not treat loader raw counters as kernel nanoseconds",
+  "candidate_transform": {
+    "expression": "kernel_word = loader_word >> 2; assumes identical symbol interpretation and one extra trailing loader symbol",
+    "candidate_kernel_word": 548925,
+    "candidate_identifier": 34307,
+    "checksum_nibble": 13,
+    "computed_checksum": 13,
+    "checksum_matches": true,
+    "discarded_trailing_symbol": 0,
+    "matching_kernel_table_entries": [],
+    "status": "CANDIDATE ONLY; no captured waveform or demonstrated decoder equivalence"
+  },
+  "modeled_known_table": [
+    {
+      "identifier": 15564,
+      "linux_keycode": 116,
+      "kernel_word_with_checksum": 249039,
+      "loader_candidate_with_trailing_zero": 996156
+    },
+    {
+      "identifier": 34309,
+      "linux_keycode": 103,
+      "kernel_word_with_checksum": 548955,
+      "loader_candidate_with_trailing_zero": 2195820
+    },
+    {
+      "identifier": 34317,
+      "linux_keycode": 28,
+      "kernel_word_with_checksum": 549075,
+      "loader_candidate_with_trailing_zero": 2196300
+    },
+    {
+      "identifier": 34310,
+      "linux_keycode": 108,
+      "kernel_word_with_checksum": 548968,
+      "loader_candidate_with_trailing_zero": 2195872
+    },
+    {
+      "identifier": 34315,
+      "linux_keycode": 105,
+      "kernel_word_with_checksum": 549045,
+      "loader_candidate_with_trailing_zero": 2196180
+    },
+    {
+      "identifier": 34316,
+      "linux_keycode": 106,
+      "kernel_word_with_checksum": 549058,
+      "loader_candidate_with_trailing_zero": 2196232
+    },
+    {
+      "identifier": 34311,
+      "linux_keycode": 158,
+      "kernel_word_with_checksum": 548985,
+      "loader_candidate_with_trailing_zero": 2195940
+    },
+    {
+      "identifier": 34308,
+      "linux_keycode": 139,
+      "kernel_word_with_checksum": 548938,
+      "loader_candidate_with_trailing_zero": 2195752
+    },
+    {
+      "identifier": 34312,
+      "linux_keycode": 102,
+      "kernel_word_with_checksum": 548998,
+      "loader_candidate_with_trailing_zero": 2195992
+    },
+    {
+      "identifier": 34318,
+      "linux_keycode": 115,
+      "kernel_word_with_checksum": 549088,
+      "loader_candidate_with_trailing_zero": 2196352
+    },
+    {
+      "identifier": 34319,
+      "linux_keycode": 114,
+      "kernel_word_with_checksum": 549105,
+      "loader_candidate_with_trailing_zero": 2196420
+    },
+    {
+      "identifier": 34305,
+      "linux_keycode": 235,
+      "kernel_word_with_checksum": 548895,
+      "loader_candidate_with_trailing_zero": 2195580
+    },
+    {
+      "identifier": 34304,
+      "linux_keycode": 236,
+      "kernel_word_with_checksum": 548878,
+      "loader_candidate_with_trailing_zero": 2195512
+    },
+    {
+      "identifier": 34352,
+      "linux_keycode": 104,
+      "kernel_word_with_checksum": 549645,
+      "loader_candidate_with_trailing_zero": 2198580
+    },
+    {
+      "identifier": 34355,
+      "linux_keycode": 109,
+      "kernel_word_with_checksum": 549694,
+      "loader_candidate_with_trailing_zero": 2198776
+    },
+    {
+      "identifier": 34357,
+      "linux_keycode": 125,
+      "kernel_word_with_checksum": 549720,
+      "loader_candidate_with_trailing_zero": 2198880
+    },
+    {
+      "identifier": 34358,
+      "linux_keycode": 126,
+      "kernel_word_with_checksum": 549739,
+      "loader_candidate_with_trailing_zero": 2198956
+    },
+    {
+      "identifier": 52287,
+      "linux_keycode": 59,
+      "kernel_word_with_checksum": 836604,
+      "loader_candidate_with_trailing_zero": 3346416
+    },
+    {
+      "identifier": 52467,
+      "linux_keycode": 60,
+      "kernel_word_with_checksum": 839484,
+      "loader_candidate_with_trailing_zero": 3357936
+    },
+    {
+      "identifier": 53187,
+      "linux_keycode": 61,
+      "kernel_word_with_checksum": 851004,
+      "loader_candidate_with_trailing_zero": 3404016
+    },
+    {
+      "identifier": 53052,
+      "linux_keycode": 62,
+      "kernel_word_with_checksum": 848844,
+      "loader_candidate_with_trailing_zero": 3395376
+    },
+    {
+      "identifier": 15567,
+      "linux_keycode": 63,
+      "kernel_word_with_checksum": 249084,
+      "loader_candidate_with_trailing_zero": 996336
+    },
+    {
+      "identifier": 15612,
+      "linux_keycode": 64,
+      "kernel_word_with_checksum": 249804,
+      "loader_candidate_with_trailing_zero": 999216
+    },
+    {
+      "identifier": 62259,
+      "linux_keycode": 65,
+      "kernel_word_with_checksum": 996156,
+      "loader_candidate_with_trailing_zero": 3984624
+    },
+    {
+      "identifier": 53040,
+      "linux_keycode": 66,
+      "kernel_word_with_checksum": 848640,
+      "loader_candidate_with_trailing_zero": 3394560
+    },
+    {
+      "identifier": 13071,
+      "linux_keycode": 67,
+      "kernel_word_with_checksum": 209151,
+      "loader_candidate_with_trailing_zero": 836604
+    },
+    {
+      "identifier": 13296,
+      "linux_keycode": 68,
+      "kernel_word_with_checksum": 212751,
+      "loader_candidate_with_trailing_zero": 851004
+    },
+    {
+      "identifier": 52416,
+      "linux_keycode": 87,
+      "kernel_word_with_checksum": 838668,
+      "loader_candidate_with_trailing_zero": 3354672
+    },
+    {
+      "identifier": 15615,
+      "linux_keycode": 88,
+      "kernel_word_with_checksum": 249855,
+      "loader_candidate_with_trailing_zero": 999420
+    }
+  ],
+  "matching_modeled_loader_targets": [],
+  "physical_recovery_button": "UNKNOWN",
+  "button_chord": "UNKNOWN",
+  "device_access": false,
+  "reboot_requested": false
+}

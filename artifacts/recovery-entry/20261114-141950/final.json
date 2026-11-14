@@ -1,0 +1,35 @@
+﻿{
+    "Snapshot":  {
+                     "At":  "2026-11-14T14:22:53.5885167+08:00",
+                     "Adb":  {
+                                 "ExitCode":  0,
+                                 "TimedOut":  false,
+                                 "Output":  "List of devices attached",
+                                 "Error":  ""
+                             },
+                     "Usb":  [
+
+                             ]
+                 },
+    "BootId":  {
+                   "ExitCode":  1,
+                   "TimedOut":  false,
+                   "Output":  "",
+                   "Error":  "adb.exe: device \u0027248243005297\u0027 not found"
+               },
+    "BootCompleted":  {
+                          "ExitCode":  1,
+                          "TimedOut":  false,
+                          "Output":  "",
+                          "Error":  "adb.exe: device \u0027248243005297\u0027 not found"
+                      },
+    "Fingerprint":  {
+                        "ExitCode":  1,
+                        "TimedOut":  false,
+                        "Output":  "",
+                        "Error":  "adb.exe: device \u0027248243005297\u0027 not found"
+                    },
+    "Scope":  "Observation only; no host reboot, loader, key injection or storage command",
+    "RecoveryMenuConfirmed":  false,
+    "RestorationTested":  false
+}

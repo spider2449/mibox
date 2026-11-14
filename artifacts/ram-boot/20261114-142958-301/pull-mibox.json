@@ -1,0 +1,7 @@
+﻿{
+    "Arguments":  "-s 248243005297 pull /bin/mibox \"F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\20261114-142958-301\\mibox.elf\"",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "Output":  "",
+    "Error":  "/bin/mibox: 1 file pulled, 0 skipped. 6.6 MB/s (484820 bytes in 0.070s)"
+}

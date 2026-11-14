@@ -1,0 +1,7 @@
+﻿{
+    "Arguments":  "-s 248243005297 pull /init \"F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\20261114-142958-301\\init.elf\"",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "Output":  "",
+    "Error":  "/init: 1 file pulled, 0 skipped. 6.7 MB/s (445600 bytes in 0.064s)"
+}

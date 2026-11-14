@@ -1,0 +1,7 @@
+﻿{
+    "Arguments":  "-NoProfile -File \"F:\\coding\\otherPrj\\mibox\\scripts\\Test-MiboxSoftwareReturn.ps1\" -AndroidBaseline \"F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\20261114-142958-301\\android-baseline.json\" -TimeoutSeconds 180",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "Output":  "Verified custom PID1/toolbox and restart readiness: 695ecb4b-717c-4b1b-8e1c-0faaeee26c2b\r\nPASS: new Android boot ID, original fingerprint and boot_completed=1\r\nEvidence: F:\\coding\\otherPrj\\mibox\\artifacts\\software-return\\return-20261114-145204",
+    "Error":  ""
+}
