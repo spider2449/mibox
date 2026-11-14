@@ -1,0 +1,2 @@
+﻿ACM_TEST_LAUNCH_ACKNOWLEDGED; observe USB for 45 seconds
+

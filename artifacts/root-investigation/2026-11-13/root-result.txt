@@ -1,0 +1,8 @@
+﻿uid=0(root) gid=1000(system) groups=3003(inet) context=u:r:init_shell:s0
+
+Filesystem           1K-blocks      Used Available Use% Mounted on
+
+/dev/block/data        2234556   1678344    539828  76% /data
+
+dcc1f39f5bd32f2bd3ac1ddac201f302465cb0a9a9c7c31224529b24288b6cb7  /data/local/tmp/mibox-probe
+

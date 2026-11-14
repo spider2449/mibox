@@ -1,0 +1,34 @@
+﻿{
+    "ModeRequest":  "usb_burner_reboot",
+    "BeforeBootId":  "b730d26a-2a29-43a7-a14d-1697f03fa6c7",
+    "LoaderUsbObserved":  true,
+    "ElapsedSeconds":  4.7424069,
+    "Devices":  [
+                    {
+                        "Device":  {
+                                       "Status":  "Error",
+                                       "Class":  null,
+                                       "FriendlyName":  null,
+                                       "InstanceId":  "USB\\VID_1B8E\u0026PID_C003\\6\u00262B113EED\u00260\u00265"
+                                   },
+                        "Properties":  [
+                                           {
+                                               "KeyName":  "DEVPKEY_Device_ProblemCode",
+                                               "Data":  28
+                                           },
+                                           {
+                                               "KeyName":  "DEVPKEY_Device_DriverInfPath",
+                                               "Data":  null
+                                           },
+                                           {
+                                               "KeyName":  "DEVPKEY_Device_Service",
+                                               "Data":  null
+                                           }
+                                       ]
+                    }
+                ],
+    "ImagesUploaded":  false,
+    "FlashCommandsSent":  false,
+    "DriverInstalled":  false,
+    "Evidence":  "F:\\coding\\otherPrj\\mibox\\artifacts\\usb-loader-mode\\20261114-090842"
+}

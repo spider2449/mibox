@@ -1,0 +1,96 @@
+{
+  "source_sha256": "e85c14d547bde485ded38f41050f197ba33dfe24cc543bec61f11eafea2f812a",
+  "crc32_total_bytes": 32768,
+  "commands": {
+    "bootcmd": "hdcp prefetch emmc;run storeboot",
+    "preboot": "echo preboot...;if itest ${upgrade_step} == 1; then  defenv; setenv upgrade_step 2; saveenv;fi; secukey emmc; secukey updatehdcpkey;run initenv;switch_bootpart; modify_cmdline; run storeargs;if itest ${upgrade_step} == 3; then run update; fi; get_rebootmode; echo reboot_mode=${reboot_mode};run update_key; run init_display;run switch_bootmode;",
+    "storeboot": "store read boot1 ${loadaddr} 0 800000;bootm;run recovery",
+    "recovery": "echo enter recovery...;hdcp prefetch emmc;store read recovery ${loadaddr} 0 800000; bootm",
+    "update": "echo update...; run usb_burning; run recovery;",
+    "initenv": "setenv boot_args init=/init console=ttyS0,115200n8 no_console_suspend",
+    "storeargs": "setenv bootargs ${boot_args} vdaccfg=${vdac_config} storage=${store} logo=osd1,loaded,${fb_addr},${outputmode},full hdmimode=${hdmimode} cvbsmode=${cvbsmode} androidboot.firstboot=${firstboot} hdmitx=${cecconfig} val1=${sdioclk} sdhc_debug=0x00000200 rx_clk_phase=${rx_clk_phase} sd_clk_phase=${sd_clk_phase} androidboot.ubootversion=${ubootver}; saveenv",
+    "update_key": "echo update by key...; if monitor_bt_cmdline; then run recovery; fi;if irdetect; then run recovery; fi",
+    "init_display": "hdmi_det; logo size ${outputmode}; video dev open ${outputmode}; video open; video clear; imgread res logo ${loadaddr_logo}; unpackimg ${loadaddr_logo}; logo source ${outputmode}; bmp display ${bootup_offset};",
+    "switch_bootmode": "echo switch_bootmode...;if test ${reboot_mode} = normal; then else if test ${reboot_mode} = charging; then else if test ${reboot_mode} = factory_reset; then run recovery;else if test ${reboot_mode} = update; then run update;else if test ${reboot_mode} = usb_burning; then run usb_burning;else   fi;fi;fi;fi;fi",
+    "usb_burning": "update 1000"
+  },
+  "first_run_argument_references": [
+    {
+      "source": "bootcmd",
+      "target": "storeboot",
+      "offset": 18
+    },
+    {
+      "source": "preboot",
+      "target": "initenv",
+      "offset": 131
+    },
+    {
+      "source": "preboot",
+      "target": "storeargs",
+      "offset": 176
+    },
+    {
+      "source": "preboot",
+      "target": "update",
+      "offset": 226
+    },
+    {
+      "source": "preboot",
+      "target": "update_key",
+      "offset": 290
+    },
+    {
+      "source": "preboot",
+      "target": "init_display",
+      "offset": 306
+    },
+    {
+      "source": "preboot",
+      "target": "switch_bootmode",
+      "offset": 323
+    },
+    {
+      "source": "storeboot",
+      "target": "recovery",
+      "offset": 43
+    },
+    {
+      "source": "update",
+      "target": "usb_burning",
+      "offset": 15
+    },
+    {
+      "source": "update",
+      "target": "recovery",
+      "offset": 32
+    },
+    {
+      "source": "update_key",
+      "target": "recovery",
+      "offset": 50
+    },
+    {
+      "source": "update_key",
+      "target": "recovery",
+      "offset": 85
+    },
+    {
+      "source": "switch_bootmode",
+      "target": "recovery",
+      "offset": 156
+    },
+    {
+      "source": "switch_bootmode",
+      "target": "update",
+      "offset": 212
+    },
+    {
+      "source": "switch_bootmode",
+      "target": "usb_burning",
+      "offset": 271
+    }
+  ],
+  "note": "Static saved env, not executed bootloader trace; first run argument only.",
+  "environment_writes": false
+}

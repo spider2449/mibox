@@ -1,0 +1,7 @@
+﻿{
+    "Source":  "https://deb.debian.org/debian/dists/stable/main/installer-armhf/current/images/netboot/vmlinuz",
+    "ChecksumSource":  "https://deb.debian.org/debian/dists/stable/main/installer-armhf/current/images/SHA256SUMS",
+    "SHA256":  "b508abca3127cb0d9e1b3aba37f400cbd7dac170040641756807e0e496039de8",
+    "VerifiedAgainstDownloadedList":  true,
+    "Purpose":  "Generic ARM QEMU PID1 test, not Mi Box firmware"
+}

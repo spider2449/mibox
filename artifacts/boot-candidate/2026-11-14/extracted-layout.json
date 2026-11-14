@@ -1,0 +1,148 @@
+{
+  "file": "boot1-custom.NOT_READY.img",
+  "bytes": 8388608,
+  "sha256": "f05adbc3d79c8f41be7fef1145f6111f436d35921b7051722ae5195ae7624bba",
+  "expected_prefix_bytes": 4433609,
+  "expected_prefix_sha1": "2dafa19e539ef3a5a674d3f13ff6df9ab483220f",
+  "actual_prefix_sha1": "96d4a1566540b6d9b9cb9114451df4233dffb466",
+  "matches_installed_script": false,
+  "format": "Android v0-compatible (limited parser)",
+  "layout_validated": true,
+  "page_size": 2048,
+  "sections": [
+    {
+      "name": "kernel",
+      "start": 2048,
+      "size": 3897711,
+      "end": 3899759,
+      "sha256": "0cfa74c8cde102c877aa9605910e10f5541480e1dc9e0fb6bee02b75d0a638f7"
+    },
+    {
+      "name": "ramdisk",
+      "start": 3901440,
+      "size": 706467,
+      "end": 4607907,
+      "sha256": "5615e553b50a21fee0d11ab8926831eb1f21ab588911cb423d8f0f859ba5e8bd"
+    },
+    {
+      "name": "second",
+      "start": 4608000,
+      "size": 11414,
+      "end": 4619414,
+      "sha256": "24b30f1aafe26845839966721b3c083cb3ed49280178276b6114df6d725cb95c"
+    }
+  ],
+  "declared_load_addresses": {
+    "kernel": 268468224,
+    "ramdisk": 285212672,
+    "second": 284164096,
+    "tags": 268435712
+  },
+  "aligned_end": 4620288,
+  "tail_bytes": 3768320,
+  "complete_final_page": true,
+  "bootloader_acceptance": "UNKNOWN",
+  "signature_verified": false,
+  "second_fdt": {
+    "total_bytes": 11414,
+    "section_bytes": 11414,
+    "fits_section": true
+  },
+  "android_id_sha1": "6d3d391d8757766db8deb5e6417a29bae2f21980",
+  "computed_android_id_sha1": "6d3d391d8757766db8deb5e6417a29bae2f21980",
+  "android_id_matches": true,
+  "ramdisk_cpio_bytes": 1197496,
+  "cpio_entries": [
+    {
+      "name": "bin",
+      "mode": "0o40755",
+      "size": 0
+    },
+    {
+      "name": "dev",
+      "mode": "0o40755",
+      "size": 0
+    },
+    {
+      "name": "etc",
+      "mode": "0o40755",
+      "size": 0
+    },
+    {
+      "name": "proc",
+      "mode": "0o40755",
+      "size": 0
+    },
+    {
+      "name": "sbin",
+      "mode": "0o40755",
+      "size": 0
+    },
+    {
+      "name": "sys",
+      "mode": "0o40755",
+      "size": 0
+    },
+    {
+      "name": "system",
+      "mode": "0o40755",
+      "size": 0
+    },
+    {
+      "name": "system/bin",
+      "mode": "0o40755",
+      "size": 0
+    },
+    {
+      "name": "tmp",
+      "mode": "0o41777",
+      "size": 0
+    },
+    {
+      "name": "dev/console",
+      "mode": "0o20600",
+      "size": 0
+    },
+    {
+      "name": "bin/sh",
+      "mode": "0o120777",
+      "size": 14
+    },
+    {
+      "name": "init",
+      "mode": "0o100755",
+      "size": 433416
+    },
+    {
+      "name": "bin/mibox",
+      "mode": "0o100755",
+      "size": 379996
+    },
+    {
+      "name": "etc/os-release",
+      "mode": "0o100444",
+      "size": 63
+    },
+    {
+      "name": "adb_keys",
+      "mode": "0o100444",
+      "size": 713
+    },
+    {
+      "name": "etc/mibox-usb-adb.enabled",
+      "mode": "0o100444",
+      "size": 31
+    },
+    {
+      "name": "sbin/adbd",
+      "mode": "0o100755",
+      "size": 166052
+    },
+    {
+      "name": "system/bin/sh",
+      "mode": "0o100755",
+      "size": 214916
+    }
+  ],
+  "source_path": "/mnt/f/coding/otherPrj/mibox/target/mibox-boot-candidate/boot1-custom.NOT_READY.img"
+}

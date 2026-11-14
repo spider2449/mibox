@@ -1,0 +1,10 @@
+﻿[
+    {
+        "File":  "init.post-boot.original.sh",
+        "Hash":  "D8B90E155A231EBC1A5FB76BF101855B18870C7B46585C94E7D2C48E09E990A6"
+    },
+    {
+        "File":  "init.post-boot.installed.sh",
+        "Hash":  "9CA0C670DB8A2856902C48B5EDF9BE49037E022B83B59303080996AB93DE729B"
+    }
+]

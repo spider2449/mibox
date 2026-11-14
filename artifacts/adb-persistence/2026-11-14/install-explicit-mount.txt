@@ -1,0 +1,6 @@
+﻿MIBOX_ADB_WORKER_ERROR --worker-install job=3822-1794607067611: remount /system writable: stock mount tool did not establish requested mode:
+
+Error: Custom { kind: Other, error: "root worker failed" }
+
+REMOTE_EXIT:1
+

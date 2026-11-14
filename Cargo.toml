@@ -1,0 +1,21 @@
+[package]
+name = "mibox-probe"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "ARMv7 userspace bring-up tools for MiBOX1S"
+default-run = "mibox-probe"
+
+[features]
+device-userspace-test = []
+
+[[bin]]
+name = "mibox-userspace-test"
+path = "src/bin/mibox-userspace-test.rs"
+required-features = ["device-userspace-test"]
+
+[profile.release]
+panic = "abort"
+strip = true
+lto = true
+codegen-units = 1

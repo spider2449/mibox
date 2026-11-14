@@ -1,0 +1,16 @@
+﻿uid=2000(shell) gid=2000(shell) groups=1003(graphics),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats) context=u:r:shell:s0
+
+Linux localhost 3.10.33 #1 SMP PREEMPT Mon Feb 20 15:47:21 CST 2017 armv7l GNU/Linux
+
+MiBOX1S
+
+casablanca
+
+amlogic
+
+Xiaomi/casablanca_icntv/casablanca:4.4.2/KOT49H/2876:user/release-keys
+
+7.2.20.2876
+
+Enforcing
+

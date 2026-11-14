@@ -1,0 +1,1930 @@
+﻿2@q 7
+2@q 7
+2dq 7
+ffffff
+Cuq 7
+Cuq 7
+0uq W
+0un@[
+0up0,
+2Pp 0
+2@p 0
+0uq W
+ffffff
+ , mStartProgress: 
+ ,SystemAvailableSize: 
+ ,availableVersion: 
+ ,baseRelease: 
+ ,is force: 
+ ,isWaitToReboot: 
+ ,isforce: 
+ ,oldAndroid: 
+ ,reason: 
+ ,waitReboot: 
+ autoAutoByUser: 
+ cacheFilePath: 
+$VALUES
+%d / %d 
+%s %s
+%s (%s)
+%s.%s %s
+%s.%s.%s
+/data
+0/data/data/com.xiaomi.mitv.upgrade/cache/log.txt
+-/data/data/com.xiaomi.mitv.upgrade/cache/test
+'/data/duokancache/HotAndRecommendPoster
+/data/duokancache/screensaver
+/data/duokancache/screensaverAD
+/data/duokancache/thumb
+/system/vendor/app/build_info
+/vendor/app/build_info
+4.2.2
+4.4.2
+4.4.4
+5.0.1
+5.1.1
+<clinit>
+<init>
+)ACTION_COM_XIAOMI_MITV_UPGRADE_CLEARFILES
+ATV_PACKAGE_NAME
+AUTO_CHECK_UPGRADE_DELAY
+AUTO_UPGRADE_ACTION
+ApiConfig
+ApiConfig.java
+App.java
+AppTranslucentTheme
+AutoUpgradeTaskManager.java
+BuildConfig.java
+C:\Users\niuyi\temp\dns\
+CDNInfoHelper
+CDNInfoHelper.java
+CDN_FILE_NAME
+CHECK_CACHE_FILE_DELAY
+CHECK_MD5_BUFFER
+CHECK_TIMEOUT
+!CHECK_UPGRADE_AFTER_STARTUP_DELAY
+!CHECK_UPGRADE_NETWORK_ERROR_DELAY
+'CHECK_UPGRADE_NETWORK_ERROR_DELAY_SHORT
+ CHECK_UPGRADE_WAIT_RANGE_IN_MINS
+CNTV_HOST
+CURRENTVERISNEW
+Cache-Control
+CheckingCurrentReleaseInfoPage
+CheckingPage
+5CheckingPage!, handleMessage status: %s isconfirm: %b
+$CheckingPage, handleMessage what: %d
+ChecktUpgradeCacheFileTask run!
+DEBUG
+DEFERDOWNLOAD
+DEFERDOWNLOAD_WAIT_TIME
+DESCRIPTOR
+DISKISFULL
+DNSManager.java
+DNSManager: 
+DNSUtil
+DNS_FILE_NAME
+DNS_HTTPS_URL_1
+DNS_HTTPS_URL_2
+DOWNLOADPACKAGEERROR
+DOWNLOAD_FILE_BUFFER
+DST_IN
+DUMMY_FILE_NAME
+DUMMY_FILE_SIZE
+Delete incorrent file
+DiskIsFull
+DownLoad url: %s, retry: %d
+DownloadContext.java
+EVENT_CLEAR_DISK
+EVENT_SWITCH_SYSTEM
+Enter acquireWakeLock
+Enter releaseWakeLock
+Error, contentLength < 1
+Error, not 2XX, get code: %d
+FORCE_INSTALL_TIMEOUT
+FORCE_REBOOT_TIMEOUT
+FORCE_UPDATE_PROP
+FZLanTingHeiButtonStyle
+FZLanTingHeiTextViewStyle
+Fail to download!
+FileUtils.java
+Finish download file: %s
+GITV_HOST
+HOST_HK
+HProgressBar.java
+ICheckUpgradeListener.java
+IFFFFLI
+ILLLL
+INIT_SERVICE_MAX_TRY
+INSTALLERROR
+INTELLIGENT_UPDATE
+!INTELLIGENT_UPDATE_CHANGED_INTENT
+IUpgradeRemoteService.java
+LLIIIILZ
+LLILI
+LLLLLL
+-Landroid/animation/Animator$AnimatorListener;
+Landroid/animation/Animator;
++Landroid/animation/AnimatorListenerAdapter;
+"Landroid/animation/ObjectAnimator;
+(Landroid/animation/PropertyValuesHolder;
+$Landroid/animation/TimeInterpolator;
+Landroid/app/Activity;
+-Landroid/app/ActivityManager$RunningTaskInfo;
+Landroid/app/ActivityManager;
+Landroid/app/AlarmManager;
+Landroid/app/Application;
+Landroid/app/Dialog;
+Landroid/app/PendingIntent;
+Landroid/app/Service;
+#Landroid/content/BroadcastReceiver;
+Landroid/content/ComponentName;
+!Landroid/content/ContentProvider;
+!Landroid/content/ContentResolver;
+Landroid/content/ContentValues;
+Landroid/content/Context;
+1Landroid/content/DialogInterface$OnClickListener;
+!Landroid/content/DialogInterface;
+Landroid/content/Intent;
+Landroid/content/IntentFilter;
+*Landroid/content/SharedPreferences$Editor;
+#Landroid/content/SharedPreferences;
+#Landroid/content/res/Configuration;
+Landroid/content/res/Resources;
+Landroid/database/Cursor;
+Landroid/database/MatrixCursor;
+Landroid/graphics/Bitmap;
+ Landroid/graphics/BitmapFactory;
+Landroid/graphics/Canvas;
+Landroid/graphics/Matrix;
+Landroid/graphics/Paint;
+"Landroid/graphics/PorterDuff$Mode;
+%Landroid/graphics/PorterDuffXfermode;
+Landroid/graphics/Xfermode;
+Landroid/net/Uri;
+Landroid/os/Binder;
+Landroid/os/Bundle;
+Landroid/os/Handler;
+Landroid/os/HandlerThread;
+Landroid/os/IBinder;
+Landroid/os/IInterface;
+Landroid/os/Looper;
+Landroid/os/Message;
+Landroid/os/Parcel;
+Landroid/os/PowerManager;
+Landroid/os/Process;
+Landroid/os/RecoverySystem;
+Landroid/os/RemoteException;
+Landroid/os/ServiceManager;
+Landroid/os/StatFs;
+Landroid/os/SystemProperties;
+&Landroid/preference/PreferenceManager;
+"Landroid/provider/Settings$System;
+Landroid/text/Spannable;
+Landroid/text/TextUtils;
+$Landroid/text/method/MovementMethod;
+-Landroid/text/method/ScrollingMovementMethod;
+Landroid/util/AttributeSet;
+Landroid/util/Log;
+Landroid/view/KeyEvent;
+#Landroid/view/View$OnClickListener;
+Landroid/view/View;
+Landroid/view/Window;
+/Landroid/view/animation/AccelerateInterpolator;
+/Landroid/view/animation/DecelerateInterpolator;
+Landroid/widget/Button;
+Landroid/widget/ImageView;
+Landroid/widget/ProgressBar;
+Landroid/widget/TextView;
+-Lcom/xiaomi/mitv/api/dialog/TVDialog$Builder;
+%Lcom/xiaomi/mitv/api/dialog/TVDialog;
+FLcom/xiaomi/mitv/api/statistics/DKTVServiceAPI$onServiceReadyListener;
+/Lcom/xiaomi/mitv/api/statistics/DKTVServiceAPI;
+)Lcom/xiaomi/mitv/api/system/WifiLockUtil;
+Lcom/xiaomi/mitv/upgrade/App;
+%Lcom/xiaomi/mitv/upgrade/BuildConfig;
+ Lcom/xiaomi/mitv/upgrade/R$anim;
+ Lcom/xiaomi/mitv/upgrade/R$attr;
+!Lcom/xiaomi/mitv/upgrade/R$color;
+!Lcom/xiaomi/mitv/upgrade/R$dimen;
+$Lcom/xiaomi/mitv/upgrade/R$drawable;
+Lcom/xiaomi/mitv/upgrade/R$id;
+"Lcom/xiaomi/mitv/upgrade/R$layout;
+Lcom/xiaomi/mitv/upgrade/R$raw;
+"Lcom/xiaomi/mitv/upgrade/R$string;
+!Lcom/xiaomi/mitv/upgrade/R$style;
+Lcom/xiaomi/mitv/upgrade/R;
+2Lcom/xiaomi/mitv/upgrade/StartBroadcastReceiver$1;
+2Lcom/xiaomi/mitv/upgrade/StartBroadcastReceiver$2;
+2Lcom/xiaomi/mitv/upgrade/StartBroadcastReceiver$3;
+2Lcom/xiaomi/mitv/upgrade/StartBroadcastReceiver$4;
+2Lcom/xiaomi/mitv/upgrade/StartBroadcastReceiver$5;
+2Lcom/xiaomi/mitv/upgrade/StartBroadcastReceiver$6;
+0Lcom/xiaomi/mitv/upgrade/StartBroadcastReceiver;
++Lcom/xiaomi/mitv/upgrade/UpgradeActivity$1;
++Lcom/xiaomi/mitv/upgrade/UpgradeActivity$2;
++Lcom/xiaomi/mitv/upgrade/UpgradeActivity$3;
++Lcom/xiaomi/mitv/upgrade/UpgradeActivity$4;
+-Lcom/xiaomi/mitv/upgrade/UpgradeActivity$5$1;
++Lcom/xiaomi/mitv/upgrade/UpgradeActivity$5;
++Lcom/xiaomi/mitv/upgrade/UpgradeActivity$6;
+-Lcom/xiaomi/mitv/upgrade/UpgradeActivity$7$1;
++Lcom/xiaomi/mitv/upgrade/UpgradeActivity$7;
+JLcom/xiaomi/mitv/upgrade/UpgradeActivity$CheckingCurrentReleaseInfoPage$1;
+JLcom/xiaomi/mitv/upgrade/UpgradeActivity$CheckingCurrentReleaseInfoPage$2;
+HLcom/xiaomi/mitv/upgrade/UpgradeActivity$CheckingCurrentReleaseInfoPage;
+8Lcom/xiaomi/mitv/upgrade/UpgradeActivity$CheckingPage$1;
+8Lcom/xiaomi/mitv/upgrade/UpgradeActivity$CheckingPage$2;
+6Lcom/xiaomi/mitv/upgrade/UpgradeActivity$CheckingPage;
+5Lcom/xiaomi/mitv/upgrade/UpgradeActivity$MessagePage;
+:Lcom/xiaomi/mitv/upgrade/UpgradeActivity$NoNewVersionPage;
+6Lcom/xiaomi/mitv/upgrade/UpgradeActivity$RebootPage$1;
+6Lcom/xiaomi/mitv/upgrade/UpgradeActivity$RebootPage$2;
+4Lcom/xiaomi/mitv/upgrade/UpgradeActivity$RebootPage;
+7Lcom/xiaomi/mitv/upgrade/UpgradeActivity$RebootingPage;
+:Lcom/xiaomi/mitv/upgrade/UpgradeActivity$ReleaseNotePanel;
+<Lcom/xiaomi/mitv/upgrade/UpgradeActivity$ShowNewVersionPage;
+2Lcom/xiaomi/mitv/upgrade/UpgradeActivity$TestPage;
+?Lcom/xiaomi/mitv/upgrade/UpgradeActivity$UpdateProgressBarTask;
+=Lcom/xiaomi/mitv/upgrade/UpgradeActivity$UpgradeActivityPage;
+7Lcom/xiaomi/mitv/upgrade/UpgradeActivity$UpgradingPage;
+)Lcom/xiaomi/mitv/upgrade/UpgradeActivity;
+)Lcom/xiaomi/mitv/upgrade/UpgradeDialog$1;
+)Lcom/xiaomi/mitv/upgrade/UpgradeDialog$2;
+)Lcom/xiaomi/mitv/upgrade/UpgradeDialog$3;
+)Lcom/xiaomi/mitv/upgrade/UpgradeDialog$4;
+'Lcom/xiaomi/mitv/upgrade/UpgradeDialog;
+*Lcom/xiaomi/mitv/upgrade/UpgradeService$1;
+7Lcom/xiaomi/mitv/upgrade/UpgradeService$ShutdownThread;
+6Lcom/xiaomi/mitv/upgrade/UpgradeService$UpgradeThread;
+(Lcom/xiaomi/mitv/upgrade/UpgradeService;
+?Lcom/xiaomi/mitv/upgrade/aidl/ICheckUpgradeListener$Stub$Proxy;
+9Lcom/xiaomi/mitv/upgrade/aidl/ICheckUpgradeListener$Stub;
+4Lcom/xiaomi/mitv/upgrade/aidl/ICheckUpgradeListener;
+?Lcom/xiaomi/mitv/upgrade/aidl/IUpgradeRemoteService$Stub$Proxy;
+9Lcom/xiaomi/mitv/upgrade/aidl/IUpgradeRemoteService$Stub;
+4Lcom/xiaomi/mitv/upgrade/aidl/IUpgradeRemoteService;
+@Lcom/xiaomi/mitv/upgrade/contentprovider/UpgradeContentProvider;
+8Lcom/xiaomi/mitv/upgrade/model/AutoUpgradeTaskManager$1;
+8Lcom/xiaomi/mitv/upgrade/model/AutoUpgradeTaskManager$2;
+BLcom/xiaomi/mitv/upgrade/model/AutoUpgradeTaskManager$UpgradeTask;
+6Lcom/xiaomi/mitv/upgrade/model/AutoUpgradeTaskManager;
+/Lcom/xiaomi/mitv/upgrade/model/DownloadContext;
+.Lcom/xiaomi/mitv/upgrade/model/ShutdownHelper;
+*Lcom/xiaomi/mitv/upgrade/model/SystemInfo;
+-Lcom/xiaomi/mitv/upgrade/model/UpgradeConfig;
+2Lcom/xiaomi/mitv/upgrade/model/UpgradeDelegate2$1;
+0Lcom/xiaomi/mitv/upgrade/model/UpgradeDelegate2;
++Lcom/xiaomi/mitv/upgrade/model/UpgradeInfo;
+-Lcom/xiaomi/mitv/upgrade/model/UpgradeLogger;
+.Lcom/xiaomi/mitv/upgrade/model/UpgradeManager;
+-Lcom/xiaomi/mitv/upgrade/model/UpgradeStatus;
+5Lcom/xiaomi/mitv/upgrade/model/UpgradeStatusListener;
++Lcom/xiaomi/mitv/upgrade/model/UpgradeType;
+9Lcom/xiaomi/mitv/upgrade/remote/UpgradeRemoteServiceImpl;
+(Lcom/xiaomi/mitv/upgrade/util/ApiConfig;
+.Lcom/xiaomi/mitv/upgrade/util/CDNInfoHelper$1;
+.Lcom/xiaomi/mitv/upgrade/util/CDNInfoHelper$2;
+,Lcom/xiaomi/mitv/upgrade/util/CDNInfoHelper;
+)Lcom/xiaomi/mitv/upgrade/util/DNSManager;
+(Lcom/xiaomi/mitv/upgrade/util/FileUtils;
+$Lcom/xiaomi/mitv/upgrade/util/MyLog;
+/Lcom/xiaomi/mitv/upgrade/util/StatisticsUtil$1;
+-Lcom/xiaomi/mitv/upgrade/util/StatisticsUtil;
+.Lcom/xiaomi/mitv/upgrade/util/UpgradeWakeLock;
+%Lcom/xiaomi/mitv/upgrade/util/Util$1;
+%Lcom/xiaomi/mitv/upgrade/util/Util$2;
+#Lcom/xiaomi/mitv/upgrade/util/Util;
+-Lcom/xiaomi/mitv/upgrade/widget/HProgressBar;
+KLcom/xiaomi/mitv/upgrade/widget/MyScrollingMovementMethod$MyScrollListener;
+:Lcom/xiaomi/mitv/upgrade/widget/MyScrollingMovementMethod;
+'Lcom/xiaomi/update/IUpdateService$Stub;
+"Lcom/xiaomi/update/IUpdateService;
+/Lcom/xiaomi/update/IUpdateServiceListener$Stub;
+*Lcom/xiaomi/update/IUpdateServiceListener;
+"Ldalvik/annotation/EnclosingClass;
+#Ldalvik/annotation/EnclosingMethod;
+Ldalvik/annotation/InnerClass;
+!Ldalvik/annotation/MemberClasses;
+Ldalvik/annotation/Signature;
+Ldalvik/annotation/Throws;
+Leave acquireWakeLock
+!Leave downloadPackage, result: %b
+Leave releaseWakeLock
+Ljava/io/BufferedInputStream;
+Ljava/io/BufferedReader;
+Ljava/io/ByteArrayOutputStream;
+Ljava/io/Closeable;
+Ljava/io/File;
+Ljava/io/FileInputStream;
+Ljava/io/FileNotFoundException;
+Ljava/io/FileOutputStream;
+Ljava/io/FileReader;
+Ljava/io/FileWriter;
+Ljava/io/IOException;
+Ljava/io/InputStream;
+Ljava/io/InputStreamReader;
+Ljava/io/ObjectInputStream;
+Ljava/io/RandomAccessFile;
+Ljava/io/Reader;
+Ljava/io/Serializable;
+Ljava/lang/Boolean;
+Ljava/lang/CharSequence;
+Ljava/lang/Class;
+Ljava/lang/Enum
+Ljava/lang/Enum;
+Ljava/lang/Exception;
+Ljava/lang/Integer;
+ Ljava/lang/InterruptedException;
+Ljava/lang/Long;
+Ljava/lang/Math;
+Ljava/lang/Object;
+Ljava/lang/Process;
+Ljava/lang/ProcessBuilder;
+Ljava/lang/Runnable;
+Ljava/lang/String;
+Ljava/lang/StringBuffer;
+Ljava/lang/StringBuilder;
+Ljava/lang/System;
+Ljava/lang/Thread;
+Ljava/lang/Throwable;
+Ljava/net/HttpURLConnection;
+Ljava/net/InetAddress;
+ Ljava/net/MalformedURLException;
+Ljava/net/URL;
+Ljava/net/URLConnection;
+Ljava/net/UnknownHostException;
+Ljava/nio/charset/Charset;
+Ljava/security/KeyStore;
+Ljava/security/MessageDigest;
+(Ljava/security/NoSuchAlgorithmException;
+Ljava/security/SecureRandom;
+)Ljava/security/cert/CertificateException;
+Ljava/util/ArrayList;
+Ljava/util/Calendar;
+Ljava/util/Collections;
+Ljava/util/Date;
+Ljava/util/HashMap
+Ljava/util/HashMap;
+Ljava/util/Iterator;
+Ljava/util/List
+Ljava/util/List;
+?Ljava/util/List<Landroid/app/ActivityManager$RunningTaskInfo;>;
+$Ljava/util/List<Ljava/lang/String;>;
+Ljava/util/Map
+Ljava/util/Map;
+Ljava/util/Timer;
+Ljava/util/TimerTask;
+!Ljava/util/concurrent/locks/Lock;
+*Ljava/util/concurrent/locks/ReentrantLock;
+ Ljavax/net/ssl/HostnameVerifier;
+"Ljavax/net/ssl/HttpsURLConnection;
+Ljavax/net/ssl/SSLContext;
+Ljavax/net/ssl/SSLSession;
+ Ljavax/net/ssl/SSLSocketFactory;
+#Ljavax/net/ssl/TrustManagerFactory;
+ Ljavax/net/ssl/X509TrustManager;
+ Lmitv/diagnosis/DiagnoseManager;
+Lmitv/net/AddressResolver;
++Lmitv/notification/MiTVNotificationManager;
+,Lmitv/notification/NotificationItem$Builder;
+$Lmitv/notification/NotificationItem;
+Lmitv/os/Build;
+Lmitv/os/System;
+)Lmitv/powermanagement/ScreenSaverManager;
+Lorg/json/JSONArray;
+Lorg/json/JSONException;
+Lorg/json/JSONObject;
+MANUAL_UPGRADE_ACTION
+MAX_DOWNLOAD_RETRY
+MAX_LINE_NUM
+%MEDIA_EXPLORER_UPGRADE_ACTIVITY_CLASS
+MESSAGE_PROGRESS
+MESSAGE_TIMEOUT
+MESSAGE_UPDATE
+MUSIC_PLAYER_ACTIVITY_CLASS
+!MUSIC_PLAYER_LOCAL_ACTIVITY_CLASS
+ManualUpgrade
+MessagePage
+MiTV123@
+MiTVAppBaseTheme
+MitvSettingsTheme
+MyLog.java
+MyScrollListener
+MyScrollingMovementMethod
+MyScrollingMovementMethod.java
+NETWORKERROR
+NEWPACKAGEAVAILABLE
+NEWPACKAGEINSTALLED
+NEWPACKAGEINSTALLING
+NEWPACKAGEPOSTUPDATED
+NativeApi
+NoNewVersionPage
+NoNewVersionPage, onClick
+PLAYER_ACTIVITY_CLASS
+PLAYER_LOCAL_ACTIVITY_CLASS
+PROGRESS_MAX
+PROGRESS_VALUE
+Pragma
+Proxy
+QUERY_URL
+R.java
+READ_FILE_BUFFER
+REASON_UPDATE_SYSTEM
+#REASON_UPDATE_SYSTEM_AND_CLEAR_DATA
+RELEASE_NOTE_TEXT
+Range
+RebootPage
+RebootingPage
+ReleaseNotePanel
+SCREEN_SAVER_BEGIN_INTENT
+SCREEN_SAVER_END_INTENT
+START_BY_ABOUT
+START_BY_DIALOG
+START_BY_NOTIFICATION
+START_BY_SCREENSAVER
+START_UPGRADE_TIME
+STATUS_DOWNLOAD_FAIL
+STATUS_DOWNLOAD_OK
+STATUS_INFO
+STATUS_INSTALL_FAIL
+STATUS_INSTALL_OK
+STATUS_NEW_PACKAGE_AVAILABLE
+STATUS_NEW_PACKAGE_INSTALLED
+STATUS_NEW_PACKAGE_INSTALLING
+STATUS_NO_UPDATE
+STATUS_START_DOWNLOAD
+STATUS_START_INSTALL
+STATUS_START_UPGRADE
+STATUS_SWITCH_SYSTEM
+STATUS_UPGRADE_OK
+STATUS_WAIT_UPGRADE
+SYSTEM_IDLE_INTENT
+SYSTEM_SWITCH_PROPERTY
+SYSTEM_SWITCH_PROPERTY_MLOGIC
+SYSTEM_UPDATE_ACTION
+SYSTEM_UPDATE_PROPERTY
+SYS_UPDATE_DELAY
+ShowNewVersionPage
+ShutdownHelper.java
+ShutdownThread
+Sleep Error: %s
+StartBroadcastReceiver init!!!
+StartBroadcastReceiver.java
+StartByAbout
+StartByDialog
+StartByNotification
+StartByScreenSaver
+StatisticsUtil
+StatisticsUtil.java
+SystemInfo
+SystemInfo.java
+TEST_INTENT
+TRANSACTION_checkUpgrade
+TRANSACTION_getUpgradeProgress
+"TRANSACTION_onCheckUpgradeResponse
+TRANSACTION_reboot
+TRANSACTION_startUpgrade
+TVTextSubTitleStyle
+TVTextTitleStyle
+TVTextViewErrorStyle
+TVTextViewStyle
+Test Title
+TestPage
+Theme_Translucent
+UNZIP_FILE_BUFFER
+UPDATESTATEERROR
+UPGRADE_CACHE_FILE
+UPGRADE_CONTEXT_PATH
+UPGRADE_DIR_NAME
+UPGRADE_NOTIFICATION_ID
+UPGRADE_SHOW_DIALOG
+UPGRADE_TYPE_MANUAL
+UPGRADE_TYPE_PERIOD
+UPGRADE_TYPE_SCREEN_OFF
+UPGRADE_TYPE_SCREEN_SAVER
+UPGRADE_TYPE_STARTUP
+UPGRADE_TYPE_SYSTEM_IDLE
+UTF-8
+Update Progress = 
+UpdateProgressBarTask
+UpdateService
+ Upgrade.AutoUpgradeTaskManager!!
+Upgrade.FileUtils
+Upgrade.StartBroadcastReceiver
+,Upgrade.StartBroadcastReceiver.onReceive!!>>
+,Upgrade.StartBroadcastReceiver.onReceive!>> 
+Upgrade.UpgradeActivity1
+Upgrade.UpgradeDelegate2
+Upgrade.UpgradeInfo
+Upgrade.UpgradeLogger
+Upgrade.UpgradeManager
+Upgrade.UpgradeService
+Upgrade.WifiLock
+3Upgrade: Enter doInstallPackage, already installed.
+)Upgrade: Leave downloadWithRetry, failed.
+UpgradeActivity.java
+UpgradeActivityPage
+UpgradeAfterStartupTask run!!
+UpgradeApp
+UpgradeConfig.java
+UpgradeContentProvider.java
+UpgradeDelegate2.java
+UpgradeDialog
+UpgradeDialog.java
+UpgradeInfo check result: 
+UpgradeInfo.java
+UpgradeLogger.java
+UpgradeManager init!!!!!
+"UpgradeManager init, set writable!
+UpgradeManager.java
+UpgradeRemoteServiceImpl
+UpgradeRemoteServiceImpl.java
+UpgradeService.java
+UpgradeStatus.java
+UpgradeStatusListener.java
+UpgradeTask
+UpgradeTask run!
+UpgradeThread
+UpgradeType.java
+UpgradeWakeLock.acquireLock()
+UpgradeWakeLock.java
+UpgradingPage
+%UpgradingPage.handleMessage: status: 
+Util.java
+VERSION_TEXT
+VIIIL
+VIIILJ
+VIIILL
+VIILZ
+VILII
+VILLLL
+VLFFL
+VLLLIIL
+WAIT_LONG_INTERVAL_IN_HOUR
+ZILLI
+ZLLIL
+ZLLLIL
+ZLLLL
+)[Landroid/animation/PropertyValuesHolder;
+.[Lcom/xiaomi/mitv/upgrade/model/UpgradeStatus;
+,[Lcom/xiaomi/mitv/upgrade/model/UpgradeType;
+[Ljava/io/File;
+[Ljava/lang/Object;
+[Ljava/lang/String;
+[Ljava/net/InetAddress;
+%[Ljava/security/cert/X509Certificate;
+[Ljavax/net/ssl/KeyManager;
+[Ljavax/net/ssl/TrustManager;
+![Ljavax/net/ssl/X509TrustManager;
+_arg0
+_arg1
+_arg2
+_arg3
+_arg4
+_data
+_reply
+_result
+access$000
+access$002
+access$100
+access$1000
+access$102
+access$1100
+access$1102
+access$1200
+access$1300
+access$1400
+access$1500
+access$1600
+access$1700
+access$1800
+access$1900
+access$200
+access$2000
+access$2100
+access$2200
+access$2300
+access$2400
+access$300
+access$400
+access$500
+access$600
+access$700
+access$800
+access$900
+accessFlags
+acquireLock
+acquireWifiLock
+action
+activity
+activityManager
+activity_upgrade
+addAction
+addAutoUpgradeTask
+addAutoUpgradeTask, type: 
+addFlags
+addListener
+addRow
+addTask
+address
+addrs
+)after recheck, current version is laster!
+after sleep
+alarm
+alarmIntent
+alpha
+already downLoad package
+already installed!
+already installed! to version :
+already installed!>>
+already send notfication for : 
+already upgrade this version
+alreadyInstallPackage
+$android.intent.action.BOOT_COMPLETED
+ android.intent.action.SCREEN_OFF
+android.intent.action.SCREEN_ON
+animation
++another thread id doing postUpdateAndReboot
+?another thread id doing postUpdateAndReboot or shutdownOrReboot
+another thread is doing upgrade
+appVersion
+appVersionExt
+appVersions
+app_name
+append
+array
+array1
+array2
+arrays
+arrow_left
+asBinder
+asInterface
+attachInterface
+attrs
+authType
+autoAutoByUser
+,autoCheckUpdate, DEFERDOWNLOAD wait 100 secs
+1autoCheckUpdate, network error, try one more time
+availCount
+available count: 
+availableAppVersion
+-availableAppVersion(%s), availableVersion(%s)
+availableAppVersion: 
+availableVersion
+availableVersion: 
+#backgroud_loading_bar_system_update
+background
+baseRelease
+baseRelease %s
+baseVersion
+begin to startPostUpdate ok!!
+begin to startUpdate ok!!
+block size: 
+blockSize
+bootenv.var.updatestat
+branch_version
+browse_line_slider
+browse_slider
+btn_normal
+buffer
+build
+builder
+bundle
+button_active
+button_cancel
+button_layout
+button_normal
+button_ok
+button_ok_marginLeft
+button_switch
+byteStream
+bytes=
+cacheFile
+cacheFile not exists!
+cacheFile: 
+cacheFilePath
+cachePath
+can not get cache from file
+can not get ip list from server
+(can not get json from url, use default!!
+can not read from file 
+canRead
+canSwitchSystem
+canSwitchSystem1: 
+canSwitchSystem2: 
+canUpgrade
+cancel
+cancelDialog
+cancelNotification
+canvas
+card_notice_new_system_big
+card_notice_new_system_small
+cdncache
+chain
+changeBootSystemValue
+check MD5 result %b
+check MD5 result %s
+checkClientTrusted
+checkMd5
+checkMd5: %s %s
+checkServerTrusted
+checkUpgrade
+(checkUpgrade, currentUpgradeInfo is null
+"checkUpgrade, currentUpgradeInfo: 
+checkUpgrade, listener is null!
+'checkUpgrade, onCheckUpgradeResponse: 1
+checkUpgradeCacheFile
+checkUpgradeInfo
+checkUpgradeInfo, ip: 
+circle_progressbar
+className
+clean
+cleanup
+clearAnimation
+clearDisk
+clearDisk!
+clearDummyFile
+clearDummyFile, path: 
+clearOldFiles
+clearOldFiles: 
+clone
+close
+closeQuietly
+closeable
+cmd done!!
+color
+com.duokan.action.UPGRADENOTIFY
+ com.duokan.intent.action.UPGRADE
+com.duokan.screensaver.begin
+com.duokan.screensaver.end
+!com.xiaomi.mimusic.PlayerActivity
+2com.xiaomi.mimusic.localplayer.LocalPlayerActivity
+&com.xiaomi.mitv.ACTION_SHUTDOWN_UPDATE
+*com.xiaomi.mitv.INTELLIGENT_UPDATE_CHANGED
+0com.xiaomi.mitv.mediaexplorer.NewUpgradeActivity
+*com.xiaomi.mitv.player.LocalPlayerActivity
+%com.xiaomi.mitv.player.PlayerActivity
+com.xiaomi.mitv.tvplayer
+*com.xiaomi.mitv.upgrade.ACTION_SHOW_DIALOG
+$com.xiaomi.mitv.upgrade.AUTO_UPGRADE
+&com.xiaomi.mitv.upgrade.MANUAL_UPGRADE
+com.xiaomi.mitv.upgrade.TEST
+'com.xiaomi.mitv.upgrade.UpgradeActivity
+2com.xiaomi.mitv.upgrade.aidl.ICheckUpgradeListener
+2com.xiaomi.mitv.upgrade.aidl.IUpgradeRemoteService
+"com.xiaomi.mitv.upgrade.clearfiles
+com.xiaomi.mitv.upgrade.status
+com.xiaomi.mitv.uploadlog
+commit
+compareVersion
+confirm_reboot
+confirm_upgrade
+confirmed
+confirmed: 
+connect
+connection
+content
+context
+count
+createBitmap
+createDummyFile
+createDummyFile, dir path: 
+createNewFile
+ctl.start
+ctl.stop
+curAndroid: 
+currentAndroidVersion
+currentReleaseNote
+currentReleaseNoteText
+currentReleaseNoteText: 
+currentTimeMillis
+currentUpgradeInfo
+currentUpgradeInfo is null
+currentUpgradeInfo is null!
+currentUpgradeInfo status: 
+currentVersion
+current_release_note
+current_version
+current_version_text
+cursor
+decodeResource
+defer_download
+delay
+delete
+delete cache file
+delete file: %s
+deleteDir
+deleteFile
+dialog
+dialog_btn_normal
+dialog_button_focus
+dialog_button_normal
+dialog_icon_bar
+dialog_icon_line
+diff(%d) timeout(%d)
+digest
+dimen
+dirPath
+disconnect
+diskIsFull
+diskSpace
+diskToUse
+diskToUse: 
+disk_is_full
+dismiss
+dispatchKeyEvent
+displayVersion
+dk_log_level
+dk_user_level
+dns cache expired!!
+#do not handle NEWPACKAGEPOSTUPDATED
+doForceUpgrade
+$doForceUpgrade, in rebooting return!
+doReboot
+doReboot!!
+doReboot!: 
+doShutdown
+doShutdown: 
+doUpgrade
+doUpgrade>>
+domain
+downlaodProgress
+.download exception: class name(%s) message(%s)
+downloadCompletely
+downloadFileFromUrl
+downloadFileFromUrl3 %s %s %s
+downloadFrom2CDNs
+downloadFromCDNs
+downloadFromIP
+downloadFromIp
+downloadPackage
+downloadPackage>>
+downloadProgress
+downloadResult
+downloadSuccess
+downloadWithRetry
+download_package_error
+downloadedSize
+drawBitmap
+drawable
+dummyFile
+dummyfile
+dur: 
+duration
+durationObject
+eEvent
+endsWith
+enforceInterface
+entry_item_normal
+equals
+equalsIgnoreCase
+error
+error in upgrade
+error in upgrade: 
+errorMessage
+event
+exData
+exeCmd
+exeCmd: 
+exists
+expectedMd5
+extradata
+-failed to read object from upgradecontext.dat
+fakeMode
+false
+fileContent
+fileExists
+fileName
+filePath
+filename
+files
+find index2: 
+find index: 
+find ip in cache :
+findViewById
+finish post upgrade!!
+finish upgrade!!
+finishUpgrade
+finishUpgrade>> m3!
+firstRun
+flags
+forName
+force
+force: 
+forceReboot
+forceUpgrade
+format
+found_new_version_box
+found_new_version_tv
+fromVersion
+get RemoteException
+$get SYSTEM_UPDATE_ACTION, isReboot: 
+get currentUpgradeInfo: 
+get exception in setProgress
+get host: 
+"get ip from server after shuffle: 
+get ip from server: 
+get ip: 
+get mCurrentUpgradeInfo!: 
+!get real progress after install: 
+"get real progress before install: 
+get real progress: 
+get remoteService ok!!
+get string from url: 
+Hget systeminfo sys.build.osVersionP(%s) ro.build.version.incremental(%s)
+get upgrade status: 
+get url: 
+1get userlevel (%d) incremental(%d) appVersion(%s)
+getAbsolutePath
+getAcceptedIssuers
+getAction
+getActivity
+getAddress
+getApplicationContext
+getAutoUpgradeSetting
+getAvailableBlocks
+getBlockSize
+getBooleanExtra
+getBuildInfoPath
+getByName
+getBytes
+getCacheDir
+getClass
+getClassName
+getContentLength
+getContentResolver
+getContext
+getCurrentAndroidVersion
+getCurrentPage
+getCurrentPage: info status %s
+getCurrentUpgradeInfo
+getCurrentVersion
+getData
+getDefaultSharedPreferences
+getDeviceMac
+getDiskFullErrorMessage
+getDisplayCurrentVersion
+getDisplayToVersion
+getDisplayVersion
+getDisplayVersion2
+getDownloadDuration
+getDownloadInfoString
+getDownloadProgress
+getDownloadURL
+getDummyFile
+getErrorMessage
+getExtras
+getFilesDir
+getFirstRun
+getHandler
+getHeight
+getHost
+getHostAddress
+getHostByUrl
+getInputStream
+getInstance
+getInt
+getIntent
+getInterfaceDescriptor
+getIpByDNS
+getIpByDNS: 
+getIpByHost
+getIpByHost: 
+getIpListFromServer
+getJSONArray
+getJSONObject
+getJsonFromUrl
+getKeyCode
+getKeyStore
+getLong
+getLooper
+getMax
+getMessage
+getName
+getOldAndroidVersion
+getOldSystemVersion
+getOldSystemVersion: 
+getOperatorId
+getPackageName
+getPageInfo
+getParentFile
+getPlatform
+getProductCode
+getProductSubCode
+getProgress
+getRandomIntervalInMins
+getRealProgress
+#getRealProgress: downloadProgress: 
+getReleaseNumber
+getRes
+getResources
+getResponseCode
+getRunningTasks
+getService
+getSocketFactory
+getStatus
+getStatus: 
+getString
+getStringExtra
+getStringFromFile
+getStringFromUrlByHttps
+getStringFromUrlByHttps: 
+getSystemService
+getSystemUpdateProgress
+getSystemUpdateProgress!!
+getText
+getTimeInMillis
+getToDisplayVersion
+getTrustManagers
+getType
+getURLByHost
+getUpgradePath
+getUpgradeProgress
+getUpgradeProgress!!
+ getUpgradeProgress!!: progress: 
+.getUpgradeProgress, currentUpgradeInfo is null
+<getUpgradeProgress, currentUpgradeInfo status is incorrect: 
+getUpgradeType
+getValue
+getWidth
+getWindow
+handleMessage
+has ui
+hasNext
+hasUpgradeUICallback
+heightMeasureSpec
+hexString
+hideAll
+hint1_blue
+hint1_marginLeft
+hint1_marginTop
+hint1_text_size
+hint2_marginTop
+hint2_width
+hostname
+-https://120.134.33.8/domain_ip/domain_ip.json
+-https://42.62.94.110/domain_ip/domain_ip.json
+!https://pandora.mi.com/dns/q?d=%s
+ic_launcher
+!icon_background_system_detectting
+icon_bg
+icon_mitu
+icon_system_detectting
+in rebooting return!!
+3incorrect status, just do normal reboot or shutdown
+incremental
+incremental: 
+index
+index2
+indexOf
+info is null
+info is null, start check
+init ok!!
+initHttps
+initRemoteService
+initRemoteService!!
+initService
+insert
+installPackage
+installPackage result!!: %b
+installPackage>>
+installSuccess
+intValue
+intelligent_update
+intent
+intent: 
+intentFilter
+interval
+ipLen
+ipList
+ipListFromServer
+isDirectory
+isEmpty
+isExpired
+isExpired! 
+isFile
+isFirstRun
+isForce
+isForceUpgrade
+isForceUpgrade, force: 
+isGITV
+isHKVersion
+isIdle
+isInit
+isNewPackageAvailable
+isPlayingVideo
+isReady
+isReboot
+isScreenOn
+isShow
+isShowing
+isSuccess
+isTest
+isThirdPartyPlayingVideo
+isToTrunkVersion
+isTrunkVersion
+isTvProduct
+isVideoPlaying
+isWaitToReboot
+isZipFile
+iterator
+iv_line
+jsonArray
+jsonString
+keep cache file
+keystore_bks
+lParam
+lastIndexOf
+lastModified
+lastModify
+lastModify: 
+layout
+leftPressed
+leftReleased
+length
+lineNumber
+lineStr
+line_between_hints_marginTop
+line_settings_long
+line_width
+lines
+listFiles
+listener
+loadLibrary
+loadUpgradeContext
+loading_bar_system_update
+loading_progressbar_height
+loading_progressbar_width
+loading_rotate
+localFile
+location_title
+logEventEx
+6logEventEx eEvent(%d) wParam(%d) lParam(%d) exData(%s)
+logUpgradeInfo
+logUpgradeInfo, status: 
+ logUpgradeInfoWithStartTimeInSec
+logger
+loglevel
+longValue
+mButtonView
+mCache
+mCancelButton
+mCancelDialogRunnable
+mCenterTextView
+mChecktUpgradeCacheFileTask
+mCircleProgressBar
+mConfirmUpgradeButton
+mConfirmUpgradeButton on click
+mCurrentDownloadProgress
+mCurrentDownloadProgress!: 
+mCurrentPage
+mCurrentUpgradeInfo
+mCurrentUpgradeInfo is null
+mDialog
+mDownloadComplete
+mDownloadContext
+mDownloadPart
+mFakeMode
+mHandler
+mHostVerifier
+mInRebooting
+mInstance
+mIntent
+.mIntent is null in onStartCommand, start check
+mIntent is null.
+mLineImageView
+mLineNumber
+mListener
+mListeners
+mListeners: 
+mLock
+mLogger
+mMask
+mMatrix
+mMituView
+mNoteText
+mNoteTextView
+mNotificationVersion
+mOkButton
+mOldProgress
+mPackageFile
+mPageInfoTextView
+mPaint
+mPerferences
+mProgress
+mProgressBmp
+mProgressLightBmp
+mProgressLightOriginalBmp
+mProgressOriginalBmp
+mReadyPostUpdate
+mReboot
+mRebootLock
+mReleaseNotePanel
+mReleaseNoteTextView
+mRemote
+mRemoteService
+mRootView
+mRunningTaskList
+mService
+mServiceImpl
+mShowSwitch
+mSslContext
+mStartProgress
+mStartProgress!: 
+mSwitchSystemButton
+mSystemInfo
+mTask
+mThread
+mTimer
+mTitleText
+mTitleTextView
+mTitleView
+mTopTitleFirstTextView
+mTopTitleSecondTextView
+mTotalPage
+mTotalSize
+mTrustManager
+mType
+mUpgradeAfterStartupTask
+mUpgradePath
+mUpgradeStatusTextView
+mUpgradingProgressBar
+mVersion
+mVersionTextView
+mainText
+mask_loading_bar_system_update
+md5bytes
+message
+messagedigest
+mkdir
+mkdir result: 
+myPid
+myScrollingMovementMethod
+mySleep
+nativeCheckUpgradeStatus
+nativeCreateDummyFile
+nativeLogUgpradeInfo
+nativeSetupInterface
+nativeUpgrade
+needClearData
+netspeed_avg
+netspeed_cur
+netspeed_progress
+netspeed_result
+netspeed_unavailable
+netspeed_watermark
+network_error
+&new check failed!! use old upgradeInfo
+new check result : 
+new startChecktUpgradeCacheFile
+new system prop: 
+newConfig
+newInfo
+newInfo, status: 
+newReleaseNote
+newSize
+newUpgrade
+newUpgrade, type: 
+newUpgrade<<
+newUpgradeProcess
+newUpgradeProcess!, type: 
+newUpgradeProcess<<
+newUrl
+newValue
+newVersion
+no-cache
+no_new_version_box
+no_new_version_tv
+not upgrade reboot
+not using ks
+notEmpty
+noteText
+noteTextView
+note_text
+notify
+notifyApp
+notifyApp,status: 
+notifyRetryDownload
+notifySystemIdle
+notifySystemIdle, isScreenOn: 
+notifySystemShutdown
++notifySystemShutdown, mCurrentUpgradeInfo: 
+notifySystemShutdown: 
+now(%d) oldValue(%d) diff(%d)
+numRead
+object
+obtain
+obtainMessage
+ofFloat
+ofPropertyValuesHolder
+old appVersion: 
+old ext: 
+old incremental: 
+old type: 
+oldAndroidVersion
+oldSize
+oldSystemVersion
+oldSystemVersionString
+oldUrl
+oldValue
+onAnimationEnd
+onBackPressed
+onBind
+onBind!!
+onBind, create local service
+onCheckUpgradeResponse
+onClick
+onConfigurationChanged
+onConfigurationChanged: 
+onCreate
+onCreate?????
+onDestroy
+onDown
+onDraw
+onLowMemory
+onMeasure
+onPause
+onProgressChanged
+onReceive
+onResume
+onResumeXXX!!!
+onRetryDownload
+onRetryDownload>>
+onSerivceReady
+onStart
+onStartCommand
+onStartCommand!, 
+onStartCommand, type: 
+onStatusUpdate
+onStatusUpdate status %s
+$onStatusUpdate, UpgradeInfo is null!
+onStatusUpdate: 
+onStop
+onTerminate
+onTransact
+onUnbind
+onhide
+openConnection
+openFileInput
+openRawResource
+p_60_white
+package.box.duokanbox.com
+packageFile
+packageFileName
+packageMd5
+packageMd5: 
+packageName
+packagePath
+packagePath: 
+packageSize
+packageSize: 
+packageUrl
+packageUrl2
+packageUrl2: 
+packageUrl: 
+packages
+page_title
+panel
+parent
+parent dir not exist!: 
+parse
+parseFileNameFromUrl
+parseInt
+pb_progress_bar
+pb_upgrade_progress_bar
+pendingIntent
+)post upgrade failed!! do normal shutdown!
+postDelayed
+postInvalidate
+postUpdateAndReboot
+1postUpdateAndReboot, mCurrentUpgradeInfo is null!
+postUpgrade
+postUpgrade>> , shutdown: 
+postUpgradeOk
+power
+pressBack
+printStackTrace
+process
+progress
+progress: 
+putExtra
+putInt
+putString
+pvhAlpha
+pvhSX
+query
+query status: 
+query: 
+queryLocalInterface
+random
+read cache file failed!
+readDNSCache
+readException
+readFromFile
+readFromFile: 
+readInputStream
+readInt
+readLine
+readObject
+readString
+readStrongBinder
+readSystemAvailableSize
+readUpgradeContext ok! info: 
+reader
+ready
+realProgress
+realProgress: 
+reason
+reboot
+ reboot status wrong!! Status is 
+reboot: 
+rebootOnSingleSystem
+(rebootOnSingleSystem, delay(%b) path(%s)
+rebootReason
+reboot_error
+reboot_tips_box
+reboot_tips_tv
+rebooting_box
+rebooting_now
+rebooting_tv
+receive ACTION_SCREEN_OFF
+receive ACTION_SCREEN_ON
+receive AUTO_UPGRADE_ACTION
+)receive INTELLIGENT_UPDATE_CHANGED_INTENT
+receive MANUAL_UPGRADE_ACTION
+receive ScreensaverBeginIntent
+receive ScreensaverEndIntent
+receive SystemIdleIntent!
+,receive android.intent.action.BOOT_COMPLETED
+receive invalid action: 
+recycle
+redirectErrorStream
+redo upgrade!
+redoUpgrade
+registerListener
+registerListener ok!!
+registerNameMapping
+registerReceiver
+registerReceivers
+release
+releaseLock
+releaseNoteMd5
+releaseNoteText
+releaseNoteText: 
+releaseNoteZipPath
+releaseOfFile
+$releaseOfFile %s  releaseOfTarget %s
+releaseOfTarget
+releaseWifiLock
+releasenotes
+remote
+remoteService is null
+remotelistener
+remove
+remove removeListener: 
+removeCallbacks
+removeListener
+removeTask
+removeUpgradeCacheFile
+replace
+reply
+requestFocus
+resId
+reset
+resetBootSystemValue
+resetProgress
+resolver
+restoreToCount
+result
+result: 
+retryCount
+rewrite
+rightPressed
+rightReleased
+ro.build.version.incremental
+ro.build.version.release
+rootPath
+rotationY
+sContext
+sInstance
+sResources
+saveLayer
+saveStartUpgradeTime
+scaleX
+schedule
+scraper.duokanbox.com
+scrollDown
+scrollUp
+scroll_bar
+scroll_bar_line
+scrollbar
+scrollbar_height
+scrollbar_margin_left
+scrollbar_margin_top
+scrollbar_thumb
+scrollbar_width
+sendBroadcast
+sendMessage
+sendNotification
+:sendNotification!!, mCurrentUpgradeInfo.availableVersion: 
+sendNotification!!>>
+sendProgressMessage
+sendStatusBroadcast
+sendStickyBroadcast
+sendUpdateMessage
+sendUpgradeDoneNotification
+sendUpgradeLogInfo
+sendUpgradeLogInfo: 
+sendUpgradeNotifyIntent
+sendUpgradeNotifyIntent>>
+separator
+serialVersionUID
+service.update.force.update
+session
+set confirm!!
+set start Time
+setAction
+setClass
+setConnectTimeout
+setContentView
+setDefaultHostnameVerifier
+setDefaultSSLSocketFactory
+setDownloadErrorMessage
+setDuration
+setExecutable
+setFilterBitmap
+setFirstRun
+setFlags
+setForceReboot
+;setForceReboot: another thread id doing postUpdateAndReboot
+setHostnameVerifier
+setIdleStatus
+setInterpolator
+setMainText
+setMask
+setMax
+setMeasuredDimension
+setMovementMethod
+setNegativeButton
+setNoteText
+setOnClickListener
+setOnServicereadyListener
+setPositiveButton
+setPriority
+setProgress
+setProgressDrawable
+setProgressLightDrawable
+setReadTimeout
+setReadable
+setRebootUpgrade
+setRebootUpgrade: 
+setRequestProperty
+setSSLSocketFactory
+setScale
+setScreenIsOn
+setScreenOnIdleStatus
+setScreenSaverEnabled
+setScrollListener
+setStringToFile
+setSubText
+setSystemProperty
+setTag
+setText
+setTickerText
+setTitleText
+setType
+setUpgradeTask
+setVisibility
+setWritable
+setXfermode
+setupButton
+setupButton!!!!!!!!!
+setupNoteText
+setupPageInfo
+setupSystemInfo
+shold not be here
+should not be there!!
+shouldForceReboot
+shouldKeepThisFile
+shouldShowDialog
+#show CheckingCurrentReleaseInfoPage
+show CheckingPage
+show Dialog
+show MessagePage: 
+show NoNewVersionPage
+show RebootPage
+show RebootingPage
+show ShowNewVersionPage!!!
+show UpgradingPage
+showAll
+showCurrentReleaseInfo
+showDefferDownload
+showDialog
+showDiskFull
+showMituAnim
+showNetWorkError
+showNoNewVersion
+showSwitch
+showSwithNotify
+showSwithNotify2
+shuffle
+shutdown
+shutdownOrReboot
+shutdownOrReboot: 
+sleep
+ space no enough for dummy file: 
+spaceLeft
+spaceLeft: 
+split
+sslSocketFactory
+start
+startActivity
+startAutoUpgrade
+startAutoUpgrade, type: 
+startAutoUpgrade: 
+startCheckByPeriod
+startCheckByPeriod every 1 hour
+startCheckUpgradeAfterStartup
+startCheckUpgradeAfterStartup!
+startChecktUpgradeCacheFile
+startHideAnimation
+startId
+startIntent
+startNotificationDialog
+startNotificationDialog!!>>
+startPostUpdate
+startPostUpdate ok!!
+startPostUpgrade
+startPostUpgrade>>
+startPostUpgrade>> m3 return!
+startPreUpdate
+startPreUpgrade
+startPreUpgrade>>
+startPreUpgrade>> m3 return!
+startService
+startServiceTask
+startShowAnimation
+startTime
+startTime: 
+startTimer
+startUpdate
+startUpdate ok!!
+startUpdateService
+startUpgrade
+startUpgrade: 
+startUpgrade>> m3!
+startUpgrade>>, path: 
+startUpgrade>>, progress < 0
+startUpgrade>>, progress >= 100
+startUpgradeProcess<<
+startUpgradeService
+startupgradetime
+status
+status: 
+statusText
+stopUpdateService
+stream
+string
+style
+subFiles
+subTest
+subText
+substring
+successLogEvent
+switch
+switch system!!
+switchSystem
+switch_system
+switch_system_tips_1
+switch_system_tips_2
+switch_system_wipe
+sys.build.ReleaseVersionP
+sys.build.appBranchP
+sys.build.appVersionExtP
+sys.build.appVersionP
+sys.build.osVersionP
+sys.update.delay
+sys.update.progress
+sys.version.switch.compatible
+sysVersions
+systemInfo
+system_upgrade
+targetVersion
+targetVersionBeforeUpgrade
+task topActivity: 
+test onClick
+test!! check result : 
+testConditionToReboot
+CtestConditionToReboot: isIdle(%b) isScreenOn(%b) isWaitToReboot(%b)
+testReboot val: 
+this$0
+this$1
+threshold
+threshold: 
+timeout, reboot!!!
+timeoutInSec
+timeoutTask
+times
+title
+titleText
+title_arrow_marginTop
+title_big
+title_content
+title_first
+title_marginLeft
+title_marginTop
+title_second
+title_small
+title_text_marginLeft
+toByteArray
+toCharArray
+toHexString
+toString
+topActivity
+totalSize
+transact
+translationY
+translucent_background
+transparent
+trigger
+trimAll
+trunk
+trunk_version
+try get host resutl: 
+try get host!: 
+try to start updateservice
+try to stop updateservice
+tryLock
+tv_center_text_view
+tv_dialog_release_note
+tv_dialog_version
+tv_hint1
+tv_hint2
+tv_page_info
+tv_reboot_tips
+tv_switch_system
+tv_upgrade_status
+type: 
+type:upgrade|type:silent
+type=trunk
+ubootenv.var.updatestat
+unlock
+update
+updateProgress
+update_system
+updateservice
+upgrade
+upgrade.duokanbox.com
+upgrade.g.duokanbox.com
+upgrade.ptmi.gitv.tv
+upgrade.t001.ottcn.com
+upgradeInfo
+upgradeProgress
+upgradeType
+upgrade_button_marginTop
+upgrade_dialog
+!upgrade_dialog_button_margin_left
+ upgrade_dialog_button_margin_top
+upgrade_dialog_button_text_size
+upgrade_dialog_cancel
+upgrade_dialog_height
+upgrade_dialog_mitu
+upgrade_dialog_mitu_height
+upgrade_dialog_mitu_margin_left
+upgrade_dialog_mitu_margin_top
+upgrade_dialog_mitu_width
+"upgrade_dialog_release_margin_left
+!upgrade_dialog_release_margin_top
+ upgrade_dialog_release_text_size
+upgrade_dialog_release_width
+upgrade_dialog_title
+ upgrade_dialog_title_margin_left
+upgrade_dialog_title_margin_top
+upgrade_dialog_title_text_size
+"upgrade_dialog_version_margin_left
+!upgrade_dialog_version_margin_top
+ upgrade_dialog_version_text_size
+upgrade_dialog_width
+upgrade_done_box
+upgrade_done_tv
+upgrade_error
+upgrade_info
+upgrade_note_text_space
+upgrade_note_text_view_height
+upgrade_notification
+!upgrade_notification_failure_text
+upgrade_notification_text
+upgrade_notification_title
+upgrade_now
+upgrade_ok
+upgrade_pageinfo_marginLeft
+upgrade_pageinfo_marginTop
+upgrade_pageinfo_width
+upgrade_progress_bar_height
+upgrade_progress_bar_marginLeft
+ upgrade_progress_bar_marginRight
+upgrade_progress_bar_marginTop
+upgrade_progress_bar_width
+upgrade_reboot_tip_marginTop
+$upgrade_release_note_arrow_marginTop
+*upgrade_release_note_left_arrow_marginLeft
++upgrade_release_note_right_arrow_marginLeft
+upgrade_release_note_text_size
+upgrade_status
+upgrade_status_marginLeft
+upgrade_status_marginTop
+upgrade_status_text_size
+upgrade_switch_confirm_main
+upgrade_switch_confirm_sub
+upgrade_switch_confirm_title
+upgradecontext.dat
+upgrading
+uploadUpgradeFailureLog
+uploadUpgradeFailureLog<<
+uploadUpgradeFailureLog>>
+userLevel
+userlevel!: 
+using ks 
+utf-8
+v2_mitv_dialog_root_background
+val$eEvent
+val$exData
+val$lParam
+val$wParam
+value
+valueOf
+values
+verify
+version
+!version format is invalid! %s, %s
+version1
+version2
+versionBeforeUpgrade: 
+versionExtension
+versionExtension: 
+&video playing, do not do force upgrade
+wParam
+wait delay: 
+wait to connect
+waitIdleToReboot
+waitIdleToReboot<<
+waitIdleToReboot>>
+waitingTime
+waitingTime: 
+which
+widget
+widthMeasureSpec
+write
+writeCacheFile
+writeCacheFile: filePath(%s)
+!writeCacheFile: title(%s) dir(%s)
+writeDNSCache
+writeInt
+writeInterfaceToken
+writeNoException
+writeString
+writeStrongBinder
+writeTempLog
+writeToFile
+writeUpgradeCacheFile
+xiaoqiang_ap_name
+xtmArray
+Nim<F
+xYKL-./
+zY--x0K
+ikLkikikik
+;yZ[ZZ[Z[Z[Z
+=yyK[
+ZZZZZ
+Kz^zKZ
+K-LxyK
+5Z<<<<<x><=
+kYi![L
+5Zx<M
+5Zx><=
+5Zix><=
+,<<KK-
+yK>Ln
+ix-^y[y
+;KKLKKKLKL.
+ZZZ[-\|
+i;xy.{-<./x{/
+,y==L
+-i[=j
+x>yjx
+yix< 
+ixl|.
+ixi]>ixi<i
+=iZ}j
+]=k<Z=K
+K<\=[>
+Ki0x0
+zy<=x
+i----i}
+-ZK-?-lK
+",-=<>
+-@-Zz
+O->.M
+z;KA<
+K[K\x<
+KZ.KZ/

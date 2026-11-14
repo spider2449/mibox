@@ -1,0 +1,9 @@
+﻿{
+    "Port":  "COM6",
+    "DeviceToHostReady":  true,
+    "HostRoundTripAck":  true,
+    "AdbShellRestored":  true,
+    "ElapsedSeconds":  48.3876104,
+    "DeviceStateDirectory":  "/data/local/tmp/mibox-acm-test-v3",
+    "Evidence":  "F:\\coding\\otherPrj\\mibox\\artifacts\\usb-acm\\20261113-224055"
+}

@@ -1,0 +1,26 @@
+﻿[
+    {
+        "File":  "cmdline.txt",
+        "Hash":  "51CD398C682CC9C97B9480458E9FD5D26A63B15DC4915D25C24756AC97B75742"
+    },
+    {
+        "File":  "dmesg.txt",
+        "Hash":  "839D10CA873CE61812434C9909361F7175108638B148B13299579D6D495D93FE"
+    },
+    {
+        "File":  "iomem.txt",
+        "Hash":  "E664FDB49173269A6AA147AD200C9070EF2E0113873EC93FAA6ED5C4E42E7A51"
+    },
+    {
+        "File":  "symbols.txt",
+        "Hash":  "F5DF3C518FBF247F84EDF3190D20AF6F580B1F9F91F3A27423345FD524B9F9F7"
+    },
+    {
+        "File":  "usb.txt",
+        "Hash":  "E889E3ACF58D06B742DED0DC847B3316D18C9A95C70B6C0EB40A76C1DC6E4488"
+    },
+    {
+        "File":  "watchdog.txt",
+        "Hash":  "078F8A817D7166DF75682BB2A3DD9138D876DD43068ECC63909393527B1D63CF"
+    }
+]

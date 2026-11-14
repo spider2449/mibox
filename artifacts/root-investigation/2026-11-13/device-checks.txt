@@ -1,0 +1,344 @@
+﻿#!/system/bin/sh
+
+
+
+# remove dot patch files
+
+/system/xbin/busybox rm /tmp/update/system/{,*/,*/*/,*/*/*/,*/*/*/*/,*/*/*/*/*/,*/*/*/*/*/*/}*.patch
+
+
+
+# remove root tools files
+
+/system/xbin/busybox rm -r /tmp/update/system/bin/.usr
+
+/system/xbin/busybox rm -r /tmp/update/system/usr/iku/
+
+/system/xbin/busybox rm /tmp/update/system/bin/debuggerd_real
+
+/system/xbin/busybox rm /tmp/update/system/bin/start-ssh
+
+/system/xbin/busybox rm /tmp/update/system/bin/su
+
+/system/xbin/busybox rm /tmp/update/system/etc/install_recovery.sh
+
+/system/xbin/busybox rm /tmp/update/system/etc/install-recovery.sh-ku.bak
+
+/system/xbin/busybox rm /tmp/update/system/kroot_20150728132051.txt
+
+/system/xbin/busybox rm /tmp/update/system/usr/icu/icusuflag.conf
+
+/system/xbin/busybox rm /tmp/update/system/xbin/krdem
+
+/system/xbin/busybox rm /tmp/update/system/xbin/ku.sud
+
+/system/xbin/busybox rm /tmp/update/system/xbin/su
+
+#!/system/bin/sh
+
+/system/xbin/busybox rm /tmp/update/system/{,*/,*/*/,*/*/*/,*/*/*/*/,*/*/*/*/*/,*/*/*/*/*/*/}*.patch
+
+PID   USER     TIME   COMMAND
+
+    1 root       0:07 /init
+
+    2 root       0:00 [kthreadd]
+
+    3 root       0:02 [ksoftirqd/0]
+
+    5 root       0:00 [kworker/0:0H]
+
+    7 root       0:00 [migration/0]
+
+    8 root       0:15 [rcu_preempt]
+
+    9 root       0:00 [rcu_bh]
+
+   10 root       0:00 [rcu_sched]
+
+   11 root       0:00 [watchdog/0]
+
+   12 root       0:00 [watchdog/1]
+
+   13 root       0:00 [migration/1]
+
+   14 root       0:01 [ksoftirqd/1]
+
+   16 root       0:00 [kworker/1:0H]
+
+   17 root       0:00 [khelper]
+
+   18 root       0:00 [kdevtmpfs]
+
+   19 root       0:00 [suspend]
+
+   20 root       0:03 [kthread_hdmi]
+
+   21 root       0:00 [writeback]
+
+   22 root       0:00 [bioset]
+
+   23 root       0:00 [kblockd]
+
+   24 root       0:00 [khubd]
+
+   26 root       0:00 [cfg80211]
+
+   27 root       0:00 [khungtaskd]
+
+   28 root       0:02 [kswapd0]
+
+   29 root       0:00 [fsnotify_mark]
+
+   30 root       0:00 [cifsiod]
+
+   31 root       0:00 [crypto]
+
+   48 root       0:00 [kthrotld]
+
+   49 root       0:00 [kpsmoused]
+
+   50 root       0:00 [cfinteractive]
+
+   51 root       0:00 [NULL_task_for_h]
+
+   52 root       0:00 [cpu_hotplug_gdb]
+
+   53 root       0:00 [cpu_idle_gdbs]
+
+   54 root       0:00 [binder]
+
+   55 root       0:00 [ge2d_monitor]
+
+   56 root       0:11 [kthread_di]
+
+   57 root       0:00 [dwc_otg]
+
+   58 root       0:09 [kworker/1:1]
+
+   62 root       0:13 [kthread_rdma]
+
+   63 root       0:18 [irq/60-sdio]
+
+   64 root       0:00 [irq/101-mmc_in]
+
+   65 root       0:00 [irq/102-mmc_out]
+
+   66 root       0:23 [mmcqd/1]
+
+   67 root       0:00 [mmcqd/1boot0]
+
+   68 root       0:00 [mmcqd/1boot1]
+
+   69 root       0:00 [rtc]
+
+   70 root       0:10 [kthread_hdcp]
+
+   71 root       0:01 [vmalloc_ion]
+
+   77 root       0:00 [krfcommd]
+
+   78 root       0:00 [deferwq]
+
+   79 root       0:00 [f_mtp]
+
+   80 root       0:00 [file-storage]
+
+   82 root       0:00 [kthread_cec]
+
+   83 root       0:00 /sbin/ueventd
+
+   85 root       0:00 [kworker/0:1H]
+
+   86 root       0:00 [jbd2/mmcblk0p9-]
+
+   87 root       0:00 [ext4-dio-unwrit]
+
+   91 root       0:00 [jbd2/mmcblk0p10]
+
+   92 root       0:00 [ext4-dio-unwrit]
+
+   96 root       0:08 [jbd2/mmcblk0p11]
+
+   97 root       0:00 [ext4-dio-unwrit]
+
+   98 root       0:00 [kworker/u5:0]
+
+  117 root       0:00 [kworker/1:1H]
+
+  136 root       0:00 /sbin/healthd
+
+  137 system     0:36 /system/bin/servicemanager
+
+  138 root       0:00 /system/bin/vold
+
+  140 root       0:07 /system/bin/netd
+
+  141 root       0:00 /system/bin/debuggerd
+
+  142 system     4:08 /system/bin/surfaceflinger
+
+  143 root       0:08 zygote /bin/app_process -Xzygote /system/bin --zygote --s
+
+  145 drm        0:00 /system/bin/drmserver
+
+  146 media      0:02 /system/bin/mediaserver
+
+  147 root       0:02 /system/bin/installd
+
+  149 keystore   0:01 /system/bin/keystore /data/misc/keystore
+
+  150 system     0:02 /system/bin/sensord
+
+  151 system     0:00 /system/bin/bluetoothdeviceserver_daemon
+
+  152 root       0:00 /system/bin/pppoe_wrapper
+
+  154 input      0:00 /system/bin/cursorservice
+
+  160 nobody     0:05 /system/bin/YstCdnManager
+
+  161 nobody     0:00 /system/bin/YstLoginSrv
+
+  162 nobody     0:00 /system/bin/YstQOSASS
+
+  169 media_rw   0:27 /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/sh
+
+  186 system     0:00 /system/bin/hdmiswitchd
+
+  189 system     0:00 /vendor/bin/dktvsupervisor
+
+  517 system     5:01 system_server
+
+  595 root       0:01 [wl_event_handle]
+
+  596 root       0:01 [dhd_watchdog_th]
+
+  597 root       0:09 [dhd_dpc]
+
+  598 root       0:00 [dhd_sysioc]
+
+  601 u0_a38     0:02 {ndroid.systemui} com.android.systemui
+
+  614 system     0:04 /system/bin/usbtestpm
+
+  615 system     0:11 {iaomi.tvservice} xiaomi.tvservice
+
+  625 bluetoot   0:01 {droid.bluetooth} com.android.bluetooth
+
+  697 wifi       0:04 /system/bin/wpa_supplicant -iwlan0 -Dnl80211 -c/data/misc
+
+  717 system     0:05 {i.mitv.systemui} com.xiaomi.mitv.systemui
+
+  740 system     0:00 {.tv.nameservice} com.xiaomi.tv.nameservice
+
+  756 u0_a36     0:09 {utmethod.pinyin} com.android.inputmethod.pinyin
+
+  767 system     0:01 {mi.mitv.upgrade} com.xiaomi.mitv.upgrade
+
+  778 system     0:01 {i.dlnatvservice} com.xiaomi.dlnatvservice
+
+  794 system     0:01 {ion.photoviewer} com.duokan.application.photoviewer
+
+  805 system     0:00 {aomi.milink.udt} com.xiaomi.milink.udt
+
+  815 system     0:03 com.xiaomi.xmsf
+
+  860 u0_a42     0:16 {om.shafa.market} com.shafa.market
+
+  904 u0_a42     2:48 {a.market.remote} com.shafa.market.remote
+
+ 1039 u0_a42     0:05 sh
+
+ 1063 u0_a42     0:00 sh
+
+ 1066 u0_a42     0:09 adb -P 5038 fork-server server
+
+ 1082 u0_a42     0:00 sh
+
+ 1119 system     0:00 {iaomi.statistic} com.xiaomi.statistic
+
+ 1507 system     0:22 {troller.service} com.xiaomi.mitv.remotecontroller.servic
+
+ 1588 system     0:01 {h.tvpushservice} com.xiaomi.mitv.tvpush.tvpushservice
+
+ 1663 u0_a260    0:03 {ui.tv.analytics} com.miui.tv.analytics
+
+ 2000 system     2:58 {an.airkan.tvbox} com.duokan.airkan.tvbox
+
+ 2311 root       0:00 [kworker/u5:1]
+
+ 2317 u0_a42     0:02 {xg_watchdog} /data/data/com.shafa.market/lib/libtpnsWatc
+
+ 2430 system     0:47 {mitv.smartshare} com.xiaomi.mitv.smartshare
+
+ 2832 u0_a42     0:00 sh
+
+ 2846 u0_a42     0:00 sh
+
+ 3260 root       0:00 /system/bin/smbd
+
+ 5314 u0_a42     8:35 {t:xg_service_v2} com.shafa.market:xg_service_v2
+
+ 5354 u0_a42     0:17 {fa.market.extra} com.shafa.market.extra
+
+ 5940 shell      0:03 /sbin/adbd
+
+ 6167 u0_a258    0:00 {ystemAdSolution} com.miui.systemAdSolution
+
+ 6206 root       0:00 [kworker/0:2]
+
+ 6265 root       0:00 [kworker/1:2]
+
+ 7738 system     5:33 {aomi.tv.gallery} com.xiaomi.tv.gallery
+
+ 7851 system     0:04 {:centralservice} com.xiaomi.mitv.tvmanager:centralservic
+
+ 7878 u0_a8      0:00 {id.defcontainer} com.android.defcontainer
+
+ 7909 system     0:00 {ettings:speedup} com.xiaomi.mitv.settings:speedup
+
+ 7953 system     0:05 {i.mitv.appstore} com.xiaomi.mitv.appstore
+
+ 8074 u0_a11     0:01 {d.process.media} android.process.media
+
+ 8108 root       0:03 [kworker/u4:0]
+
+ 8415 system     0:08 com.mitv.care
+
+ 8464 system     0:14 com.mitv.tvhome
+
+ 8803 system     0:00 {mi.devicereport} com.xiaomi.devicereport
+
+ 9222 root       0:01 [kworker/u4:1]
+
+ 9238 root       0:04 [kworker/0:1]
+
+ 9765 root       0:03 [kworker/0:0]
+
+ 9796 root       0:01 [kworker/u4:2]
+
+10141 shell      0:00 /system/bin/sh -c cat /data/local/tmp/plugs/save_the_worl
+
+10144 shell      0:00 /system/xbin/busybox ps
+
+srw-rw---- system   system            2026-11-13 21:02 adbd
+
+srw-rw---- root     inet              1970-01-01 08:00 dnsproxyd
+
+srw------- system   system            1970-01-01 08:00 installd
+
+srw-rw---- root     system            1970-01-01 08:00 mdns
+
+srw-rw---- root     system            1970-01-01 08:00 netd
+
+srwxrwxrwx root     system            1970-01-01 08:00 pppoe_wrapper
+
+srw-rw-rw- root     root              1970-01-01 08:00 property_service
+
+srw-rw-rw- root     mount             1970-01-01 08:00 vold
+
+srw-rw---- wifi     wifi              1970-01-02 08:00 wpa_wlan0
+
+srw-rw---- root     system            1970-01-01 08:00 zygote
+

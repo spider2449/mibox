@@ -1,0 +1,94 @@
+﻿--------- beginning of /dev/log/system
+
+--------- beginning of /dev/log/main
+
+11-14 06:16:43.517 D/RootManager(  980): Sending command(s): adb -s  emulator-5554  shell  id 
+
+11-14 06:16:43.537 D/RootManager(  980): Sending command(s): adb -s  127.0.0.1:5555  shell  id 
+
+11-14 06:16:43.567 D/RootManager(  980): Sending command(s):  adb connect  192.168.1.222
+
+11-14 06:16:43.587 D/RootManager(  980): Sending command(s): adb -s 192.168.1.222:5555 shell  id 
+
+11-14 06:16:43.607 D/ShafaADB(  980): connect  no 
+
+11-14 06:16:43.607 D/RootManager(  980): Sending command(s): setprop persist.service.adb.enable 1
+
+11-14 06:16:43.617 D/RootManager(  980): Sending command(s): setprop service.adb.tcp.port 5555
+
+11-14 06:16:43.637 D/RootManager(  980): Sending command(s): start adbd
+
+11-14 06:16:43.647 D/RootManager(  980): Sending command(s):  adb connect 127.0.0.1 
+
+11-14 06:16:53.657 D/RootManager(  980): Sending command(s): adb -s  emulator-5554  shell  id 
+
+11-14 06:16:53.707 D/RootManager(  980): Sending command(s): adb -s  127.0.0.1:5555  shell  id 
+
+11-14 06:16:53.737 D/RootManager(  980): Sending command(s):  adb connect  192.168.1.222
+
+11-14 06:16:53.757 D/RootManager(  980): Sending command(s): adb -s 192.168.1.222:5555 shell  id 
+
+11-14 06:16:53.777 D/ShafaADB(  980): connect  no 
+
+11-14 06:16:53.777 D/RootManager(  980): Sending command(s): setprop persist.service.adb.enable 1
+
+11-14 06:16:53.787 D/RootManager(  980): Sending command(s): setprop service.adb.tcp.port 5555
+
+11-14 06:16:53.807 D/RootManager(  980): Sending command(s): start adbd
+
+11-14 06:16:53.817 D/RootManager(  980): Sending command(s):  adb connect 127.0.0.1 
+
+11-14 06:17:03.827 D/RootManager(  980): Sending command(s): adb -s  emulator-5554  shell  id 
+
+11-14 06:17:03.837 D/RootManager(  980): Sending command(s): adb -s  127.0.0.1:5555  shell  id 
+
+11-14 06:17:03.867 D/RootManager(  980): Sending command(s):  adb connect  192.168.1.222
+
+11-14 06:17:03.887 D/RootManager(  980): Sending command(s): adb -s 192.168.1.222:5555 shell  id 
+
+11-14 06:17:03.907 D/ShafaADB(  980): connect  no 
+
+11-14 06:17:03.907 D/RootManager(  980): Sending command(s): setprop persist.service.adb.enable 1
+
+11-14 06:17:03.927 D/RootManager(  980): Sending command(s): setprop service.adb.tcp.port 5555
+
+11-14 06:17:03.947 D/RootManager(  980): Sending command(s): start adbd
+
+11-14 06:17:03.967 D/RootManager(  980): Sending command(s):  adb connect 127.0.0.1 
+
+11-14 06:17:13.977 D/RootManager(  980): Sending command(s): adb -s  emulator-5554  shell  id 
+
+11-14 06:17:14.007 D/RootManager(  980): Sending command(s): adb -s  127.0.0.1:5555  shell  id 
+
+11-14 06:17:14.047 D/RootManager(  980): Sending command(s):  adb connect  192.168.1.222
+
+11-14 06:17:14.087 D/RootManager(  980): Sending command(s): adb -s 192.168.1.222:5555 shell  id 
+
+11-14 06:17:14.117 D/ShafaADB(  980): connect  no 
+
+11-14 06:17:14.117 D/RootManager(  980): Sending command(s): setprop persist.service.adb.enable 1
+
+11-14 06:17:14.137 D/RootManager(  980): Sending command(s): setprop service.adb.tcp.port 5555
+
+11-14 06:17:14.167 D/RootManager(  980): Sending command(s): start adbd
+
+11-14 06:17:14.207 D/RootManager(  980): Sending command(s):  adb connect 127.0.0.1 
+
+11-14 06:17:24.217 D/RootManager(  980): Sending command(s): adb -s  emulator-5554  shell  id 
+
+11-14 06:17:24.237 D/RootManager(  980): Sending command(s): adb -s  127.0.0.1:5555  shell  id 
+
+11-14 06:17:24.267 D/RootManager(  980): Sending command(s):  adb connect  192.168.1.222
+
+11-14 06:17:24.297 D/RootManager(  980): Sending command(s): adb -s 192.168.1.222:5555 shell  id 
+
+11-14 06:17:24.317 D/ShafaADB(  980): connect  no 
+
+11-14 06:17:24.317 D/RootManager(  980): Sending command(s): setprop persist.service.adb.enable 1
+
+11-14 06:17:24.337 D/RootManager(  980): Sending command(s): setprop service.adb.tcp.port 5555
+
+11-14 06:17:24.367 D/RootManager(  980): Sending command(s): start adbd
+
+11-14 06:17:24.387 D/RootManager(  980): Sending command(s):  adb connect 127.0.0.1 
+

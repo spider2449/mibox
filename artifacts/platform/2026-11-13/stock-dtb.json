@@ -1,0 +1,2886 @@
+{
+  "totalsize": 11414,
+  "version": 17,
+  "boot_cpuid": 0,
+  "reservations": [],
+  "handles": {
+    "1": "/interrupt-controller",
+    "13": "/amhdmitx/vend_data",
+    "14": "/amhdmitx/pwr_ctrl",
+    "2": "/pinmux/ao_uart",
+    "3": "/pinmux/a_uart",
+    "10": "/pinmux/aml_pwm",
+    "9": "/pinmux/sdio_all_pins",
+    "8": "/pinmux/sdio_clk_cmd_pins",
+    "5": "/pinmux/sd_all_pins",
+    "4": "/pinmux/sd_clk_cmd_pins",
+    "7": "/pinmux/emmc_all_pins",
+    "6": "/pinmux/emmc_clk_cmd_pins",
+    "12": "/pinmux/remote_pin",
+    "11": "/pinmux/aml_dummy_codec_pins",
+    "15": "/pinmux/ethernet_pins"
+  },
+  "sha256": "24b30f1aafe26845839966721b3c083cb3ed49280178276b6114df6d725cb95c",
+  "nodes": {
+    "/": {
+      "compatible": {
+        "hex": "414d4c4f4749432c383732365f4d5800",
+        "cells": [
+          1095584847,
+          1195983660,
+          943141430,
+          1598904320
+        ],
+        "strings": [
+          "AMLOGIC,8726_MX"
+        ]
+      },
+      "model": {
+        "hex": "414d4c4f47494300",
+        "cells": [
+          1095584847,
+          1195983616
+        ],
+        "strings": [
+          "AMLOGIC"
+        ]
+      },
+      "interrupt-parent": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "#address-cells": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "#size-cells": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      }
+    },
+    "/cpus": {
+      "#address-cells": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "#size-cells": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      }
+    },
+    "/cpus/cpu@0": {
+      "device_type": {
+        "hex": "63707500",
+        "cells": [
+          1668314368
+        ],
+        "strings": [
+          "cpu"
+        ]
+      },
+      "compatible": {
+        "hex": "61726d2c636f727465782d613900",
+        "strings": [
+          "arm,cortex-a9"
+        ]
+      },
+      "reg": {
+        "hex": "00000200",
+        "cells": [
+          512
+        ]
+      }
+    },
+    "/cpus/cpu@1": {
+      "device_type": {
+        "hex": "63707500",
+        "cells": [
+          1668314368
+        ],
+        "strings": [
+          "cpu"
+        ]
+      },
+      "compatible": {
+        "hex": "61726d2c636f727465782d613900",
+        "strings": [
+          "arm,cortex-a9"
+        ]
+      },
+      "reg": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      }
+    },
+    "/cache-controller": {
+      "compatible": {
+        "hex": "61726d2c6d65736f6e2d706c3331302d636163686500",
+        "strings": [
+          "arm,meson-pl310-cache"
+        ]
+      },
+      "reg": {
+        "hex": "c420000000001000",
+        "cells": [
+          3290431488,
+          4096
+        ]
+      },
+      "cache-unified": {
+        "hex": "",
+        "cells": []
+      },
+      "cache-level": {
+        "hex": "00000002",
+        "cells": [
+          2
+        ]
+      },
+      "aux-instruction_prefetch": {
+        "hex": "",
+        "cells": []
+      },
+      "aux-data_prefetch": {
+        "hex": "",
+        "cells": []
+      },
+      "aux-ns_lockdown": {
+        "hex": "",
+        "cells": []
+      },
+      "aux-ns_int_ctrl": {
+        "hex": "",
+        "cells": []
+      },
+      "aux-share_override": {
+        "hex": "",
+        "cells": []
+      },
+      "aux-cache_replace_policy_round_robin": {
+        "hex": "",
+        "cells": []
+      },
+      "prefetch-prefetch_offset": {
+        "hex": "00000006",
+        "cells": [
+          6
+        ]
+      }
+    },
+    "/memory": {
+      "device_type": {
+        "hex": "6d656d6f727900",
+        "strings": [
+          "memory"
+        ]
+      },
+      "aml_reserved_start": {
+        "hex": "85000000",
+        "cells": [
+          2231369728
+        ]
+      },
+      "aml_reserved_end": {
+        "hex": "84000000",
+        "cells": [
+          2214592512
+        ]
+      },
+      "phys_offset": {
+        "hex": "80000000",
+        "cells": [
+          2147483648
+        ]
+      },
+      "linux,total-memory": {
+        "hex": "40000000",
+        "cells": [
+          1073741824
+        ],
+        "strings": [
+          "@",
+          "",
+          ""
+        ]
+      }
+    },
+    "/interrupt-controller": {
+      "compatible": {
+        "hex": "61726d2c636f727465782d61392d67696300",
+        "strings": [
+          "arm,cortex-a9-gic"
+        ]
+      },
+      "reg": {
+        "hex": "c430100000001000c430010000000100",
+        "cells": [
+          3291484160,
+          4096,
+          3291480320,
+          256
+        ]
+      },
+      "interrupt-controller": {
+        "hex": "",
+        "cells": []
+      },
+      "#interrupt-cells": {
+        "hex": "00000003",
+        "cells": [
+          3
+        ]
+      },
+      "#address-cells": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "linux,phandle": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "phandle": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      }
+    },
+    "/ion_dev": {
+      "compatible": {
+        "hex": "616d6c6f6769632c696f6e5f64657600",
+        "cells": [
+          1634561135,
+          1734959916,
+          1768910431,
+          1684370944
+        ],
+        "strings": [
+          "amlogic,ion_dev"
+        ]
+      },
+      "dev_name": {
+        "hex": "696f6e5f64657600",
+        "cells": [
+          1768910431,
+          1684370944
+        ],
+        "strings": [
+          "ion_dev"
+        ]
+      },
+      "status": {
+        "hex": "6f6b00",
+        "strings": [
+          "ok"
+        ]
+      },
+      "reserve-memory": {
+        "hex": "02000000",
+        "cells": [
+          33554432
+        ]
+      },
+      "reserve-iomap": {
+        "hex": "7472756500",
+        "strings": [
+          "true"
+        ]
+      }
+    },
+    "/mesonfb": {
+      "compatible": {
+        "hex": "616d6c6f6769632c6d65736f6e666200",
+        "cells": [
+          1634561135,
+          1734959916,
+          1835365231,
+          1852203520
+        ],
+        "strings": [
+          "amlogic,mesonfb"
+        ]
+      },
+      "dev_name": {
+        "hex": "6d65736f6e666200",
+        "cells": [
+          1835365231,
+          1852203520
+        ],
+        "strings": [
+          "mesonfb"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "reserve-memory": {
+        "hex": "0100000000100000",
+        "cells": [
+          16777216,
+          1048576
+        ]
+      },
+      "reserve-iomap": {
+        "hex": "7472756500",
+        "strings": [
+          "true"
+        ]
+      },
+      "vmode": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "scale_mode": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "display_size_default": {
+        "hex": "00000500000004380000050000000ca800000020",
+        "cells": [
+          1280,
+          1080,
+          1280,
+          3240,
+          32
+        ]
+      }
+    },
+    "/deinterlace": {
+      "compatible": {
+        "hex": "616d6c6f6769632c6465696e7465726c61636500",
+        "cells": [
+          1634561135,
+          1734959916,
+          1684367726,
+          1952805484,
+          1633903872
+        ],
+        "strings": [
+          "amlogic,deinterlace"
+        ]
+      },
+      "dev_name": {
+        "hex": "6465696e7465726c61636500",
+        "cells": [
+          1684367726,
+          1952805484,
+          1633903872
+        ],
+        "strings": [
+          "deinterlace"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "reserve-memory": {
+        "hex": "01c00000",
+        "cells": [
+          29360128
+        ]
+      },
+      "reserve-iomap": {
+        "hex": "7472756500",
+        "strings": [
+          "true"
+        ]
+      }
+    },
+    "/mesonstream": {
+      "compatible": {
+        "hex": "616d6c6f6769632c6d65736f6e73747265616d00",
+        "cells": [
+          1634561135,
+          1734959916,
+          1835365231,
+          1853060210,
+          1700883712
+        ],
+        "strings": [
+          "amlogic,mesonstream"
+        ]
+      },
+      "dev_name": {
+        "hex": "6d65736f6e73747265616d2e3000",
+        "strings": [
+          "mesonstream.0"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "reserve-memory": {
+        "hex": "00a00000",
+        "cells": [
+          10485760
+        ]
+      },
+      "reserve-iomap": {
+        "hex": "7472756500",
+        "strings": [
+          "true"
+        ]
+      }
+    },
+    "/vdec": {
+      "compatible": {
+        "hex": "616d6c6f6769632c7664656300",
+        "strings": [
+          "amlogic,vdec"
+        ]
+      },
+      "dev_name": {
+        "hex": "766465632e3000",
+        "strings": [
+          "vdec.0"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "reserve-memory": {
+        "hex": "02000000",
+        "cells": [
+          33554432
+        ]
+      },
+      "reserve-iomap": {
+        "hex": "7472756500",
+        "strings": [
+          "true"
+        ]
+      }
+    },
+    "/ppmgr": {
+      "compatible": {
+        "hex": "616d6c6f6769632c70706d677200",
+        "strings": [
+          "amlogic,ppmgr"
+        ]
+      },
+      "dev_name": {
+        "hex": "70706d677200",
+        "strings": [
+          "ppmgr"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "reserve-memory": {
+        "hex": "01300000",
+        "cells": [
+          19922944
+        ]
+      },
+      "reserve-iomap": {
+        "hex": "7472756500",
+        "strings": [
+          "true"
+        ]
+      }
+    },
+    "/mesonvout": {
+      "compatible": {
+        "hex": "616d6c6f6769632c6d65736f6e766f757400",
+        "strings": [
+          "amlogic,mesonvout"
+        ]
+      },
+      "dev_name": {
+        "hex": "6d65736f6e766f757400",
+        "strings": [
+          "mesonvout"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      }
+    },
+    "/rtc": {
+      "compatible": {
+        "hex": "616d6c6f6769632c616d6c5f72746300",
+        "cells": [
+          1634561135,
+          1734959916,
+          1634561119,
+          1920230144
+        ],
+        "strings": [
+          "amlogic,aml_rtc"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      }
+    },
+    "/uart_ao": {
+      "compatible": {
+        "hex": "616d6c6f6769632c616d6c5f7561727400",
+        "strings": [
+          "amlogic,aml_uart"
+        ]
+      },
+      "port_name": {
+        "hex": "756172745f616f00",
+        "cells": [
+          1969320564,
+          1600220928
+        ],
+        "strings": [
+          "uart_ao"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "dev_name": {
+        "hex": "756172745f616f00",
+        "cells": [
+          1969320564,
+          1600220928
+        ],
+        "strings": [
+          "uart_ao"
+        ]
+      },
+      "pinctrl-names": {
+        "hex": "64656661756c7400",
+        "cells": [
+          1684366945,
+          1970041856
+        ],
+        "strings": [
+          "default"
+        ]
+      },
+      "pinctrl-0": {
+        "hex": "00000002",
+        "cells": [
+          2
+        ]
+      }
+    },
+    "/uart_0": {
+      "compatible": {
+        "hex": "616d6c6f6769632c616d6c5f7561727400",
+        "strings": [
+          "amlogic,aml_uart"
+        ]
+      },
+      "port_name": {
+        "hex": "756172745f6100",
+        "strings": [
+          "uart_a"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "dev_name": {
+        "hex": "756172745f3000",
+        "strings": [
+          "uart_0"
+        ]
+      },
+      "rts_control_pin": {
+        "hex": "4750494f445f3300",
+        "cells": [
+          1196443983,
+          1147089664
+        ],
+        "strings": [
+          "GPIOD_3"
+        ]
+      },
+      "pinctrl-names": {
+        "hex": "64656661756c7400",
+        "cells": [
+          1684366945,
+          1970041856
+        ],
+        "strings": [
+          "default"
+        ]
+      },
+      "pinctrl-0": {
+        "hex": "00000003",
+        "cells": [
+          3
+        ]
+      }
+    },
+    "/bt-dev": {
+      "compatible": {
+        "hex": "616d6c6f6769632c62742d64657600",
+        "strings": [
+          "amlogic,bt-dev"
+        ]
+      },
+      "dev_name": {
+        "hex": "62742d64657600",
+        "strings": [
+          "bt-dev"
+        ]
+      },
+      "gpio_reset": {
+        "hex": "4750494f445f3600",
+        "cells": [
+          1196443983,
+          1147090432
+        ],
+        "strings": [
+          "GPIOD_6"
+        ]
+      },
+      "gpio_reset_level": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "status": {
+        "hex": "6f6b00",
+        "strings": [
+          "ok"
+        ]
+      }
+    },
+    "/btwake_control": {
+      "compatible": {
+        "hex": "616d6c6f6769632c627477616b655f636f6e74726f6c00",
+        "strings": [
+          "amlogic,btwake_control"
+        ]
+      },
+      "dev_name": {
+        "hex": "627477616b655f636f6e74726f6c00",
+        "strings": [
+          "btwake_control"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "gpio_host_wake": {
+        "hex": "4750494f414f5f3200",
+        "strings": [
+          "GPIOAO_2"
+        ]
+      },
+      "host_wake_irq_high": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "host_wake_irq_low": {
+        "hex": "00000002",
+        "cells": [
+          2
+        ]
+      },
+      "gpio_ext_wake": {
+        "hex": "4750494f445f3400",
+        "cells": [
+          1196443983,
+          1147089920
+        ],
+        "strings": [
+          "GPIOD_4"
+        ]
+      }
+    },
+    "/wifi": {
+      "compatible": {
+        "hex": "616d6c6f6769632c616d6c5f62726f6164636d5f7769666900",
+        "strings": [
+          "amlogic,aml_broadcm_wifi"
+        ]
+      },
+      "dev_name": {
+        "hex": "616d6c5f62726f6164636d5f7769666900",
+        "strings": [
+          "aml_broadcm_wifi"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "interrupt_pin": {
+        "hex": "4750494f414f5f3300",
+        "strings": [
+          "GPIOAO_3"
+        ]
+      },
+      "irq_num": {
+        "hex": "00000004",
+        "cells": [
+          4
+        ]
+      },
+      "irq_trigger_type": {
+        "hex": "4750494f5f4952515f4849474800",
+        "strings": [
+          "GPIO_IRQ_HIGH"
+        ]
+      },
+      "power_on_pin": {
+        "hex": "4750494f445f3500",
+        "cells": [
+          1196443983,
+          1147090176
+        ],
+        "strings": [
+          "GPIOD_5"
+        ]
+      },
+      "power_on_pin_level": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "clock_32k_pin": {
+        "hex": "4750494f414f5f3600",
+        "strings": [
+          "GPIOAO_6"
+        ]
+      }
+    },
+    "/sdio": {
+      "compatible": {
+        "hex": "616d6c6f6769632c616d6c5f7364696f00",
+        "strings": [
+          "amlogic,aml_sdio"
+        ]
+      },
+      "dev_name": {
+        "hex": "616d6c5f7364696f2e3000",
+        "strings": [
+          "aml_sdio.0"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "reg": {
+        "hex": "c1108c2000000020",
+        "cells": [
+          3239087136,
+          32
+        ]
+      },
+      "pinctrl-names": {
+        "hex": "73645f636c6b5f636d645f70696e730073645f616c6c5f70696e7300656d6d635f636c6b5f636d645f70696e7300656d6d635f616c6c5f70696e73007364696f5f636c6b5f636d645f70696e73007364696f5f616c6c5f70696e7300",
+        "cells": [
+          1935957859,
+          1818976099,
+          1835294576,
+          1768846080,
+          1935957857,
+          1819041648,
+          1768846080,
+          1701670243,
+          1600351339,
+          1600351588,
+          1601202542,
+          1929405805,
+          1835229025,
+          1819041648,
+          1768846080,
+          1935960431,
+          1600351339,
+          1600351588,
+          1601202542,
+          1929409380,
+          1768906593,
+          1819041648,
+          1768846080
+        ],
+        "strings": [
+          "sd_clk_cmd_pins",
+          "sd_all_pins",
+          "emmc_clk_cmd_pins",
+          "emmc_all_pins",
+          "sdio_clk_cmd_pins",
+          "sdio_all_pins"
+        ]
+      },
+      "pinctrl-0": {
+        "hex": "00000004",
+        "cells": [
+          4
+        ]
+      },
+      "pinctrl-1": {
+        "hex": "00000005",
+        "cells": [
+          5
+        ]
+      },
+      "pinctrl-2": {
+        "hex": "00000006",
+        "cells": [
+          6
+        ]
+      },
+      "pinctrl-3": {
+        "hex": "00000007",
+        "cells": [
+          7
+        ]
+      },
+      "pinctrl-4": {
+        "hex": "00000008",
+        "cells": [
+          8
+        ]
+      },
+      "pinctrl-5": {
+        "hex": "00000009",
+        "cells": [
+          9
+        ]
+      }
+    },
+    "/sdio/sd": {
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "port": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "pinname": {
+        "hex": "736400",
+        "strings": [
+          "sd"
+        ]
+      },
+      "ocr_avail": {
+        "hex": "00200000",
+        "cells": [
+          2097152
+        ],
+        "strings": [
+          "",
+          " ",
+          ""
+        ]
+      },
+      "caps": {
+        "hex": "4d4d435f4341505f345f4249545f44415441004d4d435f4341505f4d4d435f484947485350454544004d4d435f4341505f53445f48494748535045454400",
+        "strings": [
+          "MMC_CAP_4_BIT_DATA",
+          "MMC_CAP_MMC_HIGHSPEED",
+          "MMC_CAP_SD_HIGHSPEED"
+        ]
+      },
+      "f_min": {
+        "hex": "000493e0",
+        "cells": [
+          300000
+        ]
+      },
+      "f_max": {
+        "hex": "02faf080",
+        "cells": [
+          50000000
+        ]
+      },
+      "f_max_w": {
+        "hex": "02faf080",
+        "cells": [
+          50000000
+        ]
+      },
+      "max_req_size": {
+        "hex": "00020000",
+        "cells": [
+          131072
+        ]
+      },
+      "gpio_dat3": {
+        "hex": "434152445f3300",
+        "strings": [
+          "CARD_3"
+        ]
+      },
+      "gpio_cd": {
+        "hex": "434152445f3600",
+        "strings": [
+          "CARD_6"
+        ]
+      },
+      "gpio_power": {
+        "hex": "434152445f3800",
+        "strings": [
+          "CARD_8"
+        ]
+      },
+      "power_level": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "irq_in": {
+        "hex": "00000005",
+        "cells": [
+          5
+        ]
+      },
+      "#irq_in_edge": {
+        "hex": "4750494f5f4952515f46414c4c494e4700",
+        "strings": [
+          "GPIO_IRQ_FALLING"
+        ]
+      },
+      "irq_out": {
+        "hex": "00000006",
+        "cells": [
+          6
+        ]
+      },
+      "#irq_out_edge": {
+        "hex": "4750494f5f4952515f524953494e4700",
+        "cells": [
+          1196443983,
+          1598640721,
+          1599228243,
+          1229866752
+        ],
+        "strings": [
+          "GPIO_IRQ_RISING"
+        ]
+      },
+      "card_type": {
+        "hex": "00000005",
+        "cells": [
+          5
+        ]
+      }
+    },
+    "/sdio/emmc": {
+      "port": {
+        "hex": "00000002",
+        "cells": [
+          2
+        ]
+      },
+      "pinname": {
+        "hex": "656d6d6300",
+        "strings": [
+          "emmc"
+        ]
+      },
+      "ocr_avail": {
+        "hex": "00200000",
+        "cells": [
+          2097152
+        ],
+        "strings": [
+          "",
+          " ",
+          ""
+        ]
+      },
+      "caps": {
+        "hex": "4d4d435f4341505f345f4249545f44415441004d4d435f4341505f4d4d435f484947485350454544004d4d435f4341505f53445f484947485350454544004d4d435f4341505f4e4f4e52454d4f5641424c4500",
+        "strings": [
+          "MMC_CAP_4_BIT_DATA",
+          "MMC_CAP_MMC_HIGHSPEED",
+          "MMC_CAP_SD_HIGHSPEED",
+          "MMC_CAP_NONREMOVABLE"
+        ]
+      },
+      "f_min": {
+        "hex": "000493e0",
+        "cells": [
+          300000
+        ]
+      },
+      "f_max": {
+        "hex": "02faf080",
+        "cells": [
+          50000000
+        ]
+      },
+      "f_max_w": {
+        "hex": "02faf080",
+        "cells": [
+          50000000
+        ]
+      },
+      "max_req_size": {
+        "hex": "00020000",
+        "cells": [
+          131072
+        ]
+      },
+      "gpio_dat3": {
+        "hex": "424f4f545f3300",
+        "strings": [
+          "BOOT_3"
+        ]
+      },
+      "#gpio_cd": {
+        "hex": "434152445f3600",
+        "strings": [
+          "CARD_6"
+        ]
+      },
+      "#gpio_power": {
+        "hex": "434152445f3800",
+        "strings": [
+          "CARD_8"
+        ]
+      },
+      "#power_level": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "card_type": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      }
+    },
+    "/sdio/sdio": {
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "port": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "pinname": {
+        "hex": "7364696f00",
+        "strings": [
+          "sdio"
+        ]
+      },
+      "ocr_avail": {
+        "hex": "00200000",
+        "cells": [
+          2097152
+        ],
+        "strings": [
+          "",
+          " ",
+          ""
+        ]
+      },
+      "caps": {
+        "hex": "4d4d435f4341505f345f4249545f44415441004d4d435f4341505f4d4d435f484947485350454544004d4d435f4341505f53445f484947485350454544004d4d435f4341505f4e4f4e52454d4f5641424c4500",
+        "strings": [
+          "MMC_CAP_4_BIT_DATA",
+          "MMC_CAP_MMC_HIGHSPEED",
+          "MMC_CAP_SD_HIGHSPEED",
+          "MMC_CAP_NONREMOVABLE"
+        ]
+      },
+      "f_min": {
+        "hex": "000493e0",
+        "cells": [
+          300000
+        ]
+      },
+      "f_max": {
+        "hex": "02faf080",
+        "cells": [
+          50000000
+        ]
+      },
+      "f_max_w": {
+        "hex": "02faf080",
+        "cells": [
+          50000000
+        ]
+      },
+      "max_req_size": {
+        "hex": "00020000",
+        "cells": [
+          131072
+        ]
+      },
+      "card_type": {
+        "hex": "00000003",
+        "cells": [
+          3
+        ]
+      }
+    },
+    "/dvfs": {
+      "compatible": {
+        "hex": "616d6c6f6769632c20616d6c6f6769632d6476667300",
+        "strings": [
+          "amlogic, amlogic-dvfs"
+        ]
+      },
+      "#address-cells": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "#size-cells": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "status": {
+        "hex": "6f6b00",
+        "strings": [
+          "ok"
+        ]
+      }
+    },
+    "/dvfs/vcck_dvfs": {
+      "dvfs_id": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "table_count": {
+        "hex": "0000000b",
+        "cells": [
+          11
+        ]
+      },
+      "dvfs_table": {
+        "hex": "00030d40001076d8001076d8000927c0001076d8001076d8000c15c0001076d8001076d8000c73800011807800118078000cd1400011807800118078000f03c00011807800118078000f4240001180780011807800107ac000130ee800130ee800124f8000135150001351500014244000145af000145af00016e36000145af000145af0",
+        "cells": [
+          200000,
+          1079000,
+          1079000,
+          600000,
+          1079000,
+          1079000,
+          792000,
+          1079000,
+          1079000,
+          816000,
+          1147000,
+          1147000,
+          840000,
+          1147000,
+          1147000,
+          984000,
+          1147000,
+          1147000,
+          1000000,
+          1147000,
+          1147000,
+          1080000,
+          1249000,
+          1249000,
+          1200000,
+          1266000,
+          1266000,
+          1320000,
+          1334000,
+          1334000,
+          1500000,
+          1334000,
+          1334000
+        ]
+      }
+    },
+    "/meson_vcck_dvfs_driver": {
+      "compatible": {
+        "hex": "616d6c6f6769632c206d65736f6e5f7663636b5f6476667300",
+        "strings": [
+          "amlogic, meson_vcck_dvfs"
+        ]
+      },
+      "dev_name": {
+        "hex": "6d65736f6e5f7663636b5f647666735f64726976657200",
+        "strings": [
+          "meson_vcck_dvfs_driver"
+        ]
+      },
+      "status": {
+        "hex": "6f6b00",
+        "strings": [
+          "ok"
+        ]
+      },
+      "pinctrl-names": {
+        "hex": "64656661756c7400",
+        "cells": [
+          1684366945,
+          1970041856
+        ],
+        "strings": [
+          "default"
+        ]
+      },
+      "pinctrl-0": {
+        "hex": "0000000a",
+        "cells": [
+          10
+        ]
+      },
+      "use_pwm": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "pmw_controller": {
+        "hex": "50574d5f4300",
+        "strings": [
+          "PWM_C"
+        ]
+      },
+      "table_count": {
+        "hex": "00000010",
+        "cells": [
+          16
+        ]
+      },
+      "cs_voltage_table": {
+        "hex": "00130009001076d80012000a0010b9400011000b0010fba80010000c00113e10000f000d00118078000e000e0011c2e0000d000f00120548000c0010001247b0000b001100128a18000a00120012cc800009001300130ee8000800140013515000070015001393b8000600160013d62000050017001418880004001800145af0",
+        "cells": [
+          1245193,
+          1079000,
+          1179658,
+          1096000,
+          1114123,
+          1113000,
+          1048588,
+          1130000,
+          983053,
+          1147000,
+          917518,
+          1164000,
+          851983,
+          1181000,
+          786448,
+          1198000,
+          720913,
+          1215000,
+          655378,
+          1232000,
+          589843,
+          1249000,
+          524308,
+          1266000,
+          458773,
+          1283000,
+          393238,
+          1300000,
+          327703,
+          1317000,
+          262168,
+          1334000
+        ]
+      }
+    },
+    "/usb_con": {
+      "lm-compatible": {
+        "hex": "6c6f6769636d6f64756c652d62757300",
+        "cells": [
+          1819240297,
+          1668116324,
+          1970038061,
+          1651864320
+        ],
+        "strings": [
+          "logicmodule-bus"
+        ]
+      }
+    },
+    "/usb_con/usb_a": {
+      "lm-compatible": {
+        "hex": "616d6c6f6769632c75736200",
+        "cells": [
+          1634561135,
+          1734959916,
+          1970496000
+        ],
+        "strings": [
+          "amlogic,usb"
+        ]
+      },
+      "lm-periph-id": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "clock-src": {
+        "hex": "7573623000",
+        "strings": [
+          "usb0"
+        ]
+      },
+      "port-id": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "port-type": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "port-speed": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "port-config": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "port-dma": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "port-id-mode": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "gpio-vbus-power": {
+        "hex": "4750494f445f3700",
+        "cells": [
+          1196443983,
+          1147090688
+        ],
+        "strings": [
+          "GPIOD_7"
+        ]
+      },
+      "gpio-work-mask": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      }
+    },
+    "/audio": {
+      "compatible": {
+        "hex": "616d6c6f6769632c616d6c2d69327300",
+        "cells": [
+          1634561135,
+          1734959916,
+          1634561069,
+          1764913920
+        ],
+        "strings": [
+          "amlogic,aml-i2s"
+        ]
+      },
+      "dev_name": {
+        "hex": "616d6c2d6932732e3000",
+        "strings": [
+          "aml-i2s.0"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      }
+    },
+    "/audio_dai": {
+      "compatible": {
+        "hex": "616d6c6f6769632c616d6c2d6932732d64616900",
+        "cells": [
+          1634561135,
+          1734959916,
+          1634561069,
+          1764913965,
+          1684105472
+        ],
+        "strings": [
+          "amlogic,aml-i2s-dai"
+        ]
+      },
+      "dev_name": {
+        "hex": "616d6c2d6932732d6461692e3000",
+        "strings": [
+          "aml-i2s-dai.0"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      }
+    },
+    "/audio_spdif_dai": {
+      "compatible": {
+        "hex": "616d6c6f6769632c616d6c2d73706469662d64616900",
+        "strings": [
+          "amlogic,aml-spdif-dai"
+        ]
+      },
+      "dev_name": {
+        "hex": "616d6c2d73706469662d6461692e3000",
+        "cells": [
+          1634561069,
+          1936745577,
+          1714250849,
+          1764634624
+        ],
+        "strings": [
+          "aml-spdif-dai.0"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      }
+    },
+    "/audio_spdif_codec": {
+      "compatible": {
+        "hex": "616d6c6f6769632c616d6c2d73706469662d636f64656300",
+        "cells": [
+          1634561135,
+          1734959916,
+          1634561069,
+          1936745577,
+          1714250607,
+          1684366080
+        ],
+        "strings": [
+          "amlogic,aml-spdif-codec"
+        ]
+      },
+      "dev_name": {
+        "hex": "73706469662d6469742e3000",
+        "cells": [
+          1936745577,
+          1714250857,
+          1949184000
+        ],
+        "strings": [
+          "spdif-dit.0"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      }
+    },
+    "/dummy_codec_audio": {
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "compatible": {
+        "hex": "616d6c6f6769632c616d6c5f64756d6d795f636f6465635f617564696f00",
+        "strings": [
+          "amlogic,aml_dummy_codec_audio"
+        ]
+      },
+      "dev_name": {
+        "hex": "616d6c5f64756d6d795f636f6465635f617564696f2e3000",
+        "cells": [
+          1634561119,
+          1685417325,
+          2036294511,
+          1684366175,
+          1635083369,
+          1865297920
+        ],
+        "strings": [
+          "aml_dummy_codec_audio.0"
+        ]
+      },
+      "pinctrl-names": {
+        "hex": "64756d6d795f636f6465635f617564696f00",
+        "strings": [
+          "dummy_codec_audio"
+        ]
+      },
+      "pinctrl-0": {
+        "hex": "0000000b",
+        "cells": [
+          11
+        ]
+      }
+    },
+    "/dummy_codec": {
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "compatible": {
+        "hex": "616d6c6f6769632c616d6c5f64756d6d795f636f64656300",
+        "cells": [
+          1634561135,
+          1734959916,
+          1634561119,
+          1685417325,
+          2036294511,
+          1684366080
+        ],
+        "strings": [
+          "amlogic,aml_dummy_codec"
+        ]
+      },
+      "dev_name": {
+        "hex": "64756d6d795f636f6465632e3000",
+        "strings": [
+          "dummy_codec.0"
+        ]
+      }
+    },
+    "/saradc": {
+      "compatible": {
+        "hex": "616d6c6f6769632c73617261646300",
+        "strings": [
+          "amlogic,saradc"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      }
+    },
+    "/ir-meson-mi": {
+      "compatible": {
+        "hex": "616d6c6f6769632c69722d6d65736f6e362d6d6900",
+        "strings": [
+          "amlogic,ir-meson6-mi"
+        ]
+      },
+      "dev_name": {
+        "hex": "69722d6d65736f6e362d6d6900",
+        "strings": [
+          "ir-meson6-mi"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "ao_baseaddr": {
+        "hex": "f3100480",
+        "cells": [
+          4077913216
+        ]
+      },
+      "pinctrl-names": {
+        "hex": "64656661756c7400",
+        "cells": [
+          1684366945,
+          1970041856
+        ],
+        "strings": [
+          "default"
+        ]
+      },
+      "pinctrl-0": {
+        "hex": "0000000c",
+        "cells": [
+          12
+        ]
+      }
+    },
+    "/efuse": {
+      "compatible": {
+        "hex": "616d6c6f6769632c656675736500",
+        "strings": [
+          "amlogic,efuse"
+        ]
+      },
+      "dev_name": {
+        "hex": "656675736500",
+        "strings": [
+          "efuse"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "plat-pos": {
+        "hex": "00000000000001c6",
+        "cells": [
+          0,
+          454
+        ]
+      },
+      "plat-count": {
+        "hex": "0000003a",
+        "cells": [
+          58
+        ]
+      },
+      "usid-min": {
+        "hex": "00000008",
+        "cells": [
+          8
+        ]
+      },
+      "usid-max": {
+        "hex": "0000001f",
+        "cells": [
+          31
+        ]
+      }
+    },
+    "/amhdmitx": {
+      "compatible": {
+        "hex": "616d6c6f6769632c616d68646d69747800",
+        "strings": [
+          "amlogic,amhdmitx"
+        ]
+      },
+      "dev_name": {
+        "hex": "616d68646d69747800",
+        "strings": [
+          "amhdmitx"
+        ]
+      },
+      "status": {
+        "hex": "6f6b00",
+        "strings": [
+          "ok"
+        ]
+      },
+      "vend-data": {
+        "hex": "0000000d",
+        "cells": [
+          13
+        ]
+      },
+      "pwr-ctrl": {
+        "hex": "0000000e",
+        "cells": [
+          14
+        ]
+      },
+      "phy-size": {
+        "hex": "00000003",
+        "cells": [
+          3
+        ]
+      },
+      "phy-data": {
+        "hex": "0000001b00000016000000300000004a0000001600000040000000940000001600000040",
+        "cells": [
+          27,
+          22,
+          48,
+          74,
+          22,
+          64,
+          148,
+          22,
+          64
+        ]
+      }
+    },
+    "/amhdmitx/vend_data": {
+      "vendor_name": {
+        "hex": "5869616f6d6900",
+        "strings": [
+          "Xiaomi"
+        ]
+      },
+      "vendor_id": {
+        "hex": "00acf7f3",
+        "cells": [
+          11335667
+        ]
+      },
+      "product_desc": {
+        "hex": "4d58204d426f782047313952656600",
+        "strings": [
+          "MX MBox G19Ref"
+        ]
+      },
+      "cec_osd_string": {
+        "hex": "4d69424f58315300",
+        "cells": [
+          1298743887,
+          1479627520
+        ],
+        "strings": [
+          "MiBOX1S"
+        ]
+      },
+      "linux,phandle": {
+        "hex": "0000000d",
+        "cells": [
+          13
+        ]
+      },
+      "phandle": {
+        "hex": "0000000d",
+        "cells": [
+          13
+        ]
+      }
+    },
+    "/amhdmitx/pwr_ctrl": {
+      "pwr_5v_on": {
+        "hex": "637075004750494f435f3134004800",
+        "strings": [
+          "cpu",
+          "GPIOC_14",
+          "H"
+        ]
+      },
+      "pwr_5v_off": {
+        "hex": "637075004750494f435f3134004c00",
+        "strings": [
+          "cpu",
+          "GPIOC_14",
+          "L"
+        ]
+      },
+      "pwr_3v3_on": {
+        "hex": "00"
+      },
+      "pwr_3v3_off": {
+        "hex": "00"
+      },
+      "pwr_hpll_vdd_on": {
+        "hex": "00"
+      },
+      "pwr_hpll_vdd_off": {
+        "hex": "00"
+      },
+      "linux,phandle": {
+        "hex": "0000000e",
+        "cells": [
+          14
+        ]
+      },
+      "phandle": {
+        "hex": "0000000e",
+        "cells": [
+          14
+        ]
+      }
+    },
+    "/securitykey": {
+      "compatible": {
+        "hex": "616d6c6f6769632c616d6c5f6b65797300",
+        "strings": [
+          "amlogic,aml_keys"
+        ]
+      }
+    },
+    "/aml_pm": {
+      "compatible": {
+        "hex": "616d6c6f6769632c706d00",
+        "strings": [
+          "amlogic,pm"
+        ]
+      },
+      "dev_name": {
+        "hex": "616d6c5f706d00",
+        "strings": [
+          "aml_pm"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      }
+    },
+    "/cpufreq-meson": {
+      "compatible": {
+        "hex": "616d6c6f6769632c637075667265712d6d65736f6e00",
+        "strings": [
+          "amlogic,cpufreq-meson"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      }
+    },
+    "/meson-eth": {
+      "compatible": {
+        "hex": "616d6c6f6769632c6d65736f6e2d65746800",
+        "strings": [
+          "amlogic,meson-eth"
+        ]
+      },
+      "dev_name": {
+        "hex": "6d65736f6e2d65746800",
+        "strings": [
+          "meson-eth"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "ethbaseaddr": {
+        "hex": "f3610000",
+        "cells": [
+          4083220480
+        ]
+      },
+      "interruptnum": {
+        "hex": "00000028",
+        "cells": [
+          40
+        ]
+      },
+      "savepowermode": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "phy_interface": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "reset_pin_enable": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "reset_pin": {
+        "hex": "4750494f595f313500",
+        "strings": [
+          "GPIOY_15"
+        ]
+      },
+      "reset_delay": {
+        "hex": "00000064",
+        "cells": [
+          100
+        ]
+      },
+      "clock_phase": {
+        "hex": "00000120",
+        "cells": [
+          288
+        ]
+      },
+      "interface_mode": {
+        "hex": "00000241",
+        "cells": [
+          577
+        ]
+      },
+      "pinctrl-names": {
+        "hex": "64656661756c7400",
+        "cells": [
+          1684366945,
+          1970041856
+        ],
+        "strings": [
+          "default"
+        ]
+      },
+      "pinctrl-0": {
+        "hex": "0000000f",
+        "cells": [
+          15
+        ]
+      }
+    },
+    "/gpio": {
+      "compatible": {
+        "hex": "616d6c6f6769632c6d362d6770696f00",
+        "cells": [
+          1634561135,
+          1734959916,
+          1832267111,
+          1885957888
+        ],
+        "strings": [
+          "amlogic,m6-gpio"
+        ]
+      },
+      "dev_name": {
+        "hex": "6770696f00",
+        "strings": [
+          "gpio"
+        ]
+      },
+      "#gpio-cells": {
+        "hex": "00000002",
+        "cells": [
+          2
+        ]
+      }
+    },
+    "/pinmux": {
+      "compatible": {
+        "hex": "616d6c6f6769632c70696e6d75782d6d3600",
+        "strings": [
+          "amlogic,pinmux-m6"
+        ]
+      },
+      "dev_name": {
+        "hex": "70696e6d757800",
+        "strings": [
+          "pinmux"
+        ]
+      },
+      "#pinmux-cells": {
+        "hex": "00000002",
+        "cells": [
+          2
+        ]
+      }
+    },
+    "/pinmux/ao_uart": {
+      "amlogic,setmask": {
+        "hex": "0000000a00001800",
+        "cells": [
+          10,
+          6144
+        ]
+      },
+      "amlogic,pins": {
+        "hex": "4750494f414f5f30004750494f414f5f3100",
+        "strings": [
+          "GPIOAO_0",
+          "GPIOAO_1"
+        ]
+      },
+      "linux,phandle": {
+        "hex": "00000002",
+        "cells": [
+          2
+        ]
+      },
+      "phandle": {
+        "hex": "00000002",
+        "cells": [
+          2
+        ]
+      }
+    },
+    "/pinmux/a_uart": {
+      "amlogic,setmask": {
+        "hex": "0000000400003c00",
+        "cells": [
+          4,
+          15360
+        ]
+      },
+      "amlogic,pins": {
+        "hex": "4750494f585f3133004750494f585f3134004750494f585f3135004750494f585f313600",
+        "cells": [
+          1196443983,
+          1482633523,
+          4673609,
+          1331191601,
+          872433488,
+          1229936735,
+          825557063,
+          1346981720,
+          1597060608
+        ],
+        "strings": [
+          "GPIOX_13",
+          "GPIOX_14",
+          "GPIOX_15",
+          "GPIOX_16"
+        ]
+      },
+      "linux,phandle": {
+        "hex": "00000003",
+        "cells": [
+          3
+        ]
+      },
+      "phandle": {
+        "hex": "00000003",
+        "cells": [
+          3
+        ]
+      }
+    },
+    "/pinmux/aml_pwm": {
+      "amlogic,setmask": {
+        "hex": "0000000200000004",
+        "cells": [
+          2,
+          4
+        ]
+      },
+      "amlogic,clrmask": {
+        "hex": "0000000120000000",
+        "cells": [
+          1,
+          536870912
+        ]
+      },
+      "amlogic,pins": {
+        "hex": "4750494f445f3000",
+        "cells": [
+          1196443983,
+          1147088896
+        ],
+        "strings": [
+          "GPIOD_0"
+        ]
+      },
+      "linux,phandle": {
+        "hex": "0000000a",
+        "cells": [
+          10
+        ]
+      },
+      "phandle": {
+        "hex": "0000000a",
+        "cells": [
+          10
+        ]
+      }
+    },
+    "/pinmux/ao_i2c": {
+      "amlogic,setmask": {
+        "hex": "0000000a00000060",
+        "cells": [
+          10,
+          96
+        ]
+      },
+      "amlogic,clrmask": {
+        "hex": "0000000a01800006",
+        "cells": [
+          10,
+          25165830
+        ]
+      },
+      "amlogic,pins": {
+        "hex": "4750494f414f5f34004750494f414f5f3500",
+        "strings": [
+          "GPIOAO_4",
+          "GPIOAO_5"
+        ]
+      }
+    },
+    "/pinmux/a_i2c": {
+      "amlogic,setmask": {
+        "hex": "000000050c000000",
+        "cells": [
+          5,
+          201326592
+        ]
+      },
+      "amlogic,clrmask": {
+        "hex": "0000000503000000",
+        "cells": [
+          5,
+          50331648
+        ]
+      },
+      "amlogic,pins": {
+        "hex": "4750494f585f3235004750494f585f323600",
+        "strings": [
+          "GPIOX_25",
+          "GPIOX_26"
+        ]
+      }
+    },
+    "/pinmux/b_i2c": {
+      "amlogic,setmask": {
+        "hex": "00000005c0000000",
+        "cells": [
+          5,
+          3221225472
+        ]
+      },
+      "amlogic,clrmask": {
+        "hex": "0000000530000000",
+        "cells": [
+          5,
+          805306368
+        ]
+      },
+      "amlogic,pins": {
+        "hex": "4750494f585f3237004750494f585f323800",
+        "strings": [
+          "GPIOX_27",
+          "GPIOX_28"
+        ]
+      }
+    },
+    "/pinmux/sdio_all_pins": {
+      "amlogic,setmask": {
+        "hex": "000000080000003f",
+        "cells": [
+          8,
+          63
+        ]
+      },
+      "amlogic,clrmask": {
+        "hex": "000000063f000000000000020000fc000000000500006c00",
+        "cells": [
+          6,
+          1056964608,
+          2,
+          64512,
+          5,
+          27648
+        ]
+      },
+      "amlogic,pins": {
+        "hex": "4750494f585f30004750494f585f31004750494f585f32004750494f585f33004750494f585f38004750494f585f3900",
+        "cells": [
+          1196443983,
+          1482633216,
+          1196443983,
+          1482633472,
+          1196443983,
+          1482633728,
+          1196443983,
+          1482633984,
+          1196443983,
+          1482635264,
+          1196443983,
+          1482635520
+        ],
+        "strings": [
+          "GPIOX_0",
+          "GPIOX_1",
+          "GPIOX_2",
+          "GPIOX_3",
+          "GPIOX_8",
+          "GPIOX_9"
+        ]
+      },
+      "amlogic,enable-output": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "amlogic,pullup": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "linux,phandle": {
+        "hex": "00000009",
+        "cells": [
+          9
+        ]
+      },
+      "phandle": {
+        "hex": "00000009",
+        "cells": [
+          9
+        ]
+      }
+    },
+    "/pinmux/sdio_clk_cmd_pins": {
+      "amlogic,setmask": {
+        "hex": "0000000800000003",
+        "cells": [
+          8,
+          3
+        ]
+      },
+      "amlogic,clrmask": {
+        "hex": "000000063f000000000000020000fc000000000500006c00",
+        "cells": [
+          6,
+          1056964608,
+          2,
+          64512,
+          5,
+          27648
+        ]
+      },
+      "amlogic,pins": {
+        "hex": "4750494f585f38004750494f585f3900",
+        "cells": [
+          1196443983,
+          1482635264,
+          1196443983,
+          1482635520
+        ],
+        "strings": [
+          "GPIOX_8",
+          "GPIOX_9"
+        ]
+      },
+      "amlogic,enable-output": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "amlogic,pullup": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "linux,phandle": {
+        "hex": "00000008",
+        "cells": [
+          8
+        ]
+      },
+      "phandle": {
+        "hex": "00000008",
+        "cells": [
+          8
+        ]
+      }
+    },
+    "/pinmux/sd_all_pins": {
+      "amlogic,setmask": {
+        "hex": "000000020000fc00",
+        "cells": [
+          2,
+          64512
+        ]
+      },
+      "amlogic,clrmask": {
+        "hex": "000000063f000000000000080000003f00000002000000f0",
+        "cells": [
+          6,
+          1056964608,
+          8,
+          63,
+          2,
+          240
+        ]
+      },
+      "amlogic,pins": {
+        "hex": "434152445f3000434152445f3100434152445f3200434152445f3300434152445f3400434152445f3500",
+        "strings": [
+          "CARD_0",
+          "CARD_1",
+          "CARD_2",
+          "CARD_3",
+          "CARD_4",
+          "CARD_5"
+        ]
+      },
+      "amlogic,enable-output": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "amlogic,pullup": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "linux,phandle": {
+        "hex": "00000005",
+        "cells": [
+          5
+        ]
+      },
+      "phandle": {
+        "hex": "00000005",
+        "cells": [
+          5
+        ]
+      }
+    },
+    "/pinmux/sd_clk_cmd_pins": {
+      "amlogic,setmask": {
+        "hex": "0000000200000c00",
+        "cells": [
+          2,
+          3072
+        ]
+      },
+      "amlogic,clrmask": {
+        "hex": "000000063f000000000000080000003f00000002000000f0",
+        "cells": [
+          6,
+          1056964608,
+          8,
+          63,
+          2,
+          240
+        ]
+      },
+      "amlogic,pins": {
+        "hex": "434152445f3400434152445f3500",
+        "strings": [
+          "CARD_4",
+          "CARD_5"
+        ]
+      },
+      "amlogic,enable-output": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "amlogic,pullup": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "linux,phandle": {
+        "hex": "00000004",
+        "cells": [
+          4
+        ]
+      },
+      "phandle": {
+        "hex": "00000004",
+        "cells": [
+          4
+        ]
+      }
+    },
+    "/pinmux/emmc_all_pins": {
+      "amlogic,setmask": {
+        "hex": "000000063f000000",
+        "cells": [
+          6,
+          1056964608
+        ]
+      },
+      "amlogic,clrmask": {
+        "hex": "0000000204c3fc00000000080000003f000000046c0000000000000380000000",
+        "cells": [
+          2,
+          79952896,
+          8,
+          63,
+          4,
+          1811939328,
+          3,
+          2147483648
+        ]
+      },
+      "amlogic,pins": {
+        "hex": "424f4f545f3000424f4f545f3100424f4f545f3200424f4f545f3300424f4f545f313000424f4f545f313100",
+        "cells": [
+          1112493908,
+          1596981314,
+          1330599007,
+          822100559,
+          1330929458,
+          4345679,
+          1415525120,
+          1112493908,
+          1597059072,
+          1112493908,
+          1597059328
+        ],
+        "strings": [
+          "BOOT_0",
+          "BOOT_1",
+          "BOOT_2",
+          "BOOT_3",
+          "BOOT_10",
+          "BOOT_11"
+        ]
+      },
+      "amlogic,enable-output": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "amlogic,pullup": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "linux,phandle": {
+        "hex": "00000007",
+        "cells": [
+          7
+        ]
+      },
+      "phandle": {
+        "hex": "00000007",
+        "cells": [
+          7
+        ]
+      }
+    },
+    "/pinmux/emmc_clk_cmd_pins": {
+      "amlogic,setmask": {
+        "hex": "0000000603000000",
+        "cells": [
+          6,
+          50331648
+        ]
+      },
+      "amlogic,clrmask": {
+        "hex": "0000000204c3fc00000000080000003f000000046c0000000000000380000000",
+        "cells": [
+          2,
+          79952896,
+          8,
+          63,
+          4,
+          1811939328,
+          3,
+          2147483648
+        ]
+      },
+      "amlogic,pins": {
+        "hex": "424f4f545f313000424f4f545f313100",
+        "cells": [
+          1112493908,
+          1597059072,
+          1112493908,
+          1597059328
+        ],
+        "strings": [
+          "BOOT_10",
+          "BOOT_11"
+        ]
+      },
+      "amlogic,enable-output": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      },
+      "amlogic,pullup": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      },
+      "linux,phandle": {
+        "hex": "00000006",
+        "cells": [
+          6
+        ]
+      },
+      "phandle": {
+        "hex": "00000006",
+        "cells": [
+          6
+        ]
+      }
+    },
+    "/pinmux/remote_pin": {
+      "amlogic,setmask": {
+        "hex": "0000000a00000001",
+        "cells": [
+          10,
+          1
+        ]
+      },
+      "amlogic,pins": {
+        "hex": "4750494f414f5f3700",
+        "strings": [
+          "GPIOAO_7"
+        ]
+      },
+      "linux,phandle": {
+        "hex": "0000000c",
+        "cells": [
+          12
+        ]
+      },
+      "phandle": {
+        "hex": "0000000c",
+        "cells": [
+          12
+        ]
+      }
+    },
+    "/pinmux/aml_i2s_pins": {
+      "amlogic,setmask": {
+        "hex": "0000000900000ab0",
+        "cells": [
+          9,
+          2736
+        ]
+      },
+      "amlogic,clrmask": {
+        "hex": "0000000900000440",
+        "cells": [
+          9,
+          1088
+        ]
+      },
+      "amlogic,pins": {
+        "hex": "4750494f455f30004750494f455f31004750494f455f32004750494f455f3300",
+        "cells": [
+          1196443983,
+          1163866112,
+          1196443983,
+          1163866368,
+          1196443983,
+          1163866624,
+          1196443983,
+          1163866880
+        ],
+        "strings": [
+          "GPIOE_0",
+          "GPIOE_1",
+          "GPIOE_2",
+          "GPIOE_3"
+        ]
+      }
+    },
+    "/pinmux/config_aml_hp_det_pins": {
+      "amlogic,pins": {
+        "hex": "4750494f415f313900",
+        "strings": [
+          "GPIOA_19"
+        ]
+      },
+      "amlogic,pullup": {
+        "hex": "00000001",
+        "cells": [
+          1
+        ]
+      }
+    },
+    "/pinmux/aml_dummy_codec_pins": {
+      "amlogic,setmask": {
+        "hex": "00000009000002b00000000301000000",
+        "cells": [
+          9,
+          688,
+          3,
+          16777216
+        ]
+      },
+      "amlogic,clrmask": {
+        "hex": "0000000900380c4e",
+        "cells": [
+          9,
+          3673166
+        ]
+      },
+      "amlogic,pins": {
+        "hex": "4750494f455f31004750494f455f32004750494f455f33004750494f455f34004750494f435f3900",
+        "cells": [
+          1196443983,
+          1163866368,
+          1196443983,
+          1163866624,
+          1196443983,
+          1163866880,
+          1196443983,
+          1163867136,
+          1196443983,
+          1130313984
+        ],
+        "strings": [
+          "GPIOE_1",
+          "GPIOE_2",
+          "GPIOE_3",
+          "GPIOE_4",
+          "GPIOC_9"
+        ]
+      },
+      "linux,phandle": {
+        "hex": "0000000b",
+        "cells": [
+          11
+        ]
+      },
+      "phandle": {
+        "hex": "0000000b",
+        "cells": [
+          11
+        ]
+      }
+    },
+    "/pinmux/ethernet_pins": {
+      "amlogic,setmask": {
+        "hex": "00000006800679e0",
+        "cells": [
+          6,
+          2147908064
+        ]
+      },
+      "amlogic,clrmask": {
+        "hex": "0000000640018600",
+        "cells": [
+          6,
+          1073841664
+        ]
+      },
+      "amlogic,pins": {
+        "hex": "4750494f595f30004750494f595f31004750494f595f32004750494f595f35004750494f595f36004750494f595f37004750494f595f38004750494f595f3131004750494f595f3132004750494f595f3133004750494f595f313400",
+        "cells": [
+          1196443983,
+          1499410432,
+          1196443983,
+          1499410688,
+          1196443983,
+          1499410944,
+          1196443983,
+          1499411712,
+          1196443983,
+          1499411968,
+          1196443983,
+          1499412224,
+          1196443983,
+          1499412480,
+          1196443983,
+          1499410737,
+          4673609,
+          1331257137,
+          838879056,
+          1229936991,
+          825425991,
+          1346981721,
+          1597060096
+        ],
+        "strings": [
+          "GPIOY_0",
+          "GPIOY_1",
+          "GPIOY_2",
+          "GPIOY_5",
+          "GPIOY_6",
+          "GPIOY_7",
+          "GPIOY_8",
+          "GPIOY_11",
+          "GPIOY_12",
+          "GPIOY_13",
+          "GPIOY_14"
+        ]
+      },
+      "linux,phandle": {
+        "hex": "0000000f",
+        "cells": [
+          15
+        ]
+      },
+      "phandle": {
+        "hex": "0000000f",
+        "cells": [
+          15
+        ]
+      }
+    },
+    "/amremote_led": {
+      "compatible": {
+        "hex": "616d6c6f6769632c616d72656d6f74655f6c656400",
+        "strings": [
+          "amlogic,amremote_led"
+        ]
+      },
+      "dev_name": {
+        "hex": "616d72656d6f74655f6c656400",
+        "strings": [
+          "amremote_led"
+        ]
+      },
+      "status": {
+        "hex": "6f6b00",
+        "strings": [
+          "ok"
+        ]
+      },
+      "control_gpio": {
+        "hex": "4750494f435f3000",
+        "cells": [
+          1196443983,
+          1130311680
+        ],
+        "strings": [
+          "GPIOC_0"
+        ]
+      },
+      "poweron_status": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      }
+    },
+    "/ramoops": {
+      "compatible": {
+        "hex": "72616d6f6f707300",
+        "cells": [
+          1918987631,
+          1869640448
+        ],
+        "strings": [
+          "ramoops"
+        ]
+      },
+      "dev_name": {
+        "hex": "72616d6f6f70732e3000",
+        "strings": [
+          "ramoops.0"
+        ]
+      },
+      "status": {
+        "hex": "6f6b617900",
+        "strings": [
+          "okay"
+        ]
+      },
+      "reserve-memory": {
+        "hex": "00400000",
+        "cells": [
+          4194304
+        ],
+        "strings": [
+          "",
+          "@",
+          ""
+        ]
+      },
+      "reserve-iomap": {
+        "hex": "7472756500",
+        "strings": [
+          "true"
+        ]
+      },
+      "record_size": {
+        "hex": "00200000",
+        "cells": [
+          2097152
+        ],
+        "strings": [
+          "",
+          " ",
+          ""
+        ]
+      },
+      "console_size": {
+        "hex": "00100000",
+        "cells": [
+          1048576
+        ]
+      },
+      "ftrace_size": {
+        "hex": "00100000",
+        "cells": [
+          1048576
+        ]
+      },
+      "dump_oops": {
+        "hex": "00000000",
+        "cells": [
+          0
+        ]
+      }
+    }
+  }
+}

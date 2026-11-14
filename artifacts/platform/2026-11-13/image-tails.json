@@ -1,0 +1,26 @@
+{
+  "boot": {
+    "last_section_end": 4430998,
+    "aligned_end": 4431872,
+    "bytes_after_last_section": 3957610,
+    "nonzero_bytes_after_last_section": 0,
+    "signature_verification": "NOT PERFORMED",
+    "loader_acceptance": "UNKNOWN"
+  },
+  "boot1": {
+    "last_section_end": 4433046,
+    "aligned_end": 4433920,
+    "bytes_after_last_section": 3955562,
+    "nonzero_bytes_after_last_section": 0,
+    "signature_verification": "NOT PERFORMED",
+    "loader_acceptance": "UNKNOWN"
+  },
+  "recovery": {
+    "last_section_end": 6794390,
+    "aligned_end": 6795264,
+    "bytes_after_last_section": 1594218,
+    "nonzero_bytes_after_last_section": 30372,
+    "signature_verification": "NOT PERFORMED",
+    "loader_acceptance": "UNKNOWN"
+  }
+}

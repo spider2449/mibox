@@ -1,0 +1,10 @@
+﻿{
+    "Status":  "INCOMPLETE_DO_NOT_RESTORE",
+    "ExpectedBytes":  2097152,
+    "ActualBytes":  2093056,
+    "SHA256":  "7CD1E2A5836B15DAF22A593D492C01C3CC05D37DEEA3C0D178065DF6EE202223",
+    "PrefixMatchesNamedBootloader":  false,
+    "RelevantStrings":  [
+
+                        ]
+}

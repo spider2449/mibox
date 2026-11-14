@@ -1,0 +1,68 @@
+﻿/xiaomi_debug
+===> debugMapShow <===
+===> debugMapShow end.
+ADB debug is 
+ADB debug-set off successfully
+ADB debug-set on successfully
+ADB_PROPERTY
+DEBUG
+DEBUG: class == 
+ DEBUG: root value separator == '
+DEBUG_WITH_PREVIEW_SERVER
+DebugUtils.java
+$Landroid/support/v4/util/DebugUtils;
+MODE_ADB
+_quadBuffer
+adbItem
+adbStatus
+adb_enable
+adb_enable_desc
+adb_enabled
+adb_warning_hint1
+adb_warning_hint2
+adb_warning_off_hint1
+bad argument to loadBitmap
+currQuadBytes
+debug
+debug.bt.discoverable_time
+debug.mitv.i18n
+debugMapShow
+debugOrderStatus
+debugShowInfo
+debugShowInfoByOpId
+debugShowOpId
+debugShowProductList
+debugShowProviderId
+debugShowUpCap
+debugShowWhich
+debuggable
+downloadBootAnim
+downloadBootAnim url=
+enableDebugLogging
+getBoxADBStatus
+getCdmaDbm
+isADBFileExists
+isDebugable
+isEnableADB
+jp_adb_desc
+jp_adb_warning
+jp_off_adb_warning_hint
+jp_on_adb_warning_hint2
+lastQuadBytes
+loadBitmap
+mCurrnetADBEnableIndex
+mJPAdbPolicies
+persist.sys.usb.netadb.config
+readBody
+readBoolean
+readBooleanArray
+readBundle
+readByte
+ro.debuggable
+ro.debuggable: 
+service.adb.tcp.port
+setADBEnable
+setBoxADBStatus
+setadb 0
+user product, setADB false
+userBoxShowAdb

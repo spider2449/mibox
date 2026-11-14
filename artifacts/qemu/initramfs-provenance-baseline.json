@@ -1,0 +1,6 @@
+{
+  "init_sha256": "190303f9126f58f6e16bf50652223377d39257456358d5b8132ad21fcdf581da",
+  "cpio_sha256": "93f4c3909ea425d33fe76e673fdf8991989c91d43db8a54768acc4b41a3877f8",
+  "gzip_sha256": "a5882315be39f281df262251ff799c5237e41e5ab135baf402948efa97be5eb5",
+  "purpose": "QEMU generic ARM test only; no stock images used or modified."
+}

@@ -1,0 +1,32 @@
+﻿[
+    {
+        "Name":  "libpostupdate.so",
+        "Bytes":  21660,
+        "SHA256":  "A45BF4929D5E26DAB5395CDF2401BE14B81BD962C241D4E2F47A0B5AA62BDD86"
+    },
+    {
+        "Name":  "libupdate.so",
+        "Bytes":  246164,
+        "SHA256":  "17A04A72075474FDBD55F22A64A03FA5409081D1D48580F51D21E8D0C97F0AC6"
+    },
+    {
+        "Name":  "libupdateservice.so",
+        "Bytes":  70868,
+        "SHA256":  "D6CB8F1B0822F6C578B888CB92C85A6837E245587C69D96D604542357A497D45"
+    },
+    {
+        "Name":  "runupdate",
+        "Bytes":  17748,
+        "SHA256":  "F1EB63E1FA29F83D42B8D9499735918D899A0DFA9798CBFA7B758645D7798908"
+    },
+    {
+        "Name":  "updateservice",
+        "Bytes":  9504,
+        "SHA256":  "DE75016474AC50EBDC91F21DE272DA0186835BE62DE6692FE5277ED0846687D3"
+    },
+    {
+        "Name":  "updatetest",
+        "Bytes":  9500,
+        "SHA256":  "AEB3EDA7C4FEA15317011FC91DBE2E4A371E97A41E89460ACF42582EE7116F9F"
+    }
+]

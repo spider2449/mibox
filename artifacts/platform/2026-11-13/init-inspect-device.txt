@@ -1,0 +1,10 @@
+﻿mibox-init 0.1.0
+
+pid=7855 arch=arm
+
+Linux version 3.10.33 (jenkins@qh-dk-box-build00) (gcc version 4.7.3 20130205 (prerelease) (crosstool-NG linaro-1.13.1-4.7-2013.02-01-20130221 - Linaro GCC 2013.02) ) #1 SMP PREEMPT Mon Feb 20 15:47:21 CST 2017
+
+MIBOX_INIT_INSPECT_ONLY
+
+REMOTE_EXIT:0
+

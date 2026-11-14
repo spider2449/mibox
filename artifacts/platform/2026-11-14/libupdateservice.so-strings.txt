@@ -1,0 +1,2 @@
+﻿/data/update_nosign.zip
+verify fail src_fd=%d, i=%d

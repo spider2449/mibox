@@ -1,0 +1,6 @@
+﻿MIBOX_ADB_WORKER_ERROR --worker-install job=4814-1794582204743: Permission denied (os error 13)
+
+Error: Custom { kind: Other, error: "root worker failed" }
+
+REMOTE_EXIT:1
+

@@ -1,0 +1,21 @@
+﻿[
+    {
+        "KeyName":  "DEVPKEY_Device_DriverInfPath",
+        "Data":  "oem0.inf"
+    },
+    {
+        "KeyName":  "DEVPKEY_Device_MatchingDeviceId",
+        "Data":  "USB\\VID_18D1\u0026PID_4E21"
+    },
+    {
+        "KeyName":  "DEVPKEY_Device_CompatibleIds",
+        "Data":  [
+                     "USB\\COMPAT_VID_18D1\u0026Class_02\u0026SubClass_02\u0026Prot_01",
+                     "USB\\COMPAT_VID_18D1\u0026Class_02\u0026SubClass_02",
+                     "USB\\COMPAT_VID_18D1\u0026Class_02",
+                     "USB\\Class_02\u0026SubClass_02\u0026Prot_01",
+                     "USB\\Class_02\u0026SubClass_02",
+                     "USB\\Class_02"
+                 ]
+    }
+]

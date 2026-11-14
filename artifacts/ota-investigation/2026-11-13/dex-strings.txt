@@ -1,0 +1,440 @@
+﻿0/data/data/com.xiaomi.mitv.upgrade/cache/log.txt
+-/data/data/com.xiaomi.mitv.upgrade/cache/test
+)ACTION_COM_XIAOMI_MITV_UPGRADE_CLEARFILES
+AUTO_CHECK_UPGRADE_DELAY
+AUTO_UPGRADE_ACTION
+AutoUpgradeTaskManager.java
+!CHECK_UPGRADE_AFTER_STARTUP_DELAY
+!CHECK_UPGRADE_NETWORK_ERROR_DELAY
+'CHECK_UPGRADE_NETWORK_ERROR_DELAY_SHORT
+ CHECK_UPGRADE_WAIT_RANGE_IN_MINS
+ChecktUpgradeCacheFileTask run!
+FORCE_UPDATE_PROP
+ICheckUpgradeListener.java
+INTELLIGENT_UPDATE
+!INTELLIGENT_UPDATE_CHANGED_INTENT
+IUpgradeRemoteService.java
+Lcom/xiaomi/mitv/upgrade/App;
+%Lcom/xiaomi/mitv/upgrade/BuildConfig;
+ Lcom/xiaomi/mitv/upgrade/R$anim;
+ Lcom/xiaomi/mitv/upgrade/R$attr;
+!Lcom/xiaomi/mitv/upgrade/R$color;
+!Lcom/xiaomi/mitv/upgrade/R$dimen;
+$Lcom/xiaomi/mitv/upgrade/R$drawable;
+Lcom/xiaomi/mitv/upgrade/R$id;
+"Lcom/xiaomi/mitv/upgrade/R$layout;
+Lcom/xiaomi/mitv/upgrade/R$raw;
+"Lcom/xiaomi/mitv/upgrade/R$string;
+!Lcom/xiaomi/mitv/upgrade/R$style;
+Lcom/xiaomi/mitv/upgrade/R;
+2Lcom/xiaomi/mitv/upgrade/StartBroadcastReceiver$1;
+2Lcom/xiaomi/mitv/upgrade/StartBroadcastReceiver$2;
+2Lcom/xiaomi/mitv/upgrade/StartBroadcastReceiver$3;
+2Lcom/xiaomi/mitv/upgrade/StartBroadcastReceiver$4;
+2Lcom/xiaomi/mitv/upgrade/StartBroadcastReceiver$5;
+2Lcom/xiaomi/mitv/upgrade/StartBroadcastReceiver$6;
+0Lcom/xiaomi/mitv/upgrade/StartBroadcastReceiver;
++Lcom/xiaomi/mitv/upgrade/UpgradeActivity$1;
++Lcom/xiaomi/mitv/upgrade/UpgradeActivity$2;
++Lcom/xiaomi/mitv/upgrade/UpgradeActivity$3;
++Lcom/xiaomi/mitv/upgrade/UpgradeActivity$4;
+-Lcom/xiaomi/mitv/upgrade/UpgradeActivity$5$1;
++Lcom/xiaomi/mitv/upgrade/UpgradeActivity$5;
++Lcom/xiaomi/mitv/upgrade/UpgradeActivity$6;
+-Lcom/xiaomi/mitv/upgrade/UpgradeActivity$7$1;
++Lcom/xiaomi/mitv/upgrade/UpgradeActivity$7;
+JLcom/xiaomi/mitv/upgrade/UpgradeActivity$CheckingCurrentReleaseInfoPage$1;
+JLcom/xiaomi/mitv/upgrade/UpgradeActivity$CheckingCurrentReleaseInfoPage$2;
+HLcom/xiaomi/mitv/upgrade/UpgradeActivity$CheckingCurrentReleaseInfoPage;
+8Lcom/xiaomi/mitv/upgrade/UpgradeActivity$CheckingPage$1;
+8Lcom/xiaomi/mitv/upgrade/UpgradeActivity$CheckingPage$2;
+6Lcom/xiaomi/mitv/upgrade/UpgradeActivity$CheckingPage;
+5Lcom/xiaomi/mitv/upgrade/UpgradeActivity$MessagePage;
+:Lcom/xiaomi/mitv/upgrade/UpgradeActivity$NoNewVersionPage;
+6Lcom/xiaomi/mitv/upgrade/UpgradeActivity$RebootPage$1;
+6Lcom/xiaomi/mitv/upgrade/UpgradeActivity$RebootPage$2;
+4Lcom/xiaomi/mitv/upgrade/UpgradeActivity$RebootPage;
+7Lcom/xiaomi/mitv/upgrade/UpgradeActivity$RebootingPage;
+:Lcom/xiaomi/mitv/upgrade/UpgradeActivity$ReleaseNotePanel;
+<Lcom/xiaomi/mitv/upgrade/UpgradeActivity$ShowNewVersionPage;
+2Lcom/xiaomi/mitv/upgrade/UpgradeActivity$TestPage;
+?Lcom/xiaomi/mitv/upgrade/UpgradeActivity$UpdateProgressBarTask;
+=Lcom/xiaomi/mitv/upgrade/UpgradeActivity$UpgradeActivityPage;
+7Lcom/xiaomi/mitv/upgrade/UpgradeActivity$UpgradingPage;
+)Lcom/xiaomi/mitv/upgrade/UpgradeActivity;
+)Lcom/xiaomi/mitv/upgrade/UpgradeDialog$1;
+)Lcom/xiaomi/mitv/upgrade/UpgradeDialog$2;
+)Lcom/xiaomi/mitv/upgrade/UpgradeDialog$3;
+)Lcom/xiaomi/mitv/upgrade/UpgradeDialog$4;
+'Lcom/xiaomi/mitv/upgrade/UpgradeDialog;
+*Lcom/xiaomi/mitv/upgrade/UpgradeService$1;
+7Lcom/xiaomi/mitv/upgrade/UpgradeService$ShutdownThread;
+6Lcom/xiaomi/mitv/upgrade/UpgradeService$UpgradeThread;
+(Lcom/xiaomi/mitv/upgrade/UpgradeService;
+?Lcom/xiaomi/mitv/upgrade/aidl/ICheckUpgradeListener$Stub$Proxy;
+9Lcom/xiaomi/mitv/upgrade/aidl/ICheckUpgradeListener$Stub;
+4Lcom/xiaomi/mitv/upgrade/aidl/ICheckUpgradeListener;
+?Lcom/xiaomi/mitv/upgrade/aidl/IUpgradeRemoteService$Stub$Proxy;
+9Lcom/xiaomi/mitv/upgrade/aidl/IUpgradeRemoteService$Stub;
+4Lcom/xiaomi/mitv/upgrade/aidl/IUpgradeRemoteService;
+@Lcom/xiaomi/mitv/upgrade/contentprovider/UpgradeContentProvider;
+8Lcom/xiaomi/mitv/upgrade/model/AutoUpgradeTaskManager$1;
+8Lcom/xiaomi/mitv/upgrade/model/AutoUpgradeTaskManager$2;
+BLcom/xiaomi/mitv/upgrade/model/AutoUpgradeTaskManager$UpgradeTask;
+6Lcom/xiaomi/mitv/upgrade/model/AutoUpgradeTaskManager;
+/Lcom/xiaomi/mitv/upgrade/model/DownloadContext;
+.Lcom/xiaomi/mitv/upgrade/model/ShutdownHelper;
+*Lcom/xiaomi/mitv/upgrade/model/SystemInfo;
+-Lcom/xiaomi/mitv/upgrade/model/UpgradeConfig;
+2Lcom/xiaomi/mitv/upgrade/model/UpgradeDelegate2$1;
+0Lcom/xiaomi/mitv/upgrade/model/UpgradeDelegate2;
++Lcom/xiaomi/mitv/upgrade/model/UpgradeInfo;
+-Lcom/xiaomi/mitv/upgrade/model/UpgradeLogger;
+.Lcom/xiaomi/mitv/upgrade/model/UpgradeManager;
+-Lcom/xiaomi/mitv/upgrade/model/UpgradeStatus;
+5Lcom/xiaomi/mitv/upgrade/model/UpgradeStatusListener;
++Lcom/xiaomi/mitv/upgrade/model/UpgradeType;
+9Lcom/xiaomi/mitv/upgrade/remote/UpgradeRemoteServiceImpl;
+(Lcom/xiaomi/mitv/upgrade/util/ApiConfig;
+.Lcom/xiaomi/mitv/upgrade/util/CDNInfoHelper$1;
+.Lcom/xiaomi/mitv/upgrade/util/CDNInfoHelper$2;
+,Lcom/xiaomi/mitv/upgrade/util/CDNInfoHelper;
+)Lcom/xiaomi/mitv/upgrade/util/DNSManager;
+(Lcom/xiaomi/mitv/upgrade/util/FileUtils;
+$Lcom/xiaomi/mitv/upgrade/util/MyLog;
+/Lcom/xiaomi/mitv/upgrade/util/StatisticsUtil$1;
+-Lcom/xiaomi/mitv/upgrade/util/StatisticsUtil;
+.Lcom/xiaomi/mitv/upgrade/util/UpgradeWakeLock;
+%Lcom/xiaomi/mitv/upgrade/util/Util$1;
+%Lcom/xiaomi/mitv/upgrade/util/Util$2;
+#Lcom/xiaomi/mitv/upgrade/util/Util;
+-Lcom/xiaomi/mitv/upgrade/widget/HProgressBar;
+KLcom/xiaomi/mitv/upgrade/widget/MyScrollingMovementMethod$MyScrollListener;
+:Lcom/xiaomi/mitv/upgrade/widget/MyScrollingMovementMethod;
+'Lcom/xiaomi/update/IUpdateService$Stub;
+"Lcom/xiaomi/update/IUpdateService;
+/Lcom/xiaomi/update/IUpdateServiceListener$Stub;
+*Lcom/xiaomi/update/IUpdateServiceListener;
+MANUAL_UPGRADE_ACTION
+%MEDIA_EXPLORER_UPGRADE_ACTIVITY_CLASS
+MESSAGE_UPDATE
+ManualUpgrade
+NEWPACKAGEPOSTUPDATED
+REASON_UPDATE_SYSTEM
+#REASON_UPDATE_SYSTEM_AND_CLEAR_DATA
+START_UPGRADE_TIME
+STATUS_NO_UPDATE
+STATUS_START_UPGRADE
+STATUS_UPGRADE_OK
+STATUS_WAIT_UPGRADE
+SYSTEM_UPDATE_ACTION
+SYSTEM_UPDATE_PROPERTY
+SYS_UPDATE_DELAY
+TRANSACTION_checkUpgrade
+TRANSACTION_getUpgradeProgress
+"TRANSACTION_onCheckUpgradeResponse
+TRANSACTION_startUpgrade
+UPDATESTATEERROR
+UPGRADE_CACHE_FILE
+UPGRADE_CONTEXT_PATH
+UPGRADE_DIR_NAME
+UPGRADE_NOTIFICATION_ID
+UPGRADE_SHOW_DIALOG
+UPGRADE_TYPE_MANUAL
+UPGRADE_TYPE_PERIOD
+UPGRADE_TYPE_SCREEN_OFF
+UPGRADE_TYPE_SCREEN_SAVER
+UPGRADE_TYPE_STARTUP
+UPGRADE_TYPE_SYSTEM_IDLE
+Update Progress = 
+UpdateProgressBarTask
+UpdateService
+ Upgrade.AutoUpgradeTaskManager!!
+Upgrade.FileUtils
+Upgrade.StartBroadcastReceiver
+,Upgrade.StartBroadcastReceiver.onReceive!!>>
+,Upgrade.StartBroadcastReceiver.onReceive!>> 
+Upgrade.UpgradeActivity1
+Upgrade.UpgradeDelegate2
+Upgrade.UpgradeInfo
+Upgrade.UpgradeLogger
+Upgrade.UpgradeManager
+Upgrade.UpgradeService
+Upgrade.WifiLock
+3Upgrade: Enter doInstallPackage, already installed.
+)Upgrade: Leave downloadWithRetry, failed.
+UpgradeActivity.java
+UpgradeActivityPage
+UpgradeAfterStartupTask run!!
+UpgradeApp
+UpgradeConfig.java
+UpgradeContentProvider.java
+UpgradeDelegate2.java
+UpgradeDialog
+UpgradeDialog.java
+UpgradeInfo check result: 
+UpgradeInfo.java
+UpgradeLogger.java
+UpgradeManager init!!!!!
+"UpgradeManager init, set writable!
+UpgradeManager.java
+UpgradeRemoteServiceImpl
+UpgradeRemoteServiceImpl.java
+UpgradeService.java
+UpgradeStatus.java
+UpgradeStatusListener.java
+UpgradeTask
+UpgradeTask run!
+UpgradeThread
+UpgradeType.java
+UpgradeWakeLock.acquireLock()
+UpgradeWakeLock.java
+.[Lcom/xiaomi/mitv/upgrade/model/UpgradeStatus;
+,[Lcom/xiaomi/mitv/upgrade/model/UpgradeType;
+activity_upgrade
+addAutoUpgradeTask
+addAutoUpgradeTask, type: 
+already upgrade this version
++another thread id doing postUpdateAndReboot
+?another thread id doing postUpdateAndReboot or shutdownOrReboot
+another thread is doing upgrade
+,autoCheckUpdate, DEFERDOWNLOAD wait 100 secs
+1autoCheckUpdate, network error, try one more time
+#backgroud_loading_bar_system_update
+begin to startPostUpdate ok!!
+begin to startUpdate ok!!
+bootenv.var.updatestat
+canUpgrade
+checkUpgrade
+(checkUpgrade, currentUpgradeInfo is null
+"checkUpgrade, currentUpgradeInfo: 
+checkUpgrade, listener is null!
+'checkUpgrade, onCheckUpgradeResponse: 1
+checkUpgradeCacheFile
+checkUpgradeInfo
+checkUpgradeInfo, ip: 
+com.duokan.action.UPGRADENOTIFY
+ com.duokan.intent.action.UPGRADE
+&com.xiaomi.mitv.ACTION_SHUTDOWN_UPDATE
+*com.xiaomi.mitv.INTELLIGENT_UPDATE_CHANGED
+0com.xiaomi.mitv.mediaexplorer.NewUpgradeActivity
+*com.xiaomi.mitv.upgrade.ACTION_SHOW_DIALOG
+$com.xiaomi.mitv.upgrade.AUTO_UPGRADE
+&com.xiaomi.mitv.upgrade.MANUAL_UPGRADE
+com.xiaomi.mitv.upgrade.TEST
+'com.xiaomi.mitv.upgrade.UpgradeActivity
+2com.xiaomi.mitv.upgrade.aidl.ICheckUpgradeListener
+2com.xiaomi.mitv.upgrade.aidl.IUpgradeRemoteService
+"com.xiaomi.mitv.upgrade.clearfiles
+com.xiaomi.mitv.upgrade.status
+confirm_upgrade
+currentUpgradeInfo
+currentUpgradeInfo is null
+currentUpgradeInfo is null!
+currentUpgradeInfo status: 
+#do not handle NEWPACKAGEPOSTUPDATED
+doForceUpgrade
+$doForceUpgrade, in rebooting return!
+doUpgrade
+doUpgrade>>
+error in upgrade
+error in upgrade: 
+-failed to read object from upgradecontext.dat
+finish post upgrade!!
+finish upgrade!!
+finishUpgrade
+finishUpgrade>> m3!
+forceUpgrade
+$get SYSTEM_UPDATE_ACTION, isReboot: 
+get currentUpgradeInfo: 
+get mCurrentUpgradeInfo!: 
+get upgrade status: 
+getAutoUpgradeSetting
+getCurrentUpgradeInfo
+getSystemUpdateProgress
+getSystemUpdateProgress!!
+getUpgradePath
+getUpgradeProgress
+getUpgradeProgress!!
+ getUpgradeProgress!!: progress: 
+.getUpgradeProgress, currentUpgradeInfo is null
+<getUpgradeProgress, currentUpgradeInfo status is incorrect: 
+getUpgradeType
+hasUpgradeUICallback
+-https://120.134.33.8/domain_ip/domain_ip.json
+-https://42.62.94.110/domain_ip/domain_ip.json
+!https://pandora.mi.com/dns/q?d=%s
+intelligent_update
+isForceUpgrade
+isForceUpgrade, force: 
+loadUpgradeContext
+loading_bar_system_update
+logUpgradeInfo
+logUpgradeInfo, status: 
+ logUpgradeInfoWithStartTimeInSec
+mChecktUpgradeCacheFileTask
+mConfirmUpgradeButton
+mConfirmUpgradeButton on click
+mCurrentUpgradeInfo
+mCurrentUpgradeInfo is null
+mReadyPostUpdate
+mUpgradeAfterStartupTask
+mUpgradePath
+mUpgradeStatusTextView
+mask_loading_bar_system_update
+nativeCheckUpgradeStatus
+nativeUpgrade
+&new check failed!! use old upgradeInfo
+new startChecktUpgradeCacheFile
+newUpgrade
+newUpgrade, type: 
+newUpgrade<<
+newUpgradeProcess
+newUpgradeProcess!, type: 
+newUpgradeProcess<<
+not upgrade reboot
++notifySystemShutdown, mCurrentUpgradeInfo: 
+onCheckUpgradeResponse
+onStatusUpdate
+onStatusUpdate status %s
+$onStatusUpdate, UpgradeInfo is null!
+onStatusUpdate: 
+pb_upgrade_progress_bar
+)post upgrade failed!! do normal shutdown!
+postUpdateAndReboot
+1postUpdateAndReboot, mCurrentUpgradeInfo is null!
+postUpgrade
+postUpgrade>> , shutdown: 
+postUpgradeOk
+readUpgradeContext ok! info: 
+receive AUTO_UPGRADE_ACTION
+)receive INTELLIGENT_UPDATE_CHANGED_INTENT
+receive MANUAL_UPGRADE_ACTION
+redo upgrade!
+redoUpgrade
+removeUpgradeCacheFile
+saveStartUpgradeTime
+:sendNotification!!, mCurrentUpgradeInfo.availableVersion: 
+sendUpdateMessage
+sendUpgradeDoneNotification
+sendUpgradeLogInfo
+sendUpgradeLogInfo: 
+sendUpgradeNotifyIntent
+sendUpgradeNotifyIntent>>
+service.update.force.update
+;setForceReboot: another thread id doing postUpdateAndReboot
+setRebootUpgrade
+setRebootUpgrade: 
+setUpgradeTask
+startAutoUpgrade
+startAutoUpgrade, type: 
+startAutoUpgrade: 
+startCheckUpgradeAfterStartup
+startCheckUpgradeAfterStartup!
+startChecktUpgradeCacheFile
+startPostUpdate
+startPostUpdate ok!!
+startPostUpgrade
+startPostUpgrade>>
+startPostUpgrade>> m3 return!
+startPreUpdate
+startPreUpgrade
+startPreUpgrade>>
+startPreUpgrade>> m3 return!
+startUpdate
+startUpdate ok!!
+startUpdateService
+startUpgrade
+startUpgrade: 
+startUpgrade>> m3!
+startUpgrade>>, path: 
+startUpgrade>>, progress < 0
+startUpgrade>>, progress >= 100
+startUpgradeProcess<<
+startUpgradeService
+startupgradetime
+stopUpdateService
+sys.update.delay
+sys.update.progress
+system_upgrade
+targetVersionBeforeUpgrade
+try to start updateservice
+try to stop updateservice
+tv_upgrade_status
+type:upgrade|type:silent
+ubootenv.var.updatestat
+update
+updateProgress
+update_system
+updateservice
+upgrade
+upgrade.duokanbox.com
+upgrade.g.duokanbox.com
+upgrade.ptmi.gitv.tv
+upgrade.t001.ottcn.com
+upgradeInfo
+upgradeProgress
+upgradeType
+upgrade_button_marginTop
+upgrade_dialog
+!upgrade_dialog_button_margin_left
+ upgrade_dialog_button_margin_top
+upgrade_dialog_button_text_size
+upgrade_dialog_cancel
+upgrade_dialog_height
+upgrade_dialog_mitu
+upgrade_dialog_mitu_height
+upgrade_dialog_mitu_margin_left
+upgrade_dialog_mitu_margin_top
+upgrade_dialog_mitu_width
+"upgrade_dialog_release_margin_left
+!upgrade_dialog_release_margin_top
+ upgrade_dialog_release_text_size
+upgrade_dialog_release_width
+upgrade_dialog_title
+ upgrade_dialog_title_margin_left
+upgrade_dialog_title_margin_top
+upgrade_dialog_title_text_size
+"upgrade_dialog_version_margin_left
+!upgrade_dialog_version_margin_top
+ upgrade_dialog_version_text_size
+upgrade_dialog_width
+upgrade_done_box
+upgrade_done_tv
+upgrade_error
+upgrade_info
+upgrade_note_text_space
+upgrade_note_text_view_height
+upgrade_notification
+!upgrade_notification_failure_text
+upgrade_notification_text
+upgrade_notification_title
+upgrade_now
+upgrade_ok
+upgrade_pageinfo_marginLeft
+upgrade_pageinfo_marginTop
+upgrade_pageinfo_width
+upgrade_progress_bar_height
+upgrade_progress_bar_marginLeft
+ upgrade_progress_bar_marginRight
+upgrade_progress_bar_marginTop
+upgrade_progress_bar_width
+upgrade_reboot_tip_marginTop
+$upgrade_release_note_arrow_marginTop
+*upgrade_release_note_left_arrow_marginLeft
++upgrade_release_note_right_arrow_marginLeft
+upgrade_release_note_text_size
+upgrade_status
+upgrade_status_marginLeft
+upgrade_status_marginTop
+upgrade_status_text_size
+upgrade_switch_confirm_main
+upgrade_switch_confirm_sub
+upgrade_switch_confirm_title
+upgradecontext.dat
+uploadUpgradeFailureLog
+uploadUpgradeFailureLog<<
+uploadUpgradeFailureLog>>
+versionBeforeUpgrade: 
+&video playing, do not do force upgrade
+writeUpgradeCacheFile

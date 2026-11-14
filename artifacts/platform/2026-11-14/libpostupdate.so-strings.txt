@@ -1,0 +1,4 @@
+﻿/dev/block/mmcblk0boot0
+/dev/block/mmcblk1boot0
+/data/update_nosign.zip
+bootable/recovery/minzip/Zip.c

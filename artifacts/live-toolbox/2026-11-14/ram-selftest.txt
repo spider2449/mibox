@@ -1,0 +1,3 @@
+﻿MIBOX_RAM_SELFTEST_OK uid=2000 bytes=65536 file_io=ok child_exit=17
+
+

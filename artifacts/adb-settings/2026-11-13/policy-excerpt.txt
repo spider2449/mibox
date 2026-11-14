@@ -1,0 +1,322 @@
+0e6398:                                        |[0e6398] com.xiaomi.mitv.settings.SettingsUtil.checkInitSettings:()V
+
+0e63a8: 120b                                   |0000: const/4 v11, #int 0 // #0
+
+0e63aa: 121a                                   |0001: const/4 v10, #int 1 // #1
+
+0e63ac: 1a07 0724                              |0002: const-string v7, "SettingsUtil" // string@2407
+
+0e63b0: 1a08 8a33                              |0004: const-string v8, "checkInitSettings" // string@338a
+
+0e63b4: 7120 481d 8700                         |0006: invoke-static {v7, v8}, Lcom/xiaomi/mitv/api/util/MILog;.i:(Ljava/lang/String;Ljava/lang/String;)I // method@1d48
+
+0e63ba: 7100 b820 0000                         |0009: invoke-static {}, Lcom/xiaomi/mitv/settings/SettingsUtil;.getDeviceName:()Ljava/lang/String; // method@20b8
+
+0e63c0: 0c04                                   |000c: move-result-object v4
+
+0e63c2: 1a07 0724                              |000d: const-string v7, "SettingsUtil" // string@2407
+
+0e63c6: 2208 4a09                              |000f: new-instance v8, Ljava/lang/StringBuilder; // type@094a
+
+0e63ca: 7010 dc3a 0800                         |0011: invoke-direct {v8}, Ljava/lang/StringBuilder;.<init>:()V // method@3adc
+
+0e63d0: 1a09 8b33                              |0014: const-string v9, "checkInitSettings device name=" // string@338b
+
+0e63d4: 6e20 e63a 9800                         |0016: invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;.append:(Ljava/lang/String;)Ljava/lang/StringBuilder; // method@3ae6
+
+0e63da: 0c08                                   |0019: move-result-object v8
+
+0e63dc: 6e20 e63a 4800                         |001a: invoke-virtual {v8, v4}, Ljava/lang/StringBuilder;.append:(Ljava/lang/String;)Ljava/lang/StringBuilder; // method@3ae6
+
+0e63e2: 0c08                                   |001d: move-result-object v8
+
+0e63e4: 6e10 f13a 0800                         |001e: invoke-virtual {v8}, Ljava/lang/StringBuilder;.toString:()Ljava/lang/String; // method@3af1
+
+0e63ea: 0c08                                   |0021: move-result-object v8
+
+0e63ec: 7120 481d 8700                         |0022: invoke-static {v7, v8}, Lcom/xiaomi/mitv/api/util/MILog;.i:(Ljava/lang/String;Ljava/lang/String;)I // method@1d48
+
+0e63f2: 2205 3a08                              |0025: new-instance v5, Lcom/xiaomi/mitv/settings/network/WifiP2pSettings; // type@083a
+
+0e63f6: 7100 8720 0000                         |0027: invoke-static {}, Lcom/xiaomi/mitv/settings/SettingsApp;.context:()Landroid/content/Context; // method@2087
+
+0e63fc: 0c07                                   |002a: move-result-object v7
+
+0e63fe: 7030 d632 7504                         |002b: invoke-direct {v5, v7, v4}, Lcom/xiaomi/mitv/settings/network/WifiP2pSettings;.<init>:(Landroid/content/Context;Ljava/lang/String;)V // method@32d6
+
+0e6404: 7100 8720 0000                         |002e: invoke-static {}, Lcom/xiaomi/mitv/settings/SettingsApp;.context:()Landroid/content/Context; // method@2087
+
+0e640a: 0c07                                   |0031: move-result-object v7
+
+0e640c: 6e30 d932 7504                         |0032: invoke-virtual {v5, v7, v4}, Lcom/xiaomi/mitv/settings/network/WifiP2pSettings;.setWifiP2pDeviceName:(Landroid/content/Context;Ljava/lang/String;)V // method@32d9
+
+0e6412: 7100 8720 0000                         |0035: invoke-static {}, Lcom/xiaomi/mitv/settings/SettingsApp;.context:()Landroid/content/Context; // method@2087
+
+0e6418: 0c07                                   |0038: move-result-object v7
+
+0e641a: 1a08 ca2f                              |0039: const-string v8, "audio" // string@2fca
+
+0e641e: 6e20 4d01 8700                         |003b: invoke-virtual {v7, v8}, Landroid/content/Context;.getSystemService:(Ljava/lang/String;)Ljava/lang/Object; // method@014d
+
+0e6424: 0c00                                   |003e: move-result-object v0
+
+0e6426: 1f00 a100                              |003f: check-cast v0, Landroid/media/AudioManager; // type@00a1
+
+0e642a: 7100 8720 0000                         |0041: invoke-static {}, Lcom/xiaomi/mitv/settings/SettingsApp;.context:()Landroid/content/Context; // method@2087
+
+0e6430: 0c07                                   |0044: move-result-object v7
+
+0e6432: 6e10 3e01 0700                         |0045: invoke-virtual {v7}, Landroid/content/Context;.getContentResolver:()Landroid/content/ContentResolver; // method@013e
+
+0e6438: 0c07                                   |0048: move-result-object v7
+
+0e643a: 1a08 8565                              |0049: const-string v8, "sound_effects_enabled" // string@6585
+
+0e643e: 7120 bc03 8700                         |004b: invoke-static {v7, v8}, Landroid/provider/Settings$System;.getInt:(Landroid/content/ContentResolver;Ljava/lang/String;)I // method@03bc
+
+0e6444: 0a03                                   |004e: move-result v3
+
+0e6446: 1a07 0724                              |004f: const-string v7, "SettingsUtil" // string@2407
+
+0e644a: 2208 4a09                              |0051: new-instance v8, Ljava/lang/StringBuilder; // type@094a
+
+0e644e: 7010 dc3a 0800                         |0053: invoke-direct {v8}, Ljava/lang/StringBuilder;.<init>:()V // method@3adc
+
+0e6454: 1a09 4401                              |0056: const-string v9, " sound enabled is " // string@0144
+
+0e6458: 6e20 e63a 9800                         |0058: invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;.append:(Ljava/lang/String;)Ljava/lang/StringBuilder; // method@3ae6
+
+0e645e: 0c08                                   |005b: move-result-object v8
+
+0e6460: 6e20 e23a 3800                         |005c: invoke-virtual {v8, v3}, Ljava/lang/StringBuilder;.append:(I)Ljava/lang/StringBuilder; // method@3ae2
+
+0e6466: 0c08                                   |005f: move-result-object v8
+
+0e6468: 6e10 f13a 0800                         |0060: invoke-virtual {v8}, Ljava/lang/StringBuilder;.toString:()Ljava/lang/String; // method@3af1
+
+0e646e: 0c08                                   |0063: move-result-object v8
+
+0e6470: 7120 fa13 8700                         |0064: invoke-static {v7, v8}, Landroid/util/Log;.d:(Ljava/lang/String;Ljava/lang/String;)I // method@13fa
+
+0e6476: 33a3 1100                              |0067: if-ne v3, v10, 0078 // +0011
+
+0e647a: 1217                                   |0069: const/4 v7, #int 1 // #1
+
+0e647c: 6e20 a002 7000                         |006a: invoke-virtual {v0, v7}, Landroid/media/AudioManager;.getStreamVolume:(I)I // method@02a0
+
+0e6482: 0a07                                   |006d: move-result v7
+
+0e6484: 3d07 0a00                              |006e: if-lez v7, 0078 // +000a
+
+0e6488: 1217                                   |0070: const/4 v7, #int 1 // #1
+
+0e648a: 6008 650d                              |0071: sget v8, Lcom/xiaomi/mitv/settings/Constants;.RING_VOLUME_ON:I // field@0d65
+
+0e648e: 1309 0800                              |0073: const/16 v9, #int 8 // #8
+
+0e6492: 6e40 a602 7098                         |0075: invoke-virtual {v0, v7, v8, v9}, Landroid/media/AudioManager;.setStreamVolume:(III)V // method@02a6
+
+0e6498: 1a07 5e5f                              |0078: const-string v7, "ro.debuggable" // string@5f5e
+
+0e649c: 7110 9003 0700                         |007a: invoke-static {v7}, Landroid/os/SystemProperties;.get:(Ljava/lang/String;)Ljava/lang/String; // method@0390
+
+0e64a2: 0c06                                   |007d: move-result-object v6
+
+0e64a4: 1a07 9c67                              |007e: const-string v7, "sys.cts.running" // string@679c
+
+0e64a8: 7120 9203 b700                         |0080: invoke-static {v7, v11}, Landroid/os/SystemProperties;.getBoolean:(Ljava/lang/String;Z)Z // method@0392
+
+0e64ae: 0a01                                   |0083: move-result v1
+
+0e64b0: 1a07 ba04                              |0084: const-string v7, "1" // string@04ba
+
+0e64b4: 6e20 aa3a 7600                         |0086: invoke-virtual {v6, v7}, Ljava/lang/String;.equalsIgnoreCase:(Ljava/lang/String;)Z // method@3aaa
+
+0e64ba: 0a07                                   |0089: move-result v7
+
+0e64bc: 3907 1400                              |008a: if-nez v7, 009e // +0014
+
+0e64c0: 3901 1200                              |008c: if-nez v1, 009e // +0012
+
+0e64c4: 7100 743d 0000                         |008e: invoke-static {}, Lmitv/os/Build;.isTvProduct:()Z // method@3d74
+
+0e64ca: 0a07                                   |0091: move-result v7
+
+0e64cc: 3807 1c00                              |0092: if-eqz v7, 00ae // +001c
+
+0e64d0: 7110 f020 0b00                         |0094: invoke-static {v11}, Lcom/xiaomi/mitv/settings/SettingsUtil;.setADBEnable:(I)V // method@20f0
+
+0e64d6: 1a07 0724                              |0097: const-string v7, "SettingsUtil" // string@2407
+
+0e64da: 1a08 826a                              |0099: const-string v8, "user product, setADB false" // string@6a82
+
+0e64de: 7120 fa13 8700                         |009b: invoke-static {v7, v8}, Landroid/util/Log;.d:(Ljava/lang/String;Ljava/lang/String;)I // method@13fa
+
+0e64e4: 7100 1528 0000                         |009e: invoke-static {}, Lcom/xiaomi/mitv/settings/common/LogSettings;.checkUserLogExpire:()V // method@2815
+
+0e64ea: 1a07 0724                              |00a1: const-string v7, "SettingsUtil" // string@2407
+
+0e64ee: 1a08 8c33                              |00a3: const-string v8, "checkInitSettings done" // string@338c
+
+0e64f2: 7120 481d 8700                         |00a5: invoke-static {v7, v8}, Lcom/xiaomi/mitv/api/util/MILog;.i:(Ljava/lang/String;Ljava/lang/String;)I // method@1d48
+
+0e64f8: 0e00                                   |00a8: return-void
+
+0e64fa: 0d02                                   |00a9: move-exception v2
+
+0e64fc: 6e10 3f3a 0200                         |00aa: invoke-virtual {v2}, Ljava/lang/Exception;.printStackTrace:()V // method@3a3f
+
+0e6502: 28cb                                   |00ad: goto 0078 // -0035
+
+0e6504: 7100 713d 0000                         |00ae: invoke-static {}, Lmitv/os/Build;.getProductCode:()I // method@3d71
+
+0e650a: 0a07                                   |00b1: move-result v7
+
+0e650c: 1308 0900                              |00b2: const/16 v8, #int 9 // #9
+
+0e6510: 3287 e3ff                              |00b4: if-eq v7, v8, 0097 // -001d
+
+0e6514: 1a07 5604                              |00b6: const-string v7, "0" // string@0456
+
+0e6518: 7110 f220 0700                         |00b8: invoke-static {v7}, Lcom/xiaomi/mitv/settings/SettingsUtil;.setBoxADBStatus:(Ljava/lang/String;)V // method@20f2
+
+0e651e: 28dc                                   |00bb: goto 0097 // -0024
+
+      catches       : 1
+
+0e6720:                                        |[0e6720] com.xiaomi.mitv.settings.SettingsUtil.getBoxADBStatus:()Z
+
+0e6730: 1201                                   |0000: const/4 v1, #int 0 // #0
+
+0e6732: 1200                                   |0001: const/4 v0, #int 0 // #0
+
+0e6734: 6002 6800                              |0002: sget v2, Landroid/os/Build$VERSION;.SDK_INT:I // field@0068
+
+0e6738: 1303 1000                              |0004: const/16 v3, #int 16 // #10
+
+0e673c: 3732 0d00                              |0006: if-le v2, v3, 0013 // +000d
+
+0e6740: 1a02 002f                              |0008: const-string v2, "android.provider.Settings$Global" // string@2f00
+
+0e6744: 1a03 532d                              |000a: const-string v3, "adb_enabled" // string@2d53
+
+0e6748: 7130 c620 3201                         |000c: invoke-static {v2, v3, v1}, Lcom/xiaomi/mitv/settings/SettingsUtil;.getSettingsValue:(Ljava/lang/String;Ljava/lang/String;I)I // method@20c6
+
+0e674e: 0a00                                   |000f: move-result v0
+
+0e6750: 3900 0c00                              |0010: if-nez v0, 001c // +000c
+
+0e6754: 0f01                                   |0012: return v1
+
+0e6756: 1a02 012f                              |0013: const-string v2, "android.provider.Settings$Secure" // string@2f01
+
+0e675a: 1a03 532d                              |0015: const-string v3, "adb_enabled" // string@2d53
+
+0e675e: 7130 c620 3201                         |0017: invoke-static {v2, v3, v1}, Lcom/xiaomi/mitv/settings/SettingsUtil;.getSettingsValue:(Ljava/lang/String;Ljava/lang/String;I)I // method@20c6
+
+0e6764: 0a00                                   |001a: move-result v0
+
+0e6766: 28f5                                   |001b: goto 0010 // -000b
+
+0e6768: 1211                                   |001c: const/4 v1, #int 1 // #1
+
+0e676a: 28f5                                   |001d: goto 0012 // -000b
+
+      catches       : (none)
+
+0e742c:                                        |[0e742c] com.xiaomi.mitv.settings.SettingsUtil.isEnableADB:()Z
+
+0e743c: 1201                                   |0000: const/4 v1, #int 0 // #0
+
+0e743e: 1a02 e25a                              |0001: const-string v2, "persist.sys.usb.netadb.config" // string@5ae2
+
+0e7442: 7110 c820 0200                         |0003: invoke-static {v2}, Lcom/xiaomi/mitv/settings/SettingsUtil;.getSystemProperties:(Ljava/lang/String;)Ljava/lang/String; // method@20c8
+
+0e7448: 0c00                                   |0006: move-result-object v0
+
+0e744a: 7110 e413 0000                         |0007: invoke-static {v0}, Landroid/text/TextUtils;.isEmpty:(Ljava/lang/CharSequence;)Z // method@13e4
+
+0e7450: 0a02                                   |000a: move-result v2
+
+0e7452: 3802 0300                              |000b: if-eqz v2, 000e // +0003
+
+0e7456: 0f01                                   |000d: return v1
+
+0e7458: 7110 5e3a 0000                         |000e: invoke-static {v0}, Ljava/lang/Integer;.valueOf:(Ljava/lang/String;)Ljava/lang/Integer; // method@3a5e
+
+0e745e: 0c02                                   |0011: move-result-object v2
+
+0e7460: 6e10 573a 0200                         |0012: invoke-virtual {v2}, Ljava/lang/Integer;.intValue:()I // method@3a57
+
+0e7466: 0a02                                   |0015: move-result v2
+
+0e7468: 3802 f7ff                              |0016: if-eqz v2, 000d // -0009
+
+0e746c: 1211                                   |0018: const/4 v1, #int 1 // #1
+
+0e746e: 28f4                                   |0019: goto 000d // -000c
+
+      catches       : (none)
+
+0e7c1c:                                        |[0e7c1c] com.xiaomi.mitv.settings.SettingsUtil.setADBEnable:(I)V
+
+0e7c2c: 1a00 e25a                              |0000: const-string v0, "persist.sys.usb.netadb.config" // string@5ae2
+
+0e7c30: 7110 cc3a 0200                         |0002: invoke-static {v2}, Ljava/lang/String;.valueOf:(I)Ljava/lang/String; // method@3acc
+
+0e7c36: 0c01                                   |0005: move-result-object v1
+
+0e7c38: 7120 0021 1000                         |0006: invoke-static {v0, v1}, Lcom/xiaomi/mitv/settings/SettingsUtil;.setSystemProperties:(Ljava/lang/String;Ljava/lang/String;)V // method@2100
+
+0e7c3e: 0e00                                   |0009: return-void
+
+      catches       : (none)
+
+0e7c70:                                        |[0e7c70] com.xiaomi.mitv.settings.SettingsUtil.setBoxADBStatus:(Ljava/lang/String;)V
+
+0e7c80: 6000 6800                              |0000: sget v0, Landroid/os/Build$VERSION;.SDK_INT:I // field@0068
+
+0e7c84: 1301 1000                              |0002: const/16 v1, #int 16 // #10
+
+0e7c88: 3710 1d00                              |0004: if-le v0, v1, 0021 // +001d
+
+0e7c8c: 1a00 002f                              |0006: const-string v0, "android.provider.Settings$Global" // string@2f00
+
+0e7c90: 1a01 532d                              |0008: const-string v1, "adb_enabled" // string@2d53
+
+0e7c94: 7110 593a 0300                         |000a: invoke-static {v3}, Ljava/lang/Integer;.parseInt:(Ljava/lang/String;)I // method@3a59
+
+0e7c9a: 0a02                                   |000d: move-result v2
+
+0e7c9c: 7130 fd20 1002                         |000e: invoke-static {v0, v1, v2}, Lcom/xiaomi/mitv/settings/SettingsUtil;.setSettingsValue:(Ljava/lang/String;Ljava/lang/String;I)V // method@20fd
+
+0e7ca2: 1a00 ba04                              |0011: const-string v0, "1" // string@04ba
+
+0e7ca6: 6e20 a93a 3000                         |0013: invoke-virtual {v0, v3}, Ljava/lang/String;.equals:(Ljava/lang/Object;)Z // method@3aa9
+
+0e7cac: 0a00                                   |0016: move-result v0
+
+0e7cae: 3800 0900                              |0017: if-eqz v0, 0020 // +0009
+
+0e7cb2: 1a00 4961                              |0019: const-string v0, "service.adb.tcp.port" // string@6149
+
+0e7cb6: 1a01 fd04                              |001b: const-string v1, "5555" // string@04fd
+
+0e7cba: 7120 0021 1000                         |001d: invoke-static {v0, v1}, Lcom/xiaomi/mitv/settings/SettingsUtil;.setSystemProperties:(Ljava/lang/String;Ljava/lang/String;)V // method@2100
+
+0e7cc0: 0e00                                   |0020: return-void
+
+0e7cc2: 1a00 012f                              |0021: const-string v0, "android.provider.Settings$Secure" // string@2f01
+
+0e7cc6: 1a01 532d                              |0023: const-string v1, "adb_enabled" // string@2d53
+
+0e7cca: 7110 593a 0300                         |0025: invoke-static {v3}, Ljava/lang/Integer;.parseInt:(Ljava/lang/String;)I // method@3a59
+
+0e7cd0: 0a02                                   |0028: move-result v2
+
+0e7cd2: 7130 fd20 1002                         |0029: invoke-static {v0, v1, v2}, Lcom/xiaomi/mitv/settings/SettingsUtil;.setSettingsValue:(Ljava/lang/String;Ljava/lang/String;I)V // method@20fd
+
+0e7cd8: 28e5                                   |002c: goto 0011 // -001b
+
+      catches       : (none)
+

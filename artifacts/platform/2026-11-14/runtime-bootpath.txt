@@ -1,0 +1,5 @@
+sh: cat: /sys/kernel/kexec_loaded: No such file or directory
+sh: cat: /sys/kernel/kexec_crash_loaded: No such file or directory
+00000000 W sys_kexec_load
+lrwxrwxrwx root     system            2026-11-14 06:29 mnt -> mnt:[4026531840]
+MIBOX_READ_COMPLETE

@@ -1,0 +1,6 @@
+﻿MIBOX_ADB_WORKER_ERROR --worker-install job=3666-1794606976623: create candidate script: Read-only file system (os error 30)
+
+Error: Custom { kind: Other, error: "root worker failed" }
+
+REMOTE_EXIT:1
+

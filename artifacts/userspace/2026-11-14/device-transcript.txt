@@ -1,0 +1,18 @@
+scope=chroot process, not independent boot or PID1
+COMMAND ["info"] exit=Some(0)
+NAME="MiBOX Custom Userspace"
+ID=mibox-custom
+VERSION_ID=0.1.0
+kernel=3.10.33 pid=5264 uid=65534 euid=65534
+COMMAND ["ls", "/"] exit=Some(0)
+bin
+etc
+tmp
+COMMAND ["cat", "/etc/os-release"] exit=Some(0)
+NAME="MiBOX Custom Userspace"
+ID=mibox-custom
+VERSION_ID=0.1.0
+COMMAND ["selftest"] exit=Some(0)
+MIBOX_USERSPACE_SELFTEST_OK rootfs=custom uid=65534 file_io=ok child_exec=ok android_paths=absent
+MIBOX_USERSPACE_DEVICE_TEST_OK
+MIBOX_READ_COMPLETE

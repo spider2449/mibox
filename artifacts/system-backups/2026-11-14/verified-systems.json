@@ -1,0 +1,132 @@
+﻿[
+    {
+        "Partition":  "system1",
+        "Bytes":  536870912,
+        "SHA256":  "55ee5a9cce011b3eb0ce3ef5b0a15c376275ce05dcb5159aee0dc2e321293d93",
+        "DeviceSHA256":  "55ee5a9cce011b3eb0ce3ef5b0a15c376275ce05dcb5159aee0dc2e321293d93",
+        "Image":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\backup\\systems-20261114-072524\\system1.img",
+        "Chunks":  [
+                       {
+                           "Index":  0,
+                           "Offset":  0,
+                           "Bytes":  67108864,
+                           "SHA256":  "f428d8281ab08e813262e0c12088e9807f5040faf77def95e73572e298e38f7f",
+                           "File":  "system1.00.part"
+                       },
+                       {
+                           "Index":  1,
+                           "Offset":  67108864,
+                           "Bytes":  67108864,
+                           "SHA256":  "6c233a2ae010f5b6ecc526d0978e00a1b53d3a64d70787e2d972c0ed2b294b2b",
+                           "File":  "system1.01.part"
+                       },
+                       {
+                           "Index":  2,
+                           "Offset":  134217728,
+                           "Bytes":  67108864,
+                           "SHA256":  "c5599ad1539cc0aea49ebcea632ca6267445c3c4c830094e58991e5e1b86f4cc",
+                           "File":  "system1.02.part"
+                       },
+                       {
+                           "Index":  3,
+                           "Offset":  201326592,
+                           "Bytes":  67108864,
+                           "SHA256":  "99a8ae9a1b777afa77840d75bc0ebe4f6bcc8d88c2d36fb90c0cfff3d94b96a0",
+                           "File":  "system1.03.part"
+                       },
+                       {
+                           "Index":  4,
+                           "Offset":  268435456,
+                           "Bytes":  67108864,
+                           "SHA256":  "301e20df3c2738da977c77c2d7204f2d3f6af7df61a2eba01be163fdfca8462f",
+                           "File":  "system1.04.part"
+                       },
+                       {
+                           "Index":  5,
+                           "Offset":  335544320,
+                           "Bytes":  67108864,
+                           "SHA256":  "5c26c2bcf19d3b36afdc8f4686c6801469e3b804d4412973b84983eb79e8ae18",
+                           "File":  "system1.05.part"
+                       },
+                       {
+                           "Index":  6,
+                           "Offset":  402653184,
+                           "Bytes":  67108864,
+                           "SHA256":  "9c6427e231eeba1083aa2e734b5f9f7af726dcdff31b7c3e9ea8d272612800d8",
+                           "File":  "system1.06.part"
+                       },
+                       {
+                           "Index":  7,
+                           "Offset":  469762048,
+                           "Bytes":  67108864,
+                           "SHA256":  "8a00c217f56991cfac2b9937837e52f34540783c36508dd245b82024ce8104c2",
+                           "File":  "system1.07.part"
+                       }
+                   ]
+    },
+    {
+        "Partition":  "system",
+        "Bytes":  536870912,
+        "SHA256":  "114cc4790af61988944bb39adecc141ae2da80fcf20f30689ac152fb8b3cc99c",
+        "DeviceSHA256":  "114cc4790af61988944bb39adecc141ae2da80fcf20f30689ac152fb8b3cc99c",
+        "Image":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\backup\\systems-20261114-073129\\system.img",
+        "Chunks":  [
+                       {
+                           "Index":  0,
+                           "Offset":  0,
+                           "Bytes":  67108864,
+                           "SHA256":  "194ae86b14d56eff567be31c964b0cb345156f056bb0df5b9b37309e5cf5db8a",
+                           "File":  "system.00.part"
+                       },
+                       {
+                           "Index":  1,
+                           "Offset":  67108864,
+                           "Bytes":  67108864,
+                           "SHA256":  "34585d48bd941101cdec6b8525b29c069e3a1fa9d8caa7038328ad163bd09289",
+                           "File":  "system.01.part"
+                       },
+                       {
+                           "Index":  2,
+                           "Offset":  134217728,
+                           "Bytes":  67108864,
+                           "SHA256":  "63199120285c0bc04505b21c0275cd7d000f18f166ae5f33492990e036d1a172",
+                           "File":  "system.02.part"
+                       },
+                       {
+                           "Index":  3,
+                           "Offset":  201326592,
+                           "Bytes":  67108864,
+                           "SHA256":  "31b326e0d55474ee90cfdc487ea97071b6753819a6303b4a4f0108c6036cd393",
+                           "File":  "system.03.part"
+                       },
+                       {
+                           "Index":  4,
+                           "Offset":  268435456,
+                           "Bytes":  67108864,
+                           "SHA256":  "594bea12126ebe3aa35a6ed69185ac107826701b20a350e2038f600ae2353504",
+                           "File":  "system.04.part"
+                       },
+                       {
+                           "Index":  5,
+                           "Offset":  335544320,
+                           "Bytes":  67108864,
+                           "SHA256":  "8fc8d468594971e8e7b89411c8586f2128499c44a74505cb83aa24919de8ccda",
+                           "File":  "system.05.part"
+                       },
+                       {
+                           "Index":  6,
+                           "Offset":  402653184,
+                           "Bytes":  67108864,
+                           "SHA256":  "48e9a0e5ef44fbd6e086dd110f168ec5baf6125202a8b39a661c490ddcc65940",
+                           "File":  "system.06.part"
+                       },
+                       {
+                           "Index":  7,
+                           "Offset":  469762048,
+                           "Bytes":  67108864,
+                           "SHA256":  "f69ef3c8c090c23c99d6beb87a4f55915ab8a3e770d32af522f61e8b6b93dcec",
+                           "File":  "system.07.part"
+                       }
+                   ]
+    }
+]

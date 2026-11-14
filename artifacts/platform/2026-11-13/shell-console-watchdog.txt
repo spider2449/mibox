@@ -1,0 +1,292 @@
+﻿-rw-r--r-- root     root         4096 2026-11-13 21:22 bDeviceClass
+
+-rw-r--r-- root     root         4096 2026-11-13 22:15 bDeviceProtocol
+
+-rw-r--r-- root     root         4096 2026-11-13 22:15 bDeviceSubClass
+
+-rw-r--r-- root     root         4096 2026-11-13 22:15 bcdDevice
+
+-rw-r--r-- root     root         4096 1970-01-01 08:00 enable
+
+drwxr-xr-x root     root              1970-01-01 08:00 f_accessory
+
+drwxr-xr-x root     root              1970-01-01 08:00 f_acm
+
+drwxr-xr-x root     root              1970-01-01 08:00 f_audio_source
+
+drwxr-xr-x root     root              1970-01-01 08:00 f_ffs
+
+drwxr-xr-x root     root              1970-01-01 08:00 f_mass_storage
+
+drwxr-xr-x root     root              1970-01-01 08:00 f_mtp
+
+drwxr-xr-x root     root              1970-01-01 08:00 f_ptp
+
+drwxr-xr-x root     root              1970-01-01 08:00 f_rndis
+
+-rw-r--r-- root     root         4096 1970-01-01 08:00 functions
+
+-rw-r--r-- root     root         4096 1970-01-01 08:00 iManufacturer
+
+-rw-r--r-- root     root         4096 1970-01-01 08:00 iProduct
+
+-rw-r--r-- root     root         4096 1970-01-01 08:00 iSerial
+
+-rw-r--r-- root     root         4096 1970-01-01 08:00 idProduct
+
+-rw-r--r-- root     root         4096 1970-01-01 08:00 idVendor
+
+drwxr-xr-x root     root              1970-01-01 08:00 power
+
+-r--r--r-- root     root         4096 1970-01-02 08:00 state
+
+lrwxrwxrwx root     root              2026-11-13 22:15 subsystem -> ../../../../class/android_usb
+
+-rw-r--r-- root     root         4096 1970-01-01 08:00 uevent
+
+lrwxrwxrwx root     root              2026-11-13 22:15 device -> ../../android0
+
+-rw-r--r-- root     root         4096 2026-11-13 22:15 instances
+
+drwxr-xr-x root     root              1970-01-01 08:00 power
+
+lrwxrwxrwx root     root              2026-11-13 22:15 subsystem -> ../../../../../class/android_usb
+
+-rw-r--r-- root     root         4096 1970-01-01 08:00 uevent
+
+drwxr-xr-x root     root              2026-11-13 22:15 alarm_dev
+
+drwxr-xr-x root     root              2026-11-13 22:15 am_net8218
+
+drwxr-xr-x root     root              2026-11-13 22:15 amlIonDr
+
+drwxr-xr-x root     root              2026-11-13 22:15 aml_vfm
+
+drwxr-xr-x root     root              2026-11-13 22:15 amlogic_amaudio
+
+drwxr-xr-x root     root              2026-11-13 22:15 amlogo
+
+drwxr-xr-x root     root              1970-01-01 08:00 amlvideodri
+
+drwxr-xr-x root     root              2026-11-13 22:15 amports
+
+drwxr-xr-x root     root              1970-01-01 08:00 amvdec_h264
+
+drwxr-xr-x root     root              2026-11-13 22:15 amvdec_mjpeg
+
+drwxr-xr-x root     root              1970-01-01 08:00 amvdec_mpeg12
+
+drwxr-xr-x root     root              2026-11-13 22:15 amvdec_mpeg4
+
+drwxr-xr-x root     root              2026-11-13 22:15 amvdec_real
+
+drwxr-xr-x root     root              2026-11-13 22:15 amvdec_vc1
+
+drwxr-xr-x root     root              1970-01-01 08:00 amvideo
+
+drwxr-xr-x root     root              2026-11-13 22:15 asix
+
+drwxr-xr-x root     root              2026-11-13 22:15 audiodsp
+
+drwxr-xr-x root     root              2026-11-13 22:15 binder
+
+drwxr-xr-x root     root              1970-01-01 08:00 block
+
+drwxr-xr-x root     root              2026-11-13 22:15 bluetooth
+
+drwxr-xr-x root     root              2026-11-13 22:15 bnep
+
+drwxr-xr-x root     root              2026-11-13 22:15 bridge
+
+drwxr-xr-x root     root              2026-11-13 22:15 cdc_ncm
+
+drwxr-xr-x root     root              2026-11-13 22:15 cfg80211
+
+drwxr-xr-x root     root              2026-11-13 22:15 cifs
+
+drwxr-xr-x root     root              2026-11-13 22:15 configfs
+
+drwxr-xr-x root     root              1970-01-02 08:00 dhd
+
+drwxr-xr-x root     root              1970-01-01 08:00 di
+
+drwxr-xr-x root     root              2026-11-13 22:15 display
+
+drwxr-xr-x root     root              2026-11-13 22:15 dvb_core
+
+drwxr-xr-x root     root              2026-11-13 22:15 dwc_otg
+
+drwxr-xr-x root     root              2026-11-13 22:15 dynamic_debug
+
+drwxr-xr-x root     root              2026-11-13 22:15 earlysuspend
+
+drwxr-xr-x root     root              2026-11-13 22:15 fb
+
+drwxr-xr-x root     root              2026-11-13 22:15 firmware_class
+
+drwxr-xr-x root     root              2026-11-13 22:15 fuse
+
+drwxr-xr-x root     root              2026-11-13 22:15 g_android
+
+drwxr-xr-x root     root              2026-11-13 22:15 ge2d
+
+drwxr-xr-x root     root              2026-11-13 22:15 gspca_main
+
+drwxr-xr-x root     root              2026-11-13 22:15 hci_uart
+
+drwxr-xr-x root     root              2026-11-13 22:15 hdmitx
+
+drwxr-xr-x root     root              2026-11-13 22:15 hid
+
+drwxr-xr-x root     root              2026-11-13 22:15 hidp
+
+drwxr-xr-x root     root              2026-11-13 22:15 i2c_algo_bit
+
+drwxr-xr-x root     root              2026-11-13 22:15 input_polldev
+
+drwxr-xr-x root     root              1970-01-01 08:00 ionvideo
+
+drwxr-xr-x root     root              2026-11-13 22:15 ip6_tunnel
+
+drwxr-xr-x root     root              2026-11-13 22:15 ipv6
+
+drwxr-xr-x root     root              2026-11-13 22:15 ir_kbd_i2c
+
+drwxr-xr-x root     root              2026-11-13 22:15 ir_meson6_mi
+
+drwxr-xr-x root     root              2026-11-13 22:15 kernel
+
+drwxr-xr-x root     root              2026-11-13 22:15 keyboard
+
+drwxr-xr-x root     root              2026-11-13 22:15 loop
+
+drwxr-xr-x root     root              1970-01-01 08:00 lowmemorykiller
+
+drwxr-xr-x root     root              2026-11-13 22:15 mac80211
+
+drwxr-xr-x root     root              2026-11-13 22:15 mali
+
+drwxr-xr-x root     root              2026-11-13 22:15 mmc_core
+
+drwxr-xr-x root     root              2026-11-13 22:15 mmcblk
+
+drwxr-xr-x root     root              2026-11-13 22:15 mousedev
+
+drwxr-xr-x root     root              2026-11-13 22:15 nf_conntrack
+
+drwxr-xr-x root     root              2026-11-13 22:15 nf_conntrack_amanda
+
+drwxr-xr-x root     root              2026-11-13 22:15 nf_conntrack_ftp
+
+drwxr-xr-x root     root              2026-11-13 22:15 nf_conntrack_h323
+
+drwxr-xr-x root     root              2026-11-13 22:15 nf_conntrack_ipv4
+
+drwxr-xr-x root     root              2026-11-13 22:15 nf_conntrack_irc
+
+drwxr-xr-x root     root              2026-11-13 22:15 nf_conntrack_netbios_ns
+
+drwxr-xr-x root     root              2026-11-13 22:15 nf_conntrack_sane
+
+drwxr-xr-x root     root              2026-11-13 22:15 nf_conntrack_tftp
+
+drwxr-xr-x root     root              2026-11-13 22:15 ntfs
+
+drwxr-xr-x root     root              2026-11-13 22:15 osd_rdma
+
+drwxr-xr-x root     root              2026-11-13 22:15 picdec
+
+drwxr-xr-x root     root              2026-11-13 22:15 ppp_generic
+
+drwxr-xr-x root     root              2026-11-13 22:15 ppp_mppe
+
+drwxr-xr-x root     root              2026-11-13 22:15 printk
+
+drwxr-xr-x root     root              2026-11-13 22:15 psmouse
+
+drwxr-xr-x root     root              2026-11-13 22:15 pstore
+
+drwxr-xr-x root     root              2026-11-13 22:15 ramoops
+
+drwxr-xr-x root     root              2026-11-13 22:15 random
+
+drwxr-xr-x root     root              2026-11-13 22:15 rc_core
+
+drwxr-xr-x root     root              2026-11-13 22:15 rcupdate
+
+drwxr-xr-x root     root              2026-11-13 22:15 rcutree
+
+drwxr-xr-x root     root              2026-11-13 22:15 rdma
+
+drwxr-xr-x root     root              2026-11-13 22:15 rfcomm
+
+drwxr-xr-x root     root              2026-11-13 22:15 rfkill
+
+drwxr-xr-x root     root              2026-11-13 22:15 sch_htb
+
+drwxr-xr-x root     root              2026-11-13 22:15 scsi_mod
+
+drwxr-xr-x root     root              2026-11-13 22:15 sit
+
+drwxr-xr-x root     root              2026-11-13 22:15 snd
+
+drwxr-xr-x root     root              2026-11-13 22:15 snd_pcm
+
+drwxr-xr-x root     root              2026-11-13 22:15 snd_timer
+
+drwxr-xr-x root     root              2026-11-13 22:15 snd_usb_audio
+
+drwxr-xr-x root     root              2026-11-13 22:15 spurious
+
+drwxr-xr-x root     root              2026-11-13 22:15 sr_mod
+
+drwxr-xr-x root     root              2026-11-13 22:15 sysrq
+
+drwxr-xr-x root     root              2026-11-13 22:15 tcp_cubic
+
+drwxr-xr-x root     root              2026-11-13 22:15 texfat
+
+drwxr-xr-x root     root              2026-11-13 22:15 tfat
+
+drwxr-xr-x root     root              2026-11-13 22:15 tntfs
+
+drwxr-xr-x root     root              2026-11-13 22:15 uinput
+
+drwxr-xr-x root     root              2026-11-13 22:15 usb_storage
+
+drwxr-xr-x root     root              2026-11-13 22:15 usbcore
+
+drwxr-xr-x root     root              2026-11-13 22:15 usbhid
+
+drwxr-xr-x root     root              2026-11-13 22:15 userwakelock
+
+drwxr-xr-x root     root              2026-11-13 22:15 uvcvideo
+
+drwxr-xr-x root     root              2026-11-13 22:15 videobuf2_core
+
+drwxr-xr-x root     root              2026-11-13 22:15 videobuf_core
+
+drwxr-xr-x root     root              2026-11-13 22:15 videobuf_res
+
+drwxr-xr-x root     root              2026-11-13 22:15 videobuf_vmalloc
+
+drwxr-xr-x root     root              2026-11-13 22:15 vt
+
+drwxr-xr-x root     root              2026-11-13 22:15 wakelock_android
+
+drwxr-xr-x root     root              2026-11-13 22:15 workqueue
+
+drwxr-xr-x root     root              2026-11-13 22:15 xpad
+
+drwxr-xr-x root     root              2026-11-13 22:15 xt_qtaguid
+
+drwxr-xr-x root     root              2026-11-13 22:15 xt_quota2
+
+drwxr-xr-x root     root              2026-11-13 22:15 xz_dec
+
+-rw-r--r-- root     root            0 2026-11-13 22:15 panic
+
+20
+
+0
+

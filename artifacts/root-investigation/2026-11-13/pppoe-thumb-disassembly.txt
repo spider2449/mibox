@@ -1,0 +1,731 @@
+﻿
+/mnt/f/coding/otherPrj/mibox/artifacts/root-investigation/2026-11-13/pppoe_wrapper:     file format elf32-littlearm
+
+
+Disassembly of section .plt:
+
+000009a8 <__libc_init@plt-0x14>:
+ 9a8:	e004      	b.n	9b4 <__libc_init@plt-0x8>
+ 9aa:	e52d      	b.n	408 <__libc_init@plt-0x5b4>
+ 9ac:	e004      	b.n	9b8 <__libc_init@plt-0x4>
+ 9ae:	e59f      	b.n	4f0 <__libc_init@plt-0x4cc>
+ 9b0:	e00e      	b.n	9d0 <__cxa_atexit@plt+0x8>
+ 9b2:	e08f      	b.n	ad4 <malloc@plt+0x4>
+ 9b4:	f008 e5be 	blx	409534 <_end+0x406530>
+ 9b8:	25cc      	movs	r5, #204	@ 0xcc
+	...
+
+000009bc <__libc_init@plt>:
+ 9bc:	c600      	stmia	r6!, {}
+ 9be:	e28f      	b.n	ee0 <free@plt+0x3e0>
+ 9c0:	ca02      	ldmia	r2!, {r1}
+ 9c2:	e28c      	b.n	ede <free@plt+0x3de>
+ 9c4:	f5cc e5bc 	blx	ff9cd540 <_end+0xff9ca53c>
+
+000009c8 <__cxa_atexit@plt>:
+ 9c8:	c600      	stmia	r6!, {}
+ 9ca:	e28f      	b.n	eec <free@plt+0x3ec>
+ 9cc:	ca02      	ldmia	r2!, {r1}
+ 9ce:	e28c      	b.n	eea <free@plt+0x3ea>
+ 9d0:	f5c4 e5bc 	blx	ff9c554c <_end+0xff9c2548>
+
+000009d4 <system@plt>:
+ 9d4:	c600      	stmia	r6!, {}
+ 9d6:	e28f      	b.n	ef8 <free@plt+0x3f8>
+ 9d8:	ca02      	ldmia	r2!, {r1}
+ 9da:	e28c      	b.n	ef6 <free@plt+0x3f6>
+ 9dc:	f5bc e5bc 	blx	ff9bd558 <_end+0xff9ba554>
+
+000009e0 <sleep@plt>:
+ 9e0:	c600      	stmia	r6!, {}
+ 9e2:	e28f      	b.n	f04 <free@plt+0x404>
+ 9e4:	ca02      	ldmia	r2!, {r1}
+ 9e6:	e28c      	b.n	f02 <free@plt+0x402>
+ 9e8:	f5b4 e5bc 	blx	ff9b5564 <_end+0xff9b2560>
+
+000009ec <fopen@plt>:
+ 9ec:	c600      	stmia	r6!, {}
+ 9ee:	e28f      	b.n	f10 <free@plt+0x410>
+ 9f0:	ca02      	ldmia	r2!, {r1}
+ 9f2:	e28c      	b.n	f0e <free@plt+0x40e>
+ 9f4:	f5ac e5bc 	blx	ff9ad570 <_end+0xff9aa56c>
+
+000009f8 <__errno@plt>:
+ 9f8:	c600      	stmia	r6!, {}
+ 9fa:	e28f      	b.n	f1c <free@plt+0x41c>
+ 9fc:	ca02      	ldmia	r2!, {r1}
+ 9fe:	e28c      	b.n	f1a <free@plt+0x41a>
+ a00:	f5a4 e5bc 	blx	ff9a557c <_end+0xff9a2578>
+
+00000a04 <strerror@plt>:
+ a04:	c600      	stmia	r6!, {}
+ a06:	e28f      	b.n	f28 <free@plt+0x428>
+ a08:	ca02      	ldmia	r2!, {r1}
+ a0a:	e28c      	b.n	f26 <free@plt+0x426>
+ a0c:	f59c e5bc 	blx	ff99d588 <_end+0xff99a584>
+
+00000a10 <__android_log_print@plt>:
+ a10:	c600      	stmia	r6!, {}
+ a12:	e28f      	b.n	f34 <free@plt+0x434>
+ a14:	ca02      	ldmia	r2!, {r1}
+ a16:	e28c      	b.n	f32 <free@plt+0x432>
+ a18:	f594 e5bc 	blx	ff995594 <_end+0xff992590>
+
+00000a1c <fscanf@plt>:
+ a1c:	c600      	stmia	r6!, {}
+ a1e:	e28f      	b.n	f40 <free@plt+0x440>
+ a20:	ca02      	ldmia	r2!, {r1}
+ a22:	e28c      	b.n	f3e <free@plt+0x43e>
+ a24:	f58c e5bc 	blx	ff98d5a0 <_end+0xff98a59c>
+
+00000a28 <fclose@plt>:
+ a28:	c600      	stmia	r6!, {}
+ a2a:	e28f      	b.n	f4c <free@plt+0x44c>
+ a2c:	ca02      	ldmia	r2!, {r1}
+ a2e:	e28c      	b.n	f4a <free@plt+0x44a>
+ a30:	f584 e5bc 	blx	ff9855ac <_end+0xff9825a8>
+
+00000a34 <kill@plt>:
+ a34:	c600      	stmia	r6!, {}
+ a36:	e28f      	b.n	f58 <free@plt+0x458>
+ a38:	ca02      	ldmia	r2!, {r1}
+ a3a:	e28c      	b.n	f56 <free@plt+0x456>
+ a3c:	f57c e5bc 	blx	ff97d5b8 <_end+0xff97a5b4>
+
+00000a40 <unlink@plt>:
+ a40:	c600      	stmia	r6!, {}
+ a42:	e28f      	b.n	f64 <free@plt+0x464>
+ a44:	ca02      	ldmia	r2!, {r1}
+ a46:	e28c      	b.n	f62 <free@plt+0x462>
+ a48:	f574 e5bc 	blx	ff9755c4 <_end+0xff9725c0>
+
+00000a4c <netwrapper_register_handler@plt>:
+ a4c:	c600      	stmia	r6!, {}
+ a4e:	e28f      	b.n	f70 <free@plt+0x470>
+ a50:	ca02      	ldmia	r2!, {r1}
+ a52:	e28c      	b.n	f6e <free@plt+0x46e>
+ a54:	f56c e5bc 	blx	ff96d5d0 <_end+0xff96a5cc>
+
+00000a58 <netwrapper_main@plt>:
+ a58:	c600      	stmia	r6!, {}
+ a5a:	e28f      	b.n	f7c <free@plt+0x47c>
+ a5c:	ca02      	ldmia	r2!, {r1}
+ a5e:	e28c      	b.n	f7a <free@plt+0x47a>
+ a60:	f564 e5bc 	blx	ff9655dc <_end+0xff9625d8>
+
+00000a64 <memset@plt>:
+ a64:	c600      	stmia	r6!, {}
+ a66:	e28f      	b.n	f88 <free@plt+0x488>
+ a68:	ca02      	ldmia	r2!, {r1}
+ a6a:	e28c      	b.n	f86 <free@plt+0x486>
+ a6c:	f55c e5bc 	blx	ff95d5e8 <_end+0xff95a5e4>
+
+00000a70 <socket@plt>:
+ a70:	c600      	stmia	r6!, {}
+ a72:	e28f      	b.n	f94 <free@plt+0x494>
+ a74:	ca02      	ldmia	r2!, {r1}
+ a76:	e28c      	b.n	f92 <free@plt+0x492>
+ a78:	f554 e5bc 	blx	ff9555f4 <_end+0xff9525f0>
+
+00000a7c <setsockopt@plt>:
+ a7c:	c600      	stmia	r6!, {}
+ a7e:	e28f      	b.n	fa0 <free@plt+0x4a0>
+ a80:	ca02      	ldmia	r2!, {r1}
+ a82:	e28c      	b.n	f9e <free@plt+0x49e>
+ a84:	f54c e5bc 	blx	ff94d600 <_end+0xff94a5fc>
+
+00000a88 <strncpy@plt>:
+ a88:	c600      	stmia	r6!, {}
+ a8a:	e28f      	b.n	fac <free@plt+0x4ac>
+ a8c:	ca02      	ldmia	r2!, {r1}
+ a8e:	e28c      	b.n	faa <free@plt+0x4aa>
+ a90:	f544 e5bc 	blx	ff94560c <_end+0xff942608>
+
+00000a94 <ioctl@plt>:
+ a94:	c600      	stmia	r6!, {}
+ a96:	e28f      	b.n	fb8 <free@plt+0x4b8>
+ a98:	ca02      	ldmia	r2!, {r1}
+ a9a:	e28c      	b.n	fb6 <free@plt+0x4b6>
+ a9c:	f53c e5bc 	blx	ff93d618 <_end+0xff93a614>
+
+00000aa0 <bind@plt>:
+ aa0:	c600      	stmia	r6!, {}
+ aa2:	e28f      	b.n	fc4 <free@plt+0x4c4>
+ aa4:	ca02      	ldmia	r2!, {r1}
+ aa6:	e28c      	b.n	fc2 <free@plt+0x4c2>
+ aa8:	f534 e5bc 	blx	ff935624 <_end+0xff932620>
+
+00000aac <__stack_chk_fail@plt>:
+ aac:	c600      	stmia	r6!, {}
+ aae:	e28f      	b.n	fd0 <free@plt+0x4d0>
+ ab0:	ca02      	ldmia	r2!, {r1}
+ ab2:	e28c      	b.n	fce <free@plt+0x4ce>
+ ab4:	f52c e5bc 	blx	ff92d630 <_end+0xff92a62c>
+
+00000ab8 <fseek@plt>:
+ ab8:	c600      	stmia	r6!, {}
+ aba:	e28f      	b.n	fdc <free@plt+0x4dc>
+ abc:	ca02      	ldmia	r2!, {r1}
+ abe:	e28c      	b.n	fda <free@plt+0x4da>
+ ac0:	f524 e5bc 	blx	ff92563c <_end+0xff922638>
+
+00000ac4 <ftell@plt>:
+ ac4:	c600      	stmia	r6!, {}
+ ac6:	e28f      	b.n	fe8 <free@plt+0x4e8>
+ ac8:	ca02      	ldmia	r2!, {r1}
+ aca:	e28c      	b.n	fe6 <free@plt+0x4e6>
+ acc:	f51c e5bc 	blx	ff91d648 <_end+0xff91a644>
+
+00000ad0 <malloc@plt>:
+ ad0:	c600      	stmia	r6!, {}
+ ad2:	e28f      	b.n	ff4 <free@plt+0x4f4>
+ ad4:	ca02      	ldmia	r2!, {r1}
+ ad6:	e28c      	b.n	ff2 <free@plt+0x4f2>
+ ad8:	f514 e5bc 	blx	ff915654 <_end+0xff912650>
+
+00000adc <fread@plt>:
+ adc:	c600      	stmia	r6!, {}
+ ade:	e28f      	b.n	1000 <free@plt+0x500>
+ ae0:	ca02      	ldmia	r2!, {r1}
+ ae2:	e28c      	b.n	ffe <free@plt+0x4fe>
+ ae4:	f50c e5bc 	blx	ff90d660 <_end+0xff90a65c>
+
+00000ae8 <send@plt>:
+ ae8:	c600      	stmia	r6!, {}
+ aea:	e28f      	b.n	100c <free@plt+0x50c>
+ aec:	ca02      	ldmia	r2!, {r1}
+ aee:	e28c      	b.n	100a <free@plt+0x50a>
+ af0:	f504 e5bc 	blx	ff90566c <_end+0xff902668>
+
+00000af4 <close@plt>:
+ af4:	c600      	stmia	r6!, {}
+ af6:	e28f      	b.n	1018 <free@plt+0x518>
+ af8:	ca02      	ldmia	r2!, {r1}
+ afa:	e28c      	b.n	1016 <free@plt+0x516>
+ afc:	f4fc e5bc 	blx	ff8fd678 <_end+0xff8fa674>
+
+00000b00 <free@plt>:
+ b00:	c600      	stmia	r6!, {}
+ b02:	e28f      	b.n	1024 <free@plt+0x524>
+ b04:	ca02      	ldmia	r2!, {r1}
+ b06:	e28c      	b.n	1022 <free@plt+0x522>
+ b08:	f4f4 e5bc 	blx	ff8f5684 <_end+0xff8f2680>
+
+Disassembly of section .text:
+
+00000b0c <.text>:
+ b0c:	4800      	ldr	r0, [pc, #0]	@ (b10 <free@plt+0x10>)
+ b0e:	e92d b004 	stmdb	sp!, {r2, ip, sp, pc}
+ b12:	e28d      	b.n	1030 <free@plt+0x530>
+ b14:	d010      	beq.n	b38 <free@plt+0x38>
+ b16:	e24d      	b.n	fb4 <free@plt+0x4b4>
+ b18:	3050      	adds	r0, #80	@ 0x50
+ b1a:	e59f      	b.n	65c <__libc_init@plt-0x360>
+ b1c:	3003      	adds	r0, #3
+ b1e:	e08f      	b.n	c40 <free@plt+0x140>
+ b20:	204c      	movs	r0, #76	@ 0x4c
+ b22:	e59f      	b.n	664 <__libc_init@plt-0x358>
+ b24:	2002      	movs	r0, #2
+ b26:	e793      	b.n	a50 <netwrapper_register_handler@plt+0x4>
+ b28:	2014      	movs	r0, #20
+ b2a:	e50b      	b.n	544 <__libc_init@plt-0x478>
+ b2c:	2044      	movs	r0, #68	@ 0x44
+ b2e:	e59f      	b.n	670 <__libc_init@plt-0x34c>
+ b30:	2002      	movs	r0, #2
+ b32:	e793      	b.n	a5c <netwrapper_main@plt+0x4>
+ b34:	2010      	movs	r0, #16
+ b36:	e50b      	b.n	550 <__libc_init@plt-0x46c>
+ b38:	203c      	movs	r0, #60	@ 0x3c
+ b3a:	e59f      	b.n	67c <__libc_init@plt-0x340>
+ b3c:	2002      	movs	r0, #2
+ b3e:	e793      	b.n	a68 <memset@plt+0x4>
+ b40:	200c      	movs	r0, #12
+ b42:	e50b      	b.n	55c <__libc_init@plt-0x460>
+ b44:	200b      	movs	r0, #11
+ b46:	e1a0      	b.n	e8a <free@plt+0x38a>
+ b48:	2004      	movs	r0, #4
+ b4a:	e282      	b.n	1052 <free@plt+0x552>
+ b4c:	2008      	movs	r0, #8
+ b4e:	e50b      	b.n	568 <__libc_init@plt-0x454>
+ b50:	c014      	stmia	r0!, {r2, r4}
+ b52:	e24b      	b.n	fec <free@plt+0x4ec>
+ b54:	0008      	movs	r0, r1
+ b56:	e51b      	b.n	590 <__libc_init@plt-0x42c>
+ b58:	1000      	asrs	r0, r0, #32
+ b5a:	e3a0      	b.n	129e <free@plt+0x79e>
+ b5c:	201c      	movs	r0, #28
+ b5e:	e59f      	b.n	6a0 <__libc_init@plt-0x31c>
+ b60:	3002      	adds	r0, #2
+ b62:	e793      	b.n	a8c <strncpy@plt+0x4>
+ b64:	2003      	movs	r0, #3
+ b66:	e1a0      	b.n	eaa <free@plt+0x3aa>
+ b68:	300c      	adds	r0, #12
+ b6a:	e1a0      	b.n	eae <free@plt+0x3ae>
+ b6c:	ff92 ebff 			@ <UNDEFINED> instruction: 0xff92ebff
+ b70:	2460      	movs	r4, #96	@ 0x60
+ b72:	0000      	movs	r0, r0
+ b74:	ffec ffff 			@ <UNDEFINED> instruction: 0xffecffff
+ b78:	fff0 ffff 			@ <UNDEFINED> instruction: 0xfff0ffff
+ b7c:	fff4 ffff 			@ <UNDEFINED> instruction: 0xfff4ffff
+ b80:	fff8 ffff 			@ <UNDEFINED> instruction: 0xfff8ffff
+ b84:	4800      	ldr	r0, [pc, #0]	@ (b88 <free@plt+0x88>)
+ b86:	e92d b004 	stmdb	sp!, {r2, ip, sp, pc}
+ b8a:	e28d      	b.n	10a8 <free@plt+0x5a8>
+ b8c:	d008      	beq.n	ba0 <free@plt+0xa0>
+ b8e:	e24d      	b.n	102c <free@plt+0x52c>
+ b90:	0008      	movs	r0, r1
+ b92:	e50b      	b.n	5ac <__libc_init@plt-0x410>
+ b94:	0008      	movs	r0, r1
+ b96:	e51b      	b.n	5d0 <__libc_init@plt-0x3ec>
+ b98:	1000      	asrs	r0, r0, #32
+ b9a:	e3a0      	b.n	12de <free@plt+0x7de>
+ b9c:	3018      	adds	r0, #24
+ b9e:	e59f      	b.n	6e0 <__libc_init@plt-0x2dc>
+ ba0:	3003      	adds	r0, #3
+ ba2:	e08f      	b.n	cc4 <free@plt+0x1c4>
+ ba4:	2003      	movs	r0, #3
+ ba6:	e1a0      	b.n	eea <free@plt+0x3ea>
+ ba8:	ff86 ebff 			@ <UNDEFINED> instruction: 0xff86ebff
+ bac:	3000      	adds	r0, #0
+ bae:	e1a0      	b.n	ef2 <free@plt+0x3f2>
+ bb0:	0003      	movs	r3, r0
+ bb2:	e1a0      	b.n	ef6 <free@plt+0x3f6>
+ bb4:	d004      	beq.n	bc0 <free@plt+0xc0>
+ bb6:	e24b      	b.n	1050 <free@plt+0x550>
+ bb8:	8800      	ldrh	r0, [r0, #0]
+ bba:	e8bd 2458 	ldmia.w	sp!, {r3, r4, r6, sl, sp}
+ bbe:	0000      	movs	r0, r0
+ bc0:	f000 b9e0 	b.w	f84 <free@plt+0x484>
+ bc4:	b510      	push	{r4, lr}
+ bc6:	4c0b      	ldr	r4, [pc, #44]	@ (bf4 <free@plt+0xf4>)
+ bc8:	447c      	add	r4, pc
+ bca:	4620      	mov	r0, r4
+ bcc:	f000 f95a 	bl	e84 <free@plt+0x384>
+ bd0:	2001      	movs	r0, #1
+ bd2:	f7ff ef06 	blx	9e0 <sleep@plt>
+ bd6:	4620      	mov	r0, r4
+ bd8:	f000 f954 	bl	e84 <free@plt+0x384>
+ bdc:	2001      	movs	r0, #1
+ bde:	f7ff ef00 	blx	9e0 <sleep@plt>
+ be2:	4620      	mov	r0, r4
+ be4:	f000 f94e 	bl	e84 <free@plt+0x384>
+ be8:	2001      	movs	r0, #1
+ bea:	f7ff eefa 	blx	9e0 <sleep@plt>
+ bee:	2000      	movs	r0, #0
+ bf0:	bd10      	pop	{r4, pc}
+ bf2:	bf00      	nop
+ bf4:	0454      	lsls	r4, r2, #17
+ bf6:	0000      	movs	r0, r0
+ bf8:	b57f      	push	{r0, r1, r2, r3, r4, r5, r6, lr}
+ bfa:	4c41      	ldr	r4, [pc, #260]	@ (d00 <free@plt+0x200>)
+ bfc:	4941      	ldr	r1, [pc, #260]	@ (d04 <free@plt+0x204>)
+ bfe:	447c      	add	r4, pc
+ c00:	4479      	add	r1, pc
+ c02:	4620      	mov	r0, r4
+ c04:	f7ff eef2 	blx	9ec <fopen@plt>
+ c08:	4605      	mov	r5, r0
+ c0a:	b990      	cbnz	r0, c32 <free@plt+0x132>
+ c0c:	f7ff eef4 	blx	9f8 <__errno@plt>
+ c10:	6800      	ldr	r0, [r0, #0]
+ c12:	f7ff eef8 	blx	a04 <strerror@plt>
+ c16:	493c      	ldr	r1, [pc, #240]	@ (d08 <free@plt+0x208>)
+ c18:	4a3c      	ldr	r2, [pc, #240]	@ (d0c <free@plt+0x20c>)
+ c1a:	4623      	mov	r3, r4
+ c1c:	4479      	add	r1, pc
+ c1e:	447a      	add	r2, pc
+ c20:	9000      	str	r0, [sp, #0]
+ c22:	2006      	movs	r0, #6
+ c24:	f7ff eef4 	blx	a10 <__android_log_print@plt>
+ c28:	f7ff eee6 	blx	9f8 <__errno@plt>
+ c2c:	2102      	movs	r1, #2
+ c2e:	6001      	str	r1, [r0, #0]
+ c30:	e01d      	b.n	c6e <free@plt+0x16e>
+ c32:	4937      	ldr	r1, [pc, #220]	@ (d10 <free@plt+0x210>)
+ c34:	aa03      	add	r2, sp, #12
+ c36:	4479      	add	r1, pc
+ c38:	f7ff eef0 	blx	a1c <fscanf@plt>
+ c3c:	2801      	cmp	r0, #1
+ c3e:	d008      	beq.n	c52 <free@plt+0x152>
+ c40:	4934      	ldr	r1, [pc, #208]	@ (d14 <free@plt+0x214>)
+ c42:	2006      	movs	r0, #6
+ c44:	4a34      	ldr	r2, [pc, #208]	@ (d18 <free@plt+0x218>)
+ c46:	4479      	add	r1, pc
+ c48:	447a      	add	r2, pc
+ c4a:	f7ff eee2 	blx	a10 <__android_log_print@plt>
+ c4e:	2300      	movs	r3, #0
+ c50:	9303      	str	r3, [sp, #12]
+ c52:	4628      	mov	r0, r5
+ c54:	4d31      	ldr	r5, [pc, #196]	@ (d1c <free@plt+0x21c>)
+ c56:	f7ff eee8 	blx	a28 <fclose@plt>
+ c5a:	4a31      	ldr	r2, [pc, #196]	@ (d20 <free@plt+0x220>)
+ c5c:	447d      	add	r5, pc
+ c5e:	2004      	movs	r0, #4
+ c60:	447a      	add	r2, pc
+ c62:	9b03      	ldr	r3, [sp, #12]
+ c64:	4629      	mov	r1, r5
+ c66:	f7ff eed4 	blx	a10 <__android_log_print@plt>
+ c6a:	9c03      	ldr	r4, [sp, #12]
+ c6c:	b93c      	cbnz	r4, c7e <free@plt+0x17e>
+ c6e:	492d      	ldr	r1, [pc, #180]	@ (d24 <free@plt+0x224>)
+ c70:	2006      	movs	r0, #6
+ c72:	4a2d      	ldr	r2, [pc, #180]	@ (d28 <free@plt+0x228>)
+ c74:	4479      	add	r1, pc
+ c76:	447a      	add	r2, pc
+ c78:	f7ff eeca 	blx	a10 <__android_log_print@plt>
+ c7c:	e00c      	b.n	c98 <free@plt+0x198>
+ c7e:	4620      	mov	r0, r4
+ c80:	2100      	movs	r1, #0
+ c82:	f7ff eed8 	blx	a34 <kill@plt>
+ c86:	4606      	mov	r6, r0
+ c88:	b148      	cbz	r0, c9e <free@plt+0x19e>
+ c8a:	4a28      	ldr	r2, [pc, #160]	@ (d2c <free@plt+0x22c>)
+ c8c:	2006      	movs	r0, #6
+ c8e:	4629      	mov	r1, r5
+ c90:	4623      	mov	r3, r4
+ c92:	447a      	add	r2, pc
+ c94:	f7ff eebc 	blx	a10 <__android_log_print@plt>
+ c98:	f04f 30ff 	mov.w	r0, #4294967295	@ 0xffffffff
+ c9c:	e02e      	b.n	cfc <free@plt+0x1fc>
+ c9e:	4620      	mov	r0, r4
+ ca0:	210a      	movs	r1, #10
+ ca2:	f7ff eec8 	blx	a34 <kill@plt>
+ ca6:	4a22      	ldr	r2, [pc, #136]	@ (d30 <free@plt+0x230>)
+ ca8:	4623      	mov	r3, r4
+ caa:	4629      	mov	r1, r5
+ cac:	447a      	add	r2, pc
+ cae:	9000      	str	r0, [sp, #0]
+ cb0:	2004      	movs	r0, #4
+ cb2:	f7ff eeae 	blx	a10 <__android_log_print@plt>
+ cb6:	4a1f      	ldr	r2, [pc, #124]	@ (d34 <free@plt+0x234>)
+ cb8:	4623      	mov	r3, r4
+ cba:	4629      	mov	r1, r5
+ cbc:	447a      	add	r2, pc
+ cbe:	2004      	movs	r0, #4
+ cc0:	f7ff eea6 	blx	a10 <__android_log_print@plt>
+ cc4:	2005      	movs	r0, #5
+ cc6:	f7ff ee8c 	blx	9e0 <sleep@plt>
+ cca:	4620      	mov	r0, r4
+ ccc:	2109      	movs	r1, #9
+ cce:	f7ff eeb2 	blx	a34 <kill@plt>
+ cd2:	4623      	mov	r3, r4
+ cd4:	4c18      	ldr	r4, [pc, #96]	@ (d38 <free@plt+0x238>)
+ cd6:	4629      	mov	r1, r5
+ cd8:	4a18      	ldr	r2, [pc, #96]	@ (d3c <free@plt+0x23c>)
+ cda:	447c      	add	r4, pc
+ cdc:	447a      	add	r2, pc
+ cde:	9000      	str	r0, [sp, #0]
+ ce0:	2004      	movs	r0, #4
+ ce2:	f7ff ee96 	blx	a10 <__android_log_print@plt>
+ ce6:	4620      	mov	r0, r4
+ ce8:	f7ff eeaa 	blx	a40 <unlink@plt>
+ cec:	4a14      	ldr	r2, [pc, #80]	@ (d40 <free@plt+0x240>)
+ cee:	2004      	movs	r0, #4
+ cf0:	4629      	mov	r1, r5
+ cf2:	447a      	add	r2, pc
+ cf4:	4623      	mov	r3, r4
+ cf6:	f7ff ee8c 	blx	a10 <__android_log_print@plt>
+ cfa:	4630      	mov	r0, r6
+ cfc:	b004      	add	sp, #16
+ cfe:	bd70      	pop	{r4, r5, r6, pc}
+ d00:	043a      	lsls	r2, r7, #16
+ d02:	0000      	movs	r0, r0
+ d04:	0455      	lsls	r5, r2, #17
+ d06:	0000      	movs	r0, r0
+ d08:	043b      	lsls	r3, r7, #16
+ d0a:	0000      	movs	r0, r0
+ d0c:	0447      	lsls	r7, r0, #17
+ d0e:	0000      	movs	r0, r0
+ d10:	0447      	lsls	r7, r0, #17
+ d12:	0000      	movs	r0, r0
+ d14:	0411      	lsls	r1, r2, #16
+ d16:	0000      	movs	r0, r0
+ d18:	0438      	lsls	r0, r7, #16
+ d1a:	0000      	movs	r0, r0
+ d1c:	03fb      	lsls	r3, r7, #15
+ d1e:	0000      	movs	r0, r0
+ d20:	0443      	lsls	r3, r0, #17
+ d22:	0000      	movs	r0, r0
+ d24:	03e3      	lsls	r3, r4, #15
+ d26:	0000      	movs	r0, r0
+ d28:	043b      	lsls	r3, r7, #16
+ d2a:	0000      	movs	r0, r0
+ d2c:	0442      	lsls	r2, r0, #17
+ d2e:	0000      	movs	r0, r0
+ d30:	0446      	lsls	r6, r0, #17
+ d32:	0000      	movs	r0, r0
+ d34:	045a      	lsls	r2, r3, #17
+ d36:	0000      	movs	r0, r0
+ d38:	035e      	lsls	r6, r3, #13
+ d3a:	0000      	movs	r0, r0
+ d3c:	0461      	lsls	r1, r4, #17
+ d3e:	0000      	movs	r0, r0
+ d40:	046f      	lsls	r7, r5, #17
+ d42:	0000      	movs	r0, r0
+ d44:	480c      	ldr	r0, [pc, #48]	@ (d78 <free@plt+0x278>)
+ d46:	490d      	ldr	r1, [pc, #52]	@ (d7c <free@plt+0x27c>)
+ d48:	b508      	push	{r3, lr}
+ d4a:	4479      	add	r1, pc
+ d4c:	4478      	add	r0, pc
+ d4e:	f7ff ee7e 	blx	a4c <netwrapper_register_handler@plt>
+ d52:	480b      	ldr	r0, [pc, #44]	@ (d80 <free@plt+0x280>)
+ d54:	490b      	ldr	r1, [pc, #44]	@ (d84 <free@plt+0x284>)
+ d56:	4478      	add	r0, pc
+ d58:	4479      	add	r1, pc
+ d5a:	f7ff ee78 	blx	a4c <netwrapper_register_handler@plt>
+ d5e:	480a      	ldr	r0, [pc, #40]	@ (d88 <free@plt+0x288>)
+ d60:	490a      	ldr	r1, [pc, #40]	@ (d8c <free@plt+0x28c>)
+ d62:	4478      	add	r0, pc
+ d64:	4479      	add	r1, pc
+ d66:	f7ff ee72 	blx	a4c <netwrapper_register_handler@plt>
+ d6a:	4809      	ldr	r0, [pc, #36]	@ (d90 <free@plt+0x290>)
+ d6c:	4478      	add	r0, pc
+ d6e:	f7ff ee74 	blx	a58 <netwrapper_main@plt>
+ d72:	2000      	movs	r0, #0
+ d74:	bd08      	pop	{r3, pc}
+ d76:	bf00      	nop
+ d78:	0421      	lsls	r1, r4, #16
+ d7a:	0000      	movs	r0, r0
+ d7c:	feab ffff 	mcr2	15, 5, pc, cr11, cr15, {7}	@ <UNPREDICTABLE>
+ d80:	0420      	lsls	r0, r4, #16
+ d82:	0000      	movs	r0, r0
+ d84:	fe69 ffff 	mcr2	15, 3, pc, cr9, cr15, {7}	@ <UNPREDICTABLE>
+ d88:	0422      	lsls	r2, r4, #16
+ d8a:	0000      	movs	r0, r0
+ d8c:	fe59 ffff 	mrc2	15, 2, pc, cr9, cr15, {7}
+ d90:	0421      	lsls	r1, r4, #16
+ d92:	0000      	movs	r0, r0
+ d94:	4b31      	ldr	r3, [pc, #196]	@ (e5c <free@plt+0x35c>)
+ d96:	2100      	movs	r1, #0
+ d98:	4a31      	ldr	r2, [pc, #196]	@ (e60 <free@plt+0x360>)
+ d9a:	447b      	add	r3, pc
+ d9c:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ da0:	b092      	sub	sp, #72	@ 0x48
+ da2:	589e      	ldr	r6, [r3, r2]
+ da4:	4680      	mov	r8, r0
+ da6:	2214      	movs	r2, #20
+ da8:	a804      	add	r0, sp, #16
+ daa:	f246 3588 	movw	r5, #25480	@ 0x6388
+ dae:	2701      	movs	r7, #1
+ db0:	6833      	ldr	r3, [r6, #0]
+ db2:	9703      	str	r7, [sp, #12]
+ db4:	9311      	str	r3, [sp, #68]	@ 0x44
+ db6:	f7ff ee56 	blx	a64 <memset@plt>
+ dba:	2011      	movs	r0, #17
+ dbc:	2103      	movs	r1, #3
+ dbe:	462a      	mov	r2, r5
+ dc0:	f7ff ee56 	blx	a70 <socket@plt>
+ dc4:	1e04      	subs	r4, r0, #0
+ dc6:	da05      	bge.n	dd4 <free@plt+0x2d4>
+ dc8:	4926      	ldr	r1, [pc, #152]	@ (e64 <free@plt+0x364>)
+ dca:	2006      	movs	r0, #6
+ dcc:	4a26      	ldr	r2, [pc, #152]	@ (e68 <free@plt+0x368>)
+ dce:	4479      	add	r1, pc
+ dd0:	447a      	add	r2, pc
+ dd2:	e034      	b.n	e3e <free@plt+0x33e>
+ dd4:	2104      	movs	r1, #4
+ dd6:	2206      	movs	r2, #6
+ dd8:	9100      	str	r1, [sp, #0]
+ dda:	ab03      	add	r3, sp, #12
+ ddc:	4639      	mov	r1, r7
+ dde:	f7ff ee4e 	blx	a7c <setsockopt@plt>
+ de2:	2800      	cmp	r0, #0
+ de4:	da05      	bge.n	df2 <free@plt+0x2f2>
+ de6:	4921      	ldr	r1, [pc, #132]	@ (e6c <free@plt+0x36c>)
+ de8:	2006      	movs	r0, #6
+ dea:	4a21      	ldr	r2, [pc, #132]	@ (e70 <free@plt+0x370>)
+ dec:	4479      	add	r1, pc
+ dee:	447a      	add	r2, pc
+ df0:	e025      	b.n	e3e <free@plt+0x33e>
+ df2:	2011      	movs	r0, #17
+ df4:	2210      	movs	r2, #16
+ df6:	f8ad 0010 	strh.w	r0, [sp, #16]
+ dfa:	4641      	mov	r1, r8
+ dfc:	a809      	add	r0, sp, #36	@ 0x24
+ dfe:	f8ad 5012 	strh.w	r5, [sp, #18]
+ e02:	f7ff ee42 	blx	a88 <strncpy@plt>
+ e06:	4620      	mov	r0, r4
+ e08:	f648 1133 	movw	r1, #35123	@ 0x8933
+ e0c:	aa09      	add	r2, sp, #36	@ 0x24
+ e0e:	f7ff ee42 	blx	a94 <ioctl@plt>
+ e12:	2800      	cmp	r0, #0
+ e14:	da05      	bge.n	e22 <free@plt+0x322>
+ e16:	4917      	ldr	r1, [pc, #92]	@ (e74 <free@plt+0x374>)
+ e18:	2006      	movs	r0, #6
+ e1a:	4a17      	ldr	r2, [pc, #92]	@ (e78 <free@plt+0x378>)
+ e1c:	4479      	add	r1, pc
+ e1e:	447a      	add	r2, pc
+ e20:	e00d      	b.n	e3e <free@plt+0x33e>
+ e22:	9a0d      	ldr	r2, [sp, #52]	@ 0x34
+ e24:	4620      	mov	r0, r4
+ e26:	a904      	add	r1, sp, #16
+ e28:	9205      	str	r2, [sp, #20]
+ e2a:	2214      	movs	r2, #20
+ e2c:	f7ff ee38 	blx	aa0 <bind@plt>
+ e30:	2800      	cmp	r0, #0
+ e32:	da08      	bge.n	e46 <free@plt+0x346>
+ e34:	4911      	ldr	r1, [pc, #68]	@ (e7c <free@plt+0x37c>)
+ e36:	2006      	movs	r0, #6
+ e38:	4a11      	ldr	r2, [pc, #68]	@ (e80 <free@plt+0x380>)
+ e3a:	4479      	add	r1, pc
+ e3c:	447a      	add	r2, pc
+ e3e:	f7ff ede8 	blx	a10 <__android_log_print@plt>
+ e42:	f04f 34ff 	mov.w	r4, #4294967295	@ 0xffffffff
+ e46:	9911      	ldr	r1, [sp, #68]	@ 0x44
+ e48:	4620      	mov	r0, r4
+ e4a:	6833      	ldr	r3, [r6, #0]
+ e4c:	4299      	cmp	r1, r3
+ e4e:	d001      	beq.n	e54 <free@plt+0x354>
+ e50:	f7ff ee2c 	blx	aac <__stack_chk_fail@plt>
+ e54:	b012      	add	sp, #72	@ 0x48
+ e56:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+ e5a:	bf00      	nop
+ e5c:	21e6      	movs	r1, #230	@ 0xe6
+ e5e:	0000      	movs	r0, r0
+ e60:	fffc ffff 			@ <UNDEFINED> instruction: 0xfffcffff
+ e64:	03d9      	lsls	r1, r3, #15
+ e66:	0000      	movs	r0, r0
+ e68:	0524      	lsls	r4, r4, #20
+ e6a:	0000      	movs	r0, r0
+ e6c:	03bb      	lsls	r3, r7, #14
+ e6e:	0000      	movs	r0, r0
+ e70:	0522      	lsls	r2, r4, #20
+ e72:	0000      	movs	r0, r0
+ e74:	038b      	lsls	r3, r1, #14
+ e76:	0000      	movs	r0, r0
+ e78:	0507      	lsls	r7, r0, #20
+ e7a:	0000      	movs	r0, r0
+ e7c:	036d      	lsls	r5, r5, #13
+ e7e:	0000      	movs	r0, r0
+ e80:	04f9      	lsls	r1, r7, #19
+ e82:	0000      	movs	r0, r0
+ e84:	4933      	ldr	r1, [pc, #204]	@ (f54 <free@plt+0x454>)
+ e86:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ e88:	4479      	add	r1, pc
+ e8a:	4605      	mov	r5, r0
+ e8c:	f7ff edae 	blx	9ec <fopen@plt>
+ e90:	4604      	mov	r4, r0
+ e92:	b940      	cbnz	r0, ea6 <free@plt+0x3a6>
+ e94:	4930      	ldr	r1, [pc, #192]	@ (f58 <free@plt+0x458>)
+ e96:	2006      	movs	r0, #6
+ e98:	4a30      	ldr	r2, [pc, #192]	@ (f5c <free@plt+0x45c>)
+ e9a:	4479      	add	r1, pc
+ e9c:	447a      	add	r2, pc
+ e9e:	e8bd 40f8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, lr}
+ ea2:	f000 b877 	b.w	f94 <free@plt+0x494>
+ ea6:	2100      	movs	r1, #0
+ ea8:	2202      	movs	r2, #2
+ eaa:	f7ff ee06 	blx	ab8 <fseek@plt>
+ eae:	4620      	mov	r0, r4
+ eb0:	f7ff ee08 	blx	ac4 <ftell@plt>
+ eb4:	1e07      	subs	r7, r0, #0
+ eb6:	db48      	blt.n	f4a <free@plt+0x44a>
+ eb8:	d10f      	bne.n	eda <free@plt+0x3da>
+ eba:	4929      	ldr	r1, [pc, #164]	@ (f60 <free@plt+0x460>)
+ ebc:	462b      	mov	r3, r5
+ ebe:	4a29      	ldr	r2, [pc, #164]	@ (f64 <free@plt+0x464>)
+ ec0:	2006      	movs	r0, #6
+ ec2:	4479      	add	r1, pc
+ ec4:	447a      	add	r2, pc
+ ec6:	f7ff eda4 	blx	a10 <__android_log_print@plt>
+ eca:	4620      	mov	r0, r4
+ ecc:	f7ff edac 	blx	a28 <fclose@plt>
+ ed0:	4628      	mov	r0, r5
+ ed2:	e8bd 40f8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, lr}
+ ed6:	f000 b865 	b.w	fa4 <free@plt+0x4a4>
+ eda:	f7ff edfa 	blx	ad0 <malloc@plt>
+ ede:	4605      	mov	r5, r0
+ ee0:	b938      	cbnz	r0, ef2 <free@plt+0x3f2>
+ ee2:	4921      	ldr	r1, [pc, #132]	@ (f68 <free@plt+0x468>)
+ ee4:	2006      	movs	r0, #6
+ ee6:	4a21      	ldr	r2, [pc, #132]	@ (f6c <free@plt+0x46c>)
+ ee8:	4479      	add	r1, pc
+ eea:	447a      	add	r2, pc
+ eec:	f7ff ed90 	blx	a10 <__android_log_print@plt>
+ ef0:	e02b      	b.n	f4a <free@plt+0x44a>
+ ef2:	2100      	movs	r1, #0
+ ef4:	4620      	mov	r0, r4
+ ef6:	460a      	mov	r2, r1
+ ef8:	f7ff edde 	blx	ab8 <fseek@plt>
+ efc:	2101      	movs	r1, #1
+ efe:	463a      	mov	r2, r7
+ f00:	4623      	mov	r3, r4
+ f02:	4628      	mov	r0, r5
+ f04:	f7ff edea 	blx	adc <fread@plt>
+ f08:	4819      	ldr	r0, [pc, #100]	@ (f70 <free@plt+0x470>)
+ f0a:	4478      	add	r0, pc
+ f0c:	f7ff ff42 	bl	d94 <free@plt+0x294>
+ f10:	1e06      	subs	r6, r0, #0
+ f12:	da07      	bge.n	f24 <free@plt+0x424>
+ f14:	4917      	ldr	r1, [pc, #92]	@ (f74 <free@plt+0x474>)
+ f16:	2006      	movs	r0, #6
+ f18:	4a17      	ldr	r2, [pc, #92]	@ (f78 <free@plt+0x478>)
+ f1a:	4479      	add	r1, pc
+ f1c:	447a      	add	r2, pc
+ f1e:	f7ff ed78 	blx	a10 <__android_log_print@plt>
+ f22:	e00f      	b.n	f44 <free@plt+0x444>
+ f24:	4629      	mov	r1, r5
+ f26:	463a      	mov	r2, r7
+ f28:	2300      	movs	r3, #0
+ f2a:	f7ff edde 	blx	ae8 <send@plt>
+ f2e:	4913      	ldr	r1, [pc, #76]	@ (f7c <free@plt+0x47c>)
+ f30:	4a13      	ldr	r2, [pc, #76]	@ (f80 <free@plt+0x480>)
+ f32:	2006      	movs	r0, #6
+ f34:	4479      	add	r1, pc
+ f36:	4633      	mov	r3, r6
+ f38:	447a      	add	r2, pc
+ f3a:	f7ff ed6a 	blx	a10 <__android_log_print@plt>
+ f3e:	4630      	mov	r0, r6
+ f40:	f7ff edd8 	blx	af4 <close@plt>
+ f44:	4628      	mov	r0, r5
+ f46:	f7ff eddc 	blx	b00 <free@plt>
+ f4a:	4620      	mov	r0, r4
+ f4c:	e8bd 40f8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, lr}
+ f50:	f000 b830 	b.w	fb4 <free@plt+0x4b4>
+ f54:	01cd      	lsls	r5, r1, #7
+ f56:	0000      	movs	r0, r0
+ f58:	030d      	lsls	r5, r1, #12
+ f5a:	0000      	movs	r0, r0
+ f5c:	04a8      	lsls	r0, r5, #18
+ f5e:	0000      	movs	r0, r0
+ f60:	02e5      	lsls	r5, r4, #11
+ f62:	0000      	movs	r0, r0
+ f64:	0494      	lsls	r4, r2, #18
+ f66:	0000      	movs	r0, r0
+ f68:	02bf      	lsls	r7, r7, #10
+ f6a:	0000      	movs	r0, r0
+ f6c:	0497      	lsls	r7, r2, #18
+ f6e:	0000      	movs	r0, r0
+ f70:	0497      	lsls	r7, r2, #18
+ f72:	0000      	movs	r0, r0
+ f74:	028d      	lsls	r5, r1, #10
+ f76:	0000      	movs	r0, r0
+ f78:	048a      	lsls	r2, r1, #18
+ f7a:	0000      	movs	r0, r0
+ f7c:	0273      	lsls	r3, r6, #9
+ f7e:	0000      	movs	r0, r0
+ f80:	0494      	lsls	r4, r2, #18
+ f82:	0000      	movs	r0, r0
+ f84:	4778      	bx	pc
+ f86:	46c0      	nop			@ (mov r8, r8)
+ f88:	c000      	stmia	r0!, {}
+ f8a:	e59f      	b.n	acc <ftell@plt+0x8>
+ f8c:	f00f e08c 	blx	4100a8 <_end+0x40d0a4>
+ f90:	fa40 ffff 			@ <UNDEFINED> instruction: 0xfa40ffff
+ f94:	4778      	bx	pc
+ f96:	46c0      	nop			@ (mov r8, r8)
+ f98:	c000      	stmia	r0!, {}
+ f9a:	e59f      	b.n	adc <fread@plt>
+ f9c:	f00f e08c 	blx	4100b8 <_end+0x40d0b4>
+ fa0:	fa6c ffff 			@ <UNDEFINED> instruction: 0xfa6cffff
+ fa4:	4778      	bx	pc
+ fa6:	46c0      	nop			@ (mov r8, r8)
+ fa8:	c000      	stmia	r0!, {}
+ faa:	e59f      	b.n	aec <send@plt+0x4>
+ fac:	f00f e08c 	blx	4100c8 <_end+0x40d0c4>
+ fb0:	fa8c ffff 			@ <UNDEFINED> instruction: 0xfa8cffff
+ fb4:	4778      	bx	pc
+ fb6:	46c0      	nop			@ (mov r8, r8)
+ fb8:	c000      	stmia	r0!, {}
+ fba:	e59f      	b.n	afc <close@plt+0x8>
+ fbc:	f00f e08c 	blx	4100d8 <_end+0x40d0d4>
+ fc0:	fa64 ffff 			@ <UNDEFINED> instruction: 0xfa64ffff

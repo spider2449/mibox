@@ -1,0 +1,216 @@
+﻿0000b5e4 <install_package>:
+    b5e4:	e92d 47ff 	stmdb	sp!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, sl, lr}
+    b5e8:	2104      	movs	r1, #4
+    b5ea:	4c53      	ldr	r4, [pc, #332]	@ (b738 <install_package+0x154>)
+    b5ec:	4607      	mov	r7, r0
+    b5ee:	4b53      	ldr	r3, [pc, #332]	@ (b73c <install_package+0x158>)
+    b5f0:	447c      	add	r4, pc
+    b5f2:	9000      	str	r0, [sp, #0]
+    b5f4:	447b      	add	r3, pc
+    b5f6:	2003      	movs	r0, #3
+    b5f8:	4622      	mov	r2, r4
+    b5fa:	4e51      	ldr	r6, [pc, #324]	@ (b740 <install_package+0x15c>)
+    b5fc:	f7fa e97c 	blx	58f8 <__android_log_buf_print@plt>
+    b600:	2000      	movs	r0, #0
+    b602:	f7fa e986 	blx	5910 <time@plt>
+    b606:	447e      	add	r6, pc
+    b608:	a902      	add	r1, sp, #8
+    b60a:	f8df 8138 	ldr.w	r8, [pc, #312]	@ b744 <install_package+0x160>
+    b60e:	44f8      	add	r8, pc
+    b610:	9003      	str	r0, [sp, #12]
+    b612:	4630      	mov	r0, r6
+    b614:	f7ff fece 	bl	b3b4 <load_keys>
+    b618:	4605      	mov	r5, r0
+    b61a:	b928      	cbnz	r0, b628 <install_package+0x44>
+    b61c:	4b4a      	ldr	r3, [pc, #296]	@ (b748 <install_package+0x164>)
+    b61e:	2003      	movs	r0, #3
+    b620:	2106      	movs	r1, #6
+    b622:	4622      	mov	r2, r4
+    b624:	447b      	add	r3, pc
+    b626:	e027      	b.n	b678 <install_package+0x94>
+    b628:	9b02      	ldr	r3, [sp, #8]
+    b62a:	2104      	movs	r1, #4
+    b62c:	4622      	mov	r2, r4
+    b62e:	2003      	movs	r0, #3
+    b630:	e88d 0048 	stmia.w	sp, {r3, r6}
+    b634:	4b45      	ldr	r3, [pc, #276]	@ (b74c <install_package+0x168>)
+    b636:	447b      	add	r3, pc
+    b638:	f7fa e95e 	blx	58f8 <__android_log_buf_print@plt>
+    b63c:	4b44      	ldr	r3, [pc, #272]	@ (b750 <install_package+0x16c>)
+    b63e:	2104      	movs	r1, #4
+    b640:	4622      	mov	r2, r4
+    b642:	447b      	add	r3, pc
+    b644:	2003      	movs	r0, #3
+    b646:	f7fa e958 	blx	58f8 <__android_log_buf_print@plt>
+    b64a:	4629      	mov	r1, r5
+    b64c:	9a02      	ldr	r2, [sp, #8]
+    b64e:	4638      	mov	r0, r7
+    b650:	f7ff fcc2 	bl	afd8 <verify_file>
+    b654:	4606      	mov	r6, r0
+    b656:	4628      	mov	r0, r5
+    b658:	f7fa e9b4 	blx	59c4 <free@plt>
+    b65c:	4b3d      	ldr	r3, [pc, #244]	@ (b754 <install_package+0x170>)
+    b65e:	9600      	str	r6, [sp, #0]
+    b660:	2003      	movs	r0, #3
+    b662:	2104      	movs	r1, #4
+    b664:	4622      	mov	r2, r4
+    b666:	447b      	add	r3, pc
+    b668:	f7fa e946 	blx	58f8 <__android_log_buf_print@plt>
+    b66c:	b146      	cbz	r6, b680 <install_package+0x9c>
+    b66e:	4b3a      	ldr	r3, [pc, #232]	@ (b758 <install_package+0x174>)
+    b670:	2003      	movs	r0, #3
+    b672:	2106      	movs	r1, #6
+    b674:	4622      	mov	r2, r4
+    b676:	447b      	add	r3, pc
+    b678:	f7fa e93e 	blx	58f8 <__android_log_buf_print@plt>
+    b67c:	2502      	movs	r5, #2
+    b67e:	e057      	b.n	b730 <install_package+0x14c>
+    b680:	4836      	ldr	r0, [pc, #216]	@ (b75c <install_package+0x178>)
+    b682:	4d37      	ldr	r5, [pc, #220]	@ (b760 <install_package+0x17c>)
+    b684:	4478      	add	r0, pc
+    b686:	f8df 90dc 	ldr.w	r9, [pc, #220]	@ b764 <install_package+0x180>
+    b68a:	f7fa eb76 	blx	5d78 <system@plt>
+    b68e:	4b36      	ldr	r3, [pc, #216]	@ (b768 <install_package+0x184>)
+    b690:	447d      	add	r5, pc
+    b692:	44f9      	add	r9, pc
+    b694:	f858 8003 	ldr.w	r8, [r8, r3]
+    b698:	4628      	mov	r0, r5
+    b69a:	4649      	mov	r1, r9
+    b69c:	f108 0a54 	add.w	sl, r8, #84	@ 0x54
+    b6a0:	f108 08a8 	add.w	r8, r8, #168	@ 0xa8
+    b6a4:	4652      	mov	r2, sl
+    b6a6:	f7fa eb6e 	blx	5d84 <freopen@plt>
+    b6aa:	4650      	mov	r0, sl
+    b6ac:	4631      	mov	r1, r6
+    b6ae:	f7fa eb70 	blx	5d90 <setbuf@plt>
+    b6b2:	4642      	mov	r2, r8
+    b6b4:	4628      	mov	r0, r5
+    b6b6:	4649      	mov	r1, r9
+    b6b8:	f7fa eb64 	blx	5d84 <freopen@plt>
+    b6bc:	4640      	mov	r0, r8
+    b6be:	4631      	mov	r1, r6
+    b6c0:	f7fa eb66 	blx	5d90 <setbuf@plt>
+    b6c4:	4628      	mov	r0, r5
+    b6c6:	f44f 71da 	mov.w	r1, #436	@ 0x1b4
+    b6ca:	f7fa e9c4 	blx	5a54 <chmod@plt>
+    b6ce:	4628      	mov	r0, r5
+    b6d0:	4d26      	ldr	r5, [pc, #152]	@ (b76c <install_package+0x188>)
+    b6d2:	f240 31ef 	movw	r1, #1007	@ 0x3ef
+    b6d6:	460a      	mov	r2, r1
+    b6d8:	447d      	add	r5, pc
+    b6da:	f7fa e9b6 	blx	5a48 <chown@plt>
+    b6de:	f44f 71da 	mov.w	r1, #436	@ 0x1b4
+    b6e2:	4628      	mov	r0, r5
+    b6e4:	f7fa e9b6 	blx	5a54 <chmod@plt>
+    b6e8:	f240 31ef 	movw	r1, #1007	@ 0x3ef
+    b6ec:	460a      	mov	r2, r1
+    b6ee:	4628      	mov	r0, r5
+    b6f0:	f7fa e9aa 	blx	5a48 <chown@plt>
+    b6f4:	a803      	add	r0, sp, #12
+    b6f6:	f7fa e912 	blx	591c <ctime@plt>
+    b6fa:	4b1d      	ldr	r3, [pc, #116]	@ (b770 <install_package+0x18c>)
+    b6fc:	2104      	movs	r1, #4
+    b6fe:	4622      	mov	r2, r4
+    b700:	447b      	add	r3, pc
+    b702:	9000      	str	r0, [sp, #0]
+    b704:	2003      	movs	r0, #3
+    b706:	f7fa e8f8 	blx	58f8 <__android_log_buf_print@plt>
+    b70a:	4b1a      	ldr	r3, [pc, #104]	@ (b774 <install_package+0x190>)
+    b70c:	2104      	movs	r1, #4
+    b70e:	4622      	mov	r2, r4
+    b710:	447b      	add	r3, pc
+    b712:	2003      	movs	r0, #3
+    b714:	f7fa e8f0 	blx	58f8 <__android_log_buf_print@plt>
+    b718:	4638      	mov	r0, r7
+    b71a:	f7fe f9ff 	bl	9b1c <try_updater>
+    b71e:	4b16      	ldr	r3, [pc, #88]	@ (b778 <install_package+0x194>)
+    b720:	2104      	movs	r1, #4
+    b722:	4622      	mov	r2, r4
+    b724:	447b      	add	r3, pc
+    b726:	4605      	mov	r5, r0
+    b728:	9000      	str	r0, [sp, #0]
+    b72a:	2003      	movs	r0, #3
+    b72c:	f7fa e8e4 	blx	58f8 <__android_log_buf_print@plt>
+    b730:	4628      	mov	r0, r5
+    b732:	b004      	add	sp, #16
+    b734:	e8bd 87f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, pc}
+    b738:	61d3      	str	r3, [r2, #28]
+    b73a:	0002      	movs	r2, r0
+    b73c:	6492      	str	r2, [r2, #72]	@ 0x48
+    b73e:	0002      	movs	r2, r0
+    b740:	649a      	str	r2, [r3, #72]	@ 0x48
+    b742:	0002      	movs	r2, r0
+    b744:	075e      	lsls	r6, r3, #29
+    b746:	0003      	movs	r3, r0
+    b748:	6496      	str	r6, [r2, #72]	@ 0x48
+    b74a:	0002      	movs	r2, r0
+    b74c:	6498      	str	r0, [r3, #72]	@ 0x48
+    b74e:	0002      	movs	r2, r0
+    b750:	64a5      	str	r5, [r4, #72]	@ 0x48
+    b752:	0002      	movs	r2, r0
+    b754:	649d      	str	r5, [r3, #72]	@ 0x48
+    b756:	0002      	movs	r2, r0
+    b758:	64a5      	str	r5, [r4, #72]	@ 0x48
+    b75a:	0002      	movs	r2, r0
+    b75c:	64b5      	str	r5, [r6, #72]	@ 0x48
+    b75e:	0002      	movs	r2, r0
+    b760:	64ed      	str	r5, [r5, #76]	@ 0x4c
+    b762:	0002      	movs	r2, r0
+    b764:	6505      	str	r5, [r0, #80]	@ 0x50
+    b766:	0002      	movs	r2, r0
+    b768:	ff70 ffff 	vminnm.f16	<illegal reg q15.5>, q8, <illegal reg q15.5>
+    b76c:	64c1      	str	r1, [r0, #76]	@ 0x4c
+    b76e:	0002      	movs	r2, r0
+    b770:	64b8      	str	r0, [r7, #72]	@ 0x48
+    b772:	0002      	movs	r2, r0
+    b774:	64cb      	str	r3, [r1, #76]	@ 0x4c
+    b776:	0002      	movs	r2, r0
+    b778:	64cc      	str	r4, [r1, #76]	@ 0x4c
+    b77a:	0002      	movs	r2, r0
+    b77c:	4b08      	ldr	r3, [pc, #32]	@ (b7a0 <install_package+0x1bc>)
+    b77e:	6802      	ldr	r2, [r0, #0]
+    b780:	447b      	add	r3, pc
+    b782:	6809      	ldr	r1, [r1, #0]
+    b784:	681b      	ldr	r3, [r3, #0]
+    b786:	f853 0022 	ldr.w	r0, [r3, r2, lsl #2]
+    b78a:	f853 3021 	ldr.w	r3, [r3, r1, lsl #2]
+    b78e:	4298      	cmp	r0, r3
+    b790:	d303      	bcc.n	b79a <install_package+0x1b6>
+    b792:	bf94      	ite	ls
+    b794:	2000      	movls	r0, #0
+    b796:	2001      	movhi	r0, #1
+    b798:	4770      	bx	lr
+    b79a:	f04f 30ff 	mov.w	r0, #4294967295	@ 0xffffffff
+    b79e:	4770      	bx	lr
+    b7a0:	16a0      	asrs	r0, r4, #26
+    b7a2:	0003      	movs	r3, r0
+    b7a4:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+    b7a8:	4680      	mov	r8, r0
+    b7aa:	460e      	mov	r6, r1
+    b7ac:	6817      	ldr	r7, [r2, #0]
+    b7ae:	2400      	movs	r4, #0
+    b7b0:	e015      	b.n	b7de <install_package+0x1fa>
+    b7b2:	1b35      	subs	r5, r6, r4
+    b7b4:	4638      	mov	r0, r7
+    b7b6:	eb08 0104 	add.w	r1, r8, r4
+    b7ba:	462a      	mov	r2, r5
+    b7bc:	f7fa eaee 	blx	5d9c <write@plt>
+    b7c0:	2800      	cmp	r0, #0
+    b7c2:	dc0b      	bgt.n	b7dc <install_package+0x1f8>
+    b7c4:	f7fa e8e6 	blx	5994 <__errno@plt>
+    b7c8:	6800      	ldr	r0, [r0, #0]
+    b7ca:	f7fa e8ea 	blx	59a0 <strerror@plt>
+    b7ce:	4629      	mov	r1, r5
+    b7d0:	4602      	mov	r2, r0
+    b7d2:	4805      	ldr	r0, [pc, #20]	@ (b7e8 <install_package+0x204>)
+    b7d4:	4478      	add	r0, pc
+    b7d6:	f7fa e932 	blx	5a3c <printf@plt>
+    b7da:	e002      	b.n	b7e2 <install_package+0x1fe>
+    b7dc:	1824      	adds	r4, r4, r0
+    b7de:	42b4      	cmp	r4, r6
+    b7e0:	dbe7      	blt.n	b7b2 <install_package+0x1ce>
+    b7e2:	4620      	mov	r0, r4
+    b7e4:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+    b7e8:	643a      	str	r2, [r7, #64]	@ 0x40
+    b7ea:	0002      	movs	r2, r0
+

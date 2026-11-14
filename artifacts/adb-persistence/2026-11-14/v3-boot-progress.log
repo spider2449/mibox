@@ -1,0 +1,92 @@
+MIBOX_ADB_HOOK_BEGIN
+8a90eb47-a4cb-4543-b42a-4db84fc73193
+1
+adb
+MIBOX_ADB_HOOK_DONE
+MIBOX_ADB_HOOK_BEGIN
+7c9bc266-5af4-4731-949b-c6c9929982c9
+1
+adb
+adb
+adb
+running
+1
+MIBOX_ADB_HOOK_DONE
+MIBOX_ADB_HOOK_BEGIN
+856371d4-27c7-417a-b412-520e915deca8
+TICK=0 saved=1
+69.29 40.06
+adb
+adb
+running
+TICK=1 saved=1
+72.43 40.60
+adb
+adb
+running
+TICK=2 saved=1
+75.71 41.32
+adb
+adb
+running
+TICK=3 saved=1
+79.15 41.72
+adb
+adb
+running
+TICK=4 saved=1
+82.60 42.07
+adb
+adb
+running
+TICK=5 saved=1
+85.73 44.28
+adb
+adb
+running
+TICK=6 saved=1
+89.48 47.73
+adb
+adb
+running
+TICK=7 saved=0
+92.68 51.13
+none
+none
+stopped
+MIBOX_ADB_RESTORE_SETTING
+TICK=8 saved=1
+97.33 52.69
+adb
+adb
+running
+TICK=9 saved=1
+100.90 52.87
+adb
+adb
+running
+TICK=10 saved=1
+104.05 53.55
+adb
+adb
+running
+TICK=11 saved=1
+107.45 54.95
+adb
+adb
+running
+TICK=12 saved=1
+110.53 56.85
+adb
+adb
+running
+TICK=13 saved=1
+113.88 60.45
+adb
+adb
+running
+TICK=14 saved=1
+117.03 63.88
+adb
+adb
+running

@@ -1,0 +1,9 @@
+phone-tools/
+/target/
+__pycache__/
+*.py[cod]
+# Extracted stock firmware payloads remain local; retain reports and hashes.
+/artifacts/**/*.apk
+/artifacts/**/*.so
+/artifacts/boot-evidence/**/recovery-resource.dat
+/artifacts/boot-evidence/**/recovery-from-boot.p

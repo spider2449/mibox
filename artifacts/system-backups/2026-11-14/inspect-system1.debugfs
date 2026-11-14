@@ -1,0 +1,4 @@
+stats
+stat /etc/init.post-boot.sh
+cat /etc/init.post-boot.sh
+stat /build.prop

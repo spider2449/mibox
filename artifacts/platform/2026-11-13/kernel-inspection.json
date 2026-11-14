@@ -1,0 +1,304 @@
+{
+  "source_sha256": "0cfa74c8cde102c877aa9605910e10f5541480e1dc9e0fb6bee02b75d0a638f7",
+  "container": {
+    "format": "U-Boot legacy uImage",
+    "payload_bytes": 3897647,
+    "timestamp": 1487576866,
+    "load_address": 2147516416,
+    "entry_address": 2147516416,
+    "os": 5,
+    "arch": 2,
+    "image_type": 2,
+    "compression": 3,
+    "name": "Linux-3.10.33",
+    "header_crc_matches": true,
+    "payload_crc_matches": true
+  },
+  "streams": [
+    {
+      "compression": "lzma",
+      "payload_offset": 64,
+      "expanded_bytes": 11878528,
+      "sha256": "fe6332d34fc87b758f5a6a9894c40e9e17d13a9cb586ce0aaca79103c73dfc96",
+      "linux_version_strings": [
+        "Linux version 3.10.33-250909-g9f9cb70 (jenkins@qh-dk-box-build00) (gcc version 4.7.3 20130205 (prerelease) (crosstool-NG linaro-1.13.1-4.7-2013.02-01-20130221 - Linaro GCC 2013.02) ) #1 SMP PREEMPT Mon Feb 20 15:47:21 CST 2017",
+        "Linux version "
+      ],
+      "relevant_strings": [
+        {
+          "offset": 7935148,
+          "text": "aml Watchdog"
+        },
+        {
+          "offset": 9129937,
+          "text": "watchdog_thresh"
+        },
+        {
+          "offset": 9129970,
+          "text": "nmi_watchdog"
+        },
+        {
+          "offset": 9139855,
+          "text": "6RT Watchdog Timeout: %s[%d]"
+        },
+        {
+          "offset": 9161375,
+          "text": "Watchdog detected hard LOCKUP on cpu %u"
+        },
+        {
+          "offset": 9161415,
+          "text": "/home/jenkins/workspace/casablanca-android4.4/common/kernel/watchdog.c"
+        },
+        {
+          "offset": 9161562,
+          "text": "3NMI watchdog: Failed to create watchdog threads, disabled"
+        },
+        {
+          "offset": 9161622,
+          "text": "watchdog/%u"
+        },
+        {
+          "offset": 9456596,
+          "text": "acm ttyGS%d completion, err %d"
+        },
+        {
+          "offset": 9456628,
+          "text": "acm ttyGS%d short resp, len %d"
+        },
+        {
+          "offset": 9456660,
+          "text": "acm ttyGS%d deactivated"
+        },
+        {
+          "offset": 9456685,
+          "text": "acm ttyGS%d req%02x.%02x v%04x i%04x l%d"
+        },
+        {
+          "offset": 9456727,
+          "text": "acm response on ttyGS%d, err %d"
+        },
+        {
+          "offset": 9456760,
+          "text": "reset acm ttyGS%d"
+        },
+        {
+          "offset": 9456779,
+          "text": "activate acm ttyGS%d"
+        },
+        {
+          "offset": 9456806,
+          "text": "acm ttyGS%d: %s speed IN/%s OUT/%s NOTIFY/%s"
+        },
+        {
+          "offset": 9456879,
+          "text": "acm ttyGS%d serial state %04x"
+        },
+        {
+          "offset": 9456910,
+          "text": "acm ttyGS%d can't notify serial state, %d"
+        },
+        {
+          "offset": 9457220,
+          "text": "gserial_connect: start ttyGS%d"
+        },
+        {
+          "offset": 9457313,
+          "text": "%s: registered %d ttyGS* device%s"
+        },
+        {
+          "offset": 9457349,
+          "text": "4ttyGS%d: unexpected RX status %d"
+        },
+        {
+          "offset": 9457385,
+          "text": "4ttyGS%d: RX not scheduled?"
+        },
+        {
+          "offset": 9457414,
+          "text": "gs_open: ttyGS%d (%p,%p) no buffer"
+        },
+        {
+          "offset": 9457450,
+          "text": "gs_open: start ttyGS%d"
+        },
+        {
+          "offset": 9457474,
+          "text": "gs_open: ttyGS%d (%p,%p)"
+        },
+        {
+          "offset": 9457679,
+          "text": "gs_close: ttyGS%d (%p,%p) ..."
+        },
+        {
+          "offset": 9457710,
+          "text": "gs_close: ttyGS%d (%p,%p) done!"
+        },
+        {
+          "offset": 9460516,
+          "text": "3android_usb: already %s"
+        },
+        {
+          "offset": 9460956,
+          "text": "android_usb"
+        },
+        {
+          "offset": 9461055,
+          "text": "3android_usb: Cannot enable ffs (%d)"
+        },
+        {
+          "offset": 9461093,
+          "text": "3android_usb: Cannot enable '%s' (%d)"
+        },
+        {
+          "offset": 9522852,
+          "text": "Watchdog timer expire"
+        },
+        {
+          "offset": 9523157,
+          "text": "3watchdog: couldn't create class"
+        },
+        {
+          "offset": 9523192,
+          "text": "3watchdog: error unregistering /dev/watchdog (err=%d)"
+        },
+        {
+          "offset": 9523248,
+          "text": "6watchdog: Invalid min and max timeout values, resetting to 0!"
+        },
+        {
+          "offset": 9523323,
+          "text": "watchdog%d"
+        },
+        {
+          "offset": 9523346,
+          "text": "nowayout prevents watchdog being stopped!"
+        },
+        {
+          "offset": 9523389,
+          "text": "watchdog did not stop!"
+        },
+        {
+          "offset": 9523414,
+          "text": "3watchdog: %s: cannot register miscdev on minor=%d (err=%d)."
+        },
+        {
+          "offset": 9523477,
+          "text": "3watchdog: %s: a legacy watchdog module is probably present."
+        },
+        {
+          "offset": 9523540,
+          "text": "3watchdog: watchdog%d unable to add device %d:%d"
+        },
+        {
+          "offset": 9523591,
+          "text": "3watchdog: watchdog: unable to allocate char dev region"
+        },
+        {
+          "offset": 9561966,
+          "text": "aml_reserved_start"
+        },
+        {
+          "offset": 9562032,
+          "text": "aml_reserved_end"
+        },
+        {
+          "offset": 9599603,
+          "text": "7** reset watchdog"
+        },
+        {
+          "offset": 9599668,
+          "text": "6** enable watchdog"
+        },
+        {
+          "offset": 9599757,
+          "text": "6** disable watchdog"
+        },
+        {
+          "offset": 9599780,
+          "text": "6** read watchdog time"
+        },
+        {
+          "offset": 9599877,
+          "text": "reset_watchdog_method"
+        },
+        {
+          "offset": 9599899,
+          "text": "dt probe reset_watchdog_method failed: %d using default value"
+        },
+        {
+          "offset": 9599962,
+          "text": "reset_watchdog_time"
+        },
+        {
+          "offset": 9599982,
+          "text": "dt probe reset_watchdog_time failed: %d using default value"
+        },
+        {
+          "offset": 9600266,
+          "text": "one-secod=%d,min_timeout=%d,max_timeout=%d,default_timeout=%d,reset_watchdog_method=%d,reset_watchdog_time=%d,shutdown_timeout=%d,firmware_timeout=%d,suspend_timeout=%d"
+        },
+        {
+          "offset": 9600481,
+          "text": "6AML Watchdog Timer probed done "
+        },
+        {
+          "offset": 9753270,
+          "text": "6NETDEV WATCHDOG: %s (%s): transmit queue %u timed out"
+        },
+        {
+          "offset": 9981694,
+          "text": "touch_nmi_watchdog"
+        },
+        {
+          "offset": 9981713,
+          "text": "touch_softlockup_watchdog"
+        },
+        {
+          "offset": 10048666,
+          "text": "watchdog_unregister_device"
+        },
+        {
+          "offset": 10048693,
+          "text": "watchdog_register_device"
+        },
+        {
+          "offset": 10048718,
+          "text": "watchdog_init_timeout"
+        },
+        {
+          "offset": 10076100,
+          "text": "qdisc_watchdog_cancel"
+        },
+        {
+          "offset": 10076122,
+          "text": "qdisc_watchdog_schedule_ns"
+        },
+        {
+          "offset": 10076149,
+          "text": "qdisc_watchdog_init"
+        },
+        {
+          "offset": 11240902,
+          "text": "console="
+        },
+        {
+          "offset": 11241145,
+          "text": "hung_task_panic="
+        },
+        {
+          "offset": 11241175,
+          "text": "nowatchdog"
+        },
+        {
+          "offset": 11241186,
+          "text": "softlockup_panic="
+        },
+        {
+          "offset": 11241204,
+          "text": "nmi_watchdog="
+        }
+      ],
+      "note": "Compiled strings do not prove active devices, call paths or register semantics."
+    }
+  ]
+}

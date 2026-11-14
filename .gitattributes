@@ -1,0 +1,3 @@
+# Preserve exact device captures and hash-pinned assets across checkouts.
+/artifacts/** -text -whitespace
+/assets/** -text

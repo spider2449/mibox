@@ -1,0 +1,8 @@
+{
+  "sha256": "a5fae79fe631cf557d06f6fda8bc5ae8bbf1eca5359f9f76b17bafaddd29068b",
+  "bytes": 2097152,
+  "first_64_bytes_hex": "060000ea60f19fe560f19fe560f19fe560f19fe560f19fe560f19fe560f19fe564019fe50010a0e3001080e55ff07ff56ff07ff56cd09fe540004fe254109fe5",
+  "entropy_bits_per_byte": 1.8887915443404846,
+  "u_boot_string_offsets": [],
+  "note": "String absence and entropy do not prove encryption or secure boot."
+}

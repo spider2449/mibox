@@ -1,0 +1,8 @@
+﻿{
+    "TransportExchangeVerified":  true,
+    "RestoreMarkerPresent":  true,
+    "RestoreOverlapObserved":  true,
+    "RollbackError":  "functions: Resource busy (os error 16)",
+    "BootIdCapturedBeforeTest":  false,
+    "Conclusion":  "COM6 round trip worked and final configuration matched, but clean timed rollback was not validated."
+}

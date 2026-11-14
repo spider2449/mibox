@@ -1,0 +1,34 @@
+﻿--------- beginning of /dev/log/system
+
+--------- beginning of /dev/log/main
+
+11-14 06:16:13.167 D/ADBHelper(  980): onFinished 164
+
+11-14 06:16:13.187 D/ADBHelper(  980): onFinished 165
+
+11-14 06:16:13.207 D/ADBHelper(  980): onFinished 166
+
+11-14 06:16:23.307 D/ADBHelper(  980): onFinished 172
+
+11-14 06:16:23.327 D/ADBHelper(  980): onFinished 173
+
+11-14 06:16:23.337 D/ADBHelper(  980): onFinished 174
+
+11-14 06:16:33.467 D/ADBHelper(  980): onFinished 180
+
+11-14 06:16:33.487 D/ADBHelper(  980): onFinished 181
+
+11-14 06:16:33.497 D/ADBHelper(  980): onFinished 182
+
+11-14 06:16:43.617 D/ADBHelper(  980): onFinished 188
+
+11-14 06:16:43.637 D/ADBHelper(  980): onFinished 189
+
+11-14 06:16:43.647 D/ADBHelper(  980): onFinished 190
+
+11-14 06:16:53.787 D/ADBHelper(  980): onFinished 196
+
+11-14 06:16:53.807 D/ADBHelper(  980): onFinished 197
+
+11-14 06:16:53.817 D/ADBHelper(  980): onFinished 198
+

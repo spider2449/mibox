@@ -1,0 +1,12 @@
+﻿{
+    "Tool":  "Zadig 2.9",
+    "Source":  "https://github.com/pbatard/libwdi/releases/download/v1.5.1/zadig-2.9.exe",
+    "SHA256":  "4ECAA95DF3DA3621486A043AEF8B3050B8BAFE7C901402871E816229EF82039B",
+    "Authenticode":  "Valid",
+    "Signer":  "CN=Akeo Consulting, O=Akeo Consulting, S=Donegal, C=IE, OID.2.5.4.15=Private Organization, OID.1.3.6.1.4.1.311.60.2.1.3=IE, SERIALNUMBER=407950",
+    "Target":  "USB\\VID_1B8E\u0026PID_C003",
+    "InterfaceGuid":  "{86C80ED9-6F95-4FB7-ABFE-744BA77DDC25}",
+    "Driver":  "Microsoft WinUSB",
+    "CurrentProcessElevated":  false,
+    "InstalledByAgent":  false
+}

@@ -1,0 +1,10 @@
+﻿{
+    "action":  "SelfTest",
+    "observedUtc":  "2026-11-14T01:22:02.1506625Z",
+    "originalRestored":  true,
+    "identify":  "00-08-00-10",
+    "patternVerified":  true,
+    "bytes":  64,
+    "pattern":  "i XOR 0xa5",
+    "address":  "0x82000000"
+}

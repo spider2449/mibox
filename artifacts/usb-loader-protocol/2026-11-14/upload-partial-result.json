@@ -1,0 +1,9 @@
+﻿{
+    "action":  "UploadCandidate",
+    "flashWrites":  false,
+    "bootCommandSent":  false,
+    "termination":  "host stopped process to evaluate bulk read",
+    "verifiedPrefixBytes":  786432,
+    "fullImageVerified":  false,
+    "transport":  "64-byte control"
+}

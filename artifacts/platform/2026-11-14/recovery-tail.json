@@ -1,0 +1,81 @@
+{
+  "source_sha256": "fc96df8c21e8c4904b193cc9605f3a07933fb7847d5ccead758f48e392ef2589",
+  "declared_section_end": 6794390,
+  "aligned_end": 6795264,
+  "installed_script_target_prefix_bytes": 6794846,
+  "target_prefix_sha1": "e94825710e912cc47f09dee1be17fb43d1fc564d",
+  "nonzero_between_section_and_prefix": 0,
+  "nonzero_after_prefix": 30372,
+  "nonzero_spans_gap_threshold": 64,
+  "spans": [
+    {
+      "start": 6794846,
+      "end_exclusive": 6818606,
+      "bytes": 23760,
+      "sha256": "f3fac47c0280bd825bab5f5398d7cd1785f29c6c6bed74e423cb64aa7b1c98f1",
+      "first_32_hex": "27effc55631e73e98f82bcfee2e4d7bf6bccdf9dfc6d48a7ee0c2bdf0d72c319",
+      "matches": []
+    },
+    {
+      "start": 6819840,
+      "end_exclusive": 6831877,
+      "bytes": 12037,
+      "sha256": "c398e18a2d70ec3881cb751697d881f114ebbbe267fccfcec006a6de1871a11d",
+      "first_32_hex": "d00dfeed00002f06000000380000289800000028000000110000001000000000",
+      "matches": []
+    }
+  ],
+  "validated_fdt_after_prefix": [
+    {
+      "offset": 6819840,
+      "bytes": 12038,
+      "sha256": "4afef3786b9c1c726771aa737a5cb875ace4cf9c067c8dc54d021f3641a94002",
+      "nodes": 71,
+      "matches_declared_recovery_dtb": false
+    }
+  ],
+  "tail_printable_strings": [
+    "cache-controller",
+    "arm,meson-pl310-cache",
+    "interrupt-controller",
+    "arm,cortex-a9-gic",
+    "amlogic,deinterlace",
+    "amlogic,mesonstream",
+    "amlogic,mesonvout",
+    "amlogic,aml_uart",
+    "amlogic,aml_uart",
+    "amlogic,aml_uart",
+    "amlogic,aml_uart",
+    "amlogic,aml_uart",
+    "amlogic,btwake_control",
+    "amlogic,aml_broadcm_wifi",
+    "zaml_broadcm_wifi",
+    "amlogic,aml_sdio",
+    "emmc_clk_cmd_pins",
+    "sdio_clk_cmd_pins",
+    "MMC_CAP_4_BIT_DATA",
+    "MMC_CAP_MMC_HIGHSPEED",
+    "MMC_CAP_SD_HIGHSPEED",
+    "QGPIO_IRQ_FALLING",
+    "fGPIO_IRQ_RISING",
+    "MMC_CAP_4_BIT_DATA",
+    "MMC_CAP_MMC_HIGHSPEED",
+    "MMC_CAP_SD_HIGHSPEED",
+    "MMC_CAP_NONREMOVABLE",
+    "MMC_CAP_4_BIT_DATA",
+    "MMC_CAP_MMC_HIGHSPEED",
+    "MMC_CAP_SD_HIGHSPEED",
+    "MMC_CAP_NONREMOVABLE",
+    "amlogic, amlogic-dvfs",
+    "meson_vcck_dvfs_driver",
+    "amlogic, meson_vcck_dvfs",
+    "zmeson_vcck_dvfs_driver",
+    "amlogic,aml-i2s-dai",
+    "amlogic,aml-spdif-dai",
+    "zaml-spdif-dai.0",
+    "audio_spdif_codec",
+    "amlogic,aml-spdif-codec"
+  ],
+  "classification": "UNKNOWN; byte position is not signature verification",
+  "loader_acceptance": "UNKNOWN"
+}

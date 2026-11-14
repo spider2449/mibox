@@ -1,0 +1,16 @@
+{
+  "crc32_matching_total_sizes": [
+    32768
+  ],
+  "variables": {
+    "bootcmd": "hdcp prefetch emmc;run storeboot",
+    "bootdelay": "1",
+    "loadaddr": "0x82000000",
+    "preboot": "echo preboot...;if itest ${upgrade_step} == 1; then  defenv; setenv upgrade_step 2; saveenv;fi; secukey emmc; secukey updatehdcpkey;run initenv;switch_bootpart; modify_cmdline; run storeargs;if itest ${upgrade_step} == 3; then run update; fi; get_rebootmode; echo reboot_mode=${reboot_mode};run update_key; run init_display;run switch_bootmode;",
+    "recovery": "echo enter recovery...;hdcp prefetch emmc;store read recovery ${loadaddr} 0 800000; bootm",
+    "storeboot": "store read boot1 ${loadaddr} 0 800000;bootm;run recovery",
+    "update": "echo update...; run usb_burning; run recovery;",
+    "upgrade_step": "0"
+  },
+  "note": "Static environment, not an executed boot trace."
+}

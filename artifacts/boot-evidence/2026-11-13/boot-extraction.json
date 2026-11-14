@@ -1,0 +1,33 @@
+﻿{
+  "file": "boot.img",
+  "bytes": 8388608,
+  "sha256": "ff4fa440044709b92652afea0306286534c9da2f57e41308d67459b97e800a56",
+  "expected_prefix_bytes": 4433609,
+  "expected_prefix_sha1": "2dafa19e539ef3a5a674d3f13ff6df9ab483220f",
+  "actual_prefix_sha1": "09c5747e5f5fe5debb98e78b84af999877e1ffe1",
+  "matches_installed_script": false,
+  "format": "Android v0-compatible (limited parser)",
+  "layout_validated": true,
+  "page_size": 2048,
+  "declared_load_addresses": {
+    "kernel": 268468224,
+    "ramdisk": 285212672,
+    "second": 284164096,
+    "tags": 268435712
+  },
+  "aligned_end": 4431872,
+  "tail_bytes": 3956736,
+  "complete_final_page": true,
+  "bootloader_acceptance": "UNKNOWN",
+  "signature_verified": false,
+  "second_fdt": {
+    "total_bytes": 11414,
+    "section_bytes": 11414,
+    "fits_section": true
+  },
+  "android_id_sha1": "f26258738785a68ce298a413530c060049e12218",
+  "computed_android_id_sha1": "f26258738785a68ce298a413530c060049e12218",
+  "android_id_matches": true,
+  "ramdisk_cpio_bytes": 908032,
+  "source_path": "/mnt/f/coding/otherPrj/mibox/phone-tools/backup/2026-11-13/boot.img"
+}

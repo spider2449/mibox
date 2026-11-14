@@ -1,0 +1,13 @@
+﻿{
+    "patternWriteReached":  false,
+    "action":  "BulkTest",
+    "setupLength":  16,
+    "readBytes":  64,
+    "endpoint":  "0x81",
+    "win32Error":  121,
+    "powerRecovery":  "requested",
+    "ramAddress":  "0x82000000",
+    "subsequentIdentify":  "failed",
+    "stage":  "initial RAM read before pattern write",
+    "request":  "0x12"
+}

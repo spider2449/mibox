@@ -1,0 +1,6 @@
+﻿MIBOX_ADB_WORKER_ERROR --worker-install job=4774-1794582182617: Exec format error (os error 8)
+
+Error: Custom { kind: Other, error: "root worker failed" }
+
+REMOTE_EXIT:1
+

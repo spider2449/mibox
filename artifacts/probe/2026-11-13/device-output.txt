@@ -1,0 +1,408 @@
+﻿mibox-probe 0.1.0
+
+arch: arm
+
+pid: 8287
+
+
+
+--- /proc/version ---
+
+Linux version 3.10.33 (jenkins@qh-dk-box-build00) (gcc version 4.7.3 20130205 (prerelease) (crosstool-NG linaro-1.13.1-4.7-2013.02-01-20130221 - Linaro GCC 2013.02) ) #1 SMP PREEMPT Mon Feb 20 15:47:21 CST 2017
+
+
+
+--- /proc/self/status ---
+
+Name:	mibox-probe
+
+State:	R (running)
+
+Tgid:	8287
+
+Pid:	8287
+
+PPid:	5940
+
+TracerPid:	0
+
+Uid:	2000	2000	2000	2000
+
+Gid:	2000	2000	2000	2000
+
+FDSize:	256
+
+Groups:	1003 1004 1007 1011 1015 1028 3001 3002 3003 3006 
+
+VmPeak:	     488 kB
+
+VmSize:	     484 kB
+
+VmLck:	       0 kB
+
+VmPin:	       0 kB
+
+VmHWM:	     124 kB
+
+VmRSS:	     120 kB
+
+VmData:	      28 kB
+
+VmStk:	     136 kB
+
+VmExe:	     368 kB
+
+VmLib:	4294967204 kB
+
+VmPTE:	       8 kB
+
+VmSwap:	       0 kB
+
+Threads:	1
+
+SigQ:	0/6844
+
+SigPnd:	0000000000000000
+
+ShdPnd:	0000000000000000
+
+SigBlk:	0000000000000000
+
+SigIgn:	0000000000001000
+
+SigCgt:	0000000000000440
+
+CapInh:	0000000000000000
+
+CapPrm:	0000000000000000
+
+CapEff:	0000000000000000
+
+CapBnd:	00000000000000c0
+
+Cpus_allowed:	3
+
+Cpus_allowed_list:	0-1
+
+Mems_allowed:	1
+
+Mems_allowed_list:	0
+
+voluntary_ctxt_switches:	0
+
+nonvoluntary_ctxt_switches:	20
+
+
+
+--- /proc/cpuinfo ---
+
+Processor	: ARMv7 Processor rev 0 (v7l)
+
+processor	: 0
+
+BogoMIPS	: 1475.96
+
+
+
+processor	: 1
+
+BogoMIPS	: 1484.09
+
+
+
+Features	: swp half thumb fastmult vfp edsp neon vfpv3 tls 
+
+CPU implementer	: 0x41
+
+CPU architecture: 7
+
+CPU variant	: 0x3
+
+CPU part	: 0xc09
+
+CPU revision	: 0
+
+
+
+Hardware	: Amlogic Meson6
+
+Revision	: 0000
+
+Serial		: 0000000000000000
+
+
+
+--- /proc/meminfo ---
+
+MemTotal:         877072 kB
+
+MemFree:           52620 kB
+
+Buffers:           97404 kB
+
+Cached:           387904 kB
+
+SwapCached:           48 kB
+
+Active:           241292 kB
+
+Inactive:         454576 kB
+
+Active(anon):      79676 kB
+
+Inactive(anon):   132048 kB
+
+Active(file):     161616 kB
+
+Inactive(file):   322528 kB
+
+Unevictable:         616 kB
+
+Mlocked:               0 kB
+
+HighTotal:        270336 kB
+
+HighFree:           3848 kB
+
+LowTotal:         606736 kB
+
+LowFree:           48772 kB
+
+SwapTotal:         65532 kB
+
+SwapFree:          65464 kB
+
+Dirty:                92 kB
+
+Writeback:             0 kB
+
+AnonPages:        211176 kB
+
+Mapped:            82328 kB
+
+Shmem:               540 kB
+
+Slab:              34352 kB
+
+SReclaimable:      17888 kB
+
+SUnreclaim:        16464 kB
+
+KernelStack:        6464 kB
+
+PageTables:         8764 kB
+
+NFS_Unstable:          0 kB
+
+Bounce:                0 kB
+
+WritebackTmp:          0 kB
+
+CommitLimit:      504068 kB
+
+Committed_AS:   19448912 kB
+
+VmallocTotal:     245760 kB
+
+VmallocUsed:      145772 kB
+
+VmallocChunk:      25532 kB
+
+
+
+--- /proc/filesystems ---
+
+nodev	sysfs
+
+nodev	rootfs
+
+nodev	bdev
+
+nodev	proc
+
+nodev	cgroup
+
+nodev	cpuset
+
+nodev	tmpfs
+
+nodev	devtmpfs
+
+nodev	binfmt_misc
+
+nodev	debugfs
+
+nodev	sockfs
+
+nodev	pipefs
+
+nodev	anon_inodefs
+
+nodev	configfs
+
+nodev	devpts
+
+	ext3
+
+	ext2
+
+	ext4
+
+	cramfs
+
+nodev	ramfs
+
+	vfat
+
+	msdos
+
+	iso9660
+
+nodev	cifs
+
+	ntfs
+
+	fuseblk
+
+nodev	fuse
+
+nodev	fusectl
+
+	udf
+
+nodev	pstore
+
+nodev	selinuxfs
+
+nodev	functionfs
+
+	tfat
+
+	tntfs
+
+	texfat
+
+
+
+--- /proc/partitions ---
+
+major minor  #blocks  name
+
+
+
+ 253        0      65536 zram0
+
+ 179        0    3866624 mmcblk0
+
+ 179        1       2048 mmcblk0p1
+
+ 179        2       2048 mmcblk0p2
+
+ 179        3       4096 mmcblk0p3
+
+ 179        4       4096 mmcblk0p4
+
+ 179        5       8192 mmcblk0p5
+
+ 179        6       8192 mmcblk0p6
+
+ 179        7       8192 mmcblk0p7
+
+ 179        8     524288 mmcblk0p8
+
+ 179        9     524288 mmcblk0p9
+
+ 179       10     196608 mmcblk0p10
+
+ 179       11    2584320 mmcblk0p11
+
+ 179       32       2048 mmcblk0boot1
+
+ 179       16       2048 mmcblk0boot0
+
+
+
+--- /proc/modules ---
+
+dhd 579318 0 - Live 0x00000000
+
+texfat 179387 0 - Live 0x00000000 (PO)
+
+tntfs 475307 0 - Live 0x00000000 (PO)
+
+tfat 178443 0 - Live 0x00000000 (PO)
+
+mali 192913 20 - Live 0x00000000
+
+
+
+--- /proc/mounts ---
+
+rootfs / rootfs ro,relatime 0 0
+
+tmpfs /dev tmpfs rw,seclabel,nosuid,relatime,mode=755 0 0
+
+devpts /dev/pts devpts rw,seclabel,relatime,mode=600,ptmxmode=000 0 0
+
+proc /proc proc rw,relatime 0 0
+
+sysfs /sys sysfs rw,seclabel,relatime 0 0
+
+selinuxfs /sys/fs/selinux selinuxfs rw,relatime 0 0
+
+debugfs /sys/kernel/debug debugfs rw,relatime 0 0
+
+tmpfs /tmp tmpfs rw,seclabel,relatime,mode=765,uid=1000,gid=1015 0 0
+
+tmpfs /mnt/smb tmpfs rw,seclabel,relatime,mode=755,gid=1015 0 0
+
+pstore /p pstore rw,relatime 0 0
+
+none /acct cgroup rw,relatime,cpuacct 0 0
+
+none /sys/fs/cgroup tmpfs rw,seclabel,relatime,mode=750,gid=1000 0 0
+
+none /sys/fs/cgroup/memory cgroup rw,relatime,memory 0 0
+
+none /sys/fs/cgroup/blkio cgroup rw,relatime,blkio 0 0
+
+tmpfs /mnt/asec tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0
+
+tmpfs /mnt/obb tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0
+
+none /dev/cpuctl cgroup rw,relatime,cpu 0 0
+
+tmpfs /storage/external_storage tmpfs rw,seclabel,relatime,mode=775,uid=1000,gid=1023 0 0
+
+adb /dev/usb-ffs/adb functionfs rw,relatime 0 0
+
+/dev/block/system1 /system ext4 ro,seclabel,nodiratime,relatime,nodelalloc,noauto_da_alloc,commit=15,data=ordered 0 0
+
+/dev/block/cache /cache ext4 rw,seclabel,nosuid,nodev,noatime,nodiratime,block_validity,nodiscard,nodelalloc,journal_checksum,noauto_da_alloc,commit=15,data=ordered 0 0
+
+/dev/block/data /data ext4 rw,seclabel,nosuid,nodev,noatime,nodiratime,block_validity,nodiscard,nodelalloc,journal_checksum,noauto_da_alloc,commit=15,data=ordered 0 0
+
+/dev/fuse /mnt/shell/emulated fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0
+
+
+
+--- /sys/class/tty/ttyS0/dev ---
+
+4:64
+
+
+
+--- /sys/class/tty/ttyS1/dev ---
+
+4:65
+
+
+
+--- /sys/class/tty/ttyGS0/dev ---
+
+248:0
+
+
+
+MIBOX_PROBE_OK
+

@@ -1,0 +1,6 @@
+﻿-r--r--r-- root     root         4096 2026-11-13 21:04 part_table
+
+-r--r--r-- root     root         4096 2026-11-13 21:04 store_device
+
+-r--r--r-- root     root         4096 2026-11-13 21:04 version
+

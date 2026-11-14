@@ -1,0 +1,10 @@
+﻿{
+    "powerRecovery":  "requested",
+    "subsequentIdentify":  "timeout",
+    "androidReturned":  false,
+    "loaderPresentAfterObservation":  true,
+    "controlTransferCompleted":  true,
+    "action":  "Reset",
+    "imageUploaded":  false,
+    "flashWrites":  false
+}

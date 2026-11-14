@@ -1,0 +1,14 @@
+{
+  "init_sha256": "65e0e3be7b92a087ec2e2978ad4bd5e1539cff93400c9abee177ceea77788996",
+  "userland_sha256": "27416a3aa406b7f760ebccd2070d56298f30efef75aa658e1beee583571f51d0",
+  "os_release_sha256": "b50d9caa29142f02bee2b72d0d8dc2f73cf25e6cc7e1d2d10633b5d24caab3fb",
+  "optional_stock_adb_test_files": {
+    "sbin/adbd": "f2a875f1f6230fde084264e2927d1dbf3bf95bcf5e494809814a488caf532afc",
+    "system/bin/sh": "d44fd1bb1a8a84fe6ed0b4d850dd05d506aaf4fefdb54d24eb99690fb6583fc6",
+    "bin/mibox-adb-probe": "48ca8c93c4edb8080f63fe68f20a49989f10c712658e8bbba3b95f505de04dea",
+    "adb_keys": "26000614283e1207d9d8784ba2bf46fe3f9c9bf59c2ada1b2f53a9562ff29552"
+  },
+  "cpio_sha256": "14bd8212d6b6c1e7eabad83a4039cd07c99c00d992ae33af3a42b0cde70c3d70",
+  "gzip_sha256": "a2b4df84ba2a8f115d0495179020f970259b8a120fed5e16386cb438d7023b03",
+  "purpose": "QEMU generic ARM test only; no stock images used or modified."
+}

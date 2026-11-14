@@ -1,0 +1,13 @@
+﻿INTERFACE	STATE	CARRIER	MAC
+
+eth0	down	UNKNOWN	10:48:b1:ec:20:eb
+
+ip6tnl0	down	UNKNOWN	00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
+
+lo	down	UNKNOWN	00:00:00:00:00:00
+
+sit0	down	UNKNOWN	00:00:00:00
+
+IPv4 route table:
+
+

@@ -1,0 +1,50 @@
+{
+  "file": "recovery-from-boot.p",
+  "size": 740612,
+  "sha256": "bd26f5582b48d7bded68eb42333e0770baa469488cb0ac70563f22a367851846",
+  "format": "IMGDIFF2",
+  "header_bytes": 132,
+  "chunks": [
+    {
+      "index": 0,
+      "type": 0,
+      "source_start": 0,
+      "source_length": 3901450,
+      "patch_offset": 132,
+      "bsdiff_control_bytes": 51,
+      "bsdiff_diff_bytes": 104,
+      "bsdiff_target_bytes": 3901450
+    },
+    {
+      "index": 1,
+      "type": 2,
+      "source_start": 3901450,
+      "source_length": 519611,
+      "patch_offset": 333,
+      "source_expanded_length": 2441640,
+      "target_expanded_length": 3736576,
+      "zlib_parameters": [
+        6,
+        8,
+        -15,
+        8,
+        0
+      ],
+      "bsdiff_control_bytes": 21024,
+      "bsdiff_diff_bytes": 22473,
+      "bsdiff_target_bytes": 3736576
+    },
+    {
+      "index": 2,
+      "type": 0,
+      "source_start": 4421061,
+      "source_length": 12548,
+      "patch_offset": 740443,
+      "bsdiff_control_bytes": 58,
+      "bsdiff_diff_bytes": 65,
+      "bsdiff_target_bytes": 12334
+    }
+  ],
+  "full_boot_image_available": false,
+  "note": "Metadata only. Source boot and bonus resource may be required; no image reconstructed."
+}

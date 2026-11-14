@@ -1,0 +1,24 @@
+﻿{
+    "status":  "PASS",
+    "checks":  {
+                   "info":  true,
+                   "uname":  true,
+                   "id":  true,
+                   "uptime":  true,
+                   "mounts":  true,
+                   "ps":  true,
+                   "net":  true,
+                   "ramSelftest":  true,
+                   "scratchRemoved":  true
+               },
+    "deployment":  {
+                       "Source":  "F:\\coding\\otherPrj\\mibox\\target\\armv7-unknown-linux-musleabihf\\release\\mibox-userland",
+                       "Destination":  "/tmp/mibox-toolbox-3c2999254ff6",
+                       "Bytes":  478132,
+                       "Sha256":  "3c2999254ff676a5012892bdb89e2caddc2197d5e5471c901a460ac9136834f0",
+                       "Mode":  "0755",
+                       "Location":  "RAM /tmp"
+                   },
+    "partitionWrites":  false,
+    "rebooted":  false
+}

@@ -1,0 +1,22 @@
+﻿[
+    {
+        "Path":  "F:\\coding\\otherPrj\\mibox\\scripts\\Test-MiboxLoaderRam.ps1",
+        "Hash":  "A13686CA5D98B2850AD5BF5705FA157393FBE0483A2081E4900FD4C49E3079A9"
+    },
+    {
+        "Path":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\source-reference\\drivers__usb__gadget__v2_burning__v2_usb_tool__usb_pcd.c",
+        "Hash":  "86981B15562B387119E8D88B57DD1BE768990443A9FF9368EF89984F34D7F75B"
+    },
+    {
+        "Path":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\source-reference\\drivers__usb__gadget__v2_burning__v2_usb_tool__optimus_transform.c",
+        "Hash":  "978E8AE1CFD8EC75D29D47BFE2DD9D409F176CD72CC6A9553FE36A69B909A970"
+    },
+    {
+        "Path":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\source-reference\\drivers__usb__gadget__v2_burning__v2_common__optimus_download.c",
+        "Hash":  "F387625AC0ED18D890DA649D719BC0D94A27D4FEC9628E023BE6AC0D3C2FB2FC"
+    },
+    {
+        "Path":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\source-reference\\drivers__usb__gadget__v2_burning__v2_usb_tool__platform.h",
+        "Hash":  "9CD4E80A5DAF47C404C6723E154854CB61554726FD59E653B2F573A84413848D"
+    }
+]

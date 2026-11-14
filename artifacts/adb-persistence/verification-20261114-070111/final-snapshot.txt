@@ -1,0 +1,662 @@
+﻿BOOT_ID
+4eda0d4f-8c10-4191-bd80-dc615a9991e4
+ADB_ENABLED
+1
+USB_PERSIST
+adb
+USB_STATE
+adb
+ENFORCEMENT
+Enforcing
+BLOCK_RO
+1
+SYSTEM_MOUNT
+rootfs / rootfs ro,relatime 0 0
+tmpfs /dev tmpfs rw,seclabel,nosuid,relatime,mode=755 0 0
+devpts /dev/pts devpts rw,seclabel,relatime,mode=600,ptmxmode=000 0 0
+proc /proc proc rw,relatime 0 0
+sysfs /sys sysfs rw,seclabel,relatime 0 0
+selinuxfs /sys/fs/selinux selinuxfs rw,relatime 0 0
+debugfs /sys/kernel/debug debugfs rw,relatime 0 0
+tmpfs /tmp tmpfs rw,seclabel,relatime,mode=765,uid=1000,gid=1015 0 0
+tmpfs /mnt/smb tmpfs rw,seclabel,relatime,mode=755,gid=1015 0 0
+pstore /p pstore rw,relatime 0 0
+none /acct cgroup rw,relatime,cpuacct 0 0
+none /sys/fs/cgroup tmpfs rw,seclabel,relatime,mode=750,gid=1000 0 0
+none /sys/fs/cgroup/memory cgroup rw,relatime,memory 0 0
+none /sys/fs/cgroup/blkio cgroup rw,relatime,blkio 0 0
+tmpfs /mnt/asec tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0
+tmpfs /mnt/obb tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0
+none /dev/cpuctl cgroup rw,relatime,cpu 0 0
+tmpfs /storage/external_storage tmpfs rw,seclabel,relatime,mode=775,uid=1000,gid=1023 0 0
+adb /dev/usb-ffs/adb functionfs rw,relatime 0 0
+/dev/block/system1 /system ext4 ro,seclabel,nodiratime,relatime,nodelalloc,noauto_da_alloc,commit=15,data=ordered 0 0
+/dev/block/cache /cache ext4 rw,seclabel,nosuid,nodev,noatime,nodiratime,block_validity,nodiscard,nodelalloc,journal_checksum,noauto_da_alloc,commit=15,data=ordered 0 0
+/dev/block/data /data ext4 rw,seclabel,nosuid,nodev,noatime,nodiratime,block_validity,nodiscard,nodelalloc,journal_checksum,noauto_da_alloc,commit=15,data=ordered 0 0
+/dev/fuse /mnt/shell/emulated fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0
+HOOK_LOG
+MIBOX_ADB_HOOK_BEGIN
+8a90eb47-a4cb-4543-b42a-4db84fc73193
+1
+adb
+MIBOX_ADB_HOOK_DONE
+MIBOX_ADB_HOOK_BEGIN
+7c9bc266-5af4-4731-949b-c6c9929982c9
+1
+adb
+adb
+adb
+running
+1
+MIBOX_ADB_HOOK_DONE
+MIBOX_ADB_HOOK_BEGIN
+856371d4-27c7-417a-b412-520e915deca8
+TICK=0 saved=1
+69.29 40.06
+adb
+adb
+running
+TICK=1 saved=1
+72.43 40.60
+adb
+adb
+running
+TICK=2 saved=1
+75.71 41.32
+adb
+adb
+running
+TICK=3 saved=1
+79.15 41.72
+adb
+adb
+running
+TICK=4 saved=1
+82.60 42.07
+adb
+adb
+running
+TICK=5 saved=1
+85.73 44.28
+adb
+adb
+running
+TICK=6 saved=1
+89.48 47.73
+adb
+adb
+running
+TICK=7 saved=0
+92.68 51.13
+none
+none
+stopped
+MIBOX_ADB_RESTORE_SETTING
+TICK=8 saved=1
+97.33 52.69
+adb
+adb
+running
+TICK=9 saved=1
+100.90 52.87
+adb
+adb
+running
+TICK=10 saved=1
+104.05 53.55
+adb
+adb
+running
+TICK=11 saved=1
+107.45 54.95
+adb
+adb
+running
+TICK=12 saved=1
+110.53 56.85
+adb
+adb
+running
+TICK=13 saved=1
+113.88 60.45
+adb
+adb
+running
+TICK=14 saved=1
+117.03 63.88
+adb
+adb
+running
+TICK=15 saved=1
+120.14 67.10
+adb
+adb
+running
+TICK=16 saved=1
+123.46 71.10
+adb
+adb
+running
+TICK=17 saved=1
+126.71 75.06
+adb
+adb
+running
+TICK=18 saved=1
+129.79 78.30
+adb
+adb
+running
+TICK=19 saved=1
+133.29 78.94
+adb
+adb
+running
+TICK=20 saved=1
+136.32 79.45
+adb
+adb
+running
+TICK=21 saved=1
+139.43 82.67
+adb
+adb
+running
+TICK=22 saved=1
+142.64 86.54
+adb
+adb
+running
+TICK=23 saved=1
+145.72 90.21
+adb
+adb
+running
+TICK=24 saved=1
+148.95 93.90
+adb
+adb
+running
+TICK=25 saved=1
+152.13 97.68
+adb
+adb
+running
+TICK=26 saved=1
+155.17 100.86
+adb
+adb
+running
+TICK=27 saved=1
+158.82 104.86
+adb
+adb
+running
+TICK=28 saved=1
+162.68 105.56
+adb
+adb
+running
+TICK=29 saved=1
+165.64 107.77
+adb
+adb
+running
+TICK=30 saved=1
+168.77 111.23
+adb
+adb
+running
+TICK=31 saved=1
+171.90 115.44
+adb
+adb
+running
+TICK=32 saved=1
+174.94 118.76
+adb
+adb
+running
+TICK=33 saved=1
+178.11 122.83
+adb
+adb
+running
+TICK=34 saved=1
+181.21 126.13
+adb
+adb
+running
+TICK=35 saved=1
+184.42 129.36
+adb
+adb
+running
+TICK=36 saved=1
+187.58 133.66
+adb
+adb
+running
+TICK=37 saved=1
+190.61 137.11
+adb
+adb
+running
+TICK=38 saved=1
+194.00 140.88
+adb
+adb
+running
+TICK=39 saved=1
+197.15 144.74
+adb
+adb
+running
+TICK=40 saved=1
+200.21 148.03
+adb
+adb
+running
+TICK=41 saved=1
+203.59 152.18
+adb
+adb
+running
+TICK=42 saved=1
+206.76 155.71
+adb
+adb
+running
+TICK=43 saved=1
+209.95 159.21
+adb
+adb
+running
+TICK=44 saved=1
+213.26 163.46
+adb
+adb
+running
+TICK=45 saved=1
+216.36 166.87
+adb
+adb
+running
+TICK=46 saved=1
+219.61 170.23
+adb
+adb
+running
+TICK=47 saved=1
+222.79 171.95
+adb
+adb
+running
+TICK=48 saved=1
+225.88 175.22
+adb
+adb
+running
+TICK=49 saved=1
+229.31 179.30
+adb
+adb
+running
+TICK=50 saved=1
+232.49 183.14
+adb
+adb
+running
+TICK=51 saved=1
+235.56 186.57
+adb
+adb
+running
+TICK=52 saved=1
+239.04 190.72
+adb
+adb
+running
+TICK=53 saved=1
+242.24 194.41
+adb
+adb
+running
+TICK=54 saved=1
+245.27 197.44
+adb
+adb
+running
+TICK=55 saved=1
+248.61 201.61
+adb
+adb
+running
+TICK=56 saved=1
+251.77 205.17
+adb
+adb
+running
+TICK=57 saved=1
+254.88 208.29
+adb
+adb
+running
+TICK=58 saved=1
+258.11 212.70
+adb
+adb
+running
+TICK=59 saved=1
+261.22 216.10
+adb
+adb
+running
+1
+MIBOX_ADB_HOOK_DONE
+MIBOX_ADB_HOOK_BEGIN
+4eda0d4f-8c10-4191-bd80-dc615a9991e4
+TICK=0 saved=1
+69.40 40.38
+adb
+adb
+running
+TICK=1 saved=1
+72.61 40.72
+adb
+adb
+running
+TICK=2 saved=1
+75.71 40.89
+adb
+adb
+running
+TICK=3 saved=1
+79.03 41.33
+adb
+adb
+running
+TICK=4 saved=1
+82.14 41.66
+adb
+adb
+running
+TICK=5 saved=1
+85.16 44.00
+adb
+adb
+running
+TICK=6 saved=1
+88.25 46.95
+adb
+adb
+running
+TICK=7 saved=0
+91.56 48.25
+none
+none
+stopped
+MIBOX_ADB_RESTORE_SETTING
+TICK=8 saved=1
+96.02 51.10
+adb
+adb
+running
+TICK=9 saved=1
+99.39 51.39
+adb
+adb
+running
+TICK=10 saved=1
+102.80 51.45
+adb
+adb
+running
+TICK=11 saved=1
+105.92 52.02
+adb
+adb
+running
+TICK=12 saved=1
+109.12 53.70
+adb
+adb
+running
+TICK=13 saved=1
+112.25 56.53
+adb
+adb
+running
+TICK=14 saved=1
+115.33 59.46
+adb
+adb
+running
+TICK=15 saved=1
+118.69 63.53
+adb
+adb
+running
+TICK=16 saved=1
+121.78 67.02
+adb
+adb
+running
+TICK=17 saved=1
+125.11 70.93
+adb
+adb
+running
+TICK=18 saved=1
+128.42 75.03
+adb
+adb
+running
+TICK=19 saved=1
+131.59 77.14
+adb
+adb
+running
+TICK=20 saved=1
+134.87 77.99
+adb
+adb
+running
+TICK=21 saved=1
+137.81 79.65
+adb
+adb
+running
+TICK=22 saved=1
+140.87 82.79
+adb
+adb
+running
+TICK=23 saved=1
+144.02 87.17
+adb
+adb
+running
+TICK=24 saved=1
+147.09 90.80
+adb
+adb
+running
+TICK=25 saved=1
+150.27 93.91
+adb
+adb
+running
+TICK=26 saved=1
+153.44 97.97
+adb
+adb
+running
+TICK=27 saved=1
+156.62 101.25
+adb
+adb
+running
+TICK=28 saved=1
+160.07 102.91
+adb
+adb
+running
+TICK=29 saved=1
+163.45 103.29
+adb
+adb
+running
+TICK=30 saved=1
+166.44 106.52
+adb
+adb
+running
+TICK=31 saved=1
+169.58 110.40
+adb
+adb
+running
+TICK=32 saved=1
+172.85 113.91
+adb
+adb
+running
+TICK=33 saved=1
+176.01 117.19
+adb
+adb
+running
+TICK=34 saved=1
+179.31 121.41
+adb
+adb
+running
+TICK=35 saved=1
+182.43 125.17
+adb
+adb
+running
+TICK=36 saved=1
+185.55 128.20
+adb
+adb
+running
+TICK=37 saved=1
+188.76 132.46
+adb
+adb
+running
+TICK=38 saved=1
+191.83 135.95
+adb
+adb
+running
+TICK=39 saved=1
+195.15 139.54
+adb
+adb
+running
+TICK=40 saved=1
+198.39 143.59
+adb
+adb
+running
+TICK=41 saved=1
+201.42 146.89
+adb
+adb
+running
+TICK=42 saved=1
+204.71 151.01
+adb
+adb
+running
+TICK=43 saved=1
+207.86 154.69
+adb
+adb
+running
+TICK=44 saved=1
+211.01 158.02
+adb
+adb
+running
+TICK=45 saved=1
+214.42 162.09
+adb
+adb
+running
+TICK=46 saved=1
+217.58 165.71
+adb
+adb
+running
+TICK=47 saved=1
+220.83 169.07
+adb
+adb
+running
+TICK=48 saved=1
+223.92 170.46
+adb
+adb
+running
+TICK=49 saved=1
+227.07 174.05
+adb
+adb
+running
+TICK=50 saved=1
+230.45 178.06
+adb
+adb
+running
+TICK=51 saved=1
+233.64 181.84
+adb
+adb
+running
+TICK=52 saved=1
+236.86 185.29
+adb
+adb
+running
+TICK=53 saved=1
+240.37 189.40
+adb
+adb
+running
+TICK=54 saved=1
+243.56 193.00
+adb
+adb
+running
+TICK=55 saved=1
+246.70 196.21
+adb
+adb
+running
+TICK=56 saved=1
+250.11 200.40
+adb
+adb
+running
+TICK=57 saved=1
+253.29 204.24
+adb
+adb
+running
+TICK=58 saved=1
+256.32 207.37
+adb
+adb
+running
+TICK=59 saved=1
+259.62 211.56
+adb
+adb
+running
+1
+MIBOX_ADB_HOOK_DONE
+

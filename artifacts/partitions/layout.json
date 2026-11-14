@@ -1,0 +1,107 @@
+﻿{
+    "Serial":  "248243005297",
+    "CollectedAt":  "2026-11-13T21:29:46.4719154+08:00",
+    "SectorUnitBytes":  512,
+    "Partitions":  [
+                       {
+                           "Name":  "bootloader",
+                           "Device":  "/dev/block/bootloader",
+                           "MajorMinor":  "179:1",
+                           "StartSector":  0,
+                           "Sectors":  4096,
+                           "OffsetBytes":  0,
+                           "SizeBytes":  2097152
+                       },
+                       {
+                           "Name":  "reserved",
+                           "Device":  "/dev/block/reserved",
+                           "MajorMinor":  "179:2",
+                           "StartSector":  4096,
+                           "Sectors":  4096,
+                           "OffsetBytes":  2097152,
+                           "SizeBytes":  2097152
+                       },
+                       {
+                           "Name":  "env",
+                           "Device":  "/dev/block/env",
+                           "MajorMinor":  "179:3",
+                           "StartSector":  8192,
+                           "Sectors":  8192,
+                           "OffsetBytes":  4194304,
+                           "SizeBytes":  4194304
+                       },
+                       {
+                           "Name":  "logo",
+                           "Device":  "/dev/block/logo",
+                           "MajorMinor":  "179:4",
+                           "StartSector":  16384,
+                           "Sectors":  8192,
+                           "OffsetBytes":  8388608,
+                           "SizeBytes":  4194304
+                       },
+                       {
+                           "Name":  "recovery",
+                           "Device":  "/dev/block/recovery",
+                           "MajorMinor":  "179:5",
+                           "StartSector":  24576,
+                           "Sectors":  16384,
+                           "OffsetBytes":  12582912,
+                           "SizeBytes":  8388608
+                       },
+                       {
+                           "Name":  "boot",
+                           "Device":  "/dev/block/boot",
+                           "MajorMinor":  "179:6",
+                           "StartSector":  40960,
+                           "Sectors":  16384,
+                           "OffsetBytes":  20971520,
+                           "SizeBytes":  8388608
+                       },
+                       {
+                           "Name":  "boot1",
+                           "Device":  "/dev/block/boot1",
+                           "MajorMinor":  "179:7",
+                           "StartSector":  57344,
+                           "Sectors":  16384,
+                           "OffsetBytes":  29360128,
+                           "SizeBytes":  8388608
+                       },
+                       {
+                           "Name":  "system",
+                           "Device":  "/dev/block/system",
+                           "MajorMinor":  "179:8",
+                           "StartSector":  73728,
+                           "Sectors":  1048576,
+                           "OffsetBytes":  37748736,
+                           "SizeBytes":  536870912
+                       },
+                       {
+                           "Name":  "system1",
+                           "Device":  "/dev/block/system1",
+                           "MajorMinor":  "179:9",
+                           "StartSector":  1122304,
+                           "Sectors":  1048576,
+                           "OffsetBytes":  574619648,
+                           "SizeBytes":  536870912
+                       },
+                       {
+                           "Name":  "cache",
+                           "Device":  "/dev/block/cache",
+                           "MajorMinor":  "179:10",
+                           "StartSector":  2170880,
+                           "Sectors":  393216,
+                           "OffsetBytes":  1111490560,
+                           "SizeBytes":  201326592
+                       },
+                       {
+                           "Name":  "data",
+                           "Device":  "/dev/block/data",
+                           "MajorMinor":  "179:11",
+                           "StartSector":  2564096,
+                           "Sectors":  5168640,
+                           "OffsetBytes":  1312817152,
+                           "SizeBytes":  2646343680
+                       }
+                   ],
+    "Note":  "Read-only sysfs inventory, not raw backup or flash instructions."
+}

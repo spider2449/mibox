@@ -1,0 +1,78 @@
+{
+  "source_sha256": "d6cb8f1b0822f6c578b888cb92c85a6837e245587c69d96d604542357a497d45",
+  "function_va": "0xb090",
+  "references": [
+    {
+      "role": "default numeric value",
+      "literal_va": "0xb178",
+      "pc": "0xb0ac",
+      "target_va": "0xd791",
+      "text": "0"
+    },
+    {
+      "role": "slot property prefix",
+      "literal_va": "0xb17c",
+      "pc": "0xb0d0",
+      "target_va": "0xd779",
+      "text": "ubootenv.var"
+    },
+    {
+      "role": "slot property suffix",
+      "literal_va": "0xb180",
+      "pc": "0xb0d2",
+      "target_va": "0xd823",
+      "text": "bootsystem"
+    },
+    {
+      "role": "slot property format",
+      "literal_va": "0xb184",
+      "pc": "0xb0d6",
+      "target_va": "0xd773",
+      "text": "%s.%s"
+    },
+    {
+      "role": "property_get name",
+      "literal_va": "0xb188",
+      "pc": "0xb0e8",
+      "target_va": "0xd814",
+      "text": "ro.boot.system"
+    },
+    {
+      "role": "conditional property_set value",
+      "literal_va": "0xb18c",
+      "pc": "0xb10c",
+      "target_va": "0xdd0b",
+      "text": "1"
+    },
+    {
+      "role": "second default numeric value",
+      "literal_va": "0xb190",
+      "pc": "0xb11a",
+      "target_va": "0xd791",
+      "text": "0"
+    },
+    {
+      "role": "final property_set name 1",
+      "literal_va": "0xb19c",
+      "pc": "0xb14a",
+      "target_va": "0xdd4f",
+      "text": "persist.sys.ota.update"
+    },
+    {
+      "role": "final property_set name 2",
+      "literal_va": "0xb1a0",
+      "pc": "0xb154",
+      "target_va": "0xdd66",
+      "text": "bootenv.var.otaupdate"
+    },
+    {
+      "role": "final property_set value 2",
+      "literal_va": "0xb1a4",
+      "pc": "0xb156",
+      "target_va": "0xdd0b",
+      "text": "1"
+    }
+  ],
+  "verification": "Audited literal sites, not control-flow emulation",
+  "property_writes_executed": false
+}

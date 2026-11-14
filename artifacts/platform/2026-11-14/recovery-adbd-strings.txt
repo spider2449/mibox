@@ -1,0 +1,30 @@
+﻿send_auth_request
+send_auth_publickey
+Calling send_auth_request
+recovery
+setting connection_state to CS_RECOVERY
+Calling send_auth_publickey
+ro.adb.secure
+/dev/android_adb
+/dev/usb-ffs/adb/ep0
+unauthorized
+device unauthorized. Please check the confirmation dialog on your device.
+system/core/adb/adb_auth_client.c
+/adb_keys
+/data/misc/adb/adb_keys
+adb_auth_listener
+adb_auth_confirm_key
+adb_auth_init
+adb_auth_event
+ro.debuggable
+/system/bin/sh
+init_functionfs
+/dev/android_adb
+/dev/android
+/dev/usb-ffs/adb/ep0
+/dev/usb-ffs/adb/ep1
+/dev/usb-ffs/adb/ep2
+[ usb_init - using FunctionFS ]
+/dev/android_adb_enable
+failed to open /dev/android_adb_enable
+/system/bin/sh

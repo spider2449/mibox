@@ -1,0 +1,3 @@
+dd: /dev/block/mmcblk0boot0: I/O error
+-rw-r--r-- root     system    2093056 2026-11-14 07:29 mmcblk0boot0.img
+MIBOX_READ_COMPLETE

@@ -1,0 +1,33 @@
+﻿{
+  "file": "recovery.img",
+  "bytes": 8388608,
+  "sha256": "fc96df8c21e8c4904b193cc9605f3a07933fb7847d5ccead758f48e392ef2589",
+  "expected_prefix_bytes": 4433609,
+  "expected_prefix_sha1": "2dafa19e539ef3a5a674d3f13ff6df9ab483220f",
+  "actual_prefix_sha1": "4b7958b61503bcfe187c683ad57f519193926204",
+  "matches_installed_script": false,
+  "format": "Android v0-compatible (limited parser)",
+  "layout_validated": true,
+  "page_size": 2048,
+  "declared_load_addresses": {
+    "kernel": 268468224,
+    "ramdisk": 285212672,
+    "second": 284164096,
+    "tags": 268435712
+  },
+  "aligned_end": 6795264,
+  "tail_bytes": 1593344,
+  "complete_final_page": true,
+  "bootloader_acceptance": "UNKNOWN",
+  "signature_verified": false,
+  "second_fdt": {
+    "total_bytes": 11414,
+    "section_bytes": 11414,
+    "fits_section": true
+  },
+  "android_id_sha1": "0270fea4f41817fa2fe9a997437524113b6a29fa",
+  "computed_android_id_sha1": "0270fea4f41817fa2fe9a997437524113b6a29fa",
+  "android_id_matches": true,
+  "ramdisk_cpio_bytes": 3736576,
+  "source_path": "/mnt/f/coding/otherPrj/mibox/phone-tools/backup/2026-11-13/recovery.img"
+}

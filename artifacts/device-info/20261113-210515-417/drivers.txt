@@ -1,0 +1,36 @@
+﻿dhd 579318 0 - Live 0x00000000
+
+texfat 179387 0 - Live 0x00000000 (PO)
+
+tntfs 475307 0 - Live 0x00000000 (PO)
+
+tfat 178443 0 - Live 0x00000000 (PO)
+
+mali 192913 25 - Live 0x00000000
+
+-rw-r--r-- root     root       229512 2015-08-22 21:35 texfat.ko
+
+-rw-r--r-- root     root       227616 2015-08-22 21:35 tfat.ko
+
+-rw-r--r-- root     root       571960 2015-08-22 21:35 tntfs.ko
+
+lrwxrwxrwx root     root              2026-11-13 21:04 ttyS0 -> ../../devices/platform/uart_ao/tty/ttyS0
+
+lrwxrwxrwx root     root              2026-11-13 21:04 ttyS1 -> ../../devices/platform/uart_0/tty/ttyS1
+
+/sys/class/tty/ttyAML0: No such file or directory
+
+# Configuration file for fw_(printenv/saveenv) utility.
+
+# Up to two entries are valid, in this case the redundant
+
+# environment sector is assumed present.
+
+# Notice, that the "Number of sectors" is ignored on NOR.
+
+
+
+# MTD device name	Device offset	Env. size	Flash sector size	Number of sectors
+
+/dev/mtd/mtd9		0x0000		0x8000		0x1000
+

@@ -1,0 +1,10 @@
+﻿{
+    "TransportExchangeVerified":  true,
+    "OriginalPassVerdictAccepted":  false,
+    "VerifiedRestoreMarkerPresent":  false,
+    "BootIdCapturedBeforeTest":  false,
+    "ObservedPostTestUptimeSeconds":  76.32,
+    "ResetSuspected":  true,
+    "ResetCause":  "UNKNOWN; retained kernel logs not yet acquired",
+    "Conclusion":  "Bidirectional serial packets verified; clean USB restoration not established. Original result.json pass is superseded by this assessment."
+}

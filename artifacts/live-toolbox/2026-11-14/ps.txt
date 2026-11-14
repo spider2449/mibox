@@ -1,0 +1,123 @@
+﻿PID	PPID	UID	STATE	NAME
+
+1	0	0	S (sleeping)	init
+
+2	0	0	S (sleeping)	kthreadd
+
+3	2	0	S (sleeping)	ksoftirqd/0
+
+5	2	0	S (sleeping)	kworker/0:0H
+
+7	2	0	S (sleeping)	migration/0
+
+8	2	0	S (sleeping)	rcu_preempt
+
+9	2	0	S (sleeping)	rcu_bh
+
+10	2	0	S (sleeping)	rcu_sched
+
+11	2	0	S (sleeping)	watchdog/0
+
+12	2	0	S (sleeping)	watchdog/1
+
+13	2	0	S (sleeping)	migration/1
+
+14	2	0	S (sleeping)	ksoftirqd/1
+
+15	2	0	S (sleeping)	kworker/1:0
+
+16	2	0	S (sleeping)	kworker/1:0H
+
+17	2	0	S (sleeping)	khelper
+
+18	2	0	S (sleeping)	kdevtmpfs
+
+19	2	0	S (sleeping)	suspend
+
+20	2	0	S (sleeping)	kthread_hdmi
+
+21	2	0	S (sleeping)	writeback
+
+22	2	0	S (sleeping)	bioset
+
+23	2	0	S (sleeping)	kblockd
+
+24	2	0	S (sleeping)	khubd
+
+25	2	0	S (sleeping)	kworker/0:1
+
+26	2	0	S (sleeping)	cfg80211
+
+27	2	0	S (sleeping)	khungtaskd
+
+28	2	0	S (sleeping)	kswapd0
+
+29	2	0	S (sleeping)	fsnotify_mark
+
+30	2	0	S (sleeping)	cifsiod
+
+31	2	0	S (sleeping)	crypto
+
+48	2	0	S (sleeping)	kthrotld
+
+49	2	0	S (sleeping)	kpsmoused
+
+50	2	0	S (sleeping)	cfinteractive
+
+51	2	0	S (sleeping)	NULL_task_for_h
+
+52	2	0	S (sleeping)	cpu_hotplug_gdb
+
+53	2	0	R (running)	cpu_idle_gdbs
+
+54	2	0	S (sleeping)	binder
+
+55	2	0	S (sleeping)	ge2d_monitor
+
+56	2	0	S (sleeping)	kthread_di
+
+57	2	0	S (sleeping)	dwc_otg
+
+58	2	0	S (sleeping)	kworker/1:1
+
+62	2	0	S (sleeping)	kthread_rdma
+
+63	2	0	S (sleeping)	irq/60-sdio
+
+64	2	0	S (sleeping)	irq/101-mmc_in
+
+65	2	0	S (sleeping)	irq/102-mmc_out
+
+66	2	0	S (sleeping)	mmcqd/1
+
+67	2	0	S (sleeping)	mmcqd/1boot0
+
+68	2	0	S (sleeping)	mmcqd/1boot1
+
+69	2	0	S (sleeping)	rtc
+
+70	2	0	D (disk sleep)	kthread_hdcp
+
+71	2	0	S (sleeping)	vmalloc_ion
+
+77	2	0	S (sleeping)	kworker/u4:2
+
+78	2	0	S (sleeping)	kworker/u4:3
+
+79	2	0	S (sleeping)	krfcommd
+
+80	2	0	S (sleeping)	deferwq
+
+81	2	0	S (sleeping)	f_mtp
+
+82	2	0	S (sleeping)	file-storage
+
+83	2	0	S (sleeping)	kworker/0:2
+
+84	2	0	S (sleeping)	kthread_cec
+
+85	1	2000	R (running)	adbd
+
+158	85	2000	R (running)	mibox-toolbox-3
+
+

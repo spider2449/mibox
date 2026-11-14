@@ -1,0 +1,9 @@
+﻿{
+    "Port":  null,
+    "DeviceToHostReady":  false,
+    "HostRoundTripAck":  false,
+    "AdbShellRestored":  true,
+    "ElapsedSeconds":  45.640156999999995,
+    "DeviceStateDirectory":  "/data/local/tmp/mibox-acm-test-v1",
+    "Evidence":  "F:\\coding\\otherPrj\\mibox\\artifacts\\usb-acm\\20261113-223609"
+}

@@ -1,0 +1,8 @@
+﻿{
+    "Passed":  true,
+    "RebootRequested":  true,
+    "BeforeBootId":  "7c9bc266-5af4-4731-949b-c6c9929982c9",
+    "AfterBootId":  "856371d4-27c7-417a-b412-520e915deca8",
+    "ElapsedSeconds":  291.3788583,
+    "Evidence":  "F:\\coding\\otherPrj\\mibox\\artifacts\\adb-persistence\\verification-20261114-061848"
+}

@@ -1,0 +1,30 @@
+{
+  "command": [
+    "qemu-system-arm",
+    "-machine",
+    "virt",
+    "-cpu",
+    "cortex-a15",
+    "-m",
+    "256",
+    "-nic",
+    "none",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "stdio",
+    "-no-reboot",
+    "-kernel",
+    "/mnt/f/coding/otherPrj/mibox/phone-tools/qemu/vmlinuz",
+    "-initrd",
+    "/mnt/f/coding/otherPrj/mibox/target/qemu/initramfs.cpio.gz",
+    "-append",
+    "console=ttyAMA0,115200 rdinit=/init panic=0"
+  ],
+  "passed_stages": 8,
+  "total_stages": 8,
+  "failure": null,
+  "scope": "Generic ARM QEMU only, not MiBOX1S hardware."
+}

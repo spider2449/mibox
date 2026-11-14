@@ -1,0 +1,5 @@
+﻿DIRECTORY=/data/local/tmp/mibox-system-chunk-6719-1794612338643
+SHA256=6c233a2ae010f5b6ecc526d0978e00a1b53d3a64d70787e2d972c0ed2b294b2b
+CHUNK_PATH=/data/local/tmp/mibox-system-chunk-6719-1794612338643/chunk.img
+MIBOX_SYSTEM_BACKUP_READ_OK
+

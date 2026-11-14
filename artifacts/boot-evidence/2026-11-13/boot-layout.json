@@ -1,0 +1,46 @@
+﻿{
+  "file": "boot.img",
+  "bytes": 8388608,
+  "sha256": "ff4fa440044709b92652afea0306286534c9da2f57e41308d67459b97e800a56",
+  "expected_prefix_bytes": 4433609,
+  "expected_prefix_sha1": "2dafa19e539ef3a5a674d3f13ff6df9ab483220f",
+  "actual_prefix_sha1": "09c5747e5f5fe5debb98e78b84af999877e1ffe1",
+  "matches_installed_script": false,
+  "format": "Android v0-compatible (limited parser)",
+  "layout_validated": true,
+  "page_size": 2048,
+  "sections": [
+    {
+      "name": "kernel",
+      "start": 2048,
+      "size": 3897205,
+      "end": 3899253,
+      "sha256": "d6d908e525246a21bf70a301878f7d3b210d8db60a69e196f4d986455fd3ee6b"
+    },
+    {
+      "name": "ramdisk",
+      "start": 3899392,
+      "size": 519629,
+      "end": 4419021,
+      "sha256": "2a32958f13e5bfb32589bf1d3d6de45cae4ebd00359ed00719ae3060a78e5495"
+    },
+    {
+      "name": "second",
+      "start": 4419584,
+      "size": 11414,
+      "end": 4430998,
+      "sha256": "24b30f1aafe26845839966721b3c083cb3ed49280178276b6114df6d725cb95c"
+    }
+  ],
+  "declared_load_addresses": {
+    "kernel": 268468224,
+    "ramdisk": 285212672,
+    "second": 284164096,
+    "tags": 268435712
+  },
+  "aligned_end": 4431872,
+  "tail_bytes": 3956736,
+  "complete_final_page": true,
+  "bootloader_acceptance": "UNKNOWN",
+  "signature_verified": false
+}
