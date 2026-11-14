@@ -10,3 +10,5 @@ __pycache__/
 # Pulled runtime executables stay local; commit their recorded hashes and logs.
 /artifacts/software-return/**/*.elf
 /artifacts/ram-boot/**/*.elf
+/artifacts/network-hdmi-audio/**/*.elf
+/artifacts/framebuffer-capture/**/*.elf

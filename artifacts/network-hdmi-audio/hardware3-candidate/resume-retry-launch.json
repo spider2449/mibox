@@ -1,0 +1,6 @@
+﻿{
+    "ProcessId":  5040,
+    "StartedAt":  "2026-11-14T12:56:03.6043075Z",
+    "Script":  "target/resume-hardware3.ps1",
+    "ControlTimeoutMilliseconds":  10000
+}

@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "devices -l",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  8,
+    "ProcessId":  1900,
+    "StartedAt":  "2026-11-14T23:45:47.1596179Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "List of devices attached\r\n248243005297           device product:casablanca_icntv model:MiBOX1S device:casablanca transport_id:3",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.0325827,
+    "FinishedAt":  "2026-11-14T23:45:47.1892494Z"
+}

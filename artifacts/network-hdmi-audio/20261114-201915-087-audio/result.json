@@ -1,0 +1,16 @@
+﻿{
+    "Action":  "Audio",
+    "StartedAt":  "2026-11-14T20:19:15.1044818+08:00",
+    "DeviceAccessed":  true,
+    "HelperSucceeded":  true,
+    "FunctionalPass":  false,
+    "OwnerConfirmationRequired":  true,
+    "ScriptSHA256":  "7bd22cb997864f857cbc7dd77596cede6ba93c1be256927595ff6fc4956d326c",
+    "BootId":  "158776f1-48d4-4da9-af0a-dcde271c2848",
+    "initSha256":  "c9685fe4a4e6892a273917e0b82f77d0cd74320245d43ec413cea8b59b213c4b",
+    "miboxSha256":  "e8fa69daba2bb78b42fdff17ca3819fe2bcf5afb007c129aad3384e0053adecf",
+    "helperSha256":  "1e47e6ea7ae9200e1613200f7c9ccb60c554979ee0d139635f8d3c66ce862f71",
+    "Output":  "pcm_card=0 device=0 id=DUMMY_CODEC PCM dummy_codec-0 name=\nMIBOX_AUDIO_TONE_ACTIVE seconds=3 rate=48000 stereo=left440_right660 amplitude=0.03\npcm_frames_accepted=144000\nMIBOX_AUDIO_FRAMES_WRITTEN owner_audible_confirmation=required\nMIBOX_HARDWARE_EXIT=0\nMIBOX_COMMAND_EXIT=0",
+    "Scope":  "PCM frames accepted by device 0; audible HDMI output requires owner observation",
+    "FinishedAt":  "2026-11-14T20:19:19.3936122+08:00"
+}

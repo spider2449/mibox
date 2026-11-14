@@ -4,6 +4,7 @@ import base64
 import gzip
 import hashlib
 import json
+import ipaddress
 import struct
 from pathlib import Path
 
@@ -44,7 +45,7 @@ def arm_static(path):
     return data
 
 
-def build(root, key_path, destination, enable_usb_adb=False):
+def build(root, key_path, destination, enable_usb_adb=False, hardware_helper=None, static_ipv4=None):
     config = json.loads((root / 'artifacts/platform/2026-11-14/kernel-config.json').read_text())
     for flag in ('CONFIG_BLK_DEV_INITRD', 'CONFIG_RD_GZIP', 'CONFIG_DEVTMPFS', 'CONFIG_TMPFS'):
         if config['selected'].get(flag) != 'y':
@@ -55,6 +56,18 @@ def build(root, key_path, destination, enable_usb_adb=False):
              'bin/mibox': arm_static(release / 'mibox-userland'),
              'etc/os-release': (root / 'assets/rootfs/os-release').read_bytes(),
              'adb_keys': keys}
+    if hardware_helper:
+        files['sbin/mibox-hardware'] = arm_static(hardware_helper)
+    if static_ipv4:
+        if not hardware_helper:
+            raise ValueError('static IPv4 profile requires the explicit hardware helper')
+        address,mask,gateway=static_ipv4
+        interface=ipaddress.IPv4Interface(address+'/'+mask)
+        router=ipaddress.IPv4Address(gateway)
+        if (router not in interface.network or router==interface.ip or
+                interface.ip in (interface.network.network_address,interface.network.broadcast_address)):
+            raise ValueError('invalid static IPv4 subnet/address/gateway')
+        files['etc/mibox-network-static']=(f'MIBOX_STATIC_IPV4_V1 {interface.ip} {interface.netmask} {router}\n').encode('ascii')
     if enable_usb_adb:
         files['etc/mibox-usb-adb.enabled'] = b'MIBOX_AUTHENTICATED_USB_ADB_V1\n'
     for source, target, expected in [
@@ -81,7 +94,7 @@ def build(root, key_path, destination, enable_usb_adb=False):
     entry('dev/console', 0o020600, major=5, minor=1)
     entry('bin/sh', 0o120777, b'/system/bin/sh')
     for name, data in files.items():
-        entry(name, 0o100444 if name in ('adb_keys', 'etc/os-release', 'etc/mibox-usb-adb.enabled') else 0o100755, data)
+        entry(name, 0o100444 if name in ('adb_keys', 'etc/os-release', 'etc/mibox-usb-adb.enabled', 'etc/mibox-network-static') else 0o100755, data)
     entry('TRAILER!!!', 0)
     compressed = gzip.compress(archive, mtime=0)
     destination.mkdir(parents=True, exist_ok=True)
@@ -107,5 +120,7 @@ if __name__ == '__main__':
     parser.add_argument('--adb-public-key', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--enable-usb-adb', action='store_true', help='explicitly opt in inside this RAM rootfs, avoiding unknown bootloader cmdline behavior')
+    parser.add_argument('--hardware-helper', type=Path, help='explicitly include bounded root hardware-test helper')
+    parser.add_argument('--static-ipv4',nargs=3,metavar=('ADDRESS','NETMASK','GATEWAY'),help='owner-confirmed RAM-only static test profile; no automatic network setup')
     args = parser.parse_args()
-    build(args.root, args.adb_public_key, args.output, args.enable_usb_adb)
+    build(args.root, args.adb_public_key, args.output, args.enable_usb_adb, args.hardware_helper, args.static_ipv4)

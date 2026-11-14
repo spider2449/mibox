@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "C:\\WINDOWS\\System32\\cmd.exe",
+    "Arguments":  "/d /c exit 0",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  5,
+    "ProcessId":  1504,
+    "StartedAt":  "2026-11-14T22:47:49.6091739Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.064409399999999992,
+    "FinishedAt":  "2026-11-14T22:47:49.6725303Z"
+}

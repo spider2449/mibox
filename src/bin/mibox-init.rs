@@ -3,7 +3,7 @@
 //! Outside PID1 it only prints a report; it never changes mounts or devices.
 use std::ffi::CString;
 use std::fs::{self, OpenOptions};
-use std::io::{self, BufRead, BufReader, Write};
+use std::io::{self, BufRead, BufReader, Read, Write};
 use std::os::raw::{c_char, c_int, c_ulong, c_void};
 use std::process::{Command, Stdio};
 use std::sync::atomic::{AtomicI32, Ordering};
@@ -76,6 +76,49 @@ fn hold() -> ! {
     }
 }
 
+fn hardware_test(action: &str) -> io::Result<String> {
+    if !matches!(action, "network" | "display" | "audio" | "capture") {
+        return Err(io::Error::other("hardware action denied"));
+    }
+    let _guard = REAPER_LOCK.lock().unwrap_or_else(|e| e.into_inner());
+    let mut child = Command::new("/sbin/mibox-hardware")
+        .arg(action)
+        .stdin(Stdio::null())
+        .stdout(Stdio::piped())
+        .stderr(Stdio::piped())
+        .spawn()?;
+    let started = std::time::Instant::now();
+    let status = loop {
+        if let Some(status) = child.try_wait()? {
+            break status;
+        }
+        if started.elapsed() > Duration::from_secs(50) {
+            child.kill()?;
+            child.wait()?;
+            return Ok("MIBOX_HARDWARE_TIMEOUT\nMIBOX_HARDWARE_EXIT=1\n".into());
+        }
+        thread::sleep(Duration::from_millis(50));
+    };
+    let mut output = String::new();
+    child
+        .stdout
+        .take()
+        .unwrap()
+        .take(8192)
+        .read_to_string(&mut output)?;
+    child
+        .stderr
+        .take()
+        .unwrap()
+        .take(8192)
+        .read_to_string(&mut output)?;
+    output.push_str(&format!(
+        "MIBOX_HARDWARE_EXIT={}\n",
+        status.code().unwrap_or(1)
+    ));
+    Ok(output)
+}
+
 fn serve_console(device: &str) -> io::Result<()> {
     let console = OpenOptions::new().read(true).write(true).open(device)?;
     let mut output = console.try_clone()?;
@@ -118,12 +161,39 @@ fn serve_console(device: &str) -> io::Result<()> {
                 "help | info | uptime | health | reaptest | os | files"
             )?,
             "health" => write!(output, "{}", runtime_health::snapshot())?,
-            command @ ("os" | "files" | "adbprobe" | "restartprobe") => {
+            command @ ("os" | "files" | "adbprobe" | "restartprobe" | "hardware-selftest"
+            | "hardware-guard") => {
                 // Prevent PID1's generic reaper from collecting a child owned
                 // by Command::output before it retrieves that child's status.
                 let _guard = REAPER_LOCK
                     .lock()
                     .unwrap_or_else(|error| error.into_inner());
+                if matches!(command, "hardware-selftest" | "hardware-guard") {
+                    // Diagnostic console commands never request live hardware writes.
+                    if command == "hardware-guard"
+                        && !fs::read("/proc/device-tree/compatible")?
+                            .split(|b| *b == 0)
+                            .any(|value| value == b"linux,dummy-virt")
+                    {
+                        writeln!(output, "hardware-guard is QEMU-only")?;
+                        continue;
+                    }
+                    let result = Command::new("/sbin/mibox-hardware")
+                        .arg(if command == "hardware-selftest" {
+                            "selftest"
+                        } else {
+                            "network"
+                        })
+                        .output()?;
+                    output.write_all(&result.stdout)?;
+                    output.write_all(&result.stderr)?;
+                    writeln!(
+                        output,
+                        "HARDWARE_DIAGNOSTIC_EXIT={}",
+                        result.status.code().unwrap_or(1)
+                    )?;
+                    continue;
+                }
                 let args: &[&str] = if command == "os" {
                     &["info"]
                 } else {
@@ -204,7 +274,7 @@ fn main() {
     }
     let adb_requested = usb_adb::requested();
     thread::spawn(|| {
-        if let Err(error) = ram_control::serve() {
+        if let Err(error) = ram_control::serve(hardware_test) {
             eprintln!("mibox-init: RAM control unavailable: {error}");
         }
     });

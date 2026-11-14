@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "Arguments":  "-NoProfile -File \"F:\\coding\\otherPrj\\mibox\\scripts\\Test-MiboxLoaderRam.ps1\" -Action UploadAndBoot -Candidate Hardware2 -VerifyOnly",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  30,
+    "ProcessId":  1948,
+    "StartedAt":  "2026-11-14T12:34:31.3527941Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "{\r\n    \"Candidate\":  \"Hardware2\",\r\n    \"Bytes\":  8388608,\r\n    \"Sha256\":  \"38ffab4483d5470091468a47a1f2397337f2cdb3f7858fe2e4cf015fdeb8afa1\",\r\n    \"UsbAccessed\":  false\r\n}",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.8106496,
+    "FinishedAt":  "2026-11-14T12:34:32.1508623Z"
+}

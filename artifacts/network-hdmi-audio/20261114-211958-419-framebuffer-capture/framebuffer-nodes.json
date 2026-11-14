@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"/bin/mibox ls /dev; /bin/mibox ls /dev/graphics\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  7624,
+    "StartedAt":  "2026-11-14T13:19:58.4675672Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "__properties__\r\r\nalarm\r\r\namaudio_ctl\r\r\namaudio_in\r\r\namaudio_out\r\r\namaudio_utils\r\r\namhdmitx0\r\r\naml_keys\r\r\namstream_abuf\r\r\namstream_mpps\r\r\namstream_mpts\r\r\namstream_rm\r\r\namstream_sub\r\r\namstream_sub_read\r\r\namstream_userdata\r\r\namstream_vbuf\r\r\namsubtitle\r\r\namvideo\r\r\nashmem\r\r\naudiodsp0\r\r\nbinder\r\r\nboot\r\r\nboot1\r\r\nbootloader\r\r\nbus\r\r\ncache\r\r\nconsole\r\r\ncpu_dma_latency\r\r\ndata\r\r\ndi0\r\r\nefuse\r\r\nenv\r\r\nfb0\r\r\nfb1\r\r\nfull\r\r\nfuse\r\r\nge2d\r\r\ninput\r\r\nion\r\r\nkmem\r\r\nkmsg\r\r\nlog_events\r\r\nlog_main\r\r\nlog_radio\r\r\nlog_system\r\r\nlogo\r\r\nloop-control\r\r\nloop0\r\r\nloop1\r\r\nloop2\r\r\nloop3\r\r\nloop4\r\r\nloop5\r\r\nloop6\r\r\nloop7\r\r\nmapper\r\r\nmem\r\r\nmibox-control\r\r\nmmcblk0\r\r\nmmcblk0boot0\r\r\nmmcblk0boot1\r\r\nmtp_usb\r\r\nnet\r\r\nnetwork_latency\r\r\nnetwork_throughput\r\r\nnull\r\r\nppmgr\r\r\nppp\r\r\npsaux\r\r\nptmx\r\r\npts\r\r\nptyp0\r\r\nptyp1\r\r\nptyp2\r\r\nptyp3\r\r\nptyp4\r\r\nptyp5\r\r\nptyp6\r\r\nptyp7\r\r\nrandom\r\r\nrecovery\r\r\nreserved\r\r\nrfkill\r\r\nrtc0\r\r\nsnd\r\r\nsystem\r\r\nsystem1\r\r\ntty\r\r\ntty0\r\r\ntty1\r\r\ntty10\r\r\ntty11\r\r\ntty12\r\r\ntty13\r\r\ntty14\r\r\ntty15\r\r\ntty16\r\r\ntty17\r\r\ntty18\r\r\ntty19\r\r\ntty2\r\r\ntty20\r\r\ntty21\r\r\ntty22\r\r\ntty23\r\r\ntty24\r\r\ntty25\r\r\ntty26\r\r\ntty27\r\r\ntty28\r\r\ntty29\r\r\ntty3\r\r\ntty30\r\r\ntty31\r\r\ntty32\r\r\ntty33\r\r\ntty34\r\r\ntty35\r\r\ntty36\r\r\ntty37\r\r\ntty38\r\r\ntty39\r\r\ntty4\r\r\ntty40\r\r\ntty41\r\r\ntty42\r\r\ntty43\r\r\ntty44\r\r\ntty45\r\r\ntty46\r\r\ntty47\r\r\ntty48\r\r\ntty49\r\r\ntty5\r\r\ntty50\r\r\ntty51\r\r\ntty52\r\r\ntty53\r\r\ntty54\r\r\ntty55\r\r\ntty56\r\r\ntty57\r\r\ntty58\r\r\ntty59\r\r\ntty6\r\r\ntty60\r\r\ntty61\r\r\ntty62\r\r\ntty63\r\r\ntty7\r\r\ntty8\r\r\ntty9\r\r\nttyGS0\r\r\nttyGS1\r\r\nttyGS2\r\r\nttyGS3\r\r\nttyS0\r\r\nttyS1\r\r\nttyp0\r\r\nttyp1\r\r\nttyp2\r\r\nttyp3\r\r\nttyp4\r\r\nttyp5\r\r\nttyp6\r\r\nttyp7\r\r\nuhid\r\r\nuinput\r\r\nuio0\r\r\nurandom\r\r\nusb-ffs\r\r\nusb_accessory\r\r\nvcs\r\r\nvcs1\r\r\nvcsa\r\r\nvcsa1\r\r\nvideo10\r\r\nvideo13\r\r\nxt_qtaguid\r\r\nzero\r\r\nzram0\r\r\nError: Os { code: 2, kind: NotFound, message: \"No such file or directory\" }",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.1967158,
+    "FinishedAt":  "2026-11-14T13:19:58.6626771Z"
+}

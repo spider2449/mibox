@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell cat /etc/os-release",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  13768,
+    "StartedAt":  "2026-11-14T12:18:38.4229414Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "NAME=\"MiBOX Custom Userspace\"\r\r\nID=mibox-custom\r\r\nVERSION_ID=0.1.0",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.0954864,
+    "FinishedAt":  "2026-11-14T12:18:38.5133703Z"
+}

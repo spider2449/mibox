@@ -78,6 +78,8 @@ creates a QEMU-only initramfs and does not flash the box.
 - [Live Rust toolbox and RAM self-test](docs/mibox-live-toolbox.md)
 - [Read-only health snapshot and local ARM validation](docs/mibox-userspace-health.md)
 - [Updated health custom Linux RAM boot and Android return: physical PASS](docs/mibox-health-ram-roundtrip.md)
+- [Ethernet, HDMI and audio bring-up](docs/mibox-network-hdmi-audio.md)
+- [RAM framebuffer capture: live color-bar screenshot verified](docs/mibox-framebuffer-capture.md)
 - [Read-only runtime follow-up](docs/mibox-runtime-followup.md)
 - [Software return interface and QEMU restart validation](docs/mibox-software-return.md)
 - [Local backup revalidation and restoration gates](docs/mibox-restoration-readiness.md)

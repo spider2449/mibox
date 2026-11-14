@@ -1,0 +1,14 @@
+﻿[
+    {
+        "Path":  "F:\\coding\\otherPrj\\mibox\\scripts\\Test-MiboxSoftwareReturn.ps1",
+        "Hash":  "68E3F69E9F38DFFC65987E8A0598C46B11F20A105D222D55F4F09CBA59BF1F7B"
+    },
+    {
+        "Path":  "F:\\coding\\otherPrj\\mibox\\scripts\\Test-SoftwareReturn.ps1",
+        "Hash":  "F84620F55D926B6D91AA651390A6722820C1491DB25A4F2BC93E564DDBCB7C80"
+    },
+    {
+        "Path":  "F:\\coding\\otherPrj\\mibox\\scripts\\RamBootProcess.ps1",
+        "Hash":  "DE07CE9B48FEE94BE1BB698FA3D9B14B743B932744127B52A63FB6A31BD2FB1A"
+    }
+]

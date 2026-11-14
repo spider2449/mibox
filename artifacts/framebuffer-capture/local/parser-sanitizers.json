@@ -1,0 +1,21 @@
+{
+  "scope": "Host parser only; no physical network validation",
+  "command": [
+    "gcc",
+    "-fsanitize=address,undefined",
+    "-g",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-Wno-misleading-indentation",
+    "-o",
+    "/mnt/f/coding/otherPrj/mibox/target/hardware-helper/parser-asan",
+    "/mnt/f/coding/otherPrj/mibox/src/hardware/test-parser.c",
+    "-lm"
+  ],
+  "exit_code": 0,
+  "stdout": "MIBOX_HARDWARE_PARSER_TEST_OK valid,truncated,wrong_xid,duplicate,truncated_option\nDHCP_SANITIZER_FUZZ_OK cases=100000\n",
+  "stderr": "",
+  "source_sha256": "986fd83820ed88d794f10e287777c3fa5d4c86f0ba551ab48557be23d4cbf680",
+  "test_sha256": "711796d3fb501895332096b37e4df49ebe3f2f0247b50b651e68cf7448393dd5"
+}

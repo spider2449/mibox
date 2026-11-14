@@ -135,3 +135,28 @@ against a retained pre-test baseline.
 
 Keep owner power recovery available for future tests. Permanent installation
 remains NOT READY.
+## Host observer bounds follow-up (2026-11-15)
+
+`Test-MiboxSoftwareReturn.ps1` now uses the shared retained-process runner for
+every ADB call, with an eight-second execution deadline and bounded cleanup and
+output EOF waits. Each call has a separate saved process record. Identity and
+binary readback failures abort before the restart request. The overall return
+timeout is checked between queries; a pending query can exceed it by its bounded
+execution/cleanup/EOF allowance.
+
+The normal restart request is still sent only once. A failed or disconnected
+request is retained as such while independent Android polling continues.
+Failed, timed-out or incomplete polls cannot pass even if their output contains
+the expected identity. Original fingerprint, boot_completed=1 and a boot ID
+different from both baseline and custom runtime remain required.
+
+Offline fixtures passed 10/10, including failed preflight, request disconnect,
+failed/incomplete return queries, stale boot ID and Android not yet completed.
+The actual shared process suite passed 6/6, including a live descendant holding
+output pipes after its root exits. Reproduce with
+`powershell -NoProfile -File scripts/Test-SoftwareReturn.ps1` and
+`powershell -NoProfile -File scripts/Test-RamBootProcess.ps1`.
+Evidence: [return fixtures](../artifacts/software-return/host-tests-20261115-0648/results.json)
+and [process fixtures](../artifacts/ram-boot/process-tests-20261115-064749-572/results.json).
+No device operations occurred in this follow-up. This does not identify the
+cause of the historical interrupted observer; its evidence remains unchanged.

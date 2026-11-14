@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell getprop ro.build.fingerprint; getprop sys.boot_completed; cat /proc/sys/kernel/random/boot_id",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  8,
+    "ProcessId":  3176,
+    "StartedAt":  "2026-11-14T23:46:02.2562141Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "Xiaomi/casablanca_icntv/casablanca:4.4.2/KOT49H/2876:user/release-keys\r\r\n\r\r\n209b6e50-b891-4a83-b5fd-faeb2e77e240",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.095791199999999993,
+    "FinishedAt":  "2026-11-14T23:46:02.3514388Z"
+}

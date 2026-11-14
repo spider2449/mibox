@@ -1,0 +1,11 @@
+﻿{
+    "RecordedAt":  "2026-11-14T12:40:02.0501030Z",
+    "ProcessId":  10140,
+    "StartedAt":  "2026-11-14T12:34:30.7479591Z",
+    "VerifiedCommandLine":  "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -File F:\\coding\\otherPrj\\mibox\\target\\resume-hardware2.ps1 ",
+    "TerminationExitCode":  0,
+    "Reason":  "Owner confirmed DHCP disabled; replace incomplete diagnostic candidate with static-IP candidate",
+    "TransferCompletion":  "NOT VERIFIED",
+    "BootOutcome":  "UNKNOWN",
+    "NoResetSent":  true
+}

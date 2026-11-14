@@ -96,6 +96,12 @@ fn ram_selftest() -> io::Result<()> {
 fn main() -> io::Result<()> {
     let args: Vec<_> = std::env::args().skip(1).collect();
     match args.first().map(String::as_str).unwrap_or("info") {
+        "hardware-test" => {
+            if args.len() != 4 || args[2] != "--boot-id" {
+                return Err(io::Error::other("usage: hardware-test network|display|audio|capture --boot-id CURRENT_BOOT_ID"));
+            }
+            ram_control::hardware_request(&args[1], &args[3])?;
+        }
         "reboot-android" => {
             match args.get(1).map(String::as_str) {
                 Some("--check") if args.len() == 2 => ram_control::request(None)?,

@@ -1,0 +1,17 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 pull /dev/fb0 \"F:\\coding\\otherPrj\\mibox\\target\\framebuffer-capture\\fb0.raw\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  20,
+    "ProcessId":  11688,
+    "StartedAt":  "2026-11-14T13:20:07.4524503Z",
+    "ExitCode":  1,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "adb: error: failed to copy \u0027/dev/fb0\u0027 to \u0027F:\\coding\\otherPrj\\mibox\\target\\framebuffer-capture\\fb0.raw\u0027: remote Permission denied",
+    "CleanupAttempted":  false,
+    "Failure":  "framebuffer-fb0-readback failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\network-hdmi-audio\\20261114-211958-419-framebuffer-capture",
+    "ElapsedSeconds":  0.0814352,
+    "FinishedAt":  "2026-11-14T13:20:07.5304209Z"
+}

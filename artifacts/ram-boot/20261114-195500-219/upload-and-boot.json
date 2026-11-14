@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "Arguments":  "-NoProfile -File \"F:\\coding\\otherPrj\\mibox\\scripts\\Test-MiboxLoaderRam.ps1\" -Action UploadAndBoot -Candidate Hardware",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  3600,
+    "ProcessId":  9288,
+    "StartedAt":  "2026-11-14T11:55:06.6379547Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "{\r\n    \"Found\":  true,\r\n    \"DevicePath\":  \"\\\\\\\\?\\\\usb#vid_1b8e\\u0026pid_c003#6\\u00262b113eed\\u00260\\u00265#{d925a7f0-61a4-4018-bcd3-f3e5225f3532}\",\r\n    \"VidPid\":  \"1B8E:C003\",\r\n    \"IdentifyHex\":  \"00-08-00-10\",\r\n    \"VendorRequestSent\":  true,\r\n    \"InterfaceGuid\":  \"d925a7f0-61a4-4018-bcd3-f3e5225f3532\",\r\n    \"BootBufferAddress\":  \"0x82000000\",\r\n    \"BootBufferHex\":  \"AA-AA-AA-AA-02-00-0A-02-44-01-01-02-2B-01-58-00-00-00-22-01-2B-1A-28-2F-72-20-EA-4F-05-00-0C-01-71-20-1C-4F-14-00-28-24-72-20-EF-4F-05-00-0C-01-71-20-1D-4F-14-00-28-1C-72-20-F0-4F-05-00-0C-01\",\r\n    \"Action\":  \"UploadAndBoot\",\r\n    \"PatternVerified\":  false,\r\n    \"OriginalRestored\":  false,\r\n    \"VerifiedBytes\":  8388608,\r\n    \"VerifiedSha256\":  \"ac2939921a9fb44f5c918c3c8f7f1e5f6dff2dbd48d6142583b18f4c6976cd28\",\r\n    \"CommandAttempted\":  true,\r\n    \"CommandTransferCompleted\":  true,\r\n    \"StatusHex\":  null,\r\n    \"StatusText\":  null,\r\n    \"BulkMode\":  false\r\n}",
+    "Error":  "Verified RAM bytes: 262144\r\nVerified RAM bytes: 524288\r\nVerified RAM bytes: 786432\r\nVerified RAM bytes: 1048576\r\nVerified RAM bytes: 1310720\r\nVerified RAM bytes: 1572864\r\nVerified RAM bytes: 1835008\r\nVerified RAM bytes: 2097152\r\nVerified RAM bytes: 2359296\r\nVerified RAM bytes: 2621440\r\nVerified RAM bytes: 2883584\r\nVerified RAM bytes: 3145728\r\nVerified RAM bytes: 3407872\r\nVerified RAM bytes: 3670016\r\nVerified RAM bytes: 3932160\r\nVerified RAM bytes: 4194304\r\nVerified RAM bytes: 4456448\r\nVerified RAM bytes: 4718592\r\nVerified RAM bytes: 4980736\r\nVerified RAM bytes: 5242880\r\nVerified RAM bytes: 5505024\r\nVerified RAM bytes: 5767168\r\nVerified RAM bytes: 6029312\r\nVerified RAM bytes: 6291456\r\nVerified RAM bytes: 6553600\r\nVerified RAM bytes: 6815744\r\nVerified RAM bytes: 7077888\r\nVerified RAM bytes: 7340032\r\nVerified RAM bytes: 7602176\r\nVerified RAM bytes: 7864320\r\nVerified RAM bytes: 8126464\r\nVerified RAM bytes: 8388608",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  1313.7358411999999,
+    "FinishedAt":  "2026-11-14T12:17:00.3719042Z"
+}

@@ -1,0 +1,14 @@
+﻿{
+    "DeviceAccessed":  true,
+    "CaptureVerified":  true,
+    "HdmiScanoutVerified":  false,
+    "Scope":  "Framebuffer memory only; no physical HDMI claim",
+    "ManifestSHA256":  "86e9354aea6886afba78db138b965411fdaa8aeb99186884cd23c4f385222621",
+    "BootId":  "c076cc9c-28ed-4f2e-8f19-b014a07140bd",
+    "initSHA256":  "ba4df3e7ab537cad89cae844b4a5821017179d4f75cbfa79b0700c81440d3b4c",
+    "miboxSHA256":  "e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07",
+    "helperSHA256":  "b16673672c09ebdaebcb77a03c49198b0d257d429f1aa42b74321922234967b4",
+    "PpmSHA256":  "9911d91f5ab404c5367af219ec469dcf3f2341b90ef7b8058bd147701edd7d9c",
+    "PngSHA256":  "4d1fc518a5c081fc4e4a070def43fffb7d047ff9c19f0d941b840afd07463cb7",
+    "FinishedAt":  "2026-11-14T22:38:17.7918772Z"
+}

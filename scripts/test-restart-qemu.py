@@ -9,8 +9,8 @@ import time
 from pathlib import Path
 
 
-def run(root, guard):
-    evidence = root / 'artifacts/qemu-restart' / ('platform-guard' if guard else 'normal-restart')
+def run(root, guard, evidence_root=None):
+    evidence = (evidence_root or root / 'artifacts/qemu-restart') / ('platform-guard' if guard else 'normal-restart')
     evidence.mkdir(parents=True, exist_ok=True)
     initramfs = root / 'target/qemu-restart/initramfs.cpio.gz'
     command = ['qemu-system-arm', '-machine', 'virt', '-cpu', 'cortex-a15',
@@ -75,6 +75,7 @@ def run(root, guard):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument('--evidence', type=Path, help='separate evidence root for this revision')
     args = parser.parse_args()
-    run(args.root, True)
-    run(args.root, False)
+    run(args.root, True, args.evidence)
+    run(args.root, False, args.evidence)

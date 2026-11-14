@@ -1,7 +1,8 @@
 param([Parameter(Mandatory=$true)][ValidateSet('SelfTest','BulkTest','Status','Reset','UploadCandidate','BootCandidate','UploadAndBoot')][string]$Action,[switch]$Bulk,
-    [ValidateSet('Baseline','Restart','Health')][string]$Candidate='Baseline',[switch]$VerifyOnly)
+    [ValidateSet('Baseline','Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture')][string]$Candidate='Baseline',[switch]$VerifyOnly,
+    [ValidateRange(3000,15000)][int]$ControlTimeoutMilliseconds=3000)
 $ErrorActionPreference='Stop'
-if($Candidate -in @('Restart','Health') -and $Action -ne 'UploadAndBoot') {
+if($Candidate -in @('Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture') -and $Action -ne 'UploadAndBoot') {
     throw 'Versioned candidate requires full upload/readback/boot in one session'
 }
 if($VerifyOnly -and $Action -notin @('UploadCandidate','BootCandidate','UploadAndBoot')) {
@@ -29,6 +30,7 @@ namespace MiboxLoader {
     public bool CommandTransferCompleted;
     public string StatusHex; public string StatusText;
     public bool BulkMode;
+    public int ControlTimeoutMilliseconds;
   }
   public static class RamTest {
     [StructLayout(LayoutKind.Sequential)] struct InterfaceData {
@@ -103,11 +105,17 @@ namespace MiboxLoader {
       if(preset=="Baseline")expected="f05adbc3d79c8f41be7fef1145f6111f436d35921b7051722ae5195ae7624bba";
       else if(preset=="Restart")expected="5608fa36caa28a7acf7a647b53db5d2775aaceb44730896f87da03f8ba6047fa";
       else if(preset=="Health")expected="2788822cb79c3808ef6f4bb067fc4b57a033319c5fa0e93ecaec6874c8879bc3";
+      else if(preset=="Hardware")expected="ac2939921a9fb44f5c918c3c8f7f1e5f6dff2dbd48d6142583b18f4c6976cd28";
+      else if(preset=="Hardware2")expected="38ffab4483d5470091468a47a1f2397337f2cdb3f7858fe2e4cf015fdeb8afa1";
+      else if(preset=="Hardware3")expected="5f6a5654e5603c7abaeb9dca21996bc5a6e3bc0a83b650c8e0e347de100fdd55";
+      else if(preset=="Capture")expected="03c2fec77ece8dada455a4be2b818ee377c4957d56ce97a3675406243832f53b";
+      else if(preset=="DisplayCapture")expected="19c7064bc3e389a8f63ba70847ae7628e8366d38644b187f9cec89e33dccf2fb";
       else throw new Exception("Unknown pinned candidate");
       if(image==null || image.Length!=8388608 || Hash(image)!=expected)throw new Exception("Candidate hash/size mismatch before USB access");
       return expected;
     }
-    public static RamResult Run(string action,byte[] image,string interfaceGuid,bool bulk,string preset) {
+    public static RamResult Run(string action,byte[] image,string interfaceGuid,bool bulk,string preset,int controlTimeout) {
+      if(controlTimeout<3000 || controlTimeout>15000)throw new Exception("Control timeout outside bounded range");
       if(action!="SelfTest" && action!="BulkTest" && action!="Status" && action!="Reset" && action!="UploadCandidate" && action!="BootCandidate" && action!="UploadAndBoot")throw new Exception("Unknown action");
       string expected=null;
       if(action=="UploadCandidate" || action=="BootCandidate" || action=="UploadAndBoot") {
@@ -150,7 +158,7 @@ namespace MiboxLoader {
           Check(WinUsb_GetDescriptor(handle,1,0,0,descriptor,18,out count),"Read standard device descriptor");
           if(count!=18 || descriptor[0]!=18 || descriptor[1]!=1 || BitConverter.ToUInt16(descriptor,8)!=0x1b8e || BitConverter.ToUInt16(descriptor,10)!=0xc003)
             throw new Exception("Descriptor does not match scoped loader; no vendor request sent");
-          RamResult result=new RamResult {Found=true,DevicePath=path,VidPid="1B8E:C003",VendorRequestSent=false,InterfaceGuid=guid.ToString(),Action=action};
+          RamResult result=new RamResult {Found=true,DevicePath=path,VidPid="1B8E:C003",VendorRequestSent=false,InterfaceGuid=guid.ToString(),Action=action,ControlTimeoutMilliseconds=controlTimeout};
           result.BulkMode=bulk || action=="BulkTest";
           if(result.BulkMode) {
             bool input=false,output=false;
@@ -162,7 +170,7 @@ namespace MiboxLoader {
             if(!input || !output)throw new Exception("Expected bulk pipes absent");
           }
           {
-            uint timeout=3000; Check(WinUsb_SetPipePolicy(handle,0,3,4,ref timeout),"Set bounded control timeout");
+            uint timeout=(uint)controlTimeout; Check(WinUsb_SetPipePolicy(handle,0,3,4,ref timeout),"Set bounded control timeout");
             // Reference AM_REQ_IDENTIFY_HOST: vendor IN 0x20, four-byte version/stage response.
             SetupPacket request=new SetupPacket {Type=0xc0,Request=0x20,Value=0,Index=0,Length=4};
             byte[] response=new byte[4];
@@ -241,6 +249,11 @@ if($Action -in @('UploadCandidate','BootCandidate','UploadAndBoot')) {
     $directory=switch($Candidate) {
         'Restart' {'mibox-boot-candidate-restart'}
         'Health' {'mibox-boot-candidate-health'}
+        'Hardware' {'mibox-boot-candidate-hardware'}
+        'Hardware2' {'mibox-boot-candidate-hardware2'}
+        'Hardware3' {'mibox-boot-candidate-hardware3'}
+        'Capture' {'mibox-boot-candidate-capture'}
+        'DisplayCapture' {'mibox-boot-candidate-display-capture'}
         default {'mibox-boot-candidate'}
     }
     $candidatePath=Join-Path $PSScriptRoot ('../target/'+$directory+'/boot1-custom.NOT_READY.img')
@@ -264,7 +277,7 @@ if(Test-Path -LiteralPath $registryRoot) {
 }
 $result=$null
 foreach($guid in @($guids | Select-Object -Unique)) {
-    $result=[MiboxLoader.RamTest]::Run($Action,$image,$guid,[bool]$Bulk,$Candidate)
+    $result=[MiboxLoader.RamTest]::Run($Action,$image,$guid,[bool]$Bulk,$Candidate,$ControlTimeoutMilliseconds)
     if($result.Found) {break}
 }
 $result | ConvertTo-Json

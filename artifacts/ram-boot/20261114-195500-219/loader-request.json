@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 reboot usb_burner_reboot",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  8,
+    "ProcessId":  10340,
+    "StartedAt":  "2026-11-14T11:55:01.2019716Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.37152369999999996,
+    "FinishedAt":  "2026-11-14T11:55:01.5719551Z"
+}

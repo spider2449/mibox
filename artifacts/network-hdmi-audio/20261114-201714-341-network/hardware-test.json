@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"/bin/mibox hardware-test network --boot-id 158776f1-48d4-4da9-af0a-dcde271c2848; result=$?; echo MIBOX_COMMAND_EXIT=$result\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  65,
+    "ProcessId":  3960,
+    "StartedAt":  "2026-11-14T12:17:15.5633408Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "network_cleanup=attempted; inspect state\r\r\nFAIL DHCP offer: Connection timed out\r\r\nFAIL network test: Connection timed out\r\r\nMIBOX_HARDWARE_EXIT=1\r\r\nError: Custom { kind: Other, error: \"hardware helper failed or response invalid\" }\r\r\nMIBOX_COMMAND_EXIT=1",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  15.456224599999999,
+    "FinishedAt":  "2026-11-14T12:17:31.0181847Z"
+}

@@ -1,0 +1,9 @@
+{
+  "source": "Explicit owner reply after this physical display test",
+  "owner_reply": "有看到色條",
+  "candidate": "Hardware3",
+  "boot_id": "49c3b52c-4d60-4bbc-9eac-8a502088108c",
+  "helper_record": "result.json",
+  "visible_color_bars_confirmed": true,
+  "functional_pass_with_owner_observation": true
+}

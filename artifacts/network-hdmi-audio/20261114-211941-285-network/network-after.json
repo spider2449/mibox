@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell /bin/mibox net",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  6712,
+    "StartedAt":  "2026-11-14T13:19:49.0875044Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "INTERFACE\tSTATE\tCARRIER\tMAC\r\r\neth0\tdown\tUNKNOWN\t10:48:b1:ec:20:eb\r\r\nip6tnl0\tdown\tUNKNOWN\t00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00\r\r\nlo\tdown\tUNKNOWN\t00:00:00:00:00:00\r\r\nsit0\tdown\tUNKNOWN\t00:00:00:00\r\r\nIPv4 route table:\r\r\nIface\tDestination\tGateway \tFlags\tRefCnt\tUse\tMetric\tMask\t\tMTU\tWindow\tIRTT",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.1384214,
+    "FinishedAt":  "2026-11-14T13:19:49.2186641Z"
+}

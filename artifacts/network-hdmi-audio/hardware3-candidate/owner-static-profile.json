@@ -1,0 +1,12 @@
+{
+  "source": "Explicit owner replies in this conversation",
+  "dhcp_enabled": false,
+  "dhcp_reply": "DHCP 關閉／盒子使用固定 IP",
+  "address": "192.168.1.222",
+  "netmask": "255.255.255.0",
+  "prefix_length": 24,
+  "gateway": "192.168.1.1",
+  "profile_confirmation": "正確，沿用這組設定",
+  "apply_automatically_at_boot": false,
+  "persistent_configuration_written": false
+}

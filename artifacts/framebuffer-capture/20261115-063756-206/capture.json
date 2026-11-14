@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"/bin/mibox hardware-test capture --boot-id c076cc9c-28ed-4f2e-8f19-b014a07140bd; result=$?; echo MIBOX_COMMAND_EXIT=$result\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  65,
+    "ProcessId":  15128,
+    "StartedAt":  "2026-11-14T22:37:57.4987596Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "MIBOX_FRAMEBUFFER_CAPTURE path=/dev/mibox-framebuffer.ppm width=1280 height=1080 format=P6 scope=framebuffer_only\r\r\nMIBOX_HARDWARE_EXIT=0\r\r\nMIBOX_COMMAND_EXIT=0",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.42758179999999996,
+    "FinishedAt":  "2026-11-14T22:37:57.9252633Z"
+}

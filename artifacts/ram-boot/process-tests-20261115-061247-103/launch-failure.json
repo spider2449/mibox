@@ -1,0 +1,17 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\target\\ram-boot-process-tests\\3b259b28-48ae-40ed-a4c8-4ac0d42adeb4\\absent.exe",
+    "Arguments":  "/d /c exit 0",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  5,
+    "ProcessId":  null,
+    "StartedAt":  null,
+    "ExitCode":  null,
+    "TimedOut":  false,
+    "OutputComplete":  false,
+    "Output":  "",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "Failure":  "Exception calling \"Start\" with \"0\" argument(s): \"The system cannot find the file specified\"",
+    "ElapsedSeconds":  0.0028983,
+    "FinishedAt":  "2026-11-14T22:12:47.3608655Z"
+}

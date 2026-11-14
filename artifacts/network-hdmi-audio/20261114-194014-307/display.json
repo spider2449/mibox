@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"ls -l /sys/class/amhdmitx/amhdmitx0; cat /sys/class/amhdmitx/amhdmitx0/hpd_state; cat /sys/class/amhdmitx/amhdmitx0/disp_cap; cat /sys/class/display/mode; cat /sys/class/graphics/fb0/virtual_size; cat /sys/class/graphics/fb0/bits_per_pixel\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  15,
+    "ProcessId":  16576,
+    "StartedAt":  "2026-11-14T11:40:26.7083443Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "lrwxrwxrwx root     root              2026-11-14 19:36 amhdmitx0 -\u003e ../../devices/virtual/amhdmitx/amhdmitx0\r\r\n1720p*\r\r\n1080p\r\r\n1080p\r\r\n\r\r\n1280,3240\r\r\n32",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.0532582,
+    "FinishedAt":  "2026-11-14T11:40:26.7605429Z"
+}

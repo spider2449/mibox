@@ -1,8 +1,9 @@
 # A32-style orchestration using the Mi Box's verified RAM-only USB protocol.
 param(
     [ValidateSet('Check','Boot','RoundTrip')][string]$Action = 'Check',
-    [ValidateSet('Restart','Health')][string]$Candidate = 'Restart',
-    [ValidateRange(60,7200)][int]$TransferTimeoutSeconds = 3600
+    [ValidateSet('Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture')][string]$Candidate = 'Restart',
+    [ValidateRange(60,7200)][int]$TransferTimeoutSeconds = 3600,
+    [ValidateRange(3000,15000)][int]$ControlTimeoutMilliseconds = 3000
 )
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path $PSScriptRoot -Parent
@@ -14,7 +15,7 @@ $proof = [ordered]@{ Action = $Action; StartedAt = (Get-Date).ToString('o'); Sta
     ImageSHA256 = '5608fa36caa28a7acf7a647b53db5d2775aaceb44730896f87da03f8ba6047fa'
     DeviceAccessed = $false; LoaderRequestSent = $false; CustomBootVerified = $false
     AndroidReturnVerified = $false; FlashCommandSent = $false
-    TransferDeadlineSeconds = $TransferTimeoutSeconds }
+    TransferDeadlineSeconds = $TransferTimeoutSeconds; ControlTimeoutMilliseconds = $ControlTimeoutMilliseconds }
 $proof.Candidate=$Candidate
 $initHash='6ae13b3ed03864432edc4ca0f9ed8f9b46f6d6e6eeba690cf77dbbac0bc8e780'
 $toolHash='3e2d9a45aeff3d6b0bf727b1d1aadd31f8c776bf30fe62bf053ae3ac8ad240ce'
@@ -22,6 +23,25 @@ if($Candidate -eq 'Health') {
     $proof.ImageSHA256='2788822cb79c3808ef6f4bb067fc4b57a033319c5fa0e93ecaec6874c8879bc3'
     $initHash='8c2f9bcd4c5c26585062fbb5f44c7aeadbbe975217d28ab939f65173cb61cb6a'
     $toolHash='2e4f1dfd8f28c0bf52323a9e65abf314e1e1705505414cc7cc25fcdf99128512'
+}
+if($Candidate -in @('Hardware','Hardware2','Hardware3')) {
+    $proof.ImageSHA256='ac2939921a9fb44f5c918c3c8f7f1e5f6dff2dbd48d6142583b18f4c6976cd28'
+    $initHash='c9685fe4a4e6892a273917e0b82f77d0cd74320245d43ec413cea8b59b213c4b'
+    $toolHash='e8fa69daba2bb78b42fdff17ca3819fe2bcf5afb007c129aad3384e0053adecf'
+}
+if($Candidate -eq 'Hardware2') {
+    $proof.ImageSHA256='38ffab4483d5470091468a47a1f2397337f2cdb3f7858fe2e4cf015fdeb8afa1'
+}
+if($Candidate -eq 'Hardware3') {
+    $proof.ImageSHA256='5f6a5654e5603c7abaeb9dca21996bc5a6e3bc0a83b650c8e0e347de100fdd55'
+}
+if($Candidate -in @('Capture','DisplayCapture')) {
+    $proof.ImageSHA256='03c2fec77ece8dada455a4be2b818ee377c4957d56ce97a3675406243832f53b'
+    $initHash='ba4df3e7ab537cad89cae844b4a5821017179d4f75cbfa79b0700c81440d3b4c'
+    $toolHash='e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07'
+}
+if($Candidate -eq 'DisplayCapture') {
+    $proof.ImageSHA256='19c7064bc3e389a8f63ba70847ae7628e8366d38644b187f9cec89e33dccf2fb'
 }
 function Save-Proof {
     $proof | ConvertTo-Json -Depth 10 | Set-Content -Encoding UTF8 -LiteralPath (Join-Path $evidence 'result.json')
@@ -72,7 +92,7 @@ try {
     }
     if (-not $found) { throw 'C003 did not appear; no reboot retry or reset sent' }
     $proof.Stage = 'UploadAndVerify'; Save-Proof
-    $upload = Run-Script 'upload-and-boot' 'Test-MiboxLoaderRam.ps1' "-Action UploadAndBoot -Candidate $Candidate" $TransferTimeoutSeconds
+    $upload = Run-Script 'upload-and-boot' 'Test-MiboxLoaderRam.ps1' "-Action UploadAndBoot -Candidate $Candidate -ControlTimeoutMilliseconds $ControlTimeoutMilliseconds" $TransferTimeoutSeconds
     $transfer = $upload.Output | ConvertFrom-Json
     Assert-RamBootRecord $transfer Transfer $proof.ImageSHA256
     $proof.Transfer = $transfer
@@ -87,7 +107,7 @@ try {
         if ((Get-FileHash -Algorithm SHA256 -LiteralPath $file).Hash.ToLowerInvariant() -cne $entry[1]) { throw 'Custom executable hash mismatch' }
     }
     $customId = $observed.Proof.bootId.Output
-    if($Candidate -eq 'Health') {
+    if($Candidate -in @('Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture')) {
         $health=(Read-Adb 'custom-health' '-s 248243005297 shell "/bin/mibox health; result=$?; echo MIBOX_HEALTH_EXIT=$result"').Output.Replace("`r",'')
         $lines=@($health -split "`n")
         if($lines.Count -ne 9 -or $lines[0] -cne 'MIBOX_HEALTH_SNAPSHOT_V1' -or

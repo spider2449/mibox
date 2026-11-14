@@ -1,0 +1,17 @@
+﻿{
+    "Executable":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "Arguments":  "-NoProfile -File \"F:\\coding\\otherPrj\\mibox\\scripts\\Observe-MiboxRamBoot.ps1\" -TimeoutSeconds 120",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  210,
+    "ProcessId":  12860,
+    "StartedAt":  "2026-11-14T13:17:56.9230831Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  false,
+    "Output":  "",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "Failure":  "custom-observer failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\20261114-205603-859-resume-hardware3",
+    "ElapsedSeconds":  10.3375456,
+    "FinishedAt":  "2026-11-14T13:18:07.2592495Z"
+}

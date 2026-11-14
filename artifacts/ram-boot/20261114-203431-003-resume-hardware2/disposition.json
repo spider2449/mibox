@@ -1,0 +1,9 @@
+{
+  "disposition": "STOPPED_INCOMPLETE",
+  "reason": "Owner clarified DHCP disabled; prepare static-IP Hardware3 instead",
+  "termination_evidence": "artifacts/network-hdmi-audio/hardware2-candidate/stopped-for-static-profile.json",
+  "complete_ram_readback_verified": false,
+  "physical_boot_verified": false,
+  "boot_command_outcome": "UNKNOWN",
+  "superseded_by": "Hardware3"
+}

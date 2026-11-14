@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 pull /sbin/mibox-hardware \"F:\\coding\\otherPrj\\mibox\\artifacts\\framebuffer-capture\\20261115-074424-576\\helper.elf\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  13728,
+    "StartedAt":  "2026-11-14T23:44:25.5420620Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "/sbin/mibox-hardware: 1 file pulled, 0 skipped. 2.2 MB/s (414924 bytes in 0.184s)",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.2261916,
+    "FinishedAt":  "2026-11-14T23:44:25.7655828Z"
+}

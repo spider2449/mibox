@@ -1,0 +1,194 @@
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 6.12.107+deb13-armmp (debian-kernel@lists.debian.org) (arm-linux-gnueabihf-gcc-14 (Debian 14.2.0-19) 14.2.0, GNU ld (GNU Binutils for Debian) 2.44) #1 SMP Debian 6.12.107-1 (2026-08-29)
+[    0.000000] CPU: ARMv7 Processor [414fc0f0] revision 0 (ARMv7), cr=10c5387d
+[    0.000000] CPU: div instructions available: patching division code
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, PIPT instruction cache
+[    0.000000] OF: fdt: Machine model: linux,dummy-virt
+[    0.000000] random: crng init done
+[    0.000000] Memory policy: Data cache writealloc
+[    0.000000] efi: UEFI not found.
+[    0.000000] cma: Reserved 16 MiB at 0x4f000000 on node -1
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000040000000-0x000000004fffffff]
+[    0.000000]   Normal   empty
+[    0.000000]   HighMem  empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000040000000-0x000000004fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x000000004fffffff]
+[    0.000000] OF: reserved mem: Reserved memory: No reserved-memory node in the DT
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] psci: SMC Calling Convention v1.0
+[    0.000000] percpu: Embedded 20 pages/cpu s50508 r8192 d23220 u81920
+[    0.000000] Kernel command line: console=ttyAMA0,115200 rdinit=/init panic=0 mibox.test_restart_guard=1
+[    0.000000] Dentry cache hash table entries: 32768 (order: 5, 131072 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 16384 (order: 4, 65536 bytes, linear)
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 65536
+[    0.000000] allocated 262144 bytes of page_ext
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:on, heap free:off
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] ftrace: allocating 44036 entries in 130 pages
+[    0.000000] ftrace: allocated 130 pages with 2 groups
+[    0.000000] rcu: Hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=8 to nr_cpu_ids=1.
+[    0.000000] 	Rude variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] RCU Tasks Rude: Setting shift to 0 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=1.
+[    0.000000] RCU Tasks Trace: Setting shift to 0 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=1.
+[    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+[    0.000000] GICv2m: range[mem 0x08020000-0x08020fff], SPI[80:143]
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.000000] arch_timer: cp15 timer(s) running at 62.50MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x1ffffffffffffff max_cycles: 0x1cd42e208c, max_idle_ns: 881590405314 ns
+[    0.000188] sched_clock: 57 bits at 63MHz, resolution 16ns, wraps every 4398046511096ns
+[    0.000356] Switching to timer-based delay loop, resolution 16ns
+[    0.015605] Console: colour dummy device 80x25
+[    0.018618] Calibrating delay loop (skipped), value calculated using timer frequency.. 125.00 BogoMIPS (lpj=250000)
+[    0.018807] CPU: Testing write buffer coherency: ok
+[    0.020731] CPU0: Spectre v2: firmware did not set auxiliary control register IBE bit, system vulnerable
+[    0.021092] CPU0: Spectre BHB: enabling loop workaround for all CPUs
+[    0.021227] pid_max: default: 32768 minimum: 301
+[    0.024082] LSM: initializing lsm=lockdown,capability,landlock,yama,apparmor,tomoyo,bpf,ipe,ima,evm
+[    0.025081] landlock: Up and running.
+[    0.025112] Yama: disabled by default; enable with sysctl kernel.yama.*
+[    0.028074] AppArmor: AppArmor initialized
+[    0.028323] TOMOYO Linux initialized
+[    0.030196] LSM support for eBPF active
+[    0.032458] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.032522] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.071628] /cpus/cpu@0 missing clock-frequency property
+[    0.071999] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+[    0.086999] Setting up static identity map for 0x40300000 - 0x403000ac
+[    0.089364] rcu: Hierarchical SRCU implementation.
+[    0.089403] rcu: 	Max phase no-delay instances is 1000.
+[    0.096950] EFI services will not be available.
+[    0.100079] smp: Bringing up secondary CPUs ...
+[    0.100659] smp: Brought up 1 node, 1 CPU
+[    0.100727] SMP: Total of 1 processors activated (125.00 BogoMIPS).
+[    0.100785] CPU: All CPU(s) started in SVC mode.
+[    0.106730] Memory: 217340K/262144K available (12288K kernel code, 1797K rwdata, 4196K rodata, 2048K init, 427K bss, 26360K reserved, 16384K cma-reserved, 0K highmem)
+[    0.116982] devtmpfs: initialized
+[    0.130055] VFP support v0.3: implementor 41 architecture 4 part 30 variant f rev 0
+[    0.161704] futex hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    0.180132] pinctrl core: initialized pinctrl subsystem
+[    0.195560] DMI not present or invalid.
+[    0.205555] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.229595] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.231891] audit: initializing netlink subsys (disabled)
+[    0.249001] audit: type=2000 audit(0.208:1): state=initialized audit_enabled=0 res=1
+[    0.251010] thermal_sys: Registered thermal governor 'fair_share'
+[    0.251051] thermal_sys: Registered thermal governor 'bang_bang'
+[    0.251066] thermal_sys: Registered thermal governor 'step_wise'
+[    0.251071] thermal_sys: Registered thermal governor 'user_space'
+[    0.251077] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.251936] No ATAGs?
+[    0.252876] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+[    0.252953] hw-breakpoint: maximum watchpoint size is 8 bytes.
+[    0.255853] Serial: AMBA PL011 UART driver
+[    0.305925] 9000000.pl011: ttyAMA0 at MMIO 0x9000000 (irq = 28, base_baud = 0) is a PL011 rev1
+[    0.308520] printk: legacy console [ttyAMA0] enabled
+[    0.342073] kprobes: kprobe jump-optimization is enabled. All kprobes are optimized if possible.
+[    0.381735] iommu: Default domain type: Translated
+[    0.381958] iommu: DMA domain TLB invalidation policy: strict mode
+[    0.387810] pps_core: LinuxPPS API ver. 1 registered
+[    0.387989] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.388272] PTP clock support registered
+[    0.413919] NetLabel: Initializing
+[    0.414128] NetLabel:  domain hash size = 128
+[    0.414257] NetLabel:  protocols = UNLABELED CIPSOv4 CALIPSO
+[    0.422866] NetLabel:  unlabeled traffic allowed by default
+[    0.424376] vgaarb: loaded
+[    0.436249] clocksource: Switched to clocksource arch_sys_counter
+[    0.524043] VFS: Disk quotas dquot_6.6.0
+[    0.524381] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+[    0.537234] AppArmor: AppArmor Filesystem Enabled
+[    0.565121] NET: Registered PF_INET protocol family
+[    0.566811] IP idents hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.575792] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes, linear)
+[    0.576211] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.576499] TCP established hash table entries: 2048 (order: 1, 8192 bytes, linear)
+[    0.576838] TCP bind hash table entries: 2048 (order: 3, 32768 bytes, linear)
+[    0.577155] TCP: Hash tables configured (established 2048 bind 2048)
+[    0.579212] MPTCP token hash table entries: 256 (order: 0, 4096 bytes, linear)
+[    0.579732] UDP hash table entries: 256 (order: 1, 8192 bytes, linear)
+[    0.580090] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes, linear)
+[    0.582485] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.583409] NET: Registered PF_XDP protocol family
+[    0.583770] PCI: CLS 0 bytes, default 64
+[    0.594391] Initialise system trusted keyrings
+[    0.596481] Key type blacklist registered
+[    0.598165] Trying to unpack rootfs image as initramfs...
+[    0.602438] workingset: timestamp_bits=14 max_order=16 bucket_order=2
+[    0.602932] zbud: loaded
+[    0.606613] fuse: init (API version 7.41)
+[    0.618989] integrity: Platform Keyring initialized
+[    0.619511] integrity: Machine keyring initialized
+[    0.890181] Freeing initrd memory: 720K
+[    0.891907] Key type asymmetric registered
+[    0.892249] Asymmetric key parser 'x509' registered
+[    0.912393] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 248)
+[    0.913422] io scheduler mq-deadline registered
+[    0.946305] pl061_gpio 9030000.pl061: PL061 GPIO chip registered
+[    0.948844] ledtrig-cpu: registered to indicate activity on CPUs
+[    0.951513] pci-host-generic 4010000000.pcie: host bridge /pcie@10000000 ranges:
+[    0.952428] pci-host-generic 4010000000.pcie:       IO 0x003eff0000..0x003effffff -> 0x0000000000
+[    0.953225] pci-host-generic 4010000000.pcie:      MEM 0x0010000000..0x003efeffff -> 0x0010000000
+[    0.953469] pci-host-generic 4010000000.pcie:      MEM 0x8000000000..0xffffffffff -> 0x8000000000
+[    0.954881] pci-host-generic 4010000000.pcie: missing "reg" property
+[    0.955171] pci-host-generic 4010000000.pcie: probe with driver pci-host-generic failed with error -75
+[    0.971314] Serial: 8250/16550 driver, 5 ports, IRQ sharing enabled
+[    0.979243] Serial: AMBA driver
+[    0.980856] STM32 USART driver initialized
+[    0.988876] mousedev: PS/2 mouse device common for all mice
+[    0.995904] rtc-pl031 9010000.pl031: registered as rtc0
+[    0.997225] rtc-pl031 9010000.pl031: setting system clock to 2026-11-14T11:54:32 UTC (1794657272)
+[    1.009228] NET: Registered PF_INET6 protocol family
+[    1.022788] Segment Routing with IPv6
+[    1.023517] In-situ OAM (IOAM) with IPv6
+[    1.024200] mip6: Mobile IPv6
+[    1.024560] NET: Registered PF_PACKET protocol family
+[    1.025368] mpls_gso: MPLS GSO support
+[    1.026746] ThumbEE CPU extension supported.
+[    1.027121] Registering SWP/SWPB emulation handler
+[    1.049385] registered taskstats version 1
+[    1.053909] Loading compiled-in X.509 certificates
+[    1.336835] Loaded X.509 cert 'Build time autogenerated kernel key: cb775a0e06e27efeea4fd93d3188b203c774bb18'
+[    1.357910] Key type .fscrypt registered
+[    1.358118] Key type fscrypt-provisioning registered
+[    1.376668] Key type encrypted registered
+[    1.376940] AppArmor: AppArmor sha256 policy hashing enabled
+[    1.378281] ima: No TPM chip found, activating TPM-bypass!
+[    1.378561] ima: Allocated hash algorithm: sha256
+[    1.381591] ima: No architecture policies found
+[    1.383199] evm: Initialising EVM extended attributes:
+[    1.383398] evm: security.selinux
+[    1.383592] evm: security.SMACK64 (disabled)
+[    1.383736] evm: security.SMACK64EXEC (disabled)
+[    1.383866] evm: security.SMACK64TRANSMUTE (disabled)
+[    1.384101] evm: security.SMACK64MMAP (disabled)
+[    1.384230] evm: security.apparmor
+[    1.384336] evm: security.ima
+[    1.384441] evm: security.capability
+[    1.384590] evm: HMAC attrs: 0x1
+[    1.517223] input: gpio-keys as /devices/platform/gpio-keys/input/input0
+[    1.563213] clk: Disabling unused clocks
+[    1.563662] PM: genpd: Disabling unused power domains
+[    1.777594] Freeing unused kernel image (initmem) memory: 2048K
+[    2.111621] Run /init as init process
+MIBOX_RAM_CONTROL_READY
+mibox-init 0.1.0
+pid=1 arch=arm
+Linux version 6.12.107+deb13-armmp (debian-kernel@lists.debian.org) (arm-linux-gnueabihf-gcc-14 (Debian 14.2.0-19) 14.2.0, GNU ld (GNU Binutils for Debian) 2.44) #1 SMP Debian 6.12.107-1 (2026-08-29)
+MIBOX_INIT_CONSOLE_READY
+Commands: help, info, uptime, health, reaptest, os, files. Persistent storage is not mounted.
+mibox> restartprobe
+mibox-control: restart platform guard
+MIBOX_QEMU_RESTART_PLATFORM_GUARD_OK
+mibox-control: restart platform guard
+mibox> 

@@ -1,0 +1,19 @@
+﻿{
+    "Executable":  "C:\\WINDOWS\\System32\\cmd.exe",
+    "Arguments":  "/d /c exit 7",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  5,
+    "ProcessId":  11664,
+    "StartedAt":  "2026-11-14T22:47:49.7483375Z",
+    "ExitCode":  7,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "Failure":  "exit-seven failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\process-tests-20261115-064749-572",
+    "ElapsedSeconds":  0.037718499999999995,
+    "FinishedAt":  "2026-11-14T22:47:49.7775793Z"
+}

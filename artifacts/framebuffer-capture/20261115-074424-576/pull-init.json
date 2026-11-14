@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 pull /init \"F:\\coding\\otherPrj\\mibox\\artifacts\\framebuffer-capture\\20261115-074424-576\\init.elf\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  4732,
+    "StartedAt":  "2026-11-14T23:44:24.9668729Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "/init: 1 file pulled, 0 skipped. 1.8 MB/s (483208 bytes in 0.250s)",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.2990909,
+    "FinishedAt":  "2026-11-14T23:44:25.2647500Z"
+}

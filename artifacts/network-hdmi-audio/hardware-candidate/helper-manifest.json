@@ -1,0 +1,32 @@
+{
+  "command": [
+    "arm-linux-gnueabihf-gcc",
+    "--sysroot=/mnt/f/coding/otherPrj/mibox/target/hardware-cross/sysroot/usr/arm-linux-gnueabihf",
+    "-isystem",
+    "/mnt/f/coding/otherPrj/mibox/target/hardware-cross/sysroot/usr/arm-linux-gnueabihf/include",
+    "-L/mnt/f/coding/otherPrj/mibox/target/hardware-cross/sysroot/usr/arm-linux-gnueabihf/lib",
+    "-B/mnt/f/coding/otherPrj/mibox/target/hardware-cross/sysroot/usr/arm-linux-gnueabihf/lib/",
+    "-static",
+    "-Os",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-Wno-misleading-indentation",
+    "-D_FILE_OFFSET_BITS=64",
+    "-o",
+    "/mnt/f/coding/otherPrj/mibox/target/hardware-helper/mibox-hardware",
+    "/mnt/f/coding/otherPrj/mibox/src/hardware/mibox-hardware.c",
+    "-lm"
+  ],
+  "compiler": "arm-linux-gnueabihf-gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "source_sha256": "e17b1f4c98c2c5053b33bc3f7173c65de626f91e2d13597937a039504408bd34",
+  "binary_sha256": "1e47e6ea7ae9200e1613200f7c9ccb60c554979ee0d139635f8d3c66ce862f71",
+  "bytes": 410828,
+  "packages": {
+    "libc6-armhf-cross_2.39-0ubuntu8cross1_all.deb": "4c61c413e2cc45ce2c5703a1564d1886f45c98ddbbd33d9f8b05736dee045ce1",
+    "libc6-dev-armhf-cross_2.39-0ubuntu8cross1_all.deb": "31bb0a43b89d9e6e9d4f2b81d53376ad01e397653e6a834e00ac4129e0e48c44",
+    "linux-libc-dev-armhf-cross_6.8.0-25.25cross1_all.deb": "1f83b9a486063b2daef0f21baf856b0cbb0b64eecf83b180434ab9190f6be8d8"
+  },
+  "static_arm_elf": true,
+  "physical_validation": false
+}

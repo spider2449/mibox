@@ -1,0 +1,42 @@
+﻿{
+    "Action":  "Boot",
+    "StartedAt":  "2026-11-14T19:55:00.2247897+08:00",
+    "Stage":  "Passed",
+    "ImageSHA256":  "ac2939921a9fb44f5c918c3c8f7f1e5f6dff2dbd48d6142583b18f4c6976cd28",
+    "DeviceAccessed":  true,
+    "LoaderRequestSent":  true,
+    "CustomBootVerified":  true,
+    "AndroidReturnVerified":  false,
+    "FlashCommandSent":  false,
+    "TransferDeadlineSeconds":  3600,
+    "Candidate":  "Hardware",
+    "LocalImageVerified":  true,
+    "AndroidBaseline":  {
+                            "Fingerprint":  "Xiaomi/casablanca_icntv/casablanca:4.4.2/KOT49H/2876:user/release-keys",
+                            "BootCompleted":  "1",
+                            "BootId":  "175120b6-cd0a-484c-bd05-a8fb038e8c1d"
+                        },
+    "Transfer":  {
+                     "Found":  true,
+                     "DevicePath":  "\\\\?\\usb#vid_1b8e\u0026pid_c003#6\u00262b113eed\u00260\u00265#{d925a7f0-61a4-4018-bcd3-f3e5225f3532}",
+                     "VidPid":  "1B8E:C003",
+                     "IdentifyHex":  "00-08-00-10",
+                     "VendorRequestSent":  true,
+                     "InterfaceGuid":  "d925a7f0-61a4-4018-bcd3-f3e5225f3532",
+                     "BootBufferAddress":  "0x82000000",
+                     "BootBufferHex":  "AA-AA-AA-AA-02-00-0A-02-44-01-01-02-2B-01-58-00-00-00-22-01-2B-1A-28-2F-72-20-EA-4F-05-00-0C-01-71-20-1C-4F-14-00-28-24-72-20-EF-4F-05-00-0C-01-71-20-1D-4F-14-00-28-1C-72-20-F0-4F-05-00-0C-01",
+                     "Action":  "UploadAndBoot",
+                     "PatternVerified":  false,
+                     "OriginalRestored":  false,
+                     "VerifiedBytes":  8388608,
+                     "VerifiedSha256":  "ac2939921a9fb44f5c918c3c8f7f1e5f6dff2dbd48d6142583b18f4c6976cd28",
+                     "CommandAttempted":  true,
+                     "CommandTransferCompleted":  true,
+                     "StatusHex":  null,
+                     "StatusText":  null,
+                     "BulkMode":  false
+                 },
+    "HealthVerified":  true,
+    "CustomBootId":  "158776f1-48d4-4da9-af0a-dcde271c2848",
+    "FinishedAt":  "2026-11-14T20:17:08.8912875+08:00"
+}

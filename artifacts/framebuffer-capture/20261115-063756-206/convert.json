@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "C:\\WINDOWS\\system32\\wsl.exe",
+    "Arguments":  "--exec python3 \"/mnt/f/coding/otherPrj/mibox/scripts/framebuffer_ppm.py\" \"/mnt/f/coding/otherPrj/mibox/artifacts/framebuffer-capture/20261115-063756-206/framebuffer.ppm\" \"/mnt/f/coding/otherPrj/mibox/artifacts/framebuffer-capture/20261115-063756-206/framebuffer.png\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  30,
+    "ProcessId":  14236,
+    "StartedAt":  "2026-11-14T22:37:58.6543301Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  18.9389865,
+    "FinishedAt":  "2026-11-14T22:38:17.5924261Z"
+}

@@ -39,10 +39,24 @@ fn main() -> io::Result<()> {
         return Err(io::Error::other("QEMU-only probe refused"));
     }
     if std::env::args().nth(1).as_deref() == Some("--denied-uid") {
-        return rejected(b"CHECK\n");
+        rejected(b"CHECK\n")?;
+        return rejected(
+            format!(
+                "HARDWARE capture {}\n",
+                fs::read_to_string("/proc/sys/kernel/random/boot_id")?.trim()
+            )
+            .as_bytes(),
+        );
     }
     if guard {
         rejected(b"CHECK\n")?;
+        rejected(
+            format!(
+                "HARDWARE capture {}\n",
+                fs::read_to_string("/proc/sys/kernel/random/boot_id")?.trim()
+            )
+            .as_bytes(),
+        )?;
         rejected(
             format!(
                 "RESTART {}\n",
@@ -79,6 +93,15 @@ fn main() -> io::Result<()> {
         return Err(io::Error::other("UID65534 denial failed"));
     }
     rejected(b"RESTART 00000000-0000-0000-0000-000000000000\n")?;
+    rejected(b"HARDWARE network 00000000-0000-0000-0000-000000000000\n")?;
+    rejected(b"HARDWARE capture 00000000-0000-0000-0000-000000000000\n")?;
+    rejected(
+        format!(
+            "HARDWARE shell {}\n",
+            fs::read_to_string("/proc/sys/kernel/random/boot_id")?.trim()
+        )
+        .as_bytes(),
+    )?;
     rejected(b"CHECK\nEXTRA\n")?;
     rejected(&[b'x'; 129])?;
     // A peer that never sends EOF must not hold the server indefinitely.

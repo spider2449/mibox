@@ -1,0 +1,21 @@
+﻿{
+    "Action":  "ResumeBoot",
+    "Candidate":  "Hardware3",
+    "StartedAt":  "2026-11-14T20:45:40.5980934+08:00",
+    "Stage":  "UploadAndVerify",
+    "ImageSHA256":  "5f6a5654e5603c7abaeb9dca21996bc5a6e3bc0a83b650c8e0e347de100fdd55",
+    "DeviceAccessed":  true,
+    "FlashCommandSent":  false,
+    "LoaderRequestSent":  false,
+    "CustomBootVerified":  false,
+    "PreviousEvidence":  "F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\20261114-202635-053\\result.json",
+    "AndroidBaseline":  {
+                            "Fingerprint":  "Xiaomi/casablanca_icntv/casablanca:4.4.2/KOT49H/2876:user/release-keys",
+                            "BootCompleted":  "1",
+                            "BootId":  "527ddc8d-bf35-4dce-9cb2-db10ef5fae5d"
+                        },
+    "LocalImageVerified":  true,
+    "LoaderInstance":  "USB\\VID_1B8E\u0026PID_C003\\6\u00262B113EED\u00260\u00265",
+    "Failure":  "upload-and-boot failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\20261114-204540-498-resume-hardware3",
+    "FinishedAt":  "2026-11-14T20:47:43.9923930+08:00"
+}

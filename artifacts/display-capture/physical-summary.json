@@ -1,0 +1,23 @@
+﻿{
+    "Candidate":  "DisplayCapture",
+    "ImageSHA256":  "19c7064bc3e389a8f63ba70847ae7628e8366d38644b187f9cec89e33dccf2fb",
+    "FullRamReadbackVerified":  true,
+    "CustomBootVerified":  true,
+    "HealthVerified":  true,
+    "ColorBarsVerified":  true,
+    "Width":  1280,
+    "Height":  1080,
+    "Capture":  "artifacts/framebuffer-capture/20261115-074424-576/framebuffer.png",
+    "PngSHA256":  "4dc31e3a7de59743da2e2899b7619e327c551ce8e08c11388ef08a4d25c6fad9",
+    "FramebufferRestored":  true,
+    "HdmiScanoutVerified":  false,
+    "OwnerObservation":  "NOT_REQUESTED_THIS_RUN",
+    "PhysicalAndroidReturnVerified":  true,
+    "CustomBootId":  "97cbb8a2-afa9-4202-9071-4832e55822b1",
+    "AndroidReturn":  "Xiaomi/casablanca_icntv/casablanca:4.4.2/KOT49H/2876:user/release-keys\r\r\n1\r\r\n209b6e50-b891-4a83-b5fd-faeb2e77e240",
+    "BootEvidence":  "artifacts/ram-boot/20261115-072208-114/result.json",
+    "CaptureEvidence":  "artifacts/framebuffer-capture/20261115-074424-576/result.json",
+    "ReturnEvidence":  "artifacts/software-return/return-20261115-074507/result.json",
+    "FlashCommandSent":  false,
+    "VerifiedUtc":  "2026-11-14T23:46:48.8643795Z"
+}

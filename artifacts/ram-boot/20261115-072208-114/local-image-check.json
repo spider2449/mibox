@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "Arguments":  "-NoProfile -File \"F:\\coding\\otherPrj\\mibox\\scripts\\Test-MiboxLoaderRam.ps1\" -Action UploadAndBoot -Candidate DisplayCapture -VerifyOnly",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  30,
+    "ProcessId":  14992,
+    "StartedAt":  "2026-11-14T23:22:08.2659248Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "{\r\n    \"Candidate\":  \"DisplayCapture\",\r\n    \"Bytes\":  8388608,\r\n    \"Sha256\":  \"19c7064bc3e389a8f63ba70847ae7628e8366d38644b187f9cec89e33dccf2fb\",\r\n    \"UsbAccessed\":  false\r\n}",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.6151751,
+    "FinishedAt":  "2026-11-14T23:22:08.8784679Z"
+}

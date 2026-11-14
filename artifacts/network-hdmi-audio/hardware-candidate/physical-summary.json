@@ -1,0 +1,18 @@
+{
+  "candidate": "Hardware",
+  "image_sha256": "ac2939921a9fb44f5c918c3c8f7f1e5f6dff2dbd48d6142583b18f4c6976cd28",
+  "custom_boot_id": "158776f1-48d4-4da9-af0a-dcde271c2848",
+  "physical_boot_verified": true,
+  "network_functional_pass": false,
+  "network_failure": "DHCP offer timeout; eth0 carrier established; received/transmitted counters nonzero; no IPv4 routes after cleanup",
+  "display_helper_succeeded": true,
+  "display_functional_pass": false,
+  "owner_display_observation": "只有官方logo",
+  "audio_pcm_frames_accepted": 144000,
+  "audio_helper_succeeded": true,
+  "audio_audible_pass": false,
+  "owner_equipment_observation": "只有螢幕",
+  "audio_audible_observation": "UNKNOWN",
+  "android_return_verified": true,
+  "android_return_evidence": "artifacts/software-return/return-20261114-202241/result.json"
+}

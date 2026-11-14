@@ -4,19 +4,20 @@ $repo=Split-Path -Parent $PSScriptRoot
 $adb=Join-Path $repo 'phone-tools/platform-tools/adb.exe'
 $evidence=Join-Path $repo ('artifacts/usb-loader-protocol/ram-boot-'+(Get-Date -Format 'yyyyMMdd-HHmmss'))
 New-Item -ItemType Directory -Path $evidence -Force | Out-Null
+. (Join-Path $PSScriptRoot 'RamBootProcess.ps1')
+$script:adbQueryNumber=0
 function Invoke-FixedAdb([string]$Arguments) {
-    $start=[Diagnostics.ProcessStartInfo]::new()
-    $start.FileName=$adb; $start.Arguments=$Arguments
-    $start.UseShellExecute=$false; $start.CreateNoWindow=$true
-    $start.RedirectStandardOutput=$true; $start.RedirectStandardError=$true
-    $process=[Diagnostics.Process]::new(); $process.StartInfo=$start
-    [void]$process.Start()
-    $stdout=$process.StandardOutput.ReadToEndAsync(); $stderr=$process.StandardError.ReadToEndAsync()
-    $timedOut=-not $process.WaitForExit(5000)
-    if($timedOut) {$process.Kill()}
-    $process.WaitForExit()
-    $result=[pscustomobject]@{ExitCode=$process.ExitCode;TimedOut=$timedOut;Output=$stdout.Result.Trim();Error=$stderr.Result.Trim()}
-    $process.Dispose(); return $result
+    $script:adbQueryNumber++
+    $name='adb-{0:d3}' -f $script:adbQueryNumber
+    try {
+        return [pscustomobject](Run-Process $name $adb $Arguments 5)
+    } catch {
+        # Expected while USB reconnects or a stock-only command is unavailable.
+        # Preserve the failure, and let the observer's identity gates reject it.
+        $record=Join-Path $evidence ($name+'.json')
+        if(-not (Test-Path -LiteralPath $record)){throw}
+        return Get-Content -Raw -LiteralPath $record | ConvertFrom-Json
+    }
 }
 $clock=[Diagnostics.Stopwatch]::StartNew()
 $last=''; $connected=$false
@@ -33,7 +34,8 @@ while($clock.Elapsed.TotalSeconds -lt $TimeoutSeconds) {
         $last=$encoded
     }
     # Stock recovery adbd advertises recovery even under the custom initramfs.
-    if($devices.Output -match '(?m)^248243005297\s+(device|recovery)\b') {$connected=$true;break}
+    if($devices.ExitCode -eq 0 -and -not $devices.TimedOut -and $devices.OutputComplete -and
+       $devices.Output -match '(?m)^248243005297\s+(device|recovery)\b') {$connected=$true;break}
     Start-Sleep -Seconds 2
 }
 $proof=@{}
@@ -52,7 +54,14 @@ if($connected) {
         $proof[$entry.Key]=Invoke-FixedAdb ('-s 248243005297 '+$entry.Value)
     }
 }
-$custom=$connected -and $proof.osRelease.ExitCode -eq 0 -and
+$identityComplete=$connected
+foreach($key in @('osRelease','pid1','bootId')) {
+    if(-not $connected -or $proof[$key].TimedOut -or
+       -not $proof[$key].OutputComplete -or $proof[$key].ExitCode -ne 0) {
+        $identityComplete=$false
+    }
+}
+$custom=$identityComplete -and $proof.osRelease.ExitCode -eq 0 -and
     $proof.osRelease.Output -match '(?m)^ID=mibox-custom\s*$' -and
     $proof.pid1.ExitCode -eq 0 -and $proof.bootId.ExitCode -eq 0
 $result=[ordered]@{AdbConnected=$connected;CustomOsMarkerObserved=[bool]$custom;Proof=$proof;Evidence=$evidence}

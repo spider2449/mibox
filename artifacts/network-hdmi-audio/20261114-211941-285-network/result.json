@@ -1,0 +1,20 @@
+﻿{
+    "Action":  "Network",
+    "StartedAt":  "2026-11-14T21:19:41.2957465+08:00",
+    "DeviceAccessed":  true,
+    "HelperSucceeded":  true,
+    "FunctionalPass":  true,
+    "OwnerConfirmationRequired":  false,
+    "ScriptSHA256":  "64893fe5430994e85e69cd8780e7d82782e15330631b57e51321b5e1fee40fff",
+    "Candidate":  "Hardware3",
+    "BootId":  "49c3b52c-4d60-4bbc-9eac-8a502088108c",
+    "initSha256":  "c9685fe4a4e6892a273917e0b82f77d0cd74320245d43ec413cea8b59b213c4b",
+    "miboxSha256":  "e8fa69daba2bb78b42fdff17ca3819fe2bcf5afb007c129aad3384e0053adecf",
+    "helperSha256":  "1d21c17cfec18992a104e163180fea5b632ec06290b452e19a9b200504c379d3",
+    "StaticProfile":  "MIBOX_STATIC_IPV4_V1 192.168.1.222 255.255.255.0 192.168.1.1",
+    "Output":  "static_address=192.168.1.222 netmask=255.255.255.0 gateway=192.168.1.1 source=rootfs_profile\ngateway_echo_replies=3/3\nnetwork_cleanup=ok\nMIBOX_ETHERNET_TEST_OK\nMIBOX_HARDWARE_EXIT=0\nMIBOX_COMMAND_EXIT=0",
+    "AddressConfiguration":  "static",
+    "IPv4Address":  "192.168.1.222",
+    "Scope":  "Explicit RAM-only IPv4 configuration, address conflict probes, three gateway echo replies, then IPv4/route removal and eth0 down; no DNS/Internet/long-duration claim",
+    "FinishedAt":  "2026-11-14T21:19:49.3062946+08:00"
+}

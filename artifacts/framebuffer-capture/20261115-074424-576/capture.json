@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"/bin/mibox hardware-test display --boot-id 97cbb8a2-afa9-4202-9071-4832e55822b1; result=$?; echo MIBOX_COMMAND_EXIT=$result\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  65,
+    "ProcessId":  13488,
+    "StartedAt":  "2026-11-14T23:44:25.8437939Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "fb_id=OSD FB visible=1280x1080 virtual=1280x3240 offset=0,0 bpp=32 stride=5120 smem_len=16777216\r\r\nrgba=0:8,8:8,16:8,24:8\r\r\nframebuffer_handoff=same_geometry,pan,unblank\r\r\nMIBOX_HDMI_PATTERN_ACTIVE duration_seconds=15 bars=white,yellow,cyan,green,magenta,red,blue,black\r\r\nMIBOX_FRAMEBUFFER_CAPTURE path=/dev/mibox-framebuffer.ppm width=1280 height=1080 format=P6 scope=framebuffer_only\r\r\nframebuffer_restore=ok\r\r\nMIBOX_HDMI_PATTERN_WRITTEN owner_visual_confirmation=required\r\r\nMIBOX_HARDWARE_EXIT=0\r\r\nMIBOX_COMMAND_EXIT=0",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  16.4939459,
+    "FinishedAt":  "2026-11-14T23:44:42.3363931Z"
+}

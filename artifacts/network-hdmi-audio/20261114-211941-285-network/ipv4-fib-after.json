@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"/bin/mibox cat /proc/net/fib_trie; result=$?; echo MIBOX_FIB_EXIT=$result\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  2768,
+    "StartedAt":  "2026-11-14T13:19:49.2276423Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "MIBOX_FIB_EXIT=0",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.07009739999999999,
+    "FinishedAt":  "2026-11-14T13:19:49.2961674Z"
+}

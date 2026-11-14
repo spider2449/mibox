@@ -1,0 +1,34 @@
+﻿[
+    {
+        "Path":  "src/hardware/mibox-hardware.c",
+        "SHA256":  "986fd83820ed88d794f10e287777c3fa5d4c86f0ba551ab48557be23d4cbf680"
+    },
+    {
+        "Path":  "src/hardware/framebuffer-capture.h",
+        "SHA256":  "115b6de06f76c534907d080654ff5a4ee07dbffdf0170d375cd5ade544a377fb"
+    },
+    {
+        "Path":  "src/hardware/test-capture.c",
+        "SHA256":  "bad3c46a5e50588157417188cede9abcbe818a41a68a1a05a5458c81862b2471"
+    },
+    {
+        "Path":  "src/bin/mibox-init.rs",
+        "SHA256":  "3385375e75a0f9b4591f866d97f7de6439162122f836d977c946c9f1f303f401"
+    },
+    {
+        "Path":  "src/bin/mibox-userland.rs",
+        "SHA256":  "3ee0401af2f785a15a63c03fa30f1187fe897b078d8a36da8dc9dc845ea69325"
+    },
+    {
+        "Path":  "src/ram_control.rs",
+        "SHA256":  "c7f9948d86eb036c2a954883a97bf5ef787c9dfb65f49ba2887140eb6cc87fd0"
+    },
+    {
+        "Path":  "scripts/Capture-MiboxFramebuffer.ps1",
+        "SHA256":  "e7278f88387e3b71acaee175e0ad7159386419316974ae032bd254240a5fb984"
+    },
+    {
+        "Path":  "scripts/framebuffer_ppm.py",
+        "SHA256":  "754fa8b83a6163691b6a252ea79a3892b5c3831b3f16e7c595af038f4015f70f"
+    }
+]

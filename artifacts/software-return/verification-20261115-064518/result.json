@@ -1,0 +1,18 @@
+﻿{
+    "PhysicalAndroidReturnVerified":  true,
+    "VerificationUtc":  "2026-11-14T22:45:26.4849109Z",
+    "AndroidBootId":  "5dc5dda3-0805-4138-9218-75822a581c85",
+    "BaselineBootId":  "6afdf09a-f36b-4499-9852-e069524d35d1",
+    "CustomBootId":  "c076cc9c-28ed-4f2e-8f19-b014a07140bd",
+    "Fingerprint":  "Xiaomi/casablanca_icntv/casablanca:4.4.2/KOT49H/2876:user/release-keys",
+    "BootCompleted":  "1",
+    "OriginalReturnEvidence":  "artifacts/software-return/return-20261115-063833",
+    "OriginalReturnRecordComplete":  false,
+    "RestartRequestRepeated":  false,
+    "CaptureHashesVerified":  true,
+    "CaptureWidth":  1280,
+    "CaptureHeight":  1080,
+    "EveryPixelRgb128":  true,
+    "HdmiScanoutVerified":  false,
+    "Note":  "Independent later read-only verification; original interrupted records preserved. Does not establish exact Android completion time."
+}

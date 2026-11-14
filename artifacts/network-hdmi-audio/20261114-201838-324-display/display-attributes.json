@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"/bin/mibox ls /sys/class/graphics/fb0; /bin/mibox cat /sys/class/graphics/fb0/free_scale; /bin/mibox cat /sys/class/graphics/fb0/free_scale_axis; /bin/mibox cat /sys/class/graphics/fb0/window_axis; /bin/mibox cat /sys/class/graphics/fb0/osd_color; /bin/mibox cat /sys/class/graphics/fb0/enable_3d; /bin/mibox ls /sys/class/logo; /bin/mibox cat /sys/class/video/disable_video\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  1620,
+    "StartedAt":  "2026-11-14T12:21:25.8477020Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "bits_per_pixel\r\r\nblank\r\r\nblock_mode\r\r\nblock_windows\r\r\ncolor_key\r\r\nconsole\r\r\ncursor\r\r\ndev\r\r\ndevice\r\r\nenable_3d\r\r\nenable_key\r\r\nenable_key_onhold\r\r\nflush_rate\r\r\nfree_scale\r\r\nfree_scale_axis\r\r\nfreescale_mode\r\r\nmode\r\r\nmodes\r\r\nname\r\r\norder\r\r\nosd_antiflicker\r\r\nosd_info_msg\r\r\nosd_reverse\r\r\npan\r\r\npower\r\r\npreblend_enable\r\r\nprot_angle\r\r\nprot_canvas\r\r\nprot_on\r\r\nprot_state\r\r\nrequest2XScale\r\r\nrotate\r\r\nscale\r\r\nscale_axis\r\r\nscale_height\r\r\nscale_width\r\r\nstate\r\r\nstride\r\r\nsubsystem\r\r\nuevent\r\r\nver_angle\r\r\nver_clone\r\r\nver_update_pan\r\r\nvideo_hole\r\r\nvirtual_size\r\r\nwindow_axis\r\r\nfree_scale_enable:[0x0]\r\r\n0 0 0 0\r\r\nwindow axis is [0 0 0 0]\r\r\nError: Os { code: 2, kind: NotFound, message: \"No such file or directory\" }\r\r\n3d_enable:[0x0]\r\r\nError: Os { code: 2, kind: NotFound, message: \"No such file or directory\" }\r\r\n0",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.2662388,
+    "FinishedAt":  "2026-11-14T12:21:26.1109491Z"
+}

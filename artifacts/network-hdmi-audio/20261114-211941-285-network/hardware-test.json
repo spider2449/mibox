@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"/bin/mibox hardware-test network --boot-id 49c3b52c-4d60-4bbc-9eac-8a502088108c; result=$?; echo MIBOX_COMMAND_EXIT=$result\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  65,
+    "ProcessId":  10808,
+    "StartedAt":  "2026-11-14T13:19:42.6235760Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "static_address=192.168.1.222 netmask=255.255.255.0 gateway=192.168.1.1 source=rootfs_profile\r\r\ngateway_echo_replies=3/3\r\r\nnetwork_cleanup=ok\r\r\nMIBOX_ETHERNET_TEST_OK\r\r\nMIBOX_HARDWARE_EXIT=0\r\r\nMIBOX_COMMAND_EXIT=0",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  6.291982,
+    "FinishedAt":  "2026-11-14T13:19:48.9123339Z"
+}

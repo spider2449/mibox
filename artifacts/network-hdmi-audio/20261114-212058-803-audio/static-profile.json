@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell /bin/mibox cat /etc/mibox-network-static",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  2352,
+    "StartedAt":  "2026-11-14T13:21:00.0103178Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "MIBOX_STATIC_IPV4_V1 192.168.1.222 255.255.255.0 192.168.1.1",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.0644701,
+    "FinishedAt":  "2026-11-14T13:21:00.0729691Z"
+}

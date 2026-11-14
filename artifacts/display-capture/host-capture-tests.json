@@ -1,0 +1,122 @@
+[
+    {
+        "Case":  "valid",
+        "Pass":  true,
+        "Record":  {
+                       "DeviceAccessed":  true,
+                       "CaptureVerified":  true,
+                       "HdmiScanoutVerified":  false,
+                       "Scope":  "Framebuffer memory only; no physical HDMI claim",
+                       "ManifestSHA256":  "5660d2486f4014dabe9b418b483817c6b44ed73d3aaf8b86213ef9b94ab69ff2",
+                       "BootId":  "49c3b52c-4d60-4bbc-9eac-8a502088108c",
+                       "initSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "miboxSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "helperSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "PpmSHA256":  "3127d5fa2d98debeba46792a8b71442a09bc42fe8a950aca6079e5e841ad0f9f",
+                       "PngSHA256":  "bdea1ae01e4002327b542688ac1c7a102d8d398ee1eeabd8238df8ff02de2fea",
+                       "ColorBarsVerified":  false,
+                       "FinishedAt":  "2026-11-14T23:20:59.1636847Z"
+                   }
+    },
+    {
+        "Case":  "wrong-pin",
+        "Pass":  true,
+        "Record":  {
+                       "DeviceAccessed":  true,
+                       "CaptureVerified":  false,
+                       "HdmiScanoutVerified":  false,
+                       "Scope":  "Framebuffer memory only; no physical HDMI claim",
+                       "ManifestSHA256":  "5660d2486f4014dabe9b418b483817c6b44ed73d3aaf8b86213ef9b94ab69ff2",
+                       "BootId":  "49c3b52c-4d60-4bbc-9eac-8a502088108c",
+                       "Failure":  "Executable pin mismatch: init",
+                       "FinishedAt":  "2026-11-14T23:20:59.5164778Z"
+                   }
+    },
+    {
+        "Case":  "helper-failed",
+        "Pass":  true,
+        "Record":  {
+                       "DeviceAccessed":  true,
+                       "CaptureVerified":  false,
+                       "HdmiScanoutVerified":  false,
+                       "Scope":  "Framebuffer memory only; no physical HDMI claim",
+                       "ManifestSHA256":  "5660d2486f4014dabe9b418b483817c6b44ed73d3aaf8b86213ef9b94ab69ff2",
+                       "BootId":  "49c3b52c-4d60-4bbc-9eac-8a502088108c",
+                       "initSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "miboxSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "helperSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "Failure":  "Fresh capture not established",
+                       "FinishedAt":  "2026-11-14T23:20:59.6227012Z"
+                   }
+    },
+    {
+        "Case":  "bad-ppm",
+        "Pass":  true,
+        "Record":  {
+                       "DeviceAccessed":  true,
+                       "CaptureVerified":  false,
+                       "HdmiScanoutVerified":  false,
+                       "Scope":  "Framebuffer memory only; no physical HDMI claim",
+                       "ManifestSHA256":  "5660d2486f4014dabe9b418b483817c6b44ed73d3aaf8b86213ef9b94ab69ff2",
+                       "BootId":  "49c3b52c-4d60-4bbc-9eac-8a502088108c",
+                       "initSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "miboxSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "helperSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "Failure":  "convert failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\target\\framebuffer-capture-tests\\b3f200ea-9cb8-4415-967d-0551df7f3578\\artifacts\\framebuffer-capture\\20261115-072059-648",
+                       "FinishedAt":  "2026-11-14T23:21:01.0480427Z"
+                   }
+    },
+    {
+        "Case":  "changed-boot",
+        "Pass":  true,
+        "Record":  {
+                       "DeviceAccessed":  true,
+                       "CaptureVerified":  false,
+                       "HdmiScanoutVerified":  false,
+                       "Scope":  "Framebuffer memory only; no physical HDMI claim",
+                       "ManifestSHA256":  "5660d2486f4014dabe9b418b483817c6b44ed73d3aaf8b86213ef9b94ab69ff2",
+                       "BootId":  "49c3b52c-4d60-4bbc-9eac-8a502088108c",
+                       "initSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "miboxSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "helperSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "Failure":  "Boot identity or restart readiness changed",
+                       "FinishedAt":  "2026-11-14T23:21:01.4468243Z"
+                   }
+    },
+    {
+        "Case":  "display-valid",
+        "Pass":  true,
+        "Record":  {
+                       "DeviceAccessed":  true,
+                       "CaptureVerified":  true,
+                       "HdmiScanoutVerified":  false,
+                       "Scope":  "Framebuffer memory only; no physical HDMI claim",
+                       "ManifestSHA256":  "5660d2486f4014dabe9b418b483817c6b44ed73d3aaf8b86213ef9b94ab69ff2",
+                       "BootId":  "49c3b52c-4d60-4bbc-9eac-8a502088108c",
+                       "initSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "miboxSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "helperSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "PpmSHA256":  "9aacd324dabcb0710a1cf5e87dbebe7f8734e30392cf11c7f0ccd9092f70d953",
+                       "PngSHA256":  "927a5f35ef9c1d1355888b0c2fbcae1b5f6eeb02f23971f356884889df0e5f51",
+                       "ColorBarsVerified":  true,
+                       "FinishedAt":  "2026-11-14T23:21:01.7642924Z"
+                   }
+    },
+    {
+        "Case":  "display-wrong-pixel",
+        "Pass":  true,
+        "Record":  {
+                       "DeviceAccessed":  true,
+                       "CaptureVerified":  false,
+                       "HdmiScanoutVerified":  false,
+                       "Scope":  "Framebuffer memory only; no physical HDMI claim",
+                       "ManifestSHA256":  "5660d2486f4014dabe9b418b483817c6b44ed73d3aaf8b86213ef9b94ab69ff2",
+                       "BootId":  "49c3b52c-4d60-4bbc-9eac-8a502088108c",
+                       "initSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "miboxSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "helperSHA256":  "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+                       "Failure":  "convert failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\target\\framebuffer-capture-tests\\b3f200ea-9cb8-4415-967d-0551df7f3578\\artifacts\\framebuffer-capture\\20261115-072101-784",
+                       "FinishedAt":  "2026-11-14T23:21:02.1838115Z"
+                   }
+    }
+]

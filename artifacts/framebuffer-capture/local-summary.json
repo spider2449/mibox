@@ -1,0 +1,13 @@
+﻿{
+    "Scope":  "Host-only capture implementation; no device access",
+    "PhysicalCapture":  "UNVERIFIED",
+    "AudibleOutput":  "UNKNOWN; owner deferred",
+    "Candidate":  "Capture",
+    "ImageSHA256":  "03c2fec77ece8dada455a4be2b818ee377c4957d56ce97a3675406243832f53b",
+    "CaptureSanitizers":  "local/capture-sanitizers.json",
+    "RootfsQemu":  "qemu-rootfs-verified/result.json",
+    "RestartQemu":  "qemu-restart/normal-restart/result.json",
+    "PlatformGuardQemu":  "qemu-restart/platform-guard/result.json",
+    "CaptureOrchestrationTests":  "target/framebuffer-capture-tests/3532e1cb-99fa-42b4-8fdc-89061870de5d/results.json",
+    "LocalCandidateCheck":  "artifacts/ram-boot/20261115-060856-747/result.json"
+}

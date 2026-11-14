@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 pull /dev/mibox-framebuffer.ppm \"F:\\coding\\otherPrj\\mibox\\artifacts\\framebuffer-capture\\20261115-063756-206\\framebuffer.ppm\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  14484,
+    "StartedAt":  "2026-11-14T22:37:57.9314988Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "/dev/mibox-framebuffer.ppm: 1 file pulled, 0 skipped. 6.0 MB/s (4147217 bytes in 0.661s)",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.6994273,
+    "FinishedAt":  "2026-11-14T22:37:58.6287987Z"
+}

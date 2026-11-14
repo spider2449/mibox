@@ -1,0 +1,183 @@
+{
+  "scope": "Host Linux namespaces and synthetic DHCP server; no physical Mi Box evidence",
+  "source_sha256": "b36128324eaeab33e6637a184ebf8d7a817e9deaae6e2b11f3b09f6ab8f21bb0",
+  "results": [
+    {
+      "exit_code": 0,
+      "stdout": "dhcp_rx frame_bytes=310 ip_total=296 ip_checksum=0000 udp_length=276 xid=6099b59e options=6382536335010236040a1700010104ffffff0003040a170001330400000258ff\ndhcp_rx frame_bytes=310 ip_total=296 ip_checksum=0000 udp_length=276 xid=6099b59e options=6382536335010536040a1700010104ffffff0003040a170001330400000258ff\ndhcp_address=10.23.0.2 netmask=255.255.255.0 gateway=10.23.0.1 lease_seconds=600\ngateway_echo_replies=3/3\nnetwork_cleanup=ok\nMIBOX_ETHERNET_TEST_OK\n",
+      "stderr": "",
+      "addresses": [
+        {
+          "ifindex": 2,
+          "link_index": 3,
+          "ifname": "eth0",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST"
+          ],
+          "mtu": 1500,
+          "qdisc": "noqueue",
+          "operstate": "DOWN",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "32:c8:15:20:4b:73",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 0,
+          "addr_info": []
+        }
+      ],
+      "routes": [],
+      "case": "dhcp-gateway-cleanup",
+      "isolated_network_namespaces": true,
+      "dhcp_exchange": [
+        {
+          "request_type": 1,
+          "response_type": 2,
+          "xid": "6099b59e"
+        },
+        {
+          "request_type": 3,
+          "response_type": 5,
+          "xid": "6099b59e"
+        }
+      ],
+      "cleanup_verified": true,
+      "fixture_stderr": "",
+      "passed": true
+    },
+    {
+      "exit_code": 1,
+      "stdout": "dhcp_rx frame_bytes=310 ip_total=296 ip_checksum=0000 udp_length=276 xid=4e7740c7 options=6382536335010236040a1700010104ffffff0003040a170001330400000258ff\ndhcp_rx frame_bytes=310 ip_total=296 ip_checksum=0000 udp_length=276 xid=4e7740c7 options=6382536335010636040a1700010104ffffff0003040a170001330400000258ff\nnetwork_cleanup=attempted; inspect state\n",
+      "stderr": "FAIL DHCP ACK: Connection refused\nFAIL network test: Connection refused\n",
+      "addresses": [
+        {
+          "ifindex": 4,
+          "link_index": 5,
+          "ifname": "eth0",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST"
+          ],
+          "mtu": 1500,
+          "qdisc": "noqueue",
+          "operstate": "DOWN",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "d6:a5:52:ba:96:b4",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 0,
+          "addr_info": []
+        }
+      ],
+      "routes": [],
+      "case": "dhcp-nak-cleanup",
+      "isolated_network_namespaces": true,
+      "dhcp_exchange": [
+        {
+          "request_type": 1,
+          "response_type": 2,
+          "xid": "4e7740c7"
+        },
+        {
+          "request_type": 3,
+          "response_type": 6,
+          "xid": "4e7740c7"
+        }
+      ],
+      "cleanup_verified": true,
+      "fixture_stderr": "",
+      "passed": true
+    },
+    {
+      "exit_code": 1,
+      "stdout": "dhcp_rx frame_bytes=310 ip_total=296 ip_checksum=0000 udp_length=276 xid=92884f71 options=6382536335010236040a1700010104ffffff0003040a170001330400000258ff\ndhcp_rx frame_bytes=310 ip_total=296 ip_checksum=0000 udp_length=276 xid=92884f71 options=6382536335010536040a1700010104ffffff0003040a170001330400000258ff\nnetwork_cleanup=attempted; inspect state\n",
+      "stderr": "FAIL IPv4 conflict probe: Address already in use\nFAIL network test: Address already in use\n",
+      "addresses": [
+        {
+          "ifindex": 6,
+          "link_index": 7,
+          "ifname": "eth0",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST"
+          ],
+          "mtu": 1500,
+          "qdisc": "noqueue",
+          "operstate": "DOWN",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "ae:7a:0a:56:33:b7",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 0,
+          "addr_info": []
+        }
+      ],
+      "routes": [],
+      "case": "address-conflict-cleanup",
+      "isolated_network_namespaces": true,
+      "dhcp_exchange": [
+        {
+          "request_type": 1,
+          "response_type": 2,
+          "xid": "92884f71"
+        },
+        {
+          "request_type": 3,
+          "response_type": 5,
+          "xid": "92884f71"
+        }
+      ],
+      "cleanup_verified": true,
+      "fixture_stderr": "",
+      "passed": true
+    },
+    {
+      "exit_code": 1,
+      "stdout": "dhcp_rx frame_bytes=310 ip_total=296 ip_checksum=0000 udp_length=276 xid=3b52b754 options=6382536335010236040a1700010104ffffff0003040a170001330400000258ff\ndhcp_rx frame_bytes=310 ip_total=296 ip_checksum=0000 udp_length=276 xid=3b52b754 options=6382536335010536040a1700630104ffffff0003040a170001330400000258ff\nnetwork_cleanup=attempted; inspect state\n",
+      "stderr": "FAIL DHCP lease contract: Invalid argument\nFAIL network test: Invalid argument\n",
+      "addresses": [
+        {
+          "ifindex": 8,
+          "link_index": 9,
+          "ifname": "eth0",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST"
+          ],
+          "mtu": 1500,
+          "qdisc": "noqueue",
+          "operstate": "DOWN",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "e6:fe:04:43:b7:47",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 0,
+          "addr_info": []
+        }
+      ],
+      "routes": [],
+      "case": "changed-server-cleanup",
+      "isolated_network_namespaces": true,
+      "dhcp_exchange": [
+        {
+          "request_type": 1,
+          "response_type": 2,
+          "xid": "3b52b754"
+        },
+        {
+          "request_type": 3,
+          "response_type": 5,
+          "xid": "3b52b754"
+        }
+      ],
+      "cleanup_verified": true,
+      "fixture_stderr": "",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

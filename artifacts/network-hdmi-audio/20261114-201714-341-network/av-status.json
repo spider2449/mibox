@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"/bin/mibox cat /sys/class/amhdmitx/amhdmitx0/hpd_state; /bin/mibox cat /sys/class/display/mode; /bin/mibox cat /sys/class/graphics/fb0/blank; /bin/mibox cat /sys/class/graphics/fb0/bits_per_pixel; /bin/mibox cat /sys/class/graphics/fb0/virtual_size; /bin/mibox cat /proc/asound/cards\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  15952,
+    "StartedAt":  "2026-11-14T12:17:56.5107459Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "11080p\r\r\n32\r\r\n1280,3240\r\r\n 0 [AMLDUMMYCODEC  ]: SOC-Audio - AML-DUMMY-CODEC\r\r\n                      AML-DUMMY-CODEC",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.2001561,
+    "FinishedAt":  "2026-11-14T12:17:56.7092994Z"
+}

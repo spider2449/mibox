@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 def main(root, timeout, request_usb_acm, test_stock_adb=False, test_stock_adb_guard=False, test_stock_adb_auth=False,
-         request_usb_adb=False, initramfs=None, rootfs_usb_adb_marker=False, evidence=None):
+         request_usb_adb=False, initramfs=None, rootfs_usb_adb_marker=False, evidence=None, test_hardware=False):
     evidence = evidence or root / ('artifacts/qemu-mibox-rootfs' if request_usb_adb else
                        'artifacts/qemu-adb-auth' if test_stock_adb_auth else
                        'artifacts/qemu-adb-guard' if test_stock_adb_guard else
@@ -57,6 +57,9 @@ def main(root, timeout, request_usb_acm, test_stock_adb=False, test_stock_adb_gu
                     rb'MIBOX_QEMU_ADB_CONSOLE_OK[^\n]*authenticated=true.*?mibox> '
                     if test_stock_adb_auth else rb'MIBOX_QEMU_ADB_CONSOLE_OK.*?mibox> ')
         stages.insert(6, (b'adbprobe\n', expected))
+    if test_hardware:
+        stages.insert(6, (b'hardware-selftest\n', rb'MIBOX_HARDWARE_PARSER_TEST_OK.*?HARDWARE_DIAGNOSTIC_EXIT=0.*?mibox> '))
+        stages.insert(7, (b'hardware-guard\n', rb'FAIL stock kernel guard:.*?HARDWARE_DIAGNOSTIC_EXIT=1.*?mibox> '))
     index = 0
     deadline = time.monotonic()+timeout
     failure = None
@@ -145,10 +148,11 @@ if __name__ == '__main__':
     parser.add_argument('--initramfs', type=Path, help='explicit local RAM rootfs candidate')
     parser.add_argument('--evidence', type=Path, help='retain a separate run without replacing earlier evidence')
     parser.add_argument('--rootfs-usb-adb-marker', action='store_true', help='verify the rootfs opt-in marker without adding a kernel USB flag')
+    parser.add_argument('--test-hardware', action='store_true', help='test hardware helper parser and wrong-kernel rejection; no hardware access')
     args = parser.parse_args()
     if sum((args.test_stock_adb, args.test_stock_adb_guard, args.test_stock_adb_auth)) > 1:
         parser.error('choose one ADB test mode')
     main(args.root, args.timeout, args.request_usb_acm,
          args.test_stock_adb or args.test_stock_adb_guard or args.test_stock_adb_auth,
          args.test_stock_adb_guard, args.test_stock_adb_auth,
-         args.request_usb_adb or args.rootfs_usb_adb_marker, args.initramfs, args.rootfs_usb_adb_marker, args.evidence)
+         args.request_usb_adb or args.rootfs_usb_adb_marker, args.initramfs, args.rootfs_usb_adb_marker, args.evidence, args.test_hardware)

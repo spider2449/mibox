@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"cat /proc/asound/cards; cat /proc/asound/pcm; ls -l /dev/snd; cat /sys/class/amhdmitx/amhdmitx0/aud_cap; cat /sys/class/amhdmitx/amhdmitx0/audio_on\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  15,
+    "ProcessId":  6860,
+    "StartedAt":  "2026-11-14T11:40:26.7646165Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "0 [AMLDUMMYCODEC  ]: SOC-Audio - AML-DUMMY-CODEC\r\r\n                      AML-DUMMY-CODEC\r\r\n00-00: DUMMY_CODEC PCM dummy_codec-0 :  : playback 1 : capture 1\r\r\n00-01: SPDIF PCM dit-hifi-1 :  : playback 1 : capture 1\r\r\ncrw-rw---- system   audio    116,   0 2026-11-14 19:36 controlC0\r\r\ncrw-rw---- system   audio    116,  24 2026-11-14 19:36 pcmC0D0c\r\r\ncrw-rw---- system   audio    116,  16 2026-11-14 19:36 pcmC0D0p\r\r\ncrw-rw---- system   audio    116,  25 2026-11-14 19:36 pcmC0D1c\r\r\ncrw-rw---- system   audio    116,  17 2026-11-14 19:36 pcmC0D1p\r\r\ncrw-rw---- system   audio    116,  33 2026-11-14 19:36 timer\r\r\nCodingType, MaxChannels, SamplingFrequency, SampleSize\r\r\n/system/bin/sh: cat: /sys/class/amhdmitx/amhdmitx0/audio_on: No such file or directory",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.0543228,
+    "FinishedAt":  "2026-11-14T11:40:26.8167263Z"
+}

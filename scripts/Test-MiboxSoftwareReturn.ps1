@@ -1,6 +1,6 @@
 param([Parameter(Mandatory=$true)][string]$AndroidBaseline,
     [ValidateRange(10,300)][int]$TimeoutSeconds=180,
-    [ValidateSet('Restart','Health')][string]$Candidate='Restart')
+    [ValidateSet('Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture')][string]$Candidate='Restart')
 $ErrorActionPreference='Stop'
 $repo=Split-Path -Parent $PSScriptRoot
 $adb=Join-Path $repo 'phone-tools/platform-tools/adb.exe'
@@ -9,20 +9,22 @@ if(-not $baseline.Fingerprint -or $baseline.BootCompleted -ne '1') {throw 'Verif
 $evidence=Join-Path $repo ('artifacts/software-return/return-'+(Get-Date -Format 'yyyyMMdd-HHmmss'))
 New-Item -ItemType Directory -Path $evidence | Out-Null
 $proof=[ordered]@{}
-function Invoke-Adb([string]$Arguments) {
-    $start=[Diagnostics.ProcessStartInfo]::new()
-    $start.FileName=$adb; $start.Arguments=$Arguments
-    $start.UseShellExecute=$false; $start.CreateNoWindow=$true
-    $start.RedirectStandardOutput=$true; $start.RedirectStandardError=$true
-    $process=[Diagnostics.Process]::new(); $process.StartInfo=$start
+. (Join-Path $PSScriptRoot 'RamBootProcess.ps1')
+$script:adbSequence=0
+function Invoke-Adb([string]$Arguments, [switch]$AllowFailure) {
+    $script:adbSequence++
+    $name='adb-'+$script:adbSequence.ToString('D4')
     try {
-        [void]$process.Start()
-        $stdout=$process.StandardOutput.ReadToEndAsync(); $stderr=$process.StandardError.ReadToEndAsync()
-        $timedOut=-not $process.WaitForExit(8000)
-        if($timedOut) {$process.Kill()}
-        $process.WaitForExit()
-        return [pscustomobject]@{Utc=[DateTime]::UtcNow.ToString('o');Arguments=$Arguments;ExitCode=$process.ExitCode;TimedOut=$timedOut;Output=$stdout.Result.Trim();Error=$stderr.Result.Trim()}
-    } finally {$process.Dispose()}
+        return [pscustomobject](Run-Process $name $adb $Arguments 8)
+    } catch {
+        if(-not $AllowFailure) {throw}
+        # A disconnect during the single restart request is not a return verdict.
+        # Preserve the failed process record; only later complete queries can pass.
+        return Get-Content -Raw -LiteralPath (Join-Path $evidence ($name+'.json')) | ConvertFrom-Json
+    }
+}
+function Test-AdbComplete($Record) {
+    return $Record.ExitCode -eq 0 -and -not $Record.TimedOut -and $Record.OutputComplete -and -not $Record.Failure
 }
 function Save-Proof {
     $proof | ConvertTo-Json -Depth 8 | Set-Content -Encoding UTF8 (Join-Path $evidence 'result.json')
@@ -42,6 +44,14 @@ try {
         $pins.init='8c2f9bcd4c5c26585062fbb5f44c7aeadbbe975217d28ab939f65173cb61cb6a'
         $pins.mibox='2e4f1dfd8f28c0bf52323a9e65abf314e1e1705505414cc7cc25fcdf99128512'
     }
+    if($Candidate -in @('Hardware','Hardware2','Hardware3')) {
+        $pins.init='c9685fe4a4e6892a273917e0b82f77d0cd74320245d43ec413cea8b59b213c4b'
+        $pins.mibox='e8fa69daba2bb78b42fdff17ca3819fe2bcf5afb007c129aad3384e0053adecf'
+    }
+    if($Candidate -in @('Capture','DisplayCapture')) {
+        $pins.init='ba4df3e7ab537cad89cae844b4a5821017179d4f75cbfa79b0700c81440d3b4c'
+        $pins.mibox='e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07'
+    }
     $proof.Candidate=$Candidate
     foreach($name in $pins.Keys) {
         $remote=if($name -eq 'init') {'/init'} else {'/bin/mibox'}
@@ -59,18 +69,18 @@ try {
     Save-Proof
     Write-Output ('Verified custom PID1/toolbox and restart readiness: '+$bootId)
     # Send once only. Exit status/acknowledgment is not the return verdict.
-    $proof.Request=Invoke-Adb ('-s 248243005297 shell /bin/mibox reboot-android --boot-id '+$bootId)
+    $proof.Request=Invoke-Adb ('-s 248243005297 shell /bin/mibox reboot-android --boot-id '+$bootId) -AllowFailure
     Save-Proof
     $timer=[Diagnostics.Stopwatch]::StartNew()
     $returned=$false
     while($timer.Elapsed.TotalSeconds -lt $TimeoutSeconds) {
-        $devices=Invoke-Adb 'devices -l'
+        $devices=Invoke-Adb 'devices -l' -AllowFailure
         $event=[ordered]@{Utc=[DateTime]::UtcNow.ToString('o');Adb=$devices}
-        if($devices.Output -match '(?m)^248243005297\s+device\b') {
-            $android=Invoke-Adb '-s 248243005297 shell getprop ro.build.fingerprint; getprop sys.boot_completed; cat /proc/sys/kernel/random/boot_id'
+        if((Test-AdbComplete $devices) -and $devices.Output -match '(?m)^248243005297\s+device\b') {
+            $android=Invoke-Adb '-s 248243005297 shell getprop ro.build.fingerprint; getprop sys.boot_completed; cat /proc/sys/kernel/random/boot_id' -AllowFailure
             $event.Android=$android
             $lines=@(($android.Output -replace "`r",'') -split "`n" | Where-Object {$_ -ne ''})
-            if(-not $android.TimedOut -and $android.ExitCode -eq 0 -and $lines.Count -eq 3 -and
+            if((Test-AdbComplete $android) -and $lines.Count -eq 3 -and
                 $lines[0] -eq $baseline.Fingerprint -and $lines[1] -eq '1' -and
                 $lines[2] -match '^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$' -and
                 $lines[2] -ne $bootId -and $lines[2] -ne $baseline.BootId) {

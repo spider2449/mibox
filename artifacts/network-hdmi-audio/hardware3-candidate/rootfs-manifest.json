@@ -1,0 +1,57 @@
+{
+  "status": "NOT_READY_FOR_HARDWARE_BOOT",
+  "format": "gzip newc RAM rootfs, no boot header",
+  "gzip_bytes": 1029976,
+  "gzip_sha256": "7bbd20535483ba24bf1895646827ed26242ddc9346b9d99ad6671179f62a98ed",
+  "cpio_sha256": "bd7538b2c0c63c2fc60793abdca020b113ef142de16136b3e004df708e3eceda",
+  "files": {
+    "init": {
+      "bytes": 482960,
+      "sha256": "c9685fe4a4e6892a273917e0b82f77d0cd74320245d43ec413cea8b59b213c4b"
+    },
+    "bin/mibox": {
+      "bytes": 513580,
+      "sha256": "e8fa69daba2bb78b42fdff17ca3819fe2bcf5afb007c129aad3384e0053adecf"
+    },
+    "etc/os-release": {
+      "bytes": 63,
+      "sha256": "b50d9caa29142f02bee2b72d0d8dc2f73cf25e6cc7e1d2d10633b5d24caab3fb"
+    },
+    "adb_keys": {
+      "bytes": 713,
+      "sha256": "34bb515834345724107dc1cefaeaee3fa0f522e0fec85caae889f348804e14a6"
+    },
+    "sbin/mibox-hardware": {
+      "bytes": 410828,
+      "sha256": "1d21c17cfec18992a104e163180fea5b632ec06290b452e19a9b200504c379d3"
+    },
+    "etc/mibox-network-static": {
+      "bytes": 61,
+      "sha256": "43e8795e5d62b243fe85a37232be8a9036d4f11508d4377940f327a4844a33f8"
+    },
+    "etc/mibox-usb-adb.enabled": {
+      "bytes": 31,
+      "sha256": "160cd2767f649fa039a8af2387cf36c3e9d5d6de38babb4840aaea9b6bf6ca0a"
+    },
+    "sbin/adbd": {
+      "bytes": 166052,
+      "sha256": "f2a875f1f6230fde084264e2927d1dbf3bf95bcf5e494809814a488caf532afc"
+    },
+    "system/bin/sh": {
+      "bytes": 214916,
+      "sha256": "d44fd1bb1a8a84fe6ed0b4d850dd05d506aaf4fefdb54d24eb99690fb6583fc6"
+    }
+  },
+  "authorized_public_key_count": 1,
+  "private_keys_included": false,
+  "qemu_probe_included": false,
+  "required_opt_in": "read-only /etc/mibox-usb-adb.enabled",
+  "usb_adb_enabled_by_rootfs_marker": true,
+  "live_usb_reconfigured": false,
+  "partitions_written": false,
+  "outstanding": [
+    "physical FunctionFS transport",
+    "loader image acceptance",
+    "verified software recovery"
+  ]
+}

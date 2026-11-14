@@ -127,7 +127,7 @@ fn readiness() -> io::Result<String> {
         .to_owned())
 }
 
-fn handle(mut stream: UnixStream) -> io::Result<()> {
+fn handle(mut stream: UnixStream, hardware: fn(&str) -> io::Result<String>) -> io::Result<()> {
     stream.set_write_timeout(Some(Duration::from_secs(2)))?;
     if !matches!(credentials(&stream)?.uid, 0 | 2000) {
         return Err(io::Error::other("control peer UID denied"));
@@ -144,13 +144,21 @@ fn handle(mut stream: UnixStream) -> io::Result<()> {
             // LINUX_REBOOT_CMD_RESTART, no mode argument
             return Err(io::Error::last_os_error());
         }
+    } else if let Some(action) = ["network", "display", "audio", "capture"]
+        .into_iter()
+        .find(|action| request == format!("HARDWARE {action} {boot_id}\n").as_bytes())
+    {
+        // The helper is bounded separately; never accept a path or shell text.
+        stream.set_write_timeout(Some(Duration::from_secs(3)))?;
+        let output = hardware(action)?;
+        stream.write_all(output.as_bytes())?;
     } else {
         return Err(io::Error::other("invalid command or stale boot ID"));
     }
     Ok(())
 }
 
-pub fn serve() -> io::Result<()> {
+pub fn serve(hardware: fn(&str) -> io::Result<String>) -> io::Result<()> {
     if std::process::id() != 1 || unsafe { getuid() } != 0 {
         return Err(io::Error::other("control listener requires root PID1"));
     }
@@ -159,10 +167,38 @@ pub fn serve() -> io::Result<()> {
     fs::set_permissions(SOCKET, fs::Permissions::from_mode(0o666))?;
     eprintln!("MIBOX_RAM_CONTROL_READY");
     for stream in listener.incoming() {
-        match stream.and_then(handle) {
+        match stream.and_then(|stream| handle(stream, hardware)) {
             Ok(()) => {}
             Err(error) => eprintln!("mibox-control: {error}"),
         }
+    }
+    Ok(())
+}
+
+pub fn hardware_request(action: &str, expected_boot_id: &str) -> io::Result<()> {
+    if !matches!(action, "network" | "display" | "audio" | "capture") {
+        return Err(io::Error::other("hardware action denied"));
+    }
+    let boot_id = fs::read_to_string("/proc/sys/kernel/random/boot_id")?;
+    if expected_boot_id != boot_id.trim() {
+        return Err(io::Error::other("hardware boot ID mismatch"));
+    }
+    let mut stream = UnixStream::connect(SOCKET)?;
+    let peer = credentials(&stream)?;
+    if peer.uid != 0 || peer.pid != 1 {
+        return Err(io::Error::other("hardware server is not root PID1"));
+    }
+    stream.set_write_timeout(Some(Duration::from_secs(3)))?;
+    stream.set_read_timeout(Some(Duration::from_secs(60)))?;
+    writeln!(stream, "HARDWARE {action} {expected_boot_id}")?;
+    stream.shutdown(std::net::Shutdown::Write)?;
+    let mut response = String::new();
+    (&mut stream).take(16385).read_to_string(&mut response)?;
+    print!("{response}");
+    if response.len() > 16384 || !response.ends_with("MIBOX_HARDWARE_EXIT=0\n") {
+        return Err(io::Error::other(
+            "hardware helper failed or response invalid",
+        ));
     }
     Ok(())
 }

@@ -1,0 +1,20 @@
+﻿{
+    "Executable":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "Arguments":  "-NoProfile -File \"F:\\coding\\otherPrj\\mibox\\target\\ram-boot-process-tests\\0133904d-5ad5-48c2-acb7-132592387fd6\\fixture.ps1\" -Mode tree -ChildRecord \"F:\\coding\\otherPrj\\mibox\\target\\ram-boot-process-tests\\0133904d-5ad5-48c2-acb7-132592387fd6\\child.json\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  3,
+    "ProcessId":  12320,
+    "StartedAt":  "2026-11-14T21:59:58.8427166Z",
+    "ExitCode":  1,
+    "TimedOut":  true,
+    "OutputComplete":  true,
+    "Output":  "fixture-started",
+    "Error":  "fixture-stderr",
+    "CleanupAttempted":  true,
+    "CleanupExitCode":  0,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "Failure":  "tree-timeout failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\process-tests-20261115-055956-389",
+    "ElapsedSeconds":  3.1968608,
+    "FinishedAt":  "2026-11-14T22:00:02.0385348Z"
+}

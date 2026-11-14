@@ -1,0 +1,34 @@
+﻿[
+    {
+        "Path":  "F:\\coding\\otherPrj\\mibox\\src\\hardware\\mibox-hardware.c",
+        "Hash":  "B36128324EAEAB33E6637A184EBF8D7A817E9DEAAE6E2B11F3B09F6AB8F21BB0"
+    },
+    {
+        "Path":  "F:\\coding\\otherPrj\\mibox\\src\\hardware\\test-parser.c",
+        "Hash":  "711796D3FB501895332096B37E4DF49EBE3F2F0247B50B651E68CF7448393DD5"
+    },
+    {
+        "Path":  "F:\\coding\\otherPrj\\mibox\\src\\hardware\\test-network.c",
+        "Hash":  "9D1FFF0E3DE0F008A3184EDDE498621F72BC6FD8DBE01CA03E59C2F0B7B14032"
+    },
+    {
+        "Path":  "F:\\coding\\otherPrj\\mibox\\src\\bin\\mibox-init.rs",
+        "Hash":  "3FFD923ED6A52365EA98B1CBC0E5E5447F95BB5D64E37362BCCEF1A093643EA1"
+    },
+    {
+        "Path":  "F:\\coding\\otherPrj\\mibox\\src\\bin\\mibox-userland.rs",
+        "Hash":  "55FFE907551AEAEE35A97EA271A23CF8F4C8A29E61B9FD539CA117BA50DA0573"
+    },
+    {
+        "Path":  "F:\\coding\\otherPrj\\mibox\\src\\ram_control.rs",
+        "Hash":  "D6FF1602344AD50D18B1D8AFDDFB9C7AA003C8216697BE0EF040739AF551871B"
+    },
+    {
+        "Path":  "F:\\coding\\otherPrj\\mibox\\scripts\\build-hardware-helper.py",
+        "Hash":  "14A83E67E9DF0AB5A9869692447B7E608A81B2FF32FD6212296A72D7910E1793"
+    },
+    {
+        "Path":  "F:\\coding\\otherPrj\\mibox\\scripts\\Test-MiboxHardware.ps1",
+        "Hash":  "D881D8F0DB65FBDCB11EE00BB72958A302339B191C70233B3143D61CA54D46EB"
+    }
+]

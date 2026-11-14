@@ -1,0 +1,2 @@
+﻿{"Elapsed":0.561896,"Utc":"2026-11-14T12:17:01.2406216Z","State":{"Usb":[],"Adb":{"ExitCode":0,"TimedOut":false,"Output":"List of devices attached","Error":""}}}
+{"Elapsed":7.4164575999999993,"Utc":"2026-11-14T12:17:08.0982211Z","State":{"Usb":[{"Status":"OK","FriendlyName":"MiBOX1S","InstanceId":"USB\\VID_18D1\u0026PID_D002\\248243005297"}],"Adb":{"ExitCode":0,"TimedOut":false,"Output":"List of devices attached\r\n248243005297           recovery product:casablanca_icntv model:MiBOX1S device:casablanca transport_id:22","Error":""}}}

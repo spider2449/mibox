@@ -1,0 +1,16 @@
+﻿{
+    "Action":  "Display",
+    "StartedAt":  "2026-11-14T20:18:38.3386167+08:00",
+    "DeviceAccessed":  true,
+    "HelperSucceeded":  true,
+    "FunctionalPass":  false,
+    "OwnerConfirmationRequired":  true,
+    "ScriptSHA256":  "7bd22cb997864f857cbc7dd77596cede6ba93c1be256927595ff6fc4956d326c",
+    "BootId":  "158776f1-48d4-4da9-af0a-dcde271c2848",
+    "initSha256":  "c9685fe4a4e6892a273917e0b82f77d0cd74320245d43ec413cea8b59b213c4b",
+    "miboxSha256":  "e8fa69daba2bb78b42fdff17ca3819fe2bcf5afb007c129aad3384e0053adecf",
+    "helperSha256":  "1e47e6ea7ae9200e1613200f7c9ccb60c554979ee0d139635f8d3c66ce862f71",
+    "Output":  "fb_id=OSD FB visible=1280x1080 virtual=1280x3240 offset=0,0 bpp=32 stride=5120 smem_len=16777216\nrgba=0:8,8:8,16:8,24:8\nMIBOX_HDMI_PATTERN_ACTIVE duration_seconds=15 bars=white,yellow,cyan,green,magenta,red,blue,black\nframebuffer_restore=ok\nMIBOX_HDMI_PATTERN_WRITTEN owner_visual_confirmation=required\nMIBOX_HARDWARE_EXIT=0\nMIBOX_COMMAND_EXIT=0",
+    "Scope":  "Framebuffer writes and restoration only; visible HDMI output requires owner observation",
+    "FinishedAt":  "2026-11-14T20:18:56.3110917+08:00"
+}

@@ -1,0 +1,25 @@
+{
+  "scope": "Synthetic host framebuffer data; no physical screenshot or HDMI claim",
+  "command": [
+    "gcc",
+    "-fsanitize=address,undefined",
+    "-g",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-D_FILE_OFFSET_BITS=64",
+    "-o",
+    "/mnt/f/coding/otherPrj/mibox/target/hardware-helper/capture-asan",
+    "/mnt/f/coding/otherPrj/mibox/src/hardware/test-capture.c"
+  ],
+  "exit_code": 0,
+  "stdout": "capture padded_rows_offsets_rgb_alpha_ignored=PASS\ncapture bgr_channel_order=PASS\ncapture invalid_layouts=PASS\ncapture truncated_and_failed_io=PASS\ncapture randomized_geometry_100000=PASS\n",
+  "stderr": "",
+  "sources": {
+    "src/hardware/test-capture.c": "bad3c46a5e50588157417188cede9abcbe818a41a68a1a05a5458c81862b2471",
+    "src/hardware/framebuffer-capture.h": "115b6de06f76c534907d080654ff5a4ee07dbffdf0170d375cd5ade544a377fb",
+    "src/hardware/mibox-hardware.c": "fc50f92f707fe3d974b171370e93898910229a37e17890e7686a7475b29e1450"
+  },
+  "png_conversion": "PASS: dimensions, RGB bytes, CRCs, invalid inputs, exact color bars and corruption rejection",
+  "converter_sha256": "ec118aa13837efc152e420a5ed43b1f58d7cdcf47d1d08f89dca60f5ea3d3f86"
+}

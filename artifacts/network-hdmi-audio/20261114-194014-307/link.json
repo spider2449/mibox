@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"cat /sys/class/net/eth0/carrier; cat /sys/class/net/eth0/operstate; cat /sys/class/net/eth0/speed; cat /sys/class/amhdmitx/amhdmitx0/hpd_state; echo; cat /sys/class/display/mode; echo; cat /proc/sys/kernel/random/boot_id\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  15,
+    "ProcessId":  18088,
+    "StartedAt":  "2026-11-14T11:40:36.4879972Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "1\r\r\nup\r\r\n100\r\r\n1\r\r\n1080p\r\r\n\r\r\n\r\r\n175120b6-cd0a-484c-bd05-a8fb038e8c1d",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.0750383,
+    "FinishedAt":  "2026-11-14T11:40:36.5606728Z"
+}

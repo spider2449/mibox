@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"id; uname -a; cat /proc/sys/kernel/random/boot_id; getprop sys.boot_completed; getprop ro.build.fingerprint\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  15,
+    "ProcessId":  15072,
+    "StartedAt":  "2026-11-14T11:40:14.3477812Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "uid=2000(shell) gid=2000(shell) groups=1003(graphics),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats) context=u:r:shell:s0\r\r\nLinux localhost 3.10.33 #1 SMP PREEMPT Mon Feb 20 15:47:21 CST 2017 armv7l GNU/Linux\r\r\n175120b6-cd0a-484c-bd05-a8fb038e8c1d\r\r\n1\r\r\nXiaomi/casablanca_icntv/casablanca:4.4.2/KOT49H/2876:user/release-keys",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.13702809999999999,
+    "FinishedAt":  "2026-11-14T11:40:14.4835697Z"
+}

@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 pull /sbin/mibox-hardware \"F:\\coding\\otherPrj\\mibox\\artifacts\\network-hdmi-audio\\20261114-201714-341-network\\helper.elf\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  17888,
+    "StartedAt":  "2026-11-14T12:17:15.2666789Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "/sbin/mibox-hardware: 1 file pulled, 0 skipped. 2.2 MB/s (410828 bytes in 0.176s)",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.22225129999999998,
+    "FinishedAt":  "2026-11-14T12:17:15.4881164Z"
+}

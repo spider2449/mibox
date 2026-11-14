@@ -1,0 +1,33 @@
+{
+  "command": [
+    "qemu-system-arm",
+    "-machine",
+    "virt",
+    "-cpu",
+    "cortex-a15",
+    "-m",
+    "256",
+    "-nic",
+    "none",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "stdio",
+    "-no-reboot",
+    "-kernel",
+    "/mnt/f/coding/otherPrj/mibox/phone-tools/qemu/vmlinuz",
+    "-initrd",
+    "/mnt/f/coding/otherPrj/mibox/target/qemu-restart/initramfs.cpio.gz",
+    "-append",
+    "console=ttyAMA0,115200 rdinit=/init panic=0 mibox.test_restart=1"
+  ],
+  "failure": null,
+  "passed": true,
+  "initramfs_sha256": "37ce9db32db30385f67ad7df55e543dd7dd87e32b79124e302e8b0327837d48c",
+  "kernel_sha256": "b508abca3127cb0d9e1b3aba37f400cbd7dac170040641756807e0e496039de8",
+  "platform_guard": false,
+  "guest_exit_before_host_cleanup": 0,
+  "scope": "Generic QEMU ARM only; not physical MiBOX Android return."
+}

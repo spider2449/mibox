@@ -1,0 +1,62 @@
+[
+    {
+        "Case":  "valid",
+        "Pass":  true,
+        "RestartRequests":  1,
+        "AndroidQueries":  1
+    },
+    {
+        "Case":  "identity-nonzero",
+        "Pass":  true,
+        "RestartRequests":  0,
+        "AndroidQueries":  0
+    },
+    {
+        "Case":  "identity-incomplete",
+        "Pass":  true,
+        "RestartRequests":  0,
+        "AndroidQueries":  0
+    },
+    {
+        "Case":  "identity-timeout",
+        "Pass":  true,
+        "RestartRequests":  0,
+        "AndroidQueries":  0
+    },
+    {
+        "Case":  "request-disconnect",
+        "Pass":  true,
+        "RestartRequests":  1,
+        "AndroidQueries":  1
+    },
+    {
+        "Case":  "return-incomplete",
+        "Pass":  true,
+        "RestartRequests":  1,
+        "AndroidQueries":  2
+    },
+    {
+        "Case":  "return-timeout",
+        "Pass":  true,
+        "RestartRequests":  1,
+        "AndroidQueries":  2
+    },
+    {
+        "Case":  "return-nonzero",
+        "Pass":  true,
+        "RestartRequests":  1,
+        "AndroidQueries":  2
+    },
+    {
+        "Case":  "return-old-boot",
+        "Pass":  true,
+        "RestartRequests":  1,
+        "AndroidQueries":  2
+    },
+    {
+        "Case":  "return-not-completed",
+        "Pass":  true,
+        "RestartRequests":  1,
+        "AndroidQueries":  2
+    }
+]

@@ -50,7 +50,9 @@ function Run-Process([string]$Name, [string]$Executable, [string]$Arguments, [in
         if (-not $process.WaitForExit(5000)) { throw 'Child did not exit after cleanup' }
         $result.ExitCode = $process.ExitCode
         # Descendants can inherit pipes: never wait indefinitely for EOF.
-        $result.OutputComplete = $stdout.Wait(2000) -and $stderr.Wait(2000)
+        $result.StdoutComplete = $stdout.Wait(2000)
+        $result.StderrComplete = $stderr.Wait(2000)
+        $result.OutputComplete = $result.StdoutComplete -and $result.StderrComplete
         if ($stdout.IsCompleted) { $result.Output=$stdout.Result.Trim() }
         if ($stderr.IsCompleted) { $result.Error=$stderr.Result.Trim() }
         if ($result.TimedOut -or $result.ExitCode -ne 0 -or -not $result.OutputComplete) {

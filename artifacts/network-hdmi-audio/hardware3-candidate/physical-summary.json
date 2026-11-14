@@ -1,0 +1,41 @@
+﻿{
+    "Candidate":  "Hardware3",
+    "RecordedAt":  "2026-11-14T13:23:51.9308514Z",
+    "ImageSHA256":  "5f6a5654e5603c7abaeb9dca21996bc5a6e3bc0a83b650c8e0e347de100fdd55",
+    "CompleteRamBytesVerified":  8388608,
+    "TransferElapsedSeconds":  1311.4061775999999,
+    "ControlTimeoutMilliseconds":  10000,
+    "CustomBootVerified":  true,
+    "CustomBootId":  "49c3b52c-4d60-4bbc-9eac-8a502088108c",
+    "ThreeExecutableReadbacksVerified":  true,
+    "NetworkFunctionalPass":  true,
+    "NetworkConfiguration":  "192.168.1.222/24 gateway 192.168.1.1",
+    "GatewayReplies":  "3/3",
+    "NetworkCleanupVerified":  true,
+    "HdmiVisibleOutputPass":  true,
+    "OwnerDisplayReply":  "æœ‰çœ‹åˆ°è‰²æ¢",
+    "FrameBufferBytesRestored":  true,
+    "PcmSubmissionPass":  true,
+    "PcmFramesAccepted":  144000,
+    "AudibleOutput":  "UNKNOWN",
+    "OwnerEquipment":  "Monitor only",
+    "FramebufferCapture":  "Permission denied for UID2000; no screenshot captured",
+    "AndroidReturnVerified":  true,
+    "AndroidBootId":  "ef41a5b6-63c1-4b64-b5c5-77997198614c",
+    "AndroidBootCompleted":  "1",
+    "FlashCommandSent":  false,
+    "AutomaticWrapperPassed":  false,
+    "WrapperLimitation":  "Observer process exited 0 but output stream completion was false; independent saved observer, executable readbacks, hardware tests and Android return validated separately. Original failed wrapper result is retained.",
+    "Evidence":  {
+                     "Transfer":  "artifacts/ram-boot/20261114-205603-859-resume-hardware3/upload-and-boot.json",
+                     "Observer":  "artifacts/usb-loader-protocol/ram-boot-20261114-211757/result.json",
+                     "Hardware":  {
+                                      "Network":  "artifacts/network-hdmi-audio/20261114-211941-285-network/result.json",
+                                      "Display":  "artifacts/network-hdmi-audio/20261114-212016-515-display/result.json",
+                                      "Audio":  "artifacts/network-hdmi-audio/20261114-212058-803-audio/result.json"
+                                  },
+                     "OwnerDisplay":  "artifacts/network-hdmi-audio/20261114-212016-515-display/owner-observation.json",
+                     "AndroidReturn":  "artifacts/software-return/return-20261114-212103/result.json",
+                     "FramebufferCapture":  "artifacts/network-hdmi-audio/20261114-211958-419-framebuffer-capture/framebuffer-fb0-readback.json"
+                 }
+}

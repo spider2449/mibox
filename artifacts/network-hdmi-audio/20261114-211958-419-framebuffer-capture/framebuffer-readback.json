@@ -1,0 +1,17 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 pull /dev/graphics/fb0 \"F:\\coding\\otherPrj\\mibox\\target\\framebuffer-capture\\fb0.raw\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  20,
+    "ProcessId":  9768,
+    "StartedAt":  "2026-11-14T13:19:58.7046336Z",
+    "ExitCode":  1,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "adb: error: remote object \u0027/dev/graphics/fb0\u0027 does not exist",
+    "CleanupAttempted":  false,
+    "Failure":  "framebuffer-readback failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\network-hdmi-audio\\20261114-211958-419-framebuffer-capture",
+    "ElapsedSeconds":  0.0502515,
+    "FinishedAt":  "2026-11-14T13:19:58.7527079Z"
+}

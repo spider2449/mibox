@@ -1,0 +1,66 @@
+﻿{
+    "AndroidBaseline":  {
+                            "Fingerprint":  "Xiaomi/casablanca_icntv/casablanca:4.4.2/KOT49H/2876:user/release-keys",
+                            "BootCompleted":  "1",
+                            "BootId":  "6afdf09a-f36b-4499-9852-e069524d35d1"
+                        },
+    "Os":  {
+               "Utc":  "2026-11-14T22:38:33.5344252Z",
+               "Arguments":  "-s 248243005297 shell cat /etc/os-release",
+               "ExitCode":  0,
+               "TimedOut":  false,
+               "Output":  "NAME=\"MiBOX Custom Userspace\"\r\r\nID=mibox-custom\r\r\nVERSION_ID=0.1.0",
+               "Error":  ""
+           },
+    "BootId":  {
+                   "Utc":  "2026-11-14T22:38:33.6206559Z",
+                   "Arguments":  "-s 248243005297 shell cat /proc/sys/kernel/random/boot_id",
+                   "ExitCode":  0,
+                   "TimedOut":  false,
+                   "Output":  "c076cc9c-28ed-4f2e-8f19-b014a07140bd",
+                   "Error":  ""
+               },
+    "Candidate":  "Capture",
+    "Pullinit":  {
+                     "Utc":  "2026-11-14T22:38:34.0440734Z",
+                     "Arguments":  "-s 248243005297 pull /init \"F:\\coding\\otherPrj\\mibox\\artifacts\\software-return\\return-20261115-063833\\init.elf\"",
+                     "ExitCode":  0,
+                     "TimedOut":  false,
+                     "Output":  "",
+                     "Error":  "/init: 1 file pulled, 0 skipped. 1.3 MB/s (483208 bytes in 0.363s)"
+                 },
+    "initSha256":  "ba4df3e7ab537cad89cae844b4a5821017179d4f75cbfa79b0700c81440d3b4c",
+    "Pullmibox":  {
+                      "Utc":  "2026-11-14T22:38:34.4371096Z",
+                      "Arguments":  "-s 248243005297 pull /bin/mibox \"F:\\coding\\otherPrj\\mibox\\artifacts\\software-return\\return-20261115-063833\\mibox.elf\"",
+                      "ExitCode":  0,
+                      "TimedOut":  false,
+                      "Output":  "",
+                      "Error":  "/bin/mibox: 1 file pulled, 0 skipped. 1.7 MB/s (513620 bytes in 0.293s)"
+                  },
+    "miboxSha256":  "e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07",
+    "Pid1":  {
+                 "Utc":  "2026-11-14T22:38:34.5214860Z",
+                 "Arguments":  "-s 248243005297 shell cat /proc/1/status",
+                 "ExitCode":  0,
+                 "TimedOut":  false,
+                 "Output":  "Name:\tinit\r\r\nState:\tS (sleeping)\r\r\nTgid:\t1\r\r\nPid:\t1\r\r\nPPid:\t0\r\r\nTracerPid:\t0\r\r\nUid:\t0\t0\t0\t0\r\r\nGid:\t0\t0\t0\t0\r\r\nFDSize:\t32\r\r\nGroups:\t\r\r\nVmPeak:\t    4832 kB\r\r\nVmSize:\t    4828 kB\r\r\nVmLck:\t       0 kB\r\r\nVmPin:\t       0 kB\r\r\nVmHWM:\t     300 kB\r\r\nVmRSS:\t     296 kB\r\r\nVmData:\t    4208 kB\r\r\nVmStk:\t     136 kB\r\r\nVmExe:\t     528 kB\r\r\nVmLib:\t4294967180 kB\r\r\nVmPTE:\t      10 kB\r\r\nVmSwap:\t       0 kB\r\r\nThreads:\t3\r\r\nSigQ:\t0/6840\r\r\nSigPnd:\t0000000000000000\r\r\nShdPnd:\t0000000000000000\r\r\nSigBlk:\t0000000000000000\r\r\nSigIgn:\t0000000000001000\r\r\nSigCgt:\t0000000000000440\r\r\nCapInh:\t0000000000000000\r\r\nCapPrm:\t0000001fffffffff\r\r\nCapEff:\t0000001fffffffff\r\r\nCapBnd:\t0000001fffffffff\r\r\nCpus_allowed:\t3\r\r\nCpus_allowed_list:\t0-1\r\r\nMems_allowed:\t1\r\r\nMems_allowed_list:\t0\r\r\nvoluntary_ctxt_switches:\t147\r\r\nnonvoluntary_ctxt_switches:\t366",
+                 "Error":  ""
+             },
+    "Check":  {
+                  "Utc":  "2026-11-14T22:38:34.5928968Z",
+                  "Arguments":  "-s 248243005297 shell /bin/mibox reboot-android --check",
+                  "ExitCode":  0,
+                  "TimedOut":  false,
+                  "Output":  "MIBOX_RESTART_READY boot_id=c076cc9c-28ed-4f2e-8f19-b014a07140bd",
+                  "Error":  ""
+              },
+    "Request":  {
+                    "Utc":  "2026-11-14T22:38:34.7264346Z",
+                    "Arguments":  "-s 248243005297 shell /bin/mibox reboot-android --boot-id c076cc9c-28ed-4f2e-8f19-b014a07140bd",
+                    "ExitCode":  0,
+                    "TimedOut":  false,
+                    "Output":  "",
+                    "Error":  ""
+                }
+}

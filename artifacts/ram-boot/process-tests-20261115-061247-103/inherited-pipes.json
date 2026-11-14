@@ -1,0 +1,19 @@
+﻿{
+    "Executable":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "Arguments":  "-NoProfile -File \"F:\\coding\\otherPrj\\mibox\\target\\ram-boot-process-tests\\3b259b28-48ae-40ed-a4c8-4ac0d42adeb4\\fixture.ps1\" -Mode pipe -ChildRecord \"F:\\coding\\otherPrj\\mibox\\target\\ram-boot-process-tests\\3b259b28-48ae-40ed-a4c8-4ac0d42adeb4\\child.json\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  5,
+    "ProcessId":  5028,
+    "StartedAt":  "2026-11-14T22:12:52.8482054Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  false,
+    "Output":  "",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  false,
+    "StderrComplete":  false,
+    "Failure":  "inherited-pipes failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\process-tests-20261115-061247-103",
+    "ElapsedSeconds":  4.3174185,
+    "FinishedAt":  "2026-11-14T22:12:57.1637544Z"
+}

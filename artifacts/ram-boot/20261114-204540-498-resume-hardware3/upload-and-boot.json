@@ -1,0 +1,17 @@
+﻿{
+    "Executable":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "Arguments":  "-NoProfile -File \"F:\\coding\\otherPrj\\mibox\\scripts\\Test-MiboxLoaderRam.ps1\" -Action UploadAndBoot -Candidate Hardware3",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  3600,
+    "ProcessId":  13368,
+    "StartedAt":  "2026-11-14T12:45:42.1787696Z",
+    "ExitCode":  1,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "Verified RAM bytes: 262144\r\nVerified RAM bytes: 524288\r\nF:\\coding\\otherPrj\\mibox\\scripts\\Test-MiboxLoaderRam.ps1 : Exception calling \"Run\" with \"5\" argument(s): \"Write RAM \r\n0x820bd100 (Win32 121)\"\r\n    + CategoryInfo          : NotSpecified: (:) [Test-MiboxLoaderRam.ps1], MethodInvocationException\r\n    + FullyQualifiedErrorId : Win32Exception,Test-MiboxLoaderRam.ps1",
+    "CleanupAttempted":  false,
+    "Failure":  "upload-and-boot failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\20261114-204540-498-resume-hardware3",
+    "ElapsedSeconds":  121.8216805,
+    "FinishedAt":  "2026-11-14T12:47:43.9923930Z"
+}

@@ -1,0 +1,1 @@
+qemu-system-arm: could not load initrd 'target/mibox-rootfs-capture/initramfs.cpio.gz'

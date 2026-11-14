@@ -1,0 +1,183 @@
+{
+  "scope": "Host Linux namespaces and synthetic DHCP server; no physical Mi Box evidence",
+  "source_sha256": "e17b1f4c98c2c5053b33bc3f7173c65de626f91e2d13597937a039504408bd34",
+  "results": [
+    {
+      "exit_code": 0,
+      "stdout": "dhcp_address=10.23.0.2 netmask=255.255.255.0 gateway=10.23.0.1 lease_seconds=600\ngateway_echo_replies=3/3\nnetwork_cleanup=ok\nMIBOX_ETHERNET_TEST_OK\n",
+      "stderr": "",
+      "addresses": [
+        {
+          "ifindex": 2,
+          "link_index": 3,
+          "ifname": "eth0",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST"
+          ],
+          "mtu": 1500,
+          "qdisc": "noqueue",
+          "operstate": "DOWN",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "f6:3f:bd:5d:28:e4",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 0,
+          "addr_info": []
+        }
+      ],
+      "routes": [],
+      "case": "dhcp-gateway-cleanup",
+      "isolated_network_namespaces": true,
+      "dhcp_exchange": [
+        {
+          "request_type": 1,
+          "response_type": 2,
+          "xid": "a3737167"
+        },
+        {
+          "request_type": 3,
+          "response_type": 5,
+          "xid": "a3737167"
+        }
+      ],
+      "cleanup_verified": true,
+      "fixture_stderr": "",
+      "passed": true
+    },
+    {
+      "exit_code": 1,
+      "stdout": "network_cleanup=attempted; inspect state\n",
+      "stderr": "FAIL DHCP ACK: Connection refused\nFAIL network test: Connection refused\n",
+      "addresses": [
+        {
+          "ifindex": 4,
+          "link_index": 5,
+          "ifname": "eth0",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST"
+          ],
+          "mtu": 1500,
+          "qdisc": "noqueue",
+          "operstate": "DOWN",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "62:a0:85:bd:a2:ac",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 0,
+          "addr_info": []
+        }
+      ],
+      "routes": [],
+      "case": "dhcp-nak-cleanup",
+      "isolated_network_namespaces": true,
+      "dhcp_exchange": [
+        {
+          "request_type": 1,
+          "response_type": 2,
+          "xid": "6ea8776a"
+        },
+        {
+          "request_type": 3,
+          "response_type": 6,
+          "xid": "6ea8776a"
+        }
+      ],
+      "cleanup_verified": true,
+      "fixture_stderr": "",
+      "passed": true
+    },
+    {
+      "exit_code": 1,
+      "stdout": "network_cleanup=attempted; inspect state\n",
+      "stderr": "FAIL IPv4 conflict probe: Address already in use\nFAIL network test: Address already in use\n",
+      "addresses": [
+        {
+          "ifindex": 6,
+          "link_index": 7,
+          "ifname": "eth0",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST"
+          ],
+          "mtu": 1500,
+          "qdisc": "noqueue",
+          "operstate": "DOWN",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "8a:c8:56:45:4b:1f",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 0,
+          "addr_info": []
+        }
+      ],
+      "routes": [],
+      "case": "address-conflict-cleanup",
+      "isolated_network_namespaces": true,
+      "dhcp_exchange": [
+        {
+          "request_type": 1,
+          "response_type": 2,
+          "xid": "ecf40124"
+        },
+        {
+          "request_type": 3,
+          "response_type": 5,
+          "xid": "ecf40124"
+        }
+      ],
+      "cleanup_verified": true,
+      "fixture_stderr": "",
+      "passed": true
+    },
+    {
+      "exit_code": 1,
+      "stdout": "network_cleanup=attempted; inspect state\n",
+      "stderr": "FAIL DHCP lease contract: Invalid argument\nFAIL network test: Invalid argument\n",
+      "addresses": [
+        {
+          "ifindex": 8,
+          "link_index": 9,
+          "ifname": "eth0",
+          "flags": [
+            "BROADCAST",
+            "MULTICAST"
+          ],
+          "mtu": 1500,
+          "qdisc": "noqueue",
+          "operstate": "DOWN",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "ether",
+          "address": "fe:25:fe:9d:31:b3",
+          "broadcast": "ff:ff:ff:ff:ff:ff",
+          "link_netnsid": 0,
+          "addr_info": []
+        }
+      ],
+      "routes": [],
+      "case": "changed-server-cleanup",
+      "isolated_network_namespaces": true,
+      "dhcp_exchange": [
+        {
+          "request_type": 1,
+          "response_type": 2,
+          "xid": "4b07adda"
+        },
+        {
+          "request_type": 3,
+          "response_type": 5,
+          "xid": "4b07adda"
+        }
+      ],
+      "cleanup_verified": true,
+      "fixture_stderr": "",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

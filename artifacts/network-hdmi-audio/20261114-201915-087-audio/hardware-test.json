@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"/bin/mibox hardware-test audio --boot-id 158776f1-48d4-4da9-af0a-dcde271c2848; result=$?; echo MIBOX_COMMAND_EXIT=$result\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  65,
+    "ProcessId":  1892,
+    "StartedAt":  "2026-11-14T12:19:16.1595801Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "pcm_card=0 device=0 id=DUMMY_CODEC PCM dummy_codec-0 name=\r\r\nMIBOX_AUDIO_TONE_ACTIVE seconds=3 rate=48000 stereo=left440_right660 amplitude=0.03\r\r\npcm_frames_accepted=144000\r\r\nMIBOX_AUDIO_FRAMES_WRITTEN owner_audible_confirmation=required\r\r\nMIBOX_HARDWARE_EXIT=0\r\r\nMIBOX_COMMAND_EXIT=0",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  3.1189942,
+    "FinishedAt":  "2026-11-14T12:19:19.2772769Z"
+}

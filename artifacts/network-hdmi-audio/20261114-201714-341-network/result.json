@@ -1,0 +1,16 @@
+﻿{
+    "Action":  "Network",
+    "StartedAt":  "2026-11-14T20:17:14.3574077+08:00",
+    "DeviceAccessed":  true,
+    "HelperSucceeded":  false,
+    "FunctionalPass":  false,
+    "OwnerConfirmationRequired":  false,
+    "ScriptSHA256":  "7bd22cb997864f857cbc7dd77596cede6ba93c1be256927595ff6fc4956d326c",
+    "BootId":  "158776f1-48d4-4da9-af0a-dcde271c2848",
+    "initSha256":  "c9685fe4a4e6892a273917e0b82f77d0cd74320245d43ec413cea8b59b213c4b",
+    "miboxSha256":  "e8fa69daba2bb78b42fdff17ca3819fe2bcf5afb007c129aad3384e0053adecf",
+    "helperSha256":  "1e47e6ea7ae9200e1613200f7c9ccb60c554979ee0d139635f8d3c66ce862f71",
+    "Output":  "network_cleanup=attempted; inspect state\nFAIL DHCP offer: Connection timed out\nFAIL network test: Connection timed out\nMIBOX_HARDWARE_EXIT=1\nError: Custom { kind: Other, error: \"hardware helper failed or response invalid\" }\nMIBOX_COMMAND_EXIT=1",
+    "Failure":  "Hardware helper or toolbox failed; inspect evidence before retry",
+    "FinishedAt":  "2026-11-14T20:17:31.0457617+08:00"
+}

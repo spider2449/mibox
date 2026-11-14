@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"/bin/mibox net; /bin/mibox cat /proc/net/dev; /bin/mibox cat /proc/net/arp; /bin/mibox cat /proc/net/fib_trie\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  1096,
+    "StartedAt":  "2026-11-14T12:17:56.1798140Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "INTERFACE\tSTATE\tCARRIER\tMAC\r\r\neth0\tdown\tUNKNOWN\t10:48:b1:ec:20:eb\r\r\nip6tnl0\tdown\tUNKNOWN\t00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00\r\r\nlo\tdown\tUNKNOWN\t00:00:00:00:00:00\r\r\nsit0\tdown\tUNKNOWN\t00:00:00:00\r\r\nIPv4 route table:\r\r\nInter-|   Receive                                                |  Transmit\r\r\n face |bytes    packets errs drop fifo frame compressed multicast|bytes    packets errs drop fifo colls carrier compressed\r\r\n  sit0:       0       0    0    0    0     0          0         0        0       0    0    0    0     0       0          0\r\r\n    lo:       0       0    0    0    0     0          0         0        0       0    0    0    0     0       0          0\r\r\n  eth0:    7692      66    0   56    0     0          0         0     1432       8    0    0    0     0       0          0\r\r\nip6tnl0:       0       0    0    0    0     0          0         0        0       0    0    0    0     0       0          0\r\r\nIP address       HW type     Flags       HW address            Mask     Device",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.2406139,
+    "FinishedAt":  "2026-11-14T12:17:56.4186210Z"
+}

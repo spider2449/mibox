@@ -1,0 +1,9 @@
+{
+  "disposition": "INCOMPLETE",
+  "reason": "Session interruption; original uploader no longer running when continuation was inspected",
+  "complete_ram_readback_verified": false,
+  "physical_boot_verified": false,
+  "boot_command_outcome": "UNKNOWN",
+  "subsequent_loader_observation": "C003 present, status OK",
+  "subsequent_attempt": "artifacts/ram-boot/20261114-203431-003-resume-hardware2/"
+}

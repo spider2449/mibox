@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 pull /bin/mibox \"F:\\coding\\otherPrj\\mibox\\artifacts\\network-hdmi-audio\\20261114-212016-515-display\\mibox.elf\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  3528,
+    "StartedAt":  "2026-11-14T13:20:17.2305479Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "/bin/mibox: 1 file pulled, 0 skipped. 1.3 MB/s (513580 bytes in 0.376s)",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.4242646,
+    "FinishedAt":  "2026-11-14T13:20:17.6535599Z"
+}

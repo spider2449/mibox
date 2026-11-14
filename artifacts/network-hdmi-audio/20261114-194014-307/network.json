@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"cat /proc/net/dev; cat /proc/net/route; netcfg; ls /sys/class/net; cat /proc/modules\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  15,
+    "ProcessId":  13708,
+    "StartedAt":  "2026-11-14T11:40:26.5463357Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "Inter-|   Receive                                                |  Transmit\r\r\n face |bytes    packets errs drop fifo frame compressed multicast|bytes    packets errs drop fifo colls carrier compressed\r\r\n wlan0:       0       0    0    0    0     0          0         0        0       0    0    0    0     0       0          0\r\r\n  sit0:       0       0    0    0    0     0          0         0        0       0    0    0    0     0       0          0\r\r\n    lo:  208524    3159    0    0    0     0          0         0   208524    3159    0    0    0     0       0          0\r\r\n  eth0:  307137    1657    0  684    0     0          0         0   390161    1781    0    0    0     0       0          0\r\r\nip6tnl0:       0       0    0    0    0     0          0         0        0       0    0    0    0     0       0          0\r\r\nIface\tDestination\tGateway \tFlags\tRefCnt\tUse\tMetric\tMask\t\tMTU\tWindow\tIRTT                                                       \r\r\neth0\t00000000\t0101A8C0\t0003\t0\t0\t0\t00000000\t0\t0\t0                                                                               \r\r\neth0\t0101A8C0\t00000000\t0005\t0\t0\t0\tFFFFFFFF\t0\t0\t0                                                                               \r\r\nip6tnl0  DOWN                                   0.0.0.0/0   0x00000080 00:00:00:00:00:00\r\r\nwlan0    UP                                     0.0.0.0/0   0x00001003 98:3b:16:20:63:dc\r\r\neth0     UP                               192.168.1.222/0   0x00001043 10:48:b1:ec:20:eb\r\r\nsit0     DOWN                                   0.0.0.0/0   0x00000080 00:00:00:00:00:00\r\r\nlo       UP                                   127.0.0.1/8   0x00000049 00:00:00:00:00:00\r\r\neth0\r\r\nip6tnl0\r\r\nlo\r\r\nsit0\r\r\nwlan0\r\r\ndhd 579318 0 - Live 0x00000000\r\r\ntexfat 179387 0 - Live 0x00000000 (PO)\r\r\ntntfs 475307 0 - Live 0x00000000 (PO)\r\r\ntfat 178443 0 - Live 0x00000000 (PO)\r\r\nmali 192913 15 - Live 0x00000000",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.0877292,
+    "FinishedAt":  "2026-11-14T11:40:26.6328622Z"
+}

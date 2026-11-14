@@ -1,0 +1,149 @@
+﻿[
+    {
+        "Case":  "exit-zero",
+        "Pass":  true,
+        "Record":  {
+                       "Executable":  "C:\\WINDOWS\\System32\\cmd.exe",
+                       "Arguments":  "/d /c exit 0",
+                       "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+                       "DeadlineSeconds":  5,
+                       "ProcessId":  16164,
+                       "StartedAt":  "2026-11-14T22:12:47.1502030Z",
+                       "ExitCode":  0,
+                       "TimedOut":  false,
+                       "OutputComplete":  true,
+                       "Output":  "",
+                       "Error":  "",
+                       "CleanupAttempted":  false,
+                       "StdoutComplete":  true,
+                       "StderrComplete":  true,
+                       "ElapsedSeconds":  0.0590097,
+                       "FinishedAt":  "2026-11-14T22:12:47.2049206Z"
+                   }
+    },
+    {
+        "Case":  "exit-seven",
+        "Pass":  true,
+        "Record":  {
+                       "Executable":  "C:\\WINDOWS\\System32\\cmd.exe",
+                       "Arguments":  "/d /c exit 7",
+                       "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+                       "DeadlineSeconds":  5,
+                       "ProcessId":  14848,
+                       "StartedAt":  "2026-11-14T22:12:47.3019025Z",
+                       "ExitCode":  7,
+                       "TimedOut":  false,
+                       "OutputComplete":  true,
+                       "Output":  "",
+                       "Error":  "",
+                       "CleanupAttempted":  false,
+                       "StdoutComplete":  true,
+                       "StderrComplete":  true,
+                       "Failure":  "exit-seven failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\process-tests-20261115-061247-103",
+                       "ElapsedSeconds":  0.0417679,
+                       "FinishedAt":  "2026-11-14T22:12:47.3419981Z"
+                   }
+    },
+    {
+        "Case":  "launch-failure",
+        "Pass":  true,
+        "Record":  {
+                       "Executable":  "F:\\coding\\otherPrj\\mibox\\target\\ram-boot-process-tests\\3b259b28-48ae-40ed-a4c8-4ac0d42adeb4\\absent.exe",
+                       "Arguments":  "/d /c exit 0",
+                       "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+                       "DeadlineSeconds":  5,
+                       "ProcessId":  null,
+                       "StartedAt":  null,
+                       "ExitCode":  null,
+                       "TimedOut":  false,
+                       "OutputComplete":  false,
+                       "Output":  "",
+                       "Error":  "",
+                       "CleanupAttempted":  false,
+                       "Failure":  "Exception calling \"Start\" with \"0\" argument(s): \"The system cannot find the file specified\"",
+                       "ElapsedSeconds":  0.0028983,
+                       "FinishedAt":  "2026-11-14T22:12:47.3608655Z"
+                   }
+    },
+    {
+        "Case":  "timeout",
+        "Pass":  true,
+        "Record":  {
+                       "Executable":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                       "Arguments":  "-NoProfile -File \"F:\\coding\\otherPrj\\mibox\\target\\ram-boot-process-tests\\3b259b28-48ae-40ed-a4c8-4ac0d42adeb4\\fixture.ps1\" -Mode sleep",
+                       "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+                       "DeadlineSeconds":  2,
+                       "ProcessId":  14084,
+                       "StartedAt":  "2026-11-14T22:12:47.3791255Z",
+                       "ExitCode":  1,
+                       "TimedOut":  true,
+                       "OutputComplete":  true,
+                       "Output":  "fixture-started",
+                       "Error":  "fixture-stderr",
+                       "CleanupAttempted":  true,
+                       "CleanupExitCode":  0,
+                       "StdoutComplete":  true,
+                       "StderrComplete":  true,
+                       "Failure":  "timeout failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\process-tests-20261115-061247-103",
+                       "ElapsedSeconds":  2.2176996,
+                       "FinishedAt":  "2026-11-14T22:12:49.5961003Z"
+                   }
+    },
+    {
+        "Case":  "tree-timeout",
+        "Pass":  true,
+        "Record":  {
+                       "Executable":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                       "Arguments":  "-NoProfile -File \"F:\\coding\\otherPrj\\mibox\\target\\ram-boot-process-tests\\3b259b28-48ae-40ed-a4c8-4ac0d42adeb4\\fixture.ps1\" -Mode tree -ChildRecord \"F:\\coding\\otherPrj\\mibox\\target\\ram-boot-process-tests\\3b259b28-48ae-40ed-a4c8-4ac0d42adeb4\\child.json\"",
+                       "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+                       "DeadlineSeconds":  3,
+                       "ProcessId":  15280,
+                       "StartedAt":  "2026-11-14T22:12:49.6204406Z",
+                       "ExitCode":  1,
+                       "TimedOut":  true,
+                       "OutputComplete":  true,
+                       "Output":  "fixture-started",
+                       "Error":  "fixture-stderr",
+                       "CleanupAttempted":  true,
+                       "CleanupExitCode":  0,
+                       "StdoutComplete":  true,
+                       "StderrComplete":  true,
+                       "Failure":  "tree-timeout failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\process-tests-20261115-061247-103",
+                       "ElapsedSeconds":  3.2068708,
+                       "FinishedAt":  "2026-11-14T22:12:52.8266044Z",
+                       "ChildIdentity":  {
+                                             "StartedAt":  "2026-11-14T22:12:49.8286429Z",
+                                             "Pid":  6836
+                                         },
+                       "ChildStillRunning":  false
+                   }
+    },
+    {
+        "Case":  "inherited-pipes",
+        "Pass":  true,
+        "Record":  {
+                       "Executable":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                       "Arguments":  "-NoProfile -File \"F:\\coding\\otherPrj\\mibox\\target\\ram-boot-process-tests\\3b259b28-48ae-40ed-a4c8-4ac0d42adeb4\\fixture.ps1\" -Mode pipe -ChildRecord \"F:\\coding\\otherPrj\\mibox\\target\\ram-boot-process-tests\\3b259b28-48ae-40ed-a4c8-4ac0d42adeb4\\child.json\"",
+                       "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+                       "DeadlineSeconds":  5,
+                       "ProcessId":  5028,
+                       "StartedAt":  "2026-11-14T22:12:52.8482054Z",
+                       "ExitCode":  0,
+                       "TimedOut":  false,
+                       "OutputComplete":  false,
+                       "Output":  "",
+                       "Error":  "",
+                       "CleanupAttempted":  false,
+                       "StdoutComplete":  false,
+                       "StderrComplete":  false,
+                       "Failure":  "inherited-pipes failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\process-tests-20261115-061247-103",
+                       "ElapsedSeconds":  4.3174185,
+                       "FinishedAt":  "2026-11-14T22:12:57.1637544Z",
+                       "ChildIdentity":  {
+                                             "StartedAt":  "2026-11-14T22:12:53.0534441Z",
+                                             "Pid":  4988
+                                         },
+                       "ChildStillRunning":  true
+                   }
+    }
+]
