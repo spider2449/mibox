@@ -1,0 +1,46 @@
+{
+  "status": "NOT_READY_TO_BOOT_OR_FLASH",
+  "image": "boot1-custom.NOT_READY.img",
+  "bytes": 8388608,
+  "sha256": "2788822cb79c3808ef6f4bb067fc4b57a033319c5fa0e93ecaec6874c8879bc3",
+  "used_aligned_bytes": 4691968,
+  "source_boot1_sha256": "06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222",
+  "rootfs_sha256": "ba5d86f47c22016313a26a03fbe07403ac2050ba90ec03e4241b0b2c245ed6ef",
+  "android_id_sha1": "06529a438e7896c7c5c08c9dd7b4708f8f57245a",
+  "stock_kernel_and_dtb_unchanged": true,
+  "header_cmdline_and_addresses_unchanged": true,
+  "changed_header_fields": [
+    "ramdisk_size",
+    "Android image ID"
+  ],
+  "rootfs_usb_adb_opt_in": "read-only rootfs marker, not dependent on header cmdline",
+  "signed": false,
+  "loader_acceptance": "UNKNOWN",
+  "physical_usb_console": "UNTESTED",
+  "software_recovery": "UNVERIFIED",
+  "uploaded": false,
+  "flashed": false,
+  "sections": [
+    {
+      "name": "kernel",
+      "start": 2048,
+      "size": 3897711,
+      "end": 3899759,
+      "sha256": "0cfa74c8cde102c877aa9605910e10f5541480e1dc9e0fb6bee02b75d0a638f7"
+    },
+    {
+      "name": "ramdisk",
+      "start": 3901440,
+      "size": 777144,
+      "end": 4678584,
+      "sha256": "ba5d86f47c22016313a26a03fbe07403ac2050ba90ec03e4241b0b2c245ed6ef"
+    },
+    {
+      "name": "second",
+      "start": 4679680,
+      "size": 11414,
+      "end": 4691094,
+      "sha256": "24b30f1aafe26845839966721b3c083cb3ed49280178276b6114df6d725cb95c"
+    }
+  ]
+}

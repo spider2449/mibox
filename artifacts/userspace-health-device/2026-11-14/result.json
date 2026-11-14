@@ -1,0 +1,13 @@
+﻿{
+    "HealthVerified":  true,
+    "ReadbackMatched":  true,
+    "Kernel":  "3.10.33",
+    "Uid":  2000,
+    "MemAvailableAbsentInProcfs":  true,
+    "MissingMemAvailableReportedUnknown":  true,
+    "BootIdUnchanged":  true,
+    "TemporaryExecutableRemoved":  true,
+    "InfoExitCode":  1,
+    "InfoLimitation":  "Stock Android has no /etc/os-release",
+    "Scope":  "Physical standalone health under Android, not custom PID1 or boot validation"
+}

@@ -309,37 +309,85 @@ fn probe() -> io::Result<()> {
         "ADB_BANNER={}",
         String::from_utf8_lossy(&banner).trim_end_matches('\0')
     );
-    send(&mut stream, b"OPEN", 1, 0, b"shell:/bin/mibox info\0")?;
-    let mut transcript = Vec::new();
-    let mut closed = false;
-    for _ in 0..100 {
-        let (kind, remote, local, payload) = receive(&mut stream)?;
-        if local != 1 {
-            return Err(io::Error::other("unexpected ADB stream id"));
-        }
-        match &kind {
-            b"OKAY" => {}
-            b"WRTE" => {
-                if transcript.len() + payload.len() > 16384 {
-                    return Err(io::Error::other("shell output exceeds bound"));
+    for (stream_id, service) in [
+        (1, b"shell:/bin/mibox info\0".as_slice()),
+        (
+            2,
+            b"shell:/bin/mibox health; result=$?; echo MIBOX_HEALTH_EXIT=$result\0".as_slice(),
+        ),
+    ] {
+        send(&mut stream, b"OPEN", stream_id, 0, service)?;
+        let mut transcript = Vec::new();
+        let mut closed = false;
+        for _ in 0..100 {
+            let (kind, remote, local, payload) = receive(&mut stream)?;
+            if local != stream_id {
+                return Err(io::Error::other("unexpected ADB stream id"));
+            }
+            match &kind {
+                b"OKAY" => {}
+                b"WRTE" => {
+                    if transcript.len() + payload.len() > 16384 {
+                        return Err(io::Error::other("shell output exceeds bound"));
+                    }
+                    transcript.extend_from_slice(&payload);
+                    send(&mut stream, b"OKAY", stream_id, remote, b"")?;
                 }
-                transcript.extend_from_slice(&payload);
-                send(&mut stream, b"OKAY", 1, remote, b"")?;
+                b"CLSE" => {
+                    send(&mut stream, b"CLSE", stream_id, remote, b"")?;
+                    closed = true;
+                    break;
+                }
+                _ => return Err(io::Error::other("unexpected shell packet")),
             }
-            b"CLSE" => {
-                send(&mut stream, b"CLSE", 1, remote, b"")?;
-                closed = true;
-                break;
-            }
-            _ => return Err(io::Error::other("unexpected shell packet")),
         }
-    }
-    let text = String::from_utf8_lossy(&transcript);
-    print!("{text}");
-    if !closed || !text.contains("ID=mibox-custom") || !text.contains("kernel=") {
-        return Err(io::Error::other(
-            "custom userspace shell response not confirmed",
-        ));
+        let text = String::from_utf8_lossy(&transcript);
+        print!("{text}");
+        if !closed {
+            return Err(io::Error::other("ADB shell stream did not close"));
+        }
+        if stream_id == 1 && (!text.contains("ID=mibox-custom") || !text.contains("kernel=")) {
+            return Err(io::Error::other(
+                "custom userspace shell response not confirmed",
+            ));
+        }
+        if stream_id == 2 {
+            let normalized = text.replace('\r', "");
+            let lines: Vec<_> = normalized.lines().collect();
+            let expected_boot = format!(
+                "boot_id={}",
+                fs::read_to_string("/proc/sys/kernel/random/boot_id")?.trim()
+            );
+            if lines.len() != 9
+                || lines[0] != "MIBOX_HEALTH_SNAPSHOT_V1"
+                || lines[1] != expected_boot
+                || lines[3] != "pid1=init"
+                || lines[4] != "root_fstype=rootfs"
+                || lines[8] != "MIBOX_HEALTH_EXIT=0"
+            {
+                return Err(io::Error::other(
+                    "standalone health identity or shell exit status mismatch",
+                ));
+            }
+            let uptime = lines[2]
+                .strip_prefix("uptime_seconds=")
+                .and_then(|v| v.parse::<f64>().ok())
+                .filter(|v| v.is_finite() && *v >= 0.0);
+            let memory: Vec<_> = ["mem_total_kib=", "mem_free_kib=", "mem_available_kib="]
+                .iter()
+                .zip(&lines[5..8])
+                .map(|(prefix, line)| {
+                    line.strip_prefix(prefix)
+                        .and_then(|v| v.parse::<u64>().ok())
+                })
+                .collect();
+            if uptime.is_none() || memory.iter().any(Option::is_none) || memory[0] == Some(0) {
+                return Err(io::Error::other(
+                    "standalone health counters missing or invalid on generic kernel",
+                ));
+            }
+            println!("MIBOX_QEMU_ADB_HEALTH_OK exit=0 boot_id=matched transport=guest-loopback authenticated={authenticated}");
+        }
     }
     drop(daemon);
     println!("MIBOX_QEMU_ADB_CONSOLE_OK daemon=stock shell=stock toolbox=custom transport=guest-loopback authenticated={authenticated}");

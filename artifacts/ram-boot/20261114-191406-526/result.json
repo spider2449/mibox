@@ -1,0 +1,15 @@
+﻿{
+    "Action":  "Check",
+    "StartedAt":  "2026-11-14T19:14:06.5301864+08:00",
+    "Stage":  "LocalCheckPassed",
+    "ImageSHA256":  "2788822cb79c3808ef6f4bb067fc4b57a033319c5fa0e93ecaec6874c8879bc3",
+    "DeviceAccessed":  false,
+    "LoaderRequestSent":  false,
+    "CustomBootVerified":  false,
+    "AndroidReturnVerified":  false,
+    "FlashCommandSent":  false,
+    "TransferDeadlineSeconds":  3600,
+    "Candidate":  "Health",
+    "LocalImageVerified":  true,
+    "FinishedAt":  "2026-11-14T19:14:07.2553781+08:00"
+}

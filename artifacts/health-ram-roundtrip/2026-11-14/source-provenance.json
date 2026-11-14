@@ -1,0 +1,22 @@
+﻿[
+    {
+        "Sha256":  "2cfbc3351fcaca7899b9f652acb6d12d0361883535875836f2047b7c80080200",
+        "File":  "src/runtime_health.rs"
+    },
+    {
+        "Sha256":  "78db8bae30a3a5d5c0ad7925483657f2fad50526f283d2e454e54ef2e61f7b55",
+        "File":  "src/bin/mibox-init.rs"
+    },
+    {
+        "Sha256":  "5f06ab2bb908e4977b0685382380943de8630f7fe6a636b31e830b607a6a5353",
+        "File":  "src/bin/mibox-userland.rs"
+    },
+    {
+        "Sha256":  "eabac280f5d689bd8d54308893455e20e97f89e91c44120f93c43e29c84d7f66",
+        "File":  "scripts/build-mibox-rootfs.py"
+    },
+    {
+        "Sha256":  "2a4c06b2c7b2947f3effe2d7ec80501afbe058fd39effff2976d1e6339ebc619",
+        "File":  "scripts/build-mibox-boot-candidate.py"
+    }
+]

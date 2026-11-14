@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"cat /etc/os-release; cat /proc/sys/kernel/random/boot_id; cat /proc/mounts; cat /proc/1/comm; getprop sys.boot_completed\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  14792,
+    "StartedAt":  "2026-11-14T10:43:25.1783835Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "/system/bin/sh: cat: /etc/os-release: No such file or directory\r\r\necdad7fb-31d0-4e02-adb5-863bdf0529d5\r\r\nrootfs / rootfs ro,relatime 0 0\r\r\ntmpfs /dev tmpfs rw,seclabel,nosuid,relatime,mode=755 0 0\r\r\ndevpts /dev/pts devpts rw,seclabel,relatime,mode=600,ptmxmode=000 0 0\r\r\nproc /proc proc rw,relatime 0 0\r\r\nsysfs /sys sysfs rw,seclabel,relatime 0 0\r\r\nselinuxfs /sys/fs/selinux selinuxfs rw,relatime 0 0\r\r\ndebugfs /sys/kernel/debug debugfs rw,relatime 0 0\r\r\ntmpfs /tmp tmpfs rw,seclabel,relatime,mode=765,uid=1000,gid=1015 0 0\r\r\ntmpfs /mnt/smb tmpfs rw,seclabel,relatime,mode=755,gid=1015 0 0\r\r\npstore /p pstore rw,relatime 0 0\r\r\nnone /acct cgroup rw,relatime,cpuacct 0 0\r\r\nnone /sys/fs/cgroup tmpfs rw,seclabel,relatime,mode=750,gid=1000 0 0\r\r\nnone /sys/fs/cgroup/memory cgroup rw,relatime,memory 0 0\r\r\nnone /sys/fs/cgroup/blkio cgroup rw,relatime,blkio 0 0\r\r\ntmpfs /mnt/asec tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0\r\r\ntmpfs /mnt/obb tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0\r\r\nnone /dev/cpuctl cgroup rw,relatime,cpu 0 0\r\r\ntmpfs /storage/external_storage tmpfs rw,seclabel,relatime,mode=775,uid=1000,gid=1023 0 0\r\r\nadb /dev/usb-ffs/adb functionfs rw,relatime 0 0\r\r\n/dev/block/system1 /system ext4 ro,seclabel,nodiratime,relatime,nodelalloc,noauto_da_alloc,commit=15,data=ordered 0 0\r\r\n/dev/block/cache /cache ext4 rw,seclabel,nosuid,nodev,noatime,nodiratime,block_validity,nodiscard,nodelalloc,journal_checksum,noauto_da_alloc,commit=15,data=ordered 0 0\r\r\n/dev/block/data /data ext4 rw,seclabel,nosuid,nodev,noatime,nodiratime,block_validity,nodiscard,nodelalloc,journal_checksum,noauto_da_alloc,commit=15,data=ordered 0 0\r\r\n/dev/fuse /mnt/shell/emulated fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0\r\r\ninit\r\r\n1",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.1027,
+    "FinishedAt":  "2026-11-14T10:43:25.2801846Z"
+}

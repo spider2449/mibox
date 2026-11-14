@@ -76,6 +76,8 @@ creates a QEMU-only initramfs and does not flash the box.
 - [First locally built boot candidate and readiness](docs/mibox-boot-candidate.md)
 - [Physical custom PID1/userspace RAM boot: PASS](docs/mibox-ram-boot-success.md)
 - [Live Rust toolbox and RAM self-test](docs/mibox-live-toolbox.md)
+- [Read-only health snapshot and local ARM validation](docs/mibox-userspace-health.md)
+- [Updated health custom Linux RAM boot and Android return: physical PASS](docs/mibox-health-ram-roundtrip.md)
 - [Read-only runtime follow-up](docs/mibox-runtime-followup.md)
 - [Software return interface and QEMU restart validation](docs/mibox-software-return.md)
 - [Local backup revalidation and restoration gates](docs/mibox-restoration-readiness.md)

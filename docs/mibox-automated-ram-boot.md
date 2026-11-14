@@ -88,3 +88,68 @@ Earlier manually orchestrated RAM boot and software return results remain
 documented separately. Permanent
 installation and recovery from broken Android are separate, unverified gates;
 they are not prerequisites for repeating the already proven RAM-only workflow.
+
+## Host validation hardening (2026-11-14)
+
+The orchestrator now uses `RamBootValidation.ps1` to reject missing or wrongly
+typed boolean evidence and byte counts, JSON arrays, invalid or unchanged custom
+boot IDs, and failed/timed-out identity queries. In particular, missing
+`BulkMode` is no longer accepted as evidence of control-channel operation.
+The custom OS marker, PID1 identity and boot ID query must all succeed.
+The boot command's transport completion remains diagnostic: independent custom
+boot observation is still required, since USB can disconnect during bootm.
+
+Every run automatically records SHA256 hashes of the orchestrator, validators
+and three child scripts in `orchestrator-provenance.json`. Child records include
+the executable path, deadline and elapsed seconds; the final result includes
+its completion timestamp even on failure.
+
+The expanded isolated orchestration suite passed **9 cases**. A new pure-record
+suite passed **23 cases**, covering valid transfer/custom/return records and
+missing fields, wrong types, incomplete readback, wrong hashes, invalid boot
+identity and failed queries. Reproduce without device access:
+
+```powershell
+powershell -NoProfile -File scripts/Test-RamBootGuards.ps1
+powershell -NoProfile -File scripts/Test-RamBootValidation.ps1
+powershell -NoProfile -File scripts/ram-boot.ps1 -Action Check
+```
+
+[Record validation results](../artifacts/ram-boot/validation-tests.json),
+[updated guard results](../artifacts/ram-boot/guard-tests.json) and
+[pinned-image Check](../artifacts/ram-boot/20261114-183018-156/result.json)
+are retained. These tests establish local validation behavior; they do not
+exercise device stages, transfer timeout termination, child-process lifetime
+after a timeout, or a new physical round trip with the revised scripts.
+
+## Bounded process cleanup (2026-11-14 follow-up)
+
+The orchestrator now shares `RamBootProcess.ps1` with its process tests. It keeps
+the same Process object from launch to exit-code capture, sets the repository
+as the working directory, and records PID, creation time, launch failures and
+cleanup status. On timeout, while the retained root is alive, it invokes Windows
+`taskkill /PID <root> /T /F` once. Cleanup has a 5-second bound, followed by at
+most 5 seconds for the root to exit and 2 seconds per output stream for EOF.
+A timeout, nonzero exit or incomplete output remains a failure with no retry.
+
+Run the device-free process suite with:
+
+```powershell
+powershell -NoProfile -File scripts/Test-RamBootProcess.ps1
+```
+
+All **5 process cases** passed: exit 0, exit 7, launch failure, direct timeout
+and timeout with a spawned PowerShell child. The tree test verified that the
+recorded child PID/creation-time identity was no longer running; both timeout
+cases retained stdout, stderr and the actual root exit code.
+[Process results](../artifacts/ram-boot/process-tests-20261114-183231-901/results.json)
+and the [new pinned-image Check](../artifacts/ram-boot/20261114-183247-262/result.json)
+are retained. The 9 orchestration guards and 23 record cases also passed again.
+
+This supersedes the earlier lack of host timeout testing, but does not establish
+physical USB behavior on timeout. Taskkill is best-effort process-tree cleanup,
+not an OS job-object containment guarantee: a root that exits before cleanup or
+a concurrently detached descendant can escape tree enumeration. Incomplete
+output fails within the capture bound; the runner does not target historical
+root PIDs after exit. Cleanup failures are retained as failures and require
+inspection. No new physical RAM boot or Android return was performed.

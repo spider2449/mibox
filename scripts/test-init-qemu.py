@@ -43,6 +43,7 @@ def main(root, timeout, request_usb_acm, test_stock_adb=False, test_stock_adb_gu
         (b'help\n', rb'help \| info \| uptime.*?mibox> '),
         (b'info\n', rb'pid=1 arch=arm.*?mibox> '),
         (b'uptime\n', rb'[0-9]+\.[0-9]+ [0-9]+\.[0-9]+.*?mibox> '),
+        (b'health\n', rb'MIBOX_HEALTH_SNAPSHOT_V1.*?boot_id=[0-9a-f-]{36}.*?uptime_seconds=[0-9]+\.[0-9]+.*?pid1=init.*?root_fstype=rootfs.*?mem_total_kib=[0-9]+.*?mem_free_kib=[0-9]+.*?mem_available_kib=[0-9]+.*?mibox> '),
         (b'os\n', rb'ID=mibox-custom.*?uid=0 euid=0.*?mibox> '),
         (b'files\n', rb'bin.*?dev.*?etc.*?proc.*?sys.*?tmp.*?mibox> '),
         (b'reaptest\n', rb'REAP_OK pid=[0-9]+.*?mibox> '),
@@ -96,6 +97,8 @@ def main(root, timeout, request_usb_acm, test_stock_adb=False, test_stock_adb_gu
                         process.stdin.flush()
         if b'pid=1 arch=arm' not in log:
             raise RuntimeError('PID1 execution not confirmed')
+        if test_stock_adb and not test_stock_adb_guard and b'MIBOX_QEMU_ADB_HEALTH_OK exit=0 boot_id=matched' not in log:
+            raise RuntimeError('standalone toolbox health over ADB not confirmed')
         if request_usb_acm and b'USB ACM unavailable:' not in log:
             raise RuntimeError('expected no-gadget fallback was not exercised')
         if request_usb_adb and (b'USB ADB board guard:' not in log or b'MIBOX_USB_ADB_SPAWNED' in log):
@@ -121,6 +124,7 @@ def main(root, timeout, request_usb_acm, test_stock_adb=False, test_stock_adb_gu
             , 'requested_usb_acm': request_usb_acm, 'tested_stock_adb': test_stock_adb,
             'tested_stock_adb_guard': test_stock_adb_guard,
             'tested_stock_adb_auth': test_stock_adb_auth, 'signed_test_challenge': signed_challenge
+            , 'standalone_adb_health_verified': b'MIBOX_QEMU_ADB_HEALTH_OK exit=0 boot_id=matched' in log
             , 'requested_usb_adb': request_usb_adb, 'rootfs_usb_adb_marker': rootfs_usb_adb_marker
         }, indent=2), encoding='utf-8')
     if failure:

@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell /bin/mibox reboot-android --check",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  8,
+    "ProcessId":  11800,
+    "StartedAt":  "2026-11-14T11:36:35.4998466Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "MIBOX_RESTART_READY boot_id=71c18726-3f4f-4f23-826b-0357e5662fdb",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.07230339999999999,
+    "FinishedAt":  "2026-11-14T11:36:35.5713171Z"
+}

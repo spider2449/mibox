@@ -5,20 +5,31 @@ $root = Join-Path $repo ('target/ram-boot-guard-tests/' + (Get-Date -Format 'yyy
 $scripts = Join-Path $root 'scripts'
 New-Item -ItemType Directory -Path $scripts -Force | Out-Null
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'ram-boot.ps1') -Destination (Join-Path $scripts 'ram-boot.ps1')
+Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'RamBootValidation.ps1') -Destination $scripts
+Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'RamBootProcess.ps1') -Destination $scripts
+# Provenance requires all child paths; these stubs cannot access a device.
+foreach ($name in @('Observe-MiboxRamBoot.ps1','Test-MiboxSoftwareReturn.ps1')) {
+    "throw 'Device fixture must never run'" | Set-Content -Encoding UTF8 -LiteralPath (Join-Path $scripts $name)
+}
 $checker = @'
 param($Action,$Candidate,[switch]$VerifyOnly)
 $fixture=Get-Content -Raw -LiteralPath (Join-Path $PSScriptRoot '../fixture.json') | ConvertFrom-Json
 if($fixture.Fail){throw 'Injected checker failure'}
+if($fixture.InvalidJson){Write-Output 'not-json';return}
 $fixture.Record | ConvertTo-Json
 '@
 $checker | Set-Content -Encoding UTF8 -LiteralPath (Join-Path $scripts 'Test-MiboxLoaderRam.ps1')
 $results = @()
-foreach ($name in @('valid','wrong-hash','wrong-size','usb-access-claimed','checker-failed')) {
+foreach ($name in @('valid','wrong-hash','wrong-size','usb-access-claimed','checker-failed',
+                     'missing-usb','string-usb','string-size','invalid-json')) {
     $record = [ordered]@{ UsbAccessed=$false; Bytes=8388608; Sha256='5608fa36caa28a7acf7a647b53db5d2775aaceb44730896f87da03f8ba6047fa' }
     if($name -eq 'wrong-hash'){$record.Sha256='0'*64}
     if($name -eq 'wrong-size'){$record.Bytes=8388607}
     if($name -eq 'usb-access-claimed'){$record.UsbAccessed=$true}
-    [ordered]@{Fail=($name -eq 'checker-failed');Record=$record} | ConvertTo-Json -Depth 4 |
+    if($name -eq 'missing-usb'){$record.Remove('UsbAccessed')}
+    if($name -eq 'string-usb'){$record.UsbAccessed='false'}
+    if($name -eq 'string-size'){$record.Bytes='8388608'}
+    [ordered]@{Fail=($name -eq 'checker-failed');InvalidJson=($name -eq 'invalid-json');Record=$record} | ConvertTo-Json -Depth 4 |
         Set-Content -Encoding UTF8 -LiteralPath (Join-Path $root 'fixture.json')
     $action = if($name -eq 'valid'){'Check'}else{'RoundTrip'}
     $start=[Diagnostics.ProcessStartInfo]::new()

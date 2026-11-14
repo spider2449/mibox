@@ -1,0 +1,9 @@
+{
+  "init_sha256": "8c2f9bcd4c5c26585062fbb5f44c7aeadbbe975217d28ab939f65173cb61cb6a",
+  "userland_sha256": "2e4f1dfd8f28c0bf52323a9e65abf314e1e1705505414cc7cc25fcdf99128512",
+  "os_release_sha256": "b50d9caa29142f02bee2b72d0d8dc2f73cf25e6cc7e1d2d10633b5d24caab3fb",
+  "optional_stock_adb_test_files": {},
+  "cpio_sha256": "742b9aa4bd3afea3ec730ffb4e8b131c546e5b518d2690a67a69859344895e82",
+  "gzip_sha256": "a50f4f0e609cf7c9aa1d3c8794979a3b333faa38b225a779d7aa77778f9751b8",
+  "purpose": "QEMU generic ARM test only; no stock images used or modified."
+}

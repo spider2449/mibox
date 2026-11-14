@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"/bin/mibox health; result=$?; echo MIBOX_HEALTH_EXIT=$result\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  8,
+    "ProcessId":  5204,
+    "StartedAt":  "2026-11-14T11:36:35.4175746Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "MIBOX_HEALTH_SNAPSHOT_V1\r\r\nboot_id=71c18726-3f4f-4f23-826b-0357e5662fdb\r\r\nuptime_seconds=9.76\r\r\npid1=init\r\r\nroot_fstype=rootfs\r\r\nmem_total_kib=877072\r\r\nmem_free_kib=847924\r\r\nmem_available_kib=UNKNOWN\r\r\nMIBOX_HEALTH_EXIT=0",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.076911,
+    "FinishedAt":  "2026-11-14T11:36:35.4935291Z"
+}

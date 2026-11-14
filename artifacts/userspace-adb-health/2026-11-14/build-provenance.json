@@ -1,0 +1,37 @@
+﻿[
+    {
+        "File":  "src/bin/mibox-adb-probe.rs",
+        "Bytes":  14741,
+        "SHA256":  "7c2301249464b4ab0ae7339fedca9af2244f3506f0859a46a10494d3b7af5b1d"
+    },
+    {
+        "File":  "scripts/test-init-qemu.py",
+        "Bytes":  9760,
+        "SHA256":  "76b6442e9a10d11074ea18b31280c6a7889068411b7811e824e21473d0c4f486"
+    },
+    {
+        "File":  "scripts/build-qemu-initramfs.py",
+        "Bytes":  4030,
+        "SHA256":  "b8817d6be200cb6f9e72da495d7147d3a32c8eff5d09954ad685a37798f868c4"
+    },
+    {
+        "File":  "target/armv7-unknown-linux-musleabihf/release/mibox-init",
+        "Bytes":  474088,
+        "SHA256":  "8c2f9bcd4c5c26585062fbb5f44c7aeadbbe975217d28ab939f65173cb61cb6a"
+    },
+    {
+        "File":  "target/armv7-unknown-linux-musleabihf/release/mibox-userland",
+        "Bytes":  511820,
+        "SHA256":  "2e4f1dfd8f28c0bf52323a9e65abf314e1e1705505414cc7cc25fcdf99128512"
+    },
+    {
+        "File":  "target/armv7-unknown-linux-musleabihf/release/mibox-adb-probe",
+        "Bytes":  448508,
+        "SHA256":  "bb72255a2479221fc48ba9e82da915fc973505cc12cbec59c7e3412291dcbe7c"
+    },
+    {
+        "File":  "phone-tools/qemu/vmlinuz",
+        "Bytes":  6046208,
+        "SHA256":  "b508abca3127cb0d9e1b3aba37f400cbd7dac170040641756807e0e496039de8"
+    }
+]

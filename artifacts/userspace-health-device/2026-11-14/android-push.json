@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 push \"F:\\coding\\otherPrj\\mibox\\target\\armv7-unknown-linux-musleabihf\\release\\mibox-userland\" /data/local/tmp/mibox-health-2e4f1dfd8f28",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  15,
+    "ProcessId":  15952,
+    "StartedAt":  "2026-11-14T10:49:00.2510535Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "F:\\coding\\otherPrj\\mibox\\target\\armv7-unknown-linux-musleabihf\\release\\mibox-userland: 1 file pushed, 0 skipped. 5.6 MB/s (511820 bytes in 0.087s)",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.2007849,
+    "FinishedAt":  "2026-11-14T10:49:00.4503908Z"
+}

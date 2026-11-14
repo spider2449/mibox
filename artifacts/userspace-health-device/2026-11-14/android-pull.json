@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 pull /data/local/tmp/mibox-health-2e4f1dfd8f28 \"F:\\coding\\otherPrj\\mibox\\artifacts\\userspace-health-device\\2026-11-14\\toolbox-readback\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  15,
+    "ProcessId":  17012,
+    "StartedAt":  "2026-11-14T10:49:00.4551665Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "/data/local/tmp/mibox-health-2e4f1dfd8f28: 1 file pulled, 0 skipped. 3.5 MB/s (511820 bytes in 0.140s)",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.1839781,
+    "FinishedAt":  "2026-11-14T10:49:00.6382035Z"
+}

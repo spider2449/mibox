@@ -16,6 +16,8 @@ mod android_properties;
 #[path = "../ram_control.rs"]
 #[allow(dead_code)]
 mod ram_control;
+#[path = "../runtime_health.rs"]
+mod runtime_health;
 #[path = "../usb_adb.rs"]
 mod usb_adb;
 #[path = "../usb_console.rs"]
@@ -80,7 +82,7 @@ fn serve_console(device: &str) -> io::Result<()> {
     writeln!(output, "{}MIBOX_INIT_CONSOLE_READY", report())?;
     writeln!(
         output,
-        "Commands: help, info, uptime, reaptest, os, files. Persistent storage is not mounted."
+        "Commands: help, info, uptime, health, reaptest, os, files. Persistent storage is not mounted."
     )?;
     let mut reader = BufReader::new(console);
     loop {
@@ -111,7 +113,11 @@ fn serve_console(device: &str) -> io::Result<()> {
             }
         }
         match line.trim() {
-            "help" => writeln!(output, "help | info | uptime | reaptest | os | files")?,
+            "help" => writeln!(
+                output,
+                "help | info | uptime | health | reaptest | os | files"
+            )?,
+            "health" => write!(output, "{}", runtime_health::snapshot())?,
             command @ ("os" | "files" | "adbprobe" | "restartprobe") => {
                 // Prevent PID1's generic reaper from collecting a child owned
                 // by Command::output before it retrieves that child's status.

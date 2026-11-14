@@ -1,0 +1,17 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 push \"F:\\coding\\otherPrj\\mibox\\target\\armv7-unknown-linux-musleabihf\\release\\mibox-userland\" /tmp/mibox-toolbox-2e4f1dfd8f28",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  15,
+    "ProcessId":  13204,
+    "StartedAt":  "2026-11-14T10:43:56.4804479Z",
+    "ExitCode":  1,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "adb: error: failed to copy \u0027F:\\coding\\otherPrj\\mibox\\target\\armv7-unknown-linux-musleabihf\\release\\mibox-userland\u0027 to \u0027/tmp/mibox-toolbox-2e4f1dfd8f28\u0027: remote Permission denied\r\nF:\\coding\\otherPrj\\mibox\\target\\armv7-unknown-linux-musleabihf\\release\\mibox-userland: 1 file pushed, 0 skipped. 3.6 MB/s (511820 bytes in 0.135s)",
+    "CleanupAttempted":  false,
+    "Failure":  "push failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\userspace-health-device\\2026-11-14",
+    "ElapsedSeconds":  0.2895046,
+    "FinishedAt":  "2026-11-14T10:43:56.7682015Z"
+}

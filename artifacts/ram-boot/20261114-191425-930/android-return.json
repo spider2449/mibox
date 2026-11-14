@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "Arguments":  "-NoProfile -File \"F:\\coding\\otherPrj\\mibox\\scripts\\Test-MiboxSoftwareReturn.ps1\" -AndroidBaseline \"F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\20261114-191425-930\\android-baseline.json\" -TimeoutSeconds 180 -Candidate Health",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  260,
+    "ProcessId":  16788,
+    "StartedAt":  "2026-11-14T11:36:35.5763745Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "Verified custom PID1/toolbox and restart readiness: 71c18726-3f4f-4f23-826b-0357e5662fdb\r\nPASS: new Android boot ID, original fingerprint and boot_completed=1\r\nEvidence: F:\\coding\\otherPrj\\mibox\\artifacts\\software-return\\return-20261114-193635",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  76.0759416,
+    "FinishedAt":  "2026-11-14T11:37:51.6514553Z"
+}

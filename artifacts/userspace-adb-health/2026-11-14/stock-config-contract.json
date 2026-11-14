@@ -1,0 +1,102 @@
+﻿{
+    "Scope":  "Offline stock configuration only; not a runtime syscall or replacement kernel proof",
+    "ConfigFile":  "artifacts/platform/2026-11-14/stock-kernel.config",
+    "ConfigSHA256":  "bd2a94b6aa84afda30661c3a4b41f9759fcc6734ee32daf8335882ba6b43c918",
+    "RequiredChecks":  [
+                           {
+                               "Setting":  "CONFIG_ARM",
+                               "Observed":  "y",
+                               "Expected":  "y",
+                               "Pass":  true
+                           },
+                           {
+                               "Setting":  "CONFIG_AEABI",
+                               "Observed":  "y",
+                               "Expected":  "y",
+                               "Pass":  true
+                           },
+                           {
+                               "Setting":  "CONFIG_VFP",
+                               "Observed":  "y",
+                               "Expected":  "y",
+                               "Pass":  true
+                           },
+                           {
+                               "Setting":  "CONFIG_BINFMT_ELF",
+                               "Observed":  "y",
+                               "Expected":  "y",
+                               "Pass":  true
+                           },
+                           {
+                               "Setting":  "CONFIG_PROC_FS",
+                               "Observed":  "y",
+                               "Expected":  "y",
+                               "Pass":  true
+                           },
+                           {
+                               "Setting":  "CONFIG_SYSFS",
+                               "Observed":  "y",
+                               "Expected":  "y",
+                               "Pass":  true
+                           },
+                           {
+                               "Setting":  "CONFIG_BLK_DEV_INITRD",
+                               "Observed":  "y",
+                               "Expected":  "y",
+                               "Pass":  true
+                           },
+                           {
+                               "Setting":  "CONFIG_RD_GZIP",
+                               "Observed":  "y",
+                               "Expected":  "y",
+                               "Pass":  true
+                           },
+                           {
+                               "Setting":  "CONFIG_DEVTMPFS",
+                               "Observed":  "y",
+                               "Expected":  "y",
+                               "Pass":  true
+                           },
+                           {
+                               "Setting":  "CONFIG_TMPFS",
+                               "Observed":  "y",
+                               "Expected":  "y",
+                               "Pass":  true
+                           },
+                           {
+                               "Setting":  "CONFIG_FUTEX",
+                               "Observed":  "y",
+                               "Expected":  "y",
+                               "Pass":  true
+                           },
+                           {
+                               "Setting":  "CONFIG_EPOLL",
+                               "Observed":  "y",
+                               "Expected":  "y",
+                               "Pass":  true
+                           },
+                           {
+                               "Setting":  "CONFIG_UNIX",
+                               "Observed":  "y",
+                               "Expected":  "y",
+                               "Pass":  true
+                           },
+                           {
+                               "Setting":  "CONFIG_INET",
+                               "Observed":  "y",
+                               "Expected":  "y",
+                               "Pass":  true
+                           },
+                           {
+                               "Setting":  "CONFIG_UNIX98_PTYS",
+                               "Observed":  "y",
+                               "Expected":  "y",
+                               "Pass":  true
+                           }
+                       ],
+    "Constraints":  {
+                        "CONFIG_NAMESPACES":  "n",
+                        "CONFIG_KEXEC":  "n"
+                    },
+    "Passed":  true
+}

@@ -1,0 +1,10 @@
+
+running 5 tests
+test tests::boot_identity_requires_uuid_shape ... ok
+test tests::invalid_memory_is_unknown ... ok
+test tests::old_kernel_memory_has_no_available_estimate ... ok
+test tests::root_mount_must_be_unambiguous ... ok
+test tests::reads_are_bounded_and_require_utf8 ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+

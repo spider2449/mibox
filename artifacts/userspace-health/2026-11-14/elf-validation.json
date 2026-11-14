@@ -1,0 +1,44 @@
+﻿[
+    {
+        "File":  "mibox-init",
+        "Elf32":  true,
+        "LittleEndian":  true,
+        "Machine":  "ARM",
+        "ProgramHeaderTypes":  [
+                                   6,
+                                   1,
+                                   1,
+                                   1,
+                                   1,
+                                   7,
+                                   1685382482,
+                                   1685382480,
+                                   1685382481,
+                                   1879048193
+                               ],
+        "HasDynamic":  false,
+        "HasInterpreter":  false,
+        "Pass":  true
+    },
+    {
+        "File":  "mibox-userland",
+        "Elf32":  true,
+        "LittleEndian":  true,
+        "Machine":  "ARM",
+        "ProgramHeaderTypes":  [
+                                   6,
+                                   1,
+                                   1,
+                                   1,
+                                   1,
+                                   7,
+                                   1685382482,
+                                   1685382480,
+                                   1685382481,
+                                   1879048193
+                               ],
+        "HasDynamic":  false,
+        "HasInterpreter":  false,
+        "Pass":  true
+    }
+]

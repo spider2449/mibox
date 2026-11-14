@@ -1,0 +1,117 @@
+﻿[
+    {
+        "Case":  "transfer-valid",
+        "Pass":  true,
+        "Accepted":  true
+    },
+    {
+        "Case":  "custom-valid",
+        "Pass":  true,
+        "Accepted":  true
+    },
+    {
+        "Case":  "return-valid",
+        "Pass":  true,
+        "Accepted":  true
+    },
+    {
+        "Case":  "return-string",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "return-missing",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "return-false",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "array",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "null",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "missing-bulk",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "string-command",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "short-readback",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "wrong-hash",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "bulk-enabled",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "empty-id",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "invalid-id",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "same-id",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "missing-proof",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "string-marker",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "wrong-pid1",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "query-timeout",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "query-error",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "missing-exit",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "wrong-os",
+        "Pass":  true,
+        "Accepted":  false
+    }
+]

@@ -1,5 +1,6 @@
 param([Parameter(Mandatory=$true)][string]$AndroidBaseline,
-    [ValidateRange(10,300)][int]$TimeoutSeconds=180)
+    [ValidateRange(10,300)][int]$TimeoutSeconds=180,
+    [ValidateSet('Restart','Health')][string]$Candidate='Restart')
 $ErrorActionPreference='Stop'
 $repo=Split-Path -Parent $PSScriptRoot
 $adb=Join-Path $repo 'phone-tools/platform-tools/adb.exe'
@@ -37,6 +38,11 @@ try {
         init='6ae13b3ed03864432edc4ca0f9ed8f9b46f6d6e6eeba690cf77dbbac0bc8e780'
         mibox='3e2d9a45aeff3d6b0bf727b1d1aadd31f8c776bf30fe62bf053ae3ac8ad240ce'
     }
+    if($Candidate -eq 'Health') {
+        $pins.init='8c2f9bcd4c5c26585062fbb5f44c7aeadbbe975217d28ab939f65173cb61cb6a'
+        $pins.mibox='2e4f1dfd8f28c0bf52323a9e65abf314e1e1705505414cc7cc25fcdf99128512'
+    }
+    $proof.Candidate=$Candidate
     foreach($name in $pins.Keys) {
         $remote=if($name -eq 'init') {'/init'} else {'/bin/mibox'}
         $local=Join-Path $evidence ($name+'.elf')

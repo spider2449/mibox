@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 pull /init \"F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\20261114-191425-930\\init.elf\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  8,
+    "ProcessId":  6092,
+    "StartedAt":  "2026-11-14T11:36:34.6723703Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "/init: 1 file pulled, 0 skipped. 1.2 MB/s (474088 bytes in 0.364s)",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.4177551,
+    "FinishedAt":  "2026-11-14T11:36:35.0881267Z"
+}

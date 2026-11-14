@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"rm /data/local/tmp/mibox-health-2e4f1dfd8f28 \u0026\u0026 test ! -e /data/local/tmp/mibox-health-2e4f1dfd8f28 \u0026\u0026 echo MIBOX_CLEANUP_OK; cat /proc/sys/kernel/random/boot_id\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  15744,
+    "StartedAt":  "2026-11-14T10:49:17.1266772Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "MIBOX_CLEANUP_OK\r\r\necdad7fb-31d0-4e02-adb5-863bdf0529d5",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.1057998,
+    "FinishedAt":  "2026-11-14T10:49:17.2310880Z"
+}

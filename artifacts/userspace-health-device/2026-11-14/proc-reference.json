@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"cat /proc/sys/kernel/random/boot_id; cat /proc/uptime; cat /proc/1/comm; cat /proc/meminfo; uname -a; id\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  8304,
+    "StartedAt":  "2026-11-14T10:49:00.8417210Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "ecdad7fb-31d0-4e02-adb5-863bdf0529d5\r\r\n14217.87 18317.96\r\r\ninit\r\r\nMemTotal:         877072 kB\r\r\nMemFree:           70296 kB\r\r\nBuffers:          119108 kB\r\r\nCached:           371092 kB\r\r\nSwapCached:            0 kB\r\r\nActive:           250004 kB\r\r\nInactive:         446088 kB\r\r\nActive(anon):     106248 kB\r\r\nInactive(anon):   100724 kB\r\r\nActive(file):     143756 kB\r\r\nInactive(file):   345364 kB\r\r\nUnevictable:         548 kB\r\r\nMlocked:               0 kB\r\r\nHighTotal:        270336 kB\r\r\nHighFree:           3820 kB\r\r\nLowTotal:         606736 kB\r\r\nLowFree:           66476 kB\r\r\nSwapTotal:         65532 kB\r\r\nSwapFree:          65528 kB\r\r\nDirty:               460 kB\r\r\nWriteback:             0 kB\r\r\nAnonPages:        206372 kB\r\r\nMapped:            87412 kB\r\r\nShmem:               532 kB\r\r\nSlab:              34060 kB\r\r\nSReclaimable:      17308 kB\r\r\nSUnreclaim:        16752 kB\r\r\nKernelStack:        6152 kB\r\r\nPageTables:         9160 kB\r\r\nNFS_Unstable:          0 kB\r\r\nBounce:               76 kB\r\r\nWritebackTmp:          0 kB\r\r\nCommitLimit:      504068 kB\r\r\nCommitted_AS:   20044588 kB\r\r\nVmallocTotal:     245760 kB\r\r\nVmallocUsed:      146720 kB\r\r\nVmallocChunk:      34748 kB\r\r\nLinux localhost 3.10.33 #1 SMP PREEMPT Mon Feb 20 15:47:21 CST 2017 armv7l GNU/Linux\r\r\nuid=2000(shell) gid=2000(shell) groups=1003(graphics),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats) context=u:r:shell:s0",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.1269678,
+    "FinishedAt":  "2026-11-14T10:49:00.9679757Z"
+}

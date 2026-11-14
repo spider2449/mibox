@@ -4,6 +4,8 @@ use std::{fs, io, process::Command};
 #[path = "../ram_control.rs"]
 #[allow(dead_code)]
 mod ram_control;
+#[path = "../runtime_health.rs"]
+mod runtime_health;
 
 unsafe extern "C" {
     fn getuid() -> u32;
@@ -130,6 +132,7 @@ fn main() -> io::Result<()> {
             print!("IPv4 route table:\n{}", fs::read_to_string("/proc/net/route")?);
         }
         "ram-selftest" => ram_selftest()?,
+        "health" => print!("{}", runtime_health::snapshot()),
         "info" => {
             print!("{}", fs::read_to_string("/etc/os-release")?);
             let fields = uts_fields()?;
@@ -193,7 +196,7 @@ fn main() -> io::Result<()> {
         }
         _ => {
             return Err(io::Error::other(
-                "commands: info, uname, id, uptime, mounts, ps, net, ls [path], cat path, ram-selftest, selftest, reboot-android --check | --boot-id CURRENT_BOOT_ID",
+                "commands: info, health, uname, id, uptime, mounts, ps, net, ls [path], cat path, ram-selftest, selftest, reboot-android --check | --boot-id CURRENT_BOOT_ID",
             ))
         }
     }

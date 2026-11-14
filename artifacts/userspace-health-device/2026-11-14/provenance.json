@@ -1,0 +1,10 @@
+﻿{
+    "Source":  "F:\\coding\\otherPrj\\mibox\\target\\armv7-unknown-linux-musleabihf\\release\\mibox-userland",
+    "Destination":  "/data/local/tmp/mibox-health-2e4f1dfd8f28",
+    "Bytes":  511820,
+    "Sha256":  "2e4f1dfd8f28c0bf52323a9e65abf314e1e1705505414cc7cc25fcdf99128512",
+    "ReadbackSha256":  "2e4f1dfd8f28c0bf52323a9e65abf314e1e1705505414cc7cc25fcdf99128512",
+    "ReadbackMatched":  true,
+    "Scope":  "Temporary file on Android /data; no installation",
+    "BootIdBefore":  "ecdad7fb-31d0-4e02-adb5-863bdf0529d5"
+}

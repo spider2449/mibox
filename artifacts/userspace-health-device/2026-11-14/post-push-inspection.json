@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"ls -l /tmp/mibox-toolbox-2e4f1dfd8f28; getenforce; cat /proc/sys/kernel/random/boot_id\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  7876,
+    "StartedAt":  "2026-11-14T10:44:04.6709246Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "/tmp/mibox-toolbox-2e4f1dfd8f28: Permission denied\r\r\nEnforcing\r\r\necdad7fb-31d0-4e02-adb5-863bdf0529d5",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.0913836,
+    "FinishedAt":  "2026-11-14T10:44:04.7609995Z"
+}

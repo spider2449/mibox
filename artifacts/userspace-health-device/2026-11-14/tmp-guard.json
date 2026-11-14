@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"test -d /tmp \u0026\u0026 test ! -L /tmp \u0026\u0026 test -w /tmp \u0026\u0026 echo MIBOX_TMP_GUARD_OK; id; ls -ld /tmp\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  13820,
+    "StartedAt":  "2026-11-14T10:43:40.4742976Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "MIBOX_TMP_GUARD_OK\r\r\nuid=2000(shell) gid=2000(shell) groups=1003(graphics),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats) context=u:r:shell:s0\r\r\ndrwxrw-r-x system   sdcard_rw          2026-11-14 14:53 tmp",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.11540009999999999,
+    "FinishedAt":  "2026-11-14T10:43:40.5886848Z"
+}

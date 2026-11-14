@@ -33,5 +33,33 @@
         "ExitCode":  1,
         "DeviceAccessed":  false,
         "LoaderRequestSent":  false
+    },
+    {
+        "Case":  "missing-usb",
+        "Pass":  true,
+        "ExitCode":  1,
+        "DeviceAccessed":  false,
+        "LoaderRequestSent":  false
+    },
+    {
+        "Case":  "string-usb",
+        "Pass":  true,
+        "ExitCode":  1,
+        "DeviceAccessed":  false,
+        "LoaderRequestSent":  false
+    },
+    {
+        "Case":  "string-size",
+        "Pass":  true,
+        "ExitCode":  1,
+        "DeviceAccessed":  false,
+        "LoaderRequestSent":  false
+    },
+    {
+        "Case":  "invalid-json",
+        "Pass":  true,
+        "ExitCode":  1,
+        "DeviceAccessed":  false,
+        "LoaderRequestSent":  false
     }
 ]

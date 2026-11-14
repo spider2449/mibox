@@ -1,0 +1,75 @@
+﻿{
+    "AndroidBaseline":  {
+                            "Fingerprint":  "Xiaomi/casablanca_icntv/casablanca:4.4.2/KOT49H/2876:user/release-keys",
+                            "BootCompleted":  "1",
+                            "BootId":  "ecdad7fb-31d0-4e02-adb5-863bdf0529d5"
+                        },
+    "Os":  {
+               "Utc":  "2026-11-14T11:36:35.9808159Z",
+               "Arguments":  "-s 248243005297 shell cat /etc/os-release",
+               "ExitCode":  0,
+               "TimedOut":  false,
+               "Output":  "NAME=\"MiBOX Custom Userspace\"\r\r\nID=mibox-custom\r\r\nVERSION_ID=0.1.0",
+               "Error":  ""
+           },
+    "BootId":  {
+                   "Utc":  "2026-11-14T11:36:36.0695548Z",
+                   "Arguments":  "-s 248243005297 shell cat /proc/sys/kernel/random/boot_id",
+                   "ExitCode":  0,
+                   "TimedOut":  false,
+                   "Output":  "71c18726-3f4f-4f23-826b-0357e5662fdb",
+                   "Error":  ""
+               },
+    "Candidate":  "Health",
+    "Pullinit":  {
+                     "Utc":  "2026-11-14T11:36:36.3881860Z",
+                     "Arguments":  "-s 248243005297 pull /init \"F:\\coding\\otherPrj\\mibox\\artifacts\\software-return\\return-20261114-193635\\init.elf\"",
+                     "ExitCode":  0,
+                     "TimedOut":  false,
+                     "Output":  "",
+                     "Error":  "/init: 1 file pulled, 0 skipped. 1.7 MB/s (474088 bytes in 0.261s)"
+                 },
+    "initSha256":  "8c2f9bcd4c5c26585062fbb5f44c7aeadbbe975217d28ab939f65173cb61cb6a",
+    "Pullmibox":  {
+                      "Utc":  "2026-11-14T11:36:36.7022421Z",
+                      "Arguments":  "-s 248243005297 pull /bin/mibox \"F:\\coding\\otherPrj\\mibox\\artifacts\\software-return\\return-20261114-193635\\mibox.elf\"",
+                      "ExitCode":  0,
+                      "TimedOut":  false,
+                      "Output":  "",
+                      "Error":  "/bin/mibox: 1 file pulled, 0 skipped. 2.4 MB/s (511820 bytes in 0.203s)"
+                  },
+    "miboxSha256":  "2e4f1dfd8f28c0bf52323a9e65abf314e1e1705505414cc7cc25fcdf99128512",
+    "Pid1":  {
+                 "Utc":  "2026-11-14T11:36:36.7612435Z",
+                 "Arguments":  "-s 248243005297 shell cat /proc/1/status",
+                 "ExitCode":  0,
+                 "TimedOut":  false,
+                 "Output":  "Name:\tinit\r\r\nState:\tS (sleeping)\r\r\nTgid:\t1\r\r\nPid:\t1\r\r\nPPid:\t0\r\r\nTracerPid:\t0\r\r\nUid:\t0\t0\t0\t0\r\r\nGid:\t0\t0\t0\t0\r\r\nFDSize:\t32\r\r\nGroups:\t\r\r\nVmPeak:\t    4820 kB\r\r\nVmSize:\t    4816 kB\r\r\nVmLck:\t       0 kB\r\r\nVmPin:\t       0 kB\r\r\nVmHWM:\t     276 kB\r\r\nVmRSS:\t     272 kB\r\r\nVmData:\t    4204 kB\r\r\nVmStk:\t     136 kB\r\r\nVmExe:\t     520 kB\r\r\nVmLib:\t4294967180 kB\r\r\nVmPTE:\t      10 kB\r\r\nVmSwap:\t       0 kB\r\r\nThreads:\t3\r\r\nSigQ:\t0/6842\r\r\nSigPnd:\t0000000000000000\r\r\nShdPnd:\t0000000000000000\r\r\nSigBlk:\t0000000000000000\r\r\nSigIgn:\t0000000000001000\r\r\nSigCgt:\t0000000000000440\r\r\nCapInh:\t0000000000000000\r\r\nCapPrm:\t0000001fffffffff\r\r\nCapEff:\t0000001fffffffff\r\r\nCapBnd:\t0000001fffffffff\r\r\nCpus_allowed:\t3\r\r\nCpus_allowed_list:\t0-1\r\r\nMems_allowed:\t1\r\r\nMems_allowed_list:\t0\r\r\nvoluntary_ctxt_switches:\t111\r\r\nnonvoluntary_ctxt_switches:\t393",
+                 "Error":  ""
+             },
+    "Check":  {
+                  "Utc":  "2026-11-14T11:36:36.8236445Z",
+                  "Arguments":  "-s 248243005297 shell /bin/mibox reboot-android --check",
+                  "ExitCode":  0,
+                  "TimedOut":  false,
+                  "Output":  "MIBOX_RESTART_READY boot_id=71c18726-3f4f-4f23-826b-0357e5662fdb",
+                  "Error":  ""
+              },
+    "Request":  {
+                    "Utc":  "2026-11-14T11:36:36.9444280Z",
+                    "Arguments":  "-s 248243005297 shell /bin/mibox reboot-android --boot-id 71c18726-3f4f-4f23-826b-0357e5662fdb",
+                    "ExitCode":  0,
+                    "TimedOut":  false,
+                    "Output":  "",
+                    "Error":  ""
+                },
+    "AndroidReturn":  {
+                          "Utc":  "2026-11-14T11:37:51.6249111Z",
+                          "Arguments":  "-s 248243005297 shell getprop ro.build.fingerprint; getprop sys.boot_completed; cat /proc/sys/kernel/random/boot_id",
+                          "ExitCode":  0,
+                          "TimedOut":  false,
+                          "Output":  "Xiaomi/casablanca_icntv/casablanca:4.4.2/KOT49H/2876:user/release-keys\r\r\n1\r\r\n175120b6-cd0a-484c-bd05-a8fb038e8c1d",
+                          "Error":  ""
+                      },
+    "PhysicalAndroidReturnVerified":  true
+}

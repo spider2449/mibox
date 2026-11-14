@@ -1,8 +1,8 @@
 param([Parameter(Mandatory=$true)][ValidateSet('SelfTest','BulkTest','Status','Reset','UploadCandidate','BootCandidate','UploadAndBoot')][string]$Action,[switch]$Bulk,
-    [ValidateSet('Baseline','Restart')][string]$Candidate='Baseline',[switch]$VerifyOnly)
+    [ValidateSet('Baseline','Restart','Health')][string]$Candidate='Baseline',[switch]$VerifyOnly)
 $ErrorActionPreference='Stop'
-if($Candidate -eq 'Restart' -and $Action -ne 'UploadAndBoot') {
-    throw 'Restart candidate requires full upload/readback/boot in one session'
+if($Candidate -in @('Restart','Health') -and $Action -ne 'UploadAndBoot') {
+    throw 'Versioned candidate requires full upload/readback/boot in one session'
 }
 if($VerifyOnly -and $Action -notin @('UploadCandidate','BootCandidate','UploadAndBoot')) {
     throw 'VerifyOnly requires a candidate image action'
@@ -102,6 +102,7 @@ namespace MiboxLoader {
       string expected;
       if(preset=="Baseline")expected="f05adbc3d79c8f41be7fef1145f6111f436d35921b7051722ae5195ae7624bba";
       else if(preset=="Restart")expected="5608fa36caa28a7acf7a647b53db5d2775aaceb44730896f87da03f8ba6047fa";
+      else if(preset=="Health")expected="2788822cb79c3808ef6f4bb067fc4b57a033319c5fa0e93ecaec6874c8879bc3";
       else throw new Exception("Unknown pinned candidate");
       if(image==null || image.Length!=8388608 || Hash(image)!=expected)throw new Exception("Candidate hash/size mismatch before USB access");
       return expected;
@@ -237,7 +238,11 @@ namespace MiboxLoader {
 }
 $image=$null
 if($Action -in @('UploadCandidate','BootCandidate','UploadAndBoot')) {
-    $directory=if($Candidate -eq 'Restart') {'mibox-boot-candidate-restart'} else {'mibox-boot-candidate'}
+    $directory=switch($Candidate) {
+        'Restart' {'mibox-boot-candidate-restart'}
+        'Health' {'mibox-boot-candidate-health'}
+        default {'mibox-boot-candidate'}
+    }
     $candidatePath=Join-Path $PSScriptRoot ('../target/'+$directory+'/boot1-custom.NOT_READY.img')
     $image=[IO.File]::ReadAllBytes((Resolve-Path -LiteralPath $candidatePath).Path)
     $validatedHash=[MiboxLoader.RamTest]::ValidateImage($image,$Candidate)

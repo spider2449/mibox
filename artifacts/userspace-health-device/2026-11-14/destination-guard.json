@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell \"test ! -e /tmp/mibox-toolbox-2e4f1dfd8f28 \u0026\u0026 test ! -L /tmp/mibox-toolbox-2e4f1dfd8f28 \u0026\u0026 echo MIBOX_DESTINATION_UNUSED\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  11076,
+    "StartedAt":  "2026-11-14T10:43:56.3555851Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "MIBOX_DESTINATION_UNUSED",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.07041,
+    "FinishedAt":  "2026-11-14T10:43:56.4250163Z"
+}

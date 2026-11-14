@@ -1,0 +1,17 @@
+﻿[
+    {
+        "Case":  "tampered",
+        "Rejected":  true,
+        "UsbAccessed":  false
+    },
+    {
+        "Case":  "wrong-preset",
+        "Rejected":  true,
+        "UsbAccessed":  false
+    },
+    {
+        "Case":  "wrong-size",
+        "Rejected":  true,
+        "UsbAccessed":  false
+    }
+]

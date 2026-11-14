@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "Arguments":  "-NoProfile -File \"F:\\coding\\otherPrj\\mibox\\scripts\\Test-MiboxLoaderRam.ps1\" -Action UploadAndBoot -Candidate Health -VerifyOnly",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  30,
+    "ProcessId":  16312,
+    "StartedAt":  "2026-11-14T11:14:06.6567072Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "{\r\n    \"Candidate\":  \"Health\",\r\n    \"Bytes\":  8388608,\r\n    \"Sha256\":  \"2788822cb79c3808ef6f4bb067fc4b57a033319c5fa0e93ecaec6874c8879bc3\",\r\n    \"UsbAccessed\":  false\r\n}",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.5743652,
+    "FinishedAt":  "2026-11-14T11:14:07.2286966Z"
+}

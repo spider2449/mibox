@@ -1,0 +1,16 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell cat /proc/sys/kernel/random/boot_id",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  8,
+    "ProcessId":  17420,
+    "StartedAt":  "2026-11-14T11:14:27.0222533Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "ecdad7fb-31d0-4e02-adb5-863bdf0529d5",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "ElapsedSeconds":  0.083331099999999991,
+    "FinishedAt":  "2026-11-14T11:14:27.1050169Z"
+}
