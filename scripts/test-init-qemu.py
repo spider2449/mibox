@@ -10,8 +10,8 @@ from pathlib import Path
 
 
 def main(root, timeout, request_usb_acm, test_stock_adb=False, test_stock_adb_guard=False, test_stock_adb_auth=False,
-         request_usb_adb=False, initramfs=None, rootfs_usb_adb_marker=False):
-    evidence = root / ('artifacts/qemu-mibox-rootfs' if request_usb_adb else
+         request_usb_adb=False, initramfs=None, rootfs_usb_adb_marker=False, evidence=None):
+    evidence = evidence or root / ('artifacts/qemu-mibox-rootfs' if request_usb_adb else
                        'artifacts/qemu-adb-auth' if test_stock_adb_auth else
                        'artifacts/qemu-adb-guard' if test_stock_adb_guard else
                        'artifacts/qemu-adb' if test_stock_adb else 'artifacts/qemu')
@@ -139,6 +139,7 @@ if __name__ == '__main__':
     parser.add_argument('--test-stock-adb-auth', action='store_true', help='verify invalid signature rejection and dedicated-key authentication')
     parser.add_argument('--request-usb-adb', action='store_true', help='verify candidate rootfs rejects USB setup on QEMU')
     parser.add_argument('--initramfs', type=Path, help='explicit local RAM rootfs candidate')
+    parser.add_argument('--evidence', type=Path, help='retain a separate run without replacing earlier evidence')
     parser.add_argument('--rootfs-usb-adb-marker', action='store_true', help='verify the rootfs opt-in marker without adding a kernel USB flag')
     args = parser.parse_args()
     if sum((args.test_stock_adb, args.test_stock_adb_guard, args.test_stock_adb_auth)) > 1:
@@ -146,4 +147,4 @@ if __name__ == '__main__':
     main(args.root, args.timeout, args.request_usb_acm,
          args.test_stock_adb or args.test_stock_adb_guard or args.test_stock_adb_auth,
          args.test_stock_adb_guard, args.test_stock_adb_auth,
-         args.request_usb_adb or args.rootfs_usb_adb_marker, args.initramfs, args.rootfs_usb_adb_marker)
+         args.request_usb_adb or args.rootfs_usb_adb_marker, args.initramfs, args.rootfs_usb_adb_marker, args.evidence)

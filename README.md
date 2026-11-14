@@ -6,7 +6,9 @@ The Rust init has booted as PID1 on the actual Mi Box through a fully verified
 temporary RAM image, retaining the stock kernel and DTB. Custom userspace and
 authenticated USB ADB work; the extended Rust toolbox also passes physical
 device checks. See [RAM boot evidence](docs/mibox-ram-boot-success.md) and
-[live toolbox results](docs/mibox-live-toolbox.md). Persistent installation and
+[live toolbox results](docs/mibox-live-toolbox.md). A newer RAM candidate also
+passed [software restart back to Android](docs/mibox-software-return.md) on the
+physical box. Persistent installation and
 a replacement kernel remain unverified.
 
 ## Build the read-only probe
@@ -67,5 +69,7 @@ creates a QEMU-only initramfs and does not flash the box.
 - [First locally built boot candidate and readiness](docs/mibox-boot-candidate.md)
 - [Physical custom PID1/userspace RAM boot: PASS](docs/mibox-ram-boot-success.md)
 - [Live Rust toolbox and RAM self-test](docs/mibox-live-toolbox.md)
+- [Read-only runtime follow-up](docs/mibox-runtime-followup.md)
+- [Software return interface and QEMU restart validation](docs/mibox-software-return.md)
 - `artifacts/probe/2026-11-13/`: actual USB execution output and build provenance.
 - `scripts/Collect-MiboxInfo.ps1`: read-only inventory, not a firmware backup.

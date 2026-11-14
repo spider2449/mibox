@@ -1,6 +1,9 @@
 //! Self-contained custom ARMv7 userspace; requires no Android executables/libs.
-use std::{fs, io, process::Command};
 use std::io::{Read, Write};
+use std::{fs, io, process::Command};
+#[path = "../ram_control.rs"]
+#[allow(dead_code)]
+mod ram_control;
 
 unsafe extern "C" {
     fn getuid() -> u32;
@@ -15,17 +18,23 @@ fn uts_fields() -> io::Result<Vec<String>> {
     if unsafe { uname(uts.as_mut_ptr()) } != 0 {
         return Err(io::Error::last_os_error());
     }
-    Ok(uts.chunks_exact(65).map(|field| {
-        String::from_utf8_lossy(field.split(|b| *b == 0).next().unwrap()).into_owned()
-    }).collect())
+    Ok(uts
+        .chunks_exact(65)
+        .map(|field| String::from_utf8_lossy(field.split(|b| *b == 0).next().unwrap()).into_owned())
+        .collect())
 }
 
 fn ram_selftest() -> io::Result<()> {
     let uid = unsafe { getuid() };
     if uid == 0 || uid != unsafe { geteuid() } {
-        return Err(io::Error::other("RAM self-test requires an unprivileged user"));
+        return Err(io::Error::other(
+            "RAM self-test requires an unprivileged user",
+        ));
     }
-    if !fs::read_to_string("/etc/os-release")?.lines().any(|s| s == "ID=mibox-custom") {
+    if !fs::read_to_string("/etc/os-release")?
+        .lines()
+        .any(|s| s == "ID=mibox-custom")
+    {
         return Err(io::Error::other("custom rootfs required"));
     }
     // Establish that /tmp is RAM-backed before creating the test directory.
@@ -33,10 +42,16 @@ fn ram_selftest() -> io::Result<()> {
     let mut root_ram = false;
     for line in mounts.lines() {
         let fields: Vec<_> = line.split_whitespace().collect();
-        if fields.len() < 3 { return Err(io::Error::other("invalid mount table")); }
-        if fields[1] == "/" { root_ram = matches!(fields[2], "rootfs" | "ramfs" | "tmpfs"); }
+        if fields.len() < 3 {
+            return Err(io::Error::other("invalid mount table"));
+        }
+        if fields[1] == "/" {
+            root_ram = matches!(fields[2], "rootfs" | "ramfs" | "tmpfs");
+        }
         if fields[1] == "/tmp" || fields[1].starts_with("/tmp/") {
-            return Err(io::Error::other("separate /tmp mount: RAM status not established"));
+            return Err(io::Error::other(
+                "separate /tmp mount: RAM status not established",
+            ));
         }
     }
     if !root_ram || fs::symlink_metadata("/tmp")?.file_type().is_symlink() {
@@ -47,15 +62,27 @@ fn ram_selftest() -> io::Result<()> {
     let path = format!("{directory}/payload");
     let result = (|| {
         let payload: Vec<u8> = (0..65536).map(|i| ((i * 31 + 7) & 255) as u8).collect();
-        let mut file = fs::OpenOptions::new().write(true).create_new(true).open(&path)?;
+        let mut file = fs::OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .open(&path)?;
         file.write_all(&payload)?;
         drop(file);
         let mut actual = Vec::new();
         fs::File::open(&path)?.read_to_end(&mut actual)?;
-        if actual != payload { return Err(io::Error::other("RAM file readback mismatch")); }
-        let status = Command::new(std::env::current_exe()?).arg("--child-probe").status()?;
-        if status.code() != Some(17) { return Err(io::Error::other("child exit status mismatch")); }
-        println!("MIBOX_RAM_SELFTEST_OK uid={uid} bytes={} file_io=ok child_exit=17", payload.len());
+        if actual != payload {
+            return Err(io::Error::other("RAM file readback mismatch"));
+        }
+        let status = Command::new(std::env::current_exe()?)
+            .arg("--child-probe")
+            .status()?;
+        if status.code() != Some(17) {
+            return Err(io::Error::other("child exit status mismatch"));
+        }
+        println!(
+            "MIBOX_RAM_SELFTEST_OK uid={uid} bytes={} file_io=ok child_exit=17",
+            payload.len()
+        );
         Ok(())
     })();
     // Only remove the exact file and directory created by this invocation.
@@ -67,6 +94,13 @@ fn ram_selftest() -> io::Result<()> {
 fn main() -> io::Result<()> {
     let args: Vec<_> = std::env::args().skip(1).collect();
     match args.first().map(String::as_str).unwrap_or("info") {
+        "reboot-android" => {
+            match args.get(1).map(String::as_str) {
+                Some("--check") if args.len() == 2 => ram_control::request(None)?,
+                Some("--boot-id") if args.len() == 3 => ram_control::request(Some(&args[2]))?,
+                _ => return Err(io::Error::other("usage: reboot-android --check | reboot-android --boot-id CURRENT_BOOT_ID")),
+            }
+        }
         "--child-probe" => std::process::exit(17),
         "uname" => {
             let fields = uts_fields()?;
@@ -159,7 +193,7 @@ fn main() -> io::Result<()> {
         }
         _ => {
             return Err(io::Error::other(
-                "commands: info, uname, id, uptime, mounts, ps, net, ls [path], cat path, ram-selftest, selftest",
+                "commands: info, uname, id, uptime, mounts, ps, net, ls [path], cat path, ram-selftest, selftest, reboot-android --check | --boot-id CURRENT_BOOT_ID",
             ))
         }
     }

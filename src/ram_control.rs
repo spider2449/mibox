@@ -1,0 +1,202 @@
+//! Narrow control channel owned by the custom RAM PID1. Never runs a shell.
+use std::{
+    fs,
+    io::{self, Read, Write},
+    os::{
+        fd::AsRawFd,
+        raw::{c_int, c_void},
+        unix::{
+            fs::PermissionsExt,
+            net::{UnixListener, UnixStream},
+        },
+    },
+    time::{Duration, Instant},
+};
+
+const SOCKET: &str = "/dev/mibox-control";
+const ACCEPTED: &str = "MIBOX_RESTART_ACCEPTED\n";
+#[repr(C)]
+struct Credentials {
+    pid: c_int,
+    uid: u32,
+    gid: u32,
+}
+unsafe extern "C" {
+    fn getsockopt(
+        fd: c_int,
+        level: c_int,
+        option: c_int,
+        value: *mut c_void,
+        length: *mut u32,
+    ) -> c_int;
+    fn getuid() -> u32;
+    fn reboot(command: c_int) -> c_int;
+}
+
+fn credentials(stream: &UnixStream) -> io::Result<Credentials> {
+    let mut peer = Credentials {
+        pid: 0,
+        uid: u32::MAX,
+        gid: u32::MAX,
+    };
+    let mut length = std::mem::size_of::<Credentials>() as u32;
+    if unsafe {
+        getsockopt(
+            stream.as_raw_fd(),
+            1,
+            17,
+            (&mut peer as *mut Credentials).cast(),
+            &mut length,
+        )
+    } != 0
+    {
+        return Err(io::Error::last_os_error());
+    }
+    if length as usize != std::mem::size_of::<Credentials>() {
+        return Err(io::Error::other("invalid peer credentials"));
+    }
+    Ok(peer)
+}
+
+fn bounded_request(stream: &mut UnixStream) -> io::Result<Vec<u8>> {
+    let deadline = Instant::now() + Duration::from_secs(2);
+    let mut data = Vec::new();
+    loop {
+        let remaining = deadline
+            .checked_duration_since(Instant::now())
+            .ok_or_else(|| io::Error::other("control request deadline"))?;
+        stream.set_read_timeout(Some(remaining))?;
+        let mut bytes = [0; 129];
+        let count = stream.read(&mut bytes)?;
+        if count == 0 {
+            return Ok(data);
+        }
+        if data.len() + count > 128 {
+            return Err(io::Error::other("control request too long"));
+        }
+        data.extend_from_slice(&bytes[..count]);
+    }
+}
+
+fn readiness() -> io::Result<String> {
+    if std::process::id() != 1 || unsafe { getuid() } != 0 {
+        return Err(io::Error::other("requires root PID1"));
+    }
+    if !fs::read_to_string("/etc/os-release")?
+        .lines()
+        .any(|s| s == "ID=mibox-custom")
+    {
+        return Err(io::Error::other("requires custom OS marker"));
+    }
+    let mounts = fs::read_to_string("/proc/mounts")?;
+    let mut ram_root = false;
+    for line in mounts.lines() {
+        let fields: Vec<_> = line.split_whitespace().collect();
+        if fields.len() < 3 {
+            return Err(io::Error::other("invalid mount table"));
+        }
+        if fields[1] == "/" {
+            ram_root = matches!(fields[2], "rootfs" | "ramfs" | "tmpfs");
+        }
+        if !matches!(
+            fields[2],
+            "rootfs" | "ramfs" | "tmpfs" | "proc" | "sysfs" | "devtmpfs" | "devpts" | "functionfs"
+        ) {
+            return Err(io::Error::other("non-RAM/nonvirtual filesystem mounted"));
+        }
+    }
+    if !ram_root {
+        return Err(io::Error::other("requires RAM root"));
+    }
+    let compatible = fs::read("/proc/device-tree/compatible")?;
+    let stock = compatible
+        .split(|b| *b == 0)
+        .any(|v| v == b"AMLOGIC,8726_MX")
+        && fs::read_to_string("/proc/sys/kernel/osrelease")?.trim() == "3.10.33";
+    let qemu = compatible
+        .split(|b| *b == 0)
+        .any(|v| v == b"linux,dummy-virt")
+        && fs::read_to_string("/proc/cmdline")?
+            .split_whitespace()
+            .any(|v| v == "mibox.test_restart=1");
+    if !stock && !qemu {
+        return Err(io::Error::other("restart platform guard"));
+    }
+    Ok(fs::read_to_string("/proc/sys/kernel/random/boot_id")?
+        .trim()
+        .to_owned())
+}
+
+fn handle(mut stream: UnixStream) -> io::Result<()> {
+    stream.set_write_timeout(Some(Duration::from_secs(2)))?;
+    if !matches!(credentials(&stream)?.uid, 0 | 2000) {
+        return Err(io::Error::other("control peer UID denied"));
+    }
+    let request = bounded_request(&mut stream)?;
+    let boot_id = readiness()?;
+    if request == b"CHECK\n" {
+        writeln!(stream, "MIBOX_RESTART_READY boot_id={boot_id}")?;
+    } else if request == format!("RESTART {boot_id}\n").as_bytes() {
+        // Acceptance alone is not proof of a successful Android return.
+        stream.write_all(ACCEPTED.as_bytes())?;
+        eprintln!("MIBOX_NORMAL_RESTART_REQUESTED boot_id={boot_id}");
+        if unsafe { reboot(0x01234567) } != 0 {
+            // LINUX_REBOOT_CMD_RESTART, no mode argument
+            return Err(io::Error::last_os_error());
+        }
+    } else {
+        return Err(io::Error::other("invalid command or stale boot ID"));
+    }
+    Ok(())
+}
+
+pub fn serve() -> io::Result<()> {
+    if std::process::id() != 1 || unsafe { getuid() } != 0 {
+        return Err(io::Error::other("control listener requires root PID1"));
+    }
+    // Never unlink an existing object. /dev is root owned and not user writable.
+    let listener = UnixListener::bind(SOCKET)?;
+    fs::set_permissions(SOCKET, fs::Permissions::from_mode(0o666))?;
+    eprintln!("MIBOX_RAM_CONTROL_READY");
+    for stream in listener.incoming() {
+        match stream.and_then(handle) {
+            Ok(()) => {}
+            Err(error) => eprintln!("mibox-control: {error}"),
+        }
+    }
+    Ok(())
+}
+
+pub fn request(restart_boot_id: Option<&str>) -> io::Result<()> {
+    let mut stream = UnixStream::connect(SOCKET)?;
+    let peer = credentials(&stream)?;
+    if peer.uid != 0 || peer.pid != 1 {
+        return Err(io::Error::other("control server is not root PID1"));
+    }
+    stream.set_write_timeout(Some(Duration::from_secs(3)))?;
+    stream.set_read_timeout(Some(Duration::from_secs(3)))?;
+    let boot_id = fs::read_to_string("/proc/sys/kernel/random/boot_id")?;
+    if let Some(expected) = restart_boot_id {
+        if expected != boot_id.trim() {
+            return Err(io::Error::other("boot ID does not match current boot"));
+        }
+        writeln!(stream, "RESTART {expected}")?;
+    } else {
+        stream.write_all(b"CHECK\n")?;
+    }
+    stream.shutdown(std::net::Shutdown::Write)?;
+    let mut response = String::new();
+    (&mut stream).take(257).read_to_string(&mut response)?;
+    let expected = if restart_boot_id.is_some() {
+        ACCEPTED.to_owned()
+    } else {
+        format!("MIBOX_RESTART_READY boot_id={}\n", boot_id.trim())
+    };
+    if response != expected {
+        return Err(io::Error::other(
+            "control request rejected or invalid response",
+        ));
+    }
+    print!("{response}");
+    Ok(())
+}

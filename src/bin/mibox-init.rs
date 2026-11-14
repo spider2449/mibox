@@ -1,4 +1,5 @@
-//! Minimal RAM-only PID1 candidate. Not yet boot-tested on MiBOX1S.
+//! Minimal RAM-only PID1. The original baseline passed physical MiBOX1S boot.
+//! Subsequent changes require fresh candidate and physical validation.
 //! Outside PID1 it only prints a report; it never changes mounts or devices.
 use std::ffi::CString;
 use std::fs::{self, OpenOptions};
@@ -12,6 +13,9 @@ use std::time::Duration;
 
 #[path = "../android_properties.rs"]
 mod android_properties;
+#[path = "../ram_control.rs"]
+#[allow(dead_code)]
+mod ram_control;
 #[path = "../usb_adb.rs"]
 mod usb_adb;
 #[path = "../usb_console.rs"]
@@ -108,7 +112,7 @@ fn serve_console(device: &str) -> io::Result<()> {
         }
         match line.trim() {
             "help" => writeln!(output, "help | info | uptime | reaptest | os | files")?,
-            command @ ("os" | "files" | "adbprobe") => {
+            command @ ("os" | "files" | "adbprobe" | "restartprobe") => {
                 // Prevent PID1's generic reaper from collecting a child owned
                 // by Command::output before it retrieves that child's status.
                 let _guard = REAPER_LOCK
@@ -119,12 +123,16 @@ fn serve_console(device: &str) -> io::Result<()> {
                 } else {
                     &["ls", "/"]
                 };
-                if command == "adbprobe" {
-                    let status = Command::new("/bin/mibox-adb-probe")
-                        .stdin(Stdio::from(reader.get_ref().try_clone()?))
-                        .stdout(Stdio::from(reader.get_ref().try_clone()?))
-                        .stderr(Stdio::from(reader.get_ref().try_clone()?))
-                        .status()?;
+                if command == "adbprobe" || command == "restartprobe" {
+                    let status = Command::new(if command == "adbprobe" {
+                        "/bin/mibox-adb-probe"
+                    } else {
+                        "/bin/mibox-restart-probe"
+                    })
+                    .stdin(Stdio::from(reader.get_ref().try_clone()?))
+                    .stdout(Stdio::from(reader.get_ref().try_clone()?))
+                    .stderr(Stdio::from(reader.get_ref().try_clone()?))
+                    .status()?;
                     if !status.success() {
                         writeln!(output, "USERSPACE_COMMAND_FAILED {:?}", status.code())?;
                     }
@@ -189,6 +197,11 @@ fn main() {
         }
     }
     let adb_requested = usb_adb::requested();
+    thread::spawn(|| {
+        if let Err(error) = ram_control::serve() {
+            eprintln!("mibox-init: RAM control unavailable: {error}");
+        }
+    });
     let acm_requested = usb_console::requested();
     if adb_requested && acm_requested {
         eprintln!("mibox-init: conflicting USB requests; keeping /dev/console");

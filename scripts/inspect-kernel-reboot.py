@@ -48,7 +48,10 @@ def inspect(raw_path, elf_path):
 
     # Audited ARM instructions: load command literal, strcmp, compare zero,
     # conditionally load reason, and branch to the common reason store.
-    instructions = {0xc002d054: 0xe59f10ac, 0xc002d058: 0xeb0a7d86,
+    instructions = {0xc002cf74: 0xe2514000, 0xc002cf78: 0x1a000001,
+                    0xc002cf7c: 0xe59f0144, 0xc002cf80: 0xea00003b,
+                    0xc002d074: 0xe59f3098,
+                    0xc002d054: 0xe59f10ac, 0xc002d058: 0xeb0a7d86,
                     0xc002d05c: 0xe3500000, 0xc002d060: 0x059f00a4,
                     0xc002d064: 0x0a000002, 0xc002d078: 0xe5830004}
     if any(word(address) != instruction for address, instruction in instructions.items()):
@@ -67,7 +70,10 @@ def inspect(raw_path, elf_path):
     return dict(kernel_sha256=expected, recovered_elf_sha256=hashlib.sha256(elf).hexdigest(),
                 raw_bytes_preserved_in_elf=True, function='meson_common_restart',
                 function_va='0xc002cf60', cases=cases,
-                default_reason=hex(word(0xc002d0c8)), usb_command=selected,
+                default_reason=hex(word(0xc002d0c8)),
+                null_restart_command=dict(branch_validated=True, reason=hex(word(0xc002d0c8)),
+                                          semantics='NULL command selects default reason before string comparisons'),
+                usb_command=selected,
                 previous_argument='usb_burning', previous_argument_matches_no_case=True,
                 verification='Static binary branch/literal validation, not a bootloader execution trace',
                 hardware_access=False)

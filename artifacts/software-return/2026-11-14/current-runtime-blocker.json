@@ -1,0 +1,42 @@
+﻿{
+    "bootId":  {
+                   "Utc":  "2026-11-14T02:14:34.4988030Z",
+                   "Command":  "cat /proc/sys/kernel/random/boot_id",
+                   "ExitCode":  0,
+                   "TimedOut":  false,
+                   "Output":  "dd2afb3c-091b-4e84-bfde-d468ef3045b1",
+                   "Error":  ""
+               },
+    "osRelease":  {
+                      "Utc":  "2026-11-14T02:14:34.5866801Z",
+                      "Command":  "cat /etc/os-release",
+                      "ExitCode":  0,
+                      "TimedOut":  false,
+                      "Output":  "NAME=\"MiBOX Custom Userspace\"\r\r\nID=mibox-custom\r\r\nVERSION_ID=0.1.0",
+                      "Error":  ""
+                  },
+    "credentials":  {
+                        "Utc":  "2026-11-14T02:14:34.6748950Z",
+                        "Command":  "cat /proc/self/status",
+                        "ExitCode":  0,
+                        "TimedOut":  false,
+                        "Output":  "Name:\tsh\r\r\nState:\tR (running)\r\r\nTgid:\t201\r\r\nPid:\t201\r\r\nPPid:\t85\r\r\nTracerPid:\t0\r\r\nUid:\t2000\t2000\t2000\t2000\r\r\nGid:\t2000\t2000\t2000\t2000\r\r\nFDSize:\t32\r\r\nGroups:\t1003 1004 1007 1011 1015 1028 3001 3002 3003 3006 \r\r\nVmPeak:\t     540 kB\r\r\nVmSize:\t     540 kB\r\r\nVmLck:\t       0 kB\r\r\nVmPin:\t       0 kB\r\r\nVmHWM:\t     220 kB\r\r\nVmRSS:\t     220 kB\r\r\nVmData:\t      64 kB\r\r\nVmStk:\t     136 kB\r\r\nVmExe:\t     200 kB\r\r\nVmLib:\t       0 kB\r\r\nVmPTE:\t       6 kB\r\r\nVmSwap:\t       0 kB\r\r\nThreads:\t1\r\r\nSigQ:\t0/6842\r\r\nSigPnd:\t0000000000000000\r\r\nShdPnd:\t0000000000000000\r\r\nSigBlk:\t0000000000000000\r\r\nSigIgn:\t0000000000001000\r\r\nSigCgt:\t0000000008016007\r\r\nCapInh:\t0000000000000000\r\r\nCapPrm:\t0000000000000000\r\r\nCapEff:\t0000000000000000\r\r\nCapBnd:\t00000000000000c0\r\r\nCpus_allowed:\t3\r\r\nCpus_allowed_list:\t0-1\r\r\nMems_allowed:\t1\r\r\nMems_allowed_list:\t0\r\r\nvoluntary_ctxt_switches:\t0\r\r\nnonvoluntary_ctxt_switches:\t3",
+                        "Error":  ""
+                    },
+    "socket":  {
+                   "Utc":  "2026-11-14T02:14:34.7496436Z",
+                   "Command":  "if [ -e /dev/mibox-control ]; then echo CONTROL_PRESENT; else echo CONTROL_ABSENT; fi",
+                   "ExitCode":  0,
+                   "TimedOut":  false,
+                   "Output":  "CONTROL_ABSENT",
+                   "Error":  ""
+               },
+    "uptime":  {
+                   "Utc":  "2026-11-14T02:14:34.8227716Z",
+                   "Command":  "cat /proc/uptime",
+                   "ExitCode":  0,
+                   "TimedOut":  false,
+                   "Output":  "1235.86 2460.75",
+                   "Error":  ""
+               }
+}

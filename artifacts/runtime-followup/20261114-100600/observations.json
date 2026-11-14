@@ -1,0 +1,93 @@
+﻿{
+    "Serial":  "248243005297",
+    "Proof":  {
+                  "osRelease":  {
+                                    "Utc":  "2026-11-14T02:06:00.1478429Z",
+                                    "Command":  "cat /etc/os-release",
+                                    "ExitCode":  0,
+                                    "TimedOut":  false,
+                                    "Output":  "NAME=\"MiBOX Custom Userspace\"\r\r\nID=mibox-custom\r\r\nVERSION_ID=0.1.0",
+                                    "Error":  ""
+                                },
+                  "bootIdBefore":  {
+                                       "Utc":  "2026-11-14T02:06:00.2243566Z",
+                                       "Command":  "cat /proc/sys/kernel/random/boot_id",
+                                       "ExitCode":  0,
+                                       "TimedOut":  false,
+                                       "Output":  "dd2afb3c-091b-4e84-bfde-d468ef3045b1",
+                                       "Error":  ""
+                                   },
+                  "uptimeBefore":  {
+                                       "Utc":  "2026-11-14T02:06:00.2978117Z",
+                                       "Command":  "cat /proc/uptime",
+                                       "ExitCode":  0,
+                                       "TimedOut":  false,
+                                       "Output":  "721.35 1433.50",
+                                       "Error":  ""
+                                   },
+                  "pid1":  {
+                               "Utc":  "2026-11-14T02:06:00.3912910Z",
+                               "Command":  "cat /proc/1/status",
+                               "ExitCode":  0,
+                               "TimedOut":  false,
+                               "Output":  "Name:\tinit\r\r\nState:\tS (sleeping)\r\r\nTgid:\t1\r\r\nPid:\t1\r\r\nPPid:\t0\r\r\nTracerPid:\t0\r\r\nUid:\t0\t0\t0\t0\r\r\nGid:\t0\t0\t0\t0\r\r\nFDSize:\t32\r\r\nGroups:\t\r\r\nVmPeak:\t    2708 kB\r\r\nVmSize:\t    2708 kB\r\r\nVmLck:\t       0 kB\r\r\nVmPin:\t       0 kB\r\r\nVmHWM:\t     248 kB\r\r\nVmRSS:\t     248 kB\r\r\nVmData:\t    2136 kB\r\r\nVmStk:\t     136 kB\r\r\nVmExe:\t     480 kB\r\r\nVmLib:\t4294967192 kB\r\r\nVmPTE:\t       8 kB\r\r\nVmSwap:\t       0 kB\r\r\nThreads:\t2\r\r\nSigQ:\t0/6842\r\r\nSigPnd:\t0000000000000000\r\r\nShdPnd:\t0000000000000000\r\r\nSigBlk:\t0000000000000000\r\r\nSigIgn:\t0000000000001000\r\r\nSigCgt:\t0000000000000440\r\r\nCapInh:\t0000000000000000\r\r\nCapPrm:\t0000001fffffffff\r\r\nCapEff:\t0000001fffffffff\r\r\nCapBnd:\t0000001fffffffff\r\r\nCpus_allowed:\t3\r\r\nCpus_allowed_list:\t0-1\r\r\nMems_allowed:\t1\r\r\nMems_allowed_list:\t0\r\r\nvoluntary_ctxt_switches:\t148\r\r\nnonvoluntary_ctxt_switches:\t369",
+                               "Error":  ""
+                           },
+                  "info":  {
+                               "Utc":  "2026-11-14T02:06:00.4815425Z",
+                               "Command":  "/bin/mibox info",
+                               "ExitCode":  0,
+                               "TimedOut":  false,
+                               "Output":  "NAME=\"MiBOX Custom Userspace\"\r\r\nID=mibox-custom\r\r\nVERSION_ID=0.1.0\r\r\nkernel=3.10.33 pid=177 uid=2000 euid=2000",
+                               "Error":  ""
+                           },
+                  "mounts":  {
+                                 "Utc":  "2026-11-14T02:06:00.5612310Z",
+                                 "Command":  "cat /proc/mounts",
+                                 "ExitCode":  0,
+                                 "TimedOut":  false,
+                                 "Output":  "rootfs / rootfs rw 0 0\r\r\nproc /proc proc rw,nosuid,noexec,relatime 0 0\r\r\nsysfs /sys sysfs rw,nosuid,noexec,relatime 0 0\r\r\ndevtmpfs /dev devtmpfs rw,nosuid,noexec,relatime,size=437944k,nr_inodes=109486,mode=755 0 0\r\r\ndevpts /dev/pts devpts rw,nosuid,noexec,relatime,mode=600,ptmxmode=000 0 0\r\r\nadb /dev/usb-ffs/adb functionfs rw,nosuid,noexec,relatime 0 0",
+                                 "Error":  ""
+                             },
+                  "memory":  {
+                                 "Utc":  "2026-11-14T02:06:00.6461728Z",
+                                 "Command":  "cat /proc/meminfo",
+                                 "ExitCode":  0,
+                                 "TimedOut":  false,
+                                 "Output":  "MemTotal:         877072 kB\r\r\nMemFree:          847944 kB\r\r\nBuffers:               0 kB\r\r\nCached:             1788 kB\r\r\nSwapCached:            0 kB\r\r\nActive:             1628 kB\r\r\nInactive:            268 kB\r\r\nActive(anon):        112 kB\r\r\nInactive(anon):      124 kB\r\r\nActive(file):       1516 kB\r\r\nInactive(file):      144 kB\r\r\nUnevictable:           0 kB\r\r\nMlocked:               0 kB\r\r\nHighTotal:        270336 kB\r\r\nHighFree:         266832 kB\r\r\nLowTotal:         606736 kB\r\r\nLowFree:          581112 kB\r\r\nSwapTotal:             0 kB\r\r\nSwapFree:              0 kB\r\r\nDirty:                 0 kB\r\r\nWriteback:             0 kB\r\r\nAnonPages:           108 kB\r\r\nMapped:              500 kB\r\r\nShmem:               128 kB\r\r\nSlab:               8028 kB\r\r\nSReclaimable:       4148 kB\r\r\nSUnreclaim:         3880 kB\r\r\nKernelStack:         512 kB\r\r\nPageTables:           36 kB\r\r\nNFS_Unstable:          0 kB\r\r\nBounce:                0 kB\r\r\nWritebackTmp:          0 kB\r\r\nCommitLimit:      438536 kB\r\r\nCommitted_AS:       2772 kB\r\r\nVmallocTotal:     245760 kB\r\r\nVmallocUsed:      109200 kB\r\r\nVmallocChunk:      49148 kB",
+                                 "Error":  ""
+                             },
+                  "processes":  {
+                                    "Utc":  "2026-11-14T02:06:00.9470982Z",
+                                    "Command":  "/tmp/mibox-toolbox-3c2999254ff6 ps",
+                                    "ExitCode":  0,
+                                    "TimedOut":  false,
+                                    "Output":  "PID\tPPID\tUID\tSTATE\tNAME\r\r\n1\t0\t0\tS (sleeping)\tinit\r\r\n2\t0\t0\tS (sleeping)\tkthreadd\r\r\n3\t2\t0\tS (sleeping)\tksoftirqd/0\r\r\n5\t2\t0\tS (sleeping)\tkworker/0:0H\r\r\n7\t2\t0\tS (sleeping)\tmigration/0\r\r\n8\t2\t0\tS (sleeping)\trcu_preempt\r\r\n9\t2\t0\tS (sleeping)\trcu_bh\r\r\n10\t2\t0\tS (sleeping)\trcu_sched\r\r\n11\t2\t0\tS (sleeping)\twatchdog/0\r\r\n12\t2\t0\tS (sleeping)\twatchdog/1\r\r\n13\t2\t0\tS (sleeping)\tmigration/1\r\r\n14\t2\t0\tS (sleeping)\tksoftirqd/1\r\r\n15\t2\t0\tS (sleeping)\tkworker/1:0\r\r\n16\t2\t0\tS (sleeping)\tkworker/1:0H\r\r\n17\t2\t0\tS (sleeping)\tkhelper\r\r\n18\t2\t0\tS (sleeping)\tkdevtmpfs\r\r\n19\t2\t0\tS (sleeping)\tsuspend\r\r\n20\t2\t0\tS (sleeping)\tkthread_hdmi\r\r\n21\t2\t0\tS (sleeping)\twriteback\r\r\n22\t2\t0\tS (sleeping)\tbioset\r\r\n23\t2\t0\tS (sleeping)\tkblockd\r\r\n24\t2\t0\tS (sleeping)\tkhubd\r\r\n25\t2\t0\tS (sleeping)\tkworker/0:1\r\r\n26\t2\t0\tS (sleeping)\tcfg80211\r\r\n27\t2\t0\tS (sleeping)\tkhungtaskd\r\r\n28\t2\t0\tS (sleeping)\tkswapd0\r\r\n29\t2\t0\tS (sleeping)\tfsnotify_mark\r\r\n30\t2\t0\tS (sleeping)\tcifsiod\r\r\n31\t2\t0\tS (sleeping)\tcrypto\r\r\n48\t2\t0\tS (sleeping)\tkthrotld\r\r\n49\t2\t0\tS (sleeping)\tkpsmoused\r\r\n50\t2\t0\tS (sleeping)\tcfinteractive\r\r\n51\t2\t0\tS (sleeping)\tNULL_task_for_h\r\r\n52\t2\t0\tS (sleeping)\tcpu_hotplug_gdb\r\r\n53\t2\t0\tR (running)\tcpu_idle_gdbs\r\r\n54\t2\t0\tS (sleeping)\tbinder\r\r\n55\t2\t0\tS (sleeping)\tge2d_monitor\r\r\n56\t2\t0\tS (sleeping)\tkthread_di\r\r\n57\t2\t0\tS (sleeping)\tdwc_otg\r\r\n58\t2\t0\tS (sleeping)\tkworker/1:1\r\r\n62\t2\t0\tS (sleeping)\tkthread_rdma\r\r\n63\t2\t0\tS (sleeping)\tirq/60-sdio\r\r\n64\t2\t0\tS (sleeping)\tirq/101-mmc_in\r\r\n65\t2\t0\tS (sleeping)\tirq/102-mmc_out\r\r\n66\t2\t0\tS (sleeping)\tmmcqd/1\r\r\n67\t2\t0\tS (sleeping)\tmmcqd/1boot0\r\r\n68\t2\t0\tS (sleeping)\tmmcqd/1boot1\r\r\n69\t2\t0\tS (sleeping)\trtc\r\r\n70\t2\t0\tD (disk sleep)\tkthread_hdcp\r\r\n71\t2\t0\tS (sleeping)\tvmalloc_ion\r\r\n77\t2\t0\tS (sleeping)\tkworker/u4:2\r\r\n78\t2\t0\tS (sleeping)\tkworker/u4:3\r\r\n79\t2\t0\tS (sleeping)\tkrfcommd\r\r\n80\t2\t0\tS (sleeping)\tdeferwq\r\r\n81\t2\t0\tS (sleeping)\tf_mtp\r\r\n82\t2\t0\tS (sleeping)\tfile-storage\r\r\n83\t2\t0\tS (sleeping)\tkworker/0:2\r\r\n84\t2\t0\tS (sleeping)\tkthread_cec\r\r\n85\t1\t2000\tR (running)\tadbd\r\r\n183\t85\t2000\tR (running)\tmibox-toolbox-3",
+                                    "Error":  ""
+                                },
+                  "network":  {
+                                  "Utc":  "2026-11-14T02:06:01.0236360Z",
+                                  "Command":  "/tmp/mibox-toolbox-3c2999254ff6 net",
+                                  "ExitCode":  0,
+                                  "TimedOut":  false,
+                                  "Output":  "INTERFACE\tSTATE\tCARRIER\tMAC\r\r\neth0\tdown\tUNKNOWN\t10:48:b1:ec:20:eb\r\r\nip6tnl0\tdown\tUNKNOWN\t00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00\r\r\nlo\tdown\tUNKNOWN\t00:00:00:00:00:00\r\r\nsit0\tdown\tUNKNOWN\t00:00:00:00\r\r\nIPv4 route table:",
+                                  "Error":  ""
+                              },
+                  "uptimeAfter":  {
+                                      "Utc":  "2026-11-14T02:06:01.0766426Z",
+                                      "Command":  "cat /proc/uptime",
+                                      "ExitCode":  0,
+                                      "TimedOut":  false,
+                                      "Output":  "722.12 1434.32",
+                                      "Error":  ""
+                                  },
+                  "bootIdAfter":  {
+                                      "Utc":  "2026-11-14T02:06:01.1246056Z",
+                                      "Command":  "cat /proc/sys/kernel/random/boot_id",
+                                      "ExitCode":  0,
+                                      "TimedOut":  false,
+                                      "Output":  "dd2afb3c-091b-4e84-bfde-d468ef3045b1",
+                                      "Error":  ""
+                                  }
+              }
+}

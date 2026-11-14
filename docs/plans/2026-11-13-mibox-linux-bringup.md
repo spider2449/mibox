@@ -32,8 +32,9 @@ The original kernel-source investigation below remains the later kernel track.
   QEMU PID1/console/reaper test initially passed 8/8 stages; custom toolbox
   integration on 2026-11-14 passed 10/10 in normal and USB fallback cases.
   A local NOT-READY stock-kernel/custom-rootfs boot candidate was later packaged
-  and independently parsed on 2026-11-14; no hardware PID1 execution yet.
-  Platform handoff/console and watchdog gates remain NOT READY.
+  and independently parsed on 2026-11-14, then physically RAM-booted with
+  custom PID1 and authenticated USB ADB. See docs/mibox-ram-boot-success.md.
+  Long-duration watchdog behavior and persistent installation remain unverified.
 - [x] Run custom static userspace in an unprivileged chroot on the actual box.
   File I/O, rootfs identity/isolation and child execution passed; no independent
   boot or hardware PID1 claim. Embedded stock kernel config also recovered.
@@ -58,22 +59,32 @@ The original kernel-source investigation below remains the later kernel track.
 6. [ ] Identify UART pins and voltage from board evidence; capture boot log.
 7. [ ] Determine bootloader commands, signature checks and RAM boot support.
    Saved env CRC validated for 32768 bytes; default storeboot reads boot1.
-   Dynamic preboot selection and loader acceptance remain unverified.
+   The exact candidate passed full RAM readback and bootm execution through
+   C003 WinUSB. Dynamic preboot selection and general signature policy remain
+   unverified; this item remains open for those questions.
 8. [ ] Select kernel: matching vendor BSP or upstream with a casablanca port.
 9. [x] Create ARMv7 Rust initramfs; validate PID1 userspace in QEMU.
    See docs/mibox-init-qemu.md and artifacts/qemu/result.json. This does not
    emulate the Meson6 board or the stock kernel.
-10. [ ] Boot without persistent writes where the bootloader supports it.
+10. [x] Boot without persistent writes where the bootloader supports it.
+   Verified 8 MiB RAM image, custom PID1/userspace and FunctionFS ADB on the
+   physical box. See docs/mibox-ram-boot-success.md.
+   A newer candidate also passed normal software restart back to Android;
+   see docs/mibox-software-return.md. Permanent-install restoration remains
+   a separate untested gate.
 11. [ ] Bring up storage, USB, networking, HDMI and audio individually.
    USB ACM packets exchanged through Windows COM6, but a later test showed
    reset/incomplete restore evidence. Live switching is disabled pending
    retained-log analysis; see docs/mibox-usb-acm-evidence.md. Optional USB init
-   support compiled; QEMU UART fallback passed all 8 stages. Not hardware ready.
+   support compiled; QEMU UART fallback passed all 8 stages. FunctionFS ADB
+   subsequently passed on the physical custom boot; ACM remains unverified.
 12. [ ] Back up original partitions and test recovery before internal install.
 
 2026-11-14 follow-up: recovery tail, restoration scripts and runtime boot
 alternatives analyzed. See docs/mibox-boot-readiness-2026-11-14.md. Hardware
-boot remains NOT READY; no custom boot partition writes have been made.
+boot was NOT READY at that checkpoint. The later exact-candidate temporary
+RAM boot passed; no custom boot partition writes have been made. Persistent
+installation remains NOT READY pending a tested restoration procedure.
 
 ## Current constraints
 

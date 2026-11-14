@@ -1,0 +1,8 @@
+﻿{
+    "Utc":  "2026-11-14T02:26:10.3398536Z",
+    "ValidImageChecks":  [
+                             "{\r\n    \"Candidate\":  \"Restart\",\r\n    \"Bytes\":  8388608,\r\n    \"Sha256\":  \"5608fa36caa28a7acf7a647b53db5d2775aaceb44730896f87da03f8ba6047fa\",\r\n    \"UsbAccessed\":  false\r\n}",
+                             "{\r\n    \"Candidate\":  \"Baseline\",\r\n    \"Bytes\":  8388608,\r\n    \"Sha256\":  \"f05adbc3d79c8f41be7fef1145f6111f436d35921b7051722ae5195ae7624bba\",\r\n    \"UsbAccessed\":  false\r\n}"
+                         ],
+    "CorruptImageRejectedBeforeUsb":  true
+}

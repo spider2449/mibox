@@ -1,0 +1,74 @@
+{
+  "kernel_sha256": "fe6332d34fc87b758f5a6a9894c40e9e17d13a9cb586ce0aaca79103c73dfc96",
+  "recovered_elf_sha256": "efd752307251b9ec1279f5d8c586d8f6696d6cd9ada150ef9952eb7c497be16d",
+  "raw_bytes_preserved_in_elf": true,
+  "function": "meson_common_restart",
+  "function_va": "0xc002cf60",
+  "cases": [
+    {
+      "command": "charging_reboot",
+      "command_literal": "0xc002d0cc",
+      "reason": "0x0"
+    },
+    {
+      "command": "recovery",
+      "command_literal": "0xc002d0d0",
+      "reason": "0x2020202"
+    },
+    {
+      "command": "factory_reset",
+      "command_literal": "0xc002d0d4",
+      "reason": "0x2020202"
+    },
+    {
+      "command": "update",
+      "command_literal": "0xc002d0d8",
+      "reason": "0x3030303"
+    },
+    {
+      "command": "report_crash",
+      "command_literal": "0xc002d0e0",
+      "reason": "0x4040404"
+    },
+    {
+      "command": "factory_testl_reboot",
+      "command_literal": "0xc002d0e8",
+      "reason": "0x5050505"
+    },
+    {
+      "command": "switch_system",
+      "command_literal": "0xc002d0f0",
+      "reason": "0x6060606"
+    },
+    {
+      "command": "safe_mode",
+      "command_literal": "0xc002d0f8",
+      "reason": "0x7070707"
+    },
+    {
+      "command": "lock_system",
+      "command_literal": "0xc002d100",
+      "reason": "0x8080808"
+    },
+    {
+      "command": "usb_burner_reboot",
+      "command_literal": "0xc002d108",
+      "reason": "0x9090909"
+    }
+  ],
+  "default_reason": "0x1010101",
+  "null_restart_command": {
+    "branch_validated": true,
+    "reason": "0x1010101",
+    "semantics": "NULL command selects default reason before string comparisons"
+  },
+  "usb_command": {
+    "command": "usb_burner_reboot",
+    "command_literal": "0xc002d108",
+    "reason": "0x9090909"
+  },
+  "previous_argument": "usb_burning",
+  "previous_argument_matches_no_case": true,
+  "verification": "Static binary branch/literal validation, not a bootloader execution trace",
+  "hardware_access": false
+}

@@ -6,7 +6,7 @@ See [physical boot evidence](mibox-ram-boot-success.md). Persistent installation
 and a newly built kernel remain unverified. The following assessment records
 the earlier pre-test state.
 
-Decision: NOT READY for a custom hardware boot. Keep the stock boot/recovery
+Historical pre-test decision: NOT READY for a custom hardware boot. Keep the stock boot/recovery
 partitions. The persistent USB ADB V3 fix is installed and reboot-verified;
 this follow-up made no bootloader, partition, USB-mode or reboot changes.
 
@@ -75,7 +75,7 @@ Read-only temporary-root diagnostic `mibox-read-platform bootpath` found:
 
 Evidence: artifacts/platform/2026-11-14/runtime-bootpath.txt.
 
-## Remaining gates
+## Historical pre-test gates and current disposition
 
 1. Establish an observable software boot path within the owner's no-hardware-
    modification constraint. UART is an optional diagnostic, not a mandatory
@@ -84,5 +84,14 @@ Evidence: artifacts/platform/2026-11-14/runtime-bootpath.txt.
 3. Validate console and watchdog handoff under the stock kernel before replacing
    Android PID1. Keep live USB ACM switching disabled pending its unresolved reset.
 
-Generic ARM QEMU PID1 tests remain valid userspace evidence, not MiBOX boot
-compatibility. Hardware boot is still NOT READY despite reliable development ADB.
+The later physical test established the software RAM boot path, full image
+readback, custom PID1 and FunctionFS console for the exact candidate. Owner
+power recovery returned to Android before that test. Software-only return from
+the later custom candidate passed one physical test with a changed Android
+boot ID, original fingerprint and boot_completed=1. See
+[software return evidence](mibox-software-return.md). Long-duration watchdog
+behavior remains unverified.
+Live USB ACM switching remains disabled. See the physical boot evidence above.
+
+Generic ARM QEMU PID1 tests remain userspace evidence. The physical RAM boot
+is PASS for the recorded candidate; persistent installation is NOT READY.

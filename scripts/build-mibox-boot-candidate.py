@@ -9,7 +9,7 @@ import struct
 from pathlib import Path
 
 
-def build(root, output):
+def build(root, output, rootfs_dir=None):
     if not output.resolve().is_relative_to((root / 'target').resolve()):
         raise ValueError('candidate output must remain under this workspace target directory')
     source = root / 'phone-tools/backup/2026-11-13/boot1.img'
@@ -37,7 +37,7 @@ def build(root, output):
         raise ValueError('stock Android image ID not understood')
     if any(data[stock['sections'][-1]['end']:]):
         raise ValueError('unknown nonzero stock trailer; refuse repack')
-    rootfs_dir = root / 'target/mibox-rootfs'
+    rootfs_dir = rootfs_dir or root / 'target/mibox-rootfs'
     metadata = json.loads((rootfs_dir / 'manifest.json').read_text())
     ramdisk = (rootfs_dir / 'initramfs.NOT_READY.cpio.gz').read_bytes()
     if hashlib.sha256(ramdisk).hexdigest() != metadata['gzip_sha256']:
@@ -89,5 +89,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--rootfs', type=Path, help='separate rootfs build; preserves the physical baseline by default')
     args = parser.parse_args()
-    build(args.root, args.output)
+    build(args.root, args.output, args.rootfs)

@@ -9,11 +9,12 @@ root = Path(__file__).resolve().parent.parent
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--with-stock-adb', action='store_true', help='QEMU-only stock adbd compatibility rootfs')
 parser.add_argument('--with-stock-adb-auth', action='store_true', help='include only a dedicated QEMU public key')
+parser.add_argument('--with-restart-probe', action='store_true', help='include QEMU-only RAM restart integration probe')
 args = parser.parse_args()
 if args.with_stock_adb_auth:
     args.with_stock_adb = True
 binary = root / 'target/armv7-unknown-linux-musleabihf/release/mibox-init'
-destination = root / ('target/qemu-adb-auth' if args.with_stock_adb_auth else
+destination = root / ('target/qemu-restart' if args.with_restart_probe else 'target/qemu-adb-auth' if args.with_stock_adb_auth else
                       'target/qemu-adb' if args.with_stock_adb else 'target/qemu')
 destination.mkdir(parents=True, exist_ok=True)
 archive = bytearray()
@@ -39,6 +40,10 @@ identity = (root / 'assets/rootfs/os-release').read_bytes()
 entry('bin/mibox', 0o100755, toolbox)
 entry('etc/os-release', 0o100444, identity)
 stock_hashes = {}
+if args.with_restart_probe:
+    probe = (root / 'target/armv7-unknown-linux-musleabihf/release/mibox-restart-probe').read_bytes()
+    entry('bin/mibox-restart-probe', 0o100755, probe)
+    stock_hashes['bin/mibox-restart-probe'] = hashlib.sha256(probe).hexdigest()
 if args.with_stock_adb:
     for directory in ('sbin', 'system', 'system/bin'):
         entry(directory, 0o040755)

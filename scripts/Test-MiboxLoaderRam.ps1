@@ -1,5 +1,12 @@
-param([Parameter(Mandatory=$true)][ValidateSet('SelfTest','BulkTest','Status','Reset','UploadCandidate','BootCandidate','UploadAndBoot')][string]$Action,[switch]$Bulk)
+param([Parameter(Mandatory=$true)][ValidateSet('SelfTest','BulkTest','Status','Reset','UploadCandidate','BootCandidate','UploadAndBoot')][string]$Action,[switch]$Bulk,
+    [ValidateSet('Baseline','Restart')][string]$Candidate='Baseline',[switch]$VerifyOnly)
 $ErrorActionPreference='Stop'
+if($Candidate -eq 'Restart' -and $Action -ne 'UploadAndBoot') {
+    throw 'Restart candidate requires full upload/readback/boot in one session'
+}
+if($VerifyOnly -and $Action -notin @('UploadCandidate','BootCandidate','UploadAndBoot')) {
+    throw 'VerifyOnly requires a candidate image action'
+}
 if($Bulk -and $Action -in @('UploadCandidate','BootCandidate','UploadAndBoot')) {
     throw 'Bulk image actions disabled: the physical BulkTest timed out; use the verified control channel'
 }
@@ -91,11 +98,19 @@ namespace MiboxLoader {
       bool ok=write?WinUsb_WritePipe(handle,2,data,(uint)data.Length,out count,IntPtr.Zero):WinUsb_ReadPipe(handle,0x81,data,(uint)data.Length,out count,IntPtr.Zero);
       Check(ok,"Bulk RAM 0x"+address.ToString("x8"));if(count!=data.Length)throw new Exception("Short RAM bulk transfer");return data;
     }
-    public static RamResult Run(string action,byte[] image,string interfaceGuid,bool bulk) {
+    public static string ValidateImage(byte[] image,string preset) {
+      string expected;
+      if(preset=="Baseline")expected="f05adbc3d79c8f41be7fef1145f6111f436d35921b7051722ae5195ae7624bba";
+      else if(preset=="Restart")expected="5608fa36caa28a7acf7a647b53db5d2775aaceb44730896f87da03f8ba6047fa";
+      else throw new Exception("Unknown pinned candidate");
+      if(image==null || image.Length!=8388608 || Hash(image)!=expected)throw new Exception("Candidate hash/size mismatch before USB access");
+      return expected;
+    }
+    public static RamResult Run(string action,byte[] image,string interfaceGuid,bool bulk,string preset) {
       if(action!="SelfTest" && action!="BulkTest" && action!="Status" && action!="Reset" && action!="UploadCandidate" && action!="BootCandidate" && action!="UploadAndBoot")throw new Exception("Unknown action");
-      const string expected="f05adbc3d79c8f41be7fef1145f6111f436d35921b7051722ae5195ae7624bba";
+      string expected=null;
       if(action=="UploadCandidate" || action=="BootCandidate" || action=="UploadAndBoot") {
-        if(image==null || image.Length!=8388608 || Hash(image)!=expected)throw new Exception("Candidate hash/size mismatch before USB access");
+        expected=ValidateImage(image,preset);
       }
       // Dedicated GUID from the checked-in, exact-device Zadig preset.
       Guid guid=new Guid(interfaceGuid);
@@ -220,6 +235,17 @@ namespace MiboxLoader {
 }
 '@
 }
+$image=$null
+if($Action -in @('UploadCandidate','BootCandidate','UploadAndBoot')) {
+    $directory=if($Candidate -eq 'Restart') {'mibox-boot-candidate-restart'} else {'mibox-boot-candidate'}
+    $candidatePath=Join-Path $PSScriptRoot ('../target/'+$directory+'/boot1-custom.NOT_READY.img')
+    $image=[IO.File]::ReadAllBytes((Resolve-Path -LiteralPath $candidatePath).Path)
+    $validatedHash=[MiboxLoader.RamTest]::ValidateImage($image,$Candidate)
+    if($VerifyOnly) {
+        [ordered]@{Candidate=$Candidate;Bytes=$image.Length;Sha256=$validatedHash;UsbAccessed=$false} | ConvertTo-Json
+        return
+    }
+}
 $guids=@('86C80ED9-6F95-4FB7-ABFE-744BA77DDC25')
 $registryRoot='HKLM:\SYSTEM\CurrentControlSet\Enum\USB\VID_1B8E&PID_C003'
 if(Test-Path -LiteralPath $registryRoot) {
@@ -232,13 +258,8 @@ if(Test-Path -LiteralPath $registryRoot) {
     }
 }
 $result=$null
-$image=$null
-if($Action -in @('UploadCandidate','BootCandidate','UploadAndBoot')) {
-    $candidate=Join-Path $PSScriptRoot '../target/mibox-boot-candidate/boot1-custom.NOT_READY.img'
-    $image=[IO.File]::ReadAllBytes((Resolve-Path -LiteralPath $candidate).Path)
-}
 foreach($guid in @($guids | Select-Object -Unique)) {
-    $result=[MiboxLoader.RamTest]::Run($Action,$image,$guid,[bool]$Bulk)
+    $result=[MiboxLoader.RamTest]::Run($Action,$image,$guid,[bool]$Bulk,$Candidate)
     if($result.Found) {break}
 }
 $result | ConvertTo-Json
