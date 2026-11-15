@@ -22,7 +22,20 @@ int main(void) {
     if (getuid() || geteuid() || text("/proc/1/root/etc/os-release", buffer, sizeof buffer) ||
         !strstr(buffer, "\nID=mibox-custom\n")) { fputs("custom root required\n", stderr); return 2; }
     if (text("/proc/sys/kernel/osrelease", buffer, sizeof buffer) || strcmp(buffer, "3.10.33\n")) return 2;
-    if (text("/proc/device-tree/compatible", buffer, sizeof buffer) || strcmp(buffer, "AMLOGIC,8726_MX")) return 2;
+    if (text("/proc/device-tree/compatible", buffer, sizeof buffer)) return 2;
+    { /* compatible may be NUL-separated; scan every entry. */
+        ssize_t length = strnlen(buffer, sizeof buffer - 1) + 1;
+        int board = 0;
+        if (length < (ssize_t)sizeof buffer) {
+            for (ssize_t offset = 0; offset < length; ) {
+                size_t entry = strnlen(buffer + offset, sizeof buffer - 1 - offset);
+                if (!entry) break;
+                if (!strcmp(buffer + offset, "AMLOGIC,8726_MX")) board = 1;
+                offset += entry + 1;
+            }
+        }
+        if (!board) return 2;
+    }
     int fd = open("/dev/fb0", O_RDWR | O_CLOEXEC);
     if (fd < 0) { perror("open framebuffer"); return 1; }
     struct fb_var_screeninfo original, active, after;

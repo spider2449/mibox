@@ -24,6 +24,14 @@ command = ['arm-linux-gnueabihf-gcc', '--sysroot=' + str(sysroot),
            '-D_FILE_OFFSET_BITS=64', '-o', str(output), str(root / 'src/hardware/mibox-hardware.c'), '-lm']
 subprocess.run(command, check=True)
 subprocess.run(['arm-linux-gnueabihf-strip', str(output)], check=True)
+handoff = destination / 'mibox-fbhandoff'
+handoff_command = command[:-4] + ['-o', str(handoff), str(root / 'src/hardware/framebuffer-handoff.c')]
+subprocess.run(handoff_command, check=True)
+subprocess.run(['arm-linux-gnueabihf-strip', str(handoff)], check=True)
+handoff_headers = subprocess.run(['arm-linux-gnueabihf-readelf', '-h', '-l', str(handoff)],
+                                 capture_output=True, text=True, check=True).stdout
+if 'INTERP' in handoff_headers or 'DYNAMIC' in handoff_headers or 'Machine:                           ARM' not in handoff_headers:
+    raise RuntimeError('fbhandoff must be static ARM ELF')
 headers = subprocess.run(['arm-linux-gnueabihf-readelf', '-h', '-l', str(output)],
                          capture_output=True, text=True, check=True).stdout
 if 'INTERP' in headers or 'DYNAMIC' in headers or 'Machine:                           ARM' not in headers:
@@ -35,7 +43,9 @@ report = dict(command=command, compiler=subprocess.check_output(
     ['arm-linux-gnueabihf-gcc', '--version'], text=True).splitlines()[0],
     source_sha256=digest(root / 'src/hardware/mibox-hardware.c'),
     capture_header_sha256=digest(root / 'src/hardware/framebuffer-capture.h'),
-    binary_sha256=digest(output), bytes=output.stat().st_size,
+    binary_sha256=digest(output), handoff_binary_sha256=digest(handoff),
+    handoff_source_sha256=digest(root / 'src/hardware/framebuffer-handoff.c'),
+    bytes=output.stat().st_size, handoff_bytes=handoff.stat().st_size,
     packages={p.name: digest(p) for p in sorted(work.glob('*.deb'))},
     static_arm_elf=True, physical_validation=False)
 (destination / 'manifest.json').write_text(json.dumps(report, indent=2) + '\n')

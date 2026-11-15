@@ -28,5 +28,14 @@ if [ ! -s /etc/dropbear/dropbear_ed25519_host_key ]; then
     dropbearkey -t ed25519 -f /etc/dropbear/dropbear_ed25519_host_key
 fi
 echo MIBOX_CONSOLE_SSH_STARTING
+# Bounded HDMI handoff: hand scanout to fb0 and show the fixed splash.
+# Backgrounded; dropbear and ADB start regardless of its outcome.
+if [ -x /sbin/mibox-fbhandoff ] && [ -e /etc/mibox-splash.ppm ]; then
+    (
+        if /sbin/mibox-fbhandoff >/dev/null 2>&1; then
+            busybox fbsplash -c -s /etc/mibox-splash.ppm >/dev/null 2>&1 || true
+        fi
+    ) &
+fi
 # No password authentication or forwarding. Root is the administrative console.
 exec /usr/sbin/dropbear -F -E -s -j -k -p 22 -r /etc/dropbear/dropbear_ed25519_host_key

@@ -89,6 +89,15 @@ def build(root, alpine, public_key, adb_key, output):
     for source, destination in [('mibox-console-start', 'sbin/mibox-console-start'),
                                 ('mibox-udhcpc', 'etc/mibox-udhcpc')]:
         entries[destination] = (0o100755, (root / 'assets/rootfs' / source).read_bytes().replace(b'\r\n', b'\n'), 0, 0)
+    handoff = root / 'target/hardware-helper/mibox-fbhandoff'
+    splash = root / 'target/splash/mibox-splash.ppm'
+    if handoff.is_file():
+        entries['sbin/mibox-fbhandoff'] = (0o100700, handoff.read_bytes(), 0, 0)
+    if splash.is_file():
+        splash_bytes = splash.read_bytes()
+        if not splash_bytes.startswith(b'P6\n1280 1080\n255\n'):
+            raise ValueError('splash PPM header mismatch')
+        entries['etc/mibox-splash.ppm'] = (0o100644, splash_bytes, 0, 0)
     archive = pack(entries)
     compressed = gzip.compress(archive, mtime=0)
     (output / 'initramfs.NOT_READY.cpio.gz').write_bytes(compressed)

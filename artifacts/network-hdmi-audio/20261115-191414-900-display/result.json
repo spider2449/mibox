@@ -1,0 +1,13 @@
+﻿{
+    "Action":  "Display",
+    "StartedAt":  "2026-11-15T19:14:14.9163356+08:00",
+    "DeviceAccessed":  true,
+    "HelperSucceeded":  false,
+    "FunctionalPass":  false,
+    "OwnerConfirmationRequired":  true,
+    "ScriptSHA256":  "64893fe5430994e85e69cd8780e7d82782e15330631b57e51321b5e1fee40fff",
+    "Candidate":  "Hardware",
+    "BootId":  "08c180bf-6ee0-4411-97e8-ddf5e3061b95",
+    "Failure":  "Hardware candidate hash mismatch: init",
+    "FinishedAt":  "2026-11-15T19:14:15.5666205+08:00"
+}
