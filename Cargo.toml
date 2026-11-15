@@ -8,6 +8,7 @@ default-run = "mibox-probe"
 
 [features]
 device-userspace-test = []
+container-kernel-test = []
 
 [[bin]]
 name = "mibox-userspace-test"

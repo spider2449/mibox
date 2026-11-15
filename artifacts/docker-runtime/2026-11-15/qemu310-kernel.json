@@ -1,0 +1,13 @@
+﻿{
+    "Profile":  "GENERIC_VEXPRESS_QEMU_ONLY",
+    "HardwareValidation":  false,
+    "SourceURL":  "https://cdn.kernel.org/pub/linux/kernel/v3.x/linux-3.10.108.tar.xz",
+    "SourceArchiveSHA256":  "3849ea8119517f605f9d53c57dd6c539af8d584c2f1d9031f4f56283af3409a5",
+    "CompilerCommit":  "111258a10e017f067b27e6cfcea7619d753f3309",
+    "ConfigSHA256":  "e30785131da221ec0e9bbfd3910d841b8aeadab0c92a5f2dc15a33e88ca452be",
+    "KernelSHA256":  "a3a4ffcce58f01e1bddc20308679fd0a54d3a0436e9e23614c9fb809515cd814",
+    "DTBSHA256":  "c3e4f0797f5eab4b665523b55811375ddc139585277f5f7a00db19253f1da395",
+    "PassingTrial":  "artifacts/docker-runtime/qemu-legacy-20261115-160528",
+    "PhysicalMiBoxKernel":  false,
+    "PublisherGPGSignatureVerified":  false
+}

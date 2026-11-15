@@ -1,0 +1,154 @@
+{
+  "status": "HOST_PAYLOAD_PREPARED",
+  "version": "24.0.9",
+  "source_url": "https://download.docker.com/linux/static/stable/armhf/docker-24.0.9.tgz",
+  "ram_test_config": {
+    "hosts": [
+      "unix:///run/mibox-docker-test/docker.sock"
+    ],
+    "data-root": "/run/mibox-docker-test/data",
+    "exec-root": "/run/mibox-docker-test/exec",
+    "pidfile": "/run/mibox-docker-test/dockerd.pid",
+    "storage-driver": "vfs",
+    "exec-opts": [
+      "native.cgroupdriver=cgroupfs"
+    ],
+    "bridge": "none",
+    "iptables": false,
+    "ip6tables": false,
+    "ip-forward": false,
+    "ip-masq": false,
+    "log-driver": "json-file",
+    "log-opts": {
+      "max-size": "1m",
+      "max-file": "2"
+    }
+  },
+  "ram_test_config_sha256": "d4a9e2a0154ced4e55809ffb85764192e470c86bdb5d79a0b23c4274fd2643cd",
+  "archive_sha256": "630150b66241a8e9aac29a8414b88cbeed94f39e306c5bac5f934f231639cc42",
+  "pin_origin": "First HTTPS download from download.docker.com; locally pinned, no publisher signature verified",
+  "binaries": {
+    "containerd": {
+      "bytes": 37617664,
+      "sha256": "df7e94a696fb279bd62940183293a73d890c0d8263abf4d80fa7ed6290797aa5",
+      "elf": {
+        "class_bits": 32,
+        "machine": "ARM",
+        "endian": "little",
+        "dynamic_loader": false
+      }
+    },
+    "containerd-shim-runc-v2": {
+      "bytes": 12058624,
+      "sha256": "378858424fc5719ff3116d989513041bcd1f956ddf0c889d351bce262561693a",
+      "elf": {
+        "class_bits": 32,
+        "machine": "ARM",
+        "endian": "little",
+        "dynamic_loader": false
+      }
+    },
+    "ctr": {
+      "bytes": 18481152,
+      "sha256": "0ff10c4e2519a891107e81b0fc72829f7f00f3745fca58a70ffd19938383899b",
+      "elf": {
+        "class_bits": 32,
+        "machine": "ARM",
+        "endian": "little",
+        "dynamic_loader": false
+      }
+    },
+    "docker": {
+      "bytes": 32186213,
+      "sha256": "c344892e564dc17e25d5005dc6bfa684cee5df1a15649ccf888fc33f1d40e6d3",
+      "elf": {
+        "class_bits": 32,
+        "machine": "ARM",
+        "endian": "little",
+        "dynamic_loader": false
+      }
+    },
+    "docker-init": {
+      "bytes": 368244,
+      "sha256": "0edb368d0a9ef00e84ddc76db9c5bc702cd46e4c2603034fa868862bbf0b3e17",
+      "elf": {
+        "class_bits": 32,
+        "machine": "ARM",
+        "endian": "little",
+        "dynamic_loader": false
+      }
+    },
+    "docker-proxy": {
+      "bytes": 2023670,
+      "sha256": "88723fe8dc612e9f5c26e78345ce873be307950007f4191b469c51508b4f4777",
+      "elf": {
+        "class_bits": 32,
+        "machine": "ARM",
+        "endian": "little",
+        "dynamic_loader": false
+      }
+    },
+    "dockerd": {
+      "bytes": 58774636,
+      "sha256": "b21296788dfdb8d07b3da83a85582538f108aa1f7916c77bfec183596b68dc09",
+      "elf": {
+        "class_bits": 32,
+        "machine": "ARM",
+        "endian": "little",
+        "dynamic_loader": false
+      }
+    },
+    "runc": {
+      "bytes": 12776556,
+      "sha256": "98f1456412c163f9421ae60b9d367c7681e08c2bd03610113f8b09e544cdb0e3",
+      "elf": {
+        "class_bits": 32,
+        "machine": "ARM",
+        "endian": "little",
+        "dynamic_loader": false
+      }
+    }
+  },
+  "host_version_probes": {
+    "docker": {
+      "exit_code": 0,
+      "stdout": "Docker version 24.0.9, build 2936816\n",
+      "stderr": ""
+    },
+    "dockerd": {
+      "exit_code": 0,
+      "stdout": "Docker version 24.0.9, build fca702de\n",
+      "stderr": ""
+    },
+    "containerd": {
+      "exit_code": 0,
+      "stdout": "containerd github.com/containerd/containerd v1.7.13 7c3aca7a610df76212171d200ca3811ff6096eb8\n",
+      "stderr": ""
+    },
+    "runc": {
+      "exit_code": 0,
+      "stdout": "runc version 1.1.12\ncommit: v1.1.12-0-g51d5e94\nspec: 1.0.2-dev\ngo: go1.20.13\nlibseccomp: 2.5.1\n",
+      "stderr": ""
+    },
+    "ctr": {
+      "exit_code": 0,
+      "stdout": "ctr github.com/containerd/containerd v1.7.13\n",
+      "stderr": ""
+    },
+    "docker-init": {
+      "exit_code": 0,
+      "stdout": "tini version 0.19.0 - git.de40ad0\n",
+      "stderr": ""
+    },
+    "daemon_config_validation": {
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "configuration OK\n"
+    }
+  },
+  "qemu_version": "qemu-arm version 8.2.2 (Debian 1:8.2.2+ds-0ubuntu1.18)",
+  "physical_validation": false,
+  "daemon_started": false,
+  "device_accessed": false,
+  "production_ready": false
+}

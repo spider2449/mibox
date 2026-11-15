@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "timed_out": false,
+  "qemu_exit": 0,
+  "payload_sha256": "33bba141e73e1a296f1c3bb425c8df2cd20593656275ecdfaa417dcc9824b880",
+  "kernel_sha256": "1ae18b60e4720ef744afac6fb51d18a1cd377521072dab55772c2fc09ed290d4",
+  "sandbox_qemu_sha256": "d64812c251daba53ff498b23c278dd34dab7a6f6aa2bfcd132ab676baeff272d",
+  "physical_validation": false
+}

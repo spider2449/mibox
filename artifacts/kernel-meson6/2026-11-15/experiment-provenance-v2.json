@@ -1,0 +1,47 @@
+﻿{
+    "CandidateSHA256":  "fb1333d9d36c92577ef17643590f67cea596e7d76df33ff8238aa7fcb192f6a6",
+    "KernelUImageSHA256":  "9b3998fc759a34781787d3df5ac03d133ebf7089069dccdd44b42b7348d3cd99",
+    "SourceFiles":  [
+                        {
+                            "File":  "src/bin/mibox-init.rs",
+                            "SHA256":  "8315aefdd45d1ae25c3f50eeb607f4f06b8cbe95997d86722fec334765227d19"
+                        },
+                        {
+                            "File":  "src/ram_control.rs",
+                            "SHA256":  "32d483d68dc1f78ff5695525fe7441973cdecfa774dd60a9cbc0ac6382ee013b"
+                        },
+                        {
+                            "File":  "src/kernel_development.rs",
+                            "SHA256":  "f71ca7aef3beeb1f9599428c7049df8ce9cee9f720b6f219cd8a03927a910461"
+                        },
+                        {
+                            "File":  "src/hardware/mibox-kernel-selftest.c",
+                            "SHA256":  "1011b9bb7dd28617bc660ead8cbdc727aadd0c8c6cecb98b87614ee282f1b205"
+                        },
+                        {
+                            "File":  "scripts/Test-ContainerKernel.ps1",
+                            "SHA256":  "eec81ac50c8ff59072ff45777a703808acc33b3f25c28471f4828d9016811632"
+                        },
+                        {
+                            "File":  "scripts/Test-MiboxLoaderRam.ps1",
+                            "SHA256":  "a075b70d8806fd874504fb432bb6729988061b27c9535534e167aa06f1500a5b"
+                        },
+                        {
+                            "File":  "scripts/Test-MiboxSoftwareReturn.ps1",
+                            "SHA256":  "16d1a847b021eea9e4d12a45f3c530afbd2e16cdabd8ce31620d69a46af6d546"
+                        },
+                        {
+                            "File":  "scripts/build-meson6-boot-test.py",
+                            "SHA256":  "0a15e40226463c040500316a9e2a013206e4c9d288e3682c5fa4716df0b279ee"
+                        },
+                        {
+                            "File":  "scripts/build-mibox-rootfs.py",
+                            "SHA256":  "bec16d9bb675508ba8b39fed0d7f58496b7f49c2ceeae6e968be87fadaf95653"
+                        }
+                    ],
+    "InitSHA256":  "e77771fc585ebf0ea0be44c8f319179e77e728146c7b2b0916626bdfed52c2d2",
+    "ToolSHA256":  "e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07",
+    "HelperSHA256":  "12a98e27e2a69a4ab58f19f096f05dfef5af64a1afc5938ecacd623d96289d85",
+    "RuntimeRelease":  "3.10.99",
+    "BuildTag":  "3.10.99-mibox-container-dev+"
+}

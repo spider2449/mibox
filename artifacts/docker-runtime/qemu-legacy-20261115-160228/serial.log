@@ -1,0 +1,2 @@
+qemu-system-arm: no default audio driver available
+Perhaps you wanted to use -audio or set audiodev=noaudio?

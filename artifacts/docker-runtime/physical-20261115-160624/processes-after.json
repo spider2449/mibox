@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell /bin/busybox ps -o pid,comm",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  15,
+    "ProcessId":  14368,
+    "StartedAt":  "2026-11-15T08:29:14.7146737Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "PID   COMMAND\r\r\n    1 init\r\r\n    2 kthreadd\r\r\n    3 ksoftirqd/0\r\r\n    4 kworker/0:0\r\r\n    5 kworker/0:0H\r\r\n    6 kworker/u4:0\r\r\n    7 migration/0\r\r\n    8 rcu_preempt\r\r\n    9 rcu_bh\r\r\n   10 rcu_sched\r\r\n   11 watchdog/0\r\r\n   12 watchdog/1\r\r\n   13 migration/1\r\r\n   14 ksoftirqd/1\r\r\n   15 kworker/1:0\r\r\n   16 kworker/1:0H\r\r\n   17 khelper\r\r\n   18 kdevtmpfs\r\r\n   19 netns\r\r\n   20 suspend\r\r\n   21 kthread_hdmi\r\r\n   22 writeback\r\r\n   23 bioset\r\r\n   24 crypto\r\r\n   25 kblockd\r\r\n   26 khubd\r\r\n   27 kworker/0:1\r\r\n   28 cfg80211\r\r\n   29 khungtaskd\r\r\n   30 kswapd0\r\r\n   31 fsnotify_mark\r\r\n   32 cifsiod\r\r\n   49 kthrotld\r\r\n   50 kpsmoused\r\r\n   51 cfinteractive\r\r\n   52 NULL_task_for_h\r\r\n   53 cpu_hotplug_gdb\r\r\n   54 cpu_idle_gdbs\r\r\n   55 binder\r\r\n   56 ge2d_monitor\r\r\n   57 kthread_di\r\r\n   58 dwc_otg\r\r\n   59 kworker/1:1\r\r\n   60 kworker/u4:1\r\r\n  125 kthread_h265\r\r\n  126 irq/60-sdio\r\r\n  127 irq/101-mmc_in\r\r\n  128 irq/102-mmc_out\r\r\n  129 mmcqd/1\r\r\n  130 mmcqd/1boot0\r\r\n  131 mmcqd/1boot1\r\r\n  132 rtc\r\r\n  133 kthread_hdcp\r\r\n  134 vmalloc_ion\r\r\n  135 krfcommd\r\r\n  136 deferwq\r\r\n  137 f_mtp\r\r\n  138 file-storage\r\r\n  139 kworker/0:2\r\r\n  140 cec_work\r\r\n  143 kworker/1:2\r\r\n  145 kworker/u4:2\r\r\n  153 adbd\r\r\n  501 busybox",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.2312559,
+    "FinishedAt":  "2026-11-15T08:29:14.9422622Z"
+}

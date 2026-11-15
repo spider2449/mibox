@@ -1,0 +1,5 @@
+﻿MIBOX_DOCKER_WAITING_FOR_PAYLOAD
+/run/mibox-docker-stage/payload.tar.gz: OK
+sandbox bind root: Invalid argument
+MIBOX_DOCKER_EXPERIMENT_EXIT=1
+MIBOX_DOCKER_BOOTSTRAP_DONE

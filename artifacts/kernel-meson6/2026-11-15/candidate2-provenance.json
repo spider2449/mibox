@@ -1,0 +1,9 @@
+﻿{
+    "SameKernel":  true,
+    "UImageSHA256":  "9b3998fc759a34781787d3df5ac03d133ebf7089069dccdd44b42b7348d3cd99",
+    "RuntimeRelease":  "3.10.99",
+    "BuildTag":  "3.10.99-mibox-container-dev+",
+    "InitSHA256":  "e77771fc585ebf0ea0be44c8f319179e77e728146c7b2b0916626bdfed52c2d2",
+    "HelperSHA256":  "12a98e27e2a69a4ab58f19f096f05dfef5af64a1afc5938ecacd623d96289d85",
+    "CandidateSHA256":  "fb1333d9d36c92577ef17643590f67cea596e7d76df33ff8238aa7fcb192f6a6"
+}

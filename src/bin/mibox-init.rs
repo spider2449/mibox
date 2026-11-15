@@ -272,6 +272,40 @@ fn main() {
             hold();
         }
     }
+    #[cfg(feature = "container-kernel-test")]
+    if ram_control::development_kernel_allowed(
+        fs::read_to_string("/proc/sys/kernel/osrelease")
+            .unwrap_or_default()
+            .trim(),
+    ) {
+        // Run before the reaper thread starts; the helper uses private
+        // namespaces and never mounts persistent storage.
+        let result = (|| -> io::Result<()> {
+            fs::create_dir_all("/tmp")?;
+            let output = fs::File::create("/tmp/mibox-kernel-selftest.txt")?;
+            let mut child = Command::new("/sbin/mibox-kernel-selftest")
+                .stdin(Stdio::null())
+                .stdout(output.try_clone()?)
+                .stderr(output)
+                .spawn()?;
+            let started = std::time::Instant::now();
+            loop {
+                if let Some(status) = child.try_wait()? {
+                    eprintln!("MIBOX_KERNEL_SELFTEST_EXIT={}", status.code().unwrap_or(1));
+                    return Ok(());
+                }
+                if started.elapsed() > Duration::from_secs(35) {
+                    child.kill()?;
+                    child.wait()?;
+                    return Err(io::Error::other("kernel selftest timed out"));
+                }
+                thread::sleep(Duration::from_millis(50));
+            }
+        })();
+        if let Err(error) = result {
+            eprintln!("mibox-init: kernel selftest unavailable: {error}");
+        }
+    }
     let adb_requested = usb_adb::requested();
     thread::spawn(|| {
         if let Err(error) = ram_control::serve(hardware_test) {

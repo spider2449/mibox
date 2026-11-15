@@ -1,5 +1,7 @@
 phone-tools/
 /target/
+/tests/kernel-development/target/
+/tests/kernel-development/Cargo.lock
 __pycache__/
 *.py[cod]
 # Extracted stock firmware payloads remain local; retain reports and hashes.
@@ -12,3 +14,5 @@ __pycache__/
 /artifacts/ram-boot/**/*.elf
 /artifacts/network-hdmi-audio/**/*.elf
 /artifacts/framebuffer-capture/**/*.elf
+/artifacts/kernel-meson6/**/*.elf
+/artifacts/docker-runtime/**/*.elf

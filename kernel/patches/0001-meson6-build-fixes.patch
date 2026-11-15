@@ -1,0 +1,78 @@
+diff --git a/fs/proc/base.c b/fs/proc/base.c
+index 51c0286f..fd4c6661 100644
+--- a/fs/proc/base.c
++++ b/fs/proc/base.c
+@@ -1008,7 +1008,7 @@ out:
+ 
+ static int oom_adjust_permission(struct inode *inode, int mask)
+ {
+-	uid_t uid;
++	kuid_t uid;
+ 	struct task_struct *p;
+ 
+ 	p = get_proc_task(inode);
+@@ -1021,7 +1021,7 @@ static int oom_adjust_permission(struct inode *inode, int mask)
+ 	 * System Server (uid == 1000) is granted access to oom_adj of all
+ 	 * android applications (uid > 10000) as and services (uid >= 1000)
+ 	 */
+-	if (p && (current_fsuid() == 1000) && (uid >= 1000)) {
++	if (p && uid_eq(current_fsuid(), KUIDT_INIT(1000)) && uid_gte(uid, KUIDT_INIT(1000))) {
+ 		if (inode->i_mode >> 6 & mask) {
+ 			return 0;
+ 		}
+diff --git a/fs/pstore/ram.c b/fs/pstore/ram.c
+index 4a20382d..8bd5fbf9 100755
+--- a/fs/pstore/ram.c
++++ b/fs/pstore/ram.c
+@@ -83,26 +83,6 @@ MODULE_PARM_DESC(ramoops_ecc,
+ 		"ECC buffer size in bytes (1 is a special value, means 16 "
+ 		"bytes ECC)");
+ 
+-struct ramoops_context {
+-	struct persistent_ram_zone **przs;
+-	struct persistent_ram_zone *cprz;
+-	struct persistent_ram_zone *fprz;
+-	phys_addr_t phys_addr;
+-	unsigned long size;
+-	unsigned int memtype;
+-	size_t record_size;
+-	size_t console_size;
+-	size_t ftrace_size;
+-	int dump_oops;
+-	struct persistent_ram_ecc_info ecc_info;
+-	unsigned int max_dump_cnt;
+-	unsigned int dump_write_cnt;
+-	/* _read_cnt need clear on ramoops_pstore_open */
+-	unsigned int dump_read_cnt;
+-	unsigned int console_read_cnt;
+-	unsigned int ftrace_read_cnt;
+-	struct pstore_info pstore;
+-};
+ 
+ static struct platform_device *dummy;
+ static struct ramoops_platform_data *dummy_data;
+diff --git a/include/linux/pstore_ram.h b/include/linux/pstore_ram.h
+index 9fbfc8f7..c31f9ed9 100755
+--- a/include/linux/pstore_ram.h
++++ b/include/linux/pstore_ram.h
+@@ -59,6 +59,7 @@ typedef struct ramoops_context {
+ 	struct persistent_ram_zone *fprz;
+ 	phys_addr_t phys_addr;
+ 	unsigned long size;
++	unsigned int memtype;
+ 	size_t record_size;
+ 	size_t console_size;
+ 	size_t ftrace_size;
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index a599d182..d1990512 100755
+--- a/kernel/sched/core.c
++++ b/kernel/sched/core.c
+@@ -7761,7 +7761,7 @@ cpu_cgroup_allow_attach(struct cgroup *cgrp, struct cgroup_taskset *tset)
+ 		tcred = __task_cred(task);
+ 
+ 		if ((current != task) && !capable(CAP_SYS_NICE) &&
+-		    cred->euid != tcred->uid && cred->euid != tcred->suid)
++		    !uid_eq(cred->euid, tcred->uid) && !uid_eq(cred->euid, tcred->suid))
+ 			return -EACCES;
+ 	}
+ 

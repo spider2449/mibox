@@ -1,0 +1,11 @@
+[package]
+name = "kernel-development-guard-tests"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[lib]
+path = "../../src/kernel_development.rs"
+
+[features]
+container-kernel-test = []

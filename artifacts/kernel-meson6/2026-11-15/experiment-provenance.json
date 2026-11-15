@@ -1,0 +1,78 @@
+﻿{
+    "RustCompiler":  "rustc 1.99.0 (b940084d7 2026-09-28)",
+    "Feature":  "container-kernel-test",
+    "SourceFiles":  [
+                        {
+                            "File":  "Cargo.toml",
+                            "SHA256":  "f9d198aaca5399ab263216263249a538dea36899e1ac6535c9fd7fbd9c23e767"
+                        },
+                        {
+                            "File":  "Cargo.lock",
+                            "SHA256":  "df47568d8944caa1e21a132f1ed857e730f683a475f5f019024d5efa9679554f"
+                        },
+                        {
+                            "File":  "src/bin/mibox-init.rs",
+                            "SHA256":  "8315aefdd45d1ae25c3f50eeb607f4f06b8cbe95997d86722fec334765227d19"
+                        },
+                        {
+                            "File":  "src/ram_control.rs",
+                            "SHA256":  "32d483d68dc1f78ff5695525fe7441973cdecfa774dd60a9cbc0ac6382ee013b"
+                        },
+                        {
+                            "File":  "src/kernel_development.rs",
+                            "SHA256":  "5ba75ed4b03c5aff8913de3795906442bb394fa38c7e8ec8383f7fe9789ef3e4"
+                        },
+                        {
+                            "File":  "src/usb_adb.rs",
+                            "SHA256":  "424cd2959c023470f37f3d8b0df0a2ce1a7c8ea5da09b7a0130c1dafc68b4ab1"
+                        },
+                        {
+                            "File":  "src/android_properties.rs",
+                            "SHA256":  "b0177ab5526b1553cb61f885e0d534df014765d862dbad3d6ef3ac46ff1446f0"
+                        },
+                        {
+                            "File":  "src/hardware/mibox-kernel-selftest.c",
+                            "SHA256":  "33f58571c11165eefa5ea3199c92946b262b97b9b89f7c194398569c28820fc3"
+                        },
+                        {
+                            "File":  "scripts/build-mibox-rootfs.py",
+                            "SHA256":  "bec16d9bb675508ba8b39fed0d7f58496b7f49c2ceeae6e968be87fadaf95653"
+                        },
+                        {
+                            "File":  "scripts/build-kernel-selftest.sh",
+                            "SHA256":  "fb0e0513ef751b9a3ac62e7dc66775e36fe8444e2379774626896272325a8a2d"
+                        },
+                        {
+                            "File":  "scripts/build-meson6-boot-test.py",
+                            "SHA256":  "30c9d8be57418edb55b2c0f135f861df5eed143461202baae436017d5ccb973e"
+                        },
+                        {
+                            "File":  "scripts/Test-MiboxLoaderRam.ps1",
+                            "SHA256":  "10fa9aa33efa42c4512c2af0bae92b493725eda00a80e8aa0c4378da747cb61c"
+                        },
+                        {
+                            "File":  "scripts/Test-MiboxSoftwareReturn.ps1",
+                            "SHA256":  "9d799aaed028ed759d5664cfdfef2ebb80173a06773a22ef01651bfb0409638e"
+                        },
+                        {
+                            "File":  "scripts/Test-ContainerKernel.ps1",
+                            "SHA256":  "b99daa654c4a78a364b7009e599dec6e4b636cb18f87f24050f697bf9fa97189"
+                        },
+                        {
+                            "File":  "kernel/meson6-bsp-build.config",
+                            "SHA256":  "91a530218a47344afb60d8523c16d65a00170c28443e31ec6c6e7b128ca5a7b4"
+                        },
+                        {
+                            "File":  "kernel/meson6-containers-v1.config",
+                            "SHA256":  "a8e7fe8c03d908c5a8f4be395087c52d7ae77a7048dd973f29bcca5a1a8b9c6d"
+                        },
+                        {
+                            "File":  "kernel/patches/0001-meson6-build-fixes.patch",
+                            "SHA256":  "bde3c3c731a83d84545fcac994087af158fb475b5d1069e6b5b4aaba1405b754"
+                        }
+                    ],
+    "InitSHA256":  "390f64c8d0dc5aacb5ea7dad67bb38b3569fb11e55629f9d77c510cff5991a1f",
+    "ToolSHA256":  "e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07",
+    "HelperSHA256":  "0a23aec735c6fcc9f5bcbb3016ee55d535e7d48f47c7fb3aaa015cbdcc246513",
+    "KernelImageSHA256":  "67fab7090121e9f0f819c6f0d4d3ff6184172ddbd36793928c4f2cd178f1a2c5"
+}

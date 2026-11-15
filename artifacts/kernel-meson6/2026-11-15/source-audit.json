@@ -1,0 +1,510 @@
+{
+  "source_commit": "8b1bb2b31a8e94b773a4b8ab907a0473a0951192",
+  "dtb_sha256": "24b30f1aafe26845839966721b3c083cb3ed49280178276b6114df6d725cb95c",
+  "memory_source_sha256": "1d655c681f024ea4366b15fa6ba06a2cbf24875da2fe017bae912e85fcf5215f",
+  "board_source_sha256": "5e8ed0bf241c68c2111c34dce6bb348fa2d0e568917095070550422809acd218",
+  "iomem_sha256": "e664fdb49173269a6aa147ad200c9070ef2e0113873ec93faa6ed5c4e42e7a51",
+  "assumptions": [
+    "Pinned source algorithm; CONFIG_ARCH_MESON6=y and CONFIG_MESON_TRUSTZONE=n.",
+    "Unmodified stock DTB; no bootloader fixup changes.",
+    "Source literal hits are leads, not driver-probe or hardware validation."
+  ],
+  "low_reservation_bytes": 148897792,
+  "dsp_reservation_bytes": 1048576,
+  "reservations": [
+    {
+      "node": "/ion_dev",
+      "size": 33554432,
+      "from_low": true,
+      "offset": 0
+    },
+    {
+      "node": "/mesonfb",
+      "size": 16777216,
+      "from_low": true,
+      "offset": 33554432
+    },
+    {
+      "node": "/mesonfb",
+      "size": 1048576,
+      "from_low": true,
+      "offset": 50331648
+    },
+    {
+      "node": "/deinterlace",
+      "size": 29360128,
+      "from_low": true,
+      "offset": 51380224
+    },
+    {
+      "node": "/mesonstream",
+      "size": 10485760,
+      "from_low": true,
+      "offset": 80740352
+    },
+    {
+      "node": "/vdec",
+      "size": 33554432,
+      "from_low": true,
+      "offset": 91226112
+    },
+    {
+      "node": "/ppmgr",
+      "size": 19922944,
+      "from_low": true,
+      "offset": 124780544
+    },
+    {
+      "node": "/ramoops",
+      "size": 4194304,
+      "from_low": true,
+      "offset": 144703488
+    }
+  ],
+  "predicted_iomem": [
+    {
+      "start": "0x80000000",
+      "end": "0x84ffffff",
+      "kind": "System RAM"
+    },
+    {
+      "start": "0x85000000",
+      "end": "0x8defffff",
+      "kind": "Video RAM"
+    },
+    {
+      "start": "0x8df00000",
+      "end": "0x9fefffff",
+      "kind": "System RAM"
+    },
+    {
+      "start": "0xa0000000",
+      "end": "0xbfffffff",
+      "kind": "System RAM"
+    }
+  ],
+  "observed_iomem": [
+    {
+      "start": "0x80000000",
+      "end": "0x84ffffff",
+      "kind": "System RAM"
+    },
+    {
+      "start": "0x85000000",
+      "end": "0x8defffff",
+      "kind": "Video RAM"
+    },
+    {
+      "start": "0x8df00000",
+      "end": "0x9fefffff",
+      "kind": "System RAM"
+    },
+    {
+      "start": "0xa0000000",
+      "end": "0xbfffffff",
+      "kind": "System RAM"
+    }
+  ],
+  "memory_model_matches_captured_iomem": true,
+  "compatible_literal_inventory": {
+    "AMLOGIC,8726_MX": {
+      "nodes": [
+        "/"
+      ],
+      "source_hits": [
+        {
+          "path": "arch/arm/mach-meson6/board-meson6-common.c",
+          "line": 173
+        }
+      ]
+    },
+    "arm,cortex-a9": {
+      "nodes": [
+        "/cpus/cpu@0",
+        "/cpus/cpu@1"
+      ],
+      "source_hits": []
+    },
+    "arm,meson-pl310-cache": {
+      "nodes": [
+        "/cache-controller"
+      ],
+      "source_hits": []
+    },
+    "arm,cortex-a9-gic": {
+      "nodes": [
+        "/interrupt-controller"
+      ],
+      "source_hits": [
+        {
+          "path": "arch/arm/plat-meson/gic-irq.c",
+          "line": 79
+        },
+        {
+          "path": "drivers/irqchip/irq-gic.c",
+          "line": 868
+        }
+      ]
+    },
+    "amlogic,ion_dev": {
+      "nodes": [
+        "/ion_dev"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/ion_dev/dev_ion.c",
+          "line": 157
+        }
+      ]
+    },
+    "amlogic,mesonfb": {
+      "nodes": [
+        "/mesonfb"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/display/osd/osd_main.c",
+          "line": 1997
+        }
+      ]
+    },
+    "amlogic,deinterlace": {
+      "nodes": [
+        "/deinterlace"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/deinterlace/deinterlace.c",
+          "line": 7528
+        }
+      ]
+    },
+    "amlogic,mesonstream": {
+      "nodes": [
+        "/mesonstream"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/amports/amstream.c",
+          "line": 2382
+        }
+      ]
+    },
+    "amlogic,vdec": {
+      "nodes": [
+        "/vdec"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/amports/vdec.c",
+          "line": 720
+        }
+      ]
+    },
+    "amlogic,ppmgr": {
+      "nodes": [
+        "/ppmgr"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/ppmgr/ppmgr_drv.c",
+          "line": 1227
+        }
+      ]
+    },
+    "amlogic,mesonvout": {
+      "nodes": [
+        "/mesonvout"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/display/vout/vout_serve.c",
+          "line": 427
+        }
+      ]
+    },
+    "amlogic,aml_rtc": {
+      "nodes": [
+        "/rtc"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/rtc/aml_rtc.c",
+          "line": 929
+        }
+      ]
+    },
+    "amlogic,aml_uart": {
+      "nodes": [
+        "/uart_ao",
+        "/uart_0"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/uart/uart/meson_uart.c",
+          "line": 1239
+        }
+      ]
+    },
+    "amlogic,bt-dev": {
+      "nodes": [
+        "/bt-dev"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/bluetooth/bt_device.c",
+          "line": 261
+        }
+      ]
+    },
+    "amlogic,btwake_control": {
+      "nodes": [
+        "/btwake_control"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/bluetooth/bt_wake_control.c",
+          "line": 67
+        }
+      ]
+    },
+    "amlogic,aml_broadcm_wifi": {
+      "nodes": [
+        "/wifi"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/wifi/wifi_dt.c",
+          "line": 37
+        }
+      ]
+    },
+    "amlogic,aml_sdio": {
+      "nodes": [
+        "/sdio"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/mmc/aml_sdio.c",
+          "line": 1434
+        }
+      ]
+    },
+    "amlogic, amlogic-dvfs": {
+      "nodes": [
+        "/dvfs"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/power/aml_dvfs/aml_dvfs.c",
+          "line": 443
+        }
+      ]
+    },
+    "amlogic, meson_vcck_dvfs": {
+      "nodes": [
+        "/meson_vcck_dvfs_driver"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/power/meson_cs_dcdc_regulator/meson_cs_dcdc_regulator.c",
+          "line": 759
+        }
+      ]
+    },
+    "amlogic,aml-i2s": {
+      "nodes": [
+        "/audio"
+      ],
+      "source_hits": [
+        {
+          "path": "sound/soc/aml/m8/aml_i2s.c",
+          "line": 1286
+        }
+      ]
+    },
+    "amlogic,aml-i2s-dai": {
+      "nodes": [
+        "/audio_dai"
+      ],
+      "source_hits": [
+        {
+          "path": "sound/soc/aml/m8/aml_i2s_dai.c",
+          "line": 423
+        }
+      ]
+    },
+    "amlogic,aml-spdif-dai": {
+      "nodes": [
+        "/audio_spdif_dai"
+      ],
+      "source_hits": [
+        {
+          "path": "sound/soc/aml/m8/aml_spdif_dai.c",
+          "line": 571
+        }
+      ]
+    },
+    "amlogic,aml-spdif-codec": {
+      "nodes": [
+        "/audio_spdif_codec"
+      ],
+      "source_hits": [
+        {
+          "path": "sound/soc/aml/m8/aml_spdif_codec.c",
+          "line": 124
+        }
+      ]
+    },
+    "amlogic,aml_dummy_codec_audio": {
+      "nodes": [
+        "/dummy_codec_audio"
+      ],
+      "source_hits": [
+        {
+          "path": "sound/soc/aml/m8/aml_m_dummy.c",
+          "line": 327
+        },
+        {
+          "path": "sound/soc/aml/m6/aml_m_dummy.c",
+          "line": 304
+        }
+      ]
+    },
+    "amlogic,aml_dummy_codec": {
+      "nodes": [
+        "/dummy_codec"
+      ],
+      "source_hits": [
+        {
+          "path": "sound/soc/codecs/dummy_codec.c",
+          "line": 113
+        }
+      ]
+    },
+    "amlogic,saradc": {
+      "nodes": [
+        "/saradc"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/input/saradc/saradc.c",
+          "line": 509
+        }
+      ]
+    },
+    "amlogic,ir-meson6-mi": {
+      "nodes": [
+        "/ir-meson-mi"
+      ],
+      "source_hits": []
+    },
+    "amlogic,efuse": {
+      "nodes": [
+        "/efuse"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/efuse/efuse.c",
+          "line": 581
+        }
+      ]
+    },
+    "amlogic,amhdmitx": {
+      "nodes": [
+        "/amhdmitx"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/hdmi/hdmi_tx/hdmi_tx.c",
+          "line": 1836
+        },
+        {
+          "path": "drivers/amlogic/hdmi/hdmi_tx_2/hdmi_tx_main.c",
+          "line": 1675
+        }
+      ]
+    },
+    "amlogic,aml_keys": {
+      "nodes": [
+        "/securitykey"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/securitykeys/core.c",
+          "line": 2020
+        }
+      ]
+    },
+    "amlogic,pm": {
+      "nodes": [
+        "/aml_pm"
+      ],
+      "source_hits": [
+        {
+          "path": "arch/arm/mach-meson6/pm.c",
+          "line": 1127
+        }
+      ]
+    },
+    "amlogic,cpufreq-meson": {
+      "nodes": [
+        "/cpufreq-meson"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/cpufreq/meson-cpufreq.c",
+          "line": 424
+        }
+      ]
+    },
+    "amlogic,meson-eth": {
+      "nodes": [
+        "/meson-eth"
+      ],
+      "source_hits": [
+        {
+          "path": "drivers/amlogic/ethernet/am_net8218.c",
+          "line": 3265
+        }
+      ]
+    },
+    "amlogic,m6-gpio": {
+      "nodes": [
+        "/gpio"
+      ],
+      "source_hits": [
+        {
+          "path": "arch/arm/mach-meson6/gpio.c",
+          "line": 688
+        }
+      ]
+    },
+    "amlogic,pinmux-m6": {
+      "nodes": [
+        "/pinmux"
+      ],
+      "source_hits": [
+        {
+          "path": "arch/arm/mach-meson6/pinctrl.c",
+          "line": 394
+        }
+      ]
+    },
+    "amlogic,amremote_led": {
+      "nodes": [
+        "/amremote_led"
+      ],
+      "source_hits": []
+    },
+    "ramoops": {
+      "nodes": [
+        "/ramoops"
+      ],
+      "source_hits": []
+    }
+  },
+  "board_boot": "UNKNOWN",
+  "boot_readiness": "NOT READY",
+  "physical_validation": false
+}

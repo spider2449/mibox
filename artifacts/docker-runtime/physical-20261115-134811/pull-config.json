@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 pull /proc/config.gz \"F:\\coding\\otherPrj\\mibox\\artifacts\\docker-runtime\\physical-20261115-134811\\config.gz\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  15,
+    "ProcessId":  14980,
+    "StartedAt":  "2026-11-15T06:10:21.5980020Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "/proc/config.gz: 1 file pulled, 0 skipped. 1.5 MB/s (21229 bytes in 0.014s)",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.059061499999999996,
+    "FinishedAt":  "2026-11-15T06:10:21.6558984Z"
+}

@@ -1,0 +1,9 @@
+﻿{
+    "ELFText":  "0xc0008000",
+    "ELFEnd":  "0xc0d8baf8",
+    "UImageLoad":  "0x80008000",
+    "EndIncludingBSS":  "0x80d8baf8",
+    "BeforeTransferBuffer":  true,
+    "Source":  "Built System.map and verified stock uImage load address",
+    "PhysicalValidation":  false
+}

@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 push \"F:\\coding\\otherPrj\\mibox\\target\\mibox-docker-experiment\\payload.tar.gz\" /tmp/mibox-docker-payload.upload",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  180,
+    "ProcessId":  14212,
+    "StartedAt":  "2026-11-15T06:10:21.7424782Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "F:\\coding\\otherPrj\\mibox\\target\\mibox-docker-experiment\\payload.tar.gz: 1 file pushed, 0 skipped. 6.6 MB/s (66739596 bytes in 9.666s)",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  9.7468688999999991,
+    "FinishedAt":  "2026-11-15T06:10:31.4883536Z"
+}

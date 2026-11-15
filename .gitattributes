@@ -1,3 +1,7 @@
 # Preserve exact device captures and hash-pinned assets across checkouts.
 /artifacts/** -text -whitespace
 /assets/** -text
+/scripts/*mibox-kernel.sh text eol=lf
+/kernel/**/*.patch text eol=lf -whitespace
+/scripts/build-kernel-selftest.sh text eol=lf
+/scripts/build-docker-*.sh text eol=lf

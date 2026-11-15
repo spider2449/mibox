@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 pull /proc/config.gz \"F:\\coding\\otherPrj\\mibox\\artifacts\\kernel-meson6\\physical-20261115-122806\\config.gz\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  9936,
+    "StartedAt":  "2026-11-15T04:50:16.0243541Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "/proc/config.gz: 1 file pulled, 0 skipped. 1.6 MB/s (21229 bytes in 0.013s)",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.0557627,
+    "FinishedAt":  "2026-11-15T04:50:16.0795216Z"
+}

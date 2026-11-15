@@ -1,0 +1,33 @@
+﻿{
+    "Action":  "RoundTrip",
+    "Stage":  "ObserveBoot",
+    "ImageSHA256":  "dce6ac31ab47bce5dfee987cfd1cac1b40f9e200bd2d953f768113c77563e35e",
+    "DeviceAccessed":  true,
+    "KernelBootVerified":  false,
+    "PrimitiveTestsPassed":  false,
+    "AndroidReturnVerified":  false,
+    "FlashCommandSent":  false,
+    "AndroidBaselineBootId":  "e3904340-eb0b-4d8a-acae-e144f481a8a2",
+    "Transfer":  {
+                     "Found":  true,
+                     "DevicePath":  "\\\\?\\usb#vid_1b8e\u0026pid_c003#6\u00262b113eed\u00260\u00265#{d925a7f0-61a4-4018-bcd3-f3e5225f3532}",
+                     "VidPid":  "1B8E:C003",
+                     "IdentifyHex":  "00-08-00-10",
+                     "VendorRequestSent":  true,
+                     "InterfaceGuid":  "d925a7f0-61a4-4018-bcd3-f3e5225f3532",
+                     "BootBufferAddress":  "0x82000000",
+                     "BootBufferHex":  "AA-AA-AA-AA-54-01-00-00-00-00-00-00-00-00-00-00-03-00-00-00-9B-28-08-00-03-00-00-00-06-00-00-00-A6-28-08-00-09-00-00-00-00-00-00-00-00-00-00-00-0C-00-00-00-00-00-00-00-00-00-00-00-0E-00-00-00",
+                     "Action":  "UploadAndBoot",
+                     "PatternVerified":  false,
+                     "OriginalRestored":  false,
+                     "VerifiedBytes":  8388608,
+                     "VerifiedSha256":  "dce6ac31ab47bce5dfee987cfd1cac1b40f9e200bd2d953f768113c77563e35e",
+                     "CommandAttempted":  true,
+                     "CommandTransferCompleted":  true,
+                     "StatusHex":  null,
+                     "StatusText":  null,
+                     "BulkMode":  false,
+                     "ControlTimeoutMilliseconds":  10000
+                 },
+    "Failure":  "New kernel/boot identity not established"
+}

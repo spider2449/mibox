@@ -1,0 +1,13 @@
+﻿{
+    "Action":  "Check",
+    "Stage":  "LocalCheckPassed",
+    "ImageSHA256":  "13794e4423287cc12ea2b63bff22a937b156d70d54fb4141ba9342ea4b19c1fa",
+    "PayloadSHA256":  "33bba141e73e1a296f1c3bb425c8df2cd20593656275ecdfaa417dcc9824b880",
+    "KernelBootVerified":  false,
+    "OfflineContainerPassed":  false,
+    "SandboxCleaned":  false,
+    "AndroidReturnVerified":  false,
+    "FlashCommandSent":  false,
+    "PersistentStorageUsed":  false,
+    "Candidate":  "DockerKernel2"
+}

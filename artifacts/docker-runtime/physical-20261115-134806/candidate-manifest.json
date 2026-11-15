@@ -1,0 +1,133 @@
+{
+  "status": "EXPERIMENTAL_RAM_TEST_ONLY",
+  "image_sha256": "3d0be1a75f59e1ecd21459768b603cef8c3c769e0e31f69445d68cf34bf3f2dc",
+  "image_bytes": 8388608,
+  "used_bytes": 6281216,
+  "kernel_release": "3.10.99",
+  "kernel_build_tag": "3.10.99-mibox-container-dev+",
+  "kernel_Image_sha256": "67fab7090121e9f0f819c6f0d4d3ff6184172ddbd36793928c4f2cd178f1a2c5",
+  "uimage_sha256": "9b3998fc759a34781787d3df5ac03d133ebf7089069dccdd44b42b7348d3cd99",
+  "uimage_bytes": 4107835,
+  "uimage_load": "0x80008000",
+  "uimage_entry": "0x80008000",
+  "uimage_timestamp": 0,
+  "lzma_dictionary_bytes": 8388608,
+  "lzma_header_matches_stock": true,
+  "stock_dtb_sha256": "24b30f1aafe26845839966721b3c083cb3ed49280178276b6114df6d725cb95c",
+  "stock_dtb_unchanged": true,
+  "rootfs": {
+    "status": "NOT_READY_FOR_HARDWARE_BOOT",
+    "format": "gzip newc RAM rootfs, no boot header",
+    "gzip_bytes": 2158023,
+    "gzip_sha256": "04dbc1f15240ee39f3faf552b51bf2a987d36ec3d2c51ae11db09a57d352976d",
+    "cpio_sha256": "d98fec459f37778d6d951926159bebebeedc2b99b2a161081dc9405bc775461f",
+    "files": {
+      "init": {
+        "bytes": 486368,
+        "sha256": "e77771fc585ebf0ea0be44c8f319179e77e728146c7b2b0916626bdfed52c2d2"
+      },
+      "bin/mibox": {
+        "bytes": 513620,
+        "sha256": "e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07"
+      },
+      "etc/os-release": {
+        "bytes": 63,
+        "sha256": "b50d9caa29142f02bee2b72d0d8dc2f73cf25e6cc7e1d2d10633b5d24caab3fb"
+      },
+      "adb_keys": {
+        "bytes": 713,
+        "sha256": "34bb515834345724107dc1cefaeaee3fa0f522e0fec85caae889f348804e14a6"
+      },
+      "sbin/mibox-kernel-selftest": {
+        "bytes": 447020,
+        "sha256": "12a98e27e2a69a4ab58f19f096f05dfef5af64a1afc5938ecacd623d96289d85"
+      },
+      "etc/mibox-kernel-development": {
+        "bytes": 90,
+        "sha256": "edf1a70cc444fac7f25e1776c972361bec346d4073bdc1cb67a2a9b2686c45ba"
+      },
+      "etc/mibox-usb-adb.enabled": {
+        "bytes": 31,
+        "sha256": "160cd2767f649fa039a8af2387cf36c3e9d5d6de38babb4840aaea9b6bf6ca0a"
+      },
+      "sbin/adbd": {
+        "bytes": 166052,
+        "sha256": "f2a875f1f6230fde084264e2927d1dbf3bf95bcf5e494809814a488caf532afc"
+      },
+      "system/bin/sh": {
+        "bytes": 214916,
+        "sha256": "d44fd1bb1a8a84fe6ed0b4d850dd05d506aaf4fefdb54d24eb99690fb6583fc6"
+      },
+      "bin/busybox": {
+        "bytes": 713964,
+        "sha256": "750e37d6f1ade60d65e3a87e4287afcb50e7ca2a6e440b28282c5bebcd3b088e"
+      },
+      "sbin/mibox-docker-sandbox": {
+        "bytes": 454576,
+        "sha256": "4f31b20b118dee4121108748cca2410bc591ba8de5758b85bbf141e05c280015"
+      },
+      "lib/ld-musl-armhf.so.1": {
+        "bytes": 530140,
+        "sha256": "20729cec964a7ab5cc4be6d3817ef23129cf61e7159fd501527f5d1aa8b0717b"
+      },
+      "sbin/mibox-console-start": {
+        "bytes": 60,
+        "sha256": "b6fb5a41b7717135ce908c7316fa7aa63b9ffd98c9af632d8cb085d3a46f7d7f"
+      },
+      "sbin/mibox-docker-bootstrap": {
+        "bytes": 1064,
+        "sha256": "150dd1b63680dbce7f14776340c96d3975d16720abe080ec5e8e63b6c3d64677"
+      }
+    },
+    "authorized_public_key_count": 1,
+    "private_keys_included": false,
+    "qemu_probe_included": false,
+    "container_kernel_test": true,
+    "release_directory": "/mnt/f/coding/otherPrj/mibox/target/kernel-userspace/armv7-unknown-linux-musleabihf/release",
+    "required_opt_in": "read-only /etc/mibox-usb-adb.enabled",
+    "usb_adb_enabled_by_rootfs_marker": true,
+    "live_usb_reconfigured": false,
+    "partitions_written": false,
+    "outstanding": [
+      "physical FunctionFS transport",
+      "loader image acceptance",
+      "verified software recovery"
+    ],
+    "docker_experiment": true,
+    "payload_sha256": "33bba141e73e1a296f1c3bb425c8df2cd20593656275ecdfaa417dcc9824b880",
+    "payload_bytes": 66739596
+  },
+  "build_config_sha256": "ace17f68a0d1d0c9084dae437d8456b6719fcb720b43b92f6295951c4c67ab5c",
+  "source_commit": "8b1bb2b31a8e94b773a4b8ab907a0473a0951192",
+  "patches": {
+    "kernel/patches/0001-meson6-build-fixes.patch": "bde3c3c731a83d84545fcac994087af158fb475b5d1069e6b5b4aaba1405b754"
+  },
+  "boot_acceptance": "UNKNOWN",
+  "software_return": "UNKNOWN",
+  "physical_validation": false,
+  "uploaded": false,
+  "flashed": false,
+  "sections": [
+    {
+      "name": "kernel",
+      "start": 2048,
+      "size": 4107835,
+      "end": 4109883,
+      "sha256": "9b3998fc759a34781787d3df5ac03d133ebf7089069dccdd44b42b7348d3cd99"
+    },
+    {
+      "name": "ramdisk",
+      "start": 4110336,
+      "size": 2158023,
+      "end": 6268359,
+      "sha256": "04dbc1f15240ee39f3faf552b51bf2a987d36ec3d2c51ae11db09a57d352976d"
+    },
+    {
+      "name": "second",
+      "start": 6268928,
+      "size": 11414,
+      "end": 6280342,
+      "sha256": "24b30f1aafe26845839966721b3c083cb3ed49280178276b6114df6d725cb95c"
+    }
+  ]
+}

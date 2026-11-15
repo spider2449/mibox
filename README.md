@@ -8,8 +8,12 @@ authenticated USB ADB work; the extended Rust toolbox also passes physical
 device checks. See [RAM boot evidence](docs/mibox-ram-boot-success.md) and
 [live toolbox results](docs/mibox-live-toolbox.md). A newer RAM candidate also
 passed [software restart back to Android](docs/mibox-software-return.md) on the
-physical box. Installation as the default power-on system and
-a replacement kernel remain unverified.
+physical box. A separately built [Meson6 container development kernel](docs/mibox-container-kernel.md)
+has now passed physical RAM boot, namespace/veth/bridge/seccomp and cgroup-v1
+diagnostics, and software return to Android. Docker 24.0.9 has also passed a
+[physical offline container test](docs/mibox-docker-runtime.md) using VFS and
+cgroup v1 in RAM. Persistent engine services, container networking and
+installation as the default power-on system remain unverified.
 
 The separate [console, SSH and apk workflow](docs/mibox-console-ssh.md) adds
 Alpine ARMv7 userspace and a host launcher for persistent software/configuration
@@ -59,6 +63,8 @@ creates a QEMU-only initramfs and does not flash the box.
 
 ## Evidence and planning
 
+- [Docker container runtime reference, kernel audit and blockers](docs/mibox-docker-runtime.md)
+- [Meson6 container kernel builds and RAM experiment](docs/mibox-container-kernel.md)
 - [Bring-up plan](docs/plans/2026-11-13-mibox-linux-bringup.md)
 - [A32 reuse map](docs/amazing-a32-reference.md)
 - [Hardware findings](docs/mibox-linux-findings.md)

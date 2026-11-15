@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell cat /tmp/mibox-kernel-selftest.txt",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  15304,
+    "StartedAt":  "2026-11-15T04:50:16.0969115Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "MIBOX_KERNEL_SELFTEST_V1\r\r\nkernel=3.10.99\r\r\nnamespace_pid1_veth_bridge_tmpfs=PASS\r\r\nparent_uts_and_net_unchanged=PASS\r\r\nuser_namespace=PASS\r\r\nseccomp_filter_enforcement=PASS\r\r\nmemory_cgroup_limit_readback=PASS\r\r\ncpu_cgroup_quota_readback=PASS\r\r\nMIBOX_KERNEL_SELFTEST_PASS",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.0560648,
+    "FinishedAt":  "2026-11-15T04:50:16.1517616Z"
+}

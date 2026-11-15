@@ -1,0 +1,9 @@
+MIBOX_KERNEL_SELFTEST_V1
+kernel=3.10.99
+namespace_pid1_veth_bridge_tmpfs=PASS
+parent_uts_and_net_unchanged=PASS
+user_namespace=PASS
+seccomp_filter_enforcement=PASS
+memory_cgroup_limit_readback=PASS
+cpu_cgroup_quota_readback=PASS
+MIBOX_KERNEL_SELFTEST_PASS

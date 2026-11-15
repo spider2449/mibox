@@ -1,0 +1,30 @@
+﻿[
+    {
+        "File":  "scripts/Test-MiboxDocker.ps1",
+        "SHA256":  "f4c5fa2c2f18c6dcfb0469d6213a9a22ae56df33c781f4830047783c23414665"
+    },
+    {
+        "File":  "scripts/Test-MiboxLoaderRam.ps1",
+        "SHA256":  "c13083eee04be3098f3e5c4c49ad67edb553607d65b5b05de970ef51984e26d7"
+    },
+    {
+        "File":  "scripts/Test-MiboxSoftwareReturn.ps1",
+        "SHA256":  "166a8a99fae20d685757c6a52a21dcfc3afbb8c7ea8371a739e5f265842095e6"
+    },
+    {
+        "File":  "scripts/build-docker-experiment.py",
+        "SHA256":  "22bd5431b7c95552eba50aca1f42f37abed275d8927575756cdc3aa7142ee420"
+    },
+    {
+        "File":  "scripts/build-docker-sandbox.sh",
+        "SHA256":  "e977b596e394217af97905671803b8d0f7a221817f571137582ee59803847e34"
+    },
+    {
+        "File":  "src/hardware/mibox-docker-sandbox.c",
+        "SHA256":  "7b8c986b4ccd1ca38056023d24a9d61b2cb97da2f1cb9d9f407a72d19bc4c9f9"
+    },
+    {
+        "File":  "assets/rootfs/mibox-docker-experiment",
+        "SHA256":  "6c54069ce8288345553b5e12784c82c45a7a58b5e918ca28728fd1b86b6f463f"
+    }
+]

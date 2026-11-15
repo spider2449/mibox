@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell cat /tmp/mibox-docker-experiment.log",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  15,
+    "ProcessId":  14664,
+    "StartedAt":  "2026-11-15T06:10:46.2478838Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "MIBOX_DOCKER_WAITING_FOR_PAYLOAD\r\r\n/run/mibox-docker-stage/payload.tar.gz: OK\r\r\nsandbox bind root: Invalid argument\r\r\nMIBOX_DOCKER_EXPERIMENT_EXIT=1\r\r\nMIBOX_DOCKER_BOOTSTRAP_DONE",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.077265,
+    "FinishedAt":  "2026-11-15T06:10:46.3240325Z"
+}

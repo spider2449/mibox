@@ -1,0 +1,236 @@
+{
+  "schema": 1,
+  "config": "/home/morefunfun/.cache/mibox-kernel/build-containers-v1/.config",
+  "config_sha256": "ace17f68a0d1d0c9084dae437d8456b6719fcb720b43b92f6295951c4c67ab5c",
+  "kernel_version": "3.10.99",
+  "profile": "legacy cgroup-v1/VFS/bridge/seccomp development host",
+  "config_gate": "PASS",
+  "runtime_readiness": "NOT READY",
+  "physical_validation": false,
+  "limitations": [
+    "No overlayfs, cgroup v2 or pids-limit requirement in this profile.",
+    "A PASS does not establish compatibility with any Docker engine version."
+  ],
+  "runtime_gates": {
+    "cgroup_v1_mount_and_controllers": "UNKNOWN",
+    "kernel_board_boot": "UNKNOWN",
+    "engine_binary_compatibility": "UNKNOWN",
+    "storage_backing_filesystem": "UNKNOWN",
+    "image_pull_and_run": "UNKNOWN",
+    "bridge_and_published_port": "UNKNOWN",
+    "resource_limits": "UNKNOWN",
+    "persistent_volume_and_restart": "UNKNOWN"
+  },
+  "checks": [
+    {
+      "group": "isolation",
+      "key": "CONFIG_NAMESPACES",
+      "value": "y",
+      "line": 123,
+      "status": "PASS"
+    },
+    {
+      "group": "isolation",
+      "key": "CONFIG_UTS_NS",
+      "value": "y",
+      "line": 124,
+      "status": "PASS"
+    },
+    {
+      "group": "isolation",
+      "key": "CONFIG_IPC_NS",
+      "value": "y",
+      "line": 125,
+      "status": "PASS"
+    },
+    {
+      "group": "isolation",
+      "key": "CONFIG_PID_NS",
+      "value": "y",
+      "line": 127,
+      "status": "PASS"
+    },
+    {
+      "group": "isolation",
+      "key": "CONFIG_NET_NS",
+      "value": "y",
+      "line": 128,
+      "status": "PASS"
+    },
+    {
+      "group": "resources",
+      "key": "CONFIG_CGROUPS",
+      "value": "y",
+      "line": 103,
+      "status": "PASS"
+    },
+    {
+      "group": "resources",
+      "key": "CONFIG_MEMCG",
+      "value": "y",
+      "line": 111,
+      "status": "PASS"
+    },
+    {
+      "group": "resources",
+      "key": "CONFIG_CGROUP_SCHED",
+      "value": "y",
+      "line": 116,
+      "status": "PASS"
+    },
+    {
+      "group": "resources",
+      "key": "CONFIG_CFS_BANDWIDTH",
+      "value": "y",
+      "line": 118,
+      "status": "PASS"
+    },
+    {
+      "group": "resources",
+      "key": "CONFIG_CPUSETS",
+      "value": "y",
+      "line": 107,
+      "status": "PASS"
+    },
+    {
+      "group": "storage",
+      "key": "CONFIG_EXT4_FS",
+      "value": "y",
+      "line": 3157,
+      "status": "PASS"
+    },
+    {
+      "group": "storage",
+      "key": "CONFIG_TMPFS",
+      "value": "y",
+      "line": 3226,
+      "status": "PASS"
+    },
+    {
+      "group": "storage",
+      "key": "CONFIG_TMPFS_XATTR",
+      "value": "y",
+      "line": 3228,
+      "status": "PASS"
+    },
+    {
+      "group": "network",
+      "key": "CONFIG_INET",
+      "value": "y",
+      "line": 601,
+      "status": "PASS"
+    },
+    {
+      "group": "network",
+      "key": "CONFIG_BRIDGE",
+      "value": "y",
+      "line": 858,
+      "status": "PASS"
+    },
+    {
+      "group": "network",
+      "key": "CONFIG_BRIDGE_NETFILTER",
+      "value": "y",
+      "line": 663,
+      "status": "PASS"
+    },
+    {
+      "group": "network",
+      "key": "CONFIG_VETH",
+      "value": "y",
+      "line": 1651,
+      "status": "PASS"
+    },
+    {
+      "group": "network",
+      "key": "CONFIG_NETFILTER",
+      "value": "y",
+      "line": 660,
+      "status": "PASS"
+    },
+    {
+      "group": "network",
+      "key": "CONFIG_NF_CONNTRACK",
+      "value": "y",
+      "line": 672,
+      "status": "PASS"
+    },
+    {
+      "group": "network",
+      "key": "CONFIG_NF_NAT",
+      "value": "y",
+      "line": 697,
+      "status": "PASS"
+    },
+    {
+      "group": "network",
+      "key": "CONFIG_IP_NF_IPTABLES",
+      "value": "y",
+      "line": 799,
+      "status": "PASS"
+    },
+    {
+      "group": "network",
+      "key": "CONFIG_IP_NF_FILTER",
+      "value": "y",
+      "line": 804,
+      "status": "PASS"
+    },
+    {
+      "group": "network",
+      "key": "CONFIG_IP_NF_TARGET_MASQUERADE",
+      "value": "y",
+      "line": 809,
+      "status": "PASS"
+    },
+    {
+      "group": "network",
+      "key": "CONFIG_NETFILTER_XT_MATCH_ADDRTYPE",
+      "value": "y",
+      "line": 746,
+      "status": "PASS"
+    },
+    {
+      "group": "network",
+      "key": "CONFIG_NETFILTER_XT_MATCH_CONNTRACK",
+      "value": "y",
+      "line": 754,
+      "status": "PASS"
+    },
+    {
+      "group": "security",
+      "key": "CONFIG_SECCOMP",
+      "value": "y",
+      "line": 470,
+      "status": "PASS"
+    },
+    {
+      "group": "security",
+      "key": "CONFIG_SECCOMP_FILTER",
+      "value": "y",
+      "line": 201,
+      "status": "PASS"
+    },
+    {
+      "group": "security",
+      "key": "CONFIG_KEYS",
+      "value": "y",
+      "line": 3473,
+      "status": "PASS"
+    },
+    {
+      "group": "terminal",
+      "key": "CONFIG_UNIX98_PTYS",
+      "value": "y",
+      "line": 1941,
+      "status": "PASS"
+    },
+    {
+      "group": "terminal",
+      "key": "CONFIG_DEVPTS_MULTIPLE_INSTANCES",
+      "value": "y",
+      "line": 1942,
+      "status": "PASS"
+    }
+  ]
+}

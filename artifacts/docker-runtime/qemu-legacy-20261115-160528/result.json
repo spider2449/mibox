@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "timed_out": false,
+  "qemu_exit": 0,
+  "payload_sha256": "33bba141e73e1a296f1c3bb425c8df2cd20593656275ecdfaa417dcc9824b880",
+  "kernel_sha256": "a3a4ffcce58f01e1bddc20308679fd0a54d3a0436e9e23614c9fb809515cd814",
+  "sandbox_qemu_sha256": "99b56b7984a82ec15356bd6f228aec5a4c5616a1f52d73412a16e495f72b9fac",
+  "kernel_profile": "generic-vexpress-3.10",
+  "physical_validation": false
+}

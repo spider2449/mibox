@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell cat /proc/iomem",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  4264,
+    "StartedAt":  "2026-11-15T04:50:16.2148429Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "80000000-84ffffff : System RAM\r\r\n  80008000-80a95c07 : Kernel code\r\r\n  80b1a000-80d8baf7 : Kernel data\r\r\n85000000-8defffff : Video RAM\r\r\n8df00000-9fefffff : System RAM\r\r\na0000000-bfffffff : System RAM",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.0576417,
+    "FinishedAt":  "2026-11-15T04:50:16.2718965Z"
+}

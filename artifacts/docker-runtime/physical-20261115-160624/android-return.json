@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "Arguments":  "-NoProfile -File \"F:\\coding\\otherPrj\\mibox\\scripts\\Test-MiboxSoftwareReturn.ps1\" -Candidate DockerKernel2 -AndroidBaseline \"F:\\coding\\otherPrj\\mibox\\artifacts\\docker-runtime\\physical-20261115-160624\\android-baseline.json\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  240,
+    "ProcessId":  12688,
+    "StartedAt":  "2026-11-15T08:29:14.9504331Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "Verified custom PID1/toolbox and restart readiness: 1924e1cc-3d29-4b48-847c-9ef180f57cb4\r\nPASS: new Android boot ID, original fingerprint and boot_completed=1\r\nEvidence: F:\\coding\\otherPrj\\mibox\\artifacts\\software-return\\return-20261115-162915",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  76.5551758,
+    "FinishedAt":  "2026-11-15T08:30:31.5047053Z"
+}

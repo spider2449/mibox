@@ -1,0 +1,12 @@
+﻿{
+    "KernelBootVerified":  true,
+    "KernelRelease":  "3.10.99",
+    "BootId":  "563ca15e-69e3-4a1a-ad6b-aef0828d499c",
+    "RuntimeConfigSHA256":  "ace17f68a0d1d0c9084dae437d8456b6719fcb720b43b92f6295951c4c67ab5c",
+    "ConfigMatchesBuild":  true,
+    "InitSHA256":  "390f64c8d0dc5aacb5ea7dad67bb38b3569fb11e55629f9d77c510cff5991a1f",
+    "ToolSHA256":  "e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07",
+    "PrimitiveTestsRun":  false,
+    "SoftwareReturnTested":  false,
+    "HarnessFailure":  "BSP exposes base UTS_RELEASE, while linux_banner contains UTS_RELEASE_FULL"
+}

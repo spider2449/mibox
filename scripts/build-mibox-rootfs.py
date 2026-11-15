@@ -45,19 +45,27 @@ def arm_static(path):
     return data
 
 
-def build(root, key_path, destination, enable_usb_adb=False, hardware_helper=None, static_ipv4=None):
+def build(root, key_path, destination, enable_usb_adb=False, hardware_helper=None, static_ipv4=None,
+          release_directory=None, kernel_test_helper=None):
     config = json.loads((root / 'artifacts/platform/2026-11-14/kernel-config.json').read_text())
     for flag in ('CONFIG_BLK_DEV_INITRD', 'CONFIG_RD_GZIP', 'CONFIG_DEVTMPFS', 'CONFIG_TMPFS'):
         if config['selected'].get(flag) != 'y':
             raise ValueError(f'stock kernel prerequisite missing: {flag}')
     keys = public_keys(key_path)
-    release = root / 'target/armv7-unknown-linux-musleabihf/release'
+    release = release_directory or root / 'target/armv7-unknown-linux-musleabihf/release'
     files = {'init': arm_static(release / 'mibox-init'),
              'bin/mibox': arm_static(release / 'mibox-userland'),
              'etc/os-release': (root / 'assets/rootfs/os-release').read_bytes(),
              'adb_keys': keys}
     if hardware_helper:
         files['sbin/mibox-hardware'] = arm_static(hardware_helper)
+    if kernel_test_helper:
+        if not release_directory or not enable_usb_adb or hardware_helper or static_ipv4:
+            raise ValueError('kernel test needs isolated userspace, authenticated USB and no hardware/storage profile')
+        files['sbin/mibox-kernel-selftest'] = arm_static(kernel_test_helper)
+        files['etc/mibox-kernel-development'] = b'MIBOX_KERNEL_DEV_V1 8b1bb2b31a8e94b773a4b8ab907a0473a0951192 3.10.99-mibox-container-dev+\n'
+        if files['etc/mibox-kernel-development'] not in files['init']:
+            raise ValueError('init does not contain the explicit development-kernel feature marker')
     if static_ipv4:
         if not hardware_helper:
             raise ValueError('static IPv4 profile requires the explicit hardware helper')
@@ -94,7 +102,7 @@ def build(root, key_path, destination, enable_usb_adb=False, hardware_helper=Non
     entry('dev/console', 0o020600, major=5, minor=1)
     entry('bin/sh', 0o120777, b'/system/bin/sh')
     for name, data in files.items():
-        entry(name, 0o100444 if name in ('adb_keys', 'etc/os-release', 'etc/mibox-usb-adb.enabled', 'etc/mibox-network-static') else 0o100755, data)
+        entry(name, 0o100444 if name in ('adb_keys', 'etc/os-release', 'etc/mibox-usb-adb.enabled', 'etc/mibox-network-static', 'etc/mibox-kernel-development') else 0o100755, data)
     entry('TRAILER!!!', 0)
     compressed = gzip.compress(archive, mtime=0)
     destination.mkdir(parents=True, exist_ok=True)
@@ -106,6 +114,8 @@ def build(root, key_path, destination, enable_usb_adb=False, hardware_helper=Non
                   files={name: dict(bytes=len(data), sha256=hashlib.sha256(data).hexdigest()) for name, data in files.items()},
                   authorized_public_key_count=len(keys.splitlines()), private_keys_included=False,
                   qemu_probe_included=False,
+                  container_kernel_test=bool(kernel_test_helper),
+                  release_directory=str(release),
                   required_opt_in='read-only /etc/mibox-usb-adb.enabled' if enable_usb_adb else 'mibox.usb_adb=1',
                   usb_adb_enabled_by_rootfs_marker=enable_usb_adb,
                   live_usb_reconfigured=False, partitions_written=False,
@@ -121,6 +131,9 @@ if __name__ == '__main__':
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--enable-usb-adb', action='store_true', help='explicitly opt in inside this RAM rootfs, avoiding unknown bootloader cmdline behavior')
     parser.add_argument('--hardware-helper', type=Path, help='explicitly include bounded root hardware-test helper')
+    parser.add_argument('--release-directory', type=Path, help='isolated Rust release binaries')
+    parser.add_argument('--kernel-test-helper', type=Path, help='private-namespace kernel diagnostic for the pinned development release')
     parser.add_argument('--static-ipv4',nargs=3,metavar=('ADDRESS','NETMASK','GATEWAY'),help='owner-confirmed RAM-only static test profile; no automatic network setup')
     args = parser.parse_args()
-    build(args.root, args.adb_public_key, args.output, args.enable_usb_adb, args.hardware_helper, args.static_ipv4)
+    build(args.root, args.adb_public_key, args.output, args.enable_usb_adb, args.hardware_helper,
+          args.static_ipv4, args.release_directory, args.kernel_test_helper)

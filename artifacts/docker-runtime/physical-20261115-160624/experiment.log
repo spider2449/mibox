@@ -1,0 +1,330 @@
+﻿MIBOX_DOCKER_WAITING_FOR_PAYLOAD
+/run/mibox-docker-stage/payload.tar.gz: OK
+MIBOX_DOCKER_PRIVATE_ENVIRONMENT
+3.10.99
+12:net_prio:/
+11:blkio:/
+10:net_cls:/
+9:freezer:/
+8:devices:/
+7:memory:/
+6:cpuacct:/
+5:cpu:/
+4:debug:/
+3:cpuset:/
+rootfs / rootfs rw 0 0
+proc /proc proc rw,nosuid,noexec,relatime 0 0
+sysfs /sys sysfs rw,nosuid,noexec,relatime 0 0
+devtmpfs /dev devtmpfs rw,nosuid,noexec,relatime,size=436964k,nr_inodes=109241,mode=755 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,mode=600,ptmxmode=000 0 0
+adb /dev/usb-ffs/adb functionfs rw,nosuid,noexec,relatime 0 0
+tmpfs / tmpfs rw,nosuid,nodev,relatime,size=393216k,mode=700 0 0
+proc /proc proc rw,nosuid,nodev,noexec,relatime 0 0
+sysfs /sys sysfs ro,nosuid,nodev,noexec,relatime 0 0
+tmpfs /dev tmpfs rw,nosuid,relatime,mode=755 0 0
+devpts /dev/pts devpts rw,relatime,mode=620,ptmxmode=666 0 0
+tmpfs /dev/shm tmpfs rw,nosuid,nodev,relatime 0 0
+tmpfs /sys/fs/cgroup tmpfs rw,nosuid,nodev,noexec,relatime,mode=755 0 0
+cgroup /sys/fs/cgroup/cpuset cgroup rw,nosuid,nodev,noexec,relatime,cpuset 0 0
+cgroup /sys/fs/cgroup/debug cgroup rw,nosuid,nodev,noexec,relatime,debug 0 0
+cgroup /sys/fs/cgroup/cpu cgroup rw,nosuid,nodev,noexec,relatime,cpu 0 0
+cgroup /sys/fs/cgroup/cpuacct cgroup rw,nosuid,nodev,noexec,relatime,cpuacct 0 0
+cgroup /sys/fs/cgroup/memory cgroup rw,nosuid,nodev,noexec,relatime,memory 0 0
+cgroup /sys/fs/cgroup/devices cgroup rw,nosuid,nodev,noexec,relatime,devices 0 0
+cgroup /sys/fs/cgroup/freezer cgroup rw,nosuid,nodev,noexec,relatime,freezer 0 0
+cgroup /sys/fs/cgroup/net_cls cgroup rw,nosuid,nodev,noexec,relatime,net_cls 0 0
+cgroup /sys/fs/cgroup/blkio cgroup rw,nosuid,nodev,noexec,relatime,blkio 0 0
+cgroup /sys/fs/cgroup/net_prio cgroup rw,nosuid,nodev,noexec,relatime,net_prio 0 0
+MIBOX_DOCKER_DAEMON_READY
+Client:
+ Version:    24.0.9
+ Context:    default
+ Debug Mode: false
+
+Server:
+ Containers: 0
+  Running: 0
+  Paused: 0
+  Stopped: 0
+ Images: 0
+ Server Version: 24.0.9
+ Storage Driver: vfs
+ Logging Driver: json-file
+ Cgroup Driver: cgroupfs
+ Cgroup Version: 1
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Swarm: inactive
+ Runtimes: runc io.containerd.runc.v2
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: 7c3aca7a610df76212171d200ca3811ff6096eb8
+ runc version: v1.1.12-0-g51d5e94
+ init version: de40ad0
+ Security Options:
+  seccomp
+   Profile: builtin
+ Kernel Version: 3.10.99
+ OSType: linux
+ Architecture: armv7l
+ CPUs: 2
+ Total Memory: 856MiB
+ Name: android
+ ID: b2989eab-05a9-4af5-929f-7e33bbd10d6f
+ Docker Root Dir: /run/mibox-docker-test/data
+ Debug Mode: false
+ Experimental: false
+ Insecure Registries:
+  127.0.0.0/8
+ Live Restore Enabled: false
+ Product License: Community Engine
+
+WARNING: IPv4 forwarding is disabled
+WARNING: bridge-nf-call-iptables is disabled
+WARNING: bridge-nf-call-ip6tables is disabled
+Client:
+ Version:           24.0.9
+ API version:       1.43
+ Go version:        go1.20.13
+ Git commit:        2936816
+ Built:             Thu Feb  1 00:47:34 2024
+ OS/Arch:           linux/arm
+ Context:           default
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          24.0.9
+  API version:      1.43 (minimum version 1.12)
+  Go version:       go1.20.13
+  Git commit:       fca702de
+  Built:            Thu Feb  1 00:51:40 2024
+  OS/Arch:          linux/arm
+  Experimental:     false
+ containerd:
+  Version:          v1.7.13
+  GitCommit:        7c3aca7a610df76212171d200ca3811ff6096eb8
+ runc:
+  Version:          1.1.12
+  GitCommit:        v1.1.12-0-g51d5e94
+ docker-init:
+  Version:          0.19.0
+  GitCommit:        de40ad0
+IMPORTED_IMAGE=sha256:2a46da3afc0d84305a82fabe018702ab9241796284ce937f7775eb6195af01b1
+CONTAINER_EXEC_PASS
+12:net_prio:/docker/b0157c8d934027baec9958cf0a0ffa906294ffc88012ee0021e30b8f1df001fd
+11:blkio:/docker/b0157c8d934027baec9958cf0a0ffa906294ffc88012ee0021e30b8f1df001fd
+10:net_cls:/docker/b0157c8d934027baec9958cf0a0ffa906294ffc88012ee0021e30b8f1df001fd
+9:freezer:/docker/b0157c8d934027baec9958cf0a0ffa906294ffc88012ee0021e30b8f1df001fd
+8:devices:/docker/b0157c8d934027baec9958cf0a0ffa906294ffc88012ee0021e30b8f1df001fd
+7:memory:/docker/b0157c8d934027baec9958cf0a0ffa906294ffc88012ee0021e30b8f1df001fd
+6:cpuacct:/docker/b0157c8d934027baec9958cf0a0ffa906294ffc88012ee0021e30b8f1df001fd
+5:cpu:/docker/b0157c8d934027baec9958cf0a0ffa906294ffc88012ee0021e30b8f1df001fd
+4:debug:/
+3:cpuset:/docker/b0157c8d934027baec9958cf0a0ffa906294ffc88012ee0021e30b8f1df001fd
+[
+    {
+        "Id": "b0157c8d934027baec9958cf0a0ffa906294ffc88012ee0021e30b8f1df001fd",
+        "Created": "2026-11-15T08:29:06.886384Z",
+        "Path": "/bin/sh",
+        "Args": [
+            "-c",
+            "\n    set -eu\n    echo MIBOX_CONTAINER_RUNNING\n    grep -Eq \"^Seccomp:[[:space:]]+2$\" /proc/self/status\n    echo DEFAULT_SECCOMP_PASS\n    echo volume-proof > /tmp/proof\n    sleep 120\n"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 149,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-11-15T08:29:07.956708Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:2a46da3afc0d84305a82fabe018702ab9241796284ce937f7775eb6195af01b1",
+        "ResolvConfPath": "/run/mibox-docker-test/data/containers/b0157c8d934027baec9958cf0a0ffa906294ffc88012ee0021e30b8f1df001fd/resolv.conf",
+        "HostnamePath": "/run/mibox-docker-test/data/containers/b0157c8d934027baec9958cf0a0ffa906294ffc88012ee0021e30b8f1df001fd/hostname",
+        "HostsPath": "/run/mibox-docker-test/data/containers/b0157c8d934027baec9958cf0a0ffa906294ffc88012ee0021e30b8f1df001fd/hosts",
+        "LogPath": "/run/mibox-docker-test/data/containers/b0157c8d934027baec9958cf0a0ffa906294ffc88012ee0021e30b8f1df001fd/b0157c8d934027baec9958cf0a0ffa906294ffc88012ee0021e30b8f1df001fd-json.log",
+        "Name": "/mibox-offline",
+        "RestartCount": 0,
+        "Driver": "vfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {
+                    "max-file": "2",
+                    "max-size": "1m"
+                }
+            },
+            "NetworkMode": "none",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "host",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 33554432,
+            "NanoCpus": 500000000,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 67108864,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ],
+            "Init": true
+        },
+        "GraphDriver": {
+            "Data": null,
+            "Name": "vfs"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "b0157c8d9340",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": null,
+            "Cmd": [
+                "/bin/sh",
+                "-c",
+                "\n    set -eu\n    echo MIBOX_CONTAINER_RUNNING\n    grep -Eq \"^Seccomp:[[:space:]]+2$\" /proc/self/status\n    echo DEFAULT_SECCOMP_PASS\n    echo volume-proof > /tmp/proof\n    sleep 120\n"
+            ],
+            "Image": "sha256:2a46da3afc0d84305a82fabe018702ab9241796284ce937f7775eb6195af01b1",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {}
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "8012474b85b5f6f8fa9721621f9f11a7ebc16c4c9c8114a90e1552e9f416c9b2",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {},
+            "SandboxKey": "/run/mibox-docker-test/exec/netns/8012474b85b5",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "none": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "NetworkID": "eee056a9fc58875e41affad9735b05e93b0160f60c64aefb57ff37bb14db3322",
+                    "EndpointID": "a2ce09309f6d8e82c009b566401f0831f636510992c60242ac859bcbe6e29fc0",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]
+MIBOX_CONTAINER_RUNNING
+DEFAULT_SECCOMP_PASS
+mibox-offline
+mibox-offline
+MIBOX_DOCKER_OFFLINE_TEST_PASS
+MIBOX_DOCKER_NAMESPACE_EXIT
+MIBOX_DOCKER_EXPERIMENT_EXIT=0
+MIBOX_DOCKER_BOOTSTRAP_DONE

@@ -15,6 +15,22 @@ use std::{
 
 const SOCKET: &str = "/dev/mibox-control";
 const ACCEPTED: &str = "MIBOX_RESTART_ACCEPTED\n";
+#[cfg(feature = "container-kernel-test")]
+#[path = "kernel_development.rs"]
+mod kernel_development;
+
+pub fn development_kernel_allowed(release: &str) -> bool {
+    #[cfg(feature = "container-kernel-test")]
+    {
+        fs::read("/etc/mibox-kernel-development")
+            .is_ok_and(|marker| kernel_development::accepts(release, &marker))
+    }
+    #[cfg(not(feature = "container-kernel-test"))]
+    {
+        let _ = release;
+        false
+    }
+}
 #[repr(C)]
 struct Credentials {
     pid: c_int,
@@ -109,17 +125,19 @@ fn readiness() -> io::Result<String> {
         return Err(io::Error::other("requires RAM root"));
     }
     let compatible = fs::read("/proc/device-tree/compatible")?;
-    let stock = compatible
+    let meson6 = compatible
         .split(|b| *b == 0)
-        .any(|v| v == b"AMLOGIC,8726_MX")
-        && fs::read_to_string("/proc/sys/kernel/osrelease")?.trim() == "3.10.33";
+        .any(|v| v == b"AMLOGIC,8726_MX");
+    let release = fs::read_to_string("/proc/sys/kernel/osrelease")?;
+    let stock = meson6 && release.trim() == "3.10.33";
+    let development = meson6 && development_kernel_allowed(release.trim());
     let qemu = compatible
         .split(|b| *b == 0)
         .any(|v| v == b"linux,dummy-virt")
         && fs::read_to_string("/proc/cmdline")?
             .split_whitespace()
             .any(|v| v == "mibox.test_restart=1");
-    if !stock && !qemu {
+    if !stock && !development && !qemu {
         return Err(io::Error::other("restart platform guard"));
     }
     Ok(fs::read_to_string("/proc/sys/kernel/random/boot_id")?

@@ -1,0 +1,10 @@
+﻿{
+    "Action":  "Check",
+    "Stage":  "LocalCheckPassed",
+    "ImageSHA256":  "fb1333d9d36c92577ef17643590f67cea596e7d76df33ff8238aa7fcb192f6a6",
+    "DeviceAccessed":  false,
+    "KernelBootVerified":  false,
+    "PrimitiveTestsPassed":  false,
+    "AndroidReturnVerified":  false,
+    "FlashCommandSent":  false
+}

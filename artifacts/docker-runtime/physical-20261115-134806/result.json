@@ -1,0 +1,12 @@
+﻿{
+    "Action":  "Check",
+    "Stage":  "LocalCheckPassed",
+    "ImageSHA256":  "3d0be1a75f59e1ecd21459768b603cef8c3c769e0e31f69445d68cf34bf3f2dc",
+    "PayloadSHA256":  "33bba141e73e1a296f1c3bb425c8df2cd20593656275ecdfaa417dcc9824b880",
+    "KernelBootVerified":  false,
+    "OfflineContainerPassed":  false,
+    "SandboxCleaned":  false,
+    "AndroidReturnVerified":  false,
+    "FlashCommandSent":  false,
+    "PersistentStorageUsed":  false
+}

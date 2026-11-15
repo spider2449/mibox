@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell cat /proc/mounts",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  10,
+    "ProcessId":  10192,
+    "StartedAt":  "2026-11-15T04:50:16.1559302Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "rootfs / rootfs rw 0 0\r\r\nproc /proc proc rw,nosuid,noexec,relatime 0 0\r\r\nsysfs /sys sysfs rw,nosuid,noexec,relatime 0 0\r\r\ndevtmpfs /dev devtmpfs rw,nosuid,noexec,relatime,size=437516k,nr_inodes=109379,mode=755 0 0\r\r\ndevpts /dev/pts devpts rw,nosuid,noexec,relatime,mode=600,ptmxmode=000 0 0\r\r\nadb /dev/usb-ffs/adb functionfs rw,nosuid,noexec,relatime 0 0",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.057312999999999996,
+    "FinishedAt":  "2026-11-15T04:50:16.2116635Z"
+}
