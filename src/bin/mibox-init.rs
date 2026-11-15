@@ -300,6 +300,18 @@ fn main() {
     } else {
         "/dev/console"
     };
+    // Start after USB setup so both consoles use the same devpts mount.
+    // This script is absent in all earlier RAM candidates.
+    if std::path::Path::new("/sbin/mibox-console-start").is_file() {
+        match Command::new("/bin/sh")
+            .arg("/sbin/mibox-console-start")
+            .stdin(Stdio::null())
+            .spawn()
+        {
+            Ok(child) => eprintln!("MIBOX_CONSOLE_START_SPAWNED pid={}", child.id()),
+            Err(error) => eprintln!("mibox-init: console services unavailable: {error}"),
+        }
+    }
     thread::spawn(|| loop {
         let mut status = 0;
         {

@@ -1,0 +1,9 @@
+lrwxrwxrwx    1 root     root             8 Nov 15 00:39 /dev/ptmx -> pts/ptmx
+drwxr-xr-x    2 root     root             0 Nov 15 00:39 /dev/pts
+crw-rw-rw-    1 root     root        5,   2 Nov 15 00:39 /dev/pts/ptmx
+rootfs / rootfs rw,size=107624k,nr_inodes=26906 0 0
+proc /proc proc rw,nosuid,noexec,relatime 0 0
+sysfs /sys sysfs rw,nosuid,noexec,relatime 0 0
+devtmpfs /dev devtmpfs rw,nosuid,noexec,relatime,size=107624k,nr_inodes=26906,mode=755 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,mode=600,ptmxmode=000 0 0
+PTY_DIAGNOSTICS

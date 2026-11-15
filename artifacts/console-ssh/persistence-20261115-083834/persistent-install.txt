@@ -1,0 +1,12 @@
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/main/armv7/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/community/armv7/APKINDEX.tar.gz
+(1/1) Installing less (679-r0)
+Executing busybox-1.37.0-r20.trigger
+OK: 11 MiB in 38 packages
+less 679 (POSIX regular expressions)
+Copyright (C) 1984-2025  Mark Nudelman
+
+less comes with NO WARRANTY, to the extent permitted by law.
+For information about the terms of redistribution,
+see the file named README in the less distribution.
+Home page: https://greenwoodsoftware.com/less

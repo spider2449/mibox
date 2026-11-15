@@ -1,0 +1,36 @@
+{
+  "scope": "QEMU generic ARM only; not stock 3.10.33 or physical MiBOX proof",
+  "checks": [
+    {
+      "name": "pty-diagnostics",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "identity",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "interactive-pty",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "dns",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "package-install",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "unauthenticated-rejected",
+      "passed": true,
+      "exit_code": 255
+    }
+  ],
+  "all_passed": true
+}

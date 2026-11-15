@@ -1,7 +1,7 @@
 # A32-style orchestration using the Mi Box's verified RAM-only USB protocol.
 param(
     [ValidateSet('Check','Boot','RoundTrip')][string]$Action = 'Check',
-    [ValidateSet('Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture')][string]$Candidate = 'Restart',
+    [ValidateSet('Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture','Console')][string]$Candidate = 'Restart',
     [ValidateRange(60,7200)][int]$TransferTimeoutSeconds = 3600,
     [ValidateRange(3000,15000)][int]$ControlTimeoutMilliseconds = 3000
 )
@@ -42,6 +42,11 @@ if($Candidate -in @('Capture','DisplayCapture')) {
 }
 if($Candidate -eq 'DisplayCapture') {
     $proof.ImageSHA256='19c7064bc3e389a8f63ba70847ae7628e8366d38644b187f9cec89e33dccf2fb'
+}
+if($Candidate -eq 'Console') {
+    $proof.ImageSHA256='4629deefd4e5e0f1902a54158ef01c7ad67156ef87946fb6d87c7070ba5da7c0'
+    $initHash='9333195a11b758f7531547008b927849da228ceddb41398d3d2b8bca25258438'
+    $toolHash='e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07'
 }
 function Save-Proof {
     $proof | ConvertTo-Json -Depth 10 | Set-Content -Encoding UTF8 -LiteralPath (Join-Path $evidence 'result.json')
@@ -107,7 +112,7 @@ try {
         if ((Get-FileHash -Algorithm SHA256 -LiteralPath $file).Hash.ToLowerInvariant() -cne $entry[1]) { throw 'Custom executable hash mismatch' }
     }
     $customId = $observed.Proof.bootId.Output
-    if($Candidate -in @('Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture')) {
+    if($Candidate -in @('Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture','Console')) {
         $health=(Read-Adb 'custom-health' '-s 248243005297 shell "/bin/mibox health; result=$?; echo MIBOX_HEALTH_EXIT=$result"').Output.Replace("`r",'')
         $lines=@($health -split "`n")
         if($lines.Count -ne 9 -or $lines[0] -cne 'MIBOX_HEALTH_SNAPSHOT_V1' -or

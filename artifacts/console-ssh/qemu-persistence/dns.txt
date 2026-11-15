@@ -1,0 +1,13 @@
+Server:		10.0.2.3
+Address:	10.0.2.3:53
+
+Non-authoritative answer:
+dl-cdn.alpinelinux.org	canonical name = dualstack.j.sni.global.fastly.net
+Name:	dualstack.j.sni.global.fastly.net
+Address: 146.75.46.132
+
+Non-authoritative answer:
+dl-cdn.alpinelinux.org	canonical name = dualstack.j.sni.global.fastly.net
+Name:	dualstack.j.sni.global.fastly.net
+Address: 2a04:4e42:7b::644
+

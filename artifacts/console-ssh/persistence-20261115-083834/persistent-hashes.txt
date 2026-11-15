@@ -1,0 +1,5 @@
+7b36bb4e56ee1b13b00a9ce279cd516dbd608cc6f7dfc4062b8acbe00daca189  /usr/bin/less
+a3d437dbdddef6cf9ee0be89619cb0e615f3806f443f897deba5a58c68bf8821  /usr/bin/nano
+6809ab4b2281dbefc3b51b9569dd741746c5ba4962ec7d836b346ee9db41a67e  /usr/bin/curl
+d49ae012dc42af7df7a2d46a7311bb268e95cf1f28a9766ba076e9161f48fbff  /lib/apk/db/installed
+063c313d3513e4a9b5d3fa8c57a8a497a85f46f151e98ed37e3506b87cb7cb30  /etc/mibox-console-persistence-test

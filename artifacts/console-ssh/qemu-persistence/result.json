@@ -1,0 +1,43 @@
+{
+  "scope": "QEMU generic ARM only; not stock 3.10.33 or physical MiBOX proof",
+  "physical_rootfs_sha256": "ff1bed630868c0bdbcdfeed3b8c7466c84b3904b0a32ff90746e8e8e52aa51c3",
+  "qemu_fixture_sha256": "995a66faa9d93904410de4526155e588976f58f40d58c6cd70ac5451d7c250b1",
+  "checks": [
+    {
+      "name": "pty-diagnostics",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "identity",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "interactive-pty",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "dns",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "package-install",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "unauthenticated-rejected",
+      "passed": true,
+      "exit_code": 255
+    },
+    {
+      "name": "persistent-package-and-config-across-two-boots",
+      "passed": true,
+      "exit_code": 0
+    }
+  ],
+  "all_passed": true
+}

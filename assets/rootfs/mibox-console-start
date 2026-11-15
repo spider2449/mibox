@@ -1,0 +1,32 @@
+#!/bin/sh
+set -eu
+export PATH=/usr/sbin:/usr/bin:/sbin:/bin
+mkdir -p /dev/pts /run /root/.ssh
+if ! grep -q ' /dev/pts devpts ' /proc/mounts; then
+    mount -t devpts -o nosuid,noexec devpts /dev/pts
+fi
+if [ -e /dev/pts/ptmx ]; then
+    chmod 666 /dev/pts/ptmx
+    ln -sf pts/ptmx /dev/ptmx
+fi
+if [ ! -e /dev/tty ]; then mknod -m 666 /dev/tty c 5 0; fi
+chmod 1777 /tmp
+ip link set lo up
+# Only the QEMU virt fixture uses DHCP. The physical LAN retains the
+# owner-confirmed static profile, without enabling a DHCP client.
+if grep -aq 'linux,dummy-virt' /proc/device-tree/compatible 2>/dev/null; then
+    ip link set eth0 up
+    udhcpc -i eth0 -n -q -t 5 -T 2 -s /etc/mibox-udhcpc
+else
+    grep -q '^MIBOX_STATIC_IPV4_V1 192.168.1.222 255.255.255.0 192.168.1.1$' /etc/mibox-network-static
+    ip link set eth0 up
+    ip addr add 192.168.1.222/24 dev eth0
+    ip route add default via 192.168.1.1
+fi
+test -s /root/.ssh/authorized_keys
+if [ ! -s /etc/dropbear/dropbear_ed25519_host_key ]; then
+    dropbearkey -t ed25519 -f /etc/dropbear/dropbear_ed25519_host_key
+fi
+echo MIBOX_CONSOLE_SSH_STARTING
+# No password authentication or forwarding. Root is the administrative console.
+exec /usr/sbin/dropbear -F -E -s -j -k -p 22 -r /etc/dropbear/dropbear_ed25519_host_key

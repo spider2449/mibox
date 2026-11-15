@@ -1,0 +1,16 @@
+﻿{
+    "Action":  "Check",
+    "StartedAt":  "2026-11-15T08:06:37.4570000+08:00",
+    "Stage":  "LocalCheckPassed",
+    "ImageSHA256":  "4629deefd4e5e0f1902a54158ef01c7ad67156ef87946fb6d87c7070ba5da7c0",
+    "DeviceAccessed":  false,
+    "LoaderRequestSent":  false,
+    "CustomBootVerified":  false,
+    "AndroidReturnVerified":  false,
+    "FlashCommandSent":  false,
+    "TransferDeadlineSeconds":  3600,
+    "ControlTimeoutMilliseconds":  3000,
+    "Candidate":  "Console",
+    "LocalImageVerified":  true,
+    "FinishedAt":  "2026-11-15T08:06:38.2213290+08:00"
+}

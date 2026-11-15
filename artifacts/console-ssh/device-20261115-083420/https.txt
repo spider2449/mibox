@@ -1,0 +1,26 @@
+HTTP/2 200 
+content-security-policy: script-src 'self'
+content-type: application/octet-stream
+etag: "6af649e8-79d55"
+last-modified: Thu, 12 Nov 2026 23:21:12 GMT
+referrer-policy: origin-when-cross-origin
+server: nginx/1.27.5
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-content-type-options: nosniff
+x-frame-options: DENY
+via: 1.1 varnish, 1.1 varnish
+accept-ranges: bytes
+date: Sun, 15 Nov 2026 00:34:31 GMT
+age: 4
+x-served-by: cache-ams-eham8680084-AMS, cache-sin-wsat1880085-SIN
+x-cache: HIT, HIT
+x-cache-hits: 1, 1
+x-timer: S1794702872.644150,VS0,VE1
+vary: Origin
+content-length: 499029
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0  487k    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0

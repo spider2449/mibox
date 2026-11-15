@@ -1,0 +1,39 @@
+{
+  "checks": [
+    {
+      "name": "usb-identity",
+      "exit_code": 0
+    },
+    {
+      "name": "usb-host-key",
+      "exit_code": 0
+    },
+    {
+      "name": "clock-from-host",
+      "exit_code": 0
+    },
+    {
+      "name": "persistent-state",
+      "exit_code": 0
+    },
+    {
+      "name": "upload-persistent-helper",
+      "exit_code": 0
+    },
+    {
+      "name": "data-inspection",
+      "exit_code": 0
+    },
+    {
+      "name": "persistent-start",
+      "exit_code": 0
+    },
+    {
+      "name": "persistent-ready",
+      "exit_code": 1
+    }
+  ],
+  "persistent_ready": false,
+  "stopped": false,
+  "failure": "persistent-ready: apk-tools 2.14.13, compiled for armv7.\nFilesystem           1024-blocks    Used Available Capacity Mounted on\ndf: /mnt/mibox-data: No such file or directory\n"
+}

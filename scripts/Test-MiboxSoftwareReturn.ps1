@@ -1,6 +1,6 @@
 param([Parameter(Mandatory=$true)][string]$AndroidBaseline,
     [ValidateRange(10,300)][int]$TimeoutSeconds=180,
-    [ValidateSet('Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture')][string]$Candidate='Restart')
+    [ValidateSet('Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture','Console')][string]$Candidate='Restart')
 $ErrorActionPreference='Stop'
 $repo=Split-Path -Parent $PSScriptRoot
 $adb=Join-Path $repo 'phone-tools/platform-tools/adb.exe'
@@ -50,6 +50,10 @@ try {
     }
     if($Candidate -in @('Capture','DisplayCapture')) {
         $pins.init='ba4df3e7ab537cad89cae844b4a5821017179d4f75cbfa79b0700c81440d3b4c'
+        $pins.mibox='e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07'
+    }
+    if($Candidate -eq 'Console') {
+        $pins.init='9333195a11b758f7531547008b927849da228ceddb41398d3d2b8bca25258438'
         $pins.mibox='e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07'
     }
     $proof.Candidate=$Candidate

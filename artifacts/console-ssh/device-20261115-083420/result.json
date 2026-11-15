@@ -1,0 +1,95 @@
+{
+  "scope": "physical MiBOX1S, temporary RAM userspace",
+  "checks": [
+    {
+      "name": "usb-identity",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "usb-boot-id",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "usb-host-key",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "ssh-identity",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "clock-from-host",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "binary-0",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "binary-1",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "binary-2",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "binary-3",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "binary-4",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "interactive-pty",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "dns",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "package-install",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "https",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "unauthenticated-rejected",
+      "exit_code": 255,
+      "passed": true
+    },
+    {
+      "name": "restart-readiness",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "final-boot-id",
+      "exit_code": 0,
+      "passed": true
+    }
+  ],
+  "all_passed": true,
+  "flash_command_sent": false,
+  "persistent_storage_mounted": false,
+  "rootfs_sha256": "ff1bed630868c0bdbcdfeed3b8c7466c84b3904b0a32ff90746e8e8e52aa51c3",
+  "boot_id": "55c09736-3ed6-4457-a594-053ab9fbe1d2"
+}

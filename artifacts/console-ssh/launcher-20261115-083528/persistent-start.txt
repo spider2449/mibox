@@ -1,0 +1,4 @@
+dropbear
+MIBOX_PERSISTENT_CONSOLE_READY
+Filesystem           1024-blocks    Used Available Capacity Mounted on
+/dev/mibox-data        2234556   1768436    449736  80% /mnt/mibox-data

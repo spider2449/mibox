@@ -1,0 +1,26 @@
+{
+  "scope": "physical MiBOX1S, temporary RAM userspace",
+  "checks": [
+    {
+      "name": "usb-identity",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "usb-boot-id",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "usb-host-public-key",
+      "exit_code": 0,
+      "passed": true
+    }
+  ],
+  "all_passed": false,
+  "flash_command_sent": false,
+  "persistent_storage_mounted": false,
+  "rootfs_sha256": "ff1bed630868c0bdbcdfeed3b8c7466c84b3904b0a32ff90746e8e8e52aa51c3",
+  "boot_id": "55c09736-3ed6-4457-a594-053ab9fbe1d2",
+  "failure": "server public key not available through USB"
+}

@@ -1,0 +1,92 @@
+#!/bin/sh
+# Invoked explicitly by the host after the pinned RAM system has booted.
+set -eu
+export PATH=/usr/sbin:/usr/bin:/sbin:/bin
+test "$(id -u)" = 0
+grep -q '^ID=mibox-custom$' /etc/os-release
+store=/mnt/mibox-data
+home=$store/mibox-console
+root=$home/rootfs
+device=/dev/mibox-data
+expected=179:11
+if [ "${2:-}" = --qemu ]; then
+    grep -aq 'linux,dummy-virt' /proc/device-tree/compatible
+    device=/dev/vda
+    expected=$(cat /sys/class/block/vda/dev)
+else
+    grep -aq 'AMLOGIC,8726_MX' /proc/device-tree/compatible
+    test "$(cat /sys/class/block/data/dev)" = 179:11
+    test "$(cat /sys/class/block/data/size)" = 5168640
+    test "$(cat /sys/class/block/data/ro)" = 0
+    if [ ! -e "$device" ]; then mknod -m 600 "$device" b 179 11; fi
+    test ! -L "$device"
+    test -b "$device"
+    test "$(stat -c '%t:%T' "$device")" = b3:b
+fi
+
+case "${1:-}" in
+start)
+    mkdir -p "$store"
+    test ! -L "$store"
+    mounted=$(awk -v dev="$expected" '$3 == dev {print $5}' /proc/self/mountinfo)
+    if [ -n "$mounted" ] && [ "$mounted" != "$store" ]; then
+        echo 'Data is already mounted elsewhere; refusing' >&2
+        exit 1
+    fi
+    if [ -z "$mounted" ]; then
+        blkid "$device" | grep -q 'TYPE="ext4"'
+        mount -t ext4 -o nosuid,nodev "$device" "$store"
+    fi
+    if [ ! -e "$home" ]; then mkdir -m 700 "$home"; fi
+    test -d "$home" && test ! -L "$home"
+    test "$(stat -c '%u:%a' "$home")" = 0:700
+    if [ ! -e "$root" ]; then
+        available=$(df -Pk "$store" | awk 'END {print $4}')
+        test "$available" -ge 65536
+        stage=$home/rootfs.initializing
+        test ! -e "$stage"
+        mkdir -m 700 "$stage"
+        cp -a /bin /etc /lib /root /sbin /usr /var "$stage/"
+        mkdir -p "$stage/dev" "$stage/proc" "$stage/sys" "$stage/tmp" "$stage/run"
+        chmod 1777 "$stage/tmp"
+        echo MIBOX_PERSISTENT_CONSOLE_V1 > "$stage/etc/mibox-persistent-root"
+        mv "$stage" "$root"
+        sync
+    fi
+    test -d "$root" && test ! -L "$root"
+    test "$(stat -c '%u:%a' "$root")" = 0:700
+    grep -qx MIBOX_PERSISTENT_CONSOLE_V1 "$root/etc/mibox-persistent-root"
+    grep -q '^ID=mibox-custom$' "$root/etc/os-release"
+    for path in dev proc sys; do
+        if ! mountpoint -q "$root/$path"; then mount -o bind "/$path" "$root/$path"; fi
+    done
+    if ! mountpoint -q "$root/dev/pts"; then mount -o bind /dev/pts "$root/dev/pts"; fi
+    chroot "$root" /sbin/apk info -e dropbear
+    cat > /sbin/mibox-persistent-shell <<'SHELL'
+#!/bin/sh
+export PATH=/usr/sbin:/usr/bin:/sbin:/bin
+export SHELL=/bin/ash HOME=/root
+if [ "$#" -eq 0 ]; then set -- -l; fi
+exec /usr/sbin/chroot /mnt/mibox-data/mibox-console/rootfs /bin/ash "$@"
+SHELL
+    chmod 755 /sbin/mibox-persistent-shell
+    if ! grep -qx /sbin/mibox-persistent-shell /etc/shells; then
+        echo /sbin/mibox-persistent-shell >> /etc/shells
+    fi
+    # Only the RAM account changes. The disk account retains its Alpine shell.
+    sed -i 's|^root:\([^:]*:[^:]*:[^:]*:[^:]*:[^:]*:\).*|root:\1/sbin/mibox-persistent-shell|' /etc/passwd
+    echo MIBOX_PERSISTENT_CONSOLE_READY
+    df -Pk "$store"
+    ;;
+stop)
+    # Run from RAM, with all other SSH sessions closed, before Android return.
+    sed -i 's|/sbin/mibox-persistent-shell$|/bin/ash|' /etc/passwd
+    sync
+    for path in dev/pts dev proc sys; do
+        if mountpoint -q "$root/$path"; then umount "$root/$path"; fi
+    done
+    if mountpoint -q "$store"; then umount "$store"; fi
+    echo MIBOX_PERSISTENT_CONSOLE_STOPPED
+    ;;
+*) echo 'Usage: mibox-persistent-console start|stop [--qemu]' >&2; exit 2 ;;
+esac

@@ -1,0 +1,25 @@
+Server:		1.1.1.1
+Address:	1.1.1.1:53
+
+Non-authoritative answer:
+dl-cdn.alpinelinux.org	canonical name = dualstack.j.sni.global.fastly.net
+Name:	dualstack.j.sni.global.fastly.net
+Address: 2a04:4e42:600::644
+Name:	dualstack.j.sni.global.fastly.net
+Address: 2a04:4e42::644
+Name:	dualstack.j.sni.global.fastly.net
+Address: 2a04:4e42:200::644
+Name:	dualstack.j.sni.global.fastly.net
+Address: 2a04:4e42:400::644
+
+Non-authoritative answer:
+dl-cdn.alpinelinux.org	canonical name = dualstack.j.sni.global.fastly.net
+Name:	dualstack.j.sni.global.fastly.net
+Address: 151.101.2.132
+Name:	dualstack.j.sni.global.fastly.net
+Address: 151.101.66.132
+Name:	dualstack.j.sni.global.fastly.net
+Address: 151.101.130.132
+Name:	dualstack.j.sni.global.fastly.net
+Address: 151.101.194.132
+
