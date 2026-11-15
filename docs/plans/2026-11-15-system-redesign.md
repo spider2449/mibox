@@ -52,7 +52,18 @@ A3. [ ] Build a separate slim initramfs with custom PID1, authenticated USB ADB,
    lifecycle helper and a usable RAM recovery shell. Keep SSH in RAM only if
    needed for recovery; otherwise start it in Alpine. Do not add DHCP by default:
    the current verified network uses owner-confirmed static IPv4.
-A4. [ ] Preserve stock kernel/uImage, DTB, cmdline and load addresses. Recalculate
+A3a. [ ] Before A4 or any new boot-image packaging, revalidate the complete
+   hash-checked boot/boot1 backups and their parsed section bounds/tails.
+   Start from `docs/mibox-stock-images.md`, its verified backup manifest, and
+   `docs/mibox-platform-handoff.md` (Image-tail findings): measured boot/boot1
+   tails were entirely zero. Record reproducible offsets and classification;
+   refuse packaging if a target-image tail layer remains UNKNOWN. Recovery's
+   unclassified tail is outside this plan's unchanged partition scope.
+   A32's `docs/a32-boot-image-format.md` supplies methodology, not MiBOX facts.
+   Zero tails and C003 bootm acceptance do not establish flash-path acceptance
+   or exclude checks elsewhere; retain that distinction in C1/C4/C5.
+A4. [ ] After A3a passes, preserve stock kernel/uImage, DTB, cmdline and load
+   addresses. Recalculate
    Android header sizes, section offsets, alignment and total size for the new
    ramdisk; independently inspect and hash the resulting image. Target a
    compressed initramfs <= 1.5 MiB if the required functions fit; the mandatory
@@ -80,11 +91,12 @@ B1. [ ] PID1 automatically activates the existing Alpine chroot after virtual
    Reuse and harden the existing helper: validate device and filesystem identity,
    mount location, directory ownership/permissions and symlink guards; create
    required dev/devpts/proc/sys binds and clean them up on partial failure.
-   No format, automatic filesystem repair or automatic rootfs replacement.
+   No format, automatic additional filesystem repair or rootfs replacement.
    Deliberate deviation from A32, recorded: A32 runs `e2fsck -p` before mount;
-   here ext4 journal replay at mount time is relied on instead, so that PID1
-   never silently rewrites a damaged filesystem. Document any future change
-   to this policy with its own evidence.
+   normal ext4 journal replay during mount is allowed here and can write to
+   data. Capture mount results and kernel errors. A failed mount or detected
+   filesystem error enters RAM recovery without starting Alpine or attempting
+   additional automatic repair. Document future policy changes with evidence.
 B2. [ ] Define rootfs readiness and integrity checks. Pin expected immutable
    startup files or a versioned baseline manifest in the initramfs; do not trust
    a manifest solely because it sits beside its payload. Treat package upgrades,
@@ -95,10 +107,15 @@ B3. [ ] Start and supervise the selected Alpine services from the outer PID1.
    permissions; verify that server identity survives a restart without the host
    launcher re-pinning a newly generated key. Establish time synchronization
    independent of the host; report unsynchronized time until verified.
-B3a. [ ] Optional, A32-proven pattern: PID1 creates a zram swap device sized
-   from real RAM (half of measured free RAM, lzo) before any service starts,
-   writing the swap header itself so swap does not depend on the chroot.
-   Acceptance: one memory-pressure test records swap in use without OOM.
+B3a. [ ] Optional experiment, disabled by default and not a startup gate:
+   extracted MiBOX config has CONFIG_SWAP=y and CONFIG_ZRAM=y; verify the live
+   device/control interface, supported compression and setup/teardown behavior
+   before enabling swap. A32 uses half of total RAM, not half of free RAM;
+   choose a MiBOX size from measured memory use and bounded pressure tests.
+   Use an available validated swap-header tool; custom header generation is
+   unnecessary unless separately justified and verified. Record swap usage,
+   physical zram allocation, responsiveness, OOM and shutdown behavior; a
+   compressible workload alone does not establish practical capacity or benefit.
 B4. [ ] If data is absent, wrong, full, invalid, or fails to mount/start, keep
    PID1, authenticated USB ADB and a RAM shell available. Do not start partial
    services or overwrite the failed tree. Record failure and allow explicit
@@ -119,12 +136,19 @@ B7. [ ] Physical RAM validation: separately pin the new 8 MiB image, upload and
    file I/O and owner-observed HDMI when display additions are included.
    Perform controlled restart and another verified RAM boot; confirm saved
    state and SSH host identity survive without manual persistence activation.
-B8. [ ] Physical power-cut acceptance, repeating A32's live-cut test on this
-   hardware: from the running persistent system, rewrite large files on data
-   while appending and syncing a counter line in a loop; owner removes power
-   mid-write; on the next boot record the mount/journal state, ext4 kernel
-   messages, intact files and the last synced counter line. One cut shows the
-   journal works, not that every cut is harmless; record exactly that scope.
+B8. [ ] Optional RAM-boot power-cut rehearsal; not a prerequisite for Phase C.
+   Before an owner-coordinated cut, verify host-side backups of valuable shared
+   data (including Android files), the Alpine tree/keys, and an offline recovery
+   procedure usable from pinned RAM rescue with data unmounted. Test-directory
+   isolation does not isolate the shared filesystem from power-loss effects.
+   Limit writes to a dedicated test directory with an explicit byte cap and
+   free-space reserve derived from measured capacity; never fill the partition.
+   Rewrite bounded scratch files while appending/syncing numbered counter lines;
+   retain host-side evidence of completed syncs before the owner cuts power.
+   After re-entry and RAM boot, record mount/journal/kernel results and compare
+   known-good files and completed synced lines. Require successful mount and no
+   unresolved filesystem errors; journal replay messages are not mandatory on
+   every cut. One result establishes only that tested power-loss scenario.
 
 After B, userspace startup is automatic and persistent. Cold starts still need
 RAM upload until Phase C passes. No system/system1 redundancy write is included:
@@ -140,22 +164,14 @@ C2. [ ] Before boot-partition writes, verify host-disconnected continuation on
    the existing boot setup with owner-controlled power and observation. Measure
    elapsed startup time and result. `update 10000` is not a proven 10-second
    duration. Retain the installed env hash and host-attached cold C003 evidence.
-C2a. [ ] Boot-image tail forensics gate, following A32's discipline: audit the
-   boot/boot1 backups' region beyond the logical image end (any DER signature
-   envelope, opaque final block or zero fill), classifying every tail layer
-   before any packaging. The packaging gate fails closed (refuses to emit a
-   candidate) while any tail layer remains UNKNOWN. A C003 bootm acceptance
-   does not prove the flash boot path accepts the same bytes; the loader may
-   apply checks on the flashed image that RAM bootm never exercises. Cross-check
-   with `docs/mibox-boot-image-evidence.md` and A32's `a32-boot-image-format.md`
-   methodology.
 C3. [ ] Prepare a concrete write AND restoration procedure for the proven target:
    exact partition identity/size, current full backup and hashes, original backup,
    pinned new candidate, write/flush/full-readback tools and independent second
    collection. Restoration must be executable from the known-good RAM rescue
    OS without relying on the installed boot image or Alpine tree. Validate host
    safeguards and the read-only recovery prerequisites before requesting approval.
-C4. [ ] Once B passes and C1-C3 evidence is ready, obtain explicit owner
+C4. [ ] Once mandatory B gates (B1-B7, excluding optional B3a) pass and C1-C3
+   evidence is ready, obtain explicit owner
    authorization for the specific boot-partition write. Install the identical
    full-size bytes that passed physical RAM validation. Perform one bounded
    write, fsync/cache flush, full 8 MiB readback and independent second collection;
@@ -165,10 +181,14 @@ C5. [ ] Owner-observed cold boot with the USB host disconnected: bootloader
    activates Alpine and SSH. Verify runtime identity, persistent keys/state and
    measured startup time. Follow with a controlled restart back into the custom
    system and verify a new boot ID. Record no RAM upload or Android dependency.
-C5a. [ ] Repeat the B8 power-cut test from flash boot: cut power during data
-   writes, cold start without a host, and verify the system comes up from flash
-   with journal recovery, intact data and no manual intervention. This closes
-   the flash-boot loop against real power loss, not only controlled restarts.
+C5a. [ ] Separate persistence acceptance after C5 and C6 pass; not a prerequisite
+   for installation or basic independent boot. Apply all B8 backup, offline
+   recovery, bounded-write and owner-power prerequisites even if B8 was skipped.
+   Cut power during test-file writes, then cold start without a host. Verify
+   automatic flash startup, successful data mount, no unresolved filesystem
+   errors, known-good file integrity and completed synced counter lines.
+   Record journal behavior without requiring replay messages on every cut.
+   Report power-loss acceptance separately; one pass covers that scenario only.
 C6. [ ] Rehearse host-attached cold C003 interception with the persistent custom
    image installed, then reload the known-good pinned RAM rescue and verify it
    can identify/read the target and access the restoration material. Never damage
@@ -193,10 +213,12 @@ C6 and the documented restoration status define the verified rescue boundary.
 - Keep original failures and UNKNOWN values. Host tests, generic QEMU, RAM boot,
   flash boot, cold entry and partition restoration are separate evidence classes.
 
-Order: A inventory/backup -> slim candidate and B lifecycle -> host/QEMU checks
+Order: A inventory/backup and A3a image-tail gate -> slim candidate and B lifecycle -> host/QEMU checks
 -> B physical RAM/restart checks -> C selection, no-host continuation and recovery
 preparation -> owner-authorized installation -> standalone cold boot/restart and
 rescue rehearsal. C1-C3 read-only analysis/tool preparation may run before B ends.
+Optional B3a/B8 do not block this sequence. C5a persistence acceptance follows
+successful standalone boot and C6 rescue rehearsal, with a separate result.
 
 Completion means stock-kernel custom PID1 boots from flash without a host,
 automatically starts persistent Alpine and authenticated SSH, preserves state
