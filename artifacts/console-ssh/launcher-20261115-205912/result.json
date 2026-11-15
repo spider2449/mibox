@@ -1,0 +1,11 @@
+{
+  "checks": [
+    {
+      "name": "usb-identity",
+      "exit_code": 1
+    }
+  ],
+  "persistent_ready": false,
+  "stopped": false,
+  "failure": "usb-identity: adb.exe: device '248243005297' not found\n"
+}

@@ -1,0 +1,28 @@
+
+/mnt/f/coding/otherPrj/mibox/phone-tools/runtime/2026-11-14/bootloader-ucl/bootloader-expanded.bin:     file format binary
+
+
+Disassembly of section .data:
+
+8f8004e8 <.data+0x4e8>:
+8f8004e8:	e59f3008 	ldr	r3, [pc, #8]	@ 0x8f8004f8
+8f8004ec:	e5933954 	ldr	r3, [r3, #2388]	@ 0x954
+8f8004f0:	e0600003 	rsb	r0, r0, r3
+8f8004f4:	e12fff1e 	bx	lr
+8f8004f8:	c1109000 	tstgt	r0, r0
+8f8004fc:	e59f3018 	ldr	r3, [pc, #24]	@ 0x8f80051c
+8f800500:	e5933954 	ldr	r3, [r3, #2388]	@ 0x954
+8f800504:	e59f2010 	ldr	r2, [pc, #16]	@ 0x8f80051c
+8f800508:	e5922954 	ldr	r2, [r2, #2388]	@ 0x954
+8f80050c:	e0632002 	rsb	r2, r3, r2
+8f800510:	e1520000 	cmp	r2, r0
+8f800514:	3afffffa 	bcc	0x8f800504
+8f800518:	e12fff1e 	bx	lr
+8f80051c:	c1109000 	tstgt	r0, r0
+8f800520:	e92d4010 	push	{r4, lr}
+8f800524:	e3a04ffa 	mov	r4, #1000	@ 0x3e8
+8f800528:	e0000094 	mul	r0, r4, r0
+8f80052c:	ebffffed 	bl	0x8f8004e8
+8f800530:	e1a01004 	mov	r1, r4
+8f800534:	eb01c656 	bl	0x8f871e94
+8f800538:	e8bd8010 	pop	{r4, pc}

@@ -1,0 +1,6 @@
+{
+  "device_access": true,
+  "partition_write": false,
+  "backup_verified": false,
+  "failure": "bounded env read failed: exit=1, bytes=0"
+}

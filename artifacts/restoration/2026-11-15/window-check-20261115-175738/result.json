@@ -1,0 +1,61 @@
+{
+  "action": "check",
+  "device_access": true,
+  "write_attempted": false,
+  "full_readback_match": false,
+  "boot_id": "b5567c71-9f2e-4d73-9239-0a80e7120ab3",
+  "updater_sha256": "80ef2fda21d344570f845a9ad7670d72b40e51157c8dbe61d5fe152c0ca936ad",
+  "ram_tool": "/proc/1/root/tmp/mibox-rescue-env-20261115-175738",
+  "check_passed": true,
+  "runtime_boot_unchanged": true,
+  "commands": [
+    {
+      "label": "usb-os",
+      "exit_code": 0,
+      "stdout_complete": true,
+      "stderr_complete": true
+    },
+    {
+      "label": "usb-boot",
+      "exit_code": 0,
+      "stdout_complete": true,
+      "stderr_complete": true
+    },
+    {
+      "label": "usb-key",
+      "exit_code": 0,
+      "stdout_complete": true,
+      "stderr_complete": true
+    },
+    {
+      "label": "ram-tool-upload",
+      "exit_code": 0,
+      "stdout_complete": true,
+      "stderr_complete": true
+    },
+    {
+      "label": "ssh-boot",
+      "exit_code": 0,
+      "stdout_complete": true,
+      "stderr_complete": true
+    },
+    {
+      "label": "device-check",
+      "exit_code": 0,
+      "stdout_complete": true,
+      "stderr_complete": true
+    },
+    {
+      "label": "post-boot",
+      "exit_code": 0,
+      "stdout_complete": true,
+      "stderr_complete": true
+    },
+    {
+      "label": "ram-tool-cleanup",
+      "exit_code": 0,
+      "stdout_complete": true,
+      "stderr_complete": true
+    }
+  ]
+}

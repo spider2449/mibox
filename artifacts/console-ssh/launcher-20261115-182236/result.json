@@ -1,0 +1,58 @@
+{
+  "checks": [
+    {
+      "name": "usb-identity",
+      "exit_code": 0
+    },
+    {
+      "name": "usb-host-key",
+      "exit_code": 0
+    },
+    {
+      "name": "bootstrap-keyscan",
+      "exit_code": 0
+    },
+    {
+      "name": "bootstrap-public-key-permission",
+      "exit_code": 0
+    },
+    {
+      "name": "usb-host-key-after-bootstrap",
+      "exit_code": 0
+    },
+    {
+      "name": "clock-from-host",
+      "exit_code": 0
+    },
+    {
+      "name": "persistent-state",
+      "exit_code": 0
+    },
+    {
+      "name": "upload-persistent-helper",
+      "exit_code": 0
+    },
+    {
+      "name": "data-inspection",
+      "exit_code": 0
+    },
+    {
+      "name": "persistent-start",
+      "exit_code": 0
+    },
+    {
+      "name": "persistent-coreutils",
+      "exit_code": 0
+    },
+    {
+      "name": "persistent-ready",
+      "exit_code": 0
+    },
+    {
+      "name": "known-hosts-path",
+      "exit_code": 0
+    }
+  ],
+  "persistent_ready": true,
+  "stopped": false
+}

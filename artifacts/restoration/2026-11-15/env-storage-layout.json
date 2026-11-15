@@ -1,0 +1,40 @@
+{
+  "loader_sha256": "99f701ac15a155aa07b7204d240b82a0a5c91457513ae1e246146e3f8b8753a2",
+  "derived_link_base": 2407530496,
+  "environment_bytes": 32768,
+  "data_bytes": 32764,
+  "crc_bytes": 4,
+  "partition_name": "env",
+  "layout": "one CRC32 word followed by 32764 data bytes; no redundant flag in inspected path",
+  "partition_offset_field_bytes": 24,
+  "write_callback_field": 260,
+  "read_callback_field": 256,
+  "write_function_link_address": "0x8f81c678",
+  "read_function_link_address": "0x8f81c848",
+  "crc_failure_behavior": "sets default environment and calls save backend; not a tested fallback",
+  "write_location": "start of named env partition; extent 32768 bytes",
+  "reference": {
+    "path": "common/env_mmc.c",
+    "git_blob_sha1": "6f06cca2858de8c19d4c1804b42ba1f7399ac495",
+    "url": "https://github.com/codesnake/uboot-amlogic/blob/c0b0b8cc9bd5901ced2e929ea87b99fae52d528c/common/env_mmc.c"
+  },
+  "checked_instructions": {
+    "0x1c6e4": "0xe3a00902",
+    "0x1c6f4": "0xe3072ffc",
+    "0x1c76c": "0xe3072ffc",
+    "0x1c778": "0xe5850000",
+    "0x1c798": "0xe3a00902",
+    "0x1c7ac": "0xe1c901d8",
+    "0x1c7b4": "0xe597c104",
+    "0x1c84c": "0xe3a00902",
+    "0x1c874": "0xe3072ffc",
+    "0x1c8f0": "0xe3a00902",
+    "0x1c900": "0xe1c901d8",
+    "0x1c914": "0xe597c100",
+    "0x1c958": "0xe3072ffc",
+    "0x1c960": "0xe1500007",
+    "0x1c974": "0xeb0000b7"
+  },
+  "device_access": false,
+  "power_loss_atomicity": "NOT ESTABLISHED: single-copy update"
+}

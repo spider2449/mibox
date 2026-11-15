@@ -1,0 +1,47 @@
+{
+  "source_sha256": "99f701ac15a155aa07b7204d240b82a0a5c91457513ae1e246146e3f8b8753a2",
+  "derived_link_base": 2407530496,
+  "checked_instructions": {
+    "0x524": "0xe3a04ffa",
+    "0x528": "0xe0000094",
+    "0x530": "0xe1a01004",
+    "0x4ec": "0xe5933954",
+    "0x4f0": "0xe0600003",
+    "0x5af30": "0xe3a01000",
+    "0x5af4c": "0xe7871002",
+    "0x5b01c": "0xe7840006",
+    "0x5b044": "0xe7840002",
+    "0x5bbb0": "0xe3500000",
+    "0x5bbc4": "0xe1500003",
+    "0x5bbc8": "0x9a000007",
+    "0x5bbe4": "0xe3a00002",
+    "0x5bca4": "0xe3500000",
+    "0x5bca8": "0xafffffc",
+    "0x5bcac": "0xe3a00000",
+    "0x5bcb0": "0xe8bd80f8"
+  },
+  "timeout_state_link_address": "0x8f8c4828",
+  "timer": {
+    "counter_register": "0xc1109954",
+    "expression": "unsigned(counter - 1000 * argument) / 1000",
+    "counter_frequency": "UNKNOWN: not measured on this device",
+    "physical_window_duration": "UNKNOWN"
+  },
+  "cancellation": {
+    "request": "vendor identify 0x20",
+    "instruction_link_address": "0x8f85af4c",
+    "effect": "stores zero to the same timeout state; poll then skips deadline",
+    "limit": "This proves one cancellation path; not an exhaustive handler audit."
+  },
+  "return_path": "timeout poll returns 2; USB loop exits on nonzero and returns 0 to its caller",
+  "proposed_location": "A pre-OS USB window must run before the main bootm transfers control.",
+  "proposed_setting_installed": false,
+  "device_access": false,
+  "limitations": [
+    "Bootloader and saved environment must remain readable and valid.",
+    "Connected Windows enumeration may hold the loader; physical timeout/exit untested.",
+    "No modified environment image or persistent write command supplied.",
+    "This audit does not prove power-loss-safe installation or physical repair."
+  ],
+  "independent_rescue": "NOT VERIFIED"
+}

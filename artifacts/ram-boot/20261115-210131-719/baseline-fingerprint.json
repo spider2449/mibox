@@ -1,0 +1,19 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell getprop ro.build.fingerprint",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  8,
+    "ProcessId":  5024,
+    "StartedAt":  "2026-11-15T13:01:32.4880899Z",
+    "ExitCode":  1,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "adb.exe: device \u0027248243005297\u0027 not found",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "Failure":  "baseline-fingerprint failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\20261115-210131-719",
+    "ElapsedSeconds":  0.0393494,
+    "FinishedAt":  "2026-11-15T13:01:32.5260686Z"
+}

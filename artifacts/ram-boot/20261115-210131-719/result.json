@@ -1,0 +1,17 @@
+﻿{
+    "Action":  "Boot",
+    "StartedAt":  "2026-11-15T21:01:31.7241247+08:00",
+    "Stage":  "AndroidBaseline",
+    "ImageSHA256":  "4629deefd4e5e0f1902a54158ef01c7ad67156ef87946fb6d87c7070ba5da7c0",
+    "DeviceAccessed":  true,
+    "LoaderRequestSent":  false,
+    "CustomBootVerified":  false,
+    "AndroidReturnVerified":  false,
+    "FlashCommandSent":  false,
+    "TransferDeadlineSeconds":  3600,
+    "ControlTimeoutMilliseconds":  10000,
+    "Candidate":  "Console",
+    "LocalImageVerified":  true,
+    "Failure":  "baseline-fingerprint failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\ram-boot\\20261115-210131-719",
+    "FinishedAt":  "2026-11-15T21:01:32.5307526+08:00"
+}

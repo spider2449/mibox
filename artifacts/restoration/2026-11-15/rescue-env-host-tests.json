@@ -1,0 +1,124 @@
+{
+  "scope": "Disposable host regular-file fixture; no devices",
+  "device_access": false,
+  "tests": 10,
+  "passed": true,
+  "cases": [
+    {
+      "case": "test_complete_install_remove",
+      "action": "--check",
+      "exit_code": 0,
+      "expected_success": true,
+      "output": "MIBOX_ENV_CHECK_OK original_exact=1 bytes=4194304",
+      "error": ""
+    },
+    {
+      "case": "test_complete_install_remove",
+      "action": "--install",
+      "exit_code": 0,
+      "expected_success": true,
+      "output": "MIBOX_ENV_INSTALLED full_readback_match=1",
+      "error": "MIBOX_ENV_WRITE_STARTED region=0:32768"
+    },
+    {
+      "case": "test_complete_install_remove",
+      "action": "--remove",
+      "exit_code": 0,
+      "expected_success": true,
+      "output": "MIBOX_ENV_REMOVED full_readback_match=1",
+      "error": "MIBOX_ENV_WRITE_STARTED region=0:32768"
+    },
+    {
+      "case": "test_corrupted_readback",
+      "action": "--install",
+      "exit_code": 1,
+      "expected_success": false,
+      "output": "",
+      "error": "MIBOX_ENV_WRITE_STARTED region=0:32768\nenvironment full readback mismatch; keep RAM session alive"
+    },
+    {
+      "case": "test_interruption_and_explicit_recovery",
+      "action": "--install",
+      "exit_code": 1,
+      "expected_success": false,
+      "output": "",
+      "error": "MIBOX_ENV_WRITE_STARTED region=0:32768\nenvironment write/fsync: target may be partial; keep RAM session alive: Interrupted system call"
+    },
+    {
+      "case": "test_interruption_and_explicit_recovery",
+      "action": "--recover-original",
+      "exit_code": 0,
+      "expected_success": true,
+      "output": "MIBOX_ENV_REMOVED full_readback_match=1",
+      "error": "MIBOX_ENV_WRITE_STARTED region=0:32768"
+    },
+    {
+      "case": "test_recovery_rejects_unrelated_damage",
+      "action": "--recover-original",
+      "exit_code": 1,
+      "expected_success": false,
+      "output": "",
+      "error": "not a recognized interrupted update; no write"
+    },
+    {
+      "case": "test_repeat_install_rejected",
+      "action": "--install",
+      "exit_code": 1,
+      "expected_success": false,
+      "output": "",
+      "error": "original environment mismatch; no write"
+    },
+    {
+      "case": "test_symlink_rejected",
+      "action": "--install",
+      "exit_code": 1,
+      "expected_success": false,
+      "output": "",
+      "error": ""
+    },
+    {
+      "case": "test_wrong_prefix",
+      "action": "--install",
+      "exit_code": 1,
+      "expected_success": false,
+      "output": "",
+      "error": "original environment mismatch; no write"
+    },
+    {
+      "case": "test_wrong_size",
+      "action": "--install",
+      "exit_code": 1,
+      "expected_success": false,
+      "output": "",
+      "error": ""
+    },
+    {
+      "case": "test_wrong_size",
+      "action": "--install",
+      "exit_code": 1,
+      "expected_success": false,
+      "output": "",
+      "error": ""
+    },
+    {
+      "case": "test_wrong_size",
+      "action": "--install",
+      "exit_code": 1,
+      "expected_success": false,
+      "output": "",
+      "error": ""
+    },
+    {
+      "case": "test_wrong_tail",
+      "action": "--install",
+      "exit_code": 1,
+      "expected_success": false,
+      "output": "",
+      "error": "original environment mismatch; no write"
+    }
+  ],
+  "updater_source_sha256": "3f7bbccc4432b3109a9dd5b53924189cd74d96e923489f609b27869f3f10e14c",
+  "fixture_sha256": "a2f52605a327ddb514c80411e67affa97ce940019f04ca95cc9a07984e64300d",
+  "source_sha256": "e85c14d547bde485ded38f41050f197ba33dfe24cc543bec61f11eafea2f812a",
+  "patched_sha256": "6142e34ffd40682add106f466a4859365c15ad19bc7cc8d74335fd03f464ca2c"
+}

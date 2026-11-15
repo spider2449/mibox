@@ -1,0 +1,20 @@
++ id -u
++ test 0 '=' 0
++ + tr -d '\r'
+grep -qx 'ID=mibox-custom'
++ cat /proc/sys/kernel/random/boot_id
++ test b5567c71-9f2e-4d73-9239-0a80e7120ab3 '=' b5567c71-9f2e-4d73-9239-0a80e7120ab3
++ cat /sys/class/block/env/dev
++ test 179:3 '=' 179:3
++ cat /sys/class/block/env/size
++ test 8192 '=' 8192
++ cat /sys/class/block/env/ro
++ test 0 '=' 0
++ stat -f -c '%t' /proc/1/root/tmp
++ test 858458f6 '=' 858458f6
++ test '!' -e /proc/1/root/tmp/mibox-env-read-20261115-175110
++ trap 'rm -f /proc/1/root/tmp/mibox-env-read-20261115-175110' EXIT
++ mknod -m 400 /proc/1/root/tmp/mibox-env-read-20261115-175110 b 179 3
++ stat -c '%t:%T' /proc/1/root/tmp/mibox-env-read-20261115-175110
++ test 0:0 '=' b3:3
++ rm -f /proc/1/root/tmp/mibox-env-read-20261115-175110

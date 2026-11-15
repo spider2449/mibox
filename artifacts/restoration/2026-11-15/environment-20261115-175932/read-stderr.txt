@@ -1,0 +1,38 @@
++ id -u
++ test 0 '=' 0
++ tr+ grep -qx 'ID=mibox-custom'
+ -d '\r'
++ cat /proc/sys/kernel/random/boot_id
++ test b5567c71-9f2e-4d73-9239-0a80e7120ab3 '=' b5567c71-9f2e-4d73-9239-0a80e7120ab3
++ cat /sys/class/block/env/dev
++ test 179:3 '=' 179:3
++ cat /sys/class/block/env/size
++ test 8192 '=' 8192
++ cat /sys/class/block/env/ro
++ test 0 '=' 0
++ busybox stat -f -c '%t' /proc/1/root/tmp
++ test 858458f6 '=' 858458f6
++ test '!' -e /proc/1/root/tmp/mibox-env-read-20261115-175932
++ trap 'rm -f /proc/1/root/tmp/mibox-env-read-20261115-175932' EXIT
++ busybox mknod -m 400 /proc/1/root/tmp/mibox-env-read-20261115-175932 b 179 3
++ busybox stat -c '%t:%T' /proc/1/root/tmp/mibox-env-read-20261115-175932
++ test b3:3 '=' b3:3
++ awk '$3 == "179:3" {print}' /proc/self/mountinfo
++ test -z 
++ echo ENV_SHA256_BEFORE
+ENV_SHA256_BEFORE
++ sha256sum /proc/1/root/tmp/mibox-env-read-20261115-175932
+6142e34ffd40682add106f466a4859365c15ad19bc7cc8d74335fd03f464ca2c  /proc/1/root/tmp/mibox-env-read-20261115-175932
++ dd 'if=/proc/1/root/tmp/mibox-env-read-20261115-175932' 'bs=65536' 'count=64'
+64+0 records in
+64+0 records out
+4194304 bytes (4.2 MB, 4.0 MiB) copied, 0.63159 s, 6.6 MB/s
++ echo ENV_SHA256_AFTER
+ENV_SHA256_AFTER
++ sha256sum /proc/1/root/tmp/mibox-env-read-20261115-175932
+6142e34ffd40682add106f466a4859365c15ad19bc7cc8d74335fd03f464ca2c  /proc/1/root/tmp/mibox-env-read-20261115-175932
++ cat /proc/sys/kernel/random/boot_id
++ test b5567c71-9f2e-4d73-9239-0a80e7120ab3 '=' b5567c71-9f2e-4d73-9239-0a80e7120ab3
++ echo ENV_READ_COMPLETE
+ENV_READ_COMPLETE
++ rm -f /proc/1/root/tmp/mibox-env-read-20261115-175932

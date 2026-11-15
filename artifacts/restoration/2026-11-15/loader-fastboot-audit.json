@@ -1,0 +1,666 @@
+{
+  "source_sha256": "99f701ac15a155aa07b7204d240b82a0a5c91457513ae1e246146e3f8b8753a2",
+  "derived_link_base": 2407530496,
+  "command_candidates": [
+    {
+      "name": "done",
+      "table_offset": 713284,
+      "function_link_address": 2408126209,
+      "usage": "stdout"
+    },
+    {
+      "name": "autoscr",
+      "table_offset": 718660,
+      "function_link_address": 2407577828,
+      "usage": "run script from memory"
+    },
+    {
+      "name": "bdinfo",
+      "table_offset": 718688,
+      "function_link_address": 2407577952,
+      "usage": "print Board Info structure"
+    },
+    {
+      "name": "bmp",
+      "table_offset": 718716,
+      "function_link_address": 2407578220,
+      "usage": "manipulate BMP image data"
+    },
+    {
+      "name": "boardid_prefetch",
+      "table_offset": 718744,
+      "function_link_address": 2407580112,
+      "usage": "boardid sub-system"
+    },
+    {
+      "name": "go",
+      "table_offset": 718772,
+      "function_link_address": 2407580984,
+      "usage": "start application at address 'addr'"
+    },
+    {
+      "name": "bootm",
+      "table_offset": 718828,
+      "function_link_address": 2407585528,
+      "usage": "boot application image from memory"
+    },
+    {
+      "name": "monitor_bt_cmdline",
+      "table_offset": 718856,
+      "function_link_address": 2407586904,
+      "usage": "monitor_bt_cmdline"
+    },
+    {
+      "name": "icache",
+      "table_offset": 718884,
+      "function_link_address": 2407588736,
+      "usage": "enable or disable instruction cache"
+    },
+    {
+      "name": "dcache",
+      "table_offset": 718912,
+      "function_link_address": 2407588604,
+      "usage": "enable or disable data cache"
+    },
+    {
+      "name": "coninfo",
+      "table_offset": 718940,
+      "function_link_address": 2407588868,
+      "usage": "print console devices and information"
+    },
+    {
+      "name": "echo",
+      "table_offset": 718968,
+      "function_link_address": 2407589160,
+      "usage": "echo args to console"
+    },
+    {
+      "name": "efuse",
+      "table_offset": 718996,
+      "function_link_address": 2407590372,
+      "usage": "efuse version/licence/mac/hdcp/usid read/write or dump raw efuse data commands or info(display chip efuse info)"
+    },
+    {
+      "name": "exit",
+      "table_offset": 719024,
+      "function_link_address": 2407590460,
+      "usage": "exit script"
+    },
+    {
+      "name": "ext2ls",
+      "table_offset": 719052,
+      "function_link_address": 2407591376,
+      "usage": "list files in a directory (default /)"
+    },
+    {
+      "name": "ext2load",
+      "table_offset": 719080,
+      "function_link_address": 2407590508,
+      "usage": "load binary file from a Ext2 filesystem"
+    },
+    {
+      "name": "fatload",
+      "table_offset": 719108,
+      "function_link_address": 2407592608,
+      "usage": "load binary file from a dos filesystem"
+    },
+    {
+      "name": "fatexist",
+      "table_offset": 719136,
+      "function_link_address": 2407592232,
+      "usage": "find the file from a dos filesystem"
+    },
+    {
+      "name": "fatls",
+      "table_offset": 719164,
+      "function_link_address": 2407591940,
+      "usage": "list files in a directory (default /)"
+    },
+    {
+      "name": "fatinfo",
+      "table_offset": 719192,
+      "function_link_address": 2407591704,
+      "usage": "print information about filesystem"
+    },
+    {
+      "name": "gset",
+      "table_offset": 719248,
+      "function_link_address": 2407597300,
+      "usage": "gpio commands"
+    },
+    {
+      "name": "hdcp",
+      "table_offset": 719276,
+      "function_link_address": 2407598164,
+      "usage": "HDCP sub-system"
+    },
+    {
+      "name": "help",
+      "table_offset": 719304,
+      "function_link_address": 2407599072,
+      "usage": "print command description/usage"
+    },
+    {
+      "name": "?",
+      "table_offset": 719332,
+      "function_link_address": 2407599072,
+      "usage": "alias for 'help'"
+    },
+    {
+      "name": "unpackimg",
+      "table_offset": 719360,
+      "function_link_address": 2407599468,
+      "usage": "unpack imgpack to single"
+    },
+    {
+      "name": "get_img_size",
+      "table_offset": 719388,
+      "function_link_address": 2407599164,
+      "usage": "get img size and save the result as a environment variable"
+    },
+    {
+      "name": "imgread",
+      "table_offset": 719416,
+      "function_link_address": 2407600068,
+      "usage": "Read the image from internal flash with actual size"
+    },
+    {
+      "name": "itest",
+      "table_offset": 719444,
+      "function_link_address": 2407603408,
+      "usage": "return true/false on integer compare"
+    },
+    {
+      "name": "loads",
+      "table_offset": 719472,
+      "function_link_address": 2407607500,
+      "usage": "load S-Record file over serial line"
+    },
+    {
+      "name": "loadb",
+      "table_offset": 719500,
+      "function_link_address": 2407605600,
+      "usage": "load binary file over serial line (kermit mode)"
+    },
+    {
+      "name": "loadx",
+      "table_offset": 719528,
+      "function_link_address": 2407605600,
+      "usage": "load binary file over serial line (xmodem mode)"
+    },
+    {
+      "name": "loady",
+      "table_offset": 719556,
+      "function_link_address": 2407605600,
+      "usage": "load binary file over serial line (ymodem mode)"
+    },
+    {
+      "name": "logo",
+      "table_offset": 719584,
+      "function_link_address": 2407607756,
+      "usage": "logo sub-system"
+    },
+    {
+      "name": "calc",
+      "table_offset": 719612,
+      "function_link_address": 2407608748,
+      "usage": "command for calculate"
+    },
+    {
+      "name": "md",
+      "table_offset": 719640,
+      "function_link_address": 2407611292,
+      "usage": "memory display"
+    },
+    {
+      "name": "mm",
+      "table_offset": 719668,
+      "function_link_address": 2407611256,
+      "usage": "memory modify (auto-incrementing address)"
+    },
+    {
+      "name": "nm",
+      "table_offset": 719696,
+      "function_link_address": 2407611220,
+      "usage": "memory modify (constant address)"
+    },
+    {
+      "name": "mw",
+      "table_offset": 719724,
+      "function_link_address": 2407610644,
+      "usage": "memory write (fill)"
+    },
+    {
+      "name": "cp",
+      "table_offset": 719752,
+      "function_link_address": 2407610000,
+      "usage": "memory copy"
+    },
+    {
+      "name": "cmp",
+      "table_offset": 719780,
+      "function_link_address": 2407610224,
+      "usage": "memory compare"
+    },
+    {
+      "name": "crc32",
+      "table_offset": 719808,
+      "function_link_address": 2407609028,
+      "usage": "checksum calculation"
+    },
+    {
+      "name": "base",
+      "table_offset": 719836,
+      "function_link_address": 2407609208,
+      "usage": "print or set address offset"
+    },
+    {
+      "name": "loop",
+      "table_offset": 719864,
+      "function_link_address": 2407609752,
+      "usage": "infinite loop on address range"
+    },
+    {
+      "name": "mtest",
+      "table_offset": 719892,
+      "function_link_address": 2407609292,
+      "usage": "simple RAM read/write test"
+    },
+    {
+      "name": "sleep",
+      "table_offset": 719920,
+      "function_link_address": 2407611656,
+      "usage": "delay execution for some time"
+    },
+    {
+      "name": "msleep",
+      "table_offset": 719948,
+      "function_link_address": 2407611532,
+      "usage": "delay execution for some time"
+    },
+    {
+      "name": "mmcinfo",
+      "table_offset": 719976,
+      "function_link_address": 2407611968,
+      "usage": "mmcinfo <dev num>-- display MMC info"
+    },
+    {
+      "name": "mmc",
+      "table_offset": 720004,
+      "function_link_address": 2407612528,
+      "usage": "MMC sub system"
+    },
+    {
+      "name": "saveenv",
+      "table_offset": 720032,
+      "function_link_address": 2407617680,
+      "usage": "save environment variables to persistent storage"
+    },
+    {
+      "name": "env",
+      "table_offset": 720060,
+      "function_link_address": 2407616808,
+      "usage": "environment handling commands"
+    },
+    {
+      "name": "editenv",
+      "table_offset": 720088,
+      "function_link_address": 2407621456,
+      "usage": "edit environment variable"
+    },
+    {
+      "name": "printenv",
+      "table_offset": 720116,
+      "function_link_address": 2407618620,
+      "usage": "print environment variables"
+    },
+    {
+      "name": "setenv",
+      "table_offset": 720144,
+      "function_link_address": 2407619760,
+      "usage": "set environment variables"
+    },
+    {
+      "name": "run",
+      "table_offset": 720172,
+      "function_link_address": 2407669780,
+      "usage": "run commands in an environment variable"
+    },
+    {
+      "name": "loadenv",
+      "table_offset": 720200,
+      "function_link_address": 2407617912,
+      "usage": "load environment at address 'addr'"
+    },
+    {
+      "name": "defenv",
+      "table_offset": 720228,
+      "function_link_address": 2407617860,
+      "usage": "default environment"
+    },
+    {
+      "name": "defenv_without",
+      "table_offset": 720256,
+      "function_link_address": 2407621208,
+      "usage": "defenv without environment variables"
+    },
+    {
+      "name": "put",
+      "table_offset": 720284,
+      "function_link_address": 2407620508,
+      "usage": "put  storage "
+    },
+    {
+      "name": "getrandomsn",
+      "table_offset": 720312,
+      "function_link_address": 2407621580,
+      "usage": "getrandomsn"
+    },
+    {
+      "name": "get_rebootmode",
+      "table_offset": 720340,
+      "function_link_address": 2407621844,
+      "usage": "get reboot mode"
+    },
+    {
+      "name": "clear_rebootmode",
+      "table_offset": 720368,
+      "function_link_address": 2407621816,
+      "usage": "clear rebootmode"
+    },
+    {
+      "name": "secukey",
+      "table_offset": 720396,
+      "function_link_address": 2407623528,
+      "usage": "security KEY sub-system"
+    },
+    {
+      "name": "ssecukey",
+      "table_offset": 720424,
+      "function_link_address": 2407622960,
+      "usage": "NAND KEY sub-system"
+    },
+    {
+      "name": "oldkey",
+      "table_offset": 720452,
+      "function_link_address": 2407622088,
+      "usage": "Android 4.2 KEY sub-system"
+    },
+    {
+      "name": "sf",
+      "table_offset": 720480,
+      "function_link_address": 2407625752,
+      "usage": "SPI flash sub-system"
+    },
+    {
+      "name": "source",
+      "table_offset": 720508,
+      "function_link_address": 2407627296,
+      "usage": "run script from memory"
+    },
+    {
+      "name": "suspend",
+      "table_offset": 720536,
+      "function_link_address": 2407627380,
+      "usage": "suspend"
+    },
+    {
+      "name": "test",
+      "table_offset": 720564,
+      "function_link_address": 2407627464,
+      "usage": "minimal test like /bin/sh"
+    },
+    {
+      "name": "false",
+      "table_offset": 720592,
+      "function_link_address": 2407627448,
+      "usage": "do nothing, unsuccessfully"
+    },
+    {
+      "name": "true",
+      "table_offset": 720620,
+      "function_link_address": 2407627456,
+      "usage": "do nothing, successfully"
+    },
+    {
+      "name": "usbbc",
+      "table_offset": 720648,
+      "function_link_address": 2407628904,
+      "usage": "test usb bc"
+    },
+    {
+      "name": "usb",
+      "table_offset": 720676,
+      "function_link_address": 2407632224,
+      "usage": "USB sub-system"
+    },
+    {
+      "name": "usbboot",
+      "table_offset": 720704,
+      "function_link_address": 2407629608,
+      "usage": "boot from USB device"
+    },
+    {
+      "name": "usid_prefetch",
+      "table_offset": 720732,
+      "function_link_address": 2407633876,
+      "usage": "usid sub-system"
+    },
+    {
+      "name": "uuid_prefetch",
+      "table_offset": 720760,
+      "function_link_address": 2407634804,
+      "usage": "uuid sub-system"
+    },
+    {
+      "name": "version",
+      "table_offset": 720788,
+      "function_link_address": 2407635204,
+      "usage": "print monitor, compiler and linker version"
+    },
+    {
+      "name": "video",
+      "table_offset": 720816,
+      "function_link_address": 2407635288,
+      "usage": "video sub-system"
+    },
+    {
+      "name": "imxtract",
+      "table_offset": 720844,
+      "function_link_address": 2407635764,
+      "usage": "extract a part of a multi-image"
+    },
+    {
+      "name": "showvar",
+      "table_offset": 720872,
+      "function_link_address": 2407654996,
+      "usage": "print local hushshell variables"
+    },
+    {
+      "name": "kgdb",
+      "table_offset": 720900,
+      "function_link_address": 2407666940,
+      "usage": "enter gdb remote debug mode"
+    },
+    {
+      "name": "store",
+      "table_offset": 720928,
+      "function_link_address": 2407676212,
+      "usage": "STORE sub-system"
+    },
+    {
+      "name": "dummy",
+      "table_offset": 720956,
+      "function_link_address": 2407697152,
+      "usage": "Customer defined command!"
+    },
+    {
+      "name": "amlnf",
+      "table_offset": 720984,
+      "function_link_address": 2407703196,
+      "usage": "AMLPHYNAND sub-system"
+    },
+    {
+      "name": "amlnf_test",
+      "table_offset": 721012,
+      "function_link_address": 2407709792,
+      "usage": "AMLPHYNAND sub-system"
+    },
+    {
+      "name": "sdc_update",
+      "table_offset": 721040,
+      "function_link_address": 2407888316,
+      "usage": "Burning a partition with image file in sdmmc card"
+    },
+    {
+      "name": "sdc_burn",
+      "table_offset": 721068,
+      "function_link_address": 2407892520,
+      "usage": "Burning with amlogic format package in sdmmc "
+    },
+    {
+      "name": "update",
+      "table_offset": 721096,
+      "function_link_address": 2407906504,
+      "usage": "Enter v2 usbburning mode"
+    },
+    {
+      "name": "modify_cmdline",
+      "table_offset": 721152,
+      "function_link_address": 2407991180,
+      "usage": "modify_cmdline"
+    },
+    {
+      "name": "irdetect",
+      "table_offset": 721180,
+      "function_link_address": 2407991024,
+      "usage": "Detect IR Key to start recovery system"
+    }
+  ],
+  "string_hits": {
+    "fastboot": [],
+    "getvar:": [],
+    "download:": [],
+    "flash:": [
+      {
+        "offset": 590413,
+        "context": "from part boot     from flash: <imgread kernel boot loadaddr> \n        to read dtb          from part boot     from flas"
+      },
+      {
+        "offset": 590505,
+        "context": "from part boot     from flash: <imgread dtb boot loadaddr [destAddr]> \n        to read recovery.img from part recovery f"
+      },
+      {
+        "offset": 590605,
+        "context": "from part recovery from flash: <imgread kernel recovery loadaddr> \n        to read logo.img     from part logo     from "
+      },
+      {
+        "offset": 590701,
+        "context": "from part logo     from flash: <imgread res    logo loadaddr> \n        to read one picture named 'bootup' from logo.img "
+      }
+    ],
+    "bootloader": [
+      {
+        "offset": 610494,
+        "context": "rase  0 0x%x\u0000mmc  erase bootloader\u0000mmc cmd %s failed\n\u0000mmc switch 1 boot%d\u0000mmc erase bootloader\u0000mmc switch 1 user\u0000mmc cmd"
+      },
+      {
+        "offset": 610554,
+        "context": "itch 1 boot%d\u0000mmc erase bootloader\u0000mmc switch 1 user\u0000mmc cmd %s failed \n\n\u0000amlnf  deverase data 0\u0000amlnf  deverase code 0\u0000"
+      },
+      {
+        "offset": 611038,
+        "context": "llx  0x%llx \u0000mmc  write bootloader 0x%llx  0x%llx  0x%llx\u0000rom_read\u0000amlnf  rom_read  0x%llx  0x%llx  0x%llx\u0000sf  read 0x%l"
+      },
+      {
+        "offset": 611164,
+        "context": "%llx  0x%llx \u0000mmc  read bootloader 0x%llx  0x%llx  0x%llx\u0000rom_protect\u0000amlnf  rom_protect  %s\u0000scrub\u0000amlnf  scrub %d\u0000mmc e"
+      },
+      {
+        "offset": 637579,
+        "context": ", must %s\n\u0000Fail to read bootloader\n\u0000Fail to probe back sparse info\n\u0000Fail to open storage for read\n\u0000sparse\u0000msg:To verify "
+      },
+      {
+        "offset": 638052,
+        "context": "edia\n\u0000please write back bootloader after all data rx end.0x(%x, %x)\n\u0000msg:acsSettingInBin=0x%x\n\u0000msg:Acs not in the spl of"
+      },
+      {
+        "offset": 643355,
+        "context": "art(%s)\n\u0000Fail when burn bootloader\n\u0000Fail in check burn parts\n\u0000Fail to get burn parts from image\n\u0000Data part num is 0!!\n\u0000F"
+      },
+      {
+        "offset": 643512,
+        "context": "le %s\n\u0000msg:To erase OLD bootloader !\n\u0000Fail to erase bootloader\n\u0000msg:Reset to load NEW uboot from ext-mmc!\n\u0000Fail to open "
+      },
+      {
+        "offset": 643540,
+        "context": "loader !\n\u0000Fail to erase bootloader\n\u0000msg:Reset to load NEW uboot from ext-mmc!\n\u0000Fail to open image %s\n\u0000Fail in load dtb f"
+      },
+      {
+        "offset": 643768,
+        "context": " image %s\n\u0000Fail in burn bootloader\n\u0000Fail in set_burn_complete_flag\n\u0000msg:======sdc burn Failed!!!!!\n\u0000msg:PLS long-press p"
+      },
+      {
+        "offset": 644169,
+        "context": "s=====>>>\n\u0000common\u0000erase_bootloader = %d\n\u0000erase_flash      = %d\n\u0000reboot           = 0x%x\n\u0000burn_ex\u0000package          = %s\n\u0000"
+      },
+      {
+        "offset": 644434,
+        "context": "h and burn_parts\n\u0000erase_bootloader\u0000erase_flash\u0000key %s is duplicated!\n\u0000burn_num\u0000burn_num in burn_parts can't be empty!!\u0000v"
+      },
+      {
+        "offset": 644755,
+        "context": "alue of %s can't empty\n\u0000bootloader not need to configure at burn_parts\n\u0000burn_partx\u0000package\u0000key package in burn_ex is dup"
+      },
+      {
+        "offset": 647043,
+        "context": "\u0000low_power\u0000disk_initial\u0000bootloader_is_old\u0000Failed, bootloader is new\n\u0000Failed to erase bootloader\n\u0000write_raw_img\u0000read_raw_"
+      },
+      {
+        "offset": 647069,
+        "context": "otloader_is_old\u0000Failed, bootloader is new\n\u0000Failed to erase bootloader\n\u0000write_raw_img\u0000read_raw_img\u0000simg2part\u0000poweroff\u0000dow"
+      },
+      {
+        "offset": 647104,
+        "context": "is new\n\u0000Failed to erase bootloader\n\u0000write_raw_img\u0000read_raw_img\u0000simg2part\u0000poweroff\u0000download\u0000save_setting\u0000burn_complete\u0000ms"
+      },
+      {
+        "offset": 699768,
+        "context": "2\u0000\u0000\u00007\u0000\u0000\u0000<\u0000\u0000\u0000F\u0000\u0000\u0000P\u0000\u0000\u0000\u0000\u0000\u0000\u0000bootloader\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000 \u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000reserved\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000 \u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000keyexist\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
+      }
+    ],
+    "usb_burning": [
+      {
+        "offset": 597578,
+        "context": "boot_mode\u0000factory_reset\u0000usb_burning\u0000charging\u0000get_rebootmode\u0000get reboot mode\u0000/N\nThis command will set 'reboot_mode'\n\u0000clea"
+      },
+      {
+        "offset": 695164,
+        "context": "DEF\u0000vdacswitchmode=cvbs\u0000usb_burning=update 1000\u0000sdcburncfg=aml_sdc_burn.ini\u0000firstboot=1\u0000store=0\u0000preboot=echo preboot...;"
+      },
+      {
+        "offset": 695725,
+        "context": "ate=echo update...; run usb_burning; run recovery;\u0000initenv=setenv boot_args init=/init console=ttyS0,115200n8 no_console"
+      },
+      {
+        "offset": 696465,
+        "context": "f test ${reboot_mode} = usb_burning; then run usb_burning;else   fi;fi;fi;fi;fi\u0000prepare=logo size ${outputmode}; video d"
+      },
+      {
+        "offset": 696487,
+        "context": "= usb_burning; then run usb_burning;else   fi;fi;fi;fi;fi\u0000prepare=logo size ${outputmode}; video dev open ${outputmode};"
+      },
+      {
+        "offset": 696894,
+        "context": "adaddr} 0 800000; bootm\u0000usb_burning=update 1000\u0000sdc_burning=sdc_burn ${sdcburncfg}\u0000\u0000\u0000\u0000                                  "
+      }
+    ],
+    "usb_burner_reboot": []
+  },
+  "fastboot_command_candidates": [],
+  "device_access": false,
+  "reboot_requested": false,
+  "flash_command_sent": false,
+  "conclusion": "Fastboot support and independent entry require positive evidence; negative strings or candidate-table scan alone cannot prove absence.",
+  "independent_rescue": "NOT VERIFIED"
+}

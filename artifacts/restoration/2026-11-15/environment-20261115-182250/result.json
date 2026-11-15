@@ -1,0 +1,13 @@
+{
+  "device_access": true,
+  "partition_write": false,
+  "backup_verified": true,
+  "boot_id": "226a6893-4792-4ea2-8f25-f4211ff09409",
+  "bytes": 4194304,
+  "sha256": "6142e34ffd40682add106f466a4859365c15ad19bc7cc8d74335fd03f464ca2c",
+  "device": "179:3",
+  "sectors": 8192,
+  "backup": "/mnt/f/coding/otherPrj/mibox/phone-tools/backup/rescue-window-20261115-182250/env.img",
+  "private_key_retained": false,
+  "temporary_node_removed": true
+}

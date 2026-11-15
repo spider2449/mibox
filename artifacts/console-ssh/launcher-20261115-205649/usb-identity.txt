@@ -1,0 +1,1 @@
+adb.exe: device '248243005297' not found

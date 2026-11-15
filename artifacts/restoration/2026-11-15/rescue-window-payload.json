@@ -1,0 +1,19 @@
+{
+  "source_sha256": "e85c14d547bde485ded38f41050f197ba33dfe24cc543bec61f11eafea2f812a",
+  "patched_sha256": "6142e34ffd40682add106f466a4859365c15ad19bc7cc8d74335fd03f464ca2c",
+  "bytes": 4194304,
+  "write_region": {
+    "offset": 0,
+    "bytes": 32768
+  },
+  "changed_variables": [
+    "preboot"
+  ],
+  "before": "echo preboot...;if itest ${upgrade_step} == 1; then  defenv; setenv upgrade_step 2; saveenv;fi; secukey emmc; secukey updatehdcpkey;run initenv;switch_bootpart; modify_cmdline; run storeargs;if itest ${upgrade_step} == 3; then run update; fi; get_rebootmode; echo reboot_mode=${reboot_mode};run update_key; run init_display;run switch_bootmode;",
+  "after": "update 10000;echo preboot...;if itest ${upgrade_step} == 1; then  defenv; setenv upgrade_step 2; saveenv;fi; secukey emmc; secukey updatehdcpkey;run initenv;switch_bootpart; modify_cmdline; run storeargs;if itest ${upgrade_step} == 3; then run update; fi; get_rebootmode; echo reboot_mode=${reboot_mode};run update_key; run init_display;run switch_bootmode;",
+  "bootloader_image_changed": false,
+  "device_access": false,
+  "installed": false,
+  "expected_window_duration": "UNKNOWN until physical measurement",
+  "original_tail_nonzero_bytes": 24
+}

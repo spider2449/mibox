@@ -1,0 +1,22 @@
+﻿{
+    "WindowInstalled":  true,
+    "WarmRestartEntryVerified":  true,
+    "UsbRebootReasonRequested":  false,
+    "FullRamReloadVerified":  true,
+    "VerifiedRamBytes":  8388608,
+    "ImageSHA256":  "4629deefd4e5e0f1902a54158ef01c7ad67156ef87946fb6d87c7070ba5da7c0",
+    "PreviousBootId":  "b5567c71-9f2e-4d73-9239-0a80e7120ab3",
+    "CustomBootId":  "226a6893-4792-4ea2-8f25-f4211ff09409",
+    "EnvironmentPersistedAcrossRestart":  true,
+    "EnvironmentSHA256":  "6142e34ffd40682add106f466a4859365c15ad19bc7cc8d74335fd03f464ca2c",
+    "SshConsoleVerified":  true,
+    "ConsoleEvidence":  "artifacts/console-ssh/launcher-20261115-182236/result.json",
+    "RamEvidence":  "artifacts/rescue-boot/20261115-175944-393/result.json",
+    "PostBootEnvironmentEvidence":  "artifacts/restoration/2026-11-15/environment-20261115-182250/result.json",
+    "ColdPowerEntryVerified":  false,
+    "HostDisconnectedContinuationVerified":  false,
+    "BootImageReplaced":  false,
+    "PhysicalBootImageRepairVerified":  false,
+    "State":  "CUSTOM_RAM_CONSOLE_RUNNING",
+    "NextPhysicalStep":  "Owner power cycle after observer is armed; owner availability pending"
+}

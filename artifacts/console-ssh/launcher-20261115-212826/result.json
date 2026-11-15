@@ -1,0 +1,19 @@
+{
+  "checks": [
+    {
+      "name": "usb-identity",
+      "exit_code": 0
+    },
+    {
+      "name": "usb-host-key",
+      "exit_code": 0
+    },
+    {
+      "name": "persistent-stop",
+      "exit_code": 1
+    }
+  ],
+  "persistent_ready": false,
+  "stopped": false,
+  "failure": "persistent-stop: umount: can't unmount /mnt/mibox-data/mibox-console/rootfs/dev: Resource busy\n"
+}
