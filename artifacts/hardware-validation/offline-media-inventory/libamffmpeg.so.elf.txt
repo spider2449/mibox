@@ -1,0 +1,49 @@
+ELF Header:
+  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF32
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              DYN (Shared object file)
+  Machine:                           ARM
+  Version:                           0x1
+  Entry point address:               0x0
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          7719860 (bytes into file)
+  Flags:                             0x5000000, Version5 EABI
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         8
+  Size of section headers:           40 (bytes)
+  Number of section headers:         23
+  Section header string table index: 22
+
+Dynamic section at offset 0x744a34 contains 26 entries:
+  Tag        Type                         Name/Value
+ 0x00000003 (PLTGOT)                     0x747d70
+ 0x00000002 (PLTRELSZ)                   1288 (bytes)
+ 0x00000017 (JMPREL)                     0x4afd4
+ 0x00000014 (PLTREL)                     REL
+ 0x00000011 (REL)                        0x2ce9c
+ 0x00000012 (RELSZ)                      123192 (bytes)
+ 0x00000013 (RELENT)                     8 (bytes)
+ 0x6ffffffa (RELCOUNT)                   15385
+ 0x00000006 (SYMTAB)                     0x148
+ 0x0000000b (SYMENT)                     16 (bytes)
+ 0x00000005 (STRTAB)                     0x10598
+ 0x0000000a (STRSZ)                      83931 (bytes)
+ 0x00000004 (HASH)                       0x24d74
+ 0x00000001 (NEEDED)                     Shared library: [libutils.so]
+ 0x00000001 (NEEDED)                     Shared library: [liblog.so]
+ 0x00000001 (NEEDED)                     Shared library: [libc.so]
+ 0x00000001 (NEEDED)                     Shared library: [libstdc++.so]
+ 0x00000001 (NEEDED)                     Shared library: [libm.so]
+ 0x0000000e (SONAME)                     Library soname: [libamffmpeg.so]
+ 0x0000001a (FINI_ARRAY)                 0x743b80
+ 0x0000001c (FINI_ARRAYSZ)               4 (bytes)
+ 0x00000016 (TEXTREL)                    0x0
+ 0x00000010 (SYMBOLIC)                   0x0
+ 0x0000001e (FLAGS)                      SYMBOLIC TEXTREL BIND_NOW
+ 0x6ffffffb (FLAGS_1)                    Flags: NOW
+ 0x00000000 (NULL)                       0x0

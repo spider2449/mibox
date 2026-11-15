@@ -1,0 +1,10 @@
+{
+  "physical": true,
+  "software_decode": {},
+  "hardware_decode": "NOT_TESTED",
+  "HDMI": "NOT_TESTED",
+  "audio": "NOT_TESTED",
+  "stage": "/proc/1/root/tmp/mibox-media-20261115-171442",
+  "boot_id": "b5567c71-9f2e-4d73-9239-0a80e7120ab3",
+  "failure": "ram-guard: exit 1; see retained output"
+}

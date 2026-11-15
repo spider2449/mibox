@@ -1,0 +1,2 @@
+d6a388cfeb261c5bdc2eccb868cc33547fb97192c3aca3813ab8cb00dd8a9fe9  src/hardware/storage-check.c
+d773d7c5d2595582d594af120eb94a02c0888f3ea38f1deefcf7f5c8fdad02e5  target/storage-check/storage-check

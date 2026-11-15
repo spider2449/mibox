@@ -1,0 +1,4 @@
+{
+  "started": "2026-11-15T09:29:08.883756+00:00",
+  "command": "ALSA_CONFIG_PATH=/proc/1/root/tmp/mibox-media-20261115-172848/alsa.conf timeout -s TERM -k 5 50 /proc/1/root/tmp/mibox-media-20261115-172848/lib/ld-musl-armhf.so.1 --library-path /proc/1/root/tmp/mibox-media-20261115-172848/usr/lib/pulseaudio:/proc/1/root/tmp/mibox-media-20261115-172848/usr/lib:/proc/1/root/tmp/mibox-media-20261115-172848/lib /proc/1/root/tmp/mibox-media-20261115-172848/usr/bin/ffmpeg -nostdin -hide_banner -loglevel info -threads 2 -re -i /proc/1/root/tmp/mibox-media-20261115-172848/clip.mp4 -map 0:v:0 -vf pad=1280:1080:0:180:black -pix_fmt rgba -f fbdev /dev/fb0 -map 0:a:0 -c:a pcm_s16le -ar 48000 -ac 2 -f alsa test"
+}

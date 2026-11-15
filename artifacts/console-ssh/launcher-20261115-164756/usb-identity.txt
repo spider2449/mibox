@@ -1,0 +1,2 @@
+/system/bin/sh: cat: /etc/os-release: No such file or directory
+

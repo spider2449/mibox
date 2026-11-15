@@ -1,0 +1,327 @@
+=== identity ===
+NAME="MiBOX Custom Userspace"
+ID=mibox-custom
+VERSION_ID=0.1.0
+b5567c71-9f2e-4d73-9239-0a80e7120ab3
+Linux android 3.10.33 #1 SMP PREEMPT Mon Feb 20 15:47:21 CST 2017 armv7l GNU/Linux
+init=/init console=ttyS0,115200n8 no_console_suspend androidboot.system=1 mac=10:48:b1:ec:20:eb androidboot.btmac=10:48:b1:ee:b8:ec androidboot.serialno=248243005297 vdaccfg=0x10 storage=2 logo=osd1,loaded,0x85900000,1080p,full hdmimode=1080p cvbsmode=576cvbs androidboot.firstboot=0 hdmitx=cec0 val1=95000000 sdhc_debug=0x00000200 rx_clk_phase=0 sd_clk_phase=1 androidboot.ubootversion=2876
+=== device tree ===
+AMLOGIC
+AMLOGIC,8726_MX
+=== mounts ===
+rootfs / rootfs rw 0 0
+proc /proc proc rw,nosuid,noexec,relatime 0 0
+sysfs /sys sysfs rw,nosuid,noexec,relatime 0 0
+devtmpfs /dev devtmpfs rw,nosuid,noexec,relatime,size=436128k,nr_inodes=109032,mode=755 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,mode=600,ptmxmode=000 0 0
+adb /dev/usb-ffs/adb functionfs rw,nosuid,noexec,relatime 0 0
+/dev/mibox-data /mnt/mibox-data ext4 rw,nosuid,nodev,relatime,data=ordered 0 0
+devtmpfs /dev devtmpfs rw,nosuid,noexec,relatime,size=436128k,nr_inodes=109032,mode=755 0 0
+proc /proc proc rw,nosuid,noexec,relatime 0 0
+sysfs /sys sysfs rw,nosuid,noexec,relatime 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,mode=600,ptmxmode=000 0 0
+19 18 0:5 / /dev rw,nosuid,noexec,relatime - devtmpfs devtmpfs rw,size=436128k,nr_inodes=109032,mode=755
+20 18 0:3 / /proc rw,nosuid,noexec,relatime - proc proc rw
+21 18 0:12 / /sys rw,nosuid,noexec,relatime - sysfs sysfs rw
+22 19 0:10 / /dev/pts rw,nosuid,noexec,relatime - devpts devpts rw,mode=600,ptmxmode=000
+=== storage ===
+Filesystem     1024-blocks    Used Available Capacity Mounted on
+-                  2234556 1780740    437432      81% /
+  File: "/"
+    ID: d3609fe804970d6b Namelen: 255     Type: ext2/ext3
+Block size: 4096       Fundamental block size: 4096
+Blocks: Total: 558639     Free: 113454     Available: 109358
+Inodes: Total: 144288     Free: 136016
+  File: "/proc/1/root/tmp"
+    ID: 0        Namelen: 255     Type: ramfs
+Block size: 4096       Fundamental block size: 4096
+Blocks: Total: 0          Free: 0          Available: 0
+Inodes: Total: 0          Free: 0
+/root
+major minor  #blocks  name
+
+ 179        0    3866624 mmcblk0
+ 179        1       2048 mmcblk0p1
+ 179        2       2048 mmcblk0p2
+ 179        3       4096 mmcblk0p3
+ 179        4       4096 mmcblk0p4
+ 179        5       8192 mmcblk0p5
+ 179        6       8192 mmcblk0p6
+ 179        7       8192 mmcblk0p7
+ 179        8     524288 mmcblk0p8
+ 179        9     524288 mmcblk0p9
+ 179       10     196608 mmcblk0p10
+ 179       11    2584320 mmcblk0p11
+ 179       32       2048 mmcblk0boot1
+ 179       16       2048 mmcblk0boot0
+179:11
+5168640
+=== persistent sentinels ===
+7b36bb4e56ee1b13b00a9ce279cd516dbd608cc6f7dfc4062b8acbe00daca189  /usr/bin/less
+a3d437dbdddef6cf9ee0be89619cb0e615f3806f443f897deba5a58c68bf8821  /usr/bin/nano
+6809ab4b2281dbefc3b51b9569dd741746c5ba4962ec7d836b346ee9db41a67e  /usr/bin/curl
+b1002ff69fbd7168f5f3c42eb009641d34f8a73df1207db140a75d8ad545fe99  /lib/apk/db/installed
+063c313d3513e4a9b5d3fa8c57a8a497a85f46f151e98ed37e3506b87cb7cb30  /etc/mibox-console-persistence-test
+=== memory CPU IO ===
+MemTotal:         877072 kB
+MemFree:          832068 kB
+Buffers:             720 kB
+Cached:            15284 kB
+SwapCached:            0 kB
+Active:             6344 kB
+Inactive:          10660 kB
+Active(anon):       1000 kB
+Inactive(anon):      124 kB
+Active(file):       5344 kB
+Inactive(file):    10536 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+HighTotal:        270336 kB
+HighFree:         252740 kB
+LowTotal:         606736 kB
+LowFree:          579328 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:                 0 kB
+Writeback:             0 kB
+AnonPages:          1036 kB
+Mapped:             1768 kB
+Shmem:               128 kB
+Slab:               9048 kB
+SReclaimable:       4680 kB
+SUnreclaim:         4368 kB
+KernelStack:         584 kB
+PageTables:           60 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:      438536 kB
+Committed_AS:       6644 kB
+VmallocTotal:     245760 kB
+VmallocUsed:      109200 kB
+VmallocChunk:      49148 kB
+Processor	: ARMv7 Processor rev 0 (v7l)
+processor	: 0
+BogoMIPS	: 1788.81
+
+processor	: 1
+BogoMIPS	: 1788.81
+
+Features	: swp half thumb fastmult vfp edsp neon vfpv3 tls 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x3
+CPU part	: 0xc09
+CPU revision	: 0
+
+Hardware	: Amlogic Meson6
+Revision	: 0000
+Serial		: 0000000000000000
+   7       0 loop0 0 0 0 0 0 0 0 0 0 0 0
+   7       1 loop1 0 0 0 0 0 0 0 0 0 0 0
+   7       2 loop2 0 0 0 0 0 0 0 0 0 0 0
+   7       3 loop3 0 0 0 0 0 0 0 0 0 0 0
+   7       4 loop4 0 0 0 0 0 0 0 0 0 0 0
+   7       5 loop5 0 0 0 0 0 0 0 0 0 0 0
+   7       6 loop6 0 0 0 0 0 0 0 0 0 0 0
+   7       7 loop7 0 0 0 0 0 0 0 0 0 0 0
+ 253       0 zram0 0 0 0 0 0 0 0 0 0 0 0
+ 179       0 mmcblk0 142 192 13930 610 5 1 48 10 0 480 620
+ 179       1 mmcblk0p1 0 0 0 0 0 0 0 0 0 0 0
+ 179       2 mmcblk0p2 0 0 0 0 0 0 0 0 0 0 0
+ 179       3 mmcblk0p3 0 0 0 0 0 0 0 0 0 0 0
+ 179       4 mmcblk0p4 0 0 0 0 0 0 0 0 0 0 0
+ 179       5 mmcblk0p5 0 0 0 0 0 0 0 0 0 0 0
+ 179       6 mmcblk0p6 0 0 0 0 0 0 0 0 0 0 0
+ 179       7 mmcblk0p7 0 0 0 0 0 0 0 0 0 0 0
+ 179       8 mmcblk0p8 0 0 0 0 0 0 0 0 0 0 0
+ 179       9 mmcblk0p9 0 0 0 0 0 0 0 0 0 0 0
+ 179      10 mmcblk0p10 0 0 0 0 0 0 0 0 0 0 0
+ 179      11 mmcblk0p11 141 192 13922 590 5 1 48 10 0 460 600
+ 179      32 mmcblk0boot1 1 0 8 140 0 0 0 0 0 140 140
+ 179      16 mmcblk0boot0 1 0 8 10 0 0 0 0 0 10 10
+=== routes ===
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 10:48:b1:ec:20:eb brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.222/24 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 2001:b011:3802:31e8:1248:b1ff:feec:20eb/64 scope global dynamic 
+       valid_lft 86229sec preferred_lft 86229sec
+    inet6 fe80::1248:b1ff:feec:20eb/64 scope link 
+       valid_lft forever preferred_lft forever
+3: sit0: <NOARP> mtu 1480 qdisc noop state DOWN 
+    link/sit 0.0.0.0 brd 0.0.0.0
+4: ip6tnl0: <NOARP> mtu 1452 qdisc noop state DOWN 
+    link/tunnel6 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00 brd 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
+default via 192.168.1.1 dev eth0 
+192.168.1.0/24 dev eth0 scope link  src 192.168.1.222 
+0:	from all lookup local 
+32766:	from all lookup main 
+32767:	from all lookup default 
+=== thermal and frequency ===
+PATH=/sys/devices/system/cpu/cpu0/cpufreq
+FILE=/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
+96000 192000 312000 408000 504000 600000 696000 816000 912000 1008000 1104000 1200000 1296000 1416000 1512000 
+FILE=/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
+hotplug interactive ondemand conservative performance 
+FILE=/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq
+840000
+FILE=/sys/devices/system/cpu/cpu0/cpufreq/scaling_dflt_freq
+0
+FILE=/sys/devices/system/cpu/cpu0/cpufreq/scaling_driver
+meson_cpufreq
+FILE=/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+conservative
+FILE=/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+1368000
+FILE=/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+96000
+FILE=/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
+<unsupported>
+FILE=/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq
+840000
+FILE=/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq
+1368000
+FILE=/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq
+48000
+FILE=/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_transition_latency
+200000
+PATH=/sys/devices/system/cpu/cpu1/cpufreq
+FILE=/sys/devices/system/cpu/cpu1/cpufreq/scaling_available_frequencies
+96000 192000 312000 408000 504000 600000 696000 816000 912000 1008000 1104000 1200000 1296000 1416000 1512000 
+FILE=/sys/devices/system/cpu/cpu1/cpufreq/scaling_available_governors
+hotplug interactive ondemand conservative performance 
+FILE=/sys/devices/system/cpu/cpu1/cpufreq/scaling_cur_freq
+840000
+FILE=/sys/devices/system/cpu/cpu1/cpufreq/scaling_dflt_freq
+0
+FILE=/sys/devices/system/cpu/cpu1/cpufreq/scaling_driver
+meson_cpufreq
+FILE=/sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
+conservative
+FILE=/sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
+1368000
+FILE=/sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
+96000
+FILE=/sys/devices/system/cpu/cpu1/cpufreq/scaling_setspeed
+<unsupported>
+FILE=/sys/devices/system/cpu/cpu1/cpufreq/cpuinfo_cur_freq
+912000
+FILE=/sys/devices/system/cpu/cpu1/cpufreq/cpuinfo_max_freq
+1368000
+FILE=/sys/devices/system/cpu/cpu1/cpufreq/cpuinfo_min_freq
+48000
+FILE=/sys/devices/system/cpu/cpu1/cpufreq/cpuinfo_transition_latency
+200000
+=== USB ===
+PATH=/sys/bus/usb/devices/1-0:1.0
+PATH=/sys/bus/usb/devices/usb1
+FILE=idVendor
+1d6b
+FILE=idProduct
+0002
+FILE=manufacturer
+Linux 3.10.33 dwc_otg_hcd
+FILE=product
+DWC OTG Controller
+FILE=serial
+lm0
+FILE=speed
+480
+FILE=busnum
+1
+FILE=devnum
+1
+FILE=bMaxPower
+0mA
+I: Bus=0019 Vendor=0001 Product=0001 Version=0100
+N: Name="ir_meson6"
+P: Phys=keypad/input0
+S: Sysfs=/devices/platform/ir-meson6-mi/input/input0
+U: Uniq=
+H: Handlers=sysrq kbd event0 
+B: PROP=0
+B: EV=3
+B: KEY=7fffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff fffffffe
+
+I: Bus=0010 Vendor=1b8e Product=0cec Version=0001
+N: Name="cec_input"
+P: Phys=
+S: Sysfs=/devices/virtual/input/input1
+U: Uniq=
+H: Handlers=kbd event1 
+B: PROP=0
+B: EV=3
+B: KEY=20000000 0 0 0 0 0 0 0 0 0 0 3c004 0 0 0 1 4 10300 11fa 40000801 1e1680 0 100000 10000ffc
+
+=== decoder and output nodes ===
+crw------- 1 root root          0,          0 Jan  1  1970 /dev/amaudio_ctl
+crw------- 1 root root 3197417640,          0 Jan  1  1970 /dev/amaudio_in
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/amaudio_out
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/amaudio_utils
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/amhdmitx0
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/aml_keys
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/amstream_abuf
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/amstream_mpps
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/amstream_mpts
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/amstream_rm
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/amstream_sub
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/amstream_sub_read
+crw------- 1 root root 3070296728,          1 Jan  1  1970 /dev/amstream_userdata
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/amstream_vbuf
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/amsubtitle
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/amvideo
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/fb0
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/fb1
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/rtc0
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/video10
+crw------- 1 root root 3197417640, 3069849353 Jan  1  1970 /dev/video13
+
+/dev/input:
+total 0
+crw------- 1 root root 3197417168, 3069849353 Jan  1  1970 event0
+crw------- 1 root root          0,          0 Nov 15 09:10 event1
+crw------- 1 root root          0,          0 Jan  1  1970 mice
+
+/dev/snd:
+total 0
+crw------- 1 root root 3197417751, 3069973381 Jan  1  1970 controlC0
+crw------- 1 root root 3197417168, 3069849353 Jan  1  1970 pcmC0D0c
+crw------- 1 root root 3197417168, 3069849353 Jan  1  1970 pcmC0D0p
+crw------- 1 root root 3197417168, 3069849353 Jan  1  1970 pcmC0D1c
+crw------- 1 root root 3197417168, 3069849353 Jan  1  1970 pcmC0D1p
+crw------- 1 root root          0,          0 Jan  1  1970 timer
+FILE=/sys/class/graphics/fb0/virtual_size
+1280,3240
+FILE=/sys/class/graphics/fb1/virtual_size
+1920,2160
+FILE=/sys/class/graphics/fb0/bits_per_pixel
+32
+FILE=/sys/class/graphics/fb1/bits_per_pixel
+32
+FILE=/sys/class/graphics/fb0/stride
+5120
+FILE=/sys/class/graphics/fb1/stride
+7680
+=== available programs ===
+/usr/bin/timeout
+/usr/bin/sha256sum
+=== suspend inventory; no suspend requested ===
+FILE=/sys/power/state
+mem
+FILE=/sys/power/wakeup_count
+READ_FAILED_OR_TIMED_OUT
+FILE=/sys/class/rtc/rtc0/name
+aml_rtc
+FILE=/sys/class/rtc/rtc0/wakealarm
+READ_FAILED_OR_TIMED_OUT
+FILE=/sys/devices/platform/rtc.0/power/wakeup
+enabled
+INVENTORY_COMPLETE
+cat: /sys/class/rtc/rtc0/wakealarm: Invalid argument

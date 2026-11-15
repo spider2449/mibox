@@ -1,0 +1,121 @@
+[
+  {
+    "name": "usb-host-key",
+    "started": "2026-11-15T09:28:48.952298+00:00",
+    "seconds": 0.08757068800002799,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "usb-boot-id",
+    "started": "2026-11-15T09:28:49.043363+00:00",
+    "seconds": 0.10598327299999255,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "ssh-boot-id",
+    "started": "2026-11-15T09:28:49.157775+00:00",
+    "seconds": 0.9565044279999029,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "ram-guard",
+    "started": "2026-11-15T09:28:50.114296+00:00",
+    "seconds": 0.5562528220000331,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "tools-upload",
+    "started": "2026-11-15T09:28:51.032610+00:00",
+    "seconds": 6.109054866000065,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "tools-hash",
+    "started": "2026-11-15T09:28:57.144698+00:00",
+    "seconds": 0.87928573399995,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "tools-extract",
+    "started": "2026-11-15T09:28:58.023999+00:00",
+    "seconds": 4.590954502999921,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "physical-ffmpeg-version",
+    "started": "2026-11-15T09:29:02.614964+00:00",
+    "seconds": 0.6797928250000496,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "h264-720p30-upload",
+    "started": "2026-11-15T09:29:03.493241+00:00",
+    "seconds": 3.3343638130000954,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "h264-720p30-hash",
+    "started": "2026-11-15T09:29:06.827619+00:00",
+    "seconds": 0.5995312389999299,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "framebuffer-info",
+    "started": "2026-11-15T09:29:07.427171+00:00",
+    "seconds": 0.2589008999999578,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "handoff-upload",
+    "started": "2026-11-15T09:29:07.690466+00:00",
+    "seconds": 0.3235051620000604,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "handoff-hash",
+    "started": "2026-11-15T09:29:08.013979+00:00",
+    "seconds": 0.2843889669999271,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "framebuffer-handoff",
+    "started": "2026-11-15T09:29:08.298389+00:00",
+    "seconds": 0.3110838950000243,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "alsa-config",
+    "started": "2026-11-15T09:29:08.609488+00:00",
+    "seconds": 0.27424217600002976,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "h264-720p30-playback",
+    "started": "2026-11-15T09:29:08.887656+00:00",
+    "seconds": 50.500871125,
+    "exit_code": 124,
+    "output_complete": true
+  },
+  {
+    "name": "ram-cleanup",
+    "started": "2026-11-15T09:29:59.388539+00:00",
+    "seconds": 0.34687749500005793,
+    "exit_code": 0,
+    "output_complete": true
+  }
+]

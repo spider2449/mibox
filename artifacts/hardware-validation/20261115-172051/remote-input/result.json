@@ -1,0 +1,11 @@
+{
+  "boot_id": "b5567c71-9f2e-4d73-9239-0a80e7120ab3",
+  "started": "2026-11-15T09:20:52.049033+00:00",
+  "exit_code": 124,
+  "capture_ended_by_deadline": true,
+  "capture_complete": true,
+  "key_events": [],
+  "events": [],
+  "status": "NOT_OBSERVED",
+  "limitation": "Awake input evidence only; suspend wake capability is not established"
+}

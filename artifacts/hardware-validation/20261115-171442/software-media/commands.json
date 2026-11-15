@@ -1,0 +1,30 @@
+[
+  {
+    "name": "usb-host-key",
+    "started": "2026-11-15T09:14:42.046907+00:00",
+    "seconds": 0.08232061400008206,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "usb-boot-id",
+    "started": "2026-11-15T09:14:42.132824+00:00",
+    "seconds": 0.07970956700000897,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "ssh-boot-id",
+    "started": "2026-11-15T09:14:42.220170+00:00",
+    "seconds": 0.9410657690000335,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "ram-guard",
+    "started": "2026-11-15T09:14:43.161243+00:00",
+    "seconds": 0.5221132090000538,
+    "exit_code": 1,
+    "output_complete": true
+  }
+]

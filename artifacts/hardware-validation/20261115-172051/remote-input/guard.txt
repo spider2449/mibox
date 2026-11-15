@@ -1,0 +1,20 @@
+I: Bus=0019 Vendor=0001 Product=0001 Version=0100
+N: Name="ir_meson6"
+P: Phys=keypad/input0
+S: Sysfs=/devices/platform/ir-meson6-mi/input/input0
+U: Uniq=
+H: Handlers=sysrq kbd event0 
+B: PROP=0
+B: EV=3
+B: KEY=7fffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff fffffffe
+
+I: Bus=0010 Vendor=1b8e Product=0cec Version=0001
+N: Name="cec_input"
+P: Phys=
+S: Sysfs=/devices/virtual/input/input1
+U: Uniq=
+H: Handlers=kbd event1 
+B: PROP=0
+B: EV=3
+B: KEY=20000000 0 0 0 0 0 0 0 0 0 0 3c004 0 0 0 1 4 10300 11fa 40000801 1e1680 0 100000 10000ffc
+

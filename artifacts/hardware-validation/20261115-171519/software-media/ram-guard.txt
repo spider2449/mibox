@@ -1,0 +1,42 @@
+MemTotal:         877072 kB
+MemFree:          830644 kB
+Buffers:            1592 kB
+Cached:            15428 kB
+SwapCached:            0 kB
+Active:             6124 kB
+Inactive:          11572 kB
+Active(anon):        676 kB
+Inactive(anon):      124 kB
+Active(file):       5448 kB
+Inactive(file):    11448 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+HighTotal:        270336 kB
+HighFree:         252980 kB
+LowTotal:         606736 kB
+LowFree:          577664 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:                 0 kB
+Writeback:             0 kB
+AnonPages:           636 kB
+Mapped:             1808 kB
+Shmem:               128 kB
+Slab:               9664 kB
+SReclaimable:       5056 kB
+SUnreclaim:         4608 kB
+KernelStack:         568 kB
+PageTables:           52 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:      438536 kB
+Committed_AS:       6128 kB
+VmallocTotal:     245760 kB
+VmallocUsed:      109200 kB
+VmallocChunk:      49148 kB
+  File: "/proc/1/root/tmp"
+    ID: 0        Namelen: 255     Type: ramfs
+Block size: 4096       Fundamental block size: 4096
+Blocks: Total: 0          Free: 0          Available: 0
+Inodes: Total: 0          Free: 0

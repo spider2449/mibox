@@ -1,0 +1,239 @@
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/proc/1/root/tmp/mibox-media-20261115-172507/clip.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Duration: 00:00:30.00, start: 0.000000, bitrate: 5454 kb/s
+  Stream #0:0[0x1](und): Video: h264 (Constrained Baseline) (avc1 / 0x31637661), yuv420p(progressive), 1280x720 [SAR 1:1 DAR 16:9], 5431 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 16 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+      vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> rawvideo (native))
+  Stream #0:1 -> #1:0 (aac (native) -> pcm_s16le (native))
+Output #1, alsa, to 'test':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Stream #1:0(und): Audio: pcm_s16le, 48000 Hz, stereo, s16, 1536 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 pcm_s16le
+[swscaler @ 0xb0ae59b0] [swscaler @ 0xb0a959c0] No accelerated colorspace conversion found from yuv420p to rgba.
+[swscaler @ 0xb0ae59b0] [swscaler @ 0xb0a849e0] No accelerated colorspace conversion found from yuv420p to rgba.
+[swscaler @ 0xb0ae59b0] [swscaler @ 0xb0a6fa10] No accelerated colorspace conversion found from yuv420p to rgba.
+Output #0, fbdev, to '/dev/fb0':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Stream #0:0(und): Video: rawvideo (RGBA / 0x41424752), rgba(pc, gbr/unknown/unknown, progressive), 1280x1080 [SAR 1:1 DAR 32:27], q=2-31, 1327104 kb/s, 30 fps, 30 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 rawvideo
+frame=    0 fps=0.0 q=0.0 size=       0kB time=00:00:00.02 bitrate=   0.0kbits/s speed=0.897x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=    6 fps=0.0 q=-0.0 size=N/A time=00:00:00.27 bitrate=N/A speed=0.498x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 4 times
+frame=   14 fps= 13 q=-0.0 size=N/A time=00:00:00.53 bitrate=N/A speed=0.502x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=   22 fps= 14 q=-0.0 size=N/A time=00:00:00.81 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=   30 fps= 14 q=-0.0 size=N/A time=00:00:01.06 bitrate=N/A speed=0.507x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=   38 fps= 15 q=-0.0 size=N/A time=00:00:01.36 bitrate=N/A speed=0.524x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 4 times
+frame=   46 fps= 15 q=-0.0 size=N/A time=00:00:01.62 bitrate=N/A speed=0.521x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=   54 fps= 15 q=-0.0 size=N/A time=00:00:01.87 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 9 times
+frame=   62 fps= 15 q=-0.0 size=N/A time=00:00:02.13 bitrate=N/A speed=0.515x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=   69 fps= 15 q=-0.0 size=N/A time=00:00:02.41 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=   77 fps= 15 q=-0.0 size=N/A time=00:00:02.68 bitrate=N/A speed=0.518x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=   85 fps= 15 q=-0.0 size=N/A time=00:00:02.94 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=   94 fps= 15 q=-0.0 size=N/A time=00:00:03.20 bitrate=N/A speed=0.512x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  102 fps= 15 q=-0.0 size=N/A time=00:00:03.47 bitrate=N/A speed=0.515x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  109 fps= 15 q=-0.0 size=N/A time=00:00:03.77 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 8 times
+frame=  118 fps= 15 q=-0.0 size=N/A time=00:00:04.05 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  125 fps= 15 q=-0.0 size=N/A time=00:00:04.30 bitrate=N/A speed=0.515x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 8 times
+frame=  136 fps= 15 q=-0.0 size=N/A time=00:00:04.60 bitrate=N/A speed=0.515x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=  143 fps= 15 q=-0.0 size=N/A time=00:00:04.88 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  151 fps= 15 q=-0.0 size=N/A time=00:00:05.12 bitrate=N/A speed=0.514x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  159 fps= 15 q=-0.0 size=N/A time=00:00:05.41 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 4 times
+frame=  167 fps= 15 q=-0.0 size=N/A time=00:00:05.67 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  175 fps= 15 q=-0.0 size=N/A time=00:00:05.95 bitrate=N/A speed=0.518x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  184 fps= 15 q=-0.0 size=N/A time=00:00:06.20 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=  192 fps= 15 q=-0.0 size=N/A time=00:00:06.48 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  199 fps= 15 q=-0.0 size=N/A time=00:00:06.74 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=  208 fps= 15 q=-0.0 size=N/A time=00:00:07.01 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  216 fps= 15 q=-0.0 size=N/A time=00:00:07.27 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  224 fps= 15 q=-0.0 size=N/A time=00:00:07.55 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  231 fps= 15 q=-0.0 size=N/A time=00:00:07.80 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  240 fps= 15 q=-0.0 size=N/A time=00:00:08.10 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  249 fps= 15 q=-0.0 size=N/A time=00:00:08.38 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 8 times
+frame=  257 fps= 15 q=-0.0 size=N/A time=00:00:08.64 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=  266 fps= 15 q=-0.0 size=N/A time=00:00:08.93 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  273 fps= 15 q=-0.0 size=N/A time=00:00:09.19 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 8 times
+frame=  279 fps= 15 q=-0.0 size=N/A time=00:00:09.42 bitrate=N/A speed=0.515x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  288 fps= 15 q=-0.0 size=N/A time=00:00:09.68 bitrate=N/A speed=0.515x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  296 fps= 15 q=-0.0 size=N/A time=00:00:09.94 bitrate=N/A speed=0.514x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  303 fps= 15 q=-0.0 size=N/A time=00:00:10.21 bitrate=N/A speed=0.514x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=  313 fps= 15 q=-0.0 size=N/A time=00:00:10.51 bitrate=N/A speed=0.514x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 9 times
+frame=  320 fps= 15 q=-0.0 size=N/A time=00:00:10.77 bitrate=N/A speed=0.514x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  328 fps= 15 q=-0.0 size=N/A time=00:00:11.05 bitrate=N/A speed=0.514x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  337 fps= 15 q=-0.0 size=N/A time=00:00:11.34 bitrate=N/A speed=0.515x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=  344 fps= 15 q=-0.0 size=N/A time=00:00:11.60 bitrate=N/A speed=0.515x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  354 fps= 15 q=-0.0 size=N/A time=00:00:11.88 bitrate=N/A speed=0.515x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  362 fps= 15 q=-0.0 size=N/A time=00:00:12.16 bitrate=N/A speed=0.515x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  370 fps= 15 q=-0.0 size=N/A time=00:00:12.43 bitrate=N/A speed=0.515x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=  378 fps= 15 q=-0.0 size=N/A time=00:00:12.71 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 3 times
+frame=  386 fps= 15 q=-0.0 size=N/A time=00:00:12.97 bitrate=N/A speed=0.515x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  394 fps= 15 q=-0.0 size=N/A time=00:00:13.24 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  403 fps= 15 q=-0.0 size=N/A time=00:00:13.52 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=  410 fps= 15 q=-0.0 size=N/A time=00:00:13.78 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  419 fps= 15 q=-0.0 size=N/A time=00:00:14.03 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  427 fps= 15 q=-0.0 size=N/A time=00:00:14.31 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  435 fps= 15 q=-0.0 size=N/A time=00:00:14.57 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 4 times
+frame=  443 fps= 15 q=-0.0 size=N/A time=00:00:14.84 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  451 fps= 15 q=-0.0 size=N/A time=00:00:15.12 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  459 fps= 15 q=-0.0 size=N/A time=00:00:15.38 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  466 fps= 15 q=-0.0 size=N/A time=00:00:15.63 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 8 times
+frame=  474 fps= 15 q=-0.0 size=N/A time=00:00:15.91 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=  482 fps= 15 q=-0.0 size=N/A time=00:00:16.19 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  490 fps= 15 q=-0.0 size=N/A time=00:00:16.44 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  499 fps= 15 q=-0.0 size=N/A time=00:00:16.72 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  507 fps= 15 q=-0.0 size=N/A time=00:00:16.98 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  514 fps= 15 q=-0.0 size=N/A time=00:00:17.23 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=  522 fps= 15 q=-0.0 size=N/A time=00:00:17.51 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  530 fps= 15 q=-0.0 size=N/A time=00:00:17.79 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  538 fps= 15 q=-0.0 size=N/A time=00:00:18.04 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  547 fps= 15 q=-0.0 size=N/A time=00:00:18.30 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  554 fps= 15 q=-0.0 size=N/A time=00:00:18.58 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  563 fps= 15 q=-0.0 size=N/A time=00:00:18.83 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  570 fps= 15 q=-0.0 size=N/A time=00:00:19.11 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=  579 fps= 15 q=-0.0 size=N/A time=00:00:19.37 bitrate=N/A speed=0.516x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  586 fps= 15 q=-0.0 size=N/A time=00:00:19.64 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  595 fps= 15 q=-0.0 size=N/A time=00:00:19.94 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 4 times
+frame=  604 fps= 15 q=-0.0 size=N/A time=00:00:20.20 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  612 fps= 15 q=-0.0 size=N/A time=00:00:20.48 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  619 fps= 15 q=-0.0 size=N/A time=00:00:20.73 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  628 fps= 15 q=-0.0 size=N/A time=00:00:21.01 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  636 fps= 15 q=-0.0 size=N/A time=00:00:21.29 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  644 fps= 15 q=-0.0 size=N/A time=00:00:21.54 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  651 fps= 15 q=-0.0 size=N/A time=00:00:21.80 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=  659 fps= 15 q=-0.0 size=N/A time=00:00:22.08 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=  668 fps= 15 q=-0.0 size=N/A time=00:00:22.33 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  676 fps= 15 q=-0.0 size=N/A time=00:00:22.61 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 8 times
+frame=  683 fps= 15 q=-0.0 size=N/A time=00:00:22.86 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 3 times
+frame=  692 fps= 15 q=-0.0 size=N/A time=00:00:23.14 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  700 fps= 15 q=-0.0 size=N/A time=00:00:23.42 bitrate=N/A speed=0.518x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  708 fps= 15 q=-0.0 size=N/A time=00:00:23.68 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  716 fps= 15 q=-0.0 size=N/A time=00:00:23.95 bitrate=N/A speed=0.518x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 5 times
+frame=  724 fps= 15 q=-0.0 size=N/A time=00:00:24.23 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=  733 fps= 15 q=-0.0 size=N/A time=00:00:24.51 bitrate=N/A speed=0.518x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=  741 fps= 15 q=-0.0 size=N/A time=00:00:24.76 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 6 times
+frame=  749 fps= 15 q=-0.0 size=N/A time=00:00:25.06 bitrate=N/A speed=0.518x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 7 times
+frame=  758 fps= 15 q=-0.0 size=N/A time=00:00:25.34 bitrate=N/A speed=0.517x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+    Last message repeated 4 times
+frame=  767 fps= 15 q=-0.0 size=N/A time=00:00:25.64 bitrate=N/A speed=0.518x    [alsa @ 0xb289ae00] ALSA buffer xrun.
+[out#0/fbdev @ 0xb47b9cf0] video:4152600kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown
+[out#1/alsa @ 0xb294fd30] video:0kB audio:4812kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown
+frame=  769 fps= 15 q=-0.0 Lsize=N/A time=00:00:25.64 bitrate=N/A speed=0.517x    
+Exiting normally, received signal 15.

@@ -1,0 +1,2 @@
+Filesystem     1024-blocks    Used Available Capacity Mounted on
+-                  2234556 1780740    437432      81% /

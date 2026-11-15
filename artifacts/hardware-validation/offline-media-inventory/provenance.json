@@ -1,0 +1,7 @@
+{
+  "scope": "Read-only directory inventory of verified stock system1 backup; no library executed or deployed",
+  "image": "/mnt/f/coding/otherPrj/mibox/phone-tools/backup/systems-20261114-072524/system1.img",
+  "sha256": "55ee5a9cce011b3eb0ce3ef5b0a15c376275ce05dcb5159aee0dc2e321293d93",
+  "debugfs_write_flag": false,
+  "hardware_decoding": "NOT_TESTED"
+}

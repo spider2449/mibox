@@ -1,0 +1,24 @@
+{
+  "physical": true,
+  "software_decode": {
+    "h264-720p30": {
+      "status": "PASS",
+      "frames": 900,
+      "hashes_match": true,
+      "fixture_sha256": "2f668d01427371aeaf67aa0fd1dfd3f231f6866bb84320dfcff3aa90482811b5"
+    },
+    "h264-1080p30": {
+      "status": "PASS",
+      "frames": 900,
+      "hashes_match": true,
+      "fixture_sha256": "32e3a5365bdc626f3b2e0501761a4224589f3fb194b67ff43a45cf3fd5899371"
+    }
+  },
+  "hardware_decode": "NOT_TESTED",
+  "HDMI": "NOT_TESTED",
+  "audio": "NOT_TESTED",
+  "stage": "/proc/1/root/tmp/mibox-media-20261115-172008",
+  "boot_id": "b5567c71-9f2e-4d73-9239-0a80e7120ab3",
+  "tool_archive_sha256": "aa187f0b44b2c462d4776a17715edfe22393fcf1c1169e2bd409bcc90abb5723",
+  "temporary_files_removed": true
+}

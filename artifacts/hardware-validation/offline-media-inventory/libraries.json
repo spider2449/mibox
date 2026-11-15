@@ -1,0 +1,64 @@
+{
+  "libraries": [
+    {
+      "name": "libamplayer.so",
+      "sha256": "78cf1a26b4515235bb480506ef1ab126bf92fdc028ed2b0b5b1b3b4adbfb4a82",
+      "bytes": 7293972,
+      "needed": [
+        "0x00000001 (NEEDED)                     Shared library: [libutils.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libmedia.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libz.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libbinder.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libdl.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libcutils.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libc.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libamavutils.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libssl.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libcrypto.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libstdc++.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libm.so]"
+      ]
+    },
+    {
+      "name": "libamffmpeg.so",
+      "sha256": "e91de9688be54f439ea28a330b045ca6b672ae22cdf470173e6170674ebbc6b9",
+      "bytes": 7720780,
+      "needed": [
+        "0x00000001 (NEEDED)                     Shared library: [libutils.so]",
+        "0x00000001 (NEEDED)                     Shared library: [liblog.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libc.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libstdc++.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libm.so]"
+      ]
+    },
+    {
+      "name": "libOmxCore.so",
+      "sha256": "3c543e14c94223bf6e347af16d6a73ee8559e56e2b031fcb892a3dc8a922e31b",
+      "bytes": 13520,
+      "needed": [
+        "0x00000001 (NEEDED)                     Shared library: [libdl.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libomx_framework_alt.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libomx_timed_task_queue_alt.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libomx_clock_utils_alt.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libomx_av_core_alt.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libomx_worker_peer_alt.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libthreadworker_alt.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libfpscalculator_alt.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libdatachunkqueue_alt.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libutils.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libOmxBase.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libOmxVideo.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libstagefrighthw.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libstlport.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libOmxClock.so]",
+        "0x00000001 (NEEDED)                     Shared library: [liblog.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libbinder.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libc.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libstdc++.so]",
+        "0x00000001 (NEEDED)                     Shared library: [libm.so]"
+      ]
+    }
+  ],
+  "execution": "NONE",
+  "scope": "Offline ELF inspection; Android dependencies require separate ABI integration"
+}

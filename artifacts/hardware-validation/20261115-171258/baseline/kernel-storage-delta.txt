@@ -1,0 +1,1 @@
+[  251.473199@1] hdmitx: hdcp: authenticated failed

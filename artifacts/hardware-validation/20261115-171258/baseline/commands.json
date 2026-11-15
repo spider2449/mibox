@@ -1,0 +1,142 @@
+[
+  {
+    "name": "usb-host-key",
+    "started": "2026-11-15T09:12:58.377978+00:00",
+    "ended": "2026-11-15T09:12:58.466862+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "usb-boot-id",
+    "started": "2026-11-15T09:12:58.470674+00:00",
+    "ended": "2026-11-15T09:12:58.553450+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "ssh-boot-id",
+    "started": "2026-11-15T09:12:58.561122+00:00",
+    "ended": "2026-11-15T09:12:59.502488+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "inventory",
+    "started": "2026-11-15T09:12:59.502516+00:00",
+    "ended": "2026-11-15T09:13:02.995122+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "kernel-before",
+    "started": "2026-11-15T09:13:02.995152+00:00",
+    "ended": "2026-11-15T09:13:03.684225+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "metric-00",
+    "started": "2026-11-15T09:13:03.684362+00:00",
+    "ended": "2026-11-15T09:13:04.245621+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "metric-01",
+    "started": "2026-11-15T09:13:08.684489+00:00",
+    "ended": "2026-11-15T09:13:09.634161+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "metric-02",
+    "started": "2026-11-15T09:13:13.684585+00:00",
+    "ended": "2026-11-15T09:13:14.701120+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "metric-03",
+    "started": "2026-11-15T09:13:18.684706+00:00",
+    "ended": "2026-11-15T09:13:19.730844+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "metric-04",
+    "started": "2026-11-15T09:13:25.176229+00:00",
+    "ended": "2026-11-15T09:13:26.176316+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "metric-05",
+    "started": "2026-11-15T09:13:30.176316+00:00",
+    "ended": "2026-11-15T09:13:31.127397+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "sentinels-before",
+    "started": "2026-11-15T09:13:31.135920+00:00",
+    "ended": "2026-11-15T09:13:31.564656+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "storage-guard",
+    "started": "2026-11-15T09:13:31.564681+00:00",
+    "ended": "2026-11-15T09:13:32.022635+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "helper-upload",
+    "started": "2026-11-15T09:13:32.023693+00:00",
+    "ended": "2026-11-15T09:13:32.408510+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "helper-hash",
+    "started": "2026-11-15T09:13:32.408606+00:00",
+    "ended": "2026-11-15T09:13:32.696618+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "helper-executable",
+    "started": "2026-11-15T09:13:32.696650+00:00",
+    "ended": "2026-11-15T09:13:32.964376+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "storage-short",
+    "started": "2026-11-15T09:13:32.964395+00:00",
+    "ended": "2026-11-15T09:14:27.605661+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "storage-cleanup",
+    "started": "2026-11-15T09:14:27.605693+00:00",
+    "ended": "2026-11-15T09:14:28.001469+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "sentinels-after",
+    "started": "2026-11-15T09:14:28.001487+00:00",
+    "ended": "2026-11-15T09:14:28.376634+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "kernel-after-storage",
+    "started": "2026-11-15T09:14:28.376655+00:00",
+    "ended": "2026-11-15T09:14:28.706844+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  }
+]

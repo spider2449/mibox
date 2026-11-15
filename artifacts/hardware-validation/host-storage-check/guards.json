@@ -1,0 +1,14 @@
+[
+  {
+    "case": "existing directory refused",
+    "exit_code": 1,
+    "stderr": "exclusive mkdir: File exists\n",
+    "sentinel_unchanged": true
+  },
+  {
+    "case": "tmpfs refused",
+    "exit_code": 2,
+    "stderr": "requires ext filesystem, 256 MiB reserve and <=10% free usage\n",
+    "no_directory_created": true
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "name": "usb-host-key",
+    "started": "2026-11-15T09:15:19.657590+00:00",
+    "seconds": 0.0904342500000439,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "usb-boot-id",
+    "started": "2026-11-15T09:15:19.752536+00:00",
+    "seconds": 0.0985861289998411,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "ssh-boot-id",
+    "started": "2026-11-15T09:15:19.859515+00:00",
+    "seconds": 2.0518969049999214,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "ram-guard",
+    "started": "2026-11-15T09:15:21.911427+00:00",
+    "seconds": 0.5395837650000885,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "tools-upload",
+    "started": "2026-11-15T09:15:22.856076+00:00",
+    "seconds": 5.681511141999863,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "tools-hash",
+    "started": "2026-11-15T09:15:28.540310+00:00",
+    "seconds": 0.7870460079998338,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "tools-extract",
+    "started": "2026-11-15T09:15:29.327369+00:00",
+    "seconds": 4.135367055000188,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "physical-ffmpeg-version",
+    "started": "2026-11-15T09:15:33.462755+00:00",
+    "seconds": 0.4835445300000174,
+    "exit_code": 127,
+    "output_complete": true
+  },
+  {
+    "name": "ram-cleanup",
+    "started": "2026-11-15T09:15:33.946317+00:00",
+    "seconds": 0.30044312399991213,
+    "exit_code": 0,
+    "output_complete": true
+  }
+]

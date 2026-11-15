@@ -1,0 +1,27 @@
+{
+  "physical": true,
+  "inventory_complete": true,
+  "evidence": "/mnt/f/coding/otherPrj/mibox/artifacts/hardware-validation/20261115-171258/baseline",
+  "boot_id": "b5567c71-9f2e-4d73-9239-0a80e7120ab3",
+  "inventory_script_sha256": "fa0bb7974a3c59cded332979018e39f1a9c842e87510aecedd33d0e4f4c6b190",
+  "limitations": [
+    "Baseline is inventory; optional bounded storage is reported separately; no suspend or stress",
+    "Sensor units, safe limits, decoder ABI and wake reliability require assessment"
+  ],
+  "baseline_monitor": {
+    "samples": 6,
+    "requested_interval_seconds": 5,
+    "full_15_minute_idle": "NOT_TESTED"
+  },
+  "storage": {
+    "helper_sha256": "d773d7c5d2595582d594af120eb94a02c0888f3ea38f1deefcf7f5c8fdad02e5",
+    "directory": "/root/mibox-hardware-test-20261115-171258",
+    "status": "PASS",
+    "existing_sentinels_unchanged": true,
+    "limitations": [
+      "Cached reads; physical media reads not isolated",
+      "No reboot durability test, forced short-write injection or interrupted-writer test",
+      "No sudden power-loss test"
+    ]
+  }
+}

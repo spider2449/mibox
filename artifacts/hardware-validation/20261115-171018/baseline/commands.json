@@ -1,0 +1,30 @@
+[
+  {
+    "name": "usb-host-key",
+    "started": "2026-11-15T09:10:18.934109+00:00",
+    "ended": "2026-11-15T09:10:19.022566+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "usb-boot-id",
+    "started": "2026-11-15T09:10:19.026560+00:00",
+    "ended": "2026-11-15T09:10:19.113525+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "ssh-boot-id",
+    "started": "2026-11-15T09:10:19.122316+00:00",
+    "ended": "2026-11-15T09:10:20.030686+00:00",
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "inventory",
+    "started": "2026-11-15T09:10:20.030708+00:00",
+    "ended": "2026-11-15T09:11:05.007619+00:00",
+    "exit_code": 124,
+    "output_complete": true
+  }
+]

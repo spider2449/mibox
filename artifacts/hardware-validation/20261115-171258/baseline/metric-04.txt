@@ -1,0 +1,35 @@
+b5567c71-9f2e-4d73-9239-0a80e7120ab3
+207.29 383.70
+1.18 0.59 0.23 1/74 573
+MemTotal:         877072 kB
+MemFree:          831988 kB
+Buffers:             720 kB
+Cached:            15284 kB
+PROCESSES=71
+METRIC=/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq
+552000
+METRIC=/sys/devices/system/cpu/cpu1/cpufreq/scaling_cur_freq
+552000
+   7       0 loop0 0 0 0 0 0 0 0 0 0 0 0
+   7       1 loop1 0 0 0 0 0 0 0 0 0 0 0
+   7       2 loop2 0 0 0 0 0 0 0 0 0 0 0
+   7       3 loop3 0 0 0 0 0 0 0 0 0 0 0
+   7       4 loop4 0 0 0 0 0 0 0 0 0 0 0
+   7       5 loop5 0 0 0 0 0 0 0 0 0 0 0
+   7       6 loop6 0 0 0 0 0 0 0 0 0 0 0
+   7       7 loop7 0 0 0 0 0 0 0 0 0 0 0
+ 253       0 zram0 0 0 0 0 0 0 0 0 0 0 0
+ 179       0 mmcblk0 142 192 13930 610 5 1 48 10 0 480 620
+ 179       1 mmcblk0p1 0 0 0 0 0 0 0 0 0 0 0
+ 179       2 mmcblk0p2 0 0 0 0 0 0 0 0 0 0 0
+ 179       3 mmcblk0p3 0 0 0 0 0 0 0 0 0 0 0
+ 179       4 mmcblk0p4 0 0 0 0 0 0 0 0 0 0 0
+ 179       5 mmcblk0p5 0 0 0 0 0 0 0 0 0 0 0
+ 179       6 mmcblk0p6 0 0 0 0 0 0 0 0 0 0 0
+ 179       7 mmcblk0p7 0 0 0 0 0 0 0 0 0 0 0
+ 179       8 mmcblk0p8 0 0 0 0 0 0 0 0 0 0 0
+ 179       9 mmcblk0p9 0 0 0 0 0 0 0 0 0 0 0
+ 179      10 mmcblk0p10 0 0 0 0 0 0 0 0 0 0 0
+ 179      11 mmcblk0p11 141 192 13922 590 5 1 48 10 0 460 600
+ 179      32 mmcblk0boot1 1 0 8 140 0 0 0 0 0 140 140
+ 179      16 mmcblk0boot0 1 0 8 10 0 0 0 0 0 10 10

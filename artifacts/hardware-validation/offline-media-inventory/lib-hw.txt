@@ -1,0 +1,24 @@
+   8230   40755 (2)      0      0    4096 19-Jul-2017 14:19 .
+   8217   40755 (2)      0      0    8192 19-Jul-2017 14:26 ..
+   8231  100644 (1)      0      0    9448 26-Jan-2017 20:34 audio.a2dp.default.so
+   8232  100644 (1)      0      0   21908 26-Jan-2017 20:34 audio.hdmi.amlogic.so
+   8233  100644 (1)      0      0   30220 26-Jan-2017 20:34 audio.primary.amlogic.so
+   8234  100644 (1)      0      0    5308  1-Aug-2008 20:00 audio.primary.default.so
+   8235  100644 (1)      0      0   17708  1-Aug-2008 20:00 audio.r_submix.default.so
+   8236  100644 (1)      0      0   13572 26-Jan-2017 20:34 audio.usb.amlogic.so
+   8237  100644 (1)      0      0    5344  1-Aug-2008 20:00 audio.usb.default.so
+   8238  100644 (1)      0      0   75216 26-Jan-2017 20:34 audio_policy.default.so
+   8204  100644 (1)      0      0   1253392 26-Jan-2017 20:34 bluetooth.default.so
+   8194  100644 (1)      0      0   297560 19-Jul-2017 14:19 camera.amlogic.so
+   8241  100644 (1)      0      0   13484 22-Aug-2015 21:35 gralloc.amlogic.so
+   8242  100644 (1)      0      0    9736  1-Aug-2008 20:00 gralloc.default.so
+   8243  100644 (1)      0      0    9516  1-Aug-2008 20:00 hwcomposer.amlogic.so
+   8244  100644 (1)      0      0    5308  1-Aug-2008 20:00 keystore.amlogic.so
+   8245  100644 (1)      0      0    5308  1-Aug-2008 20:00 keystore.default.so
+   8246  100644 (1)      0      0    5308  1-Aug-2008 20:00 lights.amlogic.so
+   8247  100644 (1)      0      0    5308  1-Aug-2008 20:00 local_time.default.so
+   8248  100644 (1)      0      0    5308  1-Aug-2008 20:00 power.default.so
+   8249  100644 (1)      0      0   17744  1-Aug-2008 20:00 screen_source.amlogic.so
+   8195  100644 (1)      0      0   30412 19-Jul-2017 14:19 sensors.default.so
+
+debugfs 1.47.0 (5-Feb-2023)

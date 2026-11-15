@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-15",
+  "physical": true,
+  "boot_id": "b5567c71-9f2e-4d73-9239-0a80e7120ab3",
+  "usb_peripherals": "Owner reported no peripherals available",
+  "owner_present_for_recovery": true,
+  "remote_input": {
+    "evidence": "20261115-172250/remote-input/result.json",
+    "owner_confirmed_operation": true,
+    "result": "Left/right key press and release events observed",
+    "scope": "Awake input only; suspend wake NOT_TESTED"
+  },
+  "first_playback": {
+    "evidence": "20261115-172507/software-media/",
+    "owner_observation": "Still only official logo",
+    "visible_video": "FAIL"
+  },
+  "handoff_playback": {
+    "evidence": "20261115-172848/software-media/",
+    "owner_observations": ["Video visible", "Audible prompts; picture subjectively smooth"],
+    "visible_video": "PASS",
+    "audible_audio": "PASS",
+    "subjective_smoothness": "Owner reported smooth",
+    "measured_fps": 14,
+    "measured_speed": "0.481x",
+    "alsa_buffer_xruns": true,
+    "process_exit_code": 124,
+    "deadline_seconds": 50,
+    "realtime_720p30": "FAIL",
+    "hardware_decode": "NOT_TESTED"
+  },
+  "stop_reason": "Owner said this is enough; end this test session",
+  "state_left": "Custom persistent Console running; no further device tests or reboot requested",
+  "temporary_storage_and_media_files": "Removed by test harnesses"
+}

@@ -1,0 +1,2 @@
+before visible=1280x1080 virtual=1280x3240 offset=0,0 bpp=32 stride=5120 smem_len=16777216
+FRAMEBUFFER_HANDOFF_PASS same_geometry=1 pan_current_offset=1 unblank=1

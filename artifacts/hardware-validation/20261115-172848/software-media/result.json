@@ -1,0 +1,14 @@
+{
+  "physical": true,
+  "mode": "playback",
+  "software_decode": {},
+  "hardware_decode": "NOT_TESTED",
+  "HDMI": "NOT_TESTED",
+  "audio": "NOT_TESTED",
+  "stage": "/proc/1/root/tmp/mibox-media-20261115-172848",
+  "boot_id": "b5567c71-9f2e-4d73-9239-0a80e7120ab3",
+  "tool_archive_sha256": "aa187f0b44b2c462d4776a17715edfe22393fcf1c1169e2bd409bcc90abb5723",
+  "handoff_helper_sha256": "627813d65d46a1c7771c5cce382a0061e10745262389ccb5dd34e6c387217e4b",
+  "temporary_files_removed": true,
+  "failure": "h264-720p30-playback: exit 124; see retained output"
+}

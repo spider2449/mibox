@@ -1,0 +1,14 @@
+Filesystem     1024-blocks    Used Available Capacity Mounted on
+-                  2234556 1780740    437432      81% /
+/root
+rootfs / rootfs rw 0 0
+proc /proc proc rw,nosuid,noexec,relatime 0 0
+sysfs /sys sysfs rw,nosuid,noexec,relatime 0 0
+devtmpfs /dev devtmpfs rw,nosuid,noexec,relatime,size=436128k,nr_inodes=109032,mode=755 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,mode=600,ptmxmode=000 0 0
+adb /dev/usb-ffs/adb functionfs rw,nosuid,noexec,relatime 0 0
+/dev/mibox-data /mnt/mibox-data ext4 rw,nosuid,nodev,relatime,data=ordered 0 0
+devtmpfs /dev devtmpfs rw,nosuid,noexec,relatime,size=436128k,nr_inodes=109032,mode=755 0 0
+proc /proc proc rw,nosuid,noexec,relatime 0 0
+sysfs /sys sysfs rw,nosuid,noexec,relatime 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,mode=600,ptmxmode=000 0 0

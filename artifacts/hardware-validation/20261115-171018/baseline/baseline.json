@@ -1,0 +1,6 @@
+{
+  "physical": true,
+  "inventory_complete": false,
+  "evidence": "/mnt/f/coding/otherPrj/mibox/artifacts/hardware-validation/20261115-171018/baseline",
+  "failure": "inventory: exit 124; see retained output"
+}

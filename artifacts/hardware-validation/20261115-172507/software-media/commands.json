@@ -1,0 +1,100 @@
+[
+  {
+    "name": "usb-host-key",
+    "started": "2026-11-15T09:25:07.783187+00:00",
+    "seconds": 0.18992516100001922,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "usb-boot-id",
+    "started": "2026-11-15T09:25:07.977091+00:00",
+    "seconds": 0.15356935900001645,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "ssh-boot-id",
+    "started": "2026-11-15T09:25:08.595675+00:00",
+    "seconds": 0.8554665480000381,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "ram-guard",
+    "started": "2026-11-15T09:25:09.451156+00:00",
+    "seconds": 0.6619050269999889,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "tools-upload",
+    "started": "2026-11-15T09:25:10.459575+00:00",
+    "seconds": 6.258491047999996,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "tools-hash",
+    "started": "2026-11-15T09:25:16.720684+00:00",
+    "seconds": 0.8696964580000213,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "tools-extract",
+    "started": "2026-11-15T09:25:17.590393+00:00",
+    "seconds": 4.641974306000009,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "physical-ffmpeg-version",
+    "started": "2026-11-15T09:25:22.232378+00:00",
+    "seconds": 0.6924598989999708,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "h264-720p30-upload",
+    "started": "2026-11-15T09:25:23.113966+00:00",
+    "seconds": 3.209355326999969,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "h264-720p30-hash",
+    "started": "2026-11-15T09:25:26.323329+00:00",
+    "seconds": 0.5823657130000015,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "framebuffer-info",
+    "started": "2026-11-15T09:25:26.905715+00:00",
+    "seconds": 0.250497136999968,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "alsa-config",
+    "started": "2026-11-15T09:25:27.156228+00:00",
+    "seconds": 0.262954714999978,
+    "exit_code": 0,
+    "output_complete": true
+  },
+  {
+    "name": "h264-720p30-playback",
+    "started": "2026-11-15T09:25:27.422775+00:00",
+    "seconds": 50.52413251799999,
+    "exit_code": 124,
+    "output_complete": true
+  },
+  {
+    "name": "ram-cleanup",
+    "started": "2026-11-15T09:26:17.946924+00:00",
+    "seconds": 1.1512753259999613,
+    "exit_code": 0,
+    "output_complete": true
+  }
+]
