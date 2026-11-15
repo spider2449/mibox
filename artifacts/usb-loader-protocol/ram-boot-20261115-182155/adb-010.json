@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 shell uname -a",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  5,
+    "ProcessId":  8316,
+    "StartedAt":  "2026-11-15T10:22:05.5188631Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "Linux android 3.10.33 #1 SMP PREEMPT Mon Feb 20 15:47:21 CST 2017 armv7l Linux",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.07948609999999999,
+    "FinishedAt":  "2026-11-15T10:22:05.5968462Z"
+}

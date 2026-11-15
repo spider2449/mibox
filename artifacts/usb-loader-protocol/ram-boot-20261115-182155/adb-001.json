@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "devices -l",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  5,
+    "ProcessId":  15172,
+    "StartedAt":  "2026-11-15T10:21:55.3765691Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "List of devices attached",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.0555509,
+    "FinishedAt":  "2026-11-15T10:21:55.4296634Z"
+}

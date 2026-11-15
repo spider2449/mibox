@@ -1,0 +1,26 @@
+{
+    "timestamp_utc":  "2026-11-15T12:53:43.0865018Z",
+    "framing":  "reference codesnake/uboot-amlogic c0b0b8cc usb_pcd.c AM_REQ_RD_LARGE_MEM",
+    "address":  "0x82000000",
+    "length":  64,
+    "attempts":  1,
+    "retry_policy":  "none; failure requires owner power cycle",
+    "result":  {
+                   "Found":  true,
+                   "DevicePath":  "\\\\?\\usb#vid_1b8e\u0026pid_c003#6\u00262b113eed\u00260\u00265#{d925a7f0-61a4-4018-bcd3-f3e5225f3532}",
+                   "VidPid":  "1B8E:C003",
+                   "IdentifyHex":  "00-08-00-10",
+                   "ControlReadHex":  "aa-aa-aa-aa-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff-ff",
+                   "SetupSent":  false,
+                   "SetupTransferred":  0,
+                   "BulkPipeInfo":  "pipe0:ep0x81,type2,mps0;pipe1:ep0x02,type2,mps0;",
+                   "BulkReadResult":  0,
+                   "BulkReadHex":  null,
+                   "BulkReadBytes":  0,
+                   "PostIdentifyHex":  "00-08-00-10",
+                   "PostIdentifyOk":  true,
+                   "Match":  false,
+                   "Outcome":  "NO_BULK_IN_PIPE",
+                   "Error":  "pipe0:ep0x81,type2,mps0;pipe1:ep0x02,type2,mps0;"
+               }
+}

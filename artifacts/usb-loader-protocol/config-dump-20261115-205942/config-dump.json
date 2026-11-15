@@ -1,0 +1,13 @@
+{
+    "timestamp_utc":  "2026-11-15T12:59:42.4469375Z",
+    "method":  "GET_DESCRIPTOR(CONFIG) only, no vendor request, no bulk activity",
+    "result":  {
+                   "Found":  true,
+                   "DevicePath":  "\\\\?\\usb#vid_1b8e\u0026pid_c003#6\u00262b113eed\u00260\u00265#{d925a7f0-61a4-4018-bcd3-f3e5225f3532}",
+                   "VidPid":  "1B8E:C003",
+                   "ConfigHex":  "09-02-20-00-01-01-00-c0-01-09-04-00-00-02-ff-00-00-00-07-05-81-02-00-02-00-07-05-02-02-00-02-00",
+                   "ConfigBytes":  32,
+                   "EndpointSummary":  "ep0x81,attr2,mps512;",
+                   "Error":  null
+               }
+}

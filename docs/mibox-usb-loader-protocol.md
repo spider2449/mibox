@@ -65,3 +65,70 @@ are disabled; owner power recovery was requested again.
 At that diagnostic checkpoint RAM transfer had begun, with no flash write or
 boot command yet sent. The later full control transfer and physical boot
 success are documented in mibox-ram-boot-success.md.
+
+## Bulk framing restored from reference source (2026-11-15)
+
+The failed 2026-11-14 BulkTest is now interpretable against exact reference
+source (codesnake/uboot-amlogic c0b0b8cc9bd5901ced2e929ea87b99fae52d528c,
+`usb_pcd.c`). Bulk mode is not a replacement for the EP0 command; it adds a
+bulk data stage after the EP0 command:
+
+1. EP0 SETUP 0x40/0x12 (`AM_REQ_RD_LARGE_MEM`), wValue=block length,
+   wIndex=block count, wLength=16.
+2. EP0 OUT data stage, 16 bytes: `[0..3]` address, `[4..7]` total data length.
+3. `do_vendor_out_complete` takes address/length from that data, recomputes
+   `bulk_len = DWC_BLK_LEN(len)` (blocks of at most 0x1000 bytes) and
+   `bulk_num = DWC_BLK_NUM(len)`, ignoring the SETUP wValue/wIndex, then arms
+   the bulk endpoint: reads use bulk IN 0x81, writes bulk OUT 0x02. Bulk MPS
+   is 512 (high-speed descriptor). `xferNeedReply` stays 0 for RD/WR_LARGE_MEM,
+   so there is no per-block handshake.
+
+Implications: the previous single-bulk-probe failure cannot distinguish a
+framing mismatch (for example a 16-byte payload sent on bulk OUT instead of
+the EP0 OUT data stage), missing bulk endpoint enable timing, or an
+Xiaomi-build difference from this reference. The probe wedged the loader and
+identify stopped responding, so bulk image actions remain disabled and any
+new probe must stay single-shot, read-only and bounded.
+
+`scripts/Probe-MiboxUsbLoaderBulk.ps1` implements that bounded probe: identify
+gate (00-08-00-10), control-channel reference read of 0x82000000 (64 bytes),
+one RD_LARGE_MEM 0x12 bulk IN attempt with a 2 second timeout, byte compare,
+a post-probe identify on a fresh handle to record loader survival, and one
+evidence directory under `artifacts/usb-loader-protocol/bulk-*/`. No retry,
+no write, no boot command; a wedged result requires owner power recovery and
+must not be retried. Results are not recorded yet; the device has not been
+driven through this probe. If a 64-byte BULK_MATCH is observed, the next step
+is a separately designed bounded 4 KiB chunk test, never an immediate full
+image transfer.
+
+## Bulk probe results (2026-11-15): bulk path unusable on this build
+
+Two single-shot read-only probes ran after owner-coordinated loader entry:
+
+- Cold power, host attached, exposed C003 directly, identify 00-08-00-10. This
+  is the first physical cold-start evidence for the installed preboot USB
+  window; it reproduced on two cold starts the same day.
+- Attempt 2 used the exact restored three-stage framing. The EP0 SETUP plus
+  16-byte RD_LARGE_MEM command was accepted (16 bytes transferred), then the
+  bulk IN read failed immediately with native 87 (ERROR_INVALID_PARAMETER,
+  host-side) and the post-probe identify on a fresh handle got no answer:
+  the loader wedged, matching the 2026-11-14 outcome pattern.
+- Before attempt 2, `scripts/Probe-MiboxUsbConfigDescriptor.ps1` dumped the
+  raw configuration descriptor (GET_DESCRIPTOR(CONFIG) only): 32 bytes,
+  bulk IN 0x81 and bulk OUT 0x02, both bulk attr 0x02 with MPS 512, exactly
+  matching the reference descriptor. An earlier MaxPacketSize=0 reading from
+  `WinUsb_QueryPipe` was a host struct-layout error, not a device property;
+  the descriptor itself is correct.
+
+Verdict: with correct framing and correct endpoints, the bulk data stage
+still fails and wedges the loader. Bulk image actions are permanently
+disabled for this build; the 64-byte EP0 control channel is the only
+established data path. Each bulk attempt costs an owner power cycle, so no
+further bulk probing is planned.
+
+Also recorded: a recovery-mode `adb reboot usb_burner_reboot` and even plain
+`adb reboot` returned -1, in-shell `/sbin/reboot` was denied, and after that
+denial the device still rebooted into a black screen requiring a power
+cycle. Recovery shell reboot is unverified and uncontrolled; not a loader
+entry route. The working entry today was owner cold power with the host
+attached, which lands directly in C003.
