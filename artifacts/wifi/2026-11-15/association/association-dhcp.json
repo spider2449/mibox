@@ -1,0 +1,19 @@
+﻿{
+    "Executable":  "C:\\WINDOWS\\System32\\OpenSSH\\ssh.exe",
+    "Arguments":  "-i \"C:\\Users\\morefunfun/.ssh/mibox-console\" -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o \"UserKnownHostsFile=F:\\coding\\otherPrj\\mibox\\artifacts\\console-ssh\\launcher-20261115-090500\\known_hosts\" root@192.168.1.222 \"chroot /proc/1/root /bin/busybox timeout 80 /bin/busybox sh /tmp/mibox-wifi-test.sh\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  90,
+    "ProcessId":  7800,
+    "StartedAt":  "2026-11-15T01:22:42.1823407Z",
+    "ExitCode":  1,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "BOOT_ID=e8946185-736d-41ca-8225-b14d012a74b1\ndefault via 192.168.1.1 dev eth0 \n192.168.1.0/24 dev eth0 scope link  src 192.168.1.222 \nCLEANUP_DONE\ndefault via 192.168.1.1 dev eth0 \n192.168.1.0/24 dev eth0 scope link  src 192.168.1.222",
+    "Error":  "/tmp/mibox-wifi-tools/lib/ld-musl-armhf.so.1: cannot load /tmp/mibox-wifi-tools/usr/sbin/wpa_supplicant: No such file or directory",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "Failure":  "association-dhcp failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\wifi\\2026-11-15\\association",
+    "ElapsedSeconds":  2.2166984,
+    "FinishedAt":  "2026-11-15T01:22:44.3967544Z"
+}

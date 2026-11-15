@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 push \"F:\\coding\\otherPrj\\mibox\\artifacts\\wifi\\2026-11-15\\source\\nvram.txt\" /tmp/mibox-wifi-nvram.txt",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  15,
+    "ProcessId":  6148,
+    "StartedAt":  "2026-11-15T01:17:48.8443592Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "F:\\coding\\otherPrj\\mibox\\artifacts\\wifi\\2026-11-15\\source\\nvram.txt: 1 file pushed, 0 skipped. 8.0 MB/s (1522 bytes in 0.000s)",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.043409199999999995,
+    "FinishedAt":  "2026-11-15T01:17:48.8812703Z"
+}

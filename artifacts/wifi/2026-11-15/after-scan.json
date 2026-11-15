@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "C:\\WINDOWS\\System32\\OpenSSH\\ssh.exe",
+    "Arguments":  "-i \"C:\\Users\\morefunfun/.ssh/mibox-console\" -o BatchMode=yes -o ConnectTimeout=8 -o \"UserKnownHostsFile=F:\\coding\\otherPrj\\mibox\\artifacts\\console-ssh\\launcher-20261115-090500\\known_hosts\" root@192.168.1.222 \"ip link set wlan0 down \u0026\u0026 ip link show wlan0 \u0026\u0026 ip route; dmesg | tail -40\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  15,
+    "ProcessId":  13640,
+    "StartedAt":  "2026-11-15T01:19:02.8500610Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "5: wlan0: \u003cBROADCAST,MULTICAST\u003e mtu 1500 qdisc pfifo_fast state DOWN qlen 1000\n    link/ether 98:3b:16:20:63:dc brd ff:ff:ff:ff:ff:ff\ndefault via 192.168.1.1 dev eth0 \n192.168.1.0/24 dev eth0 scope link  src 192.168.1.222 \n[  946.296889@0] sdio: queuing unknown CIS tuple 0x80 (3 bytes)\n[  946.304036@0] sdio: queuing unknown CIS tuple 0x80 (7 bytes)\n[  946.359710@0] [sdio_reinit] finish\n[  946.467326@0] =========== WLAN going back to live  ========\n[  946.468268@0] \n[  946.468268@0] \n[  946.468268@0] dhd_bus_devreset: == WLAN ON ==\n[  946.480678@0] F1 signature OK, socitype:0x1 chip:0x4330 rev:0x4 pkg:0x0\n[  946.482595@0] DHD: dongle ram size is set to 294912(orig 294912) at 0x0\n[  946.488978@0] dhd_conf_set_fw_name_by_chip: firmware_path=/tmp/fw_bcm40183b2.bin\n[  946.496077@0] dhd_conf_read_config: Ignore config file /system/etc/firmware/config.txt\n[  946.503997@0] dhd_conf_read_user_config: Ignore config file /data/misc/wifi/user_config.txt\n[  946.511866@0] Final fw_path=/tmp/fw_bcm40183b2.bin\n[  946.516728@0] Final nv_path=/tmp/mibox-wifi-nvram.txt\n[  946.521720@0] Final conf_path=/system/etc/firmware/config.txt\n[  946.588211@0] NVRAM version: AP6330_NVRAM_V1.0_20121130\r\n[  946.589522@0] dhdsdio_write_vars: Download, Upload and compare of NVRAM succeeded.\n[  946.862123@0] dhd_bus_init: enable 0x06, ready 0x06 (waited 0us)\n[  946.862741@0] bcmsdh_set_drvdata: Enter\n[  946.866477@0] bcmsdh_register_oob_intr: Enter \n[  946.870790@0] bcmsdh_register_oob_intr: IRQ=100 Type=414 \n[  946.878235@0] dhd_conf_set_band: Set band 0\n[  946.883584@0] Firmware up: op_mode=0x0005, Broadcom Dongle Host Driver mac=98:3b:16:20:63:dc\n[  946.888715@0] dhd_conf_set_country: Set country ALL, revision 0\n[  946.968303@0] Country code: ALL (ALL/0)\n[  946.968761@0] dhd_conf_set_roam: Set roam_off 1\n[  946.973896@0] dhdcdc_set_ioctl: CDCF_IOC_ERROR msg-\u003estatus:-23\n[  946.976835@0] dhd_preinit_ioctls buf_key_b4_m4 set failed -23\n[  946.987373@0]   Driver: 1.88.45.3 (r420671)\n[  946.987373@0]   Firmware: wl0: Jan  6 2014 15:11:29 version 5.90.195.89.13 FWID 01-72f124c5 \n[  946.996020@0] wl_android_wifi_on: Success\n[  973.297657@0] net_ratelimit: 2 callbacks suppressed\n[  973.297955@0] dhd_stop: Enter edb8b800\n[  973.302537@0] dhd_check_hang: dhdp-\u003eup is down\n[  973.306826@0] wl_android_wifi_off in 1\n[  973.308837@0] wl_android_wifi_off in 2: g_wifi_on=1\n[  973.320136@0] bcmsdh_set_irq: Flag = 0\n[  973.320239@0] dhd_bus_devreset:  WLAN OFF DONE\n[  973.322862@0] =========== WLAN placed in RESET ========\n[  973.328054@0] wl_android_wifi_off out",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.9197864,
+    "FinishedAt":  "2026-11-15T01:19:03.7611011Z"
+}

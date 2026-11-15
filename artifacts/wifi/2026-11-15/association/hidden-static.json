@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "C:\\WINDOWS\\System32\\OpenSSH\\ssh.exe",
+    "Arguments":  "-i \"C:\\Users\\morefunfun/.ssh/mibox-console\" -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o \"UserKnownHostsFile=F:\\coding\\otherPrj\\mibox\\artifacts\\console-ssh\\launcher-20261115-090500\\known_hosts\" root@192.168.1.222 \"chroot /proc/1/root /bin/busybox timeout 70 /bin/busybox sh /tmp/mibox-wifi-test.sh\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  80,
+    "ProcessId":  2148,
+    "StartedAt":  "2026-11-15T01:26:12.6160590Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "BOOT_ID=e8946185-736d-41ca-8225-b14d012a74b1\ndefault via 192.168.1.1 dev eth0 \n192.168.1.0/24 dev eth0 scope link  src 192.168.1.222 \nbssid=aa:da:c4:3e:ae:03\nfreq=2427\nssid=danger\nid=0\nmode=station\nwifi_generation=4\npairwise_cipher=CCMP\ngroup_cipher=CCMP\nkey_mgmt=WPA2-PSK\nwpa_state=COMPLETED\naddress=98:3b:16:20:63:dc\nuuid=8841bbda-15a2-57ee-ac31-9f6a4c42e1f5\nASSOCIATION_PASS\nARPING 192.168.1.223 from 0.0.0.0 wlan0\nSent 3 probe(s) (0 broadcast(s))\nReceived 0 response(s) (0 request(s), 0 broadcast(s))\nADDRESS_PROBE_NO_REPLY\nSTATIC_IP_CONFIGURED\n8: wlan0: \u003cBROADCAST,MULTICAST,UP,LOWER_UP\u003e mtu 1500 qdisc pfifo_fast state UP qlen 1000\n    link/ether 98:3b:16:20:63:dc brd ff:ff:ff:ff:ff:ff\n    inet 192.168.1.223/24 scope global wlan0\n       valid_lft forever preferred_lft forever\n    inet6 fe80::9a3b:16ff:fe20:63dc/64 scope link \n       valid_lft forever preferred_lft forever\ndefault via 192.168.1.1 dev wlan0 \n192.168.1.0/24 dev wlan0 scope link  src 192.168.1.223 \n1.1.1.1 from 192.168.1.223 via 192.168.1.1 dev wlan0 \nPING 192.168.1.1 (192.168.1.1) from 192.168.1.223: 56 data bytes\n64 bytes from 192.168.1.1: seq=0 ttl=64 time=49.490 ms\n64 bytes from 192.168.1.1: seq=1 ttl=64 time=14.436 ms\n64 bytes from 192.168.1.1: seq=2 ttl=64 time=14.244 ms\n\n--- 192.168.1.1 ping statistics ---\n3 packets transmitted, 3 packets received, 0% packet loss\nround-trip min/avg/max = 14.244/26.056/49.490 ms\nWIFI_GATEWAY_PASS\nPING 1.1.1.1 (1.1.1.1) from 192.168.1.223: 56 data bytes\n64 bytes from 1.1.1.1: seq=0 ttl=57 time=15.005 ms\n64 bytes from 1.1.1.1: seq=1 ttl=57 time=19.010 ms\n64 bytes from 1.1.1.1: seq=2 ttl=57 time=21.670 ms\n\n--- 1.1.1.1 ping statistics ---\n3 packets transmitted, 3 packets received, 0% packet loss\nround-trip min/avg/max = 15.005/18.561/21.670 ms\nWIFI_EXTERNAL_ICMP_PASS\nbssid=aa:da:c4:3e:ae:03\nfreq=2427\nssid=danger\nid=0\nmode=station\nwifi_generation=4\npairwise_cipher=CCMP\ngroup_cipher=CCMP\nkey_mgmt=WPA2-PSK\nwpa_state=COMPLETED\nip_address=192.168.1.223\naddress=98:3b:16:20:63:dc\nuuid=8841bbda-15a2-57ee-ac31-9f6a4c42e1f5\nCLEANUP_DONE\ndefault via 192.168.1.1 dev eth0 \n192.168.1.0/24 dev eth0 scope link  src 192.168.1.222",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  13.2795388,
+    "FinishedAt":  "2026-11-15T01:26:25.8847273Z"
+}

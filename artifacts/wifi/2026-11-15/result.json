@@ -1,0 +1,29 @@
+﻿{
+    "DriverLoad":  "PASS",
+    "FirmwareInitialization":  "PASS",
+    "Scan":  "PASS",
+    "BssCount":  24,
+    "BandsObserved":  [
+                          "2.4GHz",
+                          "5GHz"
+                      ],
+    "Association":  "NOT_TESTED",
+    "IPConnectivity":  "NOT_TESTED",
+    "Cleanup":  "wlan0 down; Ethernet default route retained",
+    "SourceImage":  "phone-tools/backup/systems-20261114-072524/system1.img",
+    "SourceImageSHA256":  "55ee5a9cce011b3eb0ce3ef5b0a15c376275ce05dcb5159aee0dc2e321293d93",
+    "Files":  [
+                  {
+                      "SHA256":  "369638bd4f2145070f0a63354db06b043401f6ae4b9bb9478f1522f3ed0d8d53",
+                      "Name":  "dhd.ko"
+                  },
+                  {
+                      "SHA256":  "169a3dbb068cf4841b48c821f33fe5a6c69d99f3974c247d3424569453d2786c",
+                      "Name":  "fw_bcm40183b2.bin"
+                  },
+                  {
+                      "SHA256":  "68952ca377ea4f629c7d01042ba6d95e2c74f347a893c4d49a4d3c3f38a5bf1b",
+                      "Name":  "nvram.txt"
+                  }
+              ]
+}

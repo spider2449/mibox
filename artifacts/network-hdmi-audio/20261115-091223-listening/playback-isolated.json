@@ -1,0 +1,19 @@
+﻿{
+    "Executable":  "C:\\WINDOWS\\System32\\OpenSSH\\ssh.exe",
+    "Arguments":  "-i \"C:\\Users\\morefunfun/.ssh/mibox-console\" -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o \"UserKnownHostsFile=F:\\coding\\otherPrj\\mibox\\artifacts\\console-ssh\\launcher-20261115-090500\\known_hosts\" root@192.168.1.222 \"sha256sum /tmp/mibox-audio-test/tone.wav; timeout 12 /tmp/mibox-audio-test/lib/ld-musl-armhf.so.1 --library-path /tmp/mibox-audio-test/usr/lib:/tmp/mibox-audio-test/lib /tmp/mibox-audio-test/usr/bin/aplay -D hw:0,0 -v /tmp/mibox-audio-test/tone.wav\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  20,
+    "ProcessId":  4408,
+    "StartedAt":  "2026-11-15T01:13:28.1476512Z",
+    "ExitCode":  1,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "4315b2131dfb5560cebdd7b08d5e641650475d16daf37a17092e92e91d2dad51  /tmp/mibox-audio-test/tone.wav",
+    "Error":  "ALSA lib conf.c:4580:(snd_config_update_r) Cannot access file /usr/share/alsa/alsa.conf\nALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM hw:0,0\naplay: main:850: audio open error: No such file or directory",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "Failure":  "playback-isolated failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\network-hdmi-audio\\20261115-091223-listening",
+    "ElapsedSeconds":  0.4754932,
+    "FinishedAt":  "2026-11-15T01:13:28.6211638Z"
+}

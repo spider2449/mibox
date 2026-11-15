@@ -1,0 +1,19 @@
+{
+  "checks": [
+    {
+      "name": "usb-identity",
+      "exit_code": 0
+    },
+    {
+      "name": "usb-host-key",
+      "exit_code": 0
+    },
+    {
+      "name": "bootstrap-keyscan",
+      "exit_code": 1
+    }
+  ],
+  "persistent_ready": false,
+  "stopped": false,
+  "failure": "bootstrap-keyscan: "
+}

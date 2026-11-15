@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "C:\\WINDOWS\\System32\\OpenSSH\\ssh.exe",
+    "Arguments":  "-i \"C:\\Users\\morefunfun/.ssh/mibox-console\" -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o \"UserKnownHostsFile=F:\\coding\\otherPrj\\mibox\\artifacts\\console-ssh\\launcher-20261115-090500\\known_hosts\" root@192.168.1.222 \"chroot /proc/1/root /bin/busybox ip link set wlan0 up \u0026\u0026 chroot /proc/1/root /bin/busybox timeout 20 /tmp/mibox-wifi-tools/lib/ld-musl-armhf.so.1 --library-path /tmp/mibox-wifi-tools/usr/lib:/tmp/mibox-wifi-tools/lib /tmp/mibox-wifi-tools/usr/sbin/iw dev wlan0 scan ssid danger\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  30,
+    "ProcessId":  8112,
+    "StartedAt":  "2026-11-15T01:25:43.7014583Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "BSS aa:da:c4:3e:ae:03(on wlan0)\n\tTSF: 1378243932 usec (0d, 00:22:58)\n\tfreq: 2427\n\tbeacon interval: 100 TUs\n\tcapability: ESS Privacy ShortPreamble ShortSlotTime RadioMeasure (0x1431)\n\tsignal: -19.00 dBm\n\tlast seen: 0 ms ago\n\tSSID: danger\n\tSupported rates: 1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 \n\tDS Parameter set: channel 4\n\tERP: \u003cno flags\u003e\n\tExtended supported rates: 24.0 36.0 48.0 54.0 \n\tRM enabled capabilities:\n\t\tCapabilities: 0x73 0xd0 0x00 0x00 0x0c\n\t\t\tLink Measurement\n\t\t\tNeighbor Report\n\t\t\tBeacon Passive Measurement\n\t\t\tBeacon Active Measurement\n\t\t\tBeacon Table Measurement\n\t\t\tLCI Measurement\n\t\t\tTransmit Stream/Category Measurement\n\t\t\tTriggered Transmit Stream/Category\n\t\t\tFTM Range Report\n\t\t\tCivic Location Measurement\n\t\tNonoperating Channel Max Measurement Duration: 0\n\t\tMeasurement Pilot Capability: 4\n\tHT capabilities:\n\t\tCapabilities: 0x1ac\n\t\t\tHT20\n\t\t\tSM Power Save disabled\n\t\t\tRX HT20 SGI\n\t\t\tTX STBC\n\t\t\tRX STBC 1-stream\n\t\t\tMax AMSDU length: 3839 bytes\n\t\t\tNo DSSS/CCK HT40\n\t\tMaximum RX AMPDU length 65535 bytes (exponent: 0x003)\n\t\tMinimum RX AMPDU time spacing: 8 usec (0x06)\n\t\tHT TX/RX MCS rate indexes supported: 0-23\n\tHT operation:\n\t\t * primary channel: 4\n\t\t * secondary channel offset: no secondary\n\t\t * STA channel width: 20 MHz\n\t\t * RIFS: 0\n\t\t * HT protection: nonmember\n\t\t * non-GF present: 0\n\t\t * OBSS non-GF present: 0\n\t\t * dual beacon: 0\n\t\t * dual CTS protection: 0\n\t\t * STBC beacon: 0\n\t\t * L-SIG TXOP Prot: 0\n\t\t * PCO active: 0\n\t\t * PCO phase: 0\n\tOverlapping BSS scan params:\n\t\t * passive dwell: 20 TUs\n\t\t * active dwell: 10 TUs\n\t\t * channel width trigger scan interval: 300 s\n\t\t * scan passive total per channel: 200 TUs\n\t\t * scan active total per channel: 20 TUs\n\t\t * BSS width channel transition delay factor: 5\n\t\t * OBSS Scan Activity Threshold: 0.25 %\n\tExtended capabilities:\n\t\t * HT Information Exchange Supported\n\t\t * Extended Channel Switching\n\t\t * TFS\n\t\t * WNM-Sleep Mode\n\t\t * TIM Broadcast\n\t\t * BSS Transition\n\t\t * SSID List\n\t\t * Operating Mode Notification\n\tWMM:\t * Parameter version 1\n\t\t * u-APSD\n\t\t * BE: CW 15-1023, AIFSN 3\n\t\t * BK: CW 15-1023, AIFSN 7\n\t\t * VI: CW 7-15, AIFSN 2, TXOP 3008 usec\n\t\t * VO: CW 3-7, AIFSN 2, TXOP 1504 usec\n\tRSN:\t * Version: 1\n\t\t * Group cipher: CCMP\n\t\t * Pairwise ciphers: CCMP\n\t\t * Authentication suites: PSK SAE\n\t\t * Capabilities: 1-PTKSA-RC 1-GTKSA-RC MFP-capable (0x0080)",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  5.0729959,
+    "FinishedAt":  "2026-11-15T01:25:48.7727843Z"
+}

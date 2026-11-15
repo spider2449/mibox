@@ -1,0 +1,19 @@
+﻿{
+    "Executable":  "C:\\WINDOWS\\System32\\OpenSSH\\ssh.exe",
+    "Arguments":  "-i \"C:\\Users\\morefunfun/.ssh/mibox-console\" -o BatchMode=yes -o ConnectTimeout=8 -o \"UserKnownHostsFile=F:\\coding\\otherPrj\\mibox\\artifacts\\console-ssh\\launcher-20261115-090500\\known_hosts\" root@192.168.1.222 \"cp /proc/1/root/tmp/mibox-wifi-fw_bcm40183b2.bin /proc/1/root/tmp/fw_bcm40183b2.bin \u0026\u0026 ip link set wlan0 up \u0026\u0026 timeout 20 /proc/1/root/tmp/mibox-wifi-tools/lib/ld-musl-armhf.so.1 --library-path /proc/1/root/tmp/mibox-wifi-tools/usr/lib:/proc/1/root/tmp/mibox-wifi-tools/lib /proc/1/root/tmp/mibox-wifi-tools/usr/sbin/iw dev wlan0 scan\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  30,
+    "ProcessId":  10608,
+    "StartedAt":  "2026-11-15T01:18:15.1685308Z",
+    "ExitCode":  2,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "ip: ioctl 0x8914 failed: Operation not permitted",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "Failure":  "scan failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\wifi\\2026-11-15",
+    "ElapsedSeconds":  1.6432554,
+    "FinishedAt":  "2026-11-15T01:18:16.8098865Z"
+}

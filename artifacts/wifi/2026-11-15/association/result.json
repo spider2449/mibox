@@ -1,0 +1,19 @@
+﻿{
+    "SSID":  "danger",
+    "Hidden":  true,
+    "Authentication":  "WPA2-PSK CCMP",
+    "Association":  "PASS",
+    "AddressMode":  "STATIC",
+    "IPv4":  "192.168.1.223/24",
+    "Gateway":  "192.168.1.1",
+    "GatewayPing":  "3/3",
+    "ExternalIP":  "1.1.1.1",
+    "ExternalPing":  "3/3",
+    "WiFiRouteVerified":  true,
+    "DNS":  "NOT_TESTED",
+    "HTTPS":  "NOT_TESTED",
+    "CredentialFileRemoved":  true,
+    "AfterTest":  "wlan0 down; Wi-Fi address and policy routing removed; Ethernet .222 retained",
+    "DHCP":  "NOT_RUN - superseded by owner fixed-IP request",
+    "Evidence":  "hidden-static.json"
+}

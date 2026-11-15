@@ -1,0 +1,15 @@
+﻿{
+    "PlaybackExitCode":  0,
+    "PlaybackOutputComplete":  true,
+    "Rate":  48000,
+    "Channels":  2,
+    "Seconds":  3,
+    "Amplitude":  0.03,
+    "LeftHz":  440,
+    "RightHz":  660,
+    "Audible":  "OWNER_CONFIRMED",
+    "OwnerConfirmationRequired":  true,
+    "Method":  "Trusted SSH; isolated ALSA packages in /tmp; direct hw card0 device0; no mixer changes",
+    "ToneSHA256":  "4315b2131dfb5560cebdd7b08d5e641650475d16daf37a17092e92e91d2dad51",
+    "OwnerObservation":  "有逼的聲音 可以在試一次"
+}

@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 push \"F:\\coding\\otherPrj\\mibox\\artifacts\\wifi\\2026-11-15\\source\\dhd.ko\" /tmp/mibox-wifi-dhd.ko",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  15,
+    "ProcessId":  14304,
+    "StartedAt":  "2026-11-15T01:17:48.2500970Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "F:\\coding\\otherPrj\\mibox\\artifacts\\wifi\\2026-11-15\\source\\dhd.ko: 1 file pushed, 0 skipped. 2.9 MB/s (764345 bytes in 0.253s)",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.3984678,
+    "FinishedAt":  "2026-11-15T01:17:48.6403101Z"
+}

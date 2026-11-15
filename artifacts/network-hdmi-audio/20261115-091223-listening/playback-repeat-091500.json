@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "C:\\WINDOWS\\System32\\OpenSSH\\ssh.exe",
+    "Arguments":  "-i \"C:\\Users\\morefunfun/.ssh/mibox-console\" -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o \"UserKnownHostsFile=F:\\coding\\otherPrj\\mibox\\artifacts\\console-ssh\\launcher-20261115-090500\\known_hosts\" root@192.168.1.222 \"export ALSA_CONFIG_PATH=/tmp/mibox-audio-test/direct.conf; timeout 12 /tmp/mibox-audio-test/lib/ld-musl-armhf.so.1 --library-path /tmp/mibox-audio-test/usr/lib:/tmp/mibox-audio-test/lib /tmp/mibox-audio-test/usr/bin/aplay -D test -v /tmp/mibox-audio-test/tone.wav\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  20,
+    "ProcessId":  11760,
+    "StartedAt":  "2026-11-15T01:15:00.1230009Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "Playing WAVE \u0027/tmp/mibox-audio-test/tone.wav\u0027 : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo\nHardware PCM card 0 \u0027AML-DUMMY-CODEC\u0027 device 0 subdevice 0\nIts setup is:\n  stream       : PLAYBACK\n  access       : RW_INTERLEAVED\n  format       : S16_LE\n  subformat    : STD\n  channels     : 2\n  rate         : 48000\n  exact rate   : 48000 (48000/1)\n  msbits       : 16\n  buffer_size  : 24576\n  period_size  : 2048\n  period_time  : 42666\n  tstamp_mode  : ENABLE\n  tstamp_type  : MONOTONIC\n  period_step  : 1\n  avail_min    : 2048\n  period_event : 0\n  start_threshold  : 24576\n  stop_threshold   : 24576\n  silence_threshold: 0\n  silence_size : 0\n  boundary     : 1610612736\n  appl_ptr     : 0\n  hw_ptr       : 0",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  3.8533866,
+    "FinishedAt":  "2026-11-15T01:15:03.9709941Z"
+}

@@ -1,0 +1,19 @@
+﻿{
+    "Executable":  "C:\\WINDOWS\\System32\\OpenSSH\\ssh.exe",
+    "Arguments":  "-i \"C:\\Users\\morefunfun/.ssh/mibox-console\" -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o \"UserKnownHostsFile=F:\\coding\\otherPrj\\mibox\\artifacts\\console-ssh\\launcher-20261115-090500\\known_hosts\" root@192.168.1.222 \"cp /tmp/mibox-test-tone.wav /tmp/mibox-audio-test/tone.wav \u0026\u0026 timeout 12 /tmp/mibox-audio-test/lib/ld-musl-armhf.so.1 --library-path /tmp/mibox-audio-test/usr/lib:/tmp/mibox-audio-test/lib /tmp/mibox-audio-test/usr/bin/aplay -D hw:0,0 -v /tmp/mibox-audio-test/tone.wav\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  20,
+    "ProcessId":  6152,
+    "StartedAt":  "2026-11-15T01:13:12.9843862Z",
+    "ExitCode":  1,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "cp: cannot stat \u0027/tmp/mibox-test-tone.wav\u0027: No such file or directory",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "Failure":  "playback failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\network-hdmi-audio\\20261115-091223-listening",
+    "ElapsedSeconds":  0.5012945,
+    "FinishedAt":  "2026-11-15T01:13:13.4836409Z"
+}

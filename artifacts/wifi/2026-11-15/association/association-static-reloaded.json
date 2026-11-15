@@ -1,0 +1,19 @@
+﻿{
+    "Executable":  "C:\\WINDOWS\\System32\\OpenSSH\\ssh.exe",
+    "Arguments":  "-i \"C:\\Users\\morefunfun/.ssh/mibox-console\" -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o \"UserKnownHostsFile=F:\\coding\\otherPrj\\mibox\\artifacts\\console-ssh\\launcher-20261115-090500\\known_hosts\" root@192.168.1.222 \"chroot /proc/1/root /bin/busybox timeout 70 /bin/busybox sh /tmp/mibox-wifi-test.sh\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  80,
+    "ProcessId":  4716,
+    "StartedAt":  "2026-11-15T01:23:52.1416331Z",
+    "ExitCode":  1,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "BOOT_ID=e8946185-736d-41ca-8225-b14d012a74b1\ndefault via 192.168.1.1 dev eth0 \n192.168.1.0/24 dev eth0 scope link  src 192.168.1.222 \nwpa_supplicant v2.11\nCopyright (c) 2003-2024, Jouni Malinen \u003cj@w1.fi\u003e and contributors\n\nThis software may be distributed under the terms of the BSD license.\nSee README for more details.\n\nThis product includes software developed by the OpenSSL Project\nfor use in the OpenSSL Toolkit (http://www.openssl.org/)\n\nusage:\n  wpa_supplicant [-BddhKLqqstuvW] [-P\u003cpid file\u003e] [-g\u003cglobal ctrl\u003e] \\\n        [-G\u003cgroup\u003e] \\\n        -i\u003cifname\u003e -c\u003cconfig file\u003e [-C\u003cctrl\u003e] [-D\u003cdriver\u003e] [-p\u003cdriver_param\u003e] \\\n        [-b\u003cbr_ifname\u003e] [-e\u003centropy file\u003e] \\\n        [-o\u003coverride driver\u003e] [-O\u003coverride ctrl\u003e] \\\n        [-N -i\u003cifname\u003e -c\u003cconf\u003e [-C\u003cctrl\u003e] [-D\u003cdriver\u003e] \\\n        [-m\u003cP2P Device config file\u003e] \\\n        [-p\u003cdriver_param\u003e] [-b\u003cbr_ifname\u003e] [-I\u003cconfig file\u003e] ...]\n\ndrivers:\n  nl80211 = Linux nl80211/cfg80211\n  wext = Linux wireless extensions (generic)\n  wired = Wired Ethernet driver\noptions:\n  -b = optional bridge interface name\n  -B = run daemon in the background\n  -c = Configuration file\n  -C = ctrl_interface parameter (only used if -c is not)\n  -d = increase debugging verbosity (-dd even more)\n  -D = driver name (can be multiple drivers: nl80211,wext)\n  -e = entropy file\n  -g = global ctrl_interface\n  -G = global ctrl_interface group\n  -h = show this help text\n  -i = interface name\n  -I = additional configuration file\n  -K = include keys (passwords, etc.) in debug output\n  -L = show license (BSD)\n  -m = Configuration file for the P2P Device interface\n  -N = start describing new interface\n  -o = override driver parameter for new interfaces\n  -O = override ctrl_interface parameter for new interfaces\n  -p = driver parameters\n  -P = PID file\n  -q = decrease debugging verbosity (-qq even less)\n  -s = log output to syslog instead of stdout\n  -t = include timestamp in debug messages\n  -u = enable DBus control interface\n  -v = show version\n  -W = wait for a control interface monitor before starting\nexample:\n  wpa_supplicant -Dnl80211 -iwlan0 -c/etc/wpa_supplicant.conf\n\nASSOCIATION_FAILED\nCLEANUP_DONE\ndefault via 192.168.1.1 dev eth0 \n192.168.1.0/24 dev eth0 scope link  src 192.168.1.222",
+    "Error":  "tail: can\u0027t open \u0027/tmp/mibox-wifi-tools/wpa.log\u0027: No such file or directory\ntail: no files",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "Failure":  "association-static-reloaded failed; no automatic retry. Evidence: F:\\coding\\otherPrj\\mibox\\artifacts\\wifi\\2026-11-15\\association",
+    "ElapsedSeconds":  29.4661497,
+    "FinishedAt":  "2026-11-15T01:24:21.6002512Z"
+}

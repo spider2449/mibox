@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 push \"F:\\coding\\otherPrj\\mibox\\artifacts\\wifi\\2026-11-15\\source\\fw_bcm40183b2.bin\" /tmp/mibox-wifi-fw_bcm40183b2.bin",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  15,
+    "ProcessId":  8460,
+    "StartedAt":  "2026-11-15T01:17:48.7204144Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "F:\\coding\\otherPrj\\mibox\\artifacts\\wifi\\2026-11-15\\source\\fw_bcm40183b2.bin: 1 file pushed, 0 skipped. 190.6 MB/s (239507 bytes in 0.001s)",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.1215151,
+    "FinishedAt":  "2026-11-15T01:17:48.8406578Z"
+}
