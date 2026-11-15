@@ -2,6 +2,13 @@
 
 Target: Xiaomi MDZ-06-AA / casablanca, Amlogic Meson6, ARMv7.
 First milestone: retain the device's stock kernel and develop custom userspace.
+
+Current highest priority (P0): [custom-system ADB rescue and automatic return to
+the USB loader](docs/plans/2026-11-15-custom-system-rescue.md). Establish a
+custom-system -> C003 -> repaired custom RAM boot workflow without requiring
+Android, followed by early-boot failure fallback tests. This takes precedence
+over further feature work and default power-on installation; validation is pending.
+
 The Rust init has booted as PID1 on the actual Mi Box through a fully verified
 temporary RAM image, retaining the stock kernel and DTB. Custom userspace and
 authenticated USB ADB work; the extended Rust toolbox also passes physical
