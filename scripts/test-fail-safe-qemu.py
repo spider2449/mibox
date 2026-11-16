@@ -3,7 +3,7 @@
 Build the four init variants on Windows first (normal build plus faults):
   cargo build --release
   MIBOX_FAULT=panic CARGO_TARGET_DIR=target/fault-panic cargo build --release --bin mibox-init
-  (likewise usb and hang)
+  (likewise usb, hang and kpanic)
 Then run under WSL: python3 scripts/test-fail-safe-qemu.py
 Each case boots a generic ARM kernel with -no-reboot, so a guest restart exits QEMU.
 """
@@ -18,12 +18,16 @@ import time
 from pathlib import Path
 
 RELEASE = 'armv7-unknown-linux-musleabihf/release'
+# Guest panic= for the kernel-panic case (MiBOX itself reads kernel.panic=20).
+KPANIC_TIMEOUT_S = 5
 # case -> (target dir, expected restart reason or None, minimum seconds before restart)
 CASES = {
     'normal': ('target', None, 0),
     'panic': ('target/fault-panic', 'panic', 0),
     'usb': ('target/fault-usb', 'usb-setup', 0),
     'hang': ('target/fault-hang', 'usb-setup-deadline', 60),
+    # PID1 exits on purpose: no fail-safe marker, the kernel panic timeout restarts.
+    'kpanic': ('target/fault-kpanic', 'kernel-panic', KPANIC_TIMEOUT_S),
 }
 # The normal case must outlive the 60 s setup deadline without restarting.
 NORMAL_OBSERVE_S = 75
@@ -62,7 +66,8 @@ def run_case(root, name, evidence):
     command = ['qemu-system-arm', '-machine', 'virt', '-cpu', 'cortex-a15', '-m', '256',
                '-nic', 'none', '-display', 'none', '-monitor', 'none', '-serial', 'stdio',
                '-no-reboot', '-kernel', str(root / 'phone-tools/qemu/vmlinuz'),
-               '-initrd', str(image), '-append', 'console=ttyAMA0,115200 rdinit=/init panic=0']
+               '-initrd', str(image), '-append',
+               f'console=ttyAMA0,115200 rdinit=/init panic={KPANIC_TIMEOUT_S if name == "kpanic" else 0}']
     started = time.monotonic()
     process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                stderr=subprocess.STDOUT, bufsize=0)
@@ -88,6 +93,12 @@ def run_case(root, name, evidence):
                 failure = 'normal init did not reach its console'
         elif restart_after is None:
             failure = 'guest did not restart'
+        elif reason == 'kernel-panic':
+            if (b'MIBOX_KERNEL_PANIC_TEST' not in log or b'Attempted to kill init' not in log
+                    or b'MIBOX_FAIL_SAFE_RESTART' in log):
+                failure = 'kernel panic from PID1 exit not observed'
+            elif restart_after < minimum:
+                failure = f'restarted after {restart_after:.1f} s, before the {minimum} s panic timeout'
         elif marker not in log or b'reboot: Restarting system' not in log:
             failure = 'restart reason or kernel restart line missing'
         elif restart_after < minimum:

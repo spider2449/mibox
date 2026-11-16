@@ -2,7 +2,7 @@
 
 Only the `init` entry changes; every other byte of the verified Console archive
 is kept, so this needs no Alpine rebuild. Never uploads or writes a device.
-Variants: failsafe (normal build) and fault-panic/usb/hang (MIBOX_FAULT builds,
+Variants: failsafe (normal build) and fault-panic/usb/hang/kpanic (MIBOX_FAULT builds,
 RAM tests only, never flash). Run under WSL after building the init binaries.
 """
 import argparse
@@ -15,7 +15,8 @@ from pathlib import Path
 PINNED_GZIP = 'ff1bed630868c0bdbcdfeed3b8c7466c84b3904b0a32ff90746e8e8e52aa51c3'
 RELEASE = 'armv7-unknown-linux-musleabihf/release/mibox-init'
 VARIANTS = {'failsafe': ('target', None), 'fault-panic': ('target/fault-panic', 'panic'),
-            'fault-usb': ('target/fault-usb', 'usb'), 'fault-hang': ('target/fault-hang', 'hang')}
+            'fault-usb': ('target/fault-usb', 'usb'), 'fault-hang': ('target/fault-hang', 'hang'),
+            'fault-kpanic': ('target/fault-kpanic', 'kpanic')}
 
 
 def replace_init(archive, init):

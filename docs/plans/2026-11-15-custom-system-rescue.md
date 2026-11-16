@@ -16,8 +16,8 @@
 | PID1 panic → 自動回 C003 | **PASS**，12.4 秒，無 ADB | `artifacts/fail-safe/20261116-200046-745-panic/` |
 | USB 設定失敗 → 自動回 C003 | **PASS**，12.4 秒，無 ADB | `artifacts/fail-safe/20261116-202305-984-usb/` |
 | USB 設定卡住 → 60 秒 deadline → 自動回 C003 | **PASS**，72.4 秒，無 ADB | `artifacts/fail-safe/20261116-204511-921-hang/` |
-| QEMU（normal/panic/usb/hang） | **PASS** | `artifacts/qemu-fail-safe/` |
-| kernel panic 自動重啟 | **NOT_TESTED**；設定 `CONFIG_PANIC_TIMEOUT=20`，cmdline 是否覆寫未確認 | `artifacts/platform/2026-11-13/kernel-inspection.json` |
+| QEMU（normal/panic/usb/hang/kpanic） | **PASS** | `artifacts/qemu-fail-safe/` |
+| kernel panic → 自動回 C003 | **PASS**，35.6 秒，無 ADB（`FaultKPanic` 映像 `e1a69820…`：PID1 刻意結束，觸發 "Attempted to kill init"）。執行期 `/proc/sys/kernel/panic` = 20，cmdline 無 `panic=` 覆寫；比 PID1 fail-safe 的 12.4 秒多約 23 秒，與 20 秒 panic timeout 相符 | `artifacts/fail-safe/20261116-215504-379-kpanic/`，QEMU `artifacts/qemu-fail-safe/kpanic/` |
 
 設計結論：已安裝的 preboot 視窗使每次重啟都經過 C003，因此「退回 loader」等同正常重啟。
 A32 需要區分「退回 fastboot」與「正常重啟」，MiBOX 不需要。原第 1、2 步的
@@ -40,7 +40,7 @@ QEMU：`python3 scripts/test-fail-safe-qemu.py`（WSL）。
    只替換已驗證 Console rootfs 的 `init`，嚴格比對其餘 entry；映像餘量 32768 bytes。
 3. ~~實機：三種故障映像各自重啟回 C003~~ PASS（`scripts/Test-MiboxFailSafe.ps1`）。
    從 C003 載回正常映像：`scripts/rescue-boot.ps1 -Action WaitAndBoot -Candidate FailSafe`。
-4. 實機：kernel panic 是否在約 20 秒內重啟（PID1 已不再因自身故障觸發 kernel panic，此項降為補充）。
+4. ~~實機：kernel panic 是否在約 20 秒內重啟~~ PASS（`scripts/Test-MiboxFailSafe.ps1 -Fault KPanic -Bulk`，35.6 秒回 C003）。
 5. 備援：`usb_burner_reboot` 受控操作（見下方原第 1、2 步）。
 
 P0 之後的下一項（2026-11-16 擁有者同意）：修復 C003 bulk 傳輸。目前每個 8 MiB 映像

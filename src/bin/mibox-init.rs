@@ -300,6 +300,12 @@ fn main() {
         if fault == "panic" {
             panic!("injected early fault");
         }
+        if fault == "kpanic" {
+            // Bypasses the PID1 fail-safe on purpose: PID1 exit makes the kernel
+            // panic ("Attempted to kill init"), testing kernel.panic=20 restart.
+            eprintln!("MIBOX_KERNEL_PANIC_TEST pid1-exit");
+            std::process::exit(1);
+        }
     }
     #[cfg(feature = "container-kernel-test")]
     if ram_control::development_kernel_allowed(

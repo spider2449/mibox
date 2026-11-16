@@ -11,7 +11,8 @@ PID1 now restarts on early faults (panic, USB setup failure or a 60 s setup
 deadline). All three fault images physically returned to C003 by themselves
 (12.4 s, 12.4 s and 72.4 s), and the fail-safe image boots normally. A cold
 start with the PC USB unplugged returned to Android (one owner observation).
-Still open: kernel panic restart (supplementary) and the `usb_burner_reboot`
+A kernel panic (PID1 exit) also restarts back to C003 in 35.6 s (`kernel.panic=20`).
+Still open: the `usb_burner_reboot`
 fallback. C003 bulk OUT transfer is now repaired: `rescue-boot.ps1 -Bulk` loads and boots
 the 8 MiB image in 23 s instead of ~22 min ([evidence](docs/mibox-usb-loader-protocol.md)). This takes
 precedence over further feature work and default power-on installation.

@@ -28,7 +28,7 @@ unsafe extern "C" {
 /// Build-time fault injection for RAM test candidates only. Normal builds
 /// leave `MIBOX_FAULT` unset; never flash an image built with it.
 pub fn injected() -> Option<&'static str> {
-    option_env!("MIBOX_FAULT").filter(|value| matches!(*value, "panic" | "usb" | "hang"))
+    option_env!("MIBOX_FAULT").filter(|value| matches!(*value, "panic" | "usb" | "hang" | "kpanic"))
 }
 
 /// Never returns. Logs the reason, syncs with a bound and restarts normally.

@@ -2,10 +2,12 @@
 # fault-injected candidate and require that it restarts back into C003 by itself
 # through the installed preboot USB window. RAM only: no flash, env or Android command.
 param(
-    [Parameter(Mandatory=$true)][ValidateSet('Panic','Usb','Hang')][string]$Fault,
+    [Parameter(Mandatory=$true)][ValidateSet('Panic','Usb','Hang','KPanic')][string]$Fault,
     [ValidateRange(1,600)][int]$WaitSeconds=120,
     [ValidateRange(60,7200)][int]$TransferTimeoutSeconds=3600,
-    [ValidateRange(60,900)][int]$ObserveSeconds=300
+    [ValidateRange(60,900)][int]$ObserveSeconds=300,
+    # Bulk OUT upload verified by loader crc32 (8 s instead of ~22 min).
+    [switch]$Bulk
 )
 $ErrorActionPreference='Stop'
 $repo=Split-Path $PSScriptRoot -Parent
@@ -16,11 +18,13 @@ New-Item -ItemType Directory -Path $evidence | Out-Null
 $candidate='Fault'+$Fault
 $hash=@{Panic='426731f53fccc0e76a402396b655ca85d1ba21178679dfdd3e4cb1b3afc63a0a'
         Usb='97a9b47bc975eb79e3c1c8355780aa6f5c5d0877974097c7c3c5a10a1e84b987'
-        Hang='987851820bbe33d3aaef9668ed56f8cbdc4431b9c0afbaf78aaa0a1ffac8130b'}[$Fault]
+        Hang='987851820bbe33d3aaef9668ed56f8cbdc4431b9c0afbaf78aaa0a1ffac8130b'
+        KPanic='e1a698204599c9cf5e407604099646914e20cd5e771911de3bccc52572c6fdb4'}[$Fault]
 # Seconds from bootm to C003 re-entry. Hang must outlive the 60 s setup deadline.
-$window=@{Panic=@(0,60);Usb=@(0,60);Hang=@(60,180)}[$Fault]
+# KPanic: PID1 exits, the kernel panics and must restart after kernel.panic=20 s.
+$window=@{Panic=@(0,60);Usb=@(0,60);Hang=@(60,180);KPanic=@(25,120)}[$Fault]
 $adb=Join-Path $repo 'phone-tools/platform-tools/adb.exe'
-$proof=[ordered]@{Fault=$Fault;Candidate=$candidate;ImageSHA256=$hash;Stage='LocalCheck'
+$proof=[ordered]@{Fault=$Fault;Candidate=$candidate;ImageSHA256=$hash;Stage='LocalCheck';BulkUpload=[bool]$Bulk
     ExpectedReentrySeconds=$window;DeviceAccessed=$false;FlashCommandSent=$false
     EnvironmentWriteSent=$false;AndroidCommandSent=$false;FailSafeVerified=$false
     StartedAt=[DateTime]::UtcNow.ToString('o');Evidence=$evidence}
@@ -60,7 +64,7 @@ try {
     }
     $proof.Stage='UploadAndBoot'
     $transfer=(Call-Script 'upload-and-boot' 'Test-MiboxLoaderRam.ps1' (
-        "-Action UploadAndBoot -Candidate $candidate -ControlTimeoutMilliseconds 10000") $TransferTimeoutSeconds).Output | ConvertFrom-Json
+        "-Action UploadAndBoot -Candidate $candidate -ControlTimeoutMilliseconds 10000"+$(if($Bulk){' -Bulk'}else{''})) $TransferTimeoutSeconds).Output | ConvertFrom-Json
     Assert-RamBootRecord $transfer Transfer $hash
     $proof.Transfer=$transfer
     $proof.Stage='ObserveRestart'
