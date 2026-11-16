@@ -3,8 +3,9 @@
 Target: Xiaomi MDZ-06-AA / casablanca, Amlogic Meson6, ARMv7.
 First milestone: retain the device's stock kernel and develop custom userspace.
 
-Current highest priority (P0): [custom-system ADB rescue and automatic return to
-the USB loader](docs/plans/2026-11-15-custom-system-rescue.md). The installed
+P0 [custom-system ADB rescue and automatic return to
+the USB loader](docs/plans/2026-11-15-custom-system-rescue.md) is **READY** (2026-11-16);
+see the [rescue procedure](docs/mibox-rescue-procedure.md). The installed
 preboot USB window makes every restart pass C003. Custom system -> C003 ->
 custom RAM boot and host-attached cold entry have both passed without Android.
 PID1 now restarts on early faults (panic, USB setup failure or a 60 s setup
