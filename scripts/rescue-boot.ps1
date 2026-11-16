@@ -2,7 +2,7 @@
 # No Android query, software reboot, flash or environment command is issued.
 param(
     [ValidateSet('Check','WaitAndBoot')][string]$Action='Check',
-    [ValidateSet('Console','FailSafe')][string]$Candidate='Console',
+    [ValidateSet('Console','FailSafe','Loader')][string]$Candidate='Console',
     [ValidateRange(1,600)][int]$WaitSeconds=120,
     [ValidateRange(60,7200)][int]$TransferTimeoutSeconds=3600,
     # Bulk OUT upload verified by loader crc32 (see Test-MiboxLoaderRam.ps1).
@@ -16,10 +16,17 @@ New-Item -ItemType Directory -Path $evidence | Out-Null
 . (Join-Path $PSScriptRoot 'RamBootValidation.ps1')
 $hash='4629deefd4e5e0f1902a54158ef01c7ad67156ef87946fb6d87c7070ba5da7c0'
 $initHash='9333195a11b758f7531547008b927849da228ceddb41398d3d2b8bca25258438'
+$miboxHash='e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07'
 if($Candidate -eq 'FailSafe') {
     # Pinned Console rootfs with only /init replaced by the fail-safe PID1.
     $hash='f5e9cd6b8677504429340dcc1f51261fd10108020366461c0cede198afcd6d93'
     $initHash='a24de13aecd55829483099ab921fdd3651a481656e404b68874017c99267680c'
+}
+if($Candidate -eq 'Loader') {
+    # FailSafe-style Console rootfs with init and /bin/mibox from the loader-restart feature build.
+    $hash='9c45436205964fabb2f2a113a7b65be524a3f1acde0933f2c5a4b1b460c8b58c'
+    $initHash='9b633cdefa3747a2fdfcf7e30eac5c6df0675734569ef51d77813a98d538194c'
+    $miboxHash='d182d76d308acbc1f372e1ac218fa7508ecbe87ebf475ac4d8f6f4f39ee33a8e'
 }
 $proof=[ordered]@{Action=$Action;Stage='LocalCheck';Candidate=$Candidate;ImageSHA256=$hash;BulkUpload=[bool]$Bulk
     DeviceAccessed=$false;LoaderRequestSent=$false;FlashCommandSent=$false
@@ -87,7 +94,7 @@ try {
         }
     }
     foreach($item in @(@('/init',$initHash,'init'),
-                       @('/bin/mibox','e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07','mibox'))) {
+                       @('/bin/mibox',$miboxHash,'mibox'))) {
         $output=Join-Path $evidence ($item[2]+'.elf')
         [void](Run-Process ('pull-'+$item[2]) $adb ('-s 248243005297 pull '+$item[0]+' "'+$output+'"') 20)
         $actualHash=(Get-FileHash -Algorithm SHA256 -LiteralPath $output).Hash.ToLowerInvariant()

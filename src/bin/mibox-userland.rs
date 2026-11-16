@@ -109,6 +109,12 @@ fn main() -> io::Result<()> {
                 _ => return Err(io::Error::other("usage: reboot-android --check | reboot-android --boot-id CURRENT_BOOT_ID")),
             }
         }
+        "reboot-loader" => {
+            match args.get(1).map(String::as_str) {
+                Some("--boot-id") if args.len() == 3 => ram_control::request_loader(&args[2])?,
+                _ => return Err(io::Error::other("usage: reboot-loader --boot-id CURRENT_BOOT_ID")),
+            }
+        }
         "--child-probe" => std::process::exit(17),
         "uname" => {
             let fields = uts_fields()?;
@@ -202,7 +208,7 @@ fn main() -> io::Result<()> {
         }
         _ => {
             return Err(io::Error::other(
-                "commands: info, health, uname, id, uptime, mounts, ps, net, ls [path], cat path, ram-selftest, selftest, reboot-android --check | --boot-id CURRENT_BOOT_ID",
+                "commands: info, health, uname, id, uptime, mounts, ps, net, ls [path], cat path, ram-selftest, selftest, reboot-android --check | --boot-id CURRENT_BOOT_ID, reboot-loader --boot-id CURRENT_BOOT_ID",
             ))
         }
     }

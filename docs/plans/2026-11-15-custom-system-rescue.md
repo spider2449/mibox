@@ -1,6 +1,6 @@
 # 最高優先：自製系統 ADB 救援與自動返回 USB loader
 
-日期：2026-11-15。優先級：P0（最高）。狀態：**READY**（2026-11-16），操作流程見 [救援流程](../mibox-rescue-procedure.md)；`usb_burner_reboot` 備援仍 NOT_TESTED。
+日期：2026-11-15。優先級：P0（最高）。狀態：**READY**（2026-11-16），操作流程見 [救援流程](../mibox-rescue-procedure.md)；`usb_burner_reboot` 備援請求路徑 PASS，移除視窗後的測試 NOT_TESTED。
 
 ## 現況（2026-11-16）
 
@@ -41,7 +41,7 @@ QEMU：`python3 scripts/test-fail-safe-qemu.py`（WSL）。
 3. ~~實機：三種故障映像各自重啟回 C003~~ PASS（`scripts/Test-MiboxFailSafe.ps1`）。
    從 C003 載回正常映像：`scripts/rescue-boot.ps1 -Action WaitAndBoot -Candidate FailSafe`。
 4. ~~實機：kernel panic 是否在約 20 秒內重啟~~ PASS（`scripts/Test-MiboxFailSafe.ps1 -Fault KPanic -Bulk`，35.6 秒回 C003）。
-5. 備援：`usb_burner_reboot` 受控操作（見下方原第 1、2 步）。
+5. 備援：`usb_burner_reboot` 受控操作。請求路徑 PASS（`Loader` 候選映像，cargo feature `loader-restart`，預設建置拒絕；3.5 秒回 C003，QEMU 確認 kernel 以 `usb_burner_reboot` 重啟）。preboot 視窗仍在時無法區分兩條路徑；移除視窗後的決定性測試 NOT_TESTED（需 env 寫入，待擁有者決定）。見 [救援流程](../mibox-rescue-procedure.md#fallback-restart-into-the-usb-loader-by-reason)。
 6. ~~操作文件與狀態判定~~ 完成：[救援流程](../mibox-rescue-procedure.md)。手動閉環與三種自動退回（加上補充的 kernel panic）皆 PASS，本範圍判定 READY。
 
 P0 之後的下一項（2026-11-16 擁有者同意）：修復 C003 bulk 傳輸。目前每個 8 MiB 映像

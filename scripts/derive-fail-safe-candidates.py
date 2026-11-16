@@ -1,9 +1,10 @@
 """Derive LOCAL fail-safe RAM candidates from the pinned Console rootfs.
 
-Only the `init` entry changes; every other byte of the verified Console archive
-is kept, so this needs no Alpine rebuild. Never uploads or writes a device.
+Only `init` (and, for the loader variant, `bin/mibox`) changes; every other byte
+of the verified Console archive is kept, so this needs no Alpine rebuild. Never uploads or writes a device.
 Variants: failsafe (normal build) and fault-panic/usb/hang/kpanic (MIBOX_FAULT builds,
-RAM tests only, never flash). Run under WSL after building the init binaries.
+RAM tests only, never flash) and loader (feature loader-restart: init plus
+bin/mibox, adds the PID1 LOADER request). Run under WSL after building the init binaries.
 """
 import argparse
 import gzip
@@ -13,13 +14,18 @@ import json
 from pathlib import Path
 
 PINNED_GZIP = 'ff1bed630868c0bdbcdfeed3b8c7466c84b3904b0a32ff90746e8e8e52aa51c3'
-RELEASE = 'armv7-unknown-linux-musleabihf/release/mibox-init'
+RELEASE = 'armv7-unknown-linux-musleabihf/release'
+# rootfs entry -> binary name under RELEASE
+BINARIES = {'init': 'mibox-init', 'bin/mibox': 'mibox-userland'}
 VARIANTS = {'failsafe': ('target', None), 'fault-panic': ('target/fault-panic', 'panic'),
             'fault-usb': ('target/fault-usb', 'usb'), 'fault-hang': ('target/fault-hang', 'hang'),
-            'fault-kpanic': ('target/fault-kpanic', 'kpanic')}
+            'fault-kpanic': ('target/fault-kpanic', 'kpanic'),
+            'loader': ('target/loader-restart', None)}
+# Entries each variant replaces; all others must stay byte-identical.
+CHANGED = {'loader': ('init', 'bin/mibox')}
 
 
-def replace_init(archive, init):
+def replace_entry(archive, target, init):
     out = bytearray()
     offset = 0
     replaced = old = None
@@ -33,9 +39,9 @@ def replace_init(archive, init):
         data_start = name_end + (-name_end % 4)
         data_end = data_start + size
         next_offset = data_end + (-data_end % 4)
-        if name == 'init':
+        if name == target:
             if replaced:
-                raise ValueError('duplicate init entry')
+                raise ValueError(f'duplicate {target} entry')
             old = bytes(archive[data_start:data_end])
             fields[6] = len(init)
             header = b'070701' + ''.join(f'{f:08x}' for f in fields).encode()
@@ -51,7 +57,7 @@ def replace_init(archive, init):
             out += archive[offset:]
             break
     if not replaced:
-        raise ValueError('init entry absent')
+        raise ValueError(f'{target} entry absent')
     return bytes(out), old
 
 
@@ -95,31 +101,44 @@ def main():
     summary = {}
     for variant in args.variants:
         directory, fault = VARIANTS[variant]
-        init = (root / directory / RELEASE).read_bytes()
-        updated, old = replace_init(archive, init)
-        if hashlib.sha256(old).hexdigest() != metadata['files']['init']['sha256']:
-            raise ValueError('pinned rootfs init does not match its manifest')
+        changed = CHANGED.get(variant, ('init',))
+        updated = archive
+        replacements = {}
+        for name in changed:
+            data = (root / directory / RELEASE / BINARIES[name]).read_bytes()
+            updated, old = replace_entry(updated, name, data)
+            if hashlib.sha256(old).hexdigest() != metadata['files'][name]['sha256']:
+                raise ValueError(f'pinned rootfs {name} does not match its manifest')
+            replacements[name] = (data, old)
         before, after = entries(archive), entries(updated)
-        if after.pop('init') != init or before.pop('init') != old or before != after:
-            raise ValueError('derived archive differs outside init')
-        if replace_init(updated, old)[0] != archive:
-            raise ValueError('restoring the old init does not reproduce the pinned archive')
+        for name, (data, old) in replacements.items():
+            if after.pop(name) != data or before.pop(name) != old:
+                raise ValueError(f'derived {name} entry is wrong')
+        if before != after:
+            raise ValueError('derived archive differs outside the replaced entries')
+        restored = updated
+        for name, (_, old) in replacements.items():
+            restored = replace_entry(restored, name, old)[0]
+        if restored != archive:
+            raise ValueError('restoring the old entries does not reproduce the pinned archive')
         output_gz = gzip.compress(updated, mtime=0)
         rootfs = root / f'target/mibox-rootfs-console-{variant}'
         rootfs.mkdir(parents=True, exist_ok=True)
         (rootfs / 'initramfs.NOT_READY.cpio.gz').write_bytes(output_gz)
         derived = dict(metadata)
         derived['files'] = dict(metadata['files'])
-        derived['files']['init'] = dict(bytes=len(init), sha256=hashlib.sha256(init).hexdigest())
+        for name, (data, _) in replacements.items():
+            derived['files'][name] = dict(bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
         derived.update(status='HOST_BUILT_NOT_PHYSICALLY_VALIDATED', gzip_bytes=len(output_gz),
                        gzip_sha256=hashlib.sha256(output_gz).hexdigest(),
-                       derived_from_gzip_sha256=PINNED_GZIP, changed_entries=['init'],
+                       derived_from_gzip_sha256=PINNED_GZIP, changed_entries=list(changed),
                        injected_fault=fault, never_flash=fault is not None)
         (rootfs / 'manifest.json').write_text(json.dumps(derived, indent=2) + '\n')
         out = root / f'target/mibox-boot-candidate-console-{variant}'
         candidate.build(root, out, rootfs)
         report = json.loads((out / 'manifest.json').read_text())
         summary[variant] = dict(fault=fault, init_sha256=derived['files']['init']['sha256'],
+                                userland_sha256=derived['files']['bin/mibox']['sha256'],
                                 rootfs_gzip_bytes=len(output_gz), rootfs_sha256=derived['gzip_sha256'],
                                 image_sha256=report['sha256'], used_aligned_bytes=report['used_aligned_bytes'],
                                 slack_bytes=report['bytes'] - report['used_aligned_bytes'])

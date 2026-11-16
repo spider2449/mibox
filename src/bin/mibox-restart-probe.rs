@@ -102,6 +102,33 @@ fn main() -> io::Result<()> {
         )
         .as_bytes(),
     )?;
+    let loader = cmdline.split_whitespace().any(|v| v == "mibox.test_loader=1");
+    let current = fs::read_to_string("/proc/sys/kernel/random/boot_id")?;
+    rejected(b"LOADER 00000000-0000-0000-0000-000000000000\n")?;
+    rejected(format!("LOADER {}\nEXTRA\n", current.trim()).as_bytes())?;
+    if loader {
+        let stale = Command::new("/bin/mibox")
+            .args(["reboot-loader", "--boot-id", "stale"])
+            .uid(2000)
+            .gid(2000)
+            .output()?;
+        if stale.status.success() {
+            return Err(io::Error::other("loader client accepted stale boot ID"));
+        }
+        check()?;
+        println!("MIBOX_QEMU_LOADER_CHECKS_OK stale=denied malformed=denied listener=alive");
+        io::stdout().flush()?;
+        let result = Command::new("/bin/mibox")
+            .args(["reboot-loader", "--boot-id", current.trim()])
+            .uid(2000)
+            .gid(2000)
+            .status()?;
+        return Err(io::Error::other(format!(
+            "guest did not restart for LOADER before client returned: {result}"
+        )));
+    }
+    // Default builds have no LOADER operation: the current boot ID is rejected too.
+    rejected(format!("LOADER {}\n", current.trim()).as_bytes())?;
     rejected(b"CHECK\nEXTRA\n")?;
     rejected(&[b'x'; 129])?;
     // A peer that never sends EOF must not hold the server indefinitely.

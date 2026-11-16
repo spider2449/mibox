@@ -10,11 +10,15 @@ parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--with-stock-adb', action='store_true', help='QEMU-only stock adbd compatibility rootfs')
 parser.add_argument('--with-stock-adb-auth', action='store_true', help='include only a dedicated QEMU public key')
 parser.add_argument('--with-restart-probe', action='store_true', help='include QEMU-only RAM restart integration probe')
+parser.add_argument('--loader-restart', action='store_true', help='restart probe with init/userland from target/loader-restart (feature loader-restart)')
 args = parser.parse_args()
+if args.loader_restart:
+    args.with_restart_probe = True
+release = root / ('target/loader-restart' if args.loader_restart else 'target') / 'armv7-unknown-linux-musleabihf/release'
 if args.with_stock_adb_auth:
     args.with_stock_adb = True
-binary = root / 'target/armv7-unknown-linux-musleabihf/release/mibox-init'
-destination = root / ('target/qemu-restart' if args.with_restart_probe else 'target/qemu-adb-auth' if args.with_stock_adb_auth else
+binary = release / 'mibox-init'
+destination = root / ('target/qemu-loader-restart' if args.loader_restart else 'target/qemu-restart' if args.with_restart_probe else 'target/qemu-adb-auth' if args.with_stock_adb_auth else
                       'target/qemu-adb' if args.with_stock_adb else 'target/qemu')
 destination.mkdir(parents=True, exist_ok=True)
 archive = bytearray()
@@ -35,7 +39,7 @@ for directory in ('dev', 'proc', 'sys', 'bin', 'etc', 'tmp'):
 entry('dev/console', 0o020600, major=5, minor=1)
 payload = binary.read_bytes()
 entry('init', 0o100755, payload)
-toolbox = (root / 'target/armv7-unknown-linux-musleabihf/release/mibox-userland').read_bytes()
+toolbox = (release / 'mibox-userland').read_bytes()
 identity = (root / 'assets/rootfs/os-release').read_bytes()
 entry('bin/mibox', 0o100755, toolbox)
 entry('etc/os-release', 0o100444, identity)

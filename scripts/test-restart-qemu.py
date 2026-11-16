@@ -9,15 +9,18 @@ import time
 from pathlib import Path
 
 
-def run(root, guard, evidence_root=None):
-    evidence = (evidence_root or root / 'artifacts/qemu-restart') / ('platform-guard' if guard else 'normal-restart')
+def run(root, guard, evidence_root=None, loader=False):
+    name = 'loader-restart' if loader else 'platform-guard' if guard else 'normal-restart'
+    evidence = (evidence_root or root / 'artifacts/qemu-restart') / name
     evidence.mkdir(parents=True, exist_ok=True)
-    initramfs = root / 'target/qemu-restart/initramfs.cpio.gz'
+    # The loader case uses init/userland built with the loader-restart feature.
+    initramfs = root / ('target/qemu-loader-restart' if loader else 'target/qemu-restart') / 'initramfs.cpio.gz'
     command = ['qemu-system-arm', '-machine', 'virt', '-cpu', 'cortex-a15',
                '-m', '256', '-nic', 'none', '-display', 'none', '-monitor', 'none',
                '-serial', 'stdio', '-no-reboot', '-kernel', str(root / 'phone-tools/qemu/vmlinuz'),
                '-initrd', str(initramfs), '-append', 'console=ttyAMA0,115200 rdinit=/init panic=0 '
-               + ('mibox.test_restart_guard=1' if guard else 'mibox.test_restart=1')]
+               + ('mibox.test_restart_guard=1' if guard else 'mibox.test_restart=1')
+               + (' mibox.test_loader=1' if loader else '')]
     process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=0)
     selector = selectors.DefaultSelector()
     selector.register(process.stdout, selectors.EVENT_READ)
@@ -44,7 +47,12 @@ def run(root, guard, evidence_root=None):
                 observed_exit = process.wait(timeout=5)
                 # Drain bytes queued before process exit, including the kernel restart line.
                 log.extend(process.stdout.read())
-                if observed_exit != 0 or b'MIBOX_QEMU_RESTART_CHECKS_OK' not in log or b'reboot: Restarting system' not in log:
+                if loader:
+                    if (observed_exit != 0 or b'MIBOX_QEMU_LOADER_CHECKS_OK' not in log
+                            or b'MIBOX_LOADER_RESTART_REQUESTED' not in log
+                            or b"Restarting system with command 'usb_burner_reboot'" not in log):
+                        raise RuntimeError('guest exit did not establish the usb_burner_reboot restart')
+                elif observed_exit != 0 or b'MIBOX_QEMU_RESTART_CHECKS_OK' not in log or b'reboot: Restarting system' not in log:
                     raise RuntimeError('guest exit did not establish the tested restart')
                 break
         else:
@@ -65,17 +73,20 @@ def run(root, guard, evidence_root=None):
             command=command, failure=failure, passed=failure is None,
             initramfs_sha256=hashlib.sha256(initramfs.read_bytes()).hexdigest(),
             kernel_sha256=hashlib.sha256((root / 'phone-tools/qemu/vmlinuz').read_bytes()).hexdigest(),
-            platform_guard=guard, guest_exit_before_host_cleanup=observed_exit,
+            platform_guard=guard, loader_restart=loader, guest_exit_before_host_cleanup=observed_exit,
             scope='Generic QEMU ARM only; not physical MiBOX Android return.'), indent=2) + '\n')
     if failure:
         raise SystemExit(failure)
-    print('QEMU restart test passed: ' + ('platform guard' if guard else 'UID2000 request and kernel restart'))
+    print('QEMU restart test passed: ' + ('usb_burner_reboot LOADER request' if loader else 'platform guard' if guard else 'UID2000 request and kernel restart'))
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument('--evidence', type=Path, help='separate evidence root for this revision')
+    parser.add_argument('--loader', action='store_true', help='also run the loader-restart feature build')
     args = parser.parse_args()
     run(args.root, True, args.evidence)
     run(args.root, False, args.evidence)
+    if args.loader:
+        run(args.root, False, args.evidence, loader=True)

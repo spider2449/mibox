@@ -89,7 +89,8 @@ Typical timing with `-Bulk`: about 8 s upload, about 23 s from loader to verifie
 | Auto return: kernel panic (supplementary) | **PASS**, 35.6 s | `artifacts/fail-safe/20261116-215504-379-kpanic/` |
 | Cold entry with host attached | **PASS** (two cold starts) | `artifacts/console-ssh/launcher-20261115-212455` |
 | Cold start without host continues to existing boot | **PASS** (one owner observation, no host record) | plan status table |
-| `usb_burner_reboot` fallback | **NOT_TESTED** (backup only; matters only if the env window is lost) | — |
+| `usb_burner_reboot` request from the custom system (`Loader` candidate) | **PASS** for the request path: C003 after 3.5 s, stale ID refused; QEMU shows the kernel restarts with command `usb_burner_reboot` | `artifacts/loader-restart/20261116-220632-376/`, `artifacts/qemu-restart/loader-20261116/` |
+| Same request with the preboot window removed (proves the 0x09090909 branch alone) | **NOT_TESTED**; needs an env write to remove the window, owner decision | — |
 
 Fault images were RAM-only (`MIBOX_FAULT` builds) and none were flashed. Each fault case was
 run with `scripts/Test-MiboxFailSafe.ps1 -Fault <Panic|Usb|Hang|KPanic> [-Bulk]`.
@@ -97,10 +98,35 @@ run with `scripts/Test-MiboxFailSafe.ps1 -Fault <Panic|Usb|Hang|KPanic> [-Bulk]`
 ## Limits of this guarantee
 
 - Everything depends on the preboot window in the env. If the env is lost or reset, warm restarts no longer
-  pass C003, and only the untested `usb_burner_reboot` fallback or a cold-entry path is left.
+  pass C003. The `Loader` candidate's `usb_burner_reboot` request is then the fallback; its loader
+  branch is proven from Android on the same kernel, but not yet from the custom system without the window.
 - It does not cover a kernel or PID1 that cannot run at all, a damaged bootloader, or failed storage.
 - Without a host, the window expires and the existing boot partition starts (Android today). Once a custom
   system is written to the boot partition, a crashing image will restart in a loop with no host attached. Revisit this
   before any persistent installation.
 - A successful RAM reload does not prove that a partition can be flashed back.
 - The bulk path checks the uploaded data with the loader's `crc32` plus 129 sampled blocks, not a byte-for-byte readback.
+
+## Fallback: restart into the USB loader by reason
+
+For use if the preboot window is ever lost. The `Loader` candidate
+(`9c454362…`, init `9b633cde…`, `/bin/mibox` `d182d76d…`) is the FailSafe image
+built with the cargo feature `loader-restart`. Its PID1 also accepts
+`LOADER <current boot_id>`, under the same root-PID1, custom-OS, RAM-only-mounts and
+stock-kernel checks as the normal restart. It then calls
+`reboot(LINUX_REBOOT_CMD_RESTART2, "usb_burner_reboot")`; the stock kernel maps
+that to reason 0x09090909 (`usb_burning`) ([loader branches](mibox-loader-entry-branches.md)).
+Default builds, including the pinned FailSafe image, reject `LOADER`.
+
+```powershell
+powershell -NoProfile -File scripts/rescue-boot.ps1 -Action WaitAndBoot -Candidate Loader -Bulk
+adb -s 248243005297 shell /bin/mibox reboot-loader --boot-id <current boot_id>
+# or the evidence-keeping test: scripts/Test-MiboxLoaderRestart.ps1
+```
+
+Limits:
+- Like RESTART, it is refused while any non-RAM filesystem is mounted. Unmount persistent data first.
+- This adbd returns exit code 0 even when the command fails, so check the output
+  (`boot ID does not match current boot` means refused). The accept reply is usually lost to the restart.
+- With the window installed, a normal restart reaches C003 in about 4 s and this request in 3.5 s, so the
+  physical run proves the request path only. The bootloader branch is proven statically and from Android.

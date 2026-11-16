@@ -9,6 +9,8 @@ default-run = "mibox-probe"
 [features]
 device-userspace-test = []
 container-kernel-test = []
+# PID1 LOADER request: restart with usb_burner_reboot (preboot-window fallback).
+loader-restart = []
 
 [[bin]]
 name = "mibox-userspace-test"

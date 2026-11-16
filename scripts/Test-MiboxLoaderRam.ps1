@@ -1,8 +1,8 @@
 param([Parameter(Mandatory=$true)][ValidateSet('SelfTest','BulkTest','Status','Reset','UploadCandidate','BootCandidate','UploadAndBoot')][string]$Action,[switch]$Bulk,
-    [ValidateSet('Baseline','Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture','Console','ContainerKernel','ContainerKernel2','DockerKernel','DockerKernel2','FailSafe','FaultPanic','FaultUsb','FaultHang','FaultKPanic')][string]$Candidate='Baseline',[switch]$VerifyOnly,
+    [ValidateSet('Baseline','Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture','Console','ContainerKernel','ContainerKernel2','DockerKernel','DockerKernel2','FailSafe','FaultPanic','FaultUsb','FaultHang','FaultKPanic','Loader')][string]$Candidate='Baseline',[switch]$VerifyOnly,
     [ValidateRange(3000,15000)][int]$ControlTimeoutMilliseconds=3000)
 $ErrorActionPreference='Stop'
-if($Candidate -in @('Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture','Console','ContainerKernel','ContainerKernel2','DockerKernel','DockerKernel2','FailSafe','FaultPanic','FaultUsb','FaultHang','FaultKPanic') -and $Action -ne 'UploadAndBoot') {
+if($Candidate -in @('Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture','Console','ContainerKernel','ContainerKernel2','DockerKernel','DockerKernel2','FailSafe','FaultPanic','FaultUsb','FaultHang','FaultKPanic','Loader') -and $Action -ne 'UploadAndBoot') {
     throw 'Versioned candidate requires full upload/readback/boot in one session'
 }
 if($VerifyOnly -and $Action -notin @('UploadCandidate','BootCandidate','UploadAndBoot')) {
@@ -186,6 +186,7 @@ namespace MiboxLoader {
       else if(preset=="FaultUsb")expected="97a9b47bc975eb79e3c1c8355780aa6f5c5d0877974097c7c3c5a10a1e84b987";
       else if(preset=="FaultHang")expected="987851820bbe33d3aaef9668ed56f8cbdc4431b9c0afbaf78aaa0a1ffac8130b";
       else if(preset=="FaultKPanic")expected="e1a698204599c9cf5e407604099646914e20cd5e771911de3bccc52572c6fdb4";
+      else if(preset=="Loader")expected="9c45436205964fabb2f2a113a7b65be524a3f1acde0933f2c5a4b1b460c8b58c";
       else throw new Exception("Unknown pinned candidate");
       if(image==null || image.Length!=8388608 || Hash(image)!=expected)throw new Exception("Candidate hash/size mismatch before USB access");
       return expected;
@@ -361,6 +362,7 @@ if($Action -in @('UploadCandidate','BootCandidate','UploadAndBoot')) {
         'FaultUsb' {'mibox-boot-candidate-console-fault-usb'}
         'FaultHang' {'mibox-boot-candidate-console-fault-hang'}
         'FaultKPanic' {'mibox-boot-candidate-console-fault-kpanic'}
+        'Loader' {'mibox-boot-candidate-console-loader'}
         default {'mibox-boot-candidate'}
     }
     $candidatePath=Join-Path $PSScriptRoot ('../target/'+$directory+'/boot1-custom.NOT_READY.img')
