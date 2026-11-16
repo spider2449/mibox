@@ -2,6 +2,7 @@
 # No Android query, software reboot, flash or environment command is issued.
 param(
     [ValidateSet('Check','WaitAndBoot')][string]$Action='Check',
+    [ValidateSet('Console','FailSafe')][string]$Candidate='Console',
     [ValidateRange(1,600)][int]$WaitSeconds=120,
     [ValidateRange(60,7200)][int]$TransferTimeoutSeconds=3600
 )
@@ -12,7 +13,13 @@ New-Item -ItemType Directory -Path $evidence | Out-Null
 . (Join-Path $PSScriptRoot 'RamBootProcess.ps1')
 . (Join-Path $PSScriptRoot 'RamBootValidation.ps1')
 $hash='4629deefd4e5e0f1902a54158ef01c7ad67156ef87946fb6d87c7070ba5da7c0'
-$proof=[ordered]@{Action=$Action;Stage='LocalCheck';Candidate='Console';ImageSHA256=$hash
+$initHash='9333195a11b758f7531547008b927849da228ceddb41398d3d2b8bca25258438'
+if($Candidate -eq 'FailSafe') {
+    # Pinned Console rootfs with only /init replaced by the fail-safe PID1.
+    $hash='f5e9cd6b8677504429340dcc1f51261fd10108020366461c0cede198afcd6d93'
+    $initHash='a24de13aecd55829483099ab921fdd3651a481656e404b68874017c99267680c'
+}
+$proof=[ordered]@{Action=$Action;Stage='LocalCheck';Candidate=$Candidate;ImageSHA256=$hash
     DeviceAccessed=$false;LoaderRequestSent=$false;FlashCommandSent=$false
     EnvironmentWriteSent=$false;CustomBootVerified=$false;IndependentColdEntryVerified=$false
     EntryOrigin='UNKNOWN: supplied externally; this launcher does not establish a cold-start trigger'
@@ -27,7 +34,7 @@ try {
     @(foreach($file in $sources) {
         @{File=$file;SHA256=(Get-FileHash -Algorithm SHA256 -LiteralPath (Join-Path $PSScriptRoot $file)).Hash.ToLowerInvariant()}
     }) | ConvertTo-Json | Set-Content -Encoding UTF8 -LiteralPath (Join-Path $evidence 'provenance.json')
-    $local=Call-Script 'local-check' 'Test-MiboxLoaderRam.ps1' '-Action UploadAndBoot -Candidate Console -VerifyOnly' 30
+    $local=Call-Script 'local-check' 'Test-MiboxLoaderRam.ps1' "-Action UploadAndBoot -Candidate $Candidate -VerifyOnly" 30
     Assert-RamBootRecord ($local.Output | ConvertFrom-Json) Local $hash
     if($Action -eq 'Check') {
         $proof.Stage='LocalCheckPassed'
@@ -66,7 +73,7 @@ try {
     }
     $proof.Stage='UploadAndVerify'
     $transfer=(Call-Script 'upload-and-boot' 'Test-MiboxLoaderRam.ps1' (
-        '-Action UploadAndBoot -Candidate Console -ControlTimeoutMilliseconds 10000') $TransferTimeoutSeconds).Output | ConvertFrom-Json
+        "-Action UploadAndBoot -Candidate $Candidate -ControlTimeoutMilliseconds 10000") $TransferTimeoutSeconds).Output | ConvertFrom-Json
     Assert-RamBootRecord $transfer Transfer $hash
     $proof.Transfer=$transfer
     $proof.Stage='VerifyCustomRuntime'
@@ -77,7 +84,7 @@ try {
             throw 'Incomplete runtime identity output'
         }
     }
-    foreach($item in @(@('/init','9333195a11b758f7531547008b927849da228ceddb41398d3d2b8bca25258438','init'),
+    foreach($item in @(@('/init',$initHash,'init'),
                        @('/bin/mibox','e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07','mibox'))) {
         $output=Join-Path $evidence ($item[2]+'.elf')
         [void](Run-Process ('pull-'+$item[2]) $adb ('-s 248243005297 pull '+$item[0]+' "'+$output+'"') 20)

@@ -1,0 +1,161 @@
+﻿{
+    "Scope":  "Isolated host orchestration fixtures; hashes and transports mocked",
+    "Cases":  [
+                  {
+                      "Case":  "check",
+                      "Pass":  true,
+                      "Calls":  [
+                                    "",
+                                    "local-check"
+                                ]
+                  },
+                  {
+                      "Case":  "bad-local",
+                      "Pass":  true,
+                      "Calls":  [
+                                    "",
+                                    "local-check"
+                                ]
+                  },
+                  {
+                      "Case":  "absent",
+                      "Pass":  true,
+                      "Calls":  [
+                                    "",
+                                    "local-check",
+                                    "pnp",
+                                    "pnp"
+                                ]
+                  },
+                  {
+                      "Case":  "ambiguous",
+                      "Pass":  true,
+                      "Calls":  [
+                                    "",
+                                    "local-check",
+                                    "pnp"
+                                ]
+                  },
+                  {
+                      "Case":  "bad-driver",
+                      "Pass":  true,
+                      "Calls":  [
+                                    "",
+                                    "local-check",
+                                    "pnp"
+                                ]
+                  },
+                  {
+                      "Case":  "wrong-loader",
+                      "Pass":  true,
+                      "Calls":  [
+                                    "",
+                                    "local-check",
+                                    "pnp",
+                                    "loader-identify"
+                                ]
+                  },
+                  {
+                      "Case":  "process-failure",
+                      "Pass":  true,
+                      "Calls":  [
+                                    "",
+                                    "local-check",
+                                    "pnp",
+                                    "loader-identify"
+                                ]
+                  },
+                  {
+                      "Case":  "stale-adb",
+                      "Pass":  true,
+                      "Calls":  [
+                                    "",
+                                    "local-check",
+                                    "pnp",
+                                    "loader-identify",
+                                    "pre-upload-adb"
+                                ]
+                  },
+                  {
+                      "Case":  "short-transfer",
+                      "Pass":  true,
+                      "Calls":  [
+                                    "",
+                                    "local-check",
+                                    "pnp",
+                                    "loader-identify",
+                                    "pre-upload-adb",
+                                    "upload-and-boot"
+                                ]
+                  },
+                  {
+                      "Case":  "bulk-transfer",
+                      "Pass":  true,
+                      "Calls":  [
+                                    "",
+                                    "local-check",
+                                    "pnp",
+                                    "loader-identify",
+                                    "pre-upload-adb",
+                                    "upload-and-boot"
+                                ]
+                  },
+                  {
+                      "Case":  "bad-runtime",
+                      "Pass":  true,
+                      "Calls":  [
+                                    "",
+                                    "local-check",
+                                    "pnp",
+                                    "loader-identify",
+                                    "pre-upload-adb",
+                                    "upload-and-boot",
+                                    "custom-observer"
+                                ]
+                  },
+                  {
+                      "Case":  "incomplete-runtime",
+                      "Pass":  true,
+                      "Calls":  [
+                                    "",
+                                    "local-check",
+                                    "pnp",
+                                    "loader-identify",
+                                    "pre-upload-adb",
+                                    "upload-and-boot",
+                                    "custom-observer"
+                                ]
+                  },
+                  {
+                      "Case":  "wrong-elf",
+                      "Pass":  true,
+                      "Calls":  [
+                                    "",
+                                    "local-check",
+                                    "pnp",
+                                    "loader-identify",
+                                    "pre-upload-adb",
+                                    "upload-and-boot",
+                                    "custom-observer",
+                                    "pull-init"
+                                ]
+                  },
+                  {
+                      "Case":  "valid",
+                      "Pass":  true,
+                      "Calls":  [
+                                    "",
+                                    "local-check",
+                                    "pnp",
+                                    "loader-identify",
+                                    "pre-upload-adb",
+                                    "upload-and-boot",
+                                    "custom-observer",
+                                    "pull-init",
+                                    "pull-mibox"
+                                ]
+                  }
+              ],
+    "DeviceAccess":  false,
+    "Passed":  14
+}

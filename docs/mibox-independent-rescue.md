@@ -40,8 +40,9 @@ See [installation plan and checkpoints](plans/2026-11-15-install-usb-rescue-wind
 The USB host can cancel the bootloader deadline during enumeration/identify.
 With the PC attached, startup may remain in C003 until the host loads a RAM
 image. Keep power and USB attached during a transfer. With no USB host, the
-intended behavior is deadline expiry followed by the existing boot path; that
-case has not yet been tested. Existing boot images still select the original
+deadline expires and the existing boot path continues: on 2026-11-16 the owner
+cold-started the box with the PC USB disconnected and it returned to Android
+(one observation, no host-side log; the window's duration is unmeasured). Existing boot images still select the original
 system; installing this window did not permanently install the custom OS.
 
 An independent cold-start test requires owner-controlled power removal and
@@ -97,8 +98,8 @@ cold power -> C003 -> custom console -> authenticated SSH -> persistent
 userspace, all without Android. The running custom system was reachable by
 ADB reporting the `recovery` USB class; `cat /etc/os-release` confirmed
 `ID=mibox-custom`. That closes the cold entry question for the
-host-attached case. Host-disconnected cold-start continuation (window expiry
-then normal boot with no host) remains unobserved. Bulk transfer remains
+host-attached case. Host-disconnected cold-start continuation was later observed
+once (2026-11-16, owner report): window expiry, then Android. Bulk transfer remains
 unusable on this build: see mibox-usb-loader-protocol.md for the two
 single-shot probes, the correct-framing failure and the descriptor dump.
 
@@ -130,8 +131,8 @@ is insufficient. It does not establish every standard-descriptor handler.
 
 A USB window before the main `bootm` can be placed independently of the custom
 kernel and userspace while still depending on intact bootloader/environment.
-Its installation, host-disconnected continuation and cold-start takeover are
-not yet fully physically verified. The initial audit preceded installation;
+Its installation, host-disconnected continuation (one owner observation) and
+host-attached cold-start takeover have since been physically observed. The initial audit preceded installation;
 the checkpoint above records the later installation and warm restart.
 Reproduce: `python3 scripts/inspect-rescue-window.py` under WSL.
 [Window audit](../artifacts/restoration/2026-11-15/usb-rescue-window-audit.json).

@@ -1,0 +1,19 @@
+﻿{
+    "Fault":  "Panic",
+    "Candidate":  "FaultPanic",
+    "ImageSHA256":  "426731f53fccc0e76a402396b655ca85d1ba21178679dfdd3e4cb1b3afc63a0a",
+    "Stage":  "WaitingForLoader",
+    "ExpectedReentrySeconds":  [
+                                   0,
+                                   60
+                               ],
+    "DeviceAccessed":  true,
+    "FlashCommandSent":  false,
+    "EnvironmentWriteSent":  false,
+    "AndroidCommandSent":  false,
+    "FailSafeVerified":  false,
+    "StartedAt":  "2026-11-16T11:54:04.6663697Z",
+    "Evidence":  "F:\\coding\\otherPrj\\mibox\\artifacts\\fail-safe\\20261116-195404-643-panic",
+    "Failure":  "No ready C003 loader; nothing sent",
+    "FinishedAt":  "2026-11-16T11:56:05.8627298Z"
+}

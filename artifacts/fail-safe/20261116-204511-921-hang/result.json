@@ -1,0 +1,62 @@
+﻿{
+    "Fault":  "Hang",
+    "Candidate":  "FaultHang",
+    "ImageSHA256":  "987851820bbe33d3aaef9668ed56f8cbdc4431b9c0afbaf78aaa0a1ffac8130b",
+    "Stage":  "Passed",
+    "ExpectedReentrySeconds":  [
+                                   60,
+                                   180
+                               ],
+    "DeviceAccessed":  true,
+    "FlashCommandSent":  false,
+    "EnvironmentWriteSent":  false,
+    "AndroidCommandSent":  false,
+    "FailSafeVerified":  true,
+    "StartedAt":  "2026-11-16T12:45:11.9601972Z",
+    "Evidence":  "F:\\coding\\otherPrj\\mibox\\artifacts\\fail-safe\\20261116-204511-921-hang",
+    "LoaderBefore":  {
+                         "Found":  true,
+                         "DevicePath":  "\\\\?\\usb#vid_1b8e\u0026pid_c003#6\u00262b113eed\u00260\u00265#{d925a7f0-61a4-4018-bcd3-f3e5225f3532}",
+                         "VidPid":  "1B8E:C003",
+                         "IdentifyHex":  "00-08-00-10",
+                         "VendorRequestSent":  true,
+                         "InterfaceGuid":  "d925a7f0-61a4-4018-bcd3-f3e5225f3532",
+                         "BootBufferAddress":  null,
+                         "BootBufferHex":  null
+                     },
+    "Transfer":  {
+                     "Found":  true,
+                     "DevicePath":  "\\\\?\\usb#vid_1b8e\u0026pid_c003#6\u00262b113eed\u00260\u00265#{d925a7f0-61a4-4018-bcd3-f3e5225f3532}",
+                     "VidPid":  "1B8E:C003",
+                     "IdentifyHex":  "00-08-00-10",
+                     "VendorRequestSent":  true,
+                     "InterfaceGuid":  "d925a7f0-61a4-4018-bcd3-f3e5225f3532",
+                     "BootBufferAddress":  "0x82000000",
+                     "BootBufferHex":  "AA-AA-AA-AA-4F-49-44-21-6F-79-3B-00-00-80-00-10-0E-92-43-00-00-00-00-11-96-2C-00-00-00-00-F0-10-00-01-00-10-00-08-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00",
+                     "Action":  "UploadAndBoot",
+                     "PatternVerified":  false,
+                     "OriginalRestored":  false,
+                     "VerifiedBytes":  8388608,
+                     "VerifiedSha256":  "987851820bbe33d3aaef9668ed56f8cbdc4431b9c0afbaf78aaa0a1ffac8130b",
+                     "CommandAttempted":  true,
+                     "CommandTransferCompleted":  true,
+                     "StatusHex":  null,
+                     "StatusText":  null,
+                     "BulkMode":  false,
+                     "ControlTimeoutMilliseconds":  10000
+                 },
+    "LoaderLeftSeconds":  0.28405949999999996,
+    "LoaderReturnedSeconds":  72.3848727,
+    "TargetAdbSeen":  false,
+    "LoaderAfter":  {
+                        "Found":  true,
+                        "DevicePath":  "\\\\?\\usb#vid_1b8e\u0026pid_c003#6\u00262b113eed\u00260\u00265#{d925a7f0-61a4-4018-bcd3-f3e5225f3532}",
+                        "VidPid":  "1B8E:C003",
+                        "IdentifyHex":  "00-08-00-10",
+                        "VendorRequestSent":  true,
+                        "InterfaceGuid":  "d925a7f0-61a4-4018-bcd3-f3e5225f3532",
+                        "BootBufferAddress":  null,
+                        "BootBufferHex":  null
+                    },
+    "FinishedAt":  "2026-11-16T13:08:17.6235525Z"
+}

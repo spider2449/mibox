@@ -13,6 +13,8 @@ use std::time::Duration;
 
 #[path = "../android_properties.rs"]
 mod android_properties;
+#[path = "../fail_safe.rs"]
+mod fail_safe;
 #[path = "../ram_control.rs"]
 #[allow(dead_code)]
 mod ram_control;
@@ -70,10 +72,30 @@ fn mount_ram_fs(kind: &str, target: &str) -> io::Result<()> {
     }
 }
 
-fn hold() -> ! {
-    loop {
-        thread::sleep(Duration::from_secs(1));
+/// Starts the requested USB control function and returns the console device.
+/// No request means /dev/console only, which is ready immediately.
+fn setup_usb() -> io::Result<&'static str> {
+    match fail_safe::injected() {
+        Some("usb") => return Err(io::Error::other("injected USB setup fault")),
+        Some("hang") => loop {
+            thread::sleep(Duration::from_secs(1));
+        },
+        _ => {}
     }
+    let adb_requested = usb_adb::requested();
+    let acm_requested = usb_console::requested();
+    if adb_requested && acm_requested {
+        return Err(io::Error::other("conflicting USB ADB and ACM requests"));
+    }
+    if adb_requested {
+        let pid = usb_adb::start()?;
+        eprintln!("MIBOX_USB_ADB_SPAWNED pid={pid}; public-key authentication required; USB only");
+        return Ok("/dev/console");
+    }
+    if acm_requested {
+        return usb_console::enable();
+    }
+    Ok("/dev/console")
 }
 
 fn hardware_test(action: &str) -> io::Result<String> {
@@ -262,14 +284,21 @@ fn main() {
         return;
     }
     // A PID1 panic must not return to the runtime and terminate the process.
+    // The hook never returns; it restarts through the preboot USB window.
     std::panic::set_hook(Box::new(|info| {
         eprintln!("mibox-init panic: {info}");
-        hold();
+        fail_safe::restart("panic");
     }));
     for (kind, path) in [("proc", "/proc"), ("sysfs", "/sys"), ("devtmpfs", "/dev")] {
         if let Err(error) = mount_ram_fs(kind, path) {
-            eprintln!("mibox-init: cannot mount {kind} on {path}: {error}; holding");
-            hold();
+            eprintln!("mibox-init: cannot mount {kind} on {path}: {error}");
+            fail_safe::restart("virtual-filesystem");
+        }
+    }
+    if let Some(fault) = fail_safe::injected() {
+        eprintln!("MIBOX_FAULT_INJECTED={fault}");
+        if fault == "panic" {
+            panic!("injected early fault");
         }
     }
     #[cfg(feature = "container-kernel-test")]
@@ -306,34 +335,32 @@ fn main() {
             eprintln!("mibox-init: kernel selftest unavailable: {error}");
         }
     }
-    let adb_requested = usb_adb::requested();
     thread::spawn(|| {
         if let Err(error) = ram_control::serve(hardware_test) {
             eprintln!("mibox-init: RAM control unavailable: {error}");
         }
     });
-    let acm_requested = usb_console::requested();
-    if adb_requested && acm_requested {
-        eprintln!("mibox-init: conflicting USB requests; keeping /dev/console");
-    } else if adb_requested {
-        match usb_adb::start() {
-            Ok(pid) => eprintln!(
-                "MIBOX_USB_ADB_SPAWNED pid={pid}; public-key authentication required; USB only"
-            ),
-            Err(error) => eprintln!("mibox-init: USB ADB unavailable: {error}; using /dev/console"),
+    // A requested USB control path that fails or stalls leaves no remote
+    // access, so it restarts to the USB loader window instead of continuing.
+    let (setup_done, setup_result) = std::sync::mpsc::channel();
+    thread::spawn(move || {
+        let _ = setup_done.send(setup_usb());
+    });
+    let console_device = match setup_result.recv_timeout(fail_safe::SETUP_DEADLINE) {
+        Ok(Ok(device)) => device,
+        Ok(Err(error)) => {
+            eprintln!("mibox-init: USB setup failed: {error}");
+            fail_safe::restart("usb-setup");
         }
-    }
-    let console_device = if acm_requested && !adb_requested {
-        match usb_console::enable() {
-            Ok(device) => device,
-            Err(error) => {
-                eprintln!("mibox-init: USB ACM unavailable: {error}; using /dev/console");
-                "/dev/console"
-            }
+        Err(_) => {
+            eprintln!(
+                "mibox-init: USB setup unfinished after {} s",
+                fail_safe::SETUP_DEADLINE.as_secs()
+            );
+            fail_safe::restart("usb-setup-deadline");
         }
-    } else {
-        "/dev/console"
     };
+    eprintln!("MIBOX_SETUP_READY console={console_device}");
     // Start after USB setup so both consoles use the same devpts mount.
     // This script is absent in all earlier RAM candidates.
     if std::path::Path::new("/sbin/mibox-console-start").is_file() {

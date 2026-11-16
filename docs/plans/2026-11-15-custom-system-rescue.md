@@ -1,6 +1,60 @@
 # 最高優先：自製系統 ADB 救援與自動返回 USB loader
 
-日期：2026-11-15。優先級：P0（最高）。狀態：PLANNED，尚未完成實機驗證。
+日期：2026-11-15。優先級：P0（最高）。狀態：IN PROGRESS（2026-11-16 修訂）。
+
+## 現況（2026-11-16）
+
+本計畫原稿撰寫時未納入 [獨立救援證據](../mibox-independent-rescue.md)；以下依該證據修正。
+
+| 項目 | 狀態 | 證據 |
+| --- | --- | --- |
+| preboot USB 視窗（env `preboot` 加 `update 10000;`） | 已安裝，完整讀回 hash `6142e34f…` | `mibox-independent-rescue.md` |
+| 自製系統正常重啟 → C003 → 固定 RAM 映像 → 新自製系統 | **PASS** | `artifacts/rescue-boot/20261115-175944-393/` |
+| 接主機冷開機 → C003 → 自製 console/SSH，全程不經 Android | **PASS**（兩次冷開機） | `artifacts/console-ssh/launcher-20261115-212455` |
+| 未接主機冷開機：視窗到期後繼續既有開機路徑 | **PASS**（2026-11-16，一次） | 擁有者觀察：拔除 PC USB、斷電冷開機後回到 Android。無主機端記錄；`10000` 的實際時長仍未量測 |
+| fail-safe PID1 一般開機（`FailSafe` 映像 `f5e9cd6b…`，init `a24de13a…`） | **PASS** | `artifacts/ram-boot/20261116-193139-812/`（Android → C003 → 完整讀回 → health） |
+| PID1 panic → 自動回 C003 | **PASS**，12.4 秒，無 ADB | `artifacts/fail-safe/20261116-200046-745-panic/` |
+| USB 設定失敗 → 自動回 C003 | **PASS**，12.4 秒，無 ADB | `artifacts/fail-safe/20261116-202305-984-usb/` |
+| USB 設定卡住 → 60 秒 deadline → 自動回 C003 | **PASS**，72.4 秒，無 ADB | `artifacts/fail-safe/20261116-204511-921-hang/` |
+| QEMU（normal/panic/usb/hang） | **PASS** | `artifacts/qemu-fail-safe/` |
+| kernel panic 自動重啟 | **NOT_TESTED**；設定 `CONFIG_PANIC_TIMEOUT=20`，cmdline 是否覆寫未確認 | `artifacts/platform/2026-11-13/kernel-inspection.json` |
+
+設計結論：已安裝的 preboot 視窗使每次重啟都經過 C003，因此「退回 loader」等同正常重啟。
+A32 需要區分「退回 fastboot」與「正常重啟」，MiBOX 不需要。原第 1、2 步的
+`usb_burner_reboot` 控制操作降為備援：僅在 env 視窗遭移除或失效時才有價值，不是主路徑。
+
+PID1 fail-safe（`src/fail_safe.rs`）：panic、虛擬檔案系統掛載失敗、要求的 USB 功能
+（ADB／ACM）設定失敗或 60 秒內未完成，皆先做最多 15 秒的 sync，再
+`LINUX_REBOOT_CMD_RESTART`，失敗時改用 sysrq。未接 USB host 不算失敗：設定不等待列舉。
+原本這些情況會讓 PID1 永久停住，只能人工斷電。故障測試映像以建置期
+`MIBOX_FAULT=panic|usb|hang` 產生，獨立 `CARGO_TARGET_DIR`；一般建置不受影響，故障映像不得刷入。
+QEMU：`python3 scripts/test-fail-safe-qemu.py`（WSL）。
+
+無主機時的行為：視窗到期後開進 boot 分區現有系統（目前為 Android，冷開機已觀察一次），不會形成重啟迴圈。
+自製系統未來寫入 boot 分區後，故障映像在無主機時會反覆重啟；屆時須重新評估。
+
+### 修訂後的剩餘順序
+
+1. ~~實機：未接主機冷開機，確認視窗到期並繼續開機~~ PASS。視窗時長仍待量測（非阻擋項）。
+2. ~~以新 init 建 RAM 候選映像並實機驗證一般開機~~ PASS。`scripts/derive-fail-safe-candidates.py`
+   只替換已驗證 Console rootfs 的 `init`，嚴格比對其餘 entry；映像餘量 32768 bytes。
+3. ~~實機：三種故障映像各自重啟回 C003~~ PASS（`scripts/Test-MiboxFailSafe.ps1`）。
+   從 C003 載回正常映像：`scripts/rescue-boot.ps1 -Action WaitAndBoot -Candidate FailSafe`。
+4. 實機：kernel panic 是否在約 20 秒內重啟（PID1 已不再因自身故障觸發 kernel panic，此項降為補充）。
+5. 備援：`usb_burner_reboot` 受控操作（見下方原第 1、2 步）。
+
+P0 之後的下一項（2026-11-16 擁有者同意）：修復 C003 bulk 傳輸。目前每個 8 MiB 映像
+走 EP0 control transfer，每次 64 bytes，寫入加讀回約 26 萬次往返，實測約 22 分鐘。
+bulk 每次 4096 bytes，理論上可降到 1 分鐘內。兩次實測失敗後 loader 停止回應，
+需要人工斷電，所以每次嘗試仍須遵守本計畫的預檢與停止條件。
+參考 `docs/mibox-usb-loader-protocol.md`：先在 EP0 送出 16-byte 命令，再進入 bulk 資料階段。
+
+### 紅線補充
+
+已安裝的 preboot 視窗是目前唯一允許的 env 狀態。只能用
+`target/rescue-window/rescue-env --remove` 或 `--recover-original` 變更，其他 env 寫入一律禁止。
+
+## 原計畫（2026-11-15）
 
 依使用者指示，本計畫優先於新增硬體功能、容器功能、長時間穩定性測試及預設開機安裝。
 目標是讓自製系統獨立運作與修復；Android 不作為最終運作或救援的必要依賴。
