@@ -1,0 +1,8 @@
+179:11
+5168640
+rootfs / rootfs rw 0 0
+proc /proc proc rw,nosuid,noexec,relatime 0 0
+sysfs /sys sysfs rw,nosuid,noexec,relatime 0 0
+devtmpfs /dev devtmpfs rw,nosuid,noexec,relatime,size=436120k,nr_inodes=109030,mode=755 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,mode=600,ptmxmode=000 0 0
+adb /dev/usb-ffs/adb functionfs rw,nosuid,noexec,relatime 0 0
