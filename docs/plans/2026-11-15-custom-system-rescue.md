@@ -49,6 +49,12 @@ bulk 每次 4096 bytes，理論上可降到 1 分鐘內。兩次實測失敗後 
 需要人工斷電，所以每次嘗試仍須遵守本計畫的預檢與停止條件。
 參考 `docs/mibox-usb-loader-protocol.md`：先在 EP0 送出 16-byte 命令，再進入 bulk 資料階段。
 
+**2026-11-16 已完成（PASS）：** 先前失敗是主機端 bug：WinUSB PipeID 應填端點位址，
+當時誤填 pipe 索引，導致 native 87。改用 bulk OUT，以裝置端 `crc32` 加 129 點 EP0 抽樣讀回驗證，
+完整 8 MiB 上傳只需 8.2 秒，載入並開機合計 23 秒。實測指令：
+`scripts/rescue-boot.ps1 -Action WaitAndBoot -Candidate FailSafe -Bulk`
+（`artifacts/rescue-boot/20261116-214805-314/`）。bulk IN 仍不使用。
+
 ### 紅線補充
 
 已安裝的 preboot 視窗是目前唯一允許的 env 狀態。只能用

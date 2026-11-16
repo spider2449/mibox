@@ -4,7 +4,9 @@ param(
     [ValidateSet('Check','WaitAndBoot')][string]$Action='Check',
     [ValidateSet('Console','FailSafe')][string]$Candidate='Console',
     [ValidateRange(1,600)][int]$WaitSeconds=120,
-    [ValidateRange(60,7200)][int]$TransferTimeoutSeconds=3600
+    [ValidateRange(60,7200)][int]$TransferTimeoutSeconds=3600,
+    # Bulk OUT upload verified by loader crc32 (see Test-MiboxLoaderRam.ps1).
+    [switch]$Bulk
 )
 $ErrorActionPreference='Stop'
 $repo=Split-Path $PSScriptRoot -Parent
@@ -19,7 +21,7 @@ if($Candidate -eq 'FailSafe') {
     $hash='f5e9cd6b8677504429340dcc1f51261fd10108020366461c0cede198afcd6d93'
     $initHash='a24de13aecd55829483099ab921fdd3651a481656e404b68874017c99267680c'
 }
-$proof=[ordered]@{Action=$Action;Stage='LocalCheck';Candidate=$Candidate;ImageSHA256=$hash
+$proof=[ordered]@{Action=$Action;Stage='LocalCheck';Candidate=$Candidate;ImageSHA256=$hash;BulkUpload=[bool]$Bulk
     DeviceAccessed=$false;LoaderRequestSent=$false;FlashCommandSent=$false
     EnvironmentWriteSent=$false;CustomBootVerified=$false;IndependentColdEntryVerified=$false
     EntryOrigin='UNKNOWN: supplied externally; this launcher does not establish a cold-start trigger'
@@ -73,7 +75,7 @@ try {
     }
     $proof.Stage='UploadAndVerify'
     $transfer=(Call-Script 'upload-and-boot' 'Test-MiboxLoaderRam.ps1' (
-        "-Action UploadAndBoot -Candidate $Candidate -ControlTimeoutMilliseconds 10000") $TransferTimeoutSeconds).Output | ConvertFrom-Json
+        "-Action UploadAndBoot -Candidate $Candidate -ControlTimeoutMilliseconds 10000"+$(if($Bulk){' -Bulk'}else{''})) $TransferTimeoutSeconds).Output | ConvertFrom-Json
     Assert-RamBootRecord $transfer Transfer $hash
     $proof.Transfer=$transfer
     $proof.Stage='VerifyCustomRuntime'

@@ -65,6 +65,51 @@
         "Accepted":  false
     },
     {
+        "Case":  "bulk-valid",
+        "Pass":  true,
+        "Accepted":  true
+    },
+    {
+        "Case":  "bulk-no-method",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "bulk-wrong-source",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "bulk-crc-mismatch",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "bulk-crc-format",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "bulk-status-failed",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "bulk-few-samples",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "bulk-string-samples",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
+        "Case":  "bulk-string-mode",
+        "Pass":  true,
+        "Accepted":  false
+    },
+    {
         "Case":  "empty-id",
         "Pass":  true,
         "Accepted":  false

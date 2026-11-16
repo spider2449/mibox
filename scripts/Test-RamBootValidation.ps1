@@ -31,6 +31,25 @@ foreach ($mutation in @('missing-bulk','string-command','short-readback','wrong-
     }
     $cases += @{Name=$mutation;Kind='Transfer';Record=$record}
 }
+$bulk = @{VerifiedBytes=8388608;VerifiedSha256=$null;CommandAttempted=$true;BulkMode=$true
+    VerificationMethod='BulkOutCrc32';SourceSha256=$hash;ExpectedCrc32='1a2b3c4d';DeviceCrc32='1a2b3c4d'
+    CrcCommandStatus='success';SampledBlocks=129}
+$cases += @{Name='bulk-valid';Kind='Transfer';Record=$bulk;Accept=$true}
+foreach ($mutation in @('bulk-no-method','bulk-wrong-source','bulk-crc-mismatch','bulk-crc-format',
+                        'bulk-status-failed','bulk-few-samples','bulk-string-samples','bulk-string-mode')) {
+    $record = $bulk.Clone()
+    switch ($mutation) {
+        'bulk-no-method' { $record.Remove('VerificationMethod') }
+        'bulk-wrong-source' { $record.SourceSha256='0'*64 }
+        'bulk-crc-mismatch' { $record.DeviceCrc32='1a2b3c4e' }
+        'bulk-crc-format' { $record.ExpectedCrc32='1A2B3C4D';$record.DeviceCrc32='1A2B3C4D' }
+        'bulk-status-failed' { $record.CrcCommandStatus='failed:' }
+        'bulk-few-samples' { $record.SampledBlocks=128 }
+        'bulk-string-samples' { $record.SampledBlocks='129' }
+        'bulk-string-mode' { $record.BulkMode='true' }
+    }
+    $cases += @{Name=$mutation;Kind='Transfer';Record=$record}
+}
 foreach ($mutation in @('empty-id','invalid-id','same-id','missing-proof','string-marker','wrong-pid1',
                         'query-timeout','query-error','missing-exit','wrong-os')) {
     $record = $custom | ConvertTo-Json -Depth 6 | ConvertFrom-Json

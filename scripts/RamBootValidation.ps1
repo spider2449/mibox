@@ -19,9 +19,23 @@ function Assert-RamBootRecord($Record, [string]$Kind, [string]$ImageHash, [strin
         }
         'Transfer' {
             Require-Size $Record.VerifiedBytes
-            if ($Record.VerifiedSha256 -cne $ImageHash) { throw 'RAM readback hash mismatch' }
             Require-Bool $Record.CommandAttempted $true
-            Require-Bool $Record.BulkMode $false
+            if ($Record.BulkMode -is [bool] -and $Record.BulkMode) {
+                # Bulk OUT upload: proof is the loader's own crc32 over the full
+                # 8 MiB plus sampled EP0 readback, tied to the pinned source hash.
+                if ($Record.VerificationMethod -cne 'BulkOutCrc32') { throw 'Bulk transfer verification method missing' }
+                if ($Record.SourceSha256 -cne $ImageHash) { throw 'Bulk source image hash mismatch' }
+                if ($Record.ExpectedCrc32 -cnotmatch '\A[0-9a-f]{8}\z' -or $Record.DeviceCrc32 -cne $Record.ExpectedCrc32) {
+                    throw 'Bulk device crc32 mismatch'
+                }
+                if ($Record.CrcCommandStatus -isnot [string] -or -not $Record.CrcCommandStatus.StartsWith('success')) {
+                    throw 'Bulk crc32 command status missing'
+                }
+                if ($Record.SampledBlocks -isnot [int] -or $Record.SampledBlocks -lt 129) { throw 'Bulk sampled readback incomplete' }
+            } else {
+                Require-Bool $Record.BulkMode $false
+                if ($Record.VerifiedSha256 -cne $ImageHash) { throw 'RAM readback hash mismatch' }
+            }
         }
         'Custom' {
             Require-Bool $Record.CustomOsMarkerObserved $true

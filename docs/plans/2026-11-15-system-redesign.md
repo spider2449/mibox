@@ -26,7 +26,7 @@ MiBOX has 8 MiB boot partitions and the separately verified C003 control path.
 | Stock kernel is already LZMA-compressed | Legacy uImage payload 3897647 bytes, expanded size 11878528; preserve its container and load/entry addresses (`docs/mibox-runtime-console-watchdog.md`) |
 | Embedded stock config is available | `CONFIG_IKCONFIG_PROC=n`: use `artifacts/platform/2026-11-14/kernel-config.json` and extracted config, not `/proc/config.gz` (`docs/mibox-software-boot-analysis.md`) |
 | Rescue transfer is slow | Full 8 MiB control transfer took about 1311 seconds; shrinking payload alone does not change the current fixed-size transfer workflow |
-| Bulk remains disabled | Correct-framing probe failed with host native 87 and loader stopped answering; descriptors confirm endpoints, but do not establish the fault's location (`docs/mibox-usb-loader-protocol.md`) |
+| Bulk OUT repaired (2026-11-16) | Native 87 was a host PipeID bug. Bulk OUT + device crc32 loads 8 MiB in 23 s end to end; bulk IN still unused (`docs/mibox-usb-loader-protocol.md`) |
 | Host-attached cold rescue works | Cold power -> C003 -> pinned RAM console without Android; host-disconnected deadline expiry/continuation remains unobserved (`docs/mibox-independent-rescue.md`) |
 
 Measured partition layout: bootloader 2 MiB, reserved 2 MiB, env 4 MiB,

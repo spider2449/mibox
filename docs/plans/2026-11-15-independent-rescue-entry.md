@@ -35,6 +35,8 @@ boot image to test rescue entry.
   descriptor dump (Probe-MiboxUsbConfigDescriptor.ps1) proves bulk endpoints
   0x81/0x02 exist with MPS 512, so the failure is in the loader build's bulk
   data path. Verdict: bulk unusable, control 64-byte is the only channel.
+  **Superseded 2026-11-16:** native 87 was a host PipeID bug; bulk OUT works
+  (see `docs/mibox-usb-loader-protocol.md`).
 - [x] Verify cold-power loader entry: two cold starts with the host attached
   exposed C003 directly with identify 00-08-00-10, confirming the installed
   preboot USB window on a physical cold start. Host-disconnected cold-start

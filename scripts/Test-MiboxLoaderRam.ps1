@@ -8,8 +8,13 @@ if($Candidate -in @('Restart','Health','Hardware','Hardware2','Hardware3','Captu
 if($VerifyOnly -and $Action -notin @('UploadCandidate','BootCandidate','UploadAndBoot')) {
     throw 'VerifyOnly requires a candidate image action'
 }
-if($Bulk -and $Action -in @('UploadCandidate','BootCandidate','UploadAndBoot')) {
-    throw 'Bulk image actions disabled: the physical BulkTest timed out; use the verified control channel'
+# Bulk mode uses bulk OUT (WR_LARGE_MEM) only. Bulk IN stays unused: an armed
+# but undrained bulk IN request blocks EP0 IN replies in the loader's shared
+# non-periodic TX FIFO, and the only correctly addressed bulk IN read (2026-11-14)
+# timed out. Bulk uploads are verified by the loader's own crc32 command plus
+# sampled EP0 reads, so BootCandidate (readback-only) keeps the control channel.
+if($Bulk -and $Action -in @('BootCandidate','SelfTest','Status','Reset')) {
+    throw 'Bulk applies only to UploadCandidate, UploadAndBoot and BulkTest'
 }
 if(-not ('MiboxLoader.RamTest' -as [type])) {
 Add-Type -TypeDefinition @'
@@ -30,6 +35,9 @@ namespace MiboxLoader {
     public bool CommandTransferCompleted;
     public string StatusHex; public string StatusText;
     public bool BulkMode;
+    public string VerificationMethod; public string SourceSha256;
+    public string ExpectedCrc32; public string DeviceCrc32; public string DeviceCrc32Order;
+    public string CrcCommandStatus; public int SampledBlocks; public double UploadSeconds;
     public int ControlTimeoutMilliseconds;
   }
   public static class RamTest {
@@ -88,17 +96,75 @@ namespace MiboxLoader {
     static string Hash(byte[] bytes) {
       using(SHA256 sha=SHA256.Create())return BitConverter.ToString(sha.ComputeHash(bytes)).Replace("-","").ToLowerInvariant();
     }
-    static byte[] TransferBulk(IntPtr handle,bool write,uint address,byte[] data) {
-      if(address<0x82000000 || (ulong)address+(uint)data.Length>0x82800000 || data.Length<1 || data.Length>4096)
+    // Bulk OUT write. Reference WR_LARGE_MEM: EP0 0x40/0x11 with a 16-byte
+    // little-endian address/length data stage, then the loader arms bulk OUT
+    // 0x02 in 4 KiB device blocks (xferNeedReply=0, no handshake). WinUSB
+    // PipeId is the endpoint address. Not the storage DOWNLOAD protocol.
+    static void WriteBulk(IntPtr handle,uint address,byte[] data,int offset,int length) {
+      if(address<0x82000000 || (ulong)address+(uint)length>0x82800000 || length<1 || length>4096 || (length%64)!=0)
         throw new Exception("Bulk transfer outside fixed RAM window/block limit");
-      // Reference WR/RD_LARGE_MEM uses a little-endian RAM address and byte count,
-      // with xferNeedReply=0. This is not the storage DOWNLOAD protocol.
-      byte[] header=new byte[16];BitConverter.GetBytes(address).CopyTo(header,0);BitConverter.GetBytes(data.Length).CopyTo(header,4);
-      SetupPacket packet=new SetupPacket {Type=0x40,Request=(byte)(write?0x11:0x12),Value=(ushort)data.Length,Index=1,Length=16};uint count;
-      Check(WinUsb_ControlTransfer(handle,packet,header,16,out count,IntPtr.Zero),"Set up RAM bulk transfer");
+      byte[] header=new byte[16];BitConverter.GetBytes(address).CopyTo(header,0);BitConverter.GetBytes(length).CopyTo(header,4);
+      SetupPacket packet=new SetupPacket {Type=0x40,Request=0x11,Value=(ushort)length,Index=1,Length=16};uint count;
+      Check(WinUsb_ControlTransfer(handle,packet,header,16,out count,IntPtr.Zero),"Set up RAM bulk write 0x"+address.ToString("x8"));
       if(count!=16)throw new Exception("Short bulk setup");
-      bool ok=write?WinUsb_WritePipe(handle,2,data,(uint)data.Length,out count,IntPtr.Zero):WinUsb_ReadPipe(handle,0x81,data,(uint)data.Length,out count,IntPtr.Zero);
-      Check(ok,"Bulk RAM 0x"+address.ToString("x8"));if(count!=data.Length)throw new Exception("Short RAM bulk transfer");return data;
+      byte[] chunk=data;
+      if(offset!=0 || length!=data.Length) {chunk=new byte[length];Buffer.BlockCopy(data,offset,chunk,0,length);}
+      Check(WinUsb_WritePipe(handle,0x02,chunk,(uint)length,out count,IntPtr.Zero),"Bulk RAM write 0x"+address.ToString("x8"));
+      if(count!=length)throw new Exception("Short RAM bulk transfer");
+    }
+    // Single fixed result slot directly after the 8 MiB boot buffer, used only
+    // by the fixed crc32 verification command below.
+    const uint CrcSlot=0x82800000;
+    static byte[] ReadCrcSlot(IntPtr handle) {
+      byte[] bytes=new byte[64]; uint count;
+      SetupPacket packet=new SetupPacket {Type=0xc0,Request=2,Value=(ushort)(CrcSlot>>16),Index=(ushort)(CrcSlot&65535),Length=64};
+      Check(WinUsb_ControlTransfer(handle,packet,bytes,64,out count,IntPtr.Zero),"Read crc32 result slot");
+      if(count!=64)throw new Exception("Short crc32 slot read");
+      return bytes;
+    }
+    static void WriteCrcSlot(IntPtr handle,byte[] bytes) {
+      if(bytes.Length!=64)throw new Exception("crc32 slot sentinel must be 64 bytes");
+      uint count;
+      SetupPacket packet=new SetupPacket {Type=0x40,Request=1,Value=(ushort)(CrcSlot>>16),Index=(ushort)(CrcSlot&65535),Length=64};
+      Check(WinUsb_ControlTransfer(handle,packet,bytes,64,out count,IntPtr.Zero),"Write crc32 slot sentinel");
+      if(count!=64)throw new Exception("Short crc32 slot write");
+    }
+    static uint Crc32(byte[] data) {
+      uint[] table=new uint[256];
+      for(uint n=0;n<256;n++){uint c=n;for(int k=0;k<8;k++)c=(c&1)!=0?0xedb88320u^(c>>1):c>>1;table[n]=c;}
+      uint crc=0xffffffffu;
+      foreach(byte b in data)crc=table[(crc^b)&0xff]^(crc>>8);
+      return crc^0xffffffffu;
+    }
+    static string TplCommand(IntPtr handle,string command) {
+      byte[] data=new byte[64];Encoding.ASCII.GetBytes(command).CopyTo(data,0);uint count;
+      SetupPacket packet=new SetupPacket {Type=0x40,Request=0x30,Value=0,Index=1,Length=64};
+      Check(WinUsb_ControlTransfer(handle,packet,data,64,out count,IntPtr.Zero),"TPL command");
+      if(count!=64)throw new Exception("Short TPL command");
+      byte[] status=new byte[64];
+      SetupPacket query=new SetupPacket {Type=0xc0,Request=0x31,Value=0,Index=0,Length=64};
+      Check(WinUsb_ControlTransfer(handle,query,status,64,out count,IntPtr.Zero),"Read TPL command status");
+      if(count!=64)throw new Exception("Short TPL status");
+      return Encoding.ASCII.GetString(status).TrimEnd('\0');
+    }
+    // Fixed command, fixed range: u-boot do_mem_crc stores the 32-bit result
+    // natively at the third argument. No storage or environment access.
+    static void VerifyByCrc(IntPtr handle,byte[] image,RamResult result) {
+      if(image.Length!=8388608)throw new Exception("crc32 verification requires the 8 MiB image");
+      byte[] sentinel=new byte[64];for(int i=0;i<64;i++)sentinel[i]=(byte)(0x5a^i);
+      WriteCrcSlot(handle,sentinel);
+      if(!Same(sentinel,ReadCrcSlot(handle)))throw new Exception("crc32 slot sentinel not written");
+      uint expected=Crc32(image);result.ExpectedCrc32=expected.ToString("x8");
+      result.CrcCommandStatus=TplCommand(handle,"crc32 0x82000000 0x800000 0x82800000");
+      if(!result.CrcCommandStatus.StartsWith("success"))throw new Exception("crc32 command failed: "+result.CrcCommandStatus);
+      byte[] slot=ReadCrcSlot(handle);
+      for(int i=4;i<64;i++)if(slot[i]!=sentinel[i])throw new Exception("crc32 wrote outside its 4-byte result");
+      uint little=BitConverter.ToUInt32(slot,0);
+      uint big=(uint)(slot[0]<<24|slot[1]<<16|slot[2]<<8|slot[3]);
+      result.DeviceCrc32=little.ToString("x8");
+      if(little==expected)result.DeviceCrc32Order="little-endian";
+      else if(big==expected){result.DeviceCrc32Order="big-endian";result.DeviceCrc32=big.ToString("x8");}
+      else throw new Exception("Device crc32 "+little.ToString("x8")+" != expected "+result.ExpectedCrc32);
     }
     public static string ValidateImage(byte[] image,string preset) {
       string expected;
@@ -206,10 +272,9 @@ namespace MiboxLoader {
           }
           if(action=="SelfTest" || action=="BulkTest") {
             byte[] original=Read(handle,0x82000000,64);
-            if(action=="BulkTest" && !Same(original,TransferBulk(handle,false,0x82000000,new byte[64])))throw new Exception("Bulk/control RAM read mismatch");
             byte[] pattern=new byte[64];for(int i=0;i<pattern.Length;i++)pattern[i]=(byte)(i^0xa5);
             try {
-              if(action=="BulkTest")TransferBulk(handle,true,0x82000000,pattern);else Write(handle,0x82000000,pattern);
+              if(action=="BulkTest")WriteBulk(handle,0x82000000,pattern,0,64);else Write(handle,0x82000000,pattern);
               result.PatternVerified=Same(pattern,Read(handle,0x82000000,64));
               if(!result.PatternVerified)throw new Exception("RAM pattern mismatch");
             } finally {
@@ -218,15 +283,37 @@ namespace MiboxLoader {
               if(!result.OriginalRestored)throw new Exception("Original RAM bytes not restored");
             }
           }
-          if(action=="UploadCandidate" || action=="BootCandidate" || action=="UploadAndBoot") {
+          if(bulk && (action=="UploadCandidate" || action=="UploadAndBoot")) {
+            var clock=System.Diagnostics.Stopwatch.StartNew();
+            for(int offset=0;offset<image.Length;offset+=4096) {
+              WriteBulk(handle,0x82000000+(uint)offset,image,offset,4096);
+              if((offset+4096)%1048576==0)Console.Error.WriteLine("Bulk-written RAM bytes: "+(offset+4096));
+            }
+            result.UploadSeconds=clock.Elapsed.TotalSeconds;
+            // Sampled EP0 readback: the first 64 bytes of every 64 KiB plus the
+            // final 64 bytes; any framing/offset error shows up here directly.
+            int sampled=0;
+            for(int offset=0;offset<=image.Length;offset+=65536) {
+              int at=offset==image.Length?image.Length-64:offset;
+              byte[] actual=Read(handle,0x82000000+(uint)at,64);
+              for(int j=0;j<64;j++)if(actual[j]!=image[at+j])throw new Exception("Sampled RAM mismatch at "+(at+j));
+              sampled++;
+            }
+            result.SampledBlocks=sampled;
+            VerifyByCrc(handle,image,result);
+            result.VerificationMethod="BulkOutCrc32";result.SourceSha256=expected;
+            result.VerifiedBytes=image.Length;result.VerifiedSha256=null;
+          }
+          else if(action=="UploadCandidate" || action=="BootCandidate" || action=="UploadAndBoot") {
+            result.VerificationMethod="ControlReadback";
             byte[] readback=new byte[image.Length];
-            int block=bulk?4096:64;
+            const int block=64;
             for(int offset=0;offset<image.Length;offset+=block) {
               if(action=="UploadCandidate" || action=="UploadAndBoot") {
                 byte[] chunk=new byte[block];Buffer.BlockCopy(image,offset,chunk,0,block);
-                if(bulk)TransferBulk(handle,true,0x82000000+(uint)offset,chunk);else Write(handle,0x82000000+(uint)offset,chunk);
+                Write(handle,0x82000000+(uint)offset,chunk);
               }
-              byte[] actual=bulk?TransferBulk(handle,false,0x82000000+(uint)offset,new byte[block]):Read(handle,0x82000000+(uint)offset,block);
+              byte[] actual=Read(handle,0x82000000+(uint)offset,block);
               Buffer.BlockCopy(actual,0,readback,offset,block);
               for(int j=0;j<block;j++)if(actual[j]!=image[offset+j])throw new Exception("RAM readback mismatch at "+(offset+j));
               if((offset+block)%262144==0)Console.Error.WriteLine("Verified RAM bytes: "+(offset+block));

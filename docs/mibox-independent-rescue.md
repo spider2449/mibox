@@ -99,9 +99,9 @@ userspace, all without Android. The running custom system was reachable by
 ADB reporting the `recovery` USB class; `cat /etc/os-release` confirmed
 `ID=mibox-custom`. That closes the cold entry question for the
 host-attached case. Host-disconnected cold-start continuation was later observed
-once (2026-11-16, owner report): window expiry, then Android. Bulk transfer remains
-unusable on this build: see mibox-usb-loader-protocol.md for the two
-single-shot probes, the correct-framing failure and the descriptor dump.
+once (2026-11-16, owner report): window expiry, then Android. Bulk OUT transfer was
+repaired on 2026-11-16 (host PipeID bug; full load 23 s with `-Bulk`): see
+mibox-usb-loader-protocol.md.
 
 ```powershell
 powershell -NoProfile -File scripts/rescue-boot.ps1 -Action Check

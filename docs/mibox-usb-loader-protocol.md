@@ -132,3 +132,52 @@ denial the device still rebooted into a black screen requiring a power
 cycle. Recovery shell reboot is unverified and uncontrolled; not a loader
 entry route. The working entry today was owner cold power with the host
 attached, which lands directly in C003.
+
+## Bulk OUT repaired (2026-11-16): full 8 MiB load in 23 seconds
+
+**This supersedes the "bulk path unusable" verdict above.** Two host-side errors
+caused the 2026-11-15 failure; it was never evidence about the device:
+
+- The probe passed the `WinUsb_QueryPipe` *index* (0) as the PipeID to
+  `WinUsb_SetPipePolicy`/`WinUsb_ReadPipe`. WinUSB requires the endpoint address
+  (0x81/0x02), so it rejected the call with native 87 before any IN token was
+  sent.
+- The `WINUSB_PIPE_INFORMATION` layout was wrong (`int PipeType; byte PipeId;
+  ushort MaximumPacketSize; byte Interval`), so it reported MPS 0. Now it
+  reports `mps512` for both endpoints.
+
+Why the loader then stopped answering: in the reference `dwc_pcd.c`, bulk IN uses
+TX FIFO 0 (`txfnum = 0`), the non-periodic FIFO it shares with EP0. When a bulk IN
+request is armed but never drained, it blocks later EP0 IN data, including the
+identify reply. The 2026-11-14 bulk IN read (correct endpoint 0x81) also timed
+out, so **bulk IN is still unused**. Bulk OUT goes through the RX FIFO path that
+EP0 OUT already uses successfully.
+
+Physical results (the box entered C003 through a normal custom-system restart):
+
+| Step | Evidence | Result |
+| --- | --- | --- |
+| `Probe-MiboxUsbLoaderBulk.ps1 -Direction Write -Bytes 64` | `artifacts/usb-loader-protocol/bulk-20261116-214742/` | `BULK_WRITE_VERIFIED`, 0.24 ms, EP0 verify, original restored, post-identify 00-08-00-10 |
+| same, `-Bytes 4096` | `artifacts/usb-loader-protocol/bulk-20261116-214751/` | `BULK_WRITE_VERIFIED`, 0.51 ms, loader survived |
+| `rescue-boot.ps1 -Action WaitAndBoot -Candidate FailSafe -Bulk` | `artifacts/rescue-boot/20261116-214805-314/` | PASS: 23 s end to end, 8.2 s upload |
+
+Bulk upload protocol (`Test-MiboxLoaderRam.ps1 -Bulk`, UploadCandidate/UploadAndBoot):
+
+1. For each 4096-byte block: EP0 0x40/0x11, wValue=4096, wIndex=1, 16-byte LE
+   address/length, then `WinUsb_WritePipe(0x02)`. The guard limits writes to
+   0x82000000..0x82800000.
+2. Sampled EP0 readback: the first 64 bytes of every 64 KiB plus the final 64
+   bytes (129 reads) must match.
+3. Write a 64-byte sentinel at 0x82800000, then send the fixed TPL command
+   `crc32 0x82000000 0x800000 0x82800000` (0x30, index 1). TPL status 0x31 must
+   read `success`. The CRC is stored little-endian in the first 4 bytes, and
+   bytes 4..63 must still hold the sentinel. Observed `3dcd0e9e` matched the
+   host CRC32 of the pinned FailSafe image.
+4. `bootm 0x82000000`, then the existing custom-runtime observer and PID1/tool
+   hash pulls.
+
+`RamBootValidation.ps1` accepts a bulk transfer record only with
+`VerificationMethod=BulkOutCrc32`, the pinned source SHA256, a matching crc32,
+a `success` status and at least 129 samples. A bulk upload has no full
+readback SHA256, so `VerifiedSha256` is null. Without `-Bulk`, the 64-byte
+control path is unchanged. `BootCandidate` (readback only) still uses control.

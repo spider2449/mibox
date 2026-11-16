@@ -1,0 +1,32 @@
+{
+    "timestamp_utc":  "2026-11-16T13:47:51.4338344Z",
+    "framing":  "reference codesnake/uboot-amlogic c0b0b8cc usb_pcd.c AM_REQ_WR/RD_LARGE_MEM; PipeId = endpoint address",
+    "direction":  "Write",
+    "address":  "0x82000000",
+    "length":  4096,
+    "attempts":  1,
+    "retry_policy":  "none; failure without post-identify requires owner power cycle",
+    "result":  {
+                   "Found":  true,
+                   "DevicePath":  "\\\\?\\usb#vid_1b8e\u0026pid_c003#6\u00262b113eed\u00260\u00265#{d925a7f0-61a4-4018-bcd3-f3e5225f3532}",
+                   "VidPid":  "1B8E:C003",
+                   "Direction":  "Write",
+                   "Bytes":  4096,
+                   "IdentifyHex":  "00-08-00-10",
+                   "ControlReadHex":  "aa-aa-aa-aa-4f-49-44-21-6f-79-3b-00-00-80-00-10-f8-c4-43-00-00-00-00-11-96-2c-00-00-00-00-f0-10-00-01-00-10-00-08-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00",
+                   "SetupSent":  true,
+                   "SetupTransferred":  16,
+                   "BulkPipeInfo":  "pipe0:ep0x81,type2,mps512;pipe1:ep0x02,type2,mps512;",
+                   "BulkNativeError":  0,
+                   "BulkReadHex":  null,
+                   "BulkBytes":  4096,
+                   "BulkMilliseconds":  0.50840000000000007,
+                   "PatternVerified":  true,
+                   "OriginalRestored":  true,
+                   "PostIdentifyHex":  "00-08-00-10",
+                   "PostIdentifyOk":  true,
+                   "Match":  true,
+                   "Outcome":  "BULK_WRITE_VERIFIED",
+                   "Error":  null
+               }
+}
