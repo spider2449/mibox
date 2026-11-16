@@ -5,6 +5,8 @@ Status: **READY** for the P0 scope in
 RAM only. Nothing in this procedure writes a partition, the bootloader or the
 U-Boot environment, and nothing depends on Android.
 
+To shut the box down safely, see [power off](mibox-console-ssh.md#power-off).
+
 ## Preconditions
 
 - The preboot USB window is installed (`preboot` contains `update 10000;`,

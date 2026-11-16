@@ -33,7 +33,8 @@ installation as the default power-on system remain unverified.
 
 The separate [console, SSH and apk workflow](docs/mibox-console-ssh.md) adds
 Alpine ARMv7 userspace and a host launcher for persistent software/configuration
-in a dedicated data-directory chroot. See its linked evidence for the current
+in a dedicated data-directory chroot. Before removing power, follow its
+[power-off steps](docs/mibox-console-ssh.md#power-off). See its linked evidence for the current
 physical validation status; Linux power-on installation is a separate milestone.
 
 For the A32-style host-controlled workflow, use

@@ -90,6 +90,40 @@ Stopping synchronizes and unmounts the data filesystem. Failure to unmount must
 be resolved before requesting a restart. Do not use a generic BusyBox reboot
 command as a substitute for the verified Android return control.
 
+## Power off
+
+The custom system has no verified power-off command. PID1 offers only a normal
+restart and, in the `Loader` build, a restart into the USB loader. Power off by
+making the system RAM-only, then removing power:
+
+1. Close other SSH sessions, then stop persistence:
+   `powershell -NoProfile -File scripts/Start-MiboxConsole.ps1 -Stop`.
+   It must print `PERSISTENT_CONSOLE_STOPPED`. It syncs, unmounts the chroot
+   bind mounts and unmounts `/mnt/mibox-data`. If it fails, do not remove power.
+2. Confirm with `adb -s 248243005297 shell cat /proc/mounts` that only `rootfs`,
+   `proc`, `sysfs`, `devtmpfs`, `devpts` and `functionfs` remain, with no `ext4`
+   and no `/mnt/mibox-data`.
+3. Remove power. Nothing is then writing to eMMC.
+
+Optional, more conservative: after step 2, request a normal restart
+(`/bin/mibox reboot-android --boot-id <current boot_id>`). With the host USB
+attached the box then waits idle in C003, and power can be removed there.
+The restart is refused while a block filesystem is mounted, so it also acts as a check of step 2.
+
+Do not:
+- use BusyBox `poweroff`, `halt` or `reboot`; they are not verified here.
+- remove power while `/mnt/mibox-data` is mounted. That risks the persistent
+  packages, apk database and configuration.
+
+Next power-on: with the host USB attached the box stops in C003, so load the
+system with `scripts/rescue-boot.ps1 -Action WaitAndBoot -Candidate FailSafe -Bulk`
+and rerun the launcher to mount persistence. Without a host it boots Android.
+For Android, use its own power-off (remote or menu). No host-side Android
+power-off command has been verified.
+
+Evidence of a clean stop before power-off (2026-11-16):
+[launcher-20261116-221124](../artifacts/console-ssh/launcher-20261116-221124/result.json).
+
 ## Reproduce and evidence
 
 Build `mibox-init` and `mibox-userland` with the repository's ARMv7 musl target.
