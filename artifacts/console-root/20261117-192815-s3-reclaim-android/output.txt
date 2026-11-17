@@ -1,0 +1,54 @@
+== before
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/mibox-data        2234556   1818980    399192  82% /mnt/s3-data
+deleted app
+deleted app-lib
+deleted dalvik-cache
+deleted media
+deleted log
+deleted anr
+deleted tombstones
+deleted dontpanic
+deleted diagnosis
+deleted duokancache
+deleted spdif.mkv
+deleted autovideo.mov
+deleted test.mkv
+kept data/com.android.providers.settings
+deleted data/* except com.android.providers.settings
+== after
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/mibox-data        2234556    119556   2098616   5% /mnt/s3-data
+== top level (KiB)
+64000	./mibox-console
+48052	./local
+2584	./system
+724	./data
+628	./misc
+56	./property
+16	./backup
+12	./tmp
+8	./ssh
+4	./user
+4	./security
+4	./resource-cache
+4	./mediadrm
+4	./lost+found
+4	./drm
+4	./app-private
+4	./app-asec
+4	./.layout_version
+0	./bugreports
+== kernel
+[  695.662012@1] EXT4-fs (mmcblk0p11): mounting with "discard" option, but the device does not support discard
+[  695.671909@1] EXT4-fs (mmcblk0p11): mounted filesystem without journal. Opts: noload
+[  710.486937@1] force enable DISCARD here for ext4 fs
+[  710.494745@1] checked enable EXT4 DISCARD here
+[  710.494802@1] EXT4-fs (mmcblk0p11): mounting with "discard" option, but the device does not support discard
+[  710.503790@1] EXT4-fs (mmcblk0p11): mounted filesystem without journal. Opts: noload
+[  878.594253@1] force enable DISCARD here for ext4 fs
+[  878.609352@1] checked enable EXT4 DISCARD here
+[  878.609460@1] EXT4-fs (mmcblk0p11): mounting with "discard" option, but the device does not support discard
+[  878.618303@1] EXT4-fs (mmcblk0p11): mounted filesystem with ordered data mode. Opts: (null)
+S3_DONE
+UNMOUNTED

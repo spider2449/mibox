@@ -8,6 +8,7 @@ artifacts/console-root/<timestamp>-<name>/. Usage (inside WSL):
 import argparse
 import datetime
 import json
+import shlex
 import shutil
 import subprocess
 import sys
@@ -23,6 +24,7 @@ def main():
     parser.add_argument('--private-key', required=True)
     parser.add_argument('--name', required=True)
     parser.add_argument('--timeout', type=int, default=600)
+    parser.add_argument("--arg", action="append", default=[])
     parser.add_argument('script')
     args = parser.parse_args()
     root = Path(__file__).resolve().parent.parent
@@ -54,7 +56,7 @@ def main():
         key.chmod(0o600)
         ssh = ['ssh', '-i', str(key), '-o', 'BatchMode=yes', '-o', 'IdentitiesOnly=yes',
                '-o', 'StrictHostKeyChecking=yes', '-o', f'UserKnownHostsFile={known}',
-               '-o', 'ConnectTimeout=10', 'root@192.168.1.222', 'sh -s']
+               '-o', 'ConnectTimeout=10', 'root@192.168.1.222', 'sh -s ' + ' '.join(shlex.quote(a) for a in args.arg)]
         result = subprocess.run(ssh, capture_output=True, text=True,
                                 timeout=args.timeout, input=script)
     (evidence / 'output.txt').write_text(result.stdout + result.stderr)

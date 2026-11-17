@@ -83,8 +83,18 @@ S2. [x] Back up the Alpine tree, configuration and keys to the PC (also A2).
    against a device-side listing; one socket in local/tmp is not archivable.
    Evidence `artifacts/storage/s2-20261117/backup-verification.json`. Restore is
    untested; A2 still needs a restore rehearsal before the tree is changed.
-S3. [ ] Reclaim Android files on data by deleting directories, not formatting.
+S3. [x] Reclaim Android files on data by deleting directories, not formatting.
    Android may regenerate some files if it boots again before Phase C.
+   Done 2026-11-17 with owner approval of the listed paths
+   (`scripts/device/s3-reclaim-android.sh`, evidence
+   `artifacts/console-root/20261117-192815-s3-reclaim-android/`). Deleted app,
+   app-lib, dalvik-cache, media, log, anr, tombstones, dontpanic, diagnosis,
+   duokancache, the three test videos and data/* except
+   `com.android.providers.settings` (adb_enabled). Kept system, misc, property,
+   ssh, local/tmp, mibox-console. Free space 399192 -> 2098616 KiB (5% used),
+   no ext4/I/O errors, unmounted after. Re-hash of the kept trees matches S2
+   (2435 files, `…-s3-post-hashes/`). Android cold boot after this deletion
+   and its ADB loader-entry path are not yet re-verified.
 S4. [ ] Budgets and guards: keep a data free-space floor (initially the
    launcher's 64 MiB; revise from S1) enforced before apk installs and by PID1;
    bound logs (size cap/rotation); keep Docker test storage in RAM until data
