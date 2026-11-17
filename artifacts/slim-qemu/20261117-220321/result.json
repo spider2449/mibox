@@ -1,0 +1,187 @@
+{
+  "scope": "Generic ARM QEMU (Debian 6.12) only; not stock 3.10.33 or physical MiBOX proof",
+  "fixture_differences": [
+    "USB ADB marker removed (no UDC in QEMU)",
+    "QEMU virtio/ext4 modules loaded by start script"
+  ],
+  "slim_rootfs_sha256": "9c09c7bfac86246bbfd0e1129bd47fd6598023b4a3c475029d069a88a6295bcd",
+  "data_disk_source": "S2 backup 5d655f74e0ccc9af7d1b4b6169b8c5a9cf8bfbfed73d6768358e4d22e6b492ae",
+  "checks": [
+    {
+      "name": "boot1-ssh-strict-persistent-host-key",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot1-session-in-alpine-with-apk-guard",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot1-apk-floor-hook-installed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot1-time-synced-by-ntp",
+      "passed": true,
+      "detail": "SYNCED 2026-11-17T14:03:51Z"
+    },
+    {
+      "name": "boot1-ram-copy-of-public-key",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot1-data-mounted",
+      "passed": true,
+      "detail": "24 1 254:0 / /mnt/mibox-data rw,nosuid,nodev,relatime - ext4 /dev/vda rw"
+    },
+    {
+      "name": "boot1-alpine-integrity-match",
+      "passed": true,
+      "detail": "MATCH"
+    },
+    {
+      "name": "boot1-write-sentinel",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot1-pid1-restarts-killed-ssh-listener",
+      "passed": true,
+      "detail": "236"
+    },
+    {
+      "name": "boot1-alter-pinned-library",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot1-stop-from-own-session",
+      "passed": true,
+      "detail": "ssh exit 255"
+    },
+    {
+      "name": "boot1-ssh-gone-after-stop",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot1-filesystem-clean-after-stop",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-ssh-strict-persistent-host-key",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-session-in-alpine-with-apk-guard",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-apk-floor-hook-installed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-time-synced-by-ntp",
+      "passed": true,
+      "detail": "SYNCED 2026-11-17T14:04:37Z"
+    },
+    {
+      "name": "boot2-ram-copy-of-public-key",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-data-mounted",
+      "passed": true,
+      "detail": "24 1 254:0 / /mnt/mibox-data rw,nosuid,nodev,relatime - ext4 /dev/vda rw"
+    },
+    {
+      "name": "boot2-integrity-mismatch-reported-ssh-still-up",
+      "passed": true,
+      "detail": "MISMATCH usr/lib/libz.so.1.3.2"
+    },
+    {
+      "name": "boot2-sentinel-retained",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-check-refused-while-data-mounted",
+      "passed": true,
+      "detail": "Error: Custom { kind: Other, error: \"control request rejected or invalid response\" }"
+    },
+    {
+      "name": "boot2-restart-refused-while-data-mounted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-persist-stop-stale-boot-id-refused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-persist-stop-via-pid1-as-uid2000",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-restart-accepted-after-stop",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-filesystem-clean-after-stop",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no-disk-stays-ram-only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no-disk-pid1-console-alive",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no-disk-no-ssh",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "empty-disk-stays-ram-only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "empty-disk-boot-failed-marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "empty-disk-no-ssh",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "empty-disk-tree-not-created",
+      "passed": true,
+      "detail": "2  (12) .    2  (12) ..    11  (4060) lost+found"
+    },
+    {
+      "name": "empty-disk-unmounted-clean",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "all_passed": true
+}

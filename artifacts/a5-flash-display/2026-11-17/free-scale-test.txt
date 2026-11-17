@@ -1,0 +1,6 @@
+before: free_scale_enable:[0x0] axis=0 0 0 0 win=window axis is [0 0 0 0]
+after: free_scale_enable:[0x1] axis=0 0 1279 1079 win=window axis is [0 0 1919 1079]
+[   27.180928@0] osd_blank: osd0  blank_mode = 0 ...
+[  343.958580@1] osddev_set_window_axis:215 index=0,x0=0,y0=0,x1=1919,y1=1079
+[  343.960238@1] osddev_free_scale_enable:130 index=0,enable=0x1
+[  343.965764@1] osd0 free scale ENABLE

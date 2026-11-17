@@ -27,7 +27,21 @@ BASELINE_FILES = ['usr/sbin/dropbear', 'lib/ld-musl-armhf.so.1', 'usr/lib/libz.s
                   'usr/lib/libutmps.so.0.1.3.1', 'usr/lib/libskarnet.so.2.14.4.0', 'bin/busybox']
 BASELINE_LINKS = ['lib/libc.musl-armv7.so.1', 'usr/lib/libz.so.1', 'usr/lib/libutmps.so.0.1',
                   'usr/lib/libskarnet.so.2.14', 'bin/sh', 'bin/ash']
+HANDOFF_SHA256 = 'b2b5bfb7319e2c14b8f3b47ef0355318d399083bd6284a75d2f4db413b531014'  # source b56e8073…
+SPLASH_SHA256 = 'f8f95140a0c010a2fefd36e18a14028a331b7fab9e3ae917f7ff15640f5a5aac'   # build-splash-ppm.py (LSB-left glyphs)
 S2_SHA256 = 'artifacts/storage/s2-20261117/device-sha256.txt'
+
+
+def base_arm_static(root, data):
+    """Reuse build-mibox-rootfs.py's static ARM ELF check on bytes."""
+    import tempfile
+    spec = importlib.util.spec_from_file_location('base_check', root / 'scripts/build-mibox-rootfs.py')
+    base = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(base)
+    with tempfile.NamedTemporaryFile() as tmp:
+        tmp.write(data)
+        tmp.flush()
+        return base.arm_static(Path(tmp.name))
 S2_TAR = 'phone-tools/backup/2026-11-17-s2/mibox-console.tar'
 S2_TAR_SHA256 = '5d655f74e0ccc9af7d1b4b6169b8c5a9cf8bfbfed73d6768358e4d22e6b492ae'
 
@@ -104,6 +118,24 @@ def build(root, output):
                     changed = True
     baseline = alpine_baseline(root)
     entries['etc/mibox-alpine-baseline'] = (0o100444, baseline, 0, 0)
+    # A5: HDMI handoff helper (fbdev ioctls only, physically shown to make
+    # video visible 2026-11-15) and the deterministic status splash.
+    handoff = (root / 'target/hardware-helper/mibox-fbhandoff').read_bytes()
+    splash = (root / 'target/splash/mibox-splash.ppm').read_bytes()
+    if hashlib.sha256(handoff).hexdigest() != HANDOFF_SHA256:
+        raise ValueError('fbhandoff differs from its build manifest pin')
+    if hashlib.sha256(splash).hexdigest() != SPLASH_SHA256 or not splash.startswith(b'P6\n1280 1080\n255\n'):
+        raise ValueError('splash differs from the pinned 1280x1080 PPM')
+    entries['sbin/mibox-fbhandoff'] = (0o100700, base_arm_static(root, handoff), 0, 0)
+    # Opaque RGBA for fb0's verified layout (R,G,B,A bytes); fbsplash wrote
+    # alpha 0, which the OSD shows as transparent (black).
+    pixels = splash[len(b'P6\n1280 1080\n255\n'):]
+    if len(pixels) != 1280 * 1080 * 3:
+        raise ValueError('splash pixel data size')
+    rgba = bytearray(1280 * 1080 * 4)
+    rgba[0::4], rgba[1::4], rgba[2::4] = pixels[0::3], pixels[1::3], pixels[2::3]
+    rgba[3::4] = b'\xff' * (1280 * 1080)
+    entries['etc/mibox-splash.rgba'] = (0o100644, bytes(rgba), 0, 0)
     assets = root / 'assets/rootfs'
     base_spec = importlib.util.spec_from_file_location('base', root / 'scripts/build-mibox-rootfs.py')
     base = importlib.util.module_from_spec(base_spec)

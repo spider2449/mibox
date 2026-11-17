@@ -1,0 +1,17 @@
+BusyBox v1.37.0 (2025-11-21 22:40:56 UTC) multi-call binary.
+
+Usage: fbsplash -s IMGFILE [-c] [-d DEV] [-i INIFILE] [-f CMD] [-T tty]
+
+	-s	Image
+	-c	Hide cursor
+	-d	Framebuffer device (default /dev/fb0)
+	-i	Config file (var=value):
+			BAR_LEFT,BAR_TOP,BAR_WIDTH,BAR_HEIGHT
+			BAR_R,BAR_G,BAR_B,IMG_LEFT,IMG_TOP,IMG_ALIGN
+	-f	Control pipe (else exit after drawing image)
+			commands: 'NN' (% for progress bar) or 'exit'
+---
+rc=0
+0,0
+fb0
+fb1

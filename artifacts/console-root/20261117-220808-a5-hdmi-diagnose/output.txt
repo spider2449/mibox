@@ -1,0 +1,27 @@
+== display mode
+1080p
+== hdmitx
+disp_mode: VIC:16
+hpd_state: 1
+config: disp switch (force or edid): force
+audio config: on
+== fb0
+1280,3240
+32
+== handoff (manual)
+before visible=1280x1080 virtual=1280x3240 offset=0,0 bpp=32 stride=5120 smem_len=16777216
+FRAMEBUFFER_HANDOFF_PASS same_geometry=1 pan_current_offset=1 unblank=1
+rc=0
+== kernel display messages
+[    6.963907@1] [<c0462644>] (osd_setup+0x248/0x2bc) from [<c046622c>] (osddev_set+0x88/0x98)
+[    6.963919@1] [<c046622c>] (osddev_set+0x88/0x98) from [<c046515c>] (osd_set_par+0x70/0x78)
+[    6.963939@1] [<c046515c>] (osd_set_par+0x70/0x78) from [<c02ec7d0>] (fb_set_var+0x268/0x348)
+[    7.264987@1] hdmitx: hdcp: authenticated failed
+[    8.166074@1] osd_blank: osd0  blank_mode = 0 ...
+[    8.224853@0] hdmitx: hdcp: authenticated failed
+[   10.154947@1] hdmitx: hdcp: authenticated failed
+[   13.995364@1] hdmitx: hdcp: authenticated failed
+[   21.695358@1] hdmitx: hdcp: authenticated failed
+[   37.095324@1] hdmitx: hdcp: authenticated failed
+[   67.825360@1] hdmitx: hdcp: authenticated failed
+[  123.715567@0] osd_blank: osd0  blank_mode = 0 ...

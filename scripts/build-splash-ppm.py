@@ -73,7 +73,8 @@ def draw_text(pixels, text, color, scale, left, top):
         glyph_rows = glyph(char)
         for row, bits in enumerate(glyph_rows):
             for column in range(8):
-                if not (bits >> (7 - column)) & 1:
+                # font8x8: bit 0 is the leftmost pixel.
+                if not (bits >> column) & 1:
                     continue
                 for sy in range(scale):
                     for sx in range(scale):

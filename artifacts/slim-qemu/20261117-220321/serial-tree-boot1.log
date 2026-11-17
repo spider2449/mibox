@@ -1,0 +1,258 @@
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 6.12.107+deb13-armmp (debian-kernel@lists.debian.org) (arm-linux-gnueabihf-gcc-14 (Debian 14.2.0-19) 14.2.0, GNU ld (GNU Binutils for Debian) 2.44) #1 SMP Debian 6.12.107-1 (2026-08-29)
+[    0.000000] CPU: ARMv7 Processor [414fc0f0] revision 0 (ARMv7), cr=10c5387d
+[    0.000000] CPU: div instructions available: patching division code
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, PIPT instruction cache
+[    0.000000] OF: fdt: Machine model: linux,dummy-virt
+[    0.000000] random: crng init done
+[    0.000000] Memory policy: Data cache writealloc
+[    0.000000] efi: UEFI not found.
+[    0.000000] cma: Reserved 16 MiB at 0x4f000000 on node -1
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000040000000-0x000000004fffffff]
+[    0.000000]   Normal   empty
+[    0.000000]   HighMem  empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000040000000-0x000000004fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x000000004fffffff]
+[    0.000000] OF: reserved mem: Reserved memory: No reserved-memory node in the DT
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] psci: SMC Calling Convention v1.0
+[    0.000000] percpu: Embedded 20 pages/cpu s50508 r8192 d23220 u81920
+[    0.000000] Kernel command line: console=ttyAMA0,115200 rdinit=/init panic=0 mibox.test_restart=1
+[    0.000000] Dentry cache hash table entries: 32768 (order: 5, 131072 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 16384 (order: 4, 65536 bytes, linear)
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 65536
+[    0.000000] allocated 262144 bytes of page_ext
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:on, heap free:off
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] ftrace: allocating 44036 entries in 130 pages
+[    0.000000] ftrace: allocated 130 pages with 2 groups
+[    0.000000] rcu: Hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=8 to nr_cpu_ids=1.
+[    0.000000] 	Rude variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] RCU Tasks Rude: Setting shift to 0 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=1.
+[    0.000000] RCU Tasks Trace: Setting shift to 0 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=1.
+[    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+[    0.000000] GICv2m: range[mem 0x08020000-0x08020fff], SPI[80:143]
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.000000] arch_timer: cp15 timer(s) running at 62.50MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x1ffffffffffffff max_cycles: 0x1cd42e208c, max_idle_ns: 881590405314 ns
+[    0.000170] sched_clock: 57 bits at 63MHz, resolution 16ns, wraps every 4398046511096ns
+[    0.000309] Switching to timer-based delay loop, resolution 16ns
+[    0.010439] Console: colour dummy device 80x25
+[    0.012715] Calibrating delay loop (skipped), value calculated using timer frequency.. 125.00 BogoMIPS (lpj=250000)
+[    0.012878] CPU: Testing write buffer coherency: ok
+[    0.014239] CPU0: Spectre v2: firmware did not set auxiliary control register IBE bit, system vulnerable
+[    0.014380] CPU0: Spectre BHB: enabling loop workaround for all CPUs
+[    0.014473] pid_max: default: 32768 minimum: 301
+[    0.016852] LSM: initializing lsm=lockdown,capability,landlock,yama,apparmor,tomoyo,bpf,ipe,ima,evm
+[    0.017706] landlock: Up and running.
+[    0.017733] Yama: disabled by default; enable with sysctl kernel.yama.*
+[    0.020334] AppArmor: AppArmor initialized
+[    0.020573] TOMOYO Linux initialized
+[    0.022327] LSM support for eBPF active
+[    0.024431] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.024477] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.056337] /cpus/cpu@0 missing clock-frequency property
+[    0.056719] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+[    0.070798] Setting up static identity map for 0x40300000 - 0x403000ac
+[    0.073557] rcu: Hierarchical SRCU implementation.
+[    0.073595] rcu: 	Max phase no-delay instances is 1000.
+[    0.081751] EFI services will not be available.
+[    0.083265] smp: Bringing up secondary CPUs ...
+[    0.083875] smp: Brought up 1 node, 1 CPU
+[    0.083955] SMP: Total of 1 processors activated (125.00 BogoMIPS).
+[    0.084015] CPU: All CPU(s) started in SVC mode.
+[    0.090376] Memory: 215620K/262144K available (12288K kernel code, 1797K rwdata, 4196K rodata, 2048K init, 427K bss, 28080K reserved, 16384K cma-reserved, 0K highmem)
+[    0.099578] devtmpfs: initialized
+[    0.111213] VFP support v0.3: implementor 41 architecture 4 part 30 variant f rev 0
+[    0.140478] futex hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    0.155517] pinctrl core: initialized pinctrl subsystem
+[    0.169703] DMI not present or invalid.
+[    0.180594] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.202115] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.204034] audit: initializing netlink subsys (disabled)
+[    0.218188] audit: type=2000 audit(0.184:1): state=initialized audit_enabled=0 res=1
+[    0.222493] thermal_sys: Registered thermal governor 'fair_share'
+[    0.222716] thermal_sys: Registered thermal governor 'bang_bang'
+[    0.222736] thermal_sys: Registered thermal governor 'step_wise'
+[    0.222742] thermal_sys: Registered thermal governor 'user_space'
+[    0.222748] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.223386] No ATAGs?
+[    0.224153] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+[    0.224258] hw-breakpoint: maximum watchpoint size is 8 bytes.
+[    0.227690] Serial: AMBA PL011 UART driver
+[    0.275496] 9000000.pl011: ttyAMA0 at MMIO 0x9000000 (irq = 28, base_baud = 0) is a PL011 rev1
+[    0.277797] printk: legacy console [ttyAMA0] enabled
+[    3.207771] kprobes: kprobe jump-optimization is enabled. All kprobes are optimized if possible.
+[    3.286532] iommu: Default domain type: Translated
+[    3.309611] iommu: DMA domain TLB invalidation policy: strict mode
+[    3.395700] pps_core: LinuxPPS API ver. 1 registered
+[    3.417924] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    3.509809] PTP clock support registered
+[    3.541420] NetLabel: Initializing
+[    3.557170] NetLabel:  domain hash size = 128
+[    3.578198] NetLabel:  protocols = UNLABELED CIPSOv4 CALIPSO
+[    3.604811] NetLabel:  unlabeled traffic allowed by default
+[    3.632889] vgaarb: loaded
+[    3.652055] clocksource: Switched to clocksource arch_sys_counter
+[    3.695729] VFS: Disk quotas dquot_6.6.0
+[    3.714817] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+[    3.753627] AppArmor: AppArmor Filesystem Enabled
+[    3.800774] NET: Registered PF_INET protocol family
+[    3.825543] IP idents hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    3.868781] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes, linear)
+[    3.909502] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    3.948670] TCP established hash table entries: 2048 (order: 1, 8192 bytes, linear)
+[    3.987215] TCP bind hash table entries: 2048 (order: 3, 32768 bytes, linear)
+[    4.021562] TCP: Hash tables configured (established 2048 bind 2048)
+[    4.054405] MPTCP token hash table entries: 256 (order: 0, 4096 bytes, linear)
+[    4.091531] UDP hash table entries: 256 (order: 1, 8192 bytes, linear)
+[    4.122960] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes, linear)
+[    4.158784] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    4.186937] NET: Registered PF_XDP protocol family
+[    4.209901] PCI: CLS 0 bytes, default 64
+[    4.238411] Initialise system trusted keyrings
+[    4.263184] Trying to unpack rootfs image as initramfs...
+[    4.292562] Key type blacklist registered
+[    4.337137] workingset: timestamp_bits=14 max_order=16 bucket_order=2
+[    4.402235] zbud: loaded
+[    4.433529] fuse: init (API version 7.41)
+[    4.480179] integrity: Platform Keyring initialized
+[    4.532540] integrity: Machine keyring initialized
+[    4.852471] Freeing initrd memory: 2440K
+[    4.878525] Key type asymmetric registered
+[    4.900343] Asymmetric key parser 'x509' registered
+[    5.041260] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 248)
+[    5.083654] io scheduler mq-deadline registered
+[    5.136681] pl061_gpio 9030000.pl061: PL061 GPIO chip registered
+[    5.172137] ledtrig-cpu: registered to indicate activity on CPUs
+[    5.205547] pci-host-generic 4010000000.pcie: host bridge /pcie@10000000 ranges:
+[    5.243924] pci-host-generic 4010000000.pcie:       IO 0x003eff0000..0x003effffff -> 0x0000000000
+[    5.288043] pci-host-generic 4010000000.pcie:      MEM 0x0010000000..0x003efeffff -> 0x0010000000
+[    5.330817] pci-host-generic 4010000000.pcie:      MEM 0x8000000000..0xffffffffff -> 0x8000000000
+[    5.374274] pci-host-generic 4010000000.pcie: missing "reg" property
+[    5.406002] pci-host-generic 4010000000.pcie: probe with driver pci-host-generic failed with error -75
+[    5.465177] Serial: 8250/16550 driver, 5 ports, IRQ sharing enabled
+[    5.504547] Serial: AMBA driver
+[    5.522907] STM32 USART driver initialized
+[    5.550103] mousedev: PS/2 mouse device common for all mice
+[    5.584344] rtc-pl031 9010000.pl031: registered as rtc0
+[    5.611643] rtc-pl031 9010000.pl031: setting system clock to 2026-11-17T14:03:46 UTC (1794924226)
+[    5.668716] NET: Registered PF_INET6 protocol family
+[    5.746309] Segment Routing with IPv6
+[    5.767028] In-situ OAM (IOAM) with IPv6
+[    5.787907] mip6: Mobile IPv6
+[    5.803814] NET: Registered PF_PACKET protocol family
+[    5.829742] mpls_gso: MPLS GSO support
+[    5.849652] ThumbEE CPU extension supported.
+[    5.872200] Registering SWP/SWPB emulation handler
+[    5.920789] registered taskstats version 1
+[    5.945091] Loading compiled-in X.509 certificates
+[    6.248643] Loaded X.509 cert 'Build time autogenerated kernel key: cb775a0e06e27efeea4fd93d3188b203c774bb18'
+[    6.313196] Key type .fscrypt registered
+[    6.333706] Key type fscrypt-provisioning registered
+[    6.565815] Key type encrypted registered
+[    6.587067] AppArmor: AppArmor sha256 policy hashing enabled
+[    6.614765] ima: No TPM chip found, activating TPM-bypass!
+[    6.642458] ima: Allocated hash algorithm: sha256
+[    6.667292] ima: No architecture policies found
+[    6.690879] evm: Initialising EVM extended attributes:
+[    6.717312] evm: security.selinux
+[    6.734491] evm: security.SMACK64 (disabled)
+[    6.755420] evm: security.SMACK64EXEC (disabled)
+[    6.777855] evm: security.SMACK64TRANSMUTE (disabled)
+[    6.803018] evm: security.SMACK64MMAP (disabled)
+[    6.828140] evm: security.apparmor
+[    6.845035] evm: security.ima
+[    6.860036] evm: security.capability
+[    6.878158] evm: HMAC attrs: 0x1
+[    7.254958] input: gpio-keys as /devices/platform/gpio-keys/input/input0
+[    7.552586] clk: Disabling unused clocks
+[    7.640144] PM: genpd: Disabling unused power domains
+[    7.887029] Freeing unused kernel image (initmem) memory: 2048K
+[    8.141533] Run /init as init process
+MIBOX_RAM_CONTROL_READY
+MIBOX_SETUP_READY console=/dev/console
+MIBOX_CONSOLE_START_SPAWNED pid=130
+mibox-init 0.1.0
+pid=1 arch=arm
+Linux version 6.12.107+deb13-armmp (debian-kernel@lists.debian.org) (arm-linux-gnueabihf-gcc-14 (Debian 14.2.0-19) 14.2.0, GNU ld (GNU Binutils for Debian) 2.44) #1 SMP Debian 6.12.107-1 (2026-08-29)
+MIBOX_INIT_CONSOLE_READY
+Commands: help, info, uptime, health, reaptest, os, files. Persistent storage is not mounted.
+mibox> [   10.110111] virtio_blk virtio0: 1/0/0 default/read/poll queues
+[   10.178716] virtio_blk virtio0: [vda] 524288 512-byte logical blocks (268 MB/256 MiB)
+udhcpc: started, v1.37.0
+udhcpc: broadcasting discover
+udhcpc: broadcasting select for 10.0.2.15, server 10.0.2.2
+udhcpc: lease of 10.0.2.15 obtained from 10.0.2.2, lease time 86400
+[   11.888500] EXT4-fs (vda): mounted filesystem 74d25a3f-647f-4d0b-bf53-886b6647cb0c r/w with ordered data mode. Quota mode: none.
+[   12.989560] mibox-persistent: MIBOX_ALPINE_INTEGRITY=MATCH
+[   13.088088] mibox-persistent: MIBOX_PERSISTENT_BOOT_READY free_kib=147260 floor_kib=262144
+[   13.129623] mibox-persistent: MIBOX_DATA_BELOW_FLOOR
+[   13.174752] mibox-slim: MIBOX_ALPINE_SSH_STARTING
+MIBOX_ALPINE_SSH_STARTING
+MIBOX_ALPINE_SSH_STARTED pid=236
+[236] Nov 17 14:03:54 Not backgrounding
+[   13.702742] mibox-slim: MIBOX_TIME_SYNCED 2026-11-17T14:03:52Z
+[240] Nov 17 14:03:52 Child connection from 10.0.2.2:50650
+[240] Nov 17 14:03:52 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:wmtncF62KjkGQV/+lmkWkMpjCzJoaws5aJUP+RFfmb0 from 10.0.2.2:50650
+[240] Nov 17 14:03:52 Exit (root) from <10.0.2.2:50650>: Disconnect received
+[242] Nov 17 14:03:52 Child connection from 10.0.2.2:37324
+[243] Nov 17 14:03:52 Child connection from 10.0.2.2:50638
+[243] Nov 17 14:03:53 Exit before auth from <10.0.2.2:50638>: Exited normally
+[242] Nov 17 14:03:53 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:wmtncF62KjkGQV/+lmkWkMpjCzJoaws5aJUP+RFfmb0 from 10.0.2.2:37324
+[242] Nov 17 14:03:53 Exit (root) from <10.0.2.2:37324>: Disconnect received
+[247] Nov 17 14:03:53 Child connection from 10.0.2.2:37328
+[247] Nov 17 14:03:53 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:wmtncF62KjkGQV/+lmkWkMpjCzJoaws5aJUP+RFfmb0 from 10.0.2.2:37328
+[247] Nov 17 14:03:53 Exit (root) from <10.0.2.2:37328>: Disconnect received
+[250] Nov 17 14:03:53 Child connection from 10.0.2.2:37334
+[250] Nov 17 14:03:54 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:wmtncF62KjkGQV/+lmkWkMpjCzJoaws5aJUP+RFfmb0 from 10.0.2.2:37334
+[250] Nov 17 14:03:54 Exit (root) from <10.0.2.2:37334>: Disconnect received
+[252] Nov 17 14:03:54 Child connection from 10.0.2.2:37346
+[252] Nov 17 14:03:54 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:wmtncF62KjkGQV/+lmkWkMpjCzJoaws5aJUP+RFfmb0 from 10.0.2.2:37346
+[252] Nov 17 14:03:54 Exit (root) from <10.0.2.2:37346>: Disconnect received
+[254] Nov 17 14:03:54 Child connection from 10.0.2.2:37354
+[254] Nov 17 14:03:55 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:wmtncF62KjkGQV/+lmkWkMpjCzJoaws5aJUP+RFfmb0 from 10.0.2.2:37354
+[254] Nov 17 14:03:55 Exit (root) from <10.0.2.2:37354>: Disconnect received
+[256] Nov 17 14:03:55 Child connection from 10.0.2.2:37364
+[257] Nov 17 14:03:55 Child connection from 10.0.2.2:35002
+[257] Nov 17 14:03:55 Exit before auth from <10.0.2.2:35002>: Exited normally
+[256] Nov 17 14:03:55 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:wmtncF62KjkGQV/+lmkWkMpjCzJoaws5aJUP+RFfmb0 from 10.0.2.2:37364
+[256] Nov 17 14:03:55 Exit (root) from <10.0.2.2:37364>: Disconnect received
+[259] Nov 17 14:03:55 Child connection from 10.0.2.2:37378
+[259] Nov 17 14:03:56 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:wmtncF62KjkGQV/+lmkWkMpjCzJoaws5aJUP+RFfmb0 from 10.0.2.2:37378
+[259] Nov 17 14:03:56 Exit (root) from <10.0.2.2:37378>: Disconnect received
+[262] Nov 17 14:03:56 Child connection from 10.0.2.2:37392
+[262] Nov 17 14:03:57 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:wmtncF62KjkGQV/+lmkWkMpjCzJoaws5aJUP+RFfmb0 from 10.0.2.2:37392
+[262] Nov 17 14:03:59 Exit (root) from <10.0.2.2:37392>: Disconnect received
+[322] Nov 17 14:03:59 Child connection from 10.0.2.2:37398
+[322] Nov 17 14:03:59 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:wmtncF62KjkGQV/+lmkWkMpjCzJoaws5aJUP+RFfmb0 from 10.0.2.2:37398
+[236] Nov 17 14:03:59 Early exit: Terminated by signal
+[322] Nov 17 14:03:59 Exit (root) from <10.0.2.2:37398>: Disconnect received
+MIBOX_ALPINE_SSH_EXITED pid=236 status=0x0
+MIBOX_ALPINE_SSH_STARTED pid=324
+[324] Nov 17 14:04:10 Not backgrounding
+[325] Nov 17 14:04:12 Child connection from 10.0.2.2:36648
+[325] Nov 17 14:04:12 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:wmtncF62KjkGQV/+lmkWkMpjCzJoaws5aJUP+RFfmb0 from 10.0.2.2:36648
+[325] Nov 17 14:04:12 Exit (root) from <10.0.2.2:36648>: Disconnect received
+[327] Nov 17 14:04:12 Child connection from 10.0.2.2:32890
+[327] Nov 17 14:04:12 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:wmtncF62KjkGQV/+lmkWkMpjCzJoaws5aJUP+RFfmb0 from 10.0.2.2:32890
+[327] Nov 17 14:04:13 Exit (root) from <10.0.2.2:32890>: Disconnect received
+[330] Nov 17 14:04:13 Child connection from 10.0.2.2:32896
+[330] Nov 17 14:04:13 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:wmtncF62KjkGQV/+lmkWkMpjCzJoaws5aJUP+RFfmb0 from 10.0.2.2:32896
+[324] Nov 17 14:04:15 Early exit: Terminated by signal
+[330] Nov 17 14:04:15 Exit (root) from <10.0.2.2:32896>: Terminated by signal
+MIBOX_ALPINE_SSH_EXITED pid=324 status=0x0
+[   40.690758] EXT4-fs (vda): unmounting filesystem 74d25a3f-647f-4d0b-bf53-886b6647cb0c.
+[   40.932718] mibox-persistent: MIBOX_PERSISTENT_CONSOLE_STOPPED
+qemu-system-arm: terminating on signal 15 from pid 375 (python3)

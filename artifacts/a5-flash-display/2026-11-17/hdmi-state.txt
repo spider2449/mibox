@@ -1,0 +1,26 @@
+== display mode
+1080p
+== hdmitx
+disp_mode: VIC:16
+hpd_state: 1
+config: disp switch (force or edid): force
+audio config: on
+== fb0
+1280,3240
+32
+before visible=1280x1080 virtual=1280x3240 offset=0,0 bpp=32 stride=5120 smem_len=16777216
+FRAMEBUFFER_HANDOFF_PASS same_geometry=1 pan_current_offset=1 unblank=1
+rc=0
+== kernel display messages
+[    2.034561@0] create  vout attribute ok 
+[    2.047663@0] osd_init
+[    2.054117@0] osd_probe, vinfo:c0796ebc
+[    2.066061@0] osd_probe, mydef_var:c0b247dc, vinfo:c0796ebc
+[    2.095881@0] osd_probe, mydef_var:c0b247dc, vinfo:c0796ebc
+[    2.114092@0] osd probe ok  
+[    4.161250@0] hdmitx: hdcp: start hdcp
+[    5.480713@1] hdmitx: cec: CEC init
+[    5.482479@0] hdmitx: cec: CEC task process
+[    5.483221@1] hdmitx: cec: hdmitx_device->cec_init_ready:0x1
+[    5.730905@1] osd_blank: osd0  blank_mode = 0 ...
+[   27.180928@0] osd_blank: osd0  blank_mode = 0 ...

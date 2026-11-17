@@ -1,6 +1,8 @@
 # Writing and restoring boot1 (plan C3)
 
-Status: **boot1 WRITTEN with Slim `dd1e6756…` on 2026-11-17 (owner-authorized C4).**
+Status: **boot1 holds Slim `f11de99e…` (with HDMI splash) since 2026-11-17**, after C4
+(`dd1e6756…`) and two owner-approved A5 rewrites (`35e1d4d2…`, `f11de99e…`).
+For a restore, name `f11de99e…` as the expected current content.
 Stock boot1 `06d9eb7e…` remains restorable with the restore section below. Writing boot1
 (C4) needs explicit owner approval at that time. Nothing here touches the
 bootloader, env, boot, recovery, system or data partitions.

@@ -51,11 +51,29 @@ echo UNSYNCHRONIZED > /run/mibox-time-state
         fi
     done
 ) < /dev/null > /dev/null 2>&1 &
-# Bounded HDMI handoff when the optional display files are packaged.
-if [ -x /sbin/mibox-fbhandoff ] && [ -e /etc/mibox-splash.ppm ]; then
+# HDMI status splash (plan A5). Only on a flash boot does the bootloader run
+# init_display and load the HDCP keys; a C003-intercepted boot leaves HDMI
+# muted. The handoff verifies fb0 is 1280x1080x32 with R/G/B/A at bit offsets
+# 0/8/16/24, so the opaque RGBA splash is copied straight into fb0, then the
+# OSD scaler stretches it to the output mode (both verified on the box).
+if [ -x /sbin/mibox-fbhandoff ] && [ -e /etc/mibox-splash.rgba ]; then
     (
-        if /sbin/mibox-fbhandoff >/dev/null 2>&1; then
-            busybox fbsplash -c -s /etc/mibox-splash.ppm >/dev/null 2>&1 || true
+        if /sbin/mibox-fbhandoff > /run/mibox-fbhandoff.log 2>&1; then
+            dd if=/etc/mibox-splash.rgba of=/dev/fb0 bs=5120 count=1080 2>/dev/null
+            g=/sys/class/graphics/fb0
+            case "$(cat /sys/class/display/mode 2>/dev/null)" in
+            1080p*) window='0 0 1919 1079' ;;
+            720p*) window='0 0 1279 719' ;;
+            *) window= ;;
+            esac
+            if [ -n "$window" ] && [ -w "$g/free_scale" ]; then
+                echo '0 0 1279 1079' > "$g/free_scale_axis"
+                echo "$window" > "$g/window_axis"
+                echo 1 > "$g/free_scale"
+            fi
+            say "MIBOX_SPLASH_SHOWN window=${window:-unscaled}"
+        else
+            say MIBOX_SPLASH_HANDOFF_FAILED
         fi
     ) &
 fi

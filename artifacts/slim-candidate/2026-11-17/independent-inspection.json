@@ -1,10 +1,10 @@
 {
   "file": "boot1-custom.NOT_READY.img",
   "bytes": 8388608,
-  "sha256": "dd1e6756bbbc8b5b5f268ac3b79a11ded792a6c4ee7ad43318ab641de3b14f2e",
+  "sha256": "f11de99e04362e5cb6cb4c84aa077bc534613185ea98c3461e77d229e71e1505",
   "expected_prefix_bytes": 4433609,
   "expected_prefix_sha1": "2dafa19e539ef3a5a674d3f13ff6df9ab483220f",
-  "actual_prefix_sha1": "cddfc1fc51f9dbe371446c5d6d3471e62b2712e5",
+  "actual_prefix_sha1": "cc20ba8b6a4fec0092b6135bb5df49eecfdf4df6",
   "matches_installed_script": false,
   "format": "Android v0-compatible (limited parser)",
   "layout_validated": true,
@@ -20,15 +20,15 @@
     {
       "name": "ramdisk",
       "start": 3901440,
-      "size": 1724791,
-      "end": 5626231,
-      "sha256": "a3be4149d839549ff8da437f99b970ebdc7304e5d2c71235669c46cd79707f2c"
+      "size": 1945354,
+      "end": 5846794,
+      "sha256": "50c1ff4ee8e70aac6020ef2512b45d1921b310dee883c5f7ea6e9cd9d01c378f"
     },
     {
       "name": "second",
-      "start": 5627904,
+      "start": 5847040,
       "size": 11414,
-      "end": 5639318,
+      "end": 5858454,
       "sha256": "24b30f1aafe26845839966721b3c083cb3ed49280178276b6114df6d725cb95c"
     }
   ],
@@ -38,8 +38,8 @@
     "second": 284164096,
     "tags": 268435712
   },
-  "aligned_end": 5640192,
-  "tail_bytes": 2748416,
+  "aligned_end": 5859328,
+  "tail_bytes": 2529280,
   "complete_final_page": true,
   "bootloader_acceptance": "UNKNOWN",
   "signature_verified": false

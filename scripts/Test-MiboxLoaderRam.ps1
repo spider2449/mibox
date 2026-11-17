@@ -187,7 +187,7 @@ namespace MiboxLoader {
       else if(preset=="FaultHang")expected="987851820bbe33d3aaef9668ed56f8cbdc4431b9c0afbaf78aaa0a1ffac8130b";
       else if(preset=="FaultKPanic")expected="e1a698204599c9cf5e407604099646914e20cd5e771911de3bccc52572c6fdb4";
       else if(preset=="Loader")expected="9c45436205964fabb2f2a113a7b65be524a3f1acde0933f2c5a4b1b460c8b58c";
-      else if(preset=="Slim")expected="dd1e6756bbbc8b5b5f268ac3b79a11ded792a6c4ee7ad43318ab641de3b14f2e";
+      else if(preset=="Slim")expected="f11de99e04362e5cb6cb4c84aa077bc534613185ea98c3461e77d229e71e1505";
       else throw new Exception("Unknown pinned candidate");
       if(image==null || image.Length!=8388608 || Hash(image)!=expected)throw new Exception("Candidate hash/size mismatch before USB access");
       return expected;

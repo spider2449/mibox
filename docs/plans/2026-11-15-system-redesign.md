@@ -267,9 +267,24 @@ A4. [ ] After A3a passes, preserve stock kernel/uImage, DTB, cmdline and load
    ramdisk; independently inspect and hash the resulting image. Target a
    compressed initramfs <= 1.5 MiB if the required functions fit; the mandatory
    limit is the complete image <= 8388608 bytes with measured slack.
-A5. [ ] Add fbhandoff and splash after slimming provides sufficient measured
+A5. [x] Add fbhandoff and splash after slimming provides sufficient measured
    capacity. Record final image size and slack; optional display assets must not
    block a functional independent console boot.
+   Done 2026-11-17 (`artifacts/a5-flash-display/2026-11-17/`), owner-approved
+   boot1 writes. Findings on the box: (1) a C003-intercepted (RAM) boot never
+   runs `init_display` or loads HDCP keys (`update 10000;` precedes them in
+   preboot): HDCP auth fails repeatedly and the TV stays in standby, so HDMI
+   can only be judged on a flash boot; (2) busybox fbsplash wrote alpha 0,
+   which the OSD shows as transparent (black); (3) the splash generator drew
+   font8x8 glyphs MSB-first, mirroring each glyph; (4) fb0 is 1280x1080 on a
+   1080p output, leaving the right third black. Fixes: LSB-left glyphs
+   (PPM `f8f95140…`), opaque RGBA splash written to fb0 with dd after the
+   handoff verified the 32-bit RGBA layout, OSD free_scale 1280x1080 ->
+   output mode (1080p/720p). Image `f11de99e…` (ramdisk 1945354, slack
+   2529280) written to boot1 (expect-current `35e1d4d2…`, readback and
+   independent re-hash OK); restart from flash logged
+   `MIBOX_SPLASH_SHOWN window=0 0 1919 1079` and the owner confirmed the
+   full-screen, correctly reading status splash.
 
 Optional space experiment, only if needed: inspect the already extracted config
 for `CONFIG_RD_GZIP`, `CONFIG_RD_LZMA`, `CONFIG_RD_LZ4` and `CONFIG_RD_XZ`.
@@ -424,7 +439,8 @@ B7 progress 2026-11-17 (owner-approved RAM boots, Slim `8d7849d9…`, bulk):
    synced 14 s after kernel start, PID1-supervised SSH with the persistent key,
    previous boot's sentinel retained (`artifacts/console-root/*-b7-cold-slim/`).
    Remaining B7 item: owner-observed HDMI, only if display files (A5) are added.
-B7. [ ] Physical RAM validation: separately pin the new 8 MiB image, upload and
+   Closed 2026-11-17 by A5: owner confirmed the splash on a flash boot.
+B7. [x] Physical RAM validation: separately pin the new 8 MiB image, upload and
    fully read back/hash before boot. Verify boot ID, OS/PID1/tool hashes,
    automatic chroot/services, SSH key authentication, static network, persistent
    file I/O and owner-observed HDMI when display additions are included.

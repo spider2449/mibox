@@ -1,0 +1,44 @@
+watch_start_utc=2026-11-17T14:09:44Z
+ssh_down_utc=2026-11-17T14:09:44Z
+ssh_up_utc=2026-11-17T14:10:59Z after_watch_s=72
+8b3eba61-c57b-4a65-8f9c-58b0e50f8262
+9.97 12.95
+== identity
+ID=mibox-custom
+IN_ALPINE_TREE
+== kernel and boot source
+Linux version 3.10.33 (jenkins@qh-dk-box-build00) (gcc version 4.7.3 20130205 (prerelease) (crosstool-NG linaro-1.13.1-4.7-2013.02-01-20130221 - Linaro GCC 2013.02) ) #1 SMP PREEMPT Mon Feb 20 15:47:21 CST 2017
+init=/init console=ttyS0,115200n8 no_console_suspend androidboot.system=1 mac=10:48:b1:ec:20:eb androidboot.btmac=10:48:b1:ee:b8:ec androidboot.serialno=248243005297 vdaccfg=0x10 storage=2 logo=osd1,loaded,0x85900000,1080p,full hdmimode=1080p cvbsmode=576cvbs androidboot.firstboot=0 hdmitx=cec0 val1=95000000 sdhc_debug=0x00000200 rx_clk_phase=0 sd_clk_phase=1 androidboot.ubootversion=2876
+== state
+MATCH
+UNSYNCHRONIZED
+ready
+== kmsg
+[    0.000000@0] Kernel command line: init=/init console=ttyS0,115200n8 no_console_suspend androidboot.system=1 mac=10:48:b1:ec:20:eb androidboot.btmac=10:48:b1:ee:b8:ec androidboot.serialno=248243005297 vdaccfg=0x10 storage=2 logo=osd1,loaded,0x85900000,1080p,full hdmimode=1080p cvbsmode=576cvbs androidboot.firstboot=0 hdmitx=cec0 val1=95000000 sdhc_debug=0x00000200 rx_clk_phase=0 sd_clk_phase=1 androidboot.ubootversion=2876
+[    5.793215@1] EXT4-fs (mmcblk0p11): mounting with "discard" option, but the device does not support discard
+[    5.801685@1] EXT4-fs (mmcblk0p11): mounted filesystem with ordered data mode. Opts: (null)
+[    6.107608@0] mibox-persistent: MIBOX_ALPINE_INTEGRITY=MATCH
+[    6.119969@0] mibox-persistent: MIBOX_PERSISTENT_BOOT_READY free_kib=2056976 floor_kib=262144
+[    6.126647@1] mibox-slim: MIBOX_ALPINE_SSH_STARTING
+== mounts
+1 1 0:1 / / rw - rootfs rootfs rw
+13 1 0:3 / /proc rw,nosuid,noexec,relatime - proc proc rw
+14 1 0:12 / /sys rw,nosuid,noexec,relatime - sysfs sysfs rw
+15 1 0:5 / /dev rw,nosuid,noexec,relatime - devtmpfs devtmpfs rw,size=437340k,nr_inodes=109335,mode=755
+16 15 0:10 / /dev/pts rw,nosuid,noexec,relatime - devpts devpts rw,mode=600,ptmxmode=000
+17 15 0:13 / /dev/usb-ffs/adb rw,nosuid,noexec,relatime - functionfs adb rw
+18 1 179:11 / /mnt/mibox-data rw,nosuid,nodev,relatime - ext4 /dev/mibox-data rw,data=ordered
+19 18 0:5 / /mnt/mibox-data/mibox-console/rootfs/dev rw,nosuid,noexec,relatime - devtmpfs devtmpfs rw,size=437340k,nr_inodes=109335,mode=755
+20 18 0:3 / /mnt/mibox-data/mibox-console/rootfs/proc rw,nosuid,noexec,relatime - proc proc rw
+21 18 0:12 / /mnt/mibox-data/mibox-console/rootfs/sys rw,nosuid,noexec,relatime - sysfs sysfs rw
+22 19 0:10 / /mnt/mibox-data/mibox-console/rootfs/dev/pts rw,nosuid,noexec,relatime - devpts devpts rw,mode=600,ptmxmode=000
+== host key
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBuytSRUPaKAiJSrRADqP6pd7XPjbAPkeh5LR2vw6A91
+== sentinel
+SLIM_PHYSICAL_5b665a37-5204-4832-be53-a44658f68b98
+SLIM_PHYSICAL_e3c73b6f-ea52-4305-b773-1f2c0671babb
+SLIM_PHYSICAL_f291711f-1a26-4593-81e9-be8aec3b4132
+== ssh listener parent
+187 ppid=1
+190 ppid=187
+C5_WATCH_DONE

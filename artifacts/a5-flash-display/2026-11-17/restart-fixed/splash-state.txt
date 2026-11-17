@@ -1,0 +1,8 @@
+[    5.964417@0] osddev_free_scale_enable:130 index=0,enable=0x1
+[    5.969815@0] osd0 free scale ENABLE
+[    5.983074@0] mibox-slim: MIBOX_SPLASH_SHOWN window=0 0 1919 1079
+before visible=1280x1080 virtual=1280x3240 offset=0,0 bpp=32 stride=5120 smem_len=16777216
+FRAMEBUFFER_HANDOFF_PASS same_geometry=1 pan_current_offset=1 unblank=1
+free_scale_enable:[0x1]
+window axis is [0 0 1919 1079]
+owner_observation_utc=2026-11-17T14:22:02Z: status splash full-screen, text reads normally (after controlled restart into f11de99e)

@@ -1,0 +1,58 @@
+== fb0
+bits_per_pixel=32 
+blank=
+block_mode=0x0 
+color_key=0x0 
+enable_key=0 
+enable_key_onhold=0 
+free_scale=free_scale_enable:[0x0] 
+free_scale_axis=0 0 0 0 
+freescale_mode=free_scale_mode:default 
+mode=
+modes=U:1280x1080p-0 
+name=OSD FB 
+order=order:[0x0] 
+osd_reverse=osd_reverse:[FALSE] 
+pan=0,0 
+prot_on=osd_rotate:[OFF] 
+scale=scale:[0x0] 
+scale_axis=0 0 0 0 
+stride=5120 
+uevent=MAJOR=29 MINOR=0 DEVNAME=fb0 
+virtual_size=1280,3240 
+window_axis=window axis is [0 0 0 0] 
+== fb1
+bits_per_pixel=32 
+blank=
+block_mode=0x0 
+color_key=0x0 
+enable_key=0 
+enable_key_onhold=0 
+free_scale=free_scale_enable:[0x0] 
+free_scale_axis=0 0 0 0 
+freescale_mode=free_scale_mode:default 
+mode=
+modes=U:1920x1080p-0 
+name=OSD FB 
+order=order:[0x0] 
+osd_reverse=osd_reverse:[FALSE] 
+pan=0,0 
+prot_on=osd_rotate:[OFF] 
+scale=scale:[0x0] 
+scale_axis=0 0 0 0 
+stride=7680 
+uevent=MAJOR=29 MINOR=1 DEVNAME=fb1 
+virtual_size=1920,2160 
+window_axis=window axis is [0 0 0 0] 
+== all fb0 attrs
+bits_per_pixel blank block_mode block_windows color_key console cursor dev device enable_3d enable_key enable_key_onhold flush_rate free_scale free_scale_axis freescale_mode mode modes name order osd_antiflicker osd_info_msg osd_reverse pan power preblend_enable prot_angle prot_canvas prot_on prot_state request2XScale rotate scale scale_axis scale_height scale_width state stride subsystem uevent ver_angle ver_clone ver_update_pan video_hole virtual_size window_axis 
+== fb0 first pixels (hex)
+ ff 40 00 00 ff 40 00 00 ff 40 00 00 ff 40 00 00
+== fb0 row 300 sample
+     33 *
+     17  ff 40 00 00 ff 40 00 00 ff 40 00 00 ff 40 00 00
+     16  00 b0 ff 00 00 b0 ff 00 00 b0 ff 00 00 b0 ff 00
+      8  00 b0 ff 00 00 b0 ff 00 ff 40 00 00 ff 40 00 00
+== vout
+1080p
+
