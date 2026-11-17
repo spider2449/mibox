@@ -95,6 +95,9 @@ S3. [x] Reclaim Android files on data by deleting directories, not formatting.
    no ext4/I/O errors, unmounted after. Re-hash of the kept trees matches S2
    (2435 files, `…-s3-post-hashes/`). Android cold boot after this deletion
    and its ADB loader-entry path are not yet re-verified.
+   Note: the S1-S3 device scripts used `test a && test b` chains, which
+   `set -e` enforces only for the last test. The S3 output shows every guarded
+   path existed, so the run was unaffected; the scripts now use `;`.
 S4. [~] Budgets and guards: keep a data free-space floor (initially the
    launcher's 64 MiB; revise from S1) enforced before apk installs and by PID1;
    bound logs (size cap/rotation); keep Docker test storage in RAM until data
@@ -112,6 +115,12 @@ S4. [~] Budgets and guards: keep a data free-space floor (initially the
    in the chroot); RAM PID1 logs stay in RAM. Docker test config already uses
    `data-root /run/mibox-docker-test` (RAM) with json-file logs capped at
    1m x 2 (`scripts/prepare-mibox-docker.py`).
+   Fixes 2026-11-17: the guard now reads free space with `stat -f` (statfs);
+   BusyBox `df` fails inside the chroot, which made the guard refuse
+   `apk add coreutils` on a fresh tree. Known gap: the guard is first on PATH
+   only for login shells; a non-interactive `ssh host apk …` gets dropbear's
+   default PATH and runs `/sbin/apk` unguarded. Candidate fix: an apk
+   pre-commit hook in `/etc/apk/commit_hooks.d/`, to be verified.
    Open, moved to Phase B: PID1 enforcement of the floor once it mounts data
    (B1/B4 "full" case), and a size-capped log rotation (e.g. BusyBox
    `syslogd -s 1024 -b 2`) when B3 starts any persistent logging service.
@@ -191,11 +200,31 @@ A2. [ ] Preserve `/mnt/mibox-data/mibox-console/rootfs` as the canonical Alpine
    `mibox-console.replaced-<date>` (never delete), stream
    `tar -xpf - --numeric-owner` of `mibox-console.tar` into the data root,
    unmount, then rerun the S2 `list`/`hashes` modes and diff with S2.
-A3. [ ] Build a separate slim initramfs with custom PID1, authenticated USB ADB,
+A3. [~] Build a separate slim initramfs with custom PID1, authenticated USB ADB,
    required BusyBox applets/libraries, fixed-IP network setup, the data/chroot
    lifecycle helper and a usable RAM recovery shell. Keep SSH in RAM only if
    needed for recovery; otherwise start it in Alpine. Do not add DHCP by default:
    the current verified network uses owner-confirmed static IPv4.
+   2026-11-17, owner choices: keep `system/bin/sh`; SSH runs from Alpine.
+   `scripts/build-slim-rootfs.py` derives the slim rootfs from the pinned
+   FailSafe rootfs (`266bdba6…`), keeping init `a24de13a…`, `/bin/mibox`
+   `e275d1d0…`, adbd, system/bin/sh, busybox (304 applet links), musl, ADB
+   keys and network/identity files unchanged; removes apk/OpenSSL/CA certs,
+   RAM dropbear and libraries, and mibox-hardware (103 entries); adds
+   `assets/rootfs/mibox-slim-start` and the built-in persistence helper.
+   Rootfs 1715554 bytes gzip (`8a6a6004…`); local candidate
+   `target/mibox-boot-candidate-slim` `4445921b…`, end 5629952, slack
+   2758656, tail zero (`artifacts/slim-candidate/2026-11-17/`). Not uploaded,
+   not booted, not flashed; it would also need a new pin in the RAM loaders.
+   QEMU `scripts/test-slim-qemu.py` PASS, 24 checks
+   (`artifacts/slim-qemu/20261117-195425/`), data disk built from the S2
+   backup: two boots with strict persistent host key, session inside Alpine,
+   data mounted, file persistence, stop from the caller's own SSH session,
+   SSH gone and `e2fsck -fn` clean after stop; no disk and empty ext4 stay
+   RAM-only with no SSH and create nothing. Launcher-mode helper regression
+   (`test-console-qemu.py --persistent`, disk raised to 512 MiB for the S4
+   floor) PASS (`artifacts/slim-qemu/regression-helper-launcher-mode-20261117/`).
+   Open before any physical boot: see B5 note (restart with data mounted).
 A3a. [ ] Before A4 or any new boot-image packaging, revalidate the complete
    hash-checked boot/boot1 backups and their parsed section bounds/tails.
    Start from `docs/mibox-stock-images.md`, its verified backup manifest, and
@@ -267,6 +296,21 @@ B4. [ ] If data is absent, wrong, full, invalid, or fails to mount/start, keep
    services or overwrite the failed tree. Record failure and allow explicit
    recovery. C003 RAM rescue is available on the next bootloader entry, not as a
    USB service inside the running kernel.
+B1/B4 progress 2026-11-17 (QEMU only, see A3): the slim start script runs
+   `mibox-persistent-console start --boot` after network setup. Boot mode
+   never creates a tree, checks host key/dropbear/authorized_keys, publishes
+   the host public key to RAM for USB authentication, undoes its mounts on any
+   failure (`MIBOX_PERSISTENT_BOOT_FAILED`), and otherwise leaves PID1 + USB
+   ADB only (`MIBOX_PERSISTENT_UNAVAILABLE`). Alpine dropbear runs under a
+   shell restart loop, not yet PID1 supervision (B3).
+B5 gap 2026-11-17: `stop` now kills every process rooted in the tree and
+   unmounts, but only root can run it, and with the slim image root is only
+   reachable over Alpine SSH. PID1's RESTART/CHECK refuse while data is
+   mounted (`readiness()` rejects any non-RAM mount, even for CHECK), and USB
+   ADB is uid 2000. If SSH fails with data mounted, the only exit is a power
+   cycle (C003 -> FailSafe; ext4 journal replay next mount). Next: a PID1
+   `PERSIST-STOP <boot_id>` request (uid 0/2000) that runs the built-in
+   helper `stop` as a bounded child, then the existing RESTART.
 B5. [ ] Extend the restart lifecycle for mounted data. Stop services and sessions,
    synchronize state, unmount chroot binds and data, then request normal restart.
    Existing restart control refuses block filesystem mounts; preserve that guard

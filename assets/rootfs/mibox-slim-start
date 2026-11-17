@@ -1,0 +1,62 @@
+#!/bin/sh
+# Slim image services, spawned by PID1 after USB ADB setup. Network first, then
+# the persistent Alpine tree on data; SSH runs from Alpine with its persistent
+# host key. If data is absent, wrong or fails to activate, nothing else starts:
+# PID1 and authenticated USB ADB stay available (plan B4).
+set -u
+export PATH=/usr/sbin:/usr/bin:/sbin:/bin
+say() { echo "mibox-slim: $*" > /dev/kmsg 2>/dev/null || true; echo "$*"; }
+mkdir -p /dev/pts /run
+if ! grep -q ' /dev/pts devpts ' /proc/mounts; then
+    mount -t devpts -o nosuid,noexec devpts /dev/pts
+fi
+if [ -e /dev/pts/ptmx ]; then
+    chmod 666 /dev/pts/ptmx
+    ln -sf pts/ptmx /dev/ptmx
+fi
+if [ ! -e /dev/tty ]; then mknod -m 666 /dev/tty c 5 0; fi
+chmod 1777 /tmp
+ip link set lo up
+qemu=
+# Only the QEMU virt fixture uses DHCP. The physical LAN retains the
+# owner-confirmed static profile, without enabling a DHCP client.
+if grep -aq 'linux,dummy-virt' /proc/device-tree/compatible 2>/dev/null; then
+    qemu=--qemu
+    ip link set eth0 up
+    udhcpc -i eth0 -n -q -t 5 -T 2 -s /etc/mibox-udhcpc
+elif grep -q '^MIBOX_STATIC_IPV4_V1 192.168.1.222 255.255.255.0 192.168.1.1$' /etc/mibox-network-static; then
+    ip link set eth0 up
+    ip addr add 192.168.1.222/24 dev eth0
+    ip route add default via 192.168.1.1
+else
+    say MIBOX_NETWORK_PROFILE_INVALID
+fi
+# Bounded HDMI handoff when the optional display files are packaged.
+if [ -x /sbin/mibox-fbhandoff ] && [ -e /etc/mibox-splash.ppm ]; then
+    (
+        if /sbin/mibox-fbhandoff >/dev/null 2>&1; then
+            busybox fbsplash -c -s /etc/mibox-splash.ppm >/dev/null 2>&1 || true
+        fi
+    ) &
+fi
+if ! /sbin/mibox-persistent-console start --boot $qemu > /run/mibox-persistent-start.log 2>&1; then
+    say MIBOX_PERSISTENT_UNAVAILABLE
+    exit 0
+fi
+root=/mnt/mibox-data/mibox-console/rootfs
+rm -f /run/mibox-alpine.stop
+echo $$ > /run/mibox-alpine-supervisor.pid
+say MIBOX_ALPINE_SSH_STARTING
+# Supervise Alpine's dropbear: restart after an exit, with a fixed back-off,
+# until the persistence helper's stop marks /run/mibox-alpine.stop.
+trap 'exit 0' TERM
+while [ ! -e /run/mibox-alpine.stop ]; do
+    chroot "$root" /usr/sbin/dropbear -F -E -s -j -k -p 22 \
+        -r /etc/dropbear/dropbear_ed25519_host_key < /dev/null &
+    child=$!
+    wait "$child"
+    status=$?
+    [ -e /run/mibox-alpine.stop ] && break
+    say "MIBOX_ALPINE_SSH_EXITED status=$status; restarting in 5 s"
+    sleep 5
+done

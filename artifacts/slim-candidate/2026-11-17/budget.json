@@ -1,0 +1,293 @@
+{
+  "partition_bytes": 8388608,
+  "candidates": [
+    {
+      "ramdisk_capacity_bytes": 4474880,
+      "slim_projections": null,
+      "image": "target/mibox-boot-candidate-slim/boot1-custom.NOT_READY.img",
+      "bytes": 8388608,
+      "sha256": "4445921baa54715530a604606daa362ad8e11f86f3895d81944014c5a3b68a13",
+      "page_size": 2048,
+      "sections": {
+        "kernel": {
+          "start": 2048,
+          "size": 3897711,
+          "sha256": "0cfa74c8cde102c877aa9605910e10f5541480e1dc9e0fb6bee02b75d0a638f7"
+        },
+        "ramdisk": {
+          "start": 3901440,
+          "size": 1715554,
+          "sha256": "8a6a6004527579d243918e3220125a84ae60f33f456df3321d6d6a2e70022363"
+        },
+        "second": {
+          "start": 5617664,
+          "size": 11414,
+          "sha256": "24b30f1aafe26845839966721b3c083cb3ed49280178276b6114df6d725cb95c"
+        }
+      },
+      "aligned_end": 5629952,
+      "slack_bytes": 2758656,
+      "tail_all_zero": true,
+      "ramdisk": {
+        "compressed_bytes": 1715554,
+        "uncompressed_bytes": 2788060,
+        "regular_files": 54,
+        "symlinks": 310,
+        "gzip9_recompressed_bytes": 1715554,
+        "zlib_level": 2
+      },
+      "components": {
+        "bin/busybox": {
+          "files": 1,
+          "bytes": 713964,
+          "gzip9_estimate": 499996
+        },
+        "lib/ld-musl-armhf.so.1": {
+          "files": 1,
+          "bytes": 530140,
+          "gzip9_estimate": 383839
+        },
+        "init": {
+          "files": 1,
+          "bytes": 514344,
+          "gzip9_estimate": 285082
+        },
+        "bin/mibox": {
+          "files": 1,
+          "bytes": 513620,
+          "gzip9_estimate": 253638
+        },
+        "system/bin": {
+          "files": 1,
+          "bytes": 214916,
+          "gzip9_estimate": 154169
+        },
+        "sbin/adbd": {
+          "files": 1,
+          "bytes": 166052,
+          "gzip9_estimate": 101611
+        },
+        "etc/services": {
+          "files": 1,
+          "bytes": 12813,
+          "gzip9_estimate": 5351
+        },
+        "usr/bin/getent": {
+          "files": 1,
+          "bytes": 13640,
+          "gzip9_estimate": 4994
+        },
+        "usr/bin/getconf": {
+          "files": 1,
+          "bytes": 9440,
+          "gzip9_estimate": 3994
+        },
+        "sbin/mibox-persistent-console": {
+          "files": 1,
+          "bytes": 8740,
+          "gzip9_estimate": 3174
+        },
+        "usr/bin/iconv": {
+          "files": 1,
+          "bytes": 5292,
+          "gzip9_estimate": 2688
+        },
+        "etc/modprobe.d": {
+          "files": 3,
+          "bytes": 3803,
+          "gzip9_estimate": 1677
+        },
+        "etc/protocols": {
+          "files": 1,
+          "bytes": 3144,
+          "gzip9_estimate": 1619
+        },
+        "usr/share/udhcpc": {
+          "files": 1,
+          "bytes": 3811,
+          "gzip9_estimate": 1505
+        },
+        "etc/busybox-paths.d": {
+          "files": 1,
+          "bytes": 3989,
+          "gzip9_estimate": 1310
+        },
+        "sbin/mibox-console-start": {
+          "files": 1,
+          "bytes": 2429,
+          "gzip9_estimate": 1241
+        },
+        "usr/lib/sysctl.d": {
+          "files": 1,
+          "bytes": 1278,
+          "gzip9_estimate": 606
+        },
+        "adb_keys": {
+          "files": 1,
+          "bytes": 713,
+          "gzip9_estimate": 572
+        },
+        "etc/profile.d": {
+          "files": 3,
+          "bytes": 793,
+          "gzip9_estimate": 494
+        },
+        "etc/profile": {
+          "files": 1,
+          "bytes": 547,
+          "gzip9_estimate": 334
+        },
+        "etc/passwd": {
+          "files": 1,
+          "bytes": 702,
+          "gzip9_estimate": 285
+        },
+        "etc/group": {
+          "files": 1,
+          "bytes": 510,
+          "gzip9_estimate": 278
+        },
+        "sbin/ldconfig": {
+          "files": 1,
+          "bytes": 393,
+          "gzip9_estimate": 274
+        },
+        "etc/inittab": {
+          "files": 1,
+          "bytes": 570,
+          "gzip9_estimate": 239
+        },
+        "etc/network": {
+          "files": 1,
+          "bytes": 285,
+          "gzip9_estimate": 219
+        },
+        "etc/mibox-udhcpc": {
+          "files": 1,
+          "bytes": 410,
+          "gzip9_estimate": 218
+        },
+        "etc/motd": {
+          "files": 1,
+          "bytes": 284,
+          "gzip9_estimate": 190
+        },
+        "etc/udhcpc": {
+          "files": 1,
+          "bytes": 287,
+          "gzip9_estimate": 183
+        },
+        "etc/nsswitch.conf": {
+          "files": 1,
+          "bytes": 205,
+          "gzip9_estimate": 149
+        },
+        "usr/lib/os-release": {
+          "files": 1,
+          "bytes": 188,
+          "gzip9_estimate": 133
+        },
+        "etc/crontabs": {
+          "files": 1,
+          "bytes": 283,
+          "gzip9_estimate": 131
+        },
+        "etc/logrotate.d": {
+          "files": 1,
+          "bytes": 140,
+          "gzip9_estimate": 108
+        },
+        "etc/shadow": {
+          "files": 1,
+          "bytes": 260,
+          "gzip9_estimate": 98
+        },
+        "etc/securetty": {
+          "files": 1,
+          "bytes": 156,
+          "gzip9_estimate": 84
+        },
+        "etc/fstab": {
+          "files": 1,
+          "bytes": 89,
+          "gzip9_estimate": 63
+        },
+        "etc/secfixes.d": {
+          "files": 1,
+          "bytes": 97,
+          "gzip9_estimate": 62
+        },
+        "etc/os-release": {
+          "files": 1,
+          "bytes": 63,
+          "gzip9_estimate": 60
+        },
+        "etc/sysctl.conf": {
+          "files": 1,
+          "bytes": 53,
+          "gzip9_estimate": 55
+        },
+        "etc/issue": {
+          "files": 1,
+          "bytes": 51,
+          "gzip9_estimate": 53
+        },
+        "usr/bin/ldd": {
+          "files": 1,
+          "bytes": 51,
+          "gzip9_estimate": 53
+        },
+        "dev/null": {
+          "files": 1,
+          "bytes": 45,
+          "gzip9_estimate": 47
+        },
+        "etc/mibox-network-static": {
+          "files": 1,
+          "bytes": 61,
+          "gzip9_estimate": 47
+        },
+        "etc/hosts": {
+          "files": 1,
+          "bytes": 79,
+          "gzip9_estimate": 38
+        },
+        "dev/urandom": {
+          "files": 1,
+          "bytes": 32,
+          "gzip9_estimate": 37
+        },
+        "etc/shells": {
+          "files": 1,
+          "bytes": 38,
+          "gzip9_estimate": 34
+        },
+        "etc/mibox-usb-adb.enabled": {
+          "files": 1,
+          "bytes": 31,
+          "gzip9_estimate": 33
+        },
+        "etc/resolv.conf": {
+          "files": 1,
+          "bytes": 38,
+          "gzip9_estimate": 25
+        },
+        "etc/modules": {
+          "files": 1,
+          "bytes": 15,
+          "gzip9_estimate": 17
+        },
+        "etc/hostname": {
+          "files": 1,
+          "bytes": 10,
+          "gzip9_estimate": 12
+        },
+        "etc/alpine-release": {
+          "files": 1,
+          "bytes": 7,
+          "gzip9_estimate": 9
+        }
+      }
+    }
+  ]
+}

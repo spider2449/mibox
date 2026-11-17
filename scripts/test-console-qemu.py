@@ -74,7 +74,7 @@ def main(root, private_key, persistent=False):
         if persistent:
             disk = work / 'data.img'
             with disk.open('wb') as stream:
-                stream.truncate(128 * 1024 * 1024)
+                stream.truncate(512 * 1024 * 1024)  # above the 256 MiB tree-creation floor
             subprocess.run(['mkfs.ext4', '-q', '-F', str(disk)], check=True)
             command += ['-drive', f'file={disk},if=none,id=data,format=raw', '-device', 'virtio-blk-device,drive=data']
         log = open(evidence / 'serial.log', 'wb')

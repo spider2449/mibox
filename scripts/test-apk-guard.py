@@ -30,20 +30,22 @@ def main():
         (work / 'bin').mkdir()
         apk_log = work / 'apk.log'
         (work / 'bin/apk').write_text(f'#!/bin/sh\necho "$@" >> {apk_log}\n')
-        (work / 'bin/df').write_text('#!/bin/sh\necho "Filesystem 1024-blocks Used Available Capacity Mounted"\n'
-                                     'echo "/dev/x 2234556 1 $FAKE_AVAIL 1% /"\n')
+        # Stub `stat -f -c '%a %S' /`: available blocks of 4096 bytes. FAKE_AVAIL
+        # is in KiB and a multiple of 4, or non-numeric to simulate failure.
+        (work / 'bin/stat').write_text('#!/bin/sh\ncase "$FAKE_AVAIL" in *[!0-9]*) exit 1;; esac\n'
+                                       'echo "$((FAKE_AVAIL / 4)) 4096"\n')
         script = work / 'guard'
         script.write_text(guard.replace('exec /sbin/apk', f'exec {work}/bin/apk'))
-        for name in ('apk', 'df', 'guard'):
+        for name in ('apk', 'stat', 'guard'):
             (work / ('bin/' + name if name != 'guard' else name)).chmod(0o755)
         cases = [
             ('add allowed above floor', '262144', ['--no-cache', 'add', 'coreutils'], 0, True),
-            ('add refused below floor', '262143', ['add', 'coreutils'], 75, False),
+            ('add refused below floor', '262140', ['add', 'coreutils'], 75, False),
             ('upgrade refused below floor', '1000', ['-U', 'upgrade'], 75, False),
             ('update refused below floor', '1000', ['update'], 75, False),
             ('info passes below floor', '1000', ['info', '-e', 'dropbear'], 0, True),
             ('del passes below floor (frees space)', '1000', ['del', 'curl'], 0, True),
-            ('unreadable df refuses', 'n/a', ['add', 'x'], 75, False),
+            ('unreadable free space refuses', 'n/a', ['add', 'x'], 75, False),
             ('add after -X value refused below floor', '1000', ['-X', 'http://r/x', 'add', 'y'], 75, False),
             ('add after --repository=v refused', '1000', ['--repository=http://r', 'add', 'y'], 75, False),
             ('cache clean passes below floor', '1000', ['cache', 'clean'], 0, True),

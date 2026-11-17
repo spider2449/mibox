@@ -14,7 +14,7 @@ test "$(cat /sys/class/block/data/size)" = 5168640
 test "$(cat /sys/class/block/data/ro)" = 0
 device=/dev/mibox-data
 if [ ! -e "$device" ]; then mknod -m 600 "$device" b 179 11; fi
-test ! -L "$device" && test -b "$device"
+test ! -L "$device" ; test -b "$device"
 test "$(stat -c '%t:%T' "$device")" = b3:b
 if awk '$3 == "179:11"' /proc/self/mountinfo | grep -q .; then
     echo 'Data is already mounted; refusing' >&2
@@ -26,17 +26,17 @@ mkdir -p "$mnt"
 mount -t ext4 -o nosuid,nodev,noexec "$device" "$mnt"
 trap 'cd /; sync; umount "$mnt" && echo UNMOUNTED' EXIT
 cd "$mnt"
-test -d mibox-console/rootfs && test -d system && test -d misc/adb && test -d property
+test -d mibox-console/rootfs ; test -d system ; test -d misc/adb ; test -d property
 echo '== before'; df -k "$mnt"
 dirs='app app-lib dalvik-cache media log anr tombstones dontpanic diagnosis duokancache'
 files='spdif.mkv autovideo.mov test.mkv'
 for p in $dirs; do
-    if [ -e "$p" ]; then test -d "$p" && test ! -L "$p"; fi
+    if [ -e "$p" ]; then test -d "$p" ; test ! -L "$p"; fi
 done
 for p in $files; do
-    if [ -e "$p" ]; then test -f "$p" && test ! -L "$p"; fi
+    if [ -e "$p" ]; then test -f "$p" ; test ! -L "$p"; fi
 done
-test -d data && test ! -L data
+test -d data ; test ! -L data
 for p in $dirs $files; do
     if [ -e "$p" ]; then rm -rf -- "./$p" && echo "deleted $p"; else echo "absent $p"; fi
 done

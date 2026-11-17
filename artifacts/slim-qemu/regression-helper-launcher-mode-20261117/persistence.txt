@@ -1,0 +1,43 @@
+dropbear
+MIBOX_PERSISTENT_CONSOLE_READY
+Filesystem           1024-blocks    Used Available Capacity Mounted on
+/dev/vda                498900     10536    451668   2% /mnt/mibox-data
+MIBOX_DATA_FREE_KIB=451668 FLOOR_KIB=262144
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/main/armv7/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/community/armv7/APKINDEX.tar.gz
+(1/15) Installing coreutils-env (9.7-r1)
+(2/15) Installing coreutils-fmt (9.7-r1)
+(3/15) Installing coreutils-sha512sum (9.7-r1)
+(4/15) Installing acl-libs (2.3.2-r1)
+(5/15) Installing libattr (2.5.2-r2)
+(6/15) Installing coreutils (9.7-r1)
+(7/15) Installing brotli-libs (1.1.1-r0)
+(8/15) Installing c-ares (1.34.9-r0)
+(9/15) Installing libunistring (1.3-r0)
+(10/15) Installing libidn2 (2.3.7-r0)
+(11/15) Installing nghttp2-libs (1.69.0-r0)
+(12/15) Installing libpsl (0.21.5-r3)
+(13/15) Installing zstd-libs (1.5.7-r0)
+(14/15) Installing libcurl (8.14.1-r4)
+(15/15) Installing curl (8.14.1-r4)
+Executing busybox-1.37.0-r20.trigger
+OK: 11 MiB in 37 packages
+Filesystem     1024-blocks  Used Available Capacity Mounted on
+-                   498900 15728    446476       4% /
+curl 8.14.1 (armv7-alpine-linux-musleabihf) libcurl/8.14.1 OpenSSL/3.5.9 zlib/1.3.2 brotli/1.1.1 zstd/1.5.7 c-ares/1.34.9 libidn2/2.3.7 libpsl/0.21.5 nghttp2/1.69.0
+Release-Date: 2025-06-04
+Protocols: dict file ftp ftps gopher gophers http https imap imaps ipfs ipns mqtt pop3 pop3s rtsp smb smbs smtp smtps telnet tftp ws wss
+Features: alt-svc AsynchDNS brotli HSTS HTTP2 HTTPS-proxy IDN IPv6 Largefile libz NTLM PSL SSL threadsafe TLS-SRP UnixSockets zstd
+MIBOX_PERSISTENT_CONSOLE_STOPPED
+dropbear
+MIBOX_PERSISTENT_CONSOLE_READY
+Filesystem           1024-blocks    Used Available Capacity Mounted on
+/dev/vda                498900     15732    446472   3% /mnt/mibox-data
+MIBOX_DATA_FREE_KIB=446472 FLOOR_KIB=262144
+curl
+curl 8.14.1 (armv7-alpine-linux-musleabihf) libcurl/8.14.1 OpenSSL/3.5.9 zlib/1.3.2 brotli/1.1.1 zstd/1.5.7 c-ares/1.34.9 libidn2/2.3.7 libpsl/0.21.5 nghttp2/1.69.0
+Release-Date: 2025-06-04
+Protocols: dict file ftp ftps gopher gophers http https imap imaps ipfs ipns mqtt pop3 pop3s rtsp smb smbs smtp smtps telnet tftp ws wss
+Features: alt-svc AsynchDNS brotli HSTS HTTP2 HTTPS-proxy IDN IPv6 Largefile libz NTLM PSL SSL threadsafe TLS-SRP UnixSockets zstd
+PERSISTENCE_REBOOT_OK
+MIBOX_PERSISTENT_CONSOLE_STOPPED

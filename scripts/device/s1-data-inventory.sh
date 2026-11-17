@@ -10,7 +10,7 @@ test "$(cat /sys/class/block/data/dev)" = 179:11
 test "$(cat /sys/class/block/data/size)" = 5168640
 device=/dev/mibox-data
 if [ ! -e "$device" ]; then mknod -m 600 "$device" b 179 11; fi
-test ! -L "$device" && test -b "$device"
+test ! -L "$device" ; test -b "$device"
 test "$(stat -c '%t:%T' "$device")" = b3:b
 if awk '$3 == "179:11"' /proc/self/mountinfo | grep -q .; then
     echo 'Data is already mounted; refusing' >&2

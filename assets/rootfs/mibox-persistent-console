@@ -1,5 +1,12 @@
 #!/bin/sh
-# Invoked explicitly by the host after the pinned RAM system has booted.
+# Persistent Alpine lifecycle on the data partition.
+#   start [--qemu]          host launcher on a full RAM console (RAM dropbear):
+#                           may create the tree, switches RAM root's shell.
+#   start --boot [--qemu]   slim image at boot (dropbear runs in Alpine): never
+#                           creates the tree; undoes its mounts on any failure.
+#   stop [--qemu]           kills every process rooted in the tree (SSH sessions
+#                           included), then unmounts. A busy unmount fails and
+#                           leaves data mounted, so the PID1 restart guard holds.
 set -eu
 export PATH=/usr/sbin:/usr/bin:/sbin:/bin
 test "$(id -u)" = 0
@@ -11,7 +18,26 @@ device=/dev/mibox-data
 expected=179:11
 # Data free-space floor (plan S4, from the S1/S3 inventory): keep 256 MiB free.
 floor_kib=262144
-if [ "${2:-}" = --qemu ]; then
+action=${1:-}
+qemu=
+boot=
+shift || true
+for flag in "$@"; do
+    case "$flag" in
+    --qemu) qemu=1 ;;
+    --boot) boot=1 ;;
+    *) echo "unknown flag: $flag" >&2; exit 2 ;;
+    esac
+done
+# stdout may be a dead SSH session during stop; the kernel log always records.
+kmsg() { echo "mibox-persistent: $*" > /dev/kmsg 2>/dev/null || true; echo "$*" 2>/dev/null || true; }
+unmount_all() {
+    for path in dev/pts dev proc sys; do
+        if mountpoint -q "$root/$path"; then umount "$root/$path"; fi
+    done
+    if mountpoint -q "$store"; then umount "$store"; fi
+}
+if [ -n "$qemu" ]; then
     grep -aq 'linux,dummy-virt' /proc/device-tree/compatible
     device=/dev/vda
     expected=$(cat /sys/class/block/vda/dev)
@@ -26,8 +52,12 @@ else
     test "$(stat -c '%t:%T' "$device")" = b3:b
 fi
 
-case "${1:-}" in
+case "$action" in
 start)
+    if [ -n "$boot" ]; then
+        # Partial failure: undo binds and the data mount, start nothing.
+        trap 'status=$?; if [ "$status" -ne 0 ]; then cd /; unmount_all || true; kmsg "MIBOX_PERSISTENT_BOOT_FAILED status=$status"; fi' EXIT
+    fi
     mkdir -p "$store"
     test ! -L "$store"
     mounted=$(awk -v dev="$expected" '$3 == dev {print $5}' /proc/self/mountinfo)
@@ -39,8 +69,12 @@ start)
         blkid "$device" | grep -q 'TYPE="ext4"'
         mount -t ext4 -o nosuid,nodev "$device" "$store"
     fi
+    if [ -n "$boot" ]; then
+        # The slim image has no package tools to seed a tree from: require one.
+        test -d "$home" ; test ! -L "$home" ; test -d "$root"
+    fi
     if [ ! -e "$home" ]; then mkdir -m 700 "$home"; fi
-    test -d "$home" && test ! -L "$home"
+    test -d "$home" ; test ! -L "$home"
     test "$(stat -c '%u:%a' "$home")" = 0:700
     if [ ! -e "$root" ]; then
         available=$(df -Pk "$store" | awk 'END {print $4}')
@@ -55,7 +89,7 @@ start)
         mv "$stage" "$root"
         sync
     fi
-    test -d "$root" && test ! -L "$root"
+    test -d "$root" ; test ! -L "$root"
     test "$(stat -c '%u:%a' "$root")" = 0:700
     grep -qx MIBOX_PERSISTENT_CONSOLE_V1 "$root/etc/mibox-persistent-root"
     grep -q '^ID=mibox-custom$' "$root/etc/os-release"
@@ -67,7 +101,7 @@ start)
     # Package changes go through a guard that refuses them below the floor.
     # Rewritten on every start; /sbin/apk itself is unchanged.
     mkdir -p "$root/usr/local/sbin"
-    test ! -L "$root/usr/local" && test ! -L "$root/usr/local/sbin"
+    test ! -L "$root/usr/local" ; test ! -L "$root/usr/local/sbin"
     guard=$root/usr/local/sbin/apk
     test ! -L "$guard"
     cat > "$guard.new" <<'APKGUARD'
@@ -90,7 +124,8 @@ case "$sub" in
 add|upgrade|fix|update) ;;
 *) exec /sbin/apk "$@" ;;
 esac
-available=$(df -Pk / | awk 'END {print $4}')
+# statfs via `stat -f` needs no mount table; BusyBox df fails inside this chroot.
+available=$(stat -f -c '%a %S' / 2>/dev/null | awk 'NF == 2 && $1 ~ /^[0-9]+$/ && $2 ~ /^[0-9]+$/ {printf "%d", $1 * $2 / 1024}')
 case "$available" in
 ''|*[!0-9]*) echo "apk guard: cannot read free space on /; refusing $sub" >&2; exit 75 ;;
 esac
@@ -102,6 +137,24 @@ exec /sbin/apk "$@"
 APKGUARD
     chmod 755 "$guard.new"
     mv "$guard.new" "$guard"
+    available=$(df -Pk "$store" | awk 'END {print $4}')
+    if [ -n "$boot" ]; then
+        key=$root/etc/dropbear/dropbear_ed25519_host_key
+        test -s "$key" ; test ! -L "$key" ; test "$(stat -c '%u:%a' "$key")" = 0:600
+        test -s "$key.pub" ; test ! -L "$key.pub"
+        test -x "$root/usr/sbin/dropbear"
+        test -s "$root/root/.ssh/authorized_keys"
+        # USB ADB (uid 2000) cannot read data; publish the public key in RAM so
+        # the host can authenticate the persistent SSH identity over USB.
+        mkdir -p /etc/dropbear
+        cp "$key.pub" /etc/dropbear/dropbear_ed25519_host_key.pub.new
+        chmod 644 /etc/dropbear/dropbear_ed25519_host_key.pub.new
+        mv /etc/dropbear/dropbear_ed25519_host_key.pub.new /etc/dropbear/dropbear_ed25519_host_key.pub
+        trap - EXIT
+        kmsg "MIBOX_PERSISTENT_BOOT_READY free_kib=$available floor_kib=$floor_kib"
+        if [ "$available" -lt "$floor_kib" ]; then kmsg MIBOX_DATA_BELOW_FLOOR; fi
+        exit 0
+    fi
     cat > /sbin/mibox-persistent-shell <<'SHELL'
 #!/bin/sh
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -117,20 +170,39 @@ SHELL
     sed -i 's|^root:\([^:]*:[^:]*:[^:]*:[^:]*:[^:]*:\).*|root:\1/sbin/mibox-persistent-shell|' /etc/passwd
     echo MIBOX_PERSISTENT_CONSOLE_READY
     df -Pk "$store"
-    available=$(df -Pk "$store" | awk 'END {print $4}')
     echo "MIBOX_DATA_FREE_KIB=$available FLOOR_KIB=$floor_kib"
     # Below the floor the console still starts (recovery needs it); apk refuses.
     if [ "$available" -lt "$floor_kib" ]; then echo MIBOX_DATA_BELOW_FLOOR >&2; fi
     ;;
 stop)
-    # Run from RAM, with all other SSH sessions closed, before Android return.
-    sed -i 's|/sbin/mibox-persistent-shell$|/bin/ash|' /etc/passwd
-    sync
-    for path in dev/pts dev proc sys; do
-        if mountpoint -q "$root/$path"; then umount "$root/$path"; fi
+    # Must run with a RAM root (e.g. `chroot /proc/1/root ...`): it kills every
+    # process rooted in the tree, which can include the caller's SSH session.
+    test "$(readlink /proc/self/root)" = /
+    trap '' HUP PIPE
+    if [ -f /run/mibox-alpine-supervisor.pid ]; then
+        touch /run/mibox-alpine.stop
+        kill "$(cat /run/mibox-alpine-supervisor.pid)" 2>/dev/null || true
+    fi
+    rooted() {
+        for p in /proc/[0-9]*; do
+            if [ "$(readlink "$p/root" 2>/dev/null)" = "$root" ]; then echo "${p#/proc/}"; fi
+        done
+    }
+    for signal in TERM TERM TERM KILL KILL; do
+        pids=$(rooted)
+        [ -z "$pids" ] && break
+        kill -s "$signal" $pids 2>/dev/null || true
+        sleep 1
     done
-    if mountpoint -q "$store"; then umount "$store"; fi
-    echo MIBOX_PERSISTENT_CONSOLE_STOPPED
+    pids=$(rooted)
+    if [ -n "$pids" ]; then kmsg "MIBOX_PERSISTENT_STOP_BUSY pids=$pids"; exit 1; fi
+    if grep -q '/sbin/mibox-persistent-shell$' /etc/passwd; then
+        sed -i 's|/sbin/mibox-persistent-shell$|/bin/ash|' /etc/passwd
+    fi
+    sync
+    if ! unmount_all; then kmsg MIBOX_PERSISTENT_STOP_UNMOUNT_FAILED; exit 1; fi
+    rm -f /run/mibox-alpine-supervisor.pid /etc/dropbear/dropbear_ed25519_host_key.pub
+    kmsg MIBOX_PERSISTENT_CONSOLE_STOPPED
     ;;
-*) echo 'Usage: mibox-persistent-console start|stop [--qemu]' >&2; exit 2 ;;
+*) echo 'Usage: mibox-persistent-console start|stop [--boot] [--qemu]' >&2; exit 2 ;;
 esac
