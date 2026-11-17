@@ -1,0 +1,11 @@
+Tue, Nov 17, 2026  1:35:33 PM
+MIBOX_PERSISTENT_CONSOLE_STOPPED
+MIBOX_PERSIST_STOP_EXIT=0
+rc=0
+rootfs / rootfs rw 0 0
+proc /proc proc rw,nosuid,noexec,relatime 0 0
+sysfs /sys sysfs rw,nosuid,noexec,relatime 0 0
+devtmpfs /dev devtmpfs rw,nosuid,noexec,relatime,size=437448k,nr_inodes=109362,mode=755 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,mode=600,ptmxmode=000 0 0
+adb /dev/usb-ffs/adb functionfs rw,nosuid,noexec,relatime 0 0
+MIBOX_RESTART_READY boot_id=a6b34b12-7086-441a-a870-bcb768391d20

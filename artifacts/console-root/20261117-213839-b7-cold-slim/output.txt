@@ -1,0 +1,22 @@
+== identity
+0
+ID=mibox-custom
+IN_ALPINE_TREE
+== root of this shell
+/
+== host key
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBuytSRUPaKAiJSrRADqP6pd7XPjbAPkeh5LR2vw6A91
+== packages
+coreutils
+dropbear
+htop
+python3
+== guard
+45842180a067026d41ee4056673260ab745844522d60e96f62081ecaa2f8baf1  /usr/local/sbin/apk
+== free
+-                  2234556 161200   2056972       8% /
+== sentinel
+SLIM_PHYSICAL_428ba5b6-5ab0-4a6d-814d-69263c0c108d
+SLIM_PHYSICAL_5b665a37-5204-4832-be53-a44658f68b98
+== ram supervisor
+cat: /proc/1/root/run/mibox-alpine-supervisor.pid: No such file or directory

@@ -415,6 +415,15 @@ B7 progress 2026-11-17 (owner-approved RAM boots, Slim `8d7849d9…`, bulk):
    sentinel retained, same host key (`…-slim-physical-boot2/`). Box left
    running Slim with data mounted. Not yet covered here: owner-observed HDMI
    (no display files in Slim), time sync, and a cold power-on of Slim.
+   Update 2026-11-17: time sync closed under B3. Cold power-on of Slim
+   `dd1e6756…` (owner power-cycle, PC attached, after `persist-stop` left only
+   RAM mounts; `artifacts/b7-cold-power-on/2026-11-17/pre-poweroff.txt`): the
+   host polled 160 times with no C003 before the power cycle, then C003 ->
+   Slim `CustomBootVerified` (`artifacts/rescue-boot/20261117-213538-197/`).
+   Data mounted with no journal recovery, `MIBOX_ALPINE_INTEGRITY=MATCH`, time
+   synced 14 s after kernel start, PID1-supervised SSH with the persistent key,
+   previous boot's sentinel retained (`artifacts/console-root/*-b7-cold-slim/`).
+   Remaining B7 item: owner-observed HDMI, only if display files (A5) are added.
 B7. [ ] Physical RAM validation: separately pin the new 8 MiB image, upload and
    fully read back/hash before boot. Verify boot ID, OS/PID1/tool hashes,
    automatic chroot/services, SSH key authentication, static network, persistent
