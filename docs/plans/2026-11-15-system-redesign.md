@@ -73,8 +73,16 @@ S1. [x] Inventory data (from pinned RAM console, data mounted read-only where
    loader-entry path depends on `misc/adb`, `property/persist.sys.usb.config`
    and `system`; keep those until Phase C. A later Android boot rebuilds
    dalvik-cache for system apps (slow first boot) and may recreate logs.
-S2. [ ] Back up the Alpine tree, configuration and keys to the PC (also A2).
+S2. [x] Back up the Alpine tree, configuration and keys to the PC (also A2).
    Android userdata has no backup; the owner has accepted its loss.
+   Done 2026-11-17 (data `ro,noload`, unmounted after): `scripts/backup-data-trees.sh`
+   streamed `mibox-console` (incl. rootfs `/etc`, `/root`, SSH keys) and
+   `local/tmp` to `phone-tools/backup/2026-11-17-s2/`: `mibox-console.tar`
+   `5d655f74…`, `local-tmp.tar` `915b5960…`. `verify-tree-backup.py` PASS:
+   3557 entries (type, mode, owner, size) and 2435 regular files by SHA256
+   against a device-side listing; one socket in local/tmp is not archivable.
+   Evidence `artifacts/storage/s2-20261117/backup-verification.json`. Restore is
+   untested; A2 still needs a restore rehearsal before the tree is changed.
 S3. [ ] Reclaim Android files on data by deleting directories, not formatting.
    Android may regenerate some files if it boots again before Phase C.
 S4. [ ] Budgets and guards: keep a data free-space floor (initially the
