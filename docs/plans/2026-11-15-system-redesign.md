@@ -115,8 +115,24 @@ S4. [~] Budgets and guards: keep a data free-space floor (initially the
    Open, moved to Phase B: PID1 enforcement of the floor once it mounts data
    (B1/B4 "full" case), and a size-capped log rotation (e.g. BusyBox
    `syslogd -s 1024 -b 2`) when B3 starts any persistent logging service.
-S5. [ ] Boot image budget: record kernel, DTB and per-component initramfs
+S5. [x] Boot image budget: record kernel, DTB and per-component initramfs
    sizes and slack for every candidate (A4/A5).
+   Done 2026-11-17, offline: `scripts/report-boot-budget.py` ->
+   `artifacts/boot-budget/2026-11-17/boot-budget.json` (18 candidates, all
+   page 2048, tails zero). Stock kernel 3897711 bytes (Docker/kernel
+   candidates 4107835), DTB in `second` 11414. With the stock kernel the
+   ramdisk capacity is 4474880 bytes. Console family slack 32768-45056; the
+   pinned FailSafe ramdisk is 4441336 (gzip level already equal to gzip -9).
+   FailSafe gzip -9 estimates: libcrypto 1.50 MB, busybox 0.50, musl 0.38,
+   libssl 0.34, init 0.29, mibox 0.25, mibox-hardware 0.25, system/bin/sh
+   0.15, dropbear 0.13, CA certs 0.11, adbd 0.10; OpenSSL + apk + skarnet
+   total about 2.1 MB and are needed only for package management, which
+   belongs in Alpine. Single-stream projections from the FailSafe ramdisk
+   (method reproduces it to 4 bytes): init/mibox/adbd/busybox/musl/etc
+   1547200 bytes (slack 2926592); + system/bin/sh 1702694; + mibox-hardware
+   1796171; + RAM dropbear 2111606 (slack 2361344). The 1.5 MiB A4 target is
+   met only by the minimal set; fbhandoff (~209 KB) and splash (~9 KB) fit in
+   every projection. Projections are not built or booted images.
 S6. [ ] After Phase C passes: decide reuse of system/system1 (1 GiB total) and
    cache (192 MiB), e.g. as separate ext4 for containers, or a clean reformat
    of data. Requires verified backups, a revised partition-scope rule and
@@ -162,6 +178,8 @@ Optional space experiment, only if needed: inspect the already extracted config
 for `CONFIG_RD_GZIP`, `CONFIG_RD_LZMA`, `CONFIG_RD_LZ4` and `CONFIG_RD_XZ`.
 Keep gzip unless another supported format produces a useful measured saving and
 passes a separate physical RAM boot. Missing config entries remain UNKNOWN.
+Answered 2026-11-17 from the extracted config: only `CONFIG_RD_GZIP=y`;
+RD_LZMA, RD_XZ, RD_LZO and RD_BZIP2 are not set. Keep gzip; no experiment.
 Stock kernel recompilation or changing uImage to zImage is a separate research
 track requiring source/config provenance and hardware validation, not a gate
 for this plan.
