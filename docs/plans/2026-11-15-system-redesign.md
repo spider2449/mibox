@@ -430,10 +430,30 @@ C1. [x] Establish actual cold-start boot selection from the current env and
    an env reset to built-in defaults (which also drop the USB window).
    `storeargs` and `modify_cmdline` save the env on normal boots. If `bootm`
    returns, `run recovery` boots stock recovery. Target for C3: boot1 (179:7).
-C2. [ ] Before boot-partition writes, verify host-disconnected continuation on
+C2. [x] Before boot-partition writes, verify host-disconnected continuation on
    the existing boot setup with owner-controlled power and observation. Measure
    elapsed startup time and result. `update 10000` is not a proven 10-second
    duration. Retain the installed env hash and host-attached cold C003 evidence.
+   Done 2026-11-17 (owner-run): persistence stopped over USB ADB first, only
+   RAM/virtual mounts left (`artifacts/c2-cold-start/2026-11-17/pre-poweroff.txt`;
+   env hash `6142e34f…` read the same day). Owner unplugged USB from the PC
+   and power-cycled. Owner observation: first (bootloader) logo about 30 s
+   after power-on, then the Android boot logo, still there after ~8 min. So
+   without a host the `update 10000` window expired and the bootloader
+   continued to boot1; the kernel and Android init ran, with `/system` from
+   system1 (consistent with `bootsystem=1`, C1). Measured: power-on to first
+   logo ~30 s by the owner's stopwatch; window length itself not isolated.
+   Android itself did not finish booting: after USB was reconnected, Android
+   ADB (authorized, stock fingerprint) showed `system_server` restarting every
+   ~6 s with "Failed to find provider info for settings" -> NPE in
+   `showBootMessage` (`android-logcat.txt`, `android-data-state.txt`); a
+   consequence of the S3 reclaim (owner accepted Android loss), not of the
+   boot path. Android ADB `reboot` with the host attached reached C003 and Slim
+   loaded and verified (`artifacts/rescue-boot/20261117-210018-730/`): data
+   mounted cleanly, time synced, same host key, tree intact; Android's run
+   used ~40 MiB of data. Consequence: the Android ADB loader-entry path still
+   works while adbd runs, but a host-disconnected cold start now ends in
+   Android's boot loop, not a usable Android.
 C3. [ ] Prepare a concrete write AND restoration procedure for the proven target:
    exact partition identity/size, current full backup and hashes, original backup,
    pinned new candidate, write/flush/full-readback tools and independent second

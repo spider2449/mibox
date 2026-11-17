@@ -1,0 +1,23 @@
+/dev/block/system1 /system ext4 ro,seclabel,nodiratime,relatime,nodelalloc,noauto_da_alloc,commit=15,data=ordered 0 0
+/dev/block/data /data ext4 rw,seclabel,nosuid,nodev,noatime,nodiratime,block_validity,nodiscard,nodelalloc,journal_checksum,noauto_da_alloc,commit=15,data=ordered 0 0
+drwxrwx--x system   system            1970-01-01 08:00 data
+drwxrwxr-x system   system            1970-01-02 08:08 system
+drwxrwx--x system   system            1970-01-02 08:00 data
+drwxrwx--x system   system            1970-01-01 08:00 app
+opendir failed, Permission denied
+<6>[    6.903377@0] EXT4-fs (mmcblk0p10): mounted filesystem with ordered data mode. Opts: nomblk_io_submit,errors=remount-ro
+<4>[    7.018724@0] EXT4-fs (mmcblk0p11): Ignoring removed nomblk_io_submit option
+<4>[    7.038616@0] EXT4-fs (mmcblk0p11): mounting with "discard" option, but the device does not support discard
+<6>[    7.047348@0] EXT4-fs (mmcblk0p11): mounted filesystem with ordered data mode. Opts: nomblk_io_submit,errors=remount-ro
+<6>[    7.107604@0] EXT4-fs (mmcblk0p11): mounted filesystem with ordered data mode. Opts: block_validity,nodiscard,data=ordered,journal_checksum,noauto_da_alloc,commit=15,nodelalloc
+drwxrwx--x system   system            1970-01-02 08:00 dalvik-cache
+drwxrwx--x system   system            1970-01-01 08:00 app-lib
+drwxrwx--- media_rw media_rw          1970-01-01 08:00 media
+drwxrwx--x log      log               1970-01-02 08:08 log
+grep: /init.amlogic.board.rc: Permission denied
+grep: /init.amlogic.rc: Permission denied
+grep: /init.amlogic.usb.rc: Permission denied
+grep: /init.bluetooth.rc: Permission denied
+grep: /init.environ.rc: Permission denied
+1
+/system/bin/sh: cat: /proc/cmdline: Permission denied

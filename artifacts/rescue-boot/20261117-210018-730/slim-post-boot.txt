@@ -1,0 +1,6 @@
+SYNCED 2026-11-17T13:00:48Z
+[    7.011121@1] EXT4-fs (mmcblk0p11): mounting with "discard" option, but the device does not support discard
+[    7.019687@1] EXT4-fs (mmcblk0p11): mounted filesystem with ordered data mode. Opts: (null)
+[    7.454094@0] mibox-persistent: MIBOX_PERSISTENT_BOOT_READY free_kib=2056976 floor_kib=262144
+[    7.460800@0] mibox-slim: MIBOX_ALPINE_SSH_STARTING
+[   14.204081@1] mibox-slim: MIBOX_TIME_SYNCED 2026-11-17T13:00:48Z
