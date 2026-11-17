@@ -524,11 +524,26 @@ C4. [x] Once mandatory B gates (B1-B7, excluding optional B3a) pass and C1-C3
    `ff4fa440…` (`artifacts/console-root/20261117-214011-c4-boot1-write/`).
    Env, bootloader, boot, recovery, system* and data were not written.
    Restore: `docs/mibox-boot1-install.md` (expect-current `dd1e6756…`).
-C5. [ ] Owner-observed cold boot with the USB host disconnected: bootloader
+C5. [x] Owner-observed cold boot with the USB host disconnected: bootloader
    window continues into the custom system from flash, then PID1 automatically
    activates Alpine and SSH. Verify runtime identity, persistent keys/state and
    measured startup time. Follow with a controlled restart back into the custom
    system and verify a new boot ID. Record no RAM upload or Android dependency.
+   Done 2026-11-17 (`artifacts/c5-cold-boot/2026-11-17/`). After `persist-stop`
+   left only RAM mounts, the owner unplugged USB from the PC and power-cycled;
+   no RAM upload ran (no rescue script, ADB list empty). Observed over the LAN
+   only (`scripts/watch-c5-ssh.sh`, strict host key): SSH answered at
+   13:43:58 UTC with kernel uptime 10.57 s, boot ID `e3c73b6f…`, stock kernel
+   with the bootloader's own cmdline (`androidboot.system=1`), data mounted at
+   5.8 s, `MIBOX_ALPINE_INTEGRITY=MATCH`, PID1-supervised dropbear (ppid 1),
+   persistent host key `…6A91`, earlier sentinel retained; NTP synced at
+   13:43:59. Controlled restart without host (`persist-stop` then
+   `reboot-android` from a RAM-rooted shell over SSH, 13:44:38): back on SSH at
+   13:45:09 (31 s; kernel uptime 10.18 s, so bootloader + expired window
+   ~21 s), new boot ID `f291711f…`, previous boot's sentinel retained, data
+   mounted without journal recovery, integrity MATCH. Power-on-to-SSH total
+   for the cold start awaits the owner's stopwatch reading. No Android
+   dependency: Android's boot partition and system1 were not involved.
 C5a. [ ] Separate persistence acceptance after C5 and C6 pass; not a prerequisite
    for installation or basic independent boot. Apply all B8 backup, offline
    recovery, bounded-write and owner-power prerequisites even if B8 was skipped.
