@@ -1,0 +1,11 @@
+13acc3fd-6436-467d-9d51-97e3beaaa136
+18 1 179:11 / /mnt/mibox-data rw,nosuid,nodev,relatime - ext4 /dev/mibox-data rw,data=ordered
+[    7.006940@1] EXT4-fs (mmcblk0p11): mounting with "discard" option, but the device does not support discard
+[    7.015494@1] EXT4-fs (mmcblk0p11): mounted filesystem with ordered data mode. Opts: (null)
+[    7.413308@1] mibox-persistent: MIBOX_PERSISTENT_BOOT_READY free_kib=2098608 floor_kib=262144
+[    7.420135@0] mibox-slim: MIBOX_ALPINE_SSH_STARTING
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBuytSRUPaKAiJSrRADqP6pd7XPjbAPkeh5LR2vw6A91 root@android
+ls: /sbin/apk: No such file or directory
+ls: /usr/sbin/dropbear: No such file or directory
+dropbear
+MIBOX_PERSISTENT_BOOT_READY free_kib=2098608 floor_kib=262144

@@ -337,6 +337,20 @@ B6. [ ] Host/QEMU validation: actual slim rootfs startup and supervision; fixtur
    data tree success, absent/invalid data, partial mount cleanup, unexpected
    identity, key persistence, and clean/busy shutdown. Generic QEMU validates
    userspace behavior, not stock Meson6 kernel or bootloader compatibility.
+B7 progress 2026-11-17 (owner-approved RAM boots, Slim `8d7849d9…`, bulk):
+   boot 1 `artifacts/rescue-boot/20261117-200923-128/` and boot 2
+   `…/20261117-201116-028/` both `CustomBootVerified` with init `b1f3b654…`
+   and mibox `c7f2b1b1…`. Data mounted automatically ~7 s after kernel start
+   (`MIBOX_PERSISTENT_BOOT_READY free_kib=2098608`), Alpine dropbear started;
+   SSH with strict host key = S2 persistent key `…6A91`, session root in the
+   Alpine tree, packages and the stat-based apk guard (`45842180…`) present
+   (`artifacts/console-root/20261117-201051-slim-physical-boot1/`). B5 over
+   USB ADB as uid 2000: CHECK refused while mounted, `persist-stop` ->
+   `MIBOX_PERSIST_STOP_EXIT=0`, data unmounted, CHECK ready, RESTART -> C003 ->
+   Slim again (`…/b5-adb.txt`). Boot 2: no journal recovery on mount, boot-1
+   sentinel retained, same host key (`…-slim-physical-boot2/`). Box left
+   running Slim with data mounted. Not yet covered here: owner-observed HDMI
+   (no display files in Slim), time sync, and a cold power-on of Slim.
 B7. [ ] Physical RAM validation: separately pin the new 8 MiB image, upload and
    fully read back/hash before boot. Verify boot ID, OS/PID1/tool hashes,
    automatic chroot/services, SSH key authentication, static network, persistent

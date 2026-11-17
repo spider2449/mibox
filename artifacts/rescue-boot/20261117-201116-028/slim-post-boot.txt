@@ -1,0 +1,5 @@
+[    5.127791@0] [mmcblk0p05]             recovery  offset 0x000000c00000, size 0x000000800000 
+[    7.001174@0] EXT4-fs (mmcblk0p11): mounting with "discard" option, but the device does not support discard
+[    7.009945@0] EXT4-fs (mmcblk0p11): mounted filesystem with ordered data mode. Opts: (null)
+[    7.407137@1] mibox-persistent: MIBOX_PERSISTENT_BOOT_READY free_kib=2098604 floor_kib=262144
+[    7.413645@0] mibox-slim: MIBOX_ALPINE_SSH_STARTING

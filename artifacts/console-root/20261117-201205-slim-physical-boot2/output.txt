@@ -1,0 +1,22 @@
+== identity
+0
+ID=mibox-custom
+IN_ALPINE_TREE
+== root of this shell
+/
+== host key
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBuytSRUPaKAiJSrRADqP6pd7XPjbAPkeh5LR2vw6A91
+== packages
+coreutils
+dropbear
+htop
+python3
+== guard
+45842180a067026d41ee4056673260ab745844522d60e96f62081ecaa2f8baf1  /usr/local/sbin/apk
+== free
+-                  2234556 119576   2098596       6% /
+== sentinel
+SLIM_PHYSICAL_13acc3fd-6436-467d-9d51-97e3beaaa136
+SLIM_PHYSICAL_748d08a5-b202-4f58-82a7-d6542f336c7e
+== ram supervisor
+87

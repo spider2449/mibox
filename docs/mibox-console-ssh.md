@@ -104,10 +104,17 @@ The custom system has no verified power-off command. PID1 offers only a normal
 restart and, in the `Loader` build, a restart into the USB loader. Power off by
 making the system RAM-only, then removing power:
 
-1. Close other SSH sessions, then stop persistence:
-   `powershell -NoProfile -File scripts/Start-MiboxConsole.ps1 -Stop`.
-   It must print `PERSISTENT_CONSOLE_STOPPED`. It syncs, unmounts the chroot
-   bind mounts and unmounts `/mnt/mibox-data`. If it fails, do not remove power.
+1. Stop persistence.
+   - FailSafe/Console image (host launcher): close other SSH sessions, then
+     `powershell -NoProfile -File scripts/Start-MiboxConsole.ps1 -Stop`.
+     It must print `PERSISTENT_CONSOLE_STOPPED`.
+   - Slim image (data mounted automatically, SSH from Alpine): over USB,
+     `adb -s 248243005297 shell /bin/mibox persist-stop --boot-id <boot_id>`
+     (boot ID from `adb shell cat /proc/sys/kernel/random/boot_id`). It must
+     end with `MIBOX_PERSIST_STOP_EXIT=0`; it ends all Alpine SSH sessions.
+
+   Either way it syncs, unmounts the chroot bind mounts and unmounts
+   `/mnt/mibox-data`. If it fails, do not remove power.
 2. Confirm with `adb -s 248243005297 shell cat /proc/mounts` that only `rootfs`,
    `proc`, `sysfs`, `devtmpfs`, `devpts` and `functionfs` remain, with no `ext4`
    and no `/mnt/mibox-data`.

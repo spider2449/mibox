@@ -1,0 +1,13 @@
+== check while mounted
+Error: Custom { kind: Other, error: "control request rejected or invalid response" }
+rc=1
+== persist-stop as uid 2000
+MIBOX_PERSISTENT_CONSOLE_STOPPED
+MIBOX_PERSIST_STOP_EXIT=0
+rc=0
+== after
+0
+[    7.413308@1] mibox-persistent: MIBOX_PERSISTENT_BOOT_READY free_kib=2098608 floor_kib=262144
+[   77.403403@1] mibox-persistent: MIBOX_PERSISTENT_CONSOLE_STOPPED
+MIBOX_RESTART_READY boot_id=13acc3fd-6436-467d-9d51-97e3beaaa136
+rc=0
