@@ -36,7 +36,8 @@ ssh -i $env:USERPROFILE\.ssh\mibox-console root@192.168.1.222
 
 Its host key is the persistent Alpine key
 `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBuytSRUPaKAiJSrRADqP6pd7XPjbAPkeh5LR2vw6A91`
-(in the S2 backup and published over USB ADB on every Slim boot at
+(committed as `assets/ssh/mibox-persistent-known-hosts`; in the S2 backup and
+published over USB ADB on every Slim boot at
 `/etc/dropbear/dropbear_ed25519_host_key.pub`). Older FailSafe/Console RAM
 boots generated a new key every boot; if ssh reports a changed key, check the
 offered key against this one before replacing the old known_hosts entry

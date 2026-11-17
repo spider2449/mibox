@@ -3,6 +3,18 @@ param([switch]$Boot, [switch]$Connect, [switch]$Stop,
 $ErrorActionPreference='Stop'
 $repo=Split-Path $PSScriptRoot -Parent
 if(-not (Test-Path -LiteralPath $IdentityFile -PathType Leaf)) {throw 'Owner SSH private key is missing'}
+# Flash-installed Slim (2026-11-17): persistence and SSH start by themselves and
+# the host key is the fixed Alpine key. With only -Connect and the target absent
+# from USB ADB (cable unplugged for flash boots), connect directly over the LAN.
+if($Connect -and -not $Boot -and -not $Stop) {
+    $adbPath=Join-Path $repo 'phone-tools/platform-tools/adb.exe'
+    $listed=if(Test-Path -LiteralPath $adbPath) {(& $adbPath devices) -join "`n"} else {''}
+    if($listed -notmatch '(?m)^248243005297\s') {
+        $persistentKnown=Join-Path $repo 'assets/ssh/mibox-persistent-known-hosts'
+        & ssh.exe -i $IdentityFile -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o "UserKnownHostsFile=$persistentKnown" root@192.168.1.222
+        exit $LASTEXITCODE
+    }
+}
 $linuxRepoOutput=& wsl.exe -e wslpath -u ($repo.Replace('\','/'))
 if($LASTEXITCODE -ne 0 -or -not $linuxRepoOutput) {throw 'Could not resolve WSL workspace path'}
 $linuxRepo=$linuxRepoOutput.Trim()
