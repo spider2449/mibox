@@ -552,13 +552,28 @@ C5a. [ ] Separate persistence acceptance after C5 and C6 pass; not a prerequisit
    errors, known-good file integrity and completed synced counter lines.
    Record journal behavior without requiring replay messages on every cut.
    Report power-loss acceptance separately; one pass covers that scenario only.
-C6. [ ] Rehearse host-attached cold C003 interception with the persistent custom
+C6. [x] Rehearse host-attached cold C003 interception with the persistent custom
    image installed, then reload the known-good pinned RAM rescue and verify it
    can identify/read the target and access the restoration material. Never damage
    a partition as a test. This proves pre-kernel interception and RAM reload;
    partition restoration remains NOT VERIFIED until an authorized restoration
    write and its independent readback actually pass. Do not equate this with
    automatic recovery from every kernel/PID1 failure or watchdog hang.
+   Done 2026-11-17 (`artifacts/c6-cold-interception/2026-11-17/`). With Slim
+   installed on boot1 and persistence stopped (confirmed over USB ADB), the
+   owner power-cycled with USB attached: C003 appeared and FailSafe loaded and
+   verified (`artifacts/rescue-boot/20261117-214632-555/`). From FailSafe (RAM
+   root, no ext4, no persistent shell) boot 179:6 `ff4fa440…` and boot1 179:7
+   `dd1e6756…` were read; the uploaded tool and stock backup hashed correctly
+   and the restore dry run (stock over Slim) verified; nothing written
+   (`artifacts/console-root/20261117-214907-c6-failsafe-rescue/`).
+   Finding: a normal restart with the PC attached and no upload stayed at
+   C003 for over 10 minutes (no flash boot); C003 remained present. The window
+   expires only when no host enumerates the loader (C2/C5). Day-to-day
+   unattended flash boots therefore need the USB cable disconnected from the
+   PC. The box was then loaded with Slim into RAM from that C003
+   (`artifacts/rescue-boot/20261117-215954-136/`). No loader "continue"
+   command was sent (unverified).
 
 Only after C5 passes does the long RAM upload leave the ordinary startup path.
 C6 and the documented restoration status define the verified rescue boundary.

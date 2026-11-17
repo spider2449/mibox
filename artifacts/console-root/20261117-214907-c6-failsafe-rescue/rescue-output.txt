@@ -1,0 +1,19 @@
+EVIDENCE /mnt/f/coding/otherPrj/mibox/artifacts/console-root/20261117-214907-c6-failsafe-rescue
+== context
+ID=mibox-custom
+RAM_ROOT
+/
+0
+ls: /sbin/mibox-persistent-shell: No such file or directory
+e4750d65206780f16a44a957188a87a591d24f1dbdfe16ba8acb0c2d9707d1ec  mibox-partwrite
+06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222  boot1.img
+dd1e6756bbbc8b5b5f268ac3b79a11ded792a6c4ee7ad43318ab641de3b14f2e  slim.img
+== boot partitions as seen from FailSafe (read-only)
+boot dev=179:6 sectors=16384 sha256=ff4fa440044709b92652afea0306286534c9da2f57e41308d67459b97e800a56
+boot1 dev=179:7 sectors=16384 sha256=dd1e6756bbbc8b5b5f268ac3b79a11ded792a6c4ee7ad43318ab641de3b14f2e
+== restore-direction dry run: stock backup over installed Slim
+MIBOX_PARTWRITE_TARGET name=boot1 dev=179:7 node=/dev/mibox-partwrite-boot1 dry_run=true
+MIBOX_PARTWRITE_CURRENT_VERIFIED=dd1e6756bbbc8b5b5f268ac3b79a11ded792a6c4ee7ad43318ab641de3b14f2e
+MIBOX_PARTWRITE_RESULT=DryRunVerified target=boot1 image_sha256=06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222
+rc=0
+ls: /dev/mibox-partwrite-*: No such file or directory

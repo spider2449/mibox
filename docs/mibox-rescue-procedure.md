@@ -100,6 +100,12 @@ run with `scripts/Test-MiboxFailSafe.ps1 -Fault <Panic|Usb|Hang|KPanic> [-Bulk]`
 
 ## Limits of this guarantee
 
+- Since 2026-11-17 boot1 holds the Slim custom system. With the USB cable
+  connected to the PC, every start (cold or warm) stops at C003 and waits
+  indefinitely until the PC loads an image (observed >10 min); it does not
+  fall through to boot1. Unplug the cable for normal unattended starts from
+  flash; plug it in (then power-cycle) only for rescue.
+
 - Everything depends on the preboot window in the env. If the env is lost or reset, warm restarts no longer
   pass C003. The `Loader` candidate's `usb_burner_reboot` request is then the fallback; its loader
   branch is proven from Android on the same kernel, but not yet from the custom system without the window.

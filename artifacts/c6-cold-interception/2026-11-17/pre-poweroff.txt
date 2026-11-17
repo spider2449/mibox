@@ -1,0 +1,12 @@
+flash boot_id=f291711f-1a26-4593-81e9-be8aec3b4132 utc=2026-11-17T13:46:34Z
+ssh_rc=255
+f291711f-1a26-4593-81e9-be8aec3b4132
+0
+rootfs / rootfs rw 0 0
+proc /proc proc rw,nosuid,noexec,relatime 0 0
+sysfs /sys sysfs rw,nosuid,noexec,relatime 0 0
+devtmpfs /dev devtmpfs rw,nosuid,noexec,relatime,size=437448k,nr_inodes=109362,mode=755 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,mode=600,ptmxmode=000 0 0
+adb /dev/usb-ffs/adb functionfs rw,nosuid,noexec,relatime 0 0
+[   98.744463@1] mibox-persistent: MIBOX_PERSISTENT_CONSOLE_STOPPED
+MIBOX_RESTART_READY boot_id=f291711f-1a26-4593-81e9-be8aec3b4132
