@@ -125,7 +125,14 @@ making the system RAM-only, then removing power:
    - FailSafe/Console image (host launcher): close other SSH sessions, then
      `powershell -NoProfile -File scripts/Start-MiboxConsole.ps1 -Stop`.
      It must print `PERSISTENT_CONSOLE_STOPPED`.
-   - Slim image (data mounted automatically, SSH from Alpine): over USB,
+   - Slim image, simplest: `powershell -NoProfile -File scripts/Stop-Mibox.ps1`
+     (add `-Restart` to restart instead). With USB attached it uses ADB and
+     prints the exact result (`MIBOX_STOPPED`). Without USB it stops over SSH
+     from a RAM-rooted shell and confirms SSH has gone down
+     (`MIBOX_STOP_REQUESTED`); the exit status is then in `/tmp/stop.out`,
+     readable over USB. `-Restart` needs the USB cable unplugged and waits for
+     SSH with a new boot ID (`MIBOX_RESTARTED`; 27 s measured 2026-11-17).
+   - Slim image, manually over USB:
      `adb -s 248243005297 shell /bin/mibox persist-stop --boot-id <boot_id>`
      (boot ID from `adb shell cat /proc/sys/kernel/random/boot_id`). It must
      end with `MIBOX_PERSIST_STOP_EXIT=0`; it ends all Alpine SSH sessions.
