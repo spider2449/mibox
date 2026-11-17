@@ -454,12 +454,27 @@ C2. [x] Before boot-partition writes, verify host-disconnected continuation on
    used ~40 MiB of data. Consequence: the Android ADB loader-entry path still
    works while adbd runs, but a host-disconnected cold start now ends in
    Android's boot loop, not a usable Android.
-C3. [ ] Prepare a concrete write AND restoration procedure for the proven target:
+C3. [~] Prepare a concrete write AND restoration procedure for the proven target:
    exact partition identity/size, current full backup and hashes, original backup,
    pinned new candidate, write/flush/full-readback tools and independent second
    collection. Restoration must be executable from the known-good RAM rescue
    OS without relying on the installed boot image or Alpine tree. Validate host
    safeguards and the read-only recovery prerequisites before requesting approval.
+   2026-11-17: procedure `docs/mibox-boot1-install.md`. Tool
+   `mibox-partwrite` (`e4750d65…`, static armv7; `src/partwrite.rs` with its own
+   SHA-256): only boot1 (179:7, 16384 sectors, writable, unmounted) on Meson6,
+   or QEMU `vdb` with `mibox.test_partwrite=1`; image 8 MiB with named hash;
+   refuses unless boot1's current hash is named; O_SYNC|O_EXCL write, fsync,
+   BLKFLSBUF, full re-read. Restore = same tool with the boot1 backup
+   (`06d9eb7e…`). Host unit tests 7 PASS; QEMU block-device rehearsal 15 PASS
+   (`artifacts/partwrite-qemu/20261117-210900/`) incl. Slim write, independent
+   busybox re-hash and restore. Real box read-only dry run PASS from Slim
+   (`artifacts/console-root/20261117-211020-c3-dryrun-prep/`): 179:7, current
+   `06d9eb7e…`, wrong hash and target `boot` refused. Restore needs only root
+   SSH to a RAM root (FailSafe's RAM dropbear, no data); a dry run from
+   FailSafe without persistence is still to be done before C4.
+   C4 gate status: B2 (integrity manifest), B3 PID1 supervision and the rest of
+   B7 (cold power-on of Slim, HDMI if display files are added) are open.
 C4. [ ] Once mandatory B gates (B1-B7, excluding optional B3a) pass and C1-C3
    evidence is ready, obtain explicit owner
    authorization for the specific boot-partition write. Install the identical

@@ -1,0 +1,112 @@
+$ echo READY
+ssh: connect to host 127.0.0.1 port 51501: Connection refused
+rc=255
+
+$ echo READY
+Connection timed out during banner exchange
+Connection to 127.0.0.1 port 51501 timed out
+rc=255
+
+$ echo READY
+Connection timed out during banner exchange
+Connection to 127.0.0.1 port 51501 timed out
+rc=255
+
+$ echo READY
+Connection timed out during banner exchange
+Connection to 127.0.0.1 port 51501 timed out
+rc=255
+
+$ echo READY
+READY
+rc=0
+
+$ echo READY
+READY
+rc=0
+
+$ cat > /proc/1/root/tmp/mibox-partwrite
+rc=0
+
+$ cat > /proc/1/root/tmp/slim.img
+rc=0
+
+$ cat > /proc/1/root/tmp/boot1.img
+rc=0
+
+$ chmod 700 /proc/1/root/tmp/mibox-partwrite
+rc=0
+
+$ cd /proc/1/root/tmp && sha256sum mibox-partwrite slim.img boot1.img
+e4750d65206780f16a44a957188a87a591d24f1dbdfe16ba8acb0c2d9707d1ec  mibox-partwrite
+87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28  slim.img
+06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222  boot1.img
+rc=0
+
+$ chroot /proc/1/root /tmp/mibox-partwrite --target boot1 --image /tmp/slim.img --image-sha256 87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28 --expect-current-sha256 06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222
+MIBOX_PARTWRITE_FAILED: target not allowed on this platform
+rc=1
+
+$ chroot /proc/1/root /tmp/mibox-partwrite --target vdb --image /tmp/slim.img --image-sha256 87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28 --expect-current-sha256 0000000000000000000000000000000000000000000000000000000000000000
+MIBOX_PARTWRITE_TARGET name=vdb dev=254:16 node=/dev/mibox-partwrite-vdb dry_run=false
+MIBOX_PARTWRITE_FAILED: target content 06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222 differs from --expect-current-sha256; refusing
+rc=1
+
+$ chroot /proc/1/root /tmp/mibox-partwrite --target vdb --image /tmp/slim.img --image-sha256 0000000000000000000000000000000000000000000000000000000000000000 --expect-current-sha256 06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222
+MIBOX_PARTWRITE_TARGET name=vdb dev=254:16 node=/dev/mibox-partwrite-vdb dry_run=false
+MIBOX_PARTWRITE_FAILED: image SHA256 differs from --image-sha256
+rc=1
+
+$ cat /proc/1/root/tmp/slim.img /proc/1/root/tmp/slim.img > /proc/1/root/tmp/double.img
+rc=0
+
+$ chroot /proc/1/root /tmp/mibox-partwrite --target vdb --image /tmp/double.img --image-sha256 87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28 --expect-current-sha256 06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222
+MIBOX_PARTWRITE_TARGET name=vdb dev=254:16 node=/dev/mibox-partwrite-vdb dry_run=false
+MIBOX_PARTWRITE_FAILED: image is 16777216 bytes, expected 8388608
+rc=1
+
+$ rm /proc/1/root/tmp/double.img; dd if=/dev/vdb bs=65536 2>/dev/null | sha256sum
+06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222  -
+rc=0
+
+$ chroot /proc/1/root /tmp/mibox-partwrite --target vdb --image /tmp/slim.img --image-sha256 87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28 --expect-current-sha256 06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222 --dry-run
+MIBOX_PARTWRITE_RESULT=DryRunVerified target=vdb image_sha256=87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28
+MIBOX_PARTWRITE_TARGET name=vdb dev=254:16 node=/dev/mibox-partwrite-vdb dry_run=true
+MIBOX_PARTWRITE_CURRENT_VERIFIED=06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222
+rc=0
+
+$ chroot /proc/1/root /tmp/mibox-partwrite --target vdb --image /tmp/slim.img --image-sha256 87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28 --expect-current-sha256 06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222
+MIBOX_PARTWRITE_RESULT=Written target=vdb image_sha256=87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28
+MIBOX_PARTWRITE_TARGET name=vdb dev=254:16 node=/dev/mibox-partwrite-vdb dry_run=false
+MIBOX_PARTWRITE_CURRENT_VERIFIED=06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222
+MIBOX_PARTWRITE_WRITING bytes=8388608
+MIBOX_PARTWRITE_READBACK_VERIFIED=87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28
+rc=0
+
+$ echo 3 > /proc/sys/vm/drop_caches; dd if=/dev/vdb bs=65536 2>/dev/null | sha256sum
+87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28  -
+rc=0
+
+$ chroot /proc/1/root /tmp/mibox-partwrite --target vdb --image /tmp/slim.img --image-sha256 87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28 --expect-current-sha256 06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222
+MIBOX_PARTWRITE_RESULT=AlreadyInstalled target=vdb image_sha256=87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28
+MIBOX_PARTWRITE_TARGET name=vdb dev=254:16 node=/dev/mibox-partwrite-vdb dry_run=false
+MIBOX_PARTWRITE_CURRENT=87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28
+rc=0
+
+$ chroot /proc/1/root /tmp/mibox-partwrite --target vdb --image /tmp/boot1.img --image-sha256 06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222 --expect-current-sha256 87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28
+MIBOX_PARTWRITE_RESULT=Written target=vdb image_sha256=06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222
+MIBOX_PARTWRITE_TARGET name=vdb dev=254:16 node=/dev/mibox-partwrite-vdb dry_run=false
+MIBOX_PARTWRITE_CURRENT_VERIFIED=87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28
+MIBOX_PARTWRITE_WRITING bytes=8388608
+MIBOX_PARTWRITE_READBACK_VERIFIED=06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222
+rc=0
+
+$ echo 3 > /proc/sys/vm/drop_caches; dd if=/dev/vdb bs=65536 2>/dev/null | sha256sum; ls /dev/mibox-partwrite-* 2>&1
+06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222  -
+ls: cannot access '/dev/mibox-partwrite-*': No such file or directory
+rc=2
+
+$ exec chroot /proc/1/root /sbin/mibox-persistent-console stop --qemu
+Connection to 127.0.0.1 closed by remote host.
+rc=255
+

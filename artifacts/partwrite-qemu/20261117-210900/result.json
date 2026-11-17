@@ -1,0 +1,79 @@
+{
+  "scope": "Generic ARM QEMU virtio block device; not MiBOX eMMC write proof",
+  "tool_sha256": "e4750d65206780f16a44a957188a87a591d24f1dbdfe16ba8acb0c2d9707d1ec",
+  "slim_sha256": "87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28",
+  "boot1_sha256": "06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222",
+  "checks": [
+    {
+      "name": "ssh-ready",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "uploads-hash-match",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "refuses-boot1-on-qemu",
+      "passed": true,
+      "detail": "MIBOX_PARTWRITE_FAILED: target not allowed on this platform\n"
+    },
+    {
+      "name": "refuses-wrong-current-hash",
+      "passed": true,
+      "detail": "MIBOX_PARTWRITE_TARGET name=vdb dev=254:16 node=/dev/mibox-partwrite-vdb dry_run=false\nMIBOX_PARTWRITE_FAILED: target content 06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222 differs from --expect-current-sha256; refusing\n"
+    },
+    {
+      "name": "refuses-wrong-image-hash",
+      "passed": true,
+      "detail": "MIBOX_PARTWRITE_TARGET name=vdb dev=254:16 node=/dev/mibox-partwrite-vdb dry_run=false\nMIBOX_PARTWRITE_FAILED: image SHA256 differs from --image-sha256\n"
+    },
+    {
+      "name": "refuses-oversized-image",
+      "passed": true,
+      "detail": "MIBOX_PARTWRITE_TARGET name=vdb dev=254:16 node=/dev/mibox-partwrite-vdb dry_run=false\nMIBOX_PARTWRITE_FAILED: image is 16777216 bytes, expected 8388608\n"
+    },
+    {
+      "name": "vdb-unchanged-after-refusals",
+      "passed": true,
+      "detail": "06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222  -\n"
+    },
+    {
+      "name": "dry-run-verifies-current",
+      "passed": true,
+      "detail": "RITE_RESULT=DryRunVerified target=vdb image_sha256=87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28\nMIBOX_PARTWRITE_TARGET name=vdb dev=254:16 node=/dev/mibox-partwrite-vdb dry_run=true\nMIBOX_PARTWRITE_CURRENT_VERIFIED=06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222\n"
+    },
+    {
+      "name": "write-slim-with-readback",
+      "passed": true,
+      "detail": " name=vdb dev=254:16 node=/dev/mibox-partwrite-vdb dry_run=false\nMIBOX_PARTWRITE_CURRENT_VERIFIED=06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222\nMIBOX_PARTWRITE_WRITING bytes=8388608\nMIBOX_PARTWRITE_READBACK_VERIFIED=87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28\n"
+    },
+    {
+      "name": "independent-rehash-after-write",
+      "passed": true,
+      "detail": "87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28  -\n"
+    },
+    {
+      "name": "second-write-reports-already-installed",
+      "passed": true,
+      "detail": "_PARTWRITE_RESULT=AlreadyInstalled target=vdb image_sha256=87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28\nMIBOX_PARTWRITE_TARGET name=vdb dev=254:16 node=/dev/mibox-partwrite-vdb dry_run=false\nMIBOX_PARTWRITE_CURRENT=87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28\n"
+    },
+    {
+      "name": "restore-boot1-with-readback",
+      "passed": true,
+      "detail": " name=vdb dev=254:16 node=/dev/mibox-partwrite-vdb dry_run=false\nMIBOX_PARTWRITE_CURRENT_VERIFIED=87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28\nMIBOX_PARTWRITE_WRITING bytes=8388608\nMIBOX_PARTWRITE_READBACK_VERIFIED=06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222\n"
+    },
+    {
+      "name": "independent-rehash-after-restore",
+      "passed": true,
+      "detail": "06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222  -\nls: cannot access '/dev/mibox-partwrite-*': No such file or directory\n"
+    },
+    {
+      "name": "host-file-equals-boot1-after-restore",
+      "passed": true,
+      "detail": "06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222"
+    }
+  ],
+  "all_passed": true
+}

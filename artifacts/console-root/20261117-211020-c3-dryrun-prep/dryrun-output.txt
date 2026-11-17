@@ -1,0 +1,15 @@
+e4750d65206780f16a44a957188a87a591d24f1dbdfe16ba8acb0c2d9707d1ec  mibox-partwrite
+87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28  slim.img
+== dry run against real boot1 (read-only)
+MIBOX_PARTWRITE_TARGET name=boot1 dev=179:7 node=/dev/mibox-partwrite-boot1 dry_run=true
+MIBOX_PARTWRITE_CURRENT_VERIFIED=06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222
+MIBOX_PARTWRITE_RESULT=DryRunVerified target=boot1 image_sha256=87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28
+rc=0
+== wrong expected current is refused
+MIBOX_PARTWRITE_TARGET name=boot1 dev=179:7 node=/dev/mibox-partwrite-boot1 dry_run=true
+MIBOX_PARTWRITE_FAILED: target content 06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222 differs from --expect-current-sha256; refusing
+rc=1
+== boot (not allowed) is refused
+MIBOX_PARTWRITE_FAILED: target not allowed on this platform
+rc=1
+ls: cannot access '/dev/mibox-partwrite-*': No such file or directory
