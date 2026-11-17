@@ -2,12 +2,10 @@
   "status": "HOST_BUILT_NOT_PHYSICALLY_VALIDATED",
   "profile": "slim-a3",
   "source_rootfs_sha256": "266bdba6eb6efd39580edc742855a37ede189bf4a8925483b03462e73c9612ed",
-  "gzip_bytes": 1715554,
-  "gzip_sha256": "8a6a6004527579d243918e3220125a84ae60f33f456df3321d6d6a2e70022363",
-  "cpio_bytes": 2788060,
+  "gzip_bytes": 1717239,
+  "gzip_sha256": "390a4428b48175c5e879acd0dac39702babf4a377db950025e6104e51b8ce6da",
+  "cpio_bytes": 2791148,
   "kept_unchanged": {
-    "init": "a24de13aecd55829483099ab921fdd3651a481656e404b68874017c99267680c",
-    "bin/mibox": "e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07",
     "sbin/adbd": "f2a875f1f6230fde084264e2927d1dbf3bf95bcf5e494809814a488caf532afc",
     "system/bin/sh": "d44fd1bb1a8a84fe6ed0b4d850dd05d506aaf4fefdb54d24eb99690fb6583fc6",
     "bin/busybox": "750e37d6f1ade60d65e3a87e4287afcb50e7ca2a6e440b28282c5bebcd3b088e",
@@ -16,6 +14,18 @@
     "etc/mibox-usb-adb.enabled": "160cd2767f649fa039a8af2387cf36c3e9d5d6de38babb4840aaea9b6bf6ca0a",
     "etc/mibox-network-static": "43e8795e5d62b243fe85a37232be8a9036d4f11508d4377940f327a4844a33f8",
     "etc/os-release": "b50d9caa29142f02bee2b72d0d8dc2f73cf25e6cc7e1d2d10633b5d24caab3fb"
+  },
+  "replaced_from_release": {
+    "init": {
+      "failsafe_sha256": "a24de13aecd55829483099ab921fdd3651a481656e404b68874017c99267680c",
+      "sha256": "b1f3b6540fe22d1c33ea2f19f37ca1662f0ad6da5ec9b484946d9b6fd5a21fbc",
+      "bytes": 515592
+    },
+    "bin/mibox": {
+      "failsafe_sha256": "e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07",
+      "sha256": "c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226",
+      "bytes": 515460
+    }
   },
   "removed": [
     "etc/apk",
@@ -134,16 +144,16 @@
       "sha256": "34bb515834345724107dc1cefaeaee3fa0f522e0fec85caae889f348804e14a6"
     },
     "init": {
-      "bytes": 514344,
-      "sha256": "a24de13aecd55829483099ab921fdd3651a481656e404b68874017c99267680c"
+      "bytes": 515592,
+      "sha256": "b1f3b6540fe22d1c33ea2f19f37ca1662f0ad6da5ec9b484946d9b6fd5a21fbc"
     },
     "bin/busybox": {
       "bytes": 713964,
       "sha256": "750e37d6f1ade60d65e3a87e4287afcb50e7ca2a6e440b28282c5bebcd3b088e"
     },
     "bin/mibox": {
-      "bytes": 513620,
-      "sha256": "e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07"
+      "bytes": 515460,
+      "sha256": "c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226"
     },
     "dev/null": {
       "bytes": 45,

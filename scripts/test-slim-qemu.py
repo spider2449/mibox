@@ -131,7 +131,7 @@ def main(private_key):
         base = ['qemu-system-arm', '-machine', 'virt', '-cpu', 'cortex-a15', '-m', '256',
                 '-display', 'none', '-monitor', 'none', '-serial', 'stdio', '-no-reboot',
                 '-kernel', str(ROOT / 'phone-tools/qemu/vmlinuz'), '-initrd', str(initrd),
-                '-append', 'console=ttyAMA0,115200 rdinit=/init panic=0',
+                '-append', 'console=ttyAMA0,115200 rdinit=/init panic=0 mibox.test_restart=1',
                 '-netdev', f'user,id=net0,hostfwd=tcp:127.0.0.1:{port}-:22',
                 '-device', 'virtio-net-device,netdev=net0']
 
@@ -160,6 +160,7 @@ def main(private_key):
             return False
 
         for boot_index in (1, 2):
+            # Boot 1: root stop from SSH. Boot 2: B5 through PID1 as uid 2000.
             serial = evidence / f'serial-tree-boot{boot_index}.log'
             process, log = boot(with_disk(image), serial)
             try:
@@ -179,13 +180,40 @@ def main(private_key):
                 else:
                     r = remote('cat /root/slim-sentinel')
                     record('boot2-sentinel-retained', r.stdout.strip() == 'SLIM_SENTINEL')
-                # Stop from inside an Alpine SSH session: the session itself is killed.
-                r = remote('exec chroot /proc/1/root /sbin/mibox-persistent-console stop --qemu', 90)
-                stopped = wait_serial(serial, 'MIBOX_PERSISTENT_CONSOLE_STOPPED', 30)
-                record(f'boot{boot_index}-stop-from-own-session', stopped, f'ssh exit {r.returncode}')
-                time.sleep(3)
-                r = remote('true', 10)
-                record(f'boot{boot_index}-ssh-gone-after-stop', r.returncode == 255)
+                if boot_index == 1:
+                    # Root stop from inside an Alpine SSH session: the session is killed.
+                    r = remote('exec chroot /proc/1/root /sbin/mibox-persistent-console stop --qemu', 90)
+                    stopped = wait_serial(serial, 'MIBOX_PERSISTENT_CONSOLE_STOPPED', 30)
+                    record('boot1-stop-from-own-session', stopped, f'ssh exit {r.returncode}')
+                    time.sleep(3)
+                    r = remote('true', 10)
+                    record('boot1-ssh-gone-after-stop', r.returncode == 255)
+                else:
+                    # B5 via PID1 as uid 2000 (USB ADB's uid), with a RAM root so
+                    # the client survives the stop killing this SSH session.
+                    as_adb = 'chroot --userspec=2000:2000 /proc/1/root /bin/mibox'
+                    boot_id = remote('cat /proc/sys/kernel/random/boot_id').stdout.strip()
+                    r = remote(f'{as_adb} reboot-android --check')
+                    record('boot2-check-refused-while-data-mounted', r.returncode != 0, r.stderr.strip()[-120:])
+                    r = remote(f'{as_adb} reboot-android --boot-id {boot_id}')
+                    record('boot2-restart-refused-while-data-mounted', r.returncode != 0 and process.poll() is None)
+                    r = remote(f'{as_adb} persist-stop --boot-id 00000000-0000-0000-0000-000000000000')
+                    record('boot2-persist-stop-stale-boot-id-refused', r.returncode != 0
+                           and 'MIBOX_PERSIST_STOP_REQUESTED' not in serial.read_text(errors='replace'))
+                    # One uid-2000 shell with a RAM root runs both requests; it
+                    # outlives this SSH session, which the stop kills.
+                    remote('exec chroot --userspec=2000:2000 /proc/1/root /bin/sh -c '
+                           f'"mibox persist-stop --boot-id {boot_id} > /tmp/persist-stop.out 2>&1 && '
+                           f'mibox reboot-android --boot-id {boot_id} >> /tmp/persist-stop.out 2>&1"', 120)
+                    try:
+                        process.wait(timeout=120)
+                        exited = True
+                    except subprocess.TimeoutExpired:
+                        exited = False
+                    text = serial.read_text(errors='replace')
+                    record('boot2-persist-stop-via-pid1-as-uid2000', 'MIBOX_PERSIST_STOP_EXIT=0' in text
+                           and 'MIBOX_PERSISTENT_CONSOLE_STOPPED' in text)
+                    record('boot2-restart-accepted-after-stop', exited and 'MIBOX_NORMAL_RESTART_REQUESTED' in text)
             finally:
                 stop_qemu(process, log)
             fsck = subprocess.run(['e2fsck', '-fn', str(image)], capture_output=True, text=True)

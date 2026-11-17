@@ -34,6 +34,7 @@ Pick whichever applies:
 | Box state | Action |
 | --- | --- |
 | Custom system running, ADB reachable | `adb -s 248243005297 shell /bin/mibox reboot-android --check`, then `--boot-id <current /proc/sys/kernel/random/boot_id>`. This is a normal Linux restart (no mode string). |
+| Slim image with data mounted (check refused) | First `adb -s 248243005297 shell /bin/mibox persist-stop --boot-id <current boot_id>` (must end `MIBOX_PERSIST_STOP_EXIT=0`; kills Alpine sessions and unmounts data), then the restart above. QEMU-verified only. |
 | Custom system crashed early (PID1 panic, USB setup failure or hang) | Nothing. The PID1 fail-safe restarts by itself, within 60 s plus at most 15 s of sync. |
 | Kernel panic | Nothing. `kernel.panic=20` restarts it. |
 | Hung with no ADB, or the transfer stopped | Power cycle by hand with the USB cable attached. |

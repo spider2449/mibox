@@ -141,6 +141,48 @@ fn hardware_test(action: &str) -> io::Result<String> {
     Ok(output)
 }
 
+const PERSISTENCE_HELPER: &str = "/sbin/mibox-persistent-console";
+
+/// PERSIST-STOP: run the built-in helper's `stop` (kills processes rooted in
+/// the Alpine tree, unmounts data). Fixed path and arguments, no shell text.
+fn persist_stop(qemu: bool) -> io::Result<String> {
+    use std::os::unix::fs::MetadataExt;
+    let meta = fs::symlink_metadata(PERSISTENCE_HELPER)?;
+    if !meta.file_type().is_file() || meta.uid() != 0 || meta.mode() & 0o022 != 0 {
+        return Err(io::Error::other("persistence helper is not a root-owned, root-writable-only file"));
+    }
+    let _guard = REAPER_LOCK.lock().unwrap_or_else(|e| e.into_inner());
+    let mut command = Command::new("/bin/sh");
+    command.arg(PERSISTENCE_HELPER).arg("stop");
+    if qemu {
+        command.arg("--qemu");
+    }
+    let mut child = command
+        .stdin(Stdio::null())
+        .stdout(Stdio::piped())
+        .stderr(Stdio::piped())
+        .spawn()?;
+    let started = std::time::Instant::now();
+    let status = loop {
+        if let Some(status) = child.try_wait()? {
+            break status;
+        }
+        if started.elapsed() > Duration::from_secs(90) {
+            child.kill()?;
+            child.wait()?;
+            return Ok("MIBOX_PERSIST_STOP_TIMEOUT\nMIBOX_PERSIST_STOP_EXIT=1\n".into());
+        }
+        thread::sleep(Duration::from_millis(50));
+    };
+    let mut output = String::new();
+    child.stdout.take().unwrap().take(8192).read_to_string(&mut output)?;
+    child.stderr.take().unwrap().take(8192).read_to_string(&mut output)?;
+    let code = status.code().unwrap_or(1);
+    eprintln!("MIBOX_PERSIST_STOP_EXIT={code}");
+    output.push_str(&format!("MIBOX_PERSIST_STOP_EXIT={code}\n"));
+    Ok(output)
+}
+
 fn serve_console(device: &str) -> io::Result<()> {
     let console = OpenOptions::new().read(true).write(true).open(device)?;
     let mut output = console.try_clone()?;
@@ -342,7 +384,7 @@ fn main() {
         }
     }
     thread::spawn(|| {
-        if let Err(error) = ram_control::serve(hardware_test) {
+        if let Err(error) = ram_control::serve(hardware_test, persist_stop) {
             eprintln!("mibox-init: RAM control unavailable: {error}");
         }
     });

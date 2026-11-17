@@ -1,6 +1,7 @@
 """Derive the slim A3 RAM rootfs from the pinned FailSafe console rootfs.
 
-Offline. Keeps the FailSafe PID1, /bin/mibox, stock adbd and system/bin/sh,
+Offline. Replaces PID1 and /bin/mibox with the current release build (PERSIST-STOP).
+Keeps the FailSafe stock adbd and system/bin/sh,
 busybox with its applet links, musl, ADB keys and network/identity files.
 Removes package management (apk, OpenSSL, CA certificates), the RAM SSH server
 and its libraries, and the on-demand hardware diagnostic. Adds the slim start
@@ -17,7 +18,9 @@ import stat
 from pathlib import Path
 
 SOURCE_SHA256 = '266bdba6eb6efd39580edc742855a37ede189bf4a8925483b03462e73c9612ed'
-KEEP_UNCHANGED = ['init', 'bin/mibox', 'sbin/adbd', 'system/bin/sh', 'bin/busybox',
+# init and bin/mibox come from the current release build (PERSIST-STOP, B5).
+REPLACED_FROM_RELEASE = {'init': 'mibox-init', 'bin/mibox': 'mibox-userland'}
+KEEP_UNCHANGED = ['sbin/adbd', 'system/bin/sh', 'bin/busybox',
                   'lib/ld-musl-armhf.so.1', 'adb_keys', 'etc/mibox-usb-adb.enabled',
                   'etc/mibox-network-static', 'etc/os-release']
 REMOVE_FILES = {'sbin/apk', 'sbin/mibox-hardware', 'usr/sbin/dropbear', 'usr/bin/dropbearkey',
@@ -65,6 +68,18 @@ def build(root, output):
                     del entries[name]
                     changed = True
     assets = root / 'assets/rootfs'
+    base_spec = importlib.util.spec_from_file_location('base', root / 'scripts/build-mibox-rootfs.py')
+    base = importlib.util.module_from_spec(base_spec)
+    base_spec.loader.exec_module(base)
+    release_dir = root / 'target/armv7-unknown-linux-musleabihf/release'
+    replaced = {}
+    for name, binary in REPLACED_FROM_RELEASE.items():
+        data = base.arm_static(release_dir / binary)
+        if b'PERSIST-STOP' not in data:
+            raise ValueError(f'{binary} lacks the PERSIST-STOP control request')
+        replaced[name] = dict(failsafe_sha256=hashlib.sha256(entries[name][1]).hexdigest(),
+                              sha256=hashlib.sha256(data).hexdigest(), bytes=len(data))
+        entries[name] = (entries[name][0], data, 0, 0)
     entries['sbin/mibox-console-start'] = (0o100755, (assets / 'mibox-slim-start').read_bytes().replace(b'\r\n', b'\n'), 0, 0)
     entries['sbin/mibox-persistent-console'] = (0o100755, (assets / 'mibox-persistent-console').read_bytes().replace(b'\r\n', b'\n'), 0, 0)
     for directory in ('etc/dropbear', 'mnt', 'run'):
@@ -82,7 +97,7 @@ def build(root, output):
     report = dict(status='HOST_BUILT_NOT_PHYSICALLY_VALIDATED', profile='slim-a3',
                   source_rootfs_sha256=SOURCE_SHA256,
                   gzip_bytes=len(compressed), gzip_sha256=hashlib.sha256(compressed).hexdigest(),
-                  cpio_bytes=len(archive), kept_unchanged=kept, removed=sorted(removed),
+                  cpio_bytes=len(archive), kept_unchanged=kept, replaced_from_release=replaced, removed=sorted(removed),
                   busybox_applet_links=busybox_links,
                   ssh_server='persistent Alpine tree (/usr/sbin/dropbear) after data activation',
                   usb_adb_enabled_by_rootfs_marker=True, private_keys_included=False,

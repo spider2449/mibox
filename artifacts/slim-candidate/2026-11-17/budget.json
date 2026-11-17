@@ -6,7 +6,7 @@
       "slim_projections": null,
       "image": "target/mibox-boot-candidate-slim/boot1-custom.NOT_READY.img",
       "bytes": 8388608,
-      "sha256": "4445921baa54715530a604606daa362ad8e11f86f3895d81944014c5a3b68a13",
+      "sha256": "8d7849d9d185817b7f2338fb09d3ae84c3fe7febd014f221347ffe021c3e1685",
       "page_size": 2048,
       "sections": {
         "kernel": {
@@ -16,24 +16,24 @@
         },
         "ramdisk": {
           "start": 3901440,
-          "size": 1715554,
-          "sha256": "8a6a6004527579d243918e3220125a84ae60f33f456df3321d6d6a2e70022363"
+          "size": 1717239,
+          "sha256": "390a4428b48175c5e879acd0dac39702babf4a377db950025e6104e51b8ce6da"
         },
         "second": {
-          "start": 5617664,
+          "start": 5619712,
           "size": 11414,
           "sha256": "24b30f1aafe26845839966721b3c083cb3ed49280178276b6114df6d725cb95c"
         }
       },
-      "aligned_end": 5629952,
-      "slack_bytes": 2758656,
+      "aligned_end": 5632000,
+      "slack_bytes": 2756608,
       "tail_all_zero": true,
       "ramdisk": {
-        "compressed_bytes": 1715554,
-        "uncompressed_bytes": 2788060,
+        "compressed_bytes": 1717239,
+        "uncompressed_bytes": 2791148,
         "regular_files": 54,
         "symlinks": 310,
-        "gzip9_recompressed_bytes": 1715554,
+        "gzip9_recompressed_bytes": 1717239,
         "zlib_level": 2
       },
       "components": {
@@ -49,13 +49,13 @@
         },
         "init": {
           "files": 1,
-          "bytes": 514344,
-          "gzip9_estimate": 285082
+          "bytes": 515592,
+          "gzip9_estimate": 285917
         },
         "bin/mibox": {
           "files": 1,
-          "bytes": 513620,
-          "gzip9_estimate": 253638
+          "bytes": 515460,
+          "gzip9_estimate": 254494
         },
         "system/bin": {
           "files": 1,

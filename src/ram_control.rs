@@ -122,7 +122,17 @@ fn bounded_request(stream: &mut UnixStream) -> io::Result<Vec<u8>> {
     }
 }
 
+/// Restart readiness: identity plus RAM-only mounts.
 fn readiness() -> io::Result<String> {
+    let boot_id = identity()?;
+    ram_only_mounts()?;
+    Ok(boot_id)
+}
+
+/// Root PID1, custom OS marker and platform guard; returns the boot ID.
+/// Unlike `readiness`, this allows the persistent data mount, so the
+/// persistence teardown can be requested while data is still mounted.
+fn identity() -> io::Result<String> {
     if std::process::id() != 1 || unsafe { getuid() } != 0 {
         return Err(io::Error::other("requires root PID1"));
     }
@@ -132,6 +142,13 @@ fn readiness() -> io::Result<String> {
     {
         return Err(io::Error::other("requires custom OS marker"));
     }
+    platform()?;
+    Ok(fs::read_to_string("/proc/sys/kernel/random/boot_id")?
+        .trim()
+        .to_owned())
+}
+
+fn ram_only_mounts() -> io::Result<()> {
     let mounts = fs::read_to_string("/proc/mounts")?;
     let mut ram_root = false;
     for line in mounts.lines() {
@@ -152,6 +169,12 @@ fn readiness() -> io::Result<String> {
     if !ram_root {
         return Err(io::Error::other("requires RAM root"));
     }
+    Ok(())
+}
+
+/// Stock Meson6 3.10.33, the pinned development kernel, or the opt-in QEMU
+/// test fixture. Returns true for QEMU.
+fn platform() -> io::Result<bool> {
     let compatible = fs::read("/proc/device-tree/compatible")?;
     let meson6 = compatible
         .split(|b| *b == 0)
@@ -168,17 +191,32 @@ fn readiness() -> io::Result<String> {
     if !stock && !development && !qemu {
         return Err(io::Error::other("restart platform guard"));
     }
-    Ok(fs::read_to_string("/proc/sys/kernel/random/boot_id")?
-        .trim()
-        .to_owned())
+    Ok(qemu)
 }
 
-fn handle(mut stream: UnixStream, hardware: fn(&str) -> io::Result<String>) -> io::Result<()> {
+/// Runs the built-in persistence helper's `stop`; supplied by PID1, which owns
+/// child reaping. Returns the helper's bounded output.
+pub type PersistStop = fn(qemu: bool) -> io::Result<String>;
+
+fn handle(
+    mut stream: UnixStream,
+    hardware: fn(&str) -> io::Result<String>,
+    persist_stop: PersistStop,
+) -> io::Result<()> {
     stream.set_write_timeout(Some(Duration::from_secs(2)))?;
     if !matches!(credentials(&stream)?.uid, 0 | 2000) {
         return Err(io::Error::other("control peer UID denied"));
     }
     let request = bounded_request(&mut stream)?;
+    // PERSIST-STOP is the only request accepted while data is mounted.
+    let current = identity()?;
+    if request == format!("PERSIST-STOP {current}\n").as_bytes() {
+        eprintln!("MIBOX_PERSIST_STOP_REQUESTED boot_id={current}");
+        let output = persist_stop(platform()?)?;
+        stream.set_write_timeout(Some(Duration::from_secs(3)))?;
+        stream.write_all(output.as_bytes())?;
+        return Ok(());
+    }
     let boot_id = readiness()?;
     if request == b"CHECK\n" {
         writeln!(stream, "MIBOX_RESTART_READY boot_id={boot_id}")?;
@@ -211,7 +249,7 @@ fn handle(mut stream: UnixStream, hardware: fn(&str) -> io::Result<String>) -> i
     Ok(())
 }
 
-pub fn serve(hardware: fn(&str) -> io::Result<String>) -> io::Result<()> {
+pub fn serve(hardware: fn(&str) -> io::Result<String>, persist_stop: PersistStop) -> io::Result<()> {
     if std::process::id() != 1 || unsafe { getuid() } != 0 {
         return Err(io::Error::other("control listener requires root PID1"));
     }
@@ -220,7 +258,7 @@ pub fn serve(hardware: fn(&str) -> io::Result<String>) -> io::Result<()> {
     fs::set_permissions(SOCKET, fs::Permissions::from_mode(0o666))?;
     eprintln!("MIBOX_RAM_CONTROL_READY");
     for stream in listener.incoming() {
-        match stream.and_then(|stream| handle(stream, hardware)) {
+        match stream.and_then(|stream| handle(stream, hardware, persist_stop)) {
             Ok(()) => {}
             Err(error) => eprintln!("mibox-control: {error}"),
         }
@@ -252,6 +290,31 @@ pub fn hardware_request(action: &str, expected_boot_id: &str) -> io::Result<()> 
         return Err(io::Error::other(
             "hardware helper failed or response invalid",
         ));
+    }
+    Ok(())
+}
+
+/// Client for PERSIST-STOP: asks PID1 to stop persistence (kill processes in
+/// the Alpine tree, unmount). Succeeds only if the helper exited 0.
+pub fn persist_stop_request(expected_boot_id: &str) -> io::Result<()> {
+    let boot_id = fs::read_to_string("/proc/sys/kernel/random/boot_id")?;
+    if expected_boot_id != boot_id.trim() {
+        return Err(io::Error::other("boot ID does not match current boot"));
+    }
+    let mut stream = UnixStream::connect(SOCKET)?;
+    let peer = credentials(&stream)?;
+    if peer.uid != 0 || peer.pid != 1 {
+        return Err(io::Error::other("control server is not root PID1"));
+    }
+    stream.set_write_timeout(Some(Duration::from_secs(3)))?;
+    stream.set_read_timeout(Some(Duration::from_secs(120)))?;
+    writeln!(stream, "PERSIST-STOP {expected_boot_id}")?;
+    stream.shutdown(std::net::Shutdown::Write)?;
+    let mut response = String::new();
+    (&mut stream).take(16385).read_to_string(&mut response)?;
+    print!("{response}");
+    if response.len() > 16384 || !response.ends_with("MIBOX_PERSIST_STOP_EXIT=0\n") {
+        return Err(io::Error::other("persistence stop failed or response invalid"));
     }
     Ok(())
 }

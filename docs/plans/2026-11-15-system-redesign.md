@@ -311,7 +311,24 @@ B5 gap 2026-11-17: `stop` now kills every process rooted in the tree and
    cycle (C003 -> FailSafe; ext4 journal replay next mount). Next: a PID1
    `PERSIST-STOP <boot_id>` request (uid 0/2000) that runs the built-in
    helper `stop` as a bounded child, then the existing RESTART.
-B5. [ ] Extend the restart lifecycle for mounted data. Stop services and sessions,
+   Implemented the same day: `ram_control` splits `identity()` (root PID1,
+   custom OS, platform guard) from `ram_only_mounts()`; PERSIST-STOP needs
+   only identity and runs the root-owned, non-group/other-writable
+   `/sbin/mibox-persistent-console stop` via PID1 (90 s bound, reaper lock,
+   8 KiB output each stream). CHECK/RESTART/LOADER keep requiring RAM-only
+   mounts. Client: `mibox persist-stop --boot-id ID`. Slim image now uses
+   release init `b1f3b654…` and mibox `c7f2b1b1…`; candidate `8d7849d9…`
+   (ramdisk 1717239, slack 2756608), pinned as `Slim` in
+   `rescue-boot.ps1`/`Test-MiboxLoaderRam.ps1` (local Check PASS, no USB).
+   QEMU `test-slim-qemu.py` PASS 27 checks
+   (`artifacts/slim-qemu/20261117-200129/`): as uid 2000 with data mounted,
+   CHECK and RESTART are refused and a stale-boot-ID PERSIST-STOP is refused;
+   PERSIST-STOP then RESTART from a RAM-rooted uid-2000 shell stops
+   persistence, restarts the guest and leaves a clean filesystem. PID1
+   regression on the new source PASS (`artifacts/pid1-persist-stop-regression/`:
+   console 11/11, restart incl. uid 2000 and LOADER, fail-safe normal/panic/
+   usb/hang/kpanic). Physical validation pending (B7).
+B5. [~] Extend the restart lifecycle for mounted data. Stop services and sessions,
    synchronize state, unmount chroot binds and data, then request normal restart.
    Existing restart control refuses block filesystem mounts; preserve that guard
    until teardown is verified. A busy/unmount failure must be reported and must

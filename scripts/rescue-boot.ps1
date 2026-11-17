@@ -2,7 +2,7 @@
 # No Android query, software reboot, flash or environment command is issued.
 param(
     [ValidateSet('Check','WaitAndBoot')][string]$Action='Check',
-    [ValidateSet('Console','FailSafe','Loader')][string]$Candidate='Console',
+    [ValidateSet('Console','FailSafe','Loader','Slim')][string]$Candidate='Console',
     [ValidateRange(1,600)][int]$WaitSeconds=120,
     [ValidateRange(60,7200)][int]$TransferTimeoutSeconds=3600,
     # Bulk OUT upload verified by loader crc32 (see Test-MiboxLoaderRam.ps1).
@@ -27,6 +27,14 @@ if($Candidate -eq 'Loader') {
     $hash='9c45436205964fabb2f2a113a7b65be524a3f1acde0933f2c5a4b1b460c8b58c'
     $initHash='9b633cdefa3747a2fdfcf7e30eac5c6df0675734569ef51d77813a98d538194c'
     $miboxHash='d182d76d308acbc1f372e1ac218fa7508ecbe87ebf475ac4d8f6f4f39ee33a8e'
+}
+if($Candidate -eq 'Slim') {
+    # Slim A3 image: FailSafe rootfs without package tools/RAM SSH, PID1 and
+    # /bin/mibox with PERSIST-STOP; activates the persistent Alpine tree at boot.
+    # Not yet physically validated (artifacts/slim-candidate/2026-11-17).
+    $hash='8d7849d9d185817b7f2338fb09d3ae84c3fe7febd014f221347ffe021c3e1685'
+    $initHash='b1f3b6540fe22d1c33ea2f19f37ca1662f0ad6da5ec9b484946d9b6fd5a21fbc'
+    $miboxHash='c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226'
 }
 $proof=[ordered]@{Action=$Action;Stage='LocalCheck';Candidate=$Candidate;ImageSHA256=$hash;BulkUpload=[bool]$Bulk
     DeviceAccessed=$false;LoaderRequestSent=$false;FlashCommandSent=$false
