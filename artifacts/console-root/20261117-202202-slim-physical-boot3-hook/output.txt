@@ -1,0 +1,18 @@
+== hook
+total 4
+-rwxr-xr-x 1 root root 894 Jan  1  1970 mibox-floor.sh
+cc122d54398be046f25bc60bb9997bb0b0e6cf0d580876f82a959b531ed46b90  /etc/apk/commit_hooks.d/mibox-floor.sh
+== /sbin/apk add tree (non-interactive, bypasses PATH guard)
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/community/armv7/APKINDEX.tar.gz
+apk floor hook: / has 2098576 KiB free, below the 999999999 KiB floor; refusing commit.
+To free space with apk del, create /etc/apk/mibox-allow-below-floor, then remove it.
+ERROR: zz-high-floor-probe.sh: script exited with error 1
+rc=0
+== tree installed?
+info_rc=1
+== real hook allows normal add
+add_rc=0
+tree
+del_rc=0
+after_del_info_rc=1
+mibox-floor.sh

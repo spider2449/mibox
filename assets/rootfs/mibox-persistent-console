@@ -137,6 +137,38 @@ exec /sbin/apk "$@"
 APKGUARD
     chmod 755 "$guard.new"
     mv "$guard.new" "$guard"
+    # Backstop independent of PATH (non-interactive SSH, scripts): apk aborts a
+    # transaction when a pre-commit hook fails (verified on the box, exit 99).
+    # apk gives hooks no transaction details and a cleared environment, so a
+    # deliberate owner-created file allows below-floor commits (e.g. apk del).
+    hooks=$root/etc/apk/commit_hooks.d
+    mkdir -p "$hooks"
+    test ! -L "$root/etc/apk" ; test ! -L "$hooks"
+    hook=$hooks/mibox-floor.sh
+    test ! -L "$hook"
+    cat > "$hook.new" <<'APKHOOK'
+#!/bin/sh
+# MIBOX_APK_FLOOR_HOOK_V1 (plan S4). Pre-commit: fail below the data floor
+# unless /etc/apk/mibox-allow-below-floor exists. Other phases: no action.
+floor_kib=262144
+[ "${1:-}" = pre-commit ] || exit 0
+if [ -e /etc/apk/mibox-allow-below-floor ]; then
+    echo "apk floor hook: below-floor commits allowed by /etc/apk/mibox-allow-below-floor" >&2
+    exit 0
+fi
+available=$(stat -f -c '%a %S' / 2>/dev/null | awk 'NF == 2 && $1 ~ /^[0-9]+$/ && $2 ~ /^[0-9]+$/ {printf "%d", $1 * $2 / 1024}')
+case "$available" in
+''|*[!0-9]*) echo "apk floor hook: cannot read free space on /; refusing commit" >&2; exit 1 ;;
+esac
+if [ "$available" -lt "$floor_kib" ]; then
+    echo "apk floor hook: / has $available KiB free, below the $floor_kib KiB floor; refusing commit." >&2
+    echo "To free space with apk del, create /etc/apk/mibox-allow-below-floor, then remove it." >&2
+    exit 1
+fi
+exit 0
+APKHOOK
+    chmod 755 "$hook.new"
+    mv "$hook.new" "$hook"
     available=$(df -Pk "$store" | awk 'END {print $4}')
     if [ -n "$boot" ]; then
         key=$root/etc/dropbear/dropbear_ed25519_host_key

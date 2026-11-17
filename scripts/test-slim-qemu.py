@@ -170,6 +170,16 @@ def main(private_key):
                 r = remote('test -f /etc/mibox-persistent-root && grep -q "^ID=mibox-custom$" /etc/os-release '
                            '&& test "$(id -u)" = 0 && test -x /usr/local/sbin/apk && echo IN_ALPINE')
                 record(f'boot{boot_index}-session-in-alpine-with-apk-guard', 'IN_ALPINE' in r.stdout, r.stderr.strip())
+                r = remote('test -x /etc/apk/commit_hooks.d/mibox-floor.sh && '
+                           'grep -q MIBOX_APK_FLOOR_HOOK_V1 /etc/apk/commit_hooks.d/mibox-floor.sh && echo HOOK')
+                record(f'boot{boot_index}-apk-floor-hook-installed', 'HOOK' in r.stdout)
+                state = ''
+                for _ in range(30):
+                    state = remote('cat /proc/1/root/run/mibox-time-state').stdout.strip()
+                    if state.startswith('SYNCED'):
+                        break
+                    time.sleep(3)
+                record(f'boot{boot_index}-time-synced-by-ntp', state.startswith('SYNCED 20'), state)
                 r = remote('cat /proc/1/root/etc/dropbear/dropbear_ed25519_host_key.pub')
                 record(f'boot{boot_index}-ram-copy-of-public-key', r.stdout.split()[:2] == host_key)
                 r = remote('grep " /mnt/mibox-data " /proc/1/mountinfo')

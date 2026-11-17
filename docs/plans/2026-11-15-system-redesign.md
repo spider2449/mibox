@@ -121,6 +121,15 @@ S4. [~] Budgets and guards: keep a data free-space floor (initially the
    only for login shells; a non-interactive `ssh host apk …` gets dropbear's
    default PATH and runs `/sbin/apk` unguarded. Candidate fix: an apk
    pre-commit hook in `/etc/apk/commit_hooks.d/`, to be verified.
+   Closed 2026-11-17: verified on the box that a failing pre-commit hook makes
+   apk abort (exit 99, nothing installed; `…/20261117-201503-apk-hook-probe/`).
+   The helper now also installs `/etc/apk/commit_hooks.d/mibox-floor.sh`
+   (`cc122d54…`): pre-commit fails below the floor unless the owner creates
+   `/etc/apk/mibox-allow-below-floor` (apk runs hooks without transaction
+   details or environment, so `del` below the floor needs that file). Host test
+   17 cases PASS. On Slim, a high-floor copy aborted a non-interactive
+   `/sbin/apk add tree`; with the real hook, add and del work
+   (`…/20261117-202202-slim-physical-boot3-hook/`).
    Open, moved to Phase B: PID1 enforcement of the floor once it mounts data
    (B1/B4 "full" case), and a size-capped log rotation (e.g. BusyBox
    `syslogd -s 1024 -b 2`) when B3 starts any persistent logging service.
@@ -282,6 +291,20 @@ B3. [ ] Start and supervise the selected Alpine services from the outer PID1.
    permissions; verify that server identity survives a restart without the host
    launcher re-pinning a newly generated key. Establish time synchronization
    independent of the host; report unsynchronized time until verified.
+   B3 progress 2026-11-17: SSH host key and authorized keys are the
+   persistent Alpine ones (verified physically, B7). Time: the RTC only counts
+   since cold power-on (read 3942 s, 1970), so the slim start script syncs by
+   NTP (busybox ntpd, pool.ntp.org + time.cloudflare.com; UDP 123 verified
+   from the owner LAN) in the background right after the network, with
+   back-off, resync every 6 h, state in `/run/mibox-time-state`
+   (UNSYNCHRONIZED -> `SYNCED <utc>`); the RTC is never written. QEMU 31
+   checks PASS (`artifacts/slim-qemu/20261117-201911/`; one earlier run
+   crashed after boot 2's mount check with no evidence retained, two
+   following runs passed). Physical Slim `87daa0d3…`
+   (`artifacts/rescue-boot/20261117-202114-211/`): synced 12.9 s after
+   kernel start. Files the helper writes before the first sync carry 1970
+   mtimes (cosmetic). Still open: supervision is a shell restart loop in the
+   start script (reparented to PID1's reaper), not PID1 itself.
 B3a. [ ] Optional experiment, disabled by default and not a startup gate:
    extracted MiBOX config has CONFIG_SWAP=y and CONFIG_ZRAM=y; verify the live
    device/control interface, supported compression and setup/teardown behavior
@@ -317,7 +340,7 @@ B5 gap 2026-11-17: `stop` now kills every process rooted in the tree and
    `/sbin/mibox-persistent-console stop` via PID1 (90 s bound, reaper lock,
    8 KiB output each stream). CHECK/RESTART/LOADER keep requiring RAM-only
    mounts. Client: `mibox persist-stop --boot-id ID`. Slim image now uses
-   release init `b1f3b654…` and mibox `c7f2b1b1…`; candidate `8d7849d9…`
+   release init `b1f3b654…` and mibox `c7f2b1b1…`; candidate `8d7849d9…` (superseded the same day by `87daa0d3…` with the apk hook and NTP)
    (ramdisk 1717239, slack 2756608), pinned as `Slim` in
    `rescue-boot.ps1`/`Test-MiboxLoaderRam.ps1` (local Check PASS, no USB).
    QEMU `test-slim-qemu.py` PASS 27 checks

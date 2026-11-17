@@ -1,0 +1,16 @@
+{
+  "checks": [
+    {
+      "name": "usb-identity",
+      "exit_code": 0
+    },
+    {
+      "name": "usb-host-key",
+      "exit_code": 0
+    },
+    {
+      "name": "script",
+      "exit_code": 2
+    }
+  ]
+}

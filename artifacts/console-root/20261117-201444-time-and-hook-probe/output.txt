@@ -1,0 +1,12 @@
+== rtc
+Thu Jan  1 01:05:42 1970  0.000000 seconds
+3942
+== system before
+Thu Jan  1 01:05:42 UTC 1970
+== ntp
+ntpd: setting time to 2026-11-17 12:14:48.267469 (offset +1794913743.648492s)
+rc=0
+== system after
+Tue Nov 17 12:14:48 UTC 2026
+== apk hooks dir
+ls: cannot access '/etc/apk/commit_hooks.d': No such file or directory

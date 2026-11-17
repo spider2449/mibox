@@ -1,0 +1,9 @@
+== add with failing pre-commit hook
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/main/armv7/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/community/armv7/APKINDEX.tar.gz
+probe hook called: pre-commit
+ERROR: zz-probe.sh: script exited with error 1
+rc=99
+== installed?
+info_rc=1
+ls: cannot access '/etc/apk/commit_hooks.d': No such file or directory

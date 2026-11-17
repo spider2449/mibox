@@ -2,11 +2,11 @@
   "status": "NOT_READY_TO_BOOT_OR_FLASH",
   "image": "boot1-custom.NOT_READY.img",
   "bytes": 8388608,
-  "sha256": "8d7849d9d185817b7f2338fb09d3ae84c3fe7febd014f221347ffe021c3e1685",
+  "sha256": "87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28",
   "used_aligned_bytes": 5632000,
   "source_boot1_sha256": "06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222",
-  "rootfs_sha256": "390a4428b48175c5e879acd0dac39702babf4a377db950025e6104e51b8ce6da",
-  "android_id_sha1": "58d4a65603a155393b0d66bdc682ab24c04e752b",
+  "rootfs_sha256": "349e74a8748cc83ee369054cfd97701d1edb14dace0bbd8c5a2678f547ad6c67",
+  "android_id_sha1": "cf84deb0f1d826204c73c7bb84db5a7474623c60",
   "stock_kernel_and_dtb_unchanged": true,
   "header_cmdline_and_addresses_unchanged": true,
   "changed_header_fields": [
@@ -31,9 +31,9 @@
     {
       "name": "ramdisk",
       "start": 3901440,
-      "size": 1717239,
-      "end": 5618679,
-      "sha256": "390a4428b48175c5e879acd0dac39702babf4a377db950025e6104e51b8ce6da"
+      "size": 1718000,
+      "end": 5619440,
+      "sha256": "349e74a8748cc83ee369054cfd97701d1edb14dace0bbd8c5a2678f547ad6c67"
     },
     {
       "name": "second",

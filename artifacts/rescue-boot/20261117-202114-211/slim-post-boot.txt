@@ -1,0 +1,5 @@
+SYNCED 2026-11-17T12:21:45Z
+Tue Nov 17 12:21:58 UTC 2026
+[    6.876963@1] EXT4-fs (mmcblk0p11): mounted filesystem with ordered data mode. Opts: (null)
+[    7.281177@0] mibox-persistent: MIBOX_PERSISTENT_BOOT_READY free_kib=2098592 floor_kib=262144
+[   12.926141@0] mibox-slim: MIBOX_TIME_SYNCED 2026-11-17T12:21:45Z

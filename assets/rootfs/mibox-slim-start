@@ -31,6 +31,26 @@ elif grep -q '^MIBOX_STATIC_IPV4_V1 192.168.1.222 255.255.255.0 192.168.1.1$' /e
 else
     say MIBOX_NETWORK_PROFILE_INVALID
 fi
+# Host-independent time (plan B3). The RTC only counts since cold power-on,
+# so the clock starts in 1970: NTP (verified reachable from the owner LAN) is
+# the only source. State in /run/mibox-time-state; UNSYNCHRONIZED until the
+# first success, then resynchronized every 6 hours. The RTC is never written.
+echo UNSYNCHRONIZED > /run/mibox-time-state
+(
+    trap '' HUP
+    delay=15
+    while :; do
+        if ntpd -n -q -p pool.ntp.org -p time.cloudflare.com > /run/mibox-ntpd.log 2>&1; then
+            echo "SYNCED $(date -u +%Y-%m-%dT%H:%M:%SZ)" > /run/mibox-time-state
+            echo "mibox-slim: MIBOX_TIME_SYNCED $(date -u +%Y-%m-%dT%H:%M:%SZ)" > /dev/kmsg 2>/dev/null
+            sleep 21600
+            delay=15
+        else
+            sleep "$delay"
+            [ "$delay" -lt 300 ] && delay=$((delay * 2))
+        fi
+    done
+) < /dev/null > /dev/null 2>&1 &
 # Bounded HDMI handoff when the optional display files are packaged.
 if [ -x /sbin/mibox-fbhandoff ] && [ -e /etc/mibox-splash.ppm ]; then
     (

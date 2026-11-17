@@ -62,6 +62,32 @@ def main():
             print(('PASS' if ok else 'FAIL'), name, result.returncode, result.stderr.strip())
             if not ok:
                 failures.append(name)
+        # Pre-commit hook (PATH-independent backstop).
+        hook_match = re.search(r"<<'APKHOOK'\n(.*?)\nAPKHOOK\n", helper, re.S)
+        assert hook_match, 'APKHOOK block missing'
+        assert set(re.findall(r'^floor_kib=(\d+)$', hook_match.group(1), re.M)) == {'262144'}
+        allow = work / 'allow-below-floor'
+        hook = work / 'hook'
+        hook.write_text(hook_match.group(1).replace('/etc/apk/mibox-allow-below-floor', str(allow)) + '\n')
+        hook_cases = [
+            ('hook pre-commit above floor passes', '262144', 'pre-commit', False, 0),
+            ('hook pre-commit below floor fails', '262140', 'pre-commit', False, 1),
+            ('hook pre-commit unreadable fails', 'n/a', 'pre-commit', False, 1),
+            ('hook post-commit below floor passes', '1000', 'post-commit', False, 0),
+            ('hook pre-commit below floor with allow file passes', '1000', 'pre-commit', True, 0),
+        ]
+        for name, avail, phase, allowed, code in hook_cases:
+            if allowed:
+                allow.write_text('')
+            elif allow.exists():
+                allow.unlink()
+            env = dict(os.environ, PATH=f'{work}/bin:/usr/bin:/bin', FAKE_AVAIL=avail)
+            result = subprocess.run(['sh', str(hook), phase], env=env,
+                                    capture_output=True, text=True, timeout=10)
+            ok = result.returncode == code
+            print(('PASS' if ok else 'FAIL'), name, result.returncode, result.stderr.strip())
+            if not ok:
+                failures.append(name)
     print('APK_GUARD_TEST', 'FAIL' if failures else 'PASS')
     return 1 if failures else 0
 

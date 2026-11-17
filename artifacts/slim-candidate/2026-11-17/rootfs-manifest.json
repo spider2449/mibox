@@ -2,9 +2,9 @@
   "status": "HOST_BUILT_NOT_PHYSICALLY_VALIDATED",
   "profile": "slim-a3",
   "source_rootfs_sha256": "266bdba6eb6efd39580edc742855a37ede189bf4a8925483b03462e73c9612ed",
-  "gzip_bytes": 1717239,
-  "gzip_sha256": "390a4428b48175c5e879acd0dac39702babf4a377db950025e6104e51b8ce6da",
-  "cpio_bytes": 2791148,
+  "gzip_bytes": 1718000,
+  "gzip_sha256": "349e74a8748cc83ee369054cfd97701d1edb14dace0bbd8c5a2678f547ad6c67",
+  "cpio_bytes": 2793492,
   "kept_unchanged": {
     "sbin/adbd": "f2a875f1f6230fde084264e2927d1dbf3bf95bcf5e494809814a488caf532afc",
     "system/bin/sh": "d44fd1bb1a8a84fe6ed0b4d850dd05d506aaf4fefdb54d24eb99690fb6583fc6",
@@ -268,8 +268,8 @@
       "sha256": "b4a2c06db38742e8c42c3c9838b285a7d8cdac6c091ff3df5ff9a15f1e41b9c7"
     },
     "sbin/mibox-console-start": {
-      "bytes": 2429,
-      "sha256": "104d88d6089384d204a587fe9957b58e8b55c23120529480025f425bfda2fc3c"
+      "bytes": 3302,
+      "sha256": "bd4c781c6c62df6dc62ff0ac802eb080757d38dc2d27338f6ca1733f8e32cbe6"
     },
     "etc/busybox-paths.d/busybox": {
       "bytes": 3989,
@@ -352,8 +352,8 @@
       "sha256": "1cf94e3918ce389c722f4408490ae7334321a5ca2aec2c945b0c47662aa274a6"
     },
     "sbin/mibox-persistent-console": {
-      "bytes": 8740,
-      "sha256": "292af18bbcbd18b31006bf84137dc2bd3ac98f7184699eb8c2449b3103564fdc"
+      "bytes": 10209,
+      "sha256": "e29258be42bd2ac4b155293cb8f808547855c09f696a8f264f7f242a11c590ea"
     }
   }
 }
