@@ -510,12 +510,20 @@ C3. [x] Prepare a concrete write AND restoration procedure for the proven target
    direction DryRunVerified, no node left behind.
    C4 gate status: B2 and B3 closed 2026-11-17; the rest of B7 (cold
    power-on of Slim, HDMI if display files are added) is open.
-C4. [ ] Once mandatory B gates (B1-B7, excluding optional B3a) pass and C1-C3
+C4. [x] Once mandatory B gates (B1-B7, excluding optional B3a) pass and C1-C3
    evidence is ready, obtain explicit owner
    authorization for the specific boot-partition write. Install the identical
    full-size bytes that passed physical RAM validation. Perform one bounded
    write, fsync/cache flush, full 8 MiB readback and independent second collection;
    require exact hash matches before any restart. No automatic retry.
+   Done 2026-11-17 with explicit owner authorization ("Write Slim to boot1
+   now"). From Slim in RAM: tool `e4750d65…` and image `dd1e6756…` uploaded
+   and re-hashed; dry run verified current boot1 `06d9eb7e…`; write
+   `MIBOX_PARTWRITE_READBACK_VERIFIED=dd1e6756…`; independent busybox re-hash
+   after drop_caches: boot1 179:7 `dd1e6756…`, boot 179:6 unchanged
+   `ff4fa440…` (`artifacts/console-root/20261117-214011-c4-boot1-write/`).
+   Env, bootloader, boot, recovery, system* and data were not written.
+   Restore: `docs/mibox-boot1-install.md` (expect-current `dd1e6756…`).
 C5. [ ] Owner-observed cold boot with the USB host disconnected: bootloader
    window continues into the custom system from flash, then PID1 automatically
    activates Alpine and SSH. Verify runtime identity, persistent keys/state and

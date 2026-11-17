@@ -1,6 +1,7 @@
 # Writing and restoring boot1 (plan C3)
 
-Status: **procedure prepared and rehearsed; boot1 NOT written.** Writing boot1
+Status: **boot1 WRITTEN with Slim `dd1e6756…` on 2026-11-17 (owner-authorized C4).**
+Stock boot1 `06d9eb7e…` remains restorable with the restore section below. Writing boot1
 (C4) needs explicit owner approval at that time. Nothing here touches the
 bootloader, env, boot, recovery, system or data partitions.
 
