@@ -9,6 +9,8 @@ home=$store/mibox-console
 root=$home/rootfs
 device=/dev/mibox-data
 expected=179:11
+# Data free-space floor (plan S4, from the S1/S3 inventory): keep 256 MiB free.
+floor_kib=262144
 if [ "${2:-}" = --qemu ]; then
     grep -aq 'linux,dummy-virt' /proc/device-tree/compatible
     device=/dev/vda
@@ -42,7 +44,7 @@ start)
     test "$(stat -c '%u:%a' "$home")" = 0:700
     if [ ! -e "$root" ]; then
         available=$(df -Pk "$store" | awk 'END {print $4}')
-        test "$available" -ge 65536
+        test "$available" -ge "$floor_kib"
         stage=$home/rootfs.initializing
         test ! -e "$stage"
         mkdir -m 700 "$stage"
@@ -62,9 +64,47 @@ start)
     done
     if ! mountpoint -q "$root/dev/pts"; then mount -o bind /dev/pts "$root/dev/pts"; fi
     chroot "$root" /sbin/apk info -e dropbear
+    # Package changes go through a guard that refuses them below the floor.
+    # Rewritten on every start; /sbin/apk itself is unchanged.
+    mkdir -p "$root/usr/local/sbin"
+    test ! -L "$root/usr/local" && test ! -L "$root/usr/local/sbin"
+    guard=$root/usr/local/sbin/apk
+    test ! -L "$guard"
+    cat > "$guard.new" <<'APKGUARD'
+#!/bin/sh
+# MIBOX_APK_GUARD_V1: refuse package changes when / is below the free-space
+# floor (plan S4). Read-only apk commands pass through. Bypass: /sbin/apk.
+floor_kib=262144
+sub=
+skip=
+for arg in "$@"; do
+    if [ -n "$skip" ]; then skip=; continue; fi
+    case "$arg" in
+    -X|--repository|-p|--root|--arch|--cache-dir|--keys-dir|--repositories-file|\
+    --progress-fd|--timeout|--cache-max-age) skip=1 ;;
+    -*) ;;
+    *) sub=$arg; break ;;
+    esac
+done
+case "$sub" in
+add|upgrade|fix|update) ;;
+*) exec /sbin/apk "$@" ;;
+esac
+available=$(df -Pk / | awk 'END {print $4}')
+case "$available" in
+''|*[!0-9]*) echo "apk guard: cannot read free space on /; refusing $sub" >&2; exit 75 ;;
+esac
+if [ "$available" -lt "$floor_kib" ]; then
+    echo "apk guard: / has $available KiB free, below the $floor_kib KiB floor; refusing $sub" >&2
+    exit 75
+fi
+exec /sbin/apk "$@"
+APKGUARD
+    chmod 755 "$guard.new"
+    mv "$guard.new" "$guard"
     cat > /sbin/mibox-persistent-shell <<'SHELL'
 #!/bin/sh
-export PATH=/usr/sbin:/usr/bin:/sbin:/bin
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export SHELL=/bin/ash HOME=/root
 if [ "$#" -eq 0 ]; then set -- -l; fi
 exec /usr/sbin/chroot /mnt/mibox-data/mibox-console/rootfs /bin/ash "$@"
@@ -77,6 +117,10 @@ SHELL
     sed -i 's|^root:\([^:]*:[^:]*:[^:]*:[^:]*:[^:]*:\).*|root:\1/sbin/mibox-persistent-shell|' /etc/passwd
     echo MIBOX_PERSISTENT_CONSOLE_READY
     df -Pk "$store"
+    available=$(df -Pk "$store" | awk 'END {print $4}')
+    echo "MIBOX_DATA_FREE_KIB=$available FLOOR_KIB=$floor_kib"
+    # Below the floor the console still starts (recovery needs it); apk refuses.
+    if [ "$available" -lt "$floor_kib" ]; then echo MIBOX_DATA_BELOW_FLOOR >&2; fi
     ;;
 stop)
     # Run from RAM, with all other SSH sessions closed, before Android return.

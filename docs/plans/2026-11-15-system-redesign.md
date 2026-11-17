@@ -95,10 +95,26 @@ S3. [x] Reclaim Android files on data by deleting directories, not formatting.
    no ext4/I/O errors, unmounted after. Re-hash of the kept trees matches S2
    (2435 files, `…-s3-post-hashes/`). Android cold boot after this deletion
    and its ADB loader-entry path are not yet re-verified.
-S4. [ ] Budgets and guards: keep a data free-space floor (initially the
+S4. [~] Budgets and guards: keep a data free-space floor (initially the
    launcher's 64 MiB; revise from S1) enforced before apk installs and by PID1;
    bound logs (size cap/rotation); keep Docker test storage in RAM until data
    space is measured, since VFS copies every layer.
+   2026-11-17, host-launched console: floor set to 256 MiB (about 11% of
+   data; covers Android rebuilding its system-app dalvik-cache if it boots
+   before Phase C). The persistence helper refuses initial tree creation
+   below it, reports `MIBOX_DATA_FREE_KIB`, and installs an `apk` guard that
+   refuses add/upgrade/fix/update below the floor (del/cache clean pass).
+   `scripts/test-apk-guard.py` PASS (12 cases); on device the guard hash
+   matches the source, is first on PATH, passes real commands at 2098604 KiB
+   free, and a high-floor copy refused `add` with exit 75
+   (`artifacts/console-ssh/launcher-20261117-193201/s4-guard-*.txt`).
+   Logs: no persistent writer exists today (Alpine `var/log` empty, no syslog
+   in the chroot); RAM PID1 logs stay in RAM. Docker test config already uses
+   `data-root /run/mibox-docker-test` (RAM) with json-file logs capped at
+   1m x 2 (`scripts/prepare-mibox-docker.py`).
+   Open, moved to Phase B: PID1 enforcement of the floor once it mounts data
+   (B1/B4 "full" case), and a size-capped log rotation (e.g. BusyBox
+   `syslogd -s 1024 -b 2`) when B3 starts any persistent logging service.
 S5. [ ] Boot image budget: record kernel, DTB and per-component initramfs
    sizes and slack for every candidate (A4/A5).
 S6. [ ] After Phase C passes: decide reuse of system/system1 (1 GiB total) and

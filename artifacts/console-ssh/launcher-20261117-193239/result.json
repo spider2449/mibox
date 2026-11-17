@@ -1,0 +1,22 @@
+{
+  "checks": [
+    {
+      "name": "usb-identity",
+      "exit_code": 0
+    },
+    {
+      "name": "usb-host-key",
+      "exit_code": 0
+    },
+    {
+      "name": "persistent-stop",
+      "exit_code": 0
+    },
+    {
+      "name": "known-hosts-path",
+      "exit_code": 0
+    }
+  ],
+  "persistent_ready": false,
+  "stopped": true
+}

@@ -1,0 +1,9 @@
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+/usr/local/sbin/apk
+cb6921cc2e07e19cf67a6b128584c74103dc18f7d54b1aceda8e9aa486e667d2  /usr/local/sbin/apk
+-rwxr-xr-x 1 root root 51564 Jan  1  1970 /sbin/apk
+-rwxr-xr-x 1 root root   875 Nov 17 11:32 /usr/local/sbin/apk
+coreutils
+apk-tools 2.14.13, compiled for armv7.
+Filesystem     1024-blocks   Used Available Capacity Mounted on
+-                  2234556 119568   2098604       6% /

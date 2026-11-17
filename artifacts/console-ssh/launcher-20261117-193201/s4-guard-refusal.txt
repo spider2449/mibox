@@ -1,0 +1,6 @@
+apk guard: / has 2098596 KiB free, below the 999999999 KiB floor; refusing add
+add_rc=75
+coreutils
+info_rc=0
+htop
+htop_installed_rc=0

@@ -65,12 +65,20 @@ IPv4 is the previously owner-confirmed `192.168.1.222/24`, gateway
 The launcher checks the data partition identity (179:11, 5168640 sectors) and
 existing ext4 type. It creates only a dedicated `/mibox-console/rootfs` tree in
 that filesystem; it does not format or resize the filesystem. Initial creation
-requires at least 64 MiB free. Existing unrelated Android files are retained.
-This space is shared with Android; check `df -h /` before installing large packages.
+requires at least the 256 MiB free-space floor. Android's app payload was
+removed on 2026-11-17 with owner approval (plan S3); free space is now about
+2.0 GiB. Android's `system`, `misc`, `property` and `ssh` remain until Phase C.
+
+Free-space floor: 256 MiB (262144 KiB). On every start the helper writes
+`/usr/local/sbin/apk` into the persistent tree, and the SSH shell puts it first
+on PATH. It refuses `apk add|upgrade|fix|update` with exit code 75 when `/`
+has less than the floor free; `del`, `cache clean`, `info` and other commands
+pass through. `/sbin/apk` itself is unchanged and bypasses the guard. Below the
+floor the console still starts and prints `MIBOX_DATA_BELOW_FLOOR`; the start
+output always includes `MIBOX_DATA_FREE_KIB`.
 The launcher installs GNU coreutils in the persistent root. BusyBox's `df`
 follows an inaccessible outer mount path on this vendor kernel; GNU `df` correctly
-reports space for `/` (the source column may be `-`). Initial physical free space
-after provisioning was approximately 439 MiB.
+reports space for `/` (the source column may be `-`).
 
 PID1, USB ADB and the SSH transport stay in RAM. SSH login shells enter the
 persistent Alpine tree, with explicit dev/devpts/proc/sys bind mounts. Packages,
