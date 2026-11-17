@@ -48,9 +48,31 @@ by `ram-boot.ps1` and the software-return tests. Removing them earlier turns a
 host-disconnected cold start into a failed boot that only C003 rescue recovers.
 Partition order therefore follows dependencies, not size:
 
-S1. [ ] Inventory data (from pinned RAM console, data mounted read-only where
+S1. [x] Inventory data (from pinned RAM console, data mounted read-only where
    possible): usage per top-level directory, Android app/media/cache trees,
    the Alpine tree and its free space. Current free space is about 438 MiB.
+   Done 2026-11-17, mounted `ro,noload` (no journal replay), then unmounted:
+   `artifacts/console-root/20261117-192144-s1-data-inventory/`,
+   `20261117-192210-s1-detail/`. ext4 2270600 KiB, 1855024 used, 399192
+   available (82%); inodes 7%. Usage in KiB:
+
+   | Tree | KiB | Class |
+   | --- | --- | --- |
+   | app (apks) | 426140 | Android, reclaim |
+   | dalvik-cache | 375908 | Android, regenerable |
+   | data (app data) | 342708 | Android, reclaim |
+   | app-lib | 262164 | Android, reclaim |
+   | media (0/shafa downloads 98628, Android 56300) | 217068 | Android, reclaim |
+   | spdif.mkv, autovideo.mov, test.mkv | 54508 | factory test media, reclaim |
+   | log, anr, tombstones, dontpanic, diagnosis | 17072 | Android logs, reclaim |
+   | mibox-console (Alpine; usr 47500, tmp 9900) | 64000 | keep (A2 backup first) |
+   | local/tmp (earlier project tools, logs, boot-backup dirs) | 48052 | keep until compared with PC backups |
+   | system, misc, property, ssh | ~3300 | keep while Android boot is the cold-start/ADB path |
+
+   About 1.65 GiB is Android payload. Constraint for S3: Android's ADB
+   loader-entry path depends on `misc/adb`, `property/persist.sys.usb.config`
+   and `system`; keep those until Phase C. A later Android boot rebuilds
+   dalvik-cache for system apps (slow first boot) and may recreate logs.
 S2. [ ] Back up the Alpine tree, configuration and keys to the PC (also A2).
    Android userdata has no backup; the owner has accepted its loss.
 S3. [ ] Reclaim Android files on data by deleting directories, not formatting.

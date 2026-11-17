@@ -1,0 +1,66 @@
+== mounts of 179:11
+0
+== local/tmp
+total 7892
+drwxrwx--x   31 2000     2000          4096 Nov 14  2026 .
+drwxr-x--x    3 1000     root          4096 May 22  2017 ..
+drwxr-xr-x    2 root     1000          4096 Nov 13  2026 mibox-acm-test-v1
+drwxr-xr-x    2 root     1000          4096 Nov 13  2026 mibox-acm-test-v2
+drwxr-xr-x    2 root     1000          4096 Nov 13  2026 mibox-acm-test-v3
+-rw-r--r--    1 root     root         54956 Nov 16  2026 mibox-adb-boot.log
+-rw-r--r--    1 root     1000            61 Nov 13  2026 mibox-adb-job-3149-1794608144250.txt
+-rw-r--r--    1 root     1000           122 Nov 13  2026 mibox-adb-job-3355-1794606848072.txt
+-rw-r--r--    1 root     1000            60 Nov 13  2026 mibox-adb-job-3498-1794608289058.txt
+-rw-r--r--    1 root     1000           125 Nov 13  2026 mibox-adb-job-3666-1794606976623.txt
+-rw-r--r--    1 root     1000            60 Nov 13  2026 mibox-adb-job-3693-1794607862552.txt
+-rw-r--r--    1 root     1000           142 Nov 13  2026 mibox-adb-job-3822-1794607067611.txt
+-rw-r--r--    1 root     1000           351 Nov 13  2026 mibox-adb-job-3928-1794607120831.txt
+-rw-r--r--    1 root     1000           351 Nov 13  2026 mibox-adb-job-4068-1794607204883.txt
+-rw-r--r--    1 root     1000            60 Nov 13  2026 mibox-adb-job-4381-1794607315846.txt
+-rw-r--r--    1 root     1000            95 Nov 13  2026 mibox-adb-job-4774-1794582182617.txt
+-rw-r--r--    1 root     1000            96 Nov 13  2026 mibox-adb-job-4814-1794582204743.txt
+drwxr-xr-x    2 root     1000          4096 Nov 13  2026 mibox-adb-persistence-v1
+-rwxr-xr-x    1 2000     2000        398088 Nov 13  2026 mibox-backup-boot
+-rwxr-xr-x    1 2000     2000        347132 Nov 13  2026 mibox-backup-system
+drwxr-xr-x    2 root     1000          4096 Nov 13  2026 mibox-boot-backup-5877
+drwxr-xr-x    2 root     1000          4096 Nov 13  2026 mibox-boot-backup-7161
+-rwxr-xr-x    1 2000     2000        366760 Nov 13  2026 mibox-init
+-rwxr-xr-x    1 2000     2000        415836 Nov 13  2026 mibox-persist-adb
+-rwxr-xr-x    1 2000     2000        380200 Nov 13  2026 mibox-probe
+-rw-r--r--    1 root     1000         43766 Nov 14  2026 mibox-read-1238-crash.txt
+-rw-r--r--    1 root     1000          1979 Nov 14  2026 mibox-read-19768-recoverypending.txt
+-rw-r--r--    1 root     1000           217 Nov 14  2026 mibox-read-19794-recoveryenv.txt
+-rw-r--r--    1 root     1000         97411 Nov 13  2026 mibox-read-3296-dmesg.txt
+== alpine tmp
+total 12
+drwxrwxrwt    3 root     root          4096 Nov 15  2026 .
+drwx------   14 root     root          4096 Nov 15  2026 ..
+drwxr-xr-x    9 root     root          4096 Nov 15  2026 mibox-audio-test
+== log
+1008	/mnt/s1-data-ro/log/logcat.log.9
+1008	/mnt/s1-data-ro/log/logcat.log.8
+1008	/mnt/s1-data-ro/log/logcat.log.7
+1008	/mnt/s1-data-ro/log/logcat.log.6
+1008	/mnt/s1-data-ro/log/logcat.log.5
+1008	/mnt/s1-data-ro/log/logcat.log.4
+1008	/mnt/s1-data-ro/log/logcat.log.3
+1008	/mnt/s1-data-ro/log/logcat.log.2
+1008	/mnt/s1-data-ro/log/logcat.log.10
+1008	/mnt/s1-data-ro/log/logcat.log.1
+== media/0 top
+98628	/mnt/s1-data-ro/media/0/shafa
+56300	/mnt/s1-data-ro/media/0/Android
+16248	/mnt/s1-data-ro/media/0/com.togic.livevideo
+12576	/mnt/s1-data-ro/media/0/KingRoot_v4.9.6_apkpure.com_.apk
+8424	/mnt/s1-data-ro/media/0/tencent
+6524	/mnt/s1-data-ro/media/0/com.xiaomi.mitv.smartshare
+6492	/mnt/s1-data-ro/media/0/Download
+3380	/mnt/s1-data-ro/media/0/ShafaBackup
+3080	/mnt/s1-data-ro/media/0/Bluetooth
+2020	/mnt/s1-data-ro/media/0/system
+== ssh
+total 12
+drwxr-x---    3 root     2000          4096 Jan  1 00:01 .
+drwxrwx--x   29 1000     1000          4096 Nov 15  2026 ..
+drwx------    2 root     root          4096 Jan  1 00:01 empty
+UNMOUNTED

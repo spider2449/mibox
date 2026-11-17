@@ -1,0 +1,207 @@
+/dev/mibox-data: UUID="57f8f4bc-abf4-655f-bf67-946fc0f9f25b" TYPE="ext4"
+== mount
+18 1 179:11 / /mnt/s1-data-ro ro,nosuid,nodev,noexec,relatime - ext4 /dev/mibox-data ro,norecovery
+== df
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/mibox-data        2270600   1855024    399192  82% /mnt/s1-data-ro
+Filesystem              Inodes      Used Available Use% Mounted on
+/dev/mibox-data         144288      9739    134549   7% /mnt/s1-data-ro
+== top level (KiB)
+426140	/mnt/s1-data-ro/app
+375908	/mnt/s1-data-ro/dalvik-cache
+342708	/mnt/s1-data-ro/data
+262164	/mnt/s1-data-ro/app-lib
+217068	/mnt/s1-data-ro/media
+64000	/mnt/s1-data-ro/mibox-console
+48052	/mnt/s1-data-ro/local
+22956	/mnt/s1-data-ro/spdif.mkv
+21512	/mnt/s1-data-ro/autovideo.mov
+11200	/mnt/s1-data-ro/log
+10040	/mnt/s1-data-ro/test.mkv
+4628	/mnt/s1-data-ro/anr
+4580	/mnt/s1-data-ro/duokancache
+2584	/mnt/s1-data-ro/system
+744	/mnt/s1-data-ro/tombstones
+628	/mnt/s1-data-ro/misc
+396	/mnt/s1-data-ro/diagnosis
+104	/mnt/s1-data-ro/dontpanic
+56	/mnt/s1-data-ro/property
+16	/mnt/s1-data-ro/backup
+12	/mnt/s1-data-ro/tmp
+8	/mnt/s1-data-ro/ssh
+4	/mnt/s1-data-ro/user
+4	/mnt/s1-data-ro/security
+4	/mnt/s1-data-ro/resource-cache
+4	/mnt/s1-data-ro/mediadrm
+4	/mnt/s1-data-ro/lost+found
+4	/mnt/s1-data-ro/drm
+4	/mnt/s1-data-ro/app-private
+4	/mnt/s1-data-ro/app-asec
+4	/mnt/s1-data-ro/.layout_version
+0	/mnt/s1-data-ro/bugreports
+== app children (KiB, top 15)
+44420	/mnt/s1-data-ro/app/com.mitv.mivideoplayer-2.apk
+33340	/mnt/s1-data-ro/app/com.xiaomi.mitv.smartshare-2.apk
+29416	/mnt/s1-data-ro/app/com.mitv.tvhome-1.apk
+29256	/mnt/s1-data-ro/app/com.moretv.android-2.apk
+28524	/mnt/s1-data-ro/app/com.xiaodianshi.tv.yst-2.apk
+26304	/mnt/s1-data-ro/app/com.mitv.videoplayer-2.apk
+22440	/mnt/s1-data-ro/app/com.mitv.gallery-2.apk
+21348	/mnt/s1-data-ro/app/com.togic.livevideo-1.apk
+21248	/mnt/s1-data-ro/app/com.xiaomi.tv.gallery-1.apk
+20424	/mnt/s1-data-ro/app/com.xiaomi.smarthome.tv-2.apk
+18736	/mnt/s1-data-ro/app/com.gotokeep.androidtv-1.apk
+15760	/mnt/s1-data-ro/app/com.mitv.codec.update-1.apk
+14728	/mnt/s1-data-ro/app/com.xm.webcontent-2.apk
+11992	/mnt/s1-data-ro/app/com.mitv.care-1.apk
+8704	/mnt/s1-data-ro/app/com.xiaomi.mitv.shop-1.apk
+== app-asec children (KiB, top 15)
+== app-lib children (KiB, top 15)
+34360	/mnt/s1-data-ro/app-lib/com.mitv.mivideoplayer-2
+26600	/mnt/s1-data-ro/app-lib/com.xiaomi.mitv.smartshare-2
+25048	/mnt/s1-data-ro/app-lib/com.togic.livevideo-1
+18164	/mnt/s1-data-ro/app-lib/com.xiaodianshi.tv.yst-2
+18056	/mnt/s1-data-ro/app-lib/com.xm.webcontent-2
+17040	/mnt/s1-data-ro/app-lib/com.moretv.android-2
+12960	/mnt/s1-data-ro/app-lib/com.mitv.videoplayer-2
+12948	/mnt/s1-data-ro/app-lib/com.xiaomi.smarthome.tv-2
+11828	/mnt/s1-data-ro/app-lib/com.mitv.care-1
+11200	/mnt/s1-data-ro/app-lib/vmdl71962224
+11196	/mnt/s1-data-ro/app-lib/vmdl254187198
+11196	/mnt/s1-data-ro/app-lib/vmdl1400339576
+10304	/mnt/s1-data-ro/app-lib/com.mitv.tvhome-1
+9788	/mnt/s1-data-ro/app-lib/com.xiaomi.tv.gallery-1
+9768	/mnt/s1-data-ro/app-lib/vmdl885359887
+== app-private children (KiB, top 15)
+== dalvik-cache children (KiB, top 15)
+9500	/mnt/s1-data-ro/dalvik-cache/system@framework@framework.jar@classes.dex
+9264	/mnt/s1-data-ro/dalvik-cache/data@app@com.mitv.mivideoplayer-2.apk@classes.dex
+9260	/mnt/s1-data-ro/dalvik-cache/data@app@com.moretv.android-2.apk@classes.dex
+9236	/mnt/s1-data-ro/dalvik-cache/data@app@com.mitv.videoplayer-2.apk@classes.dex
+9100	/mnt/s1-data-ro/dalvik-cache/data@app@com.mitv.tvhome-1.apk@classes.dex
+9064	/mnt/s1-data-ro/dalvik-cache/system@priv-app@MiTVGallery.apk@classes.dex
+8996	/mnt/s1-data-ro/dalvik-cache/data@app@com.mitv.gallery-2.apk@classes.dex
+8748	/mnt/s1-data-ro/dalvik-cache/data@app@com.xiaodianshi.tv.yst-2.apk@classes.dex
+8600	/mnt/s1-data-ro/dalvik-cache/data@app@com.xiaomi.tv.gallery-1.apk@classes.dex
+8128	/mnt/s1-data-ro/dalvik-cache/data@app@com.xiaomi.mitv.shop-1.apk@classes.dex
+7820	/mnt/s1-data-ro/dalvik-cache/data@app@com.xiaomi.smarthome.tv-2.apk@classes.dex
+7752	/mnt/s1-data-ro/dalvik-cache/vendor@app@SmartHomeTV.apk@classes.dex
+7608	/mnt/s1-data-ro/dalvik-cache/data@app@com.xiaomi.mitv.mediaexplorer-2.apk@classes.dex
+7380	/mnt/s1-data-ro/dalvik-cache/data@app@com.togic.livevideo-1.apk@classes.dex
+7380	/mnt/s1-data-ro/dalvik-cache/data@app@com.gotokeep.androidtv-1.apk@classes.dex
+== data children (KiB, top 15)
+103356	/mnt/s1-data-ro/data/com.mitv.mivideoplayer
+97708	/mnt/s1-data-ro/data/com.xiaodianshi.tv.yst
+20496	/mnt/s1-data-ro/data/com.xiaomi.mitv.appstore
+20440	/mnt/s1-data-ro/data/com.moretv.android
+19772	/mnt/s1-data-ro/data/com.togic.livevideo
+15888	/mnt/s1-data-ro/data/com.mitv.tvhome
+12012	/mnt/s1-data-ro/data/com.xiaomi.smarthome.tv
+9676	/mnt/s1-data-ro/data/com.xiaomi.tv.gallery
+9616	/mnt/s1-data-ro/data/com.xiaomi.mitv.shop
+6396	/mnt/s1-data-ro/data/com.shafa.market
+5888	/mnt/s1-data-ro/data/com.xiaomi.mitv.smartshare
+5604	/mnt/s1-data-ro/data/com.mitv.care
+2688	/mnt/s1-data-ro/data/com.xiaomi.mitv.remotecontroller.service
+1652	/mnt/s1-data-ro/data/com.miui.systemAdSolution
+1308	/mnt/s1-data-ro/data/com.xiaomi.xmsf
+== media children (KiB, top 15)
+217056	/mnt/s1-data-ro/media/0
+4	/mnt/s1-data-ro/media/obb
+4	/mnt/s1-data-ro/media/legacy
+== mibox-console children (KiB, top 15)
+63996	/mnt/s1-data-ro/mibox-console/rootfs
+== local children (KiB, top 15)
+48048	/mnt/s1-data-ro/local/tmp
+== system children (KiB, top 15)
+1180	/mnt/s1-data-ro/system/dropbox
+416	/mnt/s1-data-ro/system/users
+300	/mnt/s1-data-ro/system/batterystats.bin
+168	/mnt/s1-data-ro/system/procstats
+144	/mnt/s1-data-ro/system/packages.xml
+72	/mnt/s1-data-ro/system/locksettings.db-wal
+44	/mnt/s1-data-ro/system/uiderrors.txt
+40	/mnt/s1-data-ro/system/usagestats
+32	/mnt/s1-data-ro/system/locksettings.db-shm
+28	/mnt/s1-data-ro/system/netstats
+24	/mnt/s1-data-ro/system/ndoutnh.txt
+16	/mnt/s1-data-ro/system/sync
+12	/mnt/s1-data-ro/system/throttle
+12	/mnt/s1-data-ro/system/registered_services
+12	/mnt/s1-data-ro/system/packages.list
+== misc children (KiB, top 15)
+320	/mnt/s1-data-ro/misc/keychain
+140	/mnt/s1-data-ro/misc/bluedroid
+44	/mnt/s1-data-ro/misc/keystore
+32	/mnt/s1-data-ro/misc/dhcp
+28	/mnt/s1-data-ro/misc/wifi
+16	/mnt/s1-data-ro/misc/etc
+12	/mnt/s1-data-ro/misc/adb
+4	/mnt/s1-data-ro/misc/zoneinfo
+4	/mnt/s1-data-ro/misc/vpn
+4	/mnt/s1-data-ro/misc/systemkeys
+4	/mnt/s1-data-ro/misc/sms
+4	/mnt/s1-data-ro/misc/radio
+4	/mnt/s1-data-ro/misc/media
+4	/mnt/s1-data-ro/misc/hdcp
+4	/mnt/s1-data-ro/misc/bluetooth
+== user children (KiB, top 15)
+0	/mnt/s1-data-ro/user/0
+== property children (KiB, top 15)
+4	/mnt/s1-data-ro/property/persist.sys.usb.netadb.config
+4	/mnt/s1-data-ro/property/persist.sys.usb.config
+4	/mnt/s1-data-ro/property/persist.sys.profiler_ms
+4	/mnt/s1-data-ro/property/persist.sys.poweroff.time
+4	/mnt/s1-data-ro/property/persist.sys.power.running
+4	/mnt/s1-data-ro/property/persist.sys.ota.update
+4	/mnt/s1-data-ro/property/persist.sys.language
+4	/mnt/s1-data-ro/property/persist.sys.key.idle
+4	/mnt/s1-data-ro/property/persist.sys.gsensor
+4	/mnt/s1-data-ro/property/persist.sys.dalvik.vm.lib
+4	/mnt/s1-data-ro/property/persist.sys.country
+4	/mnt/s1-data-ro/property/persist.sys.bootanim
+4	/mnt/s1-data-ro/property/persist.service.bdroid.bdaddr
+0	/mnt/s1-data-ro/property/persist.sys.localevar
+== lost+found children (KiB, top 15)
+== alpine rootfs (KiB, top 15)
+47500	/mnt/s1-data-ro/mibox-console/rootfs/usr
+9900	/mnt/s1-data-ro/mibox-console/rootfs/tmp
+2396	/mnt/s1-data-ro/mibox-console/rootfs/var
+2056	/mnt/s1-data-ro/mibox-console/rootfs/bin
+768	/mnt/s1-data-ro/mibox-console/rootfs/etc
+688	/mnt/s1-data-ro/mibox-console/rootfs/lib
+640	/mnt/s1-data-ro/mibox-console/rootfs/sbin
+28	/mnt/s1-data-ro/mibox-console/rootfs/root
+4	/mnt/s1-data-ro/mibox-console/rootfs/sys
+4	/mnt/s1-data-ro/mibox-console/rootfs/run
+4	/mnt/s1-data-ro/mibox-console/rootfs/proc
+4	/mnt/s1-data-ro/mibox-console/rootfs/dev
+== alpine files
+3352
+== largest files (top 25, KiB)
+44420	/mnt/s1-data-ro/app/com.mitv.mivideoplayer-2.apk
+43864	/mnt/s1-data-ro/media/0/shafa/download/c8e958d55aa24f16aae9002d245b4af4.apk
+33340	/mnt/s1-data-ro/app/com.xiaomi.mitv.smartshare-2.apk
+29416	/mnt/s1-data-ro/app/com.mitv.tvhome-1.apk
+29256	/mnt/s1-data-ro/app/com.moretv.android-2.apk
+29052	/mnt/s1-data-ro/media/0/shafa/download/c59c167dce4958d769ba2c4f22b7a774.apk
+28524	/mnt/s1-data-ro/app/com.xiaodianshi.tv.yst-2.apk
+26452	/mnt/s1-data-ro/media/0/Android/data/com.mitv.tvhome/cache/com.mitv.tvhome
+26304	/mnt/s1-data-ro/app/com.mitv.videoplayer-2.apk
+22956	/mnt/s1-data-ro/spdif.mkv
+22440	/mnt/s1-data-ro/app/com.mitv.gallery-2.apk
+21512	/mnt/s1-data-ro/autovideo.mov
+21348	/mnt/s1-data-ro/app/com.togic.livevideo-1.apk
+21248	/mnt/s1-data-ro/app/com.xiaomi.tv.gallery-1.apk
+20424	/mnt/s1-data-ro/app/com.xiaomi.smarthome.tv-2.apk
+18736	/mnt/s1-data-ro/app/com.gotokeep.androidtv-1.apk
+16392	/mnt/s1-data-ro/data/com.xiaodianshi.tv.yst/app_blog_v3/cache/stats.cache
+16392	/mnt/s1-data-ro/data/com.xiaodianshi.tv.yst/app_blog_v3/cache/projection_screen.cache
+16392	/mnt/s1-data-ro/data/com.xiaodianshi.tv.yst/app_blog_v3/cache/main.cache
+16392	/mnt/s1-data-ro/data/com.xiaodianshi.tv.yst/app_blog_v3/cache/boost_multidex.cache
+16244	/mnt/s1-data-ro/media/0/shafa/download/f62bacc57fcda7617873647c6579dd30.apk
+16240	/mnt/s1-data-ro/media/0/com.togic.livevideo/cache/togic_livevideo.apk
+15760	/mnt/s1-data-ro/app/com.mitv.codec.update-1.apk
+14728	/mnt/s1-data-ro/app/com.xm.webcontent-2.apk
+14456	/mnt/s1-data-ro/app-lib/com.xiaomi.mitv.smartshare-2/liblbffmpeg.so
+S1_INVENTORY_DONE
