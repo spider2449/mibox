@@ -1,0 +1,8 @@
+324,328d323
+< character special file|600|0:0|0|mibox-console/rootfs/tmp/mibox-audio-test/dev/console
+< character special file|666|0:0|0|mibox-console/rootfs/tmp/mibox-audio-test/dev/null
+< character special file|666|0:0|0|mibox-console/rootfs/tmp/mibox-audio-test/dev/random
+< character special file|666|0:0|0|mibox-console/rootfs/tmp/mibox-audio-test/dev/urandom
+< character special file|666|0:0|0|mibox-console/rootfs/tmp/mibox-audio-test/dev/zero
+3460d3454
+< socket|777|-|0|local/tmp/mibox-system-chunk-6512-1794612202277/client.sock

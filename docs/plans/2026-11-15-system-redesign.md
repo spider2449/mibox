@@ -140,15 +140,57 @@ S6. [ ] After Phase C passes: decide reuse of system/system1 (1 GiB total) and
 
 ## Phase A — prepare the small RAM supervisor and persistent userspace
 
-A1. [ ] Inventory the current pinned Console initramfs and existing persistent
+A1. [x] Inventory the current pinned Console initramfs and existing persistent
    Alpine tree. Record compressed/uncompressed sizes, required binaries and
    libraries, installed packages, free data space and current service startup.
    Separate what early PID1/recovery needs from what can run in Alpine.
+   Done 2026-11-17 from S1/S2/S5 evidence. FailSafe ramdisk 4441336 gzip /
+   7737428 raw, 106 files, 336 symlinks (per-component sizes in
+   `artifacts/boot-budget/2026-11-17/boot-budget.json`). Alpine tree 64000
+   KiB, 3352 entries, world: alpine-baselayout, alpine-keys, alpine-release,
+   apk-tools, busybox, coreutils, curl, dropbear, htop, less, libc-utils,
+   nano, python3. Data free 2098616 KiB after S3.
+   Current startup: PID1 `/init` -> USB ADB (`/sbin/adbd`, `/adb_keys`) ->
+   `/sbin/mibox-console-start` (devpts, static IPv4 192.168.1.222, dropbear
+   with a host key generated in RAM each boot, optional fbhandoff/splash).
+   Persistence is mounted later by the host launcher, which uploads
+   `mibox-persistent-console`.
+   Classification (dynamic: only busybox and dropbear, both need musl):
+
+   | Component | Place | Reason |
+   | --- | --- | --- |
+   | `/init`, `/bin/mibox` (static) | RAM | PID1, restart/return control |
+   | `/sbin/adbd` (static), `/adb_keys`, `etc/mibox-usb-adb.enabled` | RAM | authenticated recovery transport |
+   | `bin/busybox` + `lib/ld-musl-armhf.so.1` | RAM | recovery shell, mount, ip, mknod, tar |
+   | `system/bin/sh` (static stock) | RAM unless adbd is shown to work with busybox `sh` | adbd's shell path |
+   | network script + `etc/mibox-network-static` | RAM | static IPv4 before Alpine |
+   | `mibox-persistent-console` (data/chroot helper) | RAM, built in | B1 replaces host upload |
+   | `sbin/mibox-fbhandoff`, splash | RAM, optional (A5) | early display |
+   | `sbin/mibox-hardware` | Alpine (or omit) | on-demand diagnostics, not boot |
+   | dropbear, dropbearkey, libz, libutmps, skarnet | Alpine | B3; persistent host key replaces per-boot key |
+   | apk, libapk, OpenSSL, CA certs, scanelf, apk keys | Alpine | package management only (~2.1 MB gzip) |
+
+   The A3 minimal set projects to 1547200 bytes gzip (S5).
 A2. [ ] Preserve `/mnt/mibox-data/mibox-console/rootfs` as the canonical Alpine
    tree. Before changing it, create and verify a recoverable backup of that tree,
    configuration and keys. Do not duplicate the whole distribution, format data,
    or overwrite unrelated Android files. Device identity gates remain 179:11,
    5168640 sectors and the existing ext4 filesystem.
+   2026-11-17: backup from S2 (verified). PC restore rehearsal
+   `scripts/rehearse-tree-restore.sh` PASS
+   (`artifacts/storage/a2-restore-rehearsal-20261117-193843/`): extracted in
+   a user namespace on WSL ext4; all 2435 files match by SHA256 and every
+   entry matches type, mode, size and (for the Alpine tree, all 0:0) owner.
+   Expected differences: 5 character devices under the leftover
+   `rootfs/tmp/mibox-audio-test/dev` (mknod not permitted) and one socket.
+   Limits: `local/tmp` Android owners (1000/2000) are checked only in the
+   tar (S2), not after extraction; symlink targets are compared only by
+   length; mtimes are not compared; no restore has been run on the device.
+   Device restore procedure, untested: from the RAM console with persistence
+   stopped, mount data, rename `mibox-console` to
+   `mibox-console.replaced-<date>` (never delete), stream
+   `tar -xpf - --numeric-owner` of `mibox-console.tar` into the data root,
+   unmount, then rerun the S2 `list`/`hashes` modes and diff with S2.
 A3. [ ] Build a separate slim initramfs with custom PID1, authenticated USB ADB,
    required BusyBox applets/libraries, fixed-IP network setup, the data/chroot
    lifecycle helper and a usable RAM recovery shell. Keep SSH in RAM only if
