@@ -234,7 +234,7 @@ A3. [~] Build a separate slim initramfs with custom PID1, authenticated USB ADB,
    (`test-console-qemu.py --persistent`, disk raised to 512 MiB for the S4
    floor) PASS (`artifacts/slim-qemu/regression-helper-launcher-mode-20261117/`).
    Open before any physical boot: see B5 note (restart with data mounted).
-A3a. [ ] Before A4 or any new boot-image packaging, revalidate the complete
+A3a. [x] Before A4 or any new boot-image packaging, revalidate the complete
    hash-checked boot/boot1 backups and their parsed section bounds/tails.
    Start from `docs/mibox-stock-images.md`, its verified backup manifest, and
    `docs/mibox-platform-handoff.md` (Image-tail findings): measured boot/boot1
@@ -244,6 +244,23 @@ A3a. [ ] Before A4 or any new boot-image packaging, revalidate the complete
    A32's `docs/a32-boot-image-format.md` supplies methodology, not MiBOX facts.
    Zero tails and C003 bootm acceptance do not establish flash-path acceptance
    or exclude checks elsewhere; retain that distinction in C1/C4/C5.
+   Done 2026-11-17: `scripts/verify-boot-backups.py` (independent parser) PASS
+   (`artifacts/boot-evidence/2026-11-17/a3a-boot-backups.json`). boot.img
+   `ff4fa440…` and boot1.img `06d9eb7e…` match the 2026-11-13 manifest; page
+   2048, image IDs recompute; kernels are legacy uImages with valid header and
+   data CRCs and no bytes after the data; `second` is an exact 11414-byte FDT;
+   ramdisks gunzip to newc with a trailer. Every byte outside the sections is
+   ZERO: header slack 608-2048, each section's page padding, and the tail
+   (boot from 4431872, boot1 from 4433920, to 8388608). No layer is UNKNOWN.
+   The Slim (`87daa0d3…`) and FailSafe candidates pass the same checks and
+   carry boot1's exact kernel, DTB and header addresses. Read-only device
+   hashes of partitions 179:6 (boot) and 179:7 (boot1) equal the backups
+   (`artifacts/console-root/20261117-202552-a3a-boot-partition-hashes/`).
+   Finding for C1: boot and boot1 hold different kernels with the same DTB
+   and ramdisk size. boot's uImage is dated 2016-07-27; boot1's 2017-02-20
+   07:47:46 UTC. Android on 2026-11-13 reported `#1 SMP PREEMPT Mon Feb 20
+   15:47:21 CST 2017` (07:47:21 UTC), i.e. that cold Android boot ran boot1's
+   kernel. One observation; it does not establish current env selection.
 A4. [ ] After A3a passes, preserve stock kernel/uImage, DTB, cmdline and load
    addresses. Recalculate
    Android header sizes, section offsets, alignment and total size for the new
