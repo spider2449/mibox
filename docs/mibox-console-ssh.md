@@ -27,7 +27,23 @@ pins remain unchanged. SSH passwords and TCP forwarding are disabled.
 
 ## Use
 
-From completed stock Android, with USB and wired Ethernet connected:
+Since 2026-11-17 boot1 holds the Slim system: a start from flash (USB cable
+unplugged) brings up SSH by itself, so just connect:
+
+```powershell
+ssh -i $env:USERPROFILE\.ssh\mibox-console root@192.168.1.222
+```
+
+Its host key is the persistent Alpine key
+`ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBuytSRUPaKAiJSrRADqP6pd7XPjbAPkeh5LR2vw6A91`
+(in the S2 backup and published over USB ADB on every Slim boot at
+`/etc/dropbear/dropbear_ed25519_host_key.pub`). Older FailSafe/Console RAM
+boots generated a new key every boot; if ssh reports a changed key, check the
+offered key against this one before replacing the old known_hosts entry
+(`ssh-keygen -R 192.168.1.222`). FailSafe, the RAM rescue image, still
+generates a fresh key per boot; the launcher authenticates it over USB.
+
+Older flow, from completed stock Android, with USB and wired Ethernet connected:
 
 ```powershell
 powershell -NoProfile -File scripts/Start-MiboxConsole.ps1 -Boot -Connect
