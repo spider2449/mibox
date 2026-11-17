@@ -23,6 +23,9 @@ bootloader, env, boot, recovery, system or data partitions.
 | Candidate: Slim `target/mibox-boot-candidate-slim/boot1-custom.NOT_READY.img` | `87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28` |
 | Tool `mibox-partwrite` (armv7 static, built from `src/bin/mibox-partwrite.rs`) | `e4750d65206780f16a44a957188a87a591d24f1dbdfe16ba8acb0c2d9707d1ec` |
 
+A read-only dry run from FailSafe (RAM root, no data mounted) passed on 2026-11-17
+(`artifacts/console-root/20261117-211336-c3-failsafe-prep/`).
+
 Re-confirm before use: `scripts/verify-boot-backups.py` (A3a) passes for the
 backup and the candidate, and the device's boot1 still hashes `06d9eb7e…`.
 

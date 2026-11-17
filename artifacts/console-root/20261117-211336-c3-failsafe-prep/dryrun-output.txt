@@ -1,0 +1,20 @@
+== context
+ID=mibox-custom
+RAM_ROOT
+/
+0
+ls: /sbin/mibox-persistent-shell: No such file or directory
+e4750d65206780f16a44a957188a87a591d24f1dbdfe16ba8acb0c2d9707d1ec  mibox-partwrite
+06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222  boot1.img
+87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28  slim.img
+== restore-direction dry run (backup image, current = stock): reports AlreadyInstalled, no write
+MIBOX_PARTWRITE_TARGET name=boot1 dev=179:7 node=/dev/mibox-partwrite-boot1 dry_run=true
+MIBOX_PARTWRITE_CURRENT=06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222
+MIBOX_PARTWRITE_RESULT=AlreadyInstalled target=boot1 image_sha256=06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222
+rc=0
+== install-direction dry run
+MIBOX_PARTWRITE_TARGET name=boot1 dev=179:7 node=/dev/mibox-partwrite-boot1 dry_run=true
+MIBOX_PARTWRITE_CURRENT_VERIFIED=06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222
+MIBOX_PARTWRITE_RESULT=DryRunVerified target=boot1 image_sha256=87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28
+rc=0
+ls: /dev/mibox-partwrite-*: No such file or directory

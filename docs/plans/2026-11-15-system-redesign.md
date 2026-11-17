@@ -454,7 +454,7 @@ C2. [x] Before boot-partition writes, verify host-disconnected continuation on
    used ~40 MiB of data. Consequence: the Android ADB loader-entry path still
    works while adbd runs, but a host-disconnected cold start now ends in
    Android's boot loop, not a usable Android.
-C3. [~] Prepare a concrete write AND restoration procedure for the proven target:
+C3. [x] Prepare a concrete write AND restoration procedure for the proven target:
    exact partition identity/size, current full backup and hashes, original backup,
    pinned new candidate, write/flush/full-readback tools and independent second
    collection. Restoration must be executable from the known-good RAM rescue
@@ -471,8 +471,10 @@ C3. [~] Prepare a concrete write AND restoration procedure for the proven target
    busybox re-hash and restore. Real box read-only dry run PASS from Slim
    (`artifacts/console-root/20261117-211020-c3-dryrun-prep/`): 179:7, current
    `06d9eb7e…`, wrong hash and target `boot` refused. Restore needs only root
-   SSH to a RAM root (FailSafe's RAM dropbear, no data); a dry run from
-   FailSafe without persistence is still to be done before C4.
+   SSH to a RAM root (FailSafe's RAM dropbear, no data). Dry run from FailSafe
+   with no ext4 mounted and no persistent shell PASS (`artifacts/console-root/20261117-211336-c3-failsafe-prep/`):
+   restore direction reports AlreadyInstalled (boot1 still stock), install
+   direction DryRunVerified, no node left behind.
    C4 gate status: B2 (integrity manifest), B3 PID1 supervision and the rest of
    B7 (cold power-on of Slim, HDMI if display files are added) are open.
 C4. [ ] Once mandatory B gates (B1-B7, excluding optional B3a) pass and C1-C3

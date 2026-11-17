@@ -1,0 +1,2 @@
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINc2HEuCevFLMRoClzxIzJpD0qF08+lEeuhm/9GL9aGt root@android
+
