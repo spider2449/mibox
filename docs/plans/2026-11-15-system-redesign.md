@@ -36,6 +36,36 @@ Source: `artifacts/partitions/layout.json`. Historical verified backups include
 env (2026-11-15), boot/boot1 (2026-11-13), and system/system1 (2026-11-14).
 Recheck their exact paths, sizes and hashes before using them for restoration.
 
+## Storage plan (owner decision 2026-11-16: Android need not be kept)
+
+Android is no longer a retained system. This frees space but does not by itself
+authorize any delete, format or partition write; each step below needs its own
+backup, evidence and explicit owner approval at execution time.
+
+Until Phase C installs a custom flash boot, Android's boot/system partitions are
+still the host-disconnected cold-start target and the ADB loader-entry path used
+by `ram-boot.ps1` and the software-return tests. Removing them earlier turns a
+host-disconnected cold start into a failed boot that only C003 rescue recovers.
+Partition order therefore follows dependencies, not size:
+
+S1. [ ] Inventory data (from pinned RAM console, data mounted read-only where
+   possible): usage per top-level directory, Android app/media/cache trees,
+   the Alpine tree and its free space. Current free space is about 438 MiB.
+S2. [ ] Back up the Alpine tree, configuration and keys to the PC (also A2).
+   Android userdata has no backup; the owner has accepted its loss.
+S3. [ ] Reclaim Android files on data by deleting directories, not formatting.
+   Android may regenerate some files if it boots again before Phase C.
+S4. [ ] Budgets and guards: keep a data free-space floor (initially the
+   launcher's 64 MiB; revise from S1) enforced before apk installs and by PID1;
+   bound logs (size cap/rotation); keep Docker test storage in RAM until data
+   space is measured, since VFS copies every layer.
+S5. [ ] Boot image budget: record kernel, DTB and per-component initramfs
+   sizes and slack for every candidate (A4/A5).
+S6. [ ] After Phase C passes: decide reuse of system/system1 (1 GiB total) and
+   cache (192 MiB), e.g. as separate ext4 for containers, or a clean reformat
+   of data. Requires verified backups, a revised partition-scope rule and
+   physical restart evidence. Not part of Phases A–C.
+
 ## Phase A — prepare the small RAM supervisor and persistent userspace
 
 A1. [ ] Inventory the current pinned Console initramfs and existing persistent
