@@ -417,10 +417,19 @@ RAM upload until Phase C passes. No system/system1 redundancy write is included:
 
 ## Phase C — permanent custom boot and independent rescue
 
-C1. [ ] Establish actual cold-start boot selection from the current env and
+C1. [x] Establish actual cold-start boot selection from the current env and
    exact-loader flow, including dynamic `switch_bootpart`/cmdline behavior.
    Static `storeboot=store read boot1 ...` alone is insufficient. Record the
    selected partition and evidence; do not assume boot1 or change slot/env.
+   Done 2026-11-17 offline, see `docs/mibox-boot-selection.md`: the installed
+   env (device hash `6142e34f…`) has `bootsystem=1`, `upgrade_step=0`, no
+   `resetenv`; `switch_bootpart` (0x8f870b7c) maps bootsystem 0->boot,
+   1->boot1, other->unchanged by rewriting `storeboot`, which then reads
+   boot1. Matches the 2026-11-13 Android kernel (boot1's build). Selection
+   flips to boot if `bootsystem=0`, on plain `defenv` (`upgrade_step=1`) or
+   an env reset to built-in defaults (which also drop the USB window).
+   `storeargs` and `modify_cmdline` save the env on normal boots. If `bootm`
+   returns, `run recovery` boots stock recovery. Target for C3: boot1 (179:7).
 C2. [ ] Before boot-partition writes, verify host-disconnected continuation on
    the existing boot setup with owner-controlled power and observation. Measure
    elapsed startup time and result. `update 10000` is not a proven 10-second

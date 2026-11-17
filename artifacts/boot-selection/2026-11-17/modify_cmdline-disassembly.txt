@@ -1,0 +1,1242 @@
+### modify_cmdline 0x8f87078c-0x8f870a9c
+
+/mnt/f/coding/otherPrj/mibox/phone-tools/runtime/2026-11-14/bootloader-ucl/bootloader-expanded.bin:     file format binary
+
+
+Disassembly of section .data:
+
+8f87078c <.data+0x7078c>:
+8f87078c:	e92d46f0 	push	{r4, r5, r6, r7, r9, sl, lr}
+8f870790:	e24ddd11 	sub	sp, sp, #1088	@ 0x440
+8f870794:	e24dd004 	sub	sp, sp, #4
+8f870798:	e3a01000 	mov	r1, #0
+8f87079c:	e3a02b01 	mov	r2, #1024	@ 0x400
+8f8707a0:	e1a0000d 	mov	r0, sp
+8f8707a4:	e28d6b01 	add	r6, sp, #1024	@ 0x400
+8f8707a8:	e59f42b4 	ldr	r4, [pc, #692]	@ 0x8f870a64
+8f8707ac:	ebffe4fe 	bl	0x8f869bac
+8f8707b0:	e3a01000 	mov	r1, #0
+8f8707b4:	e3a02040 	mov	r2, #64	@ 0x40
+8f8707b8:	e1a00006 	mov	r0, r6
+8f8707bc:	e08f4004 	add	r4, pc, r4
+8f8707c0:	ebffe4f9 	bl	0x8f869bac
+8f8707c4:	e59f029c 	ldr	r0, [pc, #668]	@ 0x8f870a68
+8f8707c8:	e0840000 	add	r0, r4, r0
+8f8707cc:	ebfe93cf 	bl	0x8f815710
+8f8707d0:	e250a000 	subs	sl, r0, #0
+8f8707d4:	0a000023 	beq	0x8f870868
+8f8707d8:	e59f028c 	ldr	r0, [pc, #652]	@ 0x8f870a6c
+8f8707dc:	e59f728c 	ldr	r7, [pc, #652]	@ 0x8f870a70
+8f8707e0:	e0840000 	add	r0, r4, r0
+8f8707e4:	ebfe93c9 	bl	0x8f815710
+8f8707e8:	e1a01000 	mov	r1, r0
+8f8707ec:	e1a0000d 	mov	r0, sp
+8f8707f0:	ebffe40d 	bl	0x8f86982c
+8f8707f4:	e59f1278 	ldr	r1, [pc, #632]	@ 0x8f870a74
+8f8707f8:	e0847007 	add	r7, r4, r7
+8f8707fc:	e1a02007 	mov	r2, r7
+8f870800:	e1a0300a 	mov	r3, sl
+8f870804:	e1a00006 	mov	r0, r6
+8f870808:	e0841001 	add	r1, r4, r1
+8f87080c:	ebffe8ec 	bl	0x8f86abc4
+8f870810:	e1a0000d 	mov	r0, sp
+8f870814:	e1a01007 	mov	r1, r7
+8f870818:	ebffe556 	bl	0x8f869d78
+8f87081c:	e2509000 	subs	r9, r0, #0
+8f870820:	1a000003 	bne	0x8f870834
+8f870824:	e1a0000d 	mov	r0, sp
+8f870828:	e1a01006 	mov	r1, r6
+8f87082c:	ebffe40f 	bl	0x8f869870
+8f870830:	ea000008 	b	0x8f870858
+8f870834:	e1a00007 	mov	r0, r7
+8f870838:	ebffe458 	bl	0x8f8699a0
+8f87083c:	e1a05000 	mov	r5, r0
+8f870840:	e1a0000a 	mov	r0, sl
+8f870844:	ebffe455 	bl	0x8f8699a0
+8f870848:	e1a0100a 	mov	r1, sl
+8f87084c:	e1a02000 	mov	r2, r0
+8f870850:	e0890005 	add	r0, r9, r5
+8f870854:	ebffe3fb 	bl	0x8f869848
+8f870858:	e59f020c 	ldr	r0, [pc, #524]	@ 0x8f870a6c
+8f87085c:	e1a0100d 	mov	r1, sp
+8f870860:	e0840000 	add	r0, r4, r0
+8f870864:	ebfe9518 	bl	0x8f815ccc
+8f870868:	e3a01000 	mov	r1, #0
+8f87086c:	e3a02b01 	mov	r2, #1024	@ 0x400
+8f870870:	e1a0000d 	mov	r0, sp
+8f870874:	e28d6b01 	add	r6, sp, #1024	@ 0x400
+8f870878:	ebffe4cb 	bl	0x8f869bac
+8f87087c:	e3a01000 	mov	r1, #0
+8f870880:	e3a02040 	mov	r2, #64	@ 0x40
+8f870884:	e1a00006 	mov	r0, r6
+8f870888:	ebffe4c7 	bl	0x8f869bac
+8f87088c:	e59f01e4 	ldr	r0, [pc, #484]	@ 0x8f870a78
+8f870890:	e0840000 	add	r0, r4, r0
+8f870894:	ebfe939d 	bl	0x8f815710
+8f870898:	e250a000 	subs	sl, r0, #0
+8f87089c:	0a000023 	beq	0x8f870930
+8f8708a0:	e59f01c4 	ldr	r0, [pc, #452]	@ 0x8f870a6c
+8f8708a4:	e59f71d0 	ldr	r7, [pc, #464]	@ 0x8f870a7c
+8f8708a8:	e0840000 	add	r0, r4, r0
+8f8708ac:	ebfe9397 	bl	0x8f815710
+8f8708b0:	e1a01000 	mov	r1, r0
+8f8708b4:	e1a0000d 	mov	r0, sp
+8f8708b8:	ebffe3db 	bl	0x8f86982c
+8f8708bc:	e59f11b0 	ldr	r1, [pc, #432]	@ 0x8f870a74
+8f8708c0:	e0847007 	add	r7, r4, r7
+8f8708c4:	e1a02007 	mov	r2, r7
+8f8708c8:	e1a0300a 	mov	r3, sl
+8f8708cc:	e1a00006 	mov	r0, r6
+8f8708d0:	e0841001 	add	r1, r4, r1
+8f8708d4:	ebffe8ba 	bl	0x8f86abc4
+8f8708d8:	e1a0000d 	mov	r0, sp
+8f8708dc:	e1a01007 	mov	r1, r7
+8f8708e0:	ebffe524 	bl	0x8f869d78
+8f8708e4:	e2509000 	subs	r9, r0, #0
+8f8708e8:	1a000003 	bne	0x8f8708fc
+8f8708ec:	e1a0000d 	mov	r0, sp
+8f8708f0:	e1a01006 	mov	r1, r6
+8f8708f4:	ebffe3dd 	bl	0x8f869870
+8f8708f8:	ea000008 	b	0x8f870920
+8f8708fc:	e1a00007 	mov	r0, r7
+8f870900:	ebffe426 	bl	0x8f8699a0
+8f870904:	e1a05000 	mov	r5, r0
+8f870908:	e1a0000a 	mov	r0, sl
+8f87090c:	ebffe423 	bl	0x8f8699a0
+8f870910:	e1a0100a 	mov	r1, sl
+8f870914:	e1a02000 	mov	r2, r0
+8f870918:	e0890005 	add	r0, r9, r5
+8f87091c:	ebffe3c9 	bl	0x8f869848
+8f870920:	e59f0144 	ldr	r0, [pc, #324]	@ 0x8f870a6c
+8f870924:	e1a0100d 	mov	r1, sp
+8f870928:	e0840000 	add	r0, r4, r0
+8f87092c:	ebfe94e6 	bl	0x8f815ccc
+8f870930:	e3a01000 	mov	r1, #0
+8f870934:	e3a02b01 	mov	r2, #1024	@ 0x400
+8f870938:	e1a0000d 	mov	r0, sp
+8f87093c:	ebffe49a 	bl	0x8f869bac
+8f870940:	e3a01000 	mov	r1, #0
+8f870944:	e3a02040 	mov	r2, #64	@ 0x40
+8f870948:	e28d0b01 	add	r0, sp, #1024	@ 0x400
+8f87094c:	ebffe496 	bl	0x8f869bac
+8f870950:	e59f0128 	ldr	r0, [pc, #296]	@ 0x8f870a80
+8f870954:	e0840000 	add	r0, r4, r0
+8f870958:	ebfe936c 	bl	0x8f815710
+8f87095c:	e2505000 	subs	r5, r0, #0
+8f870960:	0a000004 	beq	0x8f870978
+8f870964:	e59f1118 	ldr	r1, [pc, #280]	@ 0x8f870a84
+8f870968:	e0841001 	add	r1, r4, r1
+8f87096c:	ebffe3e2 	bl	0x8f8698fc
+8f870970:	e3500000 	cmp	r0, #0
+8f870974:	1a000006 	bne	0x8f870994
+8f870978:	e59f5108 	ldr	r5, [pc, #264]	@ 0x8f870a88
+8f87097c:	e59f00fc 	ldr	r0, [pc, #252]	@ 0x8f870a80
+8f870980:	e0845005 	add	r5, r4, r5
+8f870984:	e1a01005 	mov	r1, r5
+8f870988:	e0840000 	add	r0, r4, r0
+8f87098c:	ebfe94ce 	bl	0x8f815ccc
+8f870990:	ebfeb0b0 	bl	0x8f81cc58
+8f870994:	e59f00d0 	ldr	r0, [pc, #208]	@ 0x8f870a6c
+8f870998:	e28dab01 	add	sl, sp, #1024	@ 0x400
+8f87099c:	e59f70e8 	ldr	r7, [pc, #232]	@ 0x8f870a8c
+8f8709a0:	e1a0600d 	mov	r6, sp
+8f8709a4:	e0840000 	add	r0, r4, r0
+8f8709a8:	ebfe9358 	bl	0x8f815710
+8f8709ac:	e1a01000 	mov	r1, r0
+8f8709b0:	e1a0000d 	mov	r0, sp
+8f8709b4:	ebffe39c 	bl	0x8f86982c
+8f8709b8:	e59f10b4 	ldr	r1, [pc, #180]	@ 0x8f870a74
+8f8709bc:	e0847007 	add	r7, r4, r7
+8f8709c0:	e1a02007 	mov	r2, r7
+8f8709c4:	e1a03005 	mov	r3, r5
+8f8709c8:	e1a0000a 	mov	r0, sl
+8f8709cc:	e0841001 	add	r1, r4, r1
+8f8709d0:	ebffe87b 	bl	0x8f86abc4
+8f8709d4:	e1a0000d 	mov	r0, sp
+8f8709d8:	e1a01007 	mov	r1, r7
+8f8709dc:	ebffe4e5 	bl	0x8f869d78
+8f8709e0:	e2509000 	subs	r9, r0, #0
+8f8709e4:	1a000003 	bne	0x8f8709f8
+8f8709e8:	e1a0000d 	mov	r0, sp
+8f8709ec:	e1a0100a 	mov	r1, sl
+8f8709f0:	ebffe39e 	bl	0x8f869870
+8f8709f4:	ea000008 	b	0x8f870a1c
+8f8709f8:	e1a00007 	mov	r0, r7
+8f8709fc:	ebffe3e7 	bl	0x8f8699a0
+8f870a00:	e1a06000 	mov	r6, r0
+8f870a04:	e1a00005 	mov	r0, r5
+8f870a08:	ebffe3e4 	bl	0x8f8699a0
+8f870a0c:	e1a01005 	mov	r1, r5
+8f870a10:	e1a02000 	mov	r2, r0
+8f870a14:	e0890006 	add	r0, r9, r6
+8f870a18:	ebffe38a 	bl	0x8f869848
+8f870a1c:	e59f0048 	ldr	r0, [pc, #72]	@ 0x8f870a6c
+8f870a20:	e1a0100d 	mov	r1, sp
+8f870a24:	e28d5b01 	add	r5, sp, #1024	@ 0x400
+8f870a28:	e0840000 	add	r0, r4, r0
+8f870a2c:	ebfe94a6 	bl	0x8f815ccc
+8f870a30:	e59f1058 	ldr	r1, [pc, #88]	@ 0x8f870a90
+8f870a34:	e1a00005 	mov	r0, r5
+8f870a38:	e59f2054 	ldr	r2, [pc, #84]	@ 0x8f870a94
+8f870a3c:	e0841001 	add	r1, r4, r1
+8f870a40:	e0842002 	add	r2, r4, r2
+8f870a44:	ebffe85e 	bl	0x8f86abc4
+8f870a48:	e59f0048 	ldr	r0, [pc, #72]	@ 0x8f870a98
+8f870a4c:	e1a01005 	mov	r1, r5
+8f870a50:	e0840000 	add	r0, r4, r0
+8f870a54:	ebfe949c 	bl	0x8f815ccc
+8f870a58:	e28dd044 	add	sp, sp, #68	@ 0x44
+8f870a5c:	e28ddb01 	add	sp, sp, #1024	@ 0x400
+8f870a60:	e8bd86f0 	pop	{r4, r5, r6, r7, r9, sl, pc}
+8f870a64:	0003b6a8 	andeq	fp, r3, r8, lsr #13
+8f870a68:	fffe8f38 			@ <UNDEFINED> instruction: 0xfffe8f38
+8f870a6c:	ffff34e1 			@ <UNDEFINED> instruction: 0xffff34e1
+8f870a70:	ffff3506 			@ <UNDEFINED> instruction: 0xffff3506
+8f870a74:	ffff34eb 			@ <UNDEFINED> instruction: 0xffff34eb
+8f870a78:	ffff34f1 			@ <UNDEFINED> instruction: 0xffff34f1
+8f870a7c:	ffff34f8 			@ <UNDEFINED> instruction: 0xffff34f8
+8f870a80:	fffe5fb1 			@ <UNDEFINED> instruction: 0xfffe5fb1
+8f870a84:	ffff32b7 			@ <UNDEFINED> instruction: 0xffff32b7
+8f870a88:	ffff350b 			@ <UNDEFINED> instruction: 0xffff350b
+8f870a8c:	fffe746e 			@ <UNDEFINED> instruction: 0xfffe746e
+8f870a90:	fffe60bb 			@ <UNDEFINED> instruction: 0xfffe60bb
+8f870a94:	ffff31b3 			@ <UNDEFINED> instruction: 0xffff31b3
+8f870a98:	ffff351b 			@ <UNDEFINED> instruction: 0xffff351b
+
+
+### modify_cmdline->call_0x8f815710 0x8f815710-0x8f81583c
+
+/mnt/f/coding/otherPrj/mibox/phone-tools/runtime/2026-11-14/bootloader-ucl/bootloader-expanded.bin:     file format binary
+
+
+Disassembly of section .data:
+
+8f815710 <.data+0x15710>:
+8f815710:	e598c004 	ldr	ip, [r8, #4]
+8f815714:	e92d407f 	push	{r0, r1, r2, r3, r4, r5, r6, lr}
+8f815718:	e59f3068 	ldr	r3, [pc, #104]	@ 0x8f815788
+8f81571c:	e31c0080 	tst	ip, #128	@ 0x80
+8f815720:	e08f3003 	add	r3, pc, r3
+8f815724:	0a00000e 	beq	0x8f815764
+8f815728:	e59f105c 	ldr	r1, [pc, #92]	@ 0x8f81578c
+8f81572c:	e3a02000 	mov	r2, #0
+8f815730:	e58d000c 	str	r0, [sp, #12]
+8f815734:	e58d2010 	str	r2, [sp, #16]
+8f815738:	e7933001 	ldr	r3, [r3, r1]
+8f81573c:	e58d3000 	str	r3, [sp]
+8f815740:	e28d300c 	add	r3, sp, #12
+8f815744:	e8930003 	ldm	r3, {r0, r1}
+8f815748:	e28d3014 	add	r3, sp, #20
+8f81574c:	eb01465e 	bl	0x8f8670cc
+8f815750:	e59d3014 	ldr	r3, [sp, #20]
+8f815754:	e3530000 	cmp	r3, #0
+8f815758:	15930004 	ldrne	r0, [r3, #4]
+8f81575c:	1a000007 	bne	0x8f815780
+8f815760:	ea000005 	b	0x8f81577c
+8f815764:	e2881054 	add	r1, r8, #84	@ 0x54
+8f815768:	e3a02020 	mov	r2, #32
+8f81576c:	ebffffb5 	bl	0x8f815648
+8f815770:	e3500000 	cmp	r0, #0
+8f815774:	c2880054 	addgt	r0, r8, #84	@ 0x54
+8f815778:	ca000000 	bgt	0x8f815780
+8f81577c:	e3a00000 	mov	r0, #0
+8f815780:	e28dd01c 	add	sp, sp, #28
+8f815784:	e49df004 	pop	{pc}		@ (ldr pc, [sp], #4)
+8f815788:	00096744 	andeq	r6, r9, r4, asr #14
+8f81578c:	00000020 	andeq	r0, r0, r0, lsr #32
+8f815790:	e92d4010 	push	{r4, lr}
+8f815794:	e2503000 	subs	r3, r0, #0
+8f815798:	e59f4090 	ldr	r4, [pc, #144]	@ 0x8f815830
+8f81579c:	e24dd018 	sub	sp, sp, #24
+8f8157a0:	e3a02000 	mov	r2, #0
+8f8157a4:	e58d2014 	str	r2, [sp, #20]
+8f8157a8:	e08f4004 	add	r4, pc, r4
+8f8157ac:	e59f1080 	ldr	r1, [pc, #128]	@ 0x8f815834
+8f8157b0:	0a000011 	beq	0x8f8157fc
+8f8157b4:	e58d3008 	str	r3, [sp, #8]
+8f8157b8:	e7943001 	ldr	r3, [r4, r1]
+8f8157bc:	e58d200c 	str	r2, [sp, #12]
+8f8157c0:	e58d3000 	str	r3, [sp]
+8f8157c4:	e28d3008 	add	r3, sp, #8
+8f8157c8:	e8930003 	ldm	r3, {r0, r1}
+8f8157cc:	e28d3010 	add	r3, sp, #16
+8f8157d0:	eb01463d 	bl	0x8f8670cc
+8f8157d4:	e59d3010 	ldr	r3, [sp, #16]
+8f8157d8:	e3530000 	cmp	r3, #0
+8f8157dc:	01a04003 	moveq	r4, r3
+8f8157e0:	0a00000f 	beq	0x8f815824
+8f8157e4:	e59f004c 	ldr	r0, [pc, #76]	@ 0x8f815838
+8f8157e8:	e8930006 	ldm	r3, {r1, r2}
+8f8157ec:	e0840000 	add	r0, r4, r0
+8f8157f0:	eb0014b2 	bl	0x8f81aac0
+8f8157f4:	e1a04000 	mov	r4, r0
+8f8157f8:	ea000009 	b	0x8f815824
+8f8157fc:	e7940001 	ldr	r0, [r4, r1]
+8f815800:	e28d2014 	add	r2, sp, #20
+8f815804:	e3a0100a 	mov	r1, #10
+8f815808:	eb014591 	bl	0x8f866e54
+8f81580c:	e2504000 	subs	r4, r0, #0
+8f815810:	0a000003 	beq	0x8f815824
+8f815814:	e59d0014 	ldr	r0, [sp, #20]
+8f815818:	eb001477 	bl	0x8f81a9fc
+8f81581c:	e59d0014 	ldr	r0, [sp, #20]
+8f815820:	eb001625 	bl	0x8f81b0bc
+8f815824:	e1a00004 	mov	r0, r4
+8f815828:	e28dd018 	add	sp, sp, #24
+8f81582c:	e8bd8010 	pop	{r4, pc}
+8f815830:	000966bc 			@ <UNDEFINED> instruction: 0x000966bc
+8f815834:	00000020 	andeq	r0, r0, r0, lsr #32
+8f815838:	fffe581a 			@ <UNDEFINED> instruction: 0xfffe581a
+
+
+### modify_cmdline->call_0x8f815ccc 0x8f815ccc-0x8f816258
+
+/mnt/f/coding/otherPrj/mibox/phone-tools/runtime/2026-11-14/bootloader-ucl/bootloader-expanded.bin:     file format binary
+
+
+Disassembly of section .data:
+
+8f815ccc <.data+0x15ccc>:
+8f815ccc:	e92d401f 	push	{r0, r1, r2, r3, r4, lr}
+8f815cd0:	e59f304c 	ldr	r3, [pc, #76]	@ 0x8f815d24
+8f815cd4:	e59f204c 	ldr	r2, [pc, #76]	@ 0x8f815d28
+8f815cd8:	e58d0004 	str	r0, [sp, #4]
+8f815cdc:	e3a00000 	mov	r0, #0
+8f815ce0:	e08f3003 	add	r3, pc, r3
+8f815ce4:	e1510000 	cmp	r1, r0
+8f815ce8:	e0833002 	add	r3, r3, r2
+8f815cec:	e58d1008 	str	r1, [sp, #8]
+8f815cf0:	e58d3000 	str	r3, [sp]
+8f815cf4:	e58d000c 	str	r0, [sp, #12]
+8f815cf8:	0a000003 	beq	0x8f815d0c
+8f815cfc:	e5d13000 	ldrb	r3, [r1]
+8f815d00:	e1530000 	cmp	r3, r0
+8f815d04:	13a01003 	movne	r1, #3
+8f815d08:	1a000001 	bne	0x8f815d14
+8f815d0c:	e3a00000 	mov	r0, #0
+8f815d10:	e3a01002 	mov	r1, #2
+8f815d14:	e1a0200d 	mov	r2, sp
+8f815d18:	ebfffeed 	bl	0x8f8158d4
+8f815d1c:	e28dd014 	add	sp, sp, #20
+8f815d20:	e49df004 	pop	{pc}		@ (ldr pc, [sp], #4)
+8f815d24:	00096184 	andeq	r6, r9, r4, lsl #3
+8f815d28:	ffff358a 			@ <UNDEFINED> instruction: 0xffff358a
+8f815d2c:	e92d4ef0 	push	{r4, r5, r6, r7, r9, sl, fp, lr}
+8f815d30:	e3a0e000 	mov	lr, #0
+8f815d34:	e59f423c 	ldr	r4, [pc, #572]	@ 0x8f815f78
+8f815d38:	e24dd030 	sub	sp, sp, #48	@ 0x30
+8f815d3c:	e1a05002 	mov	r5, r2
+8f815d40:	e1a0a003 	mov	sl, r3
+8f815d44:	e5931000 	ldr	r1, [r3]
+8f815d48:	e1a0600e 	mov	r6, lr
+8f815d4c:	e08f4004 	add	r4, pc, r4
+8f815d50:	e3a0700a 	mov	r7, #10
+8f815d54:	ea000018 	b	0x8f815dbc
+8f815d58:	e3520063 	cmp	r2, #99	@ 0x63
+8f815d5c:	0a000006 	beq	0x8f815d7c
+8f815d60:	e3520074 	cmp	r2, #116	@ 0x74
+8f815d64:	0a000008 	beq	0x8f815d8c
+8f815d68:	e3520062 	cmp	r2, #98	@ 0x62
+8f815d6c:	1a00001d 	bne	0x8f815de8
+8f815d70:	e3530000 	cmp	r3, #0
+8f815d74:	0a000008 	beq	0x8f815d9c
+8f815d78:	ea00006f 	b	0x8f815f3c
+8f815d7c:	e3530000 	cmp	r3, #0
+8f815d80:	1a00006d 	bne	0x8f815f3c
+8f815d84:	e3a06001 	mov	r6, #1
+8f815d88:	ea000003 	b	0x8f815d9c
+8f815d8c:	e3530000 	cmp	r3, #0
+8f815d90:	1a000069 	bne	0x8f815f3c
+8f815d94:	e3a0700a 	mov	r7, #10
+8f815d98:	ea000000 	b	0x8f815da0
+8f815d9c:	e1a07003 	mov	r7, r3
+8f815da0:	e3a03001 	mov	r3, #1
+8f815da4:	e08bb003 	add	fp, fp, r3
+8f815da8:	e069200c 	rsb	r2, r9, ip
+8f815dac:	e1a0e003 	mov	lr, r3
+8f815db0:	e7d2200b 	ldrb	r2, [r2, fp]
+8f815db4:	e3520000 	cmp	r2, #0
+8f815db8:	1affffe6 	bne	0x8f815d58
+8f815dbc:	e2455001 	sub	r5, r5, #1
+8f815dc0:	e3550000 	cmp	r5, #0
+8f815dc4:	da000007 	ble	0x8f815de8
+8f815dc8:	e5bac004 	ldr	ip, [sl, #4]!
+8f815dcc:	e5dc3000 	ldrb	r3, [ip]
+8f815dd0:	e353002d 	cmp	r3, #45	@ 0x2d
+8f815dd4:	1a00005e 	bne	0x8f815f54
+8f815dd8:	e1a0900e 	mov	r9, lr
+8f815ddc:	e28eb001 	add	fp, lr, #1
+8f815de0:	e1a0300e 	mov	r3, lr
+8f815de4:	eaffffef 	b	0x8f815da8
+8f815de8:	eb001035 	bl	0x8f819ec4
+8f815dec:	ea000056 	b	0x8f815f4c
+8f815df0:	e3a01000 	mov	r1, #0
+8f815df4:	e3a02010 	mov	r2, #16
+8f815df8:	e59a0004 	ldr	r0, [sl, #4]
+8f815dfc:	eb01504c 	bl	0x8f869f34
+8f815e00:	e1a05000 	mov	r5, r0
+8f815e04:	e3a01000 	mov	r1, #0
+8f815e08:	e59d002c 	ldr	r0, [sp, #44]	@ 0x2c
+8f815e0c:	e1a02005 	mov	r2, r5
+8f815e10:	eb014f65 	bl	0x8f869bac
+8f815e14:	e3570000 	cmp	r7, #0
+8f815e18:	0a000019 	beq	0x8f815e84
+8f815e1c:	e59f3158 	ldr	r3, [pc, #344]	@ 0x8f815f7c
+8f815e20:	e28d202c 	add	r2, sp, #44	@ 0x2c
+8f815e24:	e1a01007 	mov	r1, r7
+8f815e28:	e7940003 	ldr	r0, [r4, r3]
+8f815e2c:	e1a03005 	mov	r3, r5
+8f815e30:	eb014407 	bl	0x8f866e54
+8f815e34:	e2502000 	subs	r2, r0, #0
+8f815e38:	aa00000c 	bge	0x8f815e70
+8f815e3c:	e59f213c 	ldr	r2, [pc, #316]	@ 0x8f815f80
+8f815e40:	e59f313c 	ldr	r3, [pc, #316]	@ 0x8f815f84
+8f815e44:	e59f013c 	ldr	r0, [pc, #316]	@ 0x8f815f88
+8f815e48:	e0842002 	add	r2, r4, r2
+8f815e4c:	e2822010 	add	r2, r2, #16
+8f815e50:	e7943003 	ldr	r3, [r4, r3]
+8f815e54:	e58d2000 	str	r2, [sp]
+8f815e58:	e0840000 	add	r0, r4, r0
+8f815e5c:	e59f2128 	ldr	r2, [pc, #296]	@ 0x8f815f8c
+8f815e60:	e5931000 	ldr	r1, [r3]
+8f815e64:	e3003299 	movw	r3, #665	@ 0x299
+8f815e68:	e0842002 	add	r2, r4, r2
+8f815e6c:	ea00001d 	b	0x8f815ee8
+8f815e70:	e59f1118 	ldr	r1, [pc, #280]	@ 0x8f815f90
+8f815e74:	e28d5008 	add	r5, sp, #8
+8f815e78:	e1a00005 	mov	r0, r5
+8f815e7c:	e0841001 	add	r1, r4, r1
+8f815e80:	ea000026 	b	0x8f815f20
+8f815e84:	e59d502c 	ldr	r5, [sp, #44]	@ 0x2c
+8f815e88:	e3560000 	cmp	r6, #0
+8f815e8c:	e3a01000 	mov	r1, #0
+8f815e90:	e28d2028 	add	r2, sp, #40	@ 0x28
+8f815e94:	12853004 	addne	r3, r5, #4
+8f815e98:	058d5028 	streq	r5, [sp, #40]	@ 0x28
+8f815e9c:	158d3028 	strne	r3, [sp, #40]	@ 0x28
+8f815ea0:	e59f30d4 	ldr	r3, [pc, #212]	@ 0x8f815f7c
+8f815ea4:	e7940003 	ldr	r0, [r4, r3]
+8f815ea8:	e3073ffc 	movw	r3, #32764	@ 0x7ffc
+8f815eac:	eb0143e8 	bl	0x8f866e54
+8f815eb0:	e2507000 	subs	r7, r0, #0
+8f815eb4:	aa00000d 	bge	0x8f815ef0
+8f815eb8:	e59f20c0 	ldr	r2, [pc, #192]	@ 0x8f815f80
+8f815ebc:	e59f30c0 	ldr	r3, [pc, #192]	@ 0x8f815f84
+8f815ec0:	e59f00c0 	ldr	r0, [pc, #192]	@ 0x8f815f88
+8f815ec4:	e0842002 	add	r2, r4, r2
+8f815ec8:	e2822010 	add	r2, r2, #16
+8f815ecc:	e7943003 	ldr	r3, [r4, r3]
+8f815ed0:	e58d2000 	str	r2, [sp]
+8f815ed4:	e0840000 	add	r0, r4, r0
+8f815ed8:	e59f20ac 	ldr	r2, [pc, #172]	@ 0x8f815f8c
+8f815edc:	e5931000 	ldr	r1, [r3]
+8f815ee0:	e3a03fab 	mov	r3, #684	@ 0x2ac
+8f815ee4:	e0842002 	add	r2, r4, r2
+8f815ee8:	eb0012f4 	bl	0x8f81aac0
+8f815eec:	ea000015 	b	0x8f815f48
+8f815ef0:	e3560000 	cmp	r6, #0
+8f815ef4:	0a000004 	beq	0x8f815f0c
+8f815ef8:	e3a00000 	mov	r0, #0
+8f815efc:	e2851004 	add	r1, r5, #4
+8f815f00:	e3072ffc 	movw	r2, #32764	@ 0x7ffc
+8f815f04:	eb014200 	bl	0x8f86670c
+8f815f08:	e5850000 	str	r0, [r5]
+8f815f0c:	e59f107c 	ldr	r1, [pc, #124]	@ 0x8f815f90
+8f815f10:	e28d5008 	add	r5, sp, #8
+8f815f14:	e1a00005 	mov	r0, r5
+8f815f18:	e2872004 	add	r2, r7, #4
+8f815f1c:	e0841001 	add	r1, r4, r1
+8f815f20:	eb015327 	bl	0x8f86abc4
+8f815f24:	e59f0068 	ldr	r0, [pc, #104]	@ 0x8f815f94
+8f815f28:	e1a01005 	mov	r1, r5
+8f815f2c:	e0840000 	add	r0, r4, r0
+8f815f30:	ebffff65 	bl	0x8f815ccc
+8f815f34:	e3a00000 	mov	r0, #0
+8f815f38:	ea000003 	b	0x8f815f4c
+8f815f3c:	e59f0054 	ldr	r0, [pc, #84]	@ 0x8f815f98
+8f815f40:	e0840000 	add	r0, r4, r0
+8f815f44:	eb0012dd 	bl	0x8f81aac0
+8f815f48:	e3a00001 	mov	r0, #1
+8f815f4c:	e28dd030 	add	sp, sp, #48	@ 0x30
+8f815f50:	e8bd8ef0 	pop	{r4, r5, r6, r7, r9, sl, fp, pc}
+8f815f54:	e1a0000c 	mov	r0, ip
+8f815f58:	e3a01000 	mov	r1, #0
+8f815f5c:	e3a02010 	mov	r2, #16
+8f815f60:	eb014ff3 	bl	0x8f869f34
+8f815f64:	e3550002 	cmp	r5, #2
+8f815f68:	e58d002c 	str	r0, [sp, #44]	@ 0x2c
+8f815f6c:	13a05000 	movne	r5, #0
+8f815f70:	1affffa7 	bne	0x8f815e14
+8f815f74:	eaffff9d 	b	0x8f815df0
+8f815f78:	00096118 	andeq	r6, r9, r8, lsl r1
+8f815f7c:	00000020 	andeq	r0, r0, r0, lsr #32
+8f815f80:	fffdc69c 			@ <UNDEFINED> instruction: 0xfffdc69c
+8f815f84:	00000060 	andeq	r0, r0, r0, rrx
+8f815f88:	fffe5924 			@ <UNDEFINED> instruction: 0xfffe5924
+8f815f8c:	fffe5743 			@ <UNDEFINED> instruction: 0xfffe5743
+8f815f90:	fffe5961 			@ <UNDEFINED> instruction: 0xfffe5961
+8f815f94:	fffe1f84 			@ <UNDEFINED> instruction: 0xfffe1f84
+8f815f98:	fffe5750 			@ <UNDEFINED> instruction: 0xfffe5750
+8f815f9c:	e92d4ef0 	push	{r4, r5, r6, r7, r9, sl, fp, lr}
+8f815fa0:	e3520001 	cmp	r2, #1
+8f815fa4:	e59f427c 	ldr	r4, [pc, #636]	@ 0x8f816228
+8f815fa8:	e24ddf86 	sub	sp, sp, #536	@ 0x218
+8f815fac:	e1a05000 	mov	r5, r0
+8f815fb0:	e08f4004 	add	r4, pc, r4
+8f815fb4:	da000098 	ble	0x8f81621c
+8f815fb8:	e59f626c 	ldr	r6, [pc, #620]	@ 0x8f81622c
+8f815fbc:	e5937004 	ldr	r7, [r3, #4]
+8f815fc0:	e0846006 	add	r6, r4, r6
+8f815fc4:	e1a01006 	mov	r1, r6
+8f815fc8:	e1a00007 	mov	r0, r7
+8f815fcc:	eb014e4a 	bl	0x8f8698fc
+8f815fd0:	e250a000 	subs	sl, r0, #0
+8f815fd4:	e59f1254 	ldr	r1, [pc, #596]	@ 0x8f816230
+8f815fd8:	1a000086 	bne	0x8f8161f8
+8f815fdc:	e59f5250 	ldr	r5, [pc, #592]	@ 0x8f816234
+8f815fe0:	e0840001 	add	r0, r4, r1
+8f815fe4:	ebfffdc9 	bl	0x8f815710
+8f815fe8:	e1a0100a 	mov	r1, sl
+8f815fec:	e3a02010 	mov	r2, #16
+8f815ff0:	e0845005 	add	r5, r4, r5
+8f815ff4:	eb014fce 	bl	0x8f869f34
+8f815ff8:	e6ef7070 	uxtb	r7, r0
+8f815ffc:	e1a00005 	mov	r0, r5
+8f816000:	ebfffdc2 	bl	0x8f815710
+8f816004:	e2509000 	subs	r9, r0, #0
+8f816008:	0a000036 	beq	0x8f8160e8
+8f81600c:	e1a01006 	mov	r1, r6
+8f816010:	eb014f58 	bl	0x8f869d78
+8f816014:	e250b000 	subs	fp, r0, #0
+8f816018:	1a00000e 	bne	0x8f816058
+8f81601c:	e1a00005 	mov	r0, r5
+8f816020:	e28d6004 	add	r6, sp, #4
+8f816024:	ebfffdb9 	bl	0x8f815710
+8f816028:	e59f1208 	ldr	r1, [pc, #520]	@ 0x8f816238
+8f81602c:	e1a02000 	mov	r2, r0
+8f816030:	e1a03007 	mov	r3, r7
+8f816034:	e1a00006 	mov	r0, r6
+8f816038:	e0841001 	add	r1, r4, r1
+8f81603c:	eb0152e0 	bl	0x8f86abc4
+8f816040:	e1a01006 	mov	r1, r6
+8f816044:	e1a00005 	mov	r0, r5
+8f816048:	ebffff1f 	bl	0x8f815ccc
+8f81604c:	eb001b01 	bl	0x8f81cc58
+8f816050:	e1a0000b 	mov	r0, fp
+8f816054:	ea000071 	b	0x8f816220
+8f816058:	e1a00009 	mov	r0, r9
+8f81605c:	e1a01006 	mov	r1, r6
+8f816060:	eb014f44 	bl	0x8f869d78
+8f816064:	e2509000 	subs	r9, r0, #0
+8f816068:	059f01cc 	ldreq	r0, [pc, #460]	@ 0x8f81623c
+8f81606c:	0a00003d 	beq	0x8f816168
+8f816070:	e1a00006 	mov	r0, r6
+8f816074:	eb014e49 	bl	0x8f8699a0
+8f816078:	e2800001 	add	r0, r0, #1
+8f81607c:	e1a0100a 	mov	r1, sl
+8f816080:	e0890000 	add	r0, r9, r0
+8f816084:	e3a02010 	mov	r2, #16
+8f816088:	eb014fa9 	bl	0x8f869f34
+8f81608c:	e6ef0070 	uxtb	r0, r0
+8f816090:	e1500007 	cmp	r0, r7
+8f816094:	0a00000c 	beq	0x8f8160cc
+8f816098:	e59f11a0 	ldr	r1, [pc, #416]	@ 0x8f816240
+8f81609c:	e28d5f81 	add	r5, sp, #516	@ 0x204
+8f8160a0:	e1a02007 	mov	r2, r7
+8f8160a4:	e1a00005 	mov	r0, r5
+8f8160a8:	e0841001 	add	r1, r4, r1
+8f8160ac:	eb0152c4 	bl	0x8f86abc4
+8f8160b0:	e1a00005 	mov	r0, r5
+8f8160b4:	eb014e39 	bl	0x8f8699a0
+8f8160b8:	e1a01005 	mov	r1, r5
+8f8160bc:	e1a02000 	mov	r2, r0
+8f8160c0:	e1a00009 	mov	r0, r9
+8f8160c4:	eb014edf 	bl	0x8f869c48
+8f8160c8:	ea00001e 	b	0x8f816148
+8f8160cc:	e1a00005 	mov	r0, r5
+8f8160d0:	ebfffd8e 	bl	0x8f815710
+8f8160d4:	e1a01000 	mov	r1, r0
+8f8160d8:	e59f0164 	ldr	r0, [pc, #356]	@ 0x8f816244
+8f8160dc:	e0840000 	add	r0, r4, r0
+8f8160e0:	eb001276 	bl	0x8f81aac0
+8f8160e4:	ea00004a 	b	0x8f816214
+8f8160e8:	e59f0158 	ldr	r0, [pc, #344]	@ 0x8f816248
+8f8160ec:	e59f5158 	ldr	r5, [pc, #344]	@ 0x8f81624c
+8f8160f0:	e0840000 	add	r0, r4, r0
+8f8160f4:	e0845005 	add	r5, r4, r5
+8f8160f8:	eb001270 	bl	0x8f81aac0
+8f8160fc:	e1a00005 	mov	r0, r5
+8f816100:	ebfffd82 	bl	0x8f815710
+8f816104:	e1a01006 	mov	r1, r6
+8f816108:	e1a0b000 	mov	fp, r0
+8f81610c:	eb014f19 	bl	0x8f869d78
+8f816110:	e250a000 	subs	sl, r0, #0
+8f816114:	1a00000d 	bne	0x8f816150
+8f816118:	e1a00005 	mov	r0, r5
+8f81611c:	e28d6004 	add	r6, sp, #4
+8f816120:	ebfffd7a 	bl	0x8f815710
+8f816124:	e59f110c 	ldr	r1, [pc, #268]	@ 0x8f816238
+8f816128:	e1a02000 	mov	r2, r0
+8f81612c:	e1a03007 	mov	r3, r7
+8f816130:	e1a00006 	mov	r0, r6
+8f816134:	e0841001 	add	r1, r4, r1
+8f816138:	eb0152a1 	bl	0x8f86abc4
+8f81613c:	e1a00005 	mov	r0, r5
+8f816140:	e1a01006 	mov	r1, r6
+8f816144:	ebfffee0 	bl	0x8f815ccc
+8f816148:	eb001ac2 	bl	0x8f81cc58
+8f81614c:	ea000030 	b	0x8f816214
+8f816150:	e1a0000b 	mov	r0, fp
+8f816154:	e1a01006 	mov	r1, r6
+8f816158:	eb014f06 	bl	0x8f869d78
+8f81615c:	e250a000 	subs	sl, r0, #0
+8f816160:	1a000004 	bne	0x8f816178
+8f816164:	e59f00e4 	ldr	r0, [pc, #228]	@ 0x8f816250
+8f816168:	e0840000 	add	r0, r4, r0
+8f81616c:	eb001253 	bl	0x8f81aac0
+8f816170:	e3e00000 	mvn	r0, #0
+8f816174:	ea000029 	b	0x8f816220
+8f816178:	e1a00006 	mov	r0, r6
+8f81617c:	eb014e07 	bl	0x8f8699a0
+8f816180:	e2800001 	add	r0, r0, #1
+8f816184:	e1a01009 	mov	r1, r9
+8f816188:	e08a0000 	add	r0, sl, r0
+8f81618c:	e3a02010 	mov	r2, #16
+8f816190:	eb014f67 	bl	0x8f869f34
+8f816194:	e6ef0070 	uxtb	r0, r0
+8f816198:	e1500007 	cmp	r0, r7
+8f81619c:	0a00000d 	beq	0x8f8161d8
+8f8161a0:	e59f1098 	ldr	r1, [pc, #152]	@ 0x8f816240
+8f8161a4:	e28d5f81 	add	r5, sp, #516	@ 0x204
+8f8161a8:	e1a02007 	mov	r2, r7
+8f8161ac:	e1a00005 	mov	r0, r5
+8f8161b0:	e0841001 	add	r1, r4, r1
+8f8161b4:	eb015282 	bl	0x8f86abc4
+8f8161b8:	e1a00005 	mov	r0, r5
+8f8161bc:	eb014df7 	bl	0x8f8699a0
+8f8161c0:	e1a01005 	mov	r1, r5
+8f8161c4:	e1a02000 	mov	r2, r0
+8f8161c8:	e1a0000a 	mov	r0, sl
+8f8161cc:	eb014e9d 	bl	0x8f869c48
+8f8161d0:	eb001aa0 	bl	0x8f81cc58
+8f8161d4:	ea000005 	b	0x8f8161f0
+8f8161d8:	e1a00005 	mov	r0, r5
+8f8161dc:	ebfffd4b 	bl	0x8f815710
+8f8161e0:	e1a01000 	mov	r1, r0
+8f8161e4:	e59f0068 	ldr	r0, [pc, #104]	@ 0x8f816254
+8f8161e8:	e0840000 	add	r0, r4, r0
+8f8161ec:	eb001233 	bl	0x8f81aac0
+8f8161f0:	e1a00009 	mov	r0, r9
+8f8161f4:	ea000009 	b	0x8f816220
+8f8161f8:	e1a00007 	mov	r0, r7
+8f8161fc:	e0841001 	add	r1, r4, r1
+8f816200:	eb014dbd 	bl	0x8f8698fc
+8f816204:	e250a000 	subs	sl, r0, #0
+8f816208:	11a00005 	movne	r0, r5
+8f81620c:	1a000002 	bne	0x8f81621c
+8f816210:	eb00329f 	bl	0x8f822c94
+8f816214:	e1a0000a 	mov	r0, sl
+8f816218:	ea000000 	b	0x8f816220
+8f81621c:	eb000f28 	bl	0x8f819ec4
+8f816220:	e28ddf86 	add	sp, sp, #536	@ 0x218
+8f816224:	e8bd8ef0 	pop	{r4, r5, r6, r7, r9, sl, fp, pc}
+8f816228:	00095eb4 			@ <UNDEFINED> instruction: 0x00095eb4
+8f81622c:	fffe5a76 			@ <UNDEFINED> instruction: 0xfffe5a76
+8f816230:	fffe57c9 			@ <UNDEFINED> instruction: 0xfffe57c9
+8f816234:	fffe5965 			@ <UNDEFINED> instruction: 0xfffe5965
+8f816238:	fffe596e 			@ <UNDEFINED> instruction: 0xfffe596e
+8f81623c:	fffe597c 			@ <UNDEFINED> instruction: 0xfffe597c
+8f816240:	fffe5971 			@ <UNDEFINED> instruction: 0xfffe5971
+8f816244:	fffe59aa 			@ <UNDEFINED> instruction: 0xfffe59aa
+8f816248:	fffe59c6 			@ <UNDEFINED> instruction: 0xfffe59c6
+8f81624c:	fffe5f72 			@ <UNDEFINED> instruction: 0xfffe5f72
+8f816250:	fffe59eb 			@ <UNDEFINED> instruction: 0xfffe59eb
+8f816254:	fffe5a19 			@ <UNDEFINED> instruction: 0xfffe5a19
+
+
+### modify_cmdline->call_0x8f81cc58 0x8f81cc58-0x8f81ced8
+
+/mnt/f/coding/otherPrj/mibox/phone-tools/runtime/2026-11-14/bootloader-ucl/bootloader-expanded.bin:     file format binary
+
+
+Disassembly of section .data:
+
+8f81cc58 <.data+0x1cc58>:
+8f81cc58:	e59f3224 	ldr	r3, [pc, #548]	@ 0x8f81ce84
+8f81cc5c:	e92d4070 	push	{r4, r5, r6, lr}
+8f81cc60:	e59f4220 	ldr	r4, [pc, #544]	@ 0x8f81ce88
+8f81cc64:	e5932d54 	ldr	r2, [r3, #3412]	@ 0xd54
+8f81cc68:	e08f4004 	add	r4, pc, r4
+8f81cc6c:	e2022007 	and	r2, r2, #7
+8f81cc70:	e3520007 	cmp	r2, #7
+8f81cc74:	0a000003 	beq	0x8f81cc88
+8f81cc78:	e5932d54 	ldr	r2, [r3, #3412]	@ 0xd54
+8f81cc7c:	e2022007 	and	r2, r2, #7
+8f81cc80:	e3520006 	cmp	r2, #6
+8f81cc84:	1a000007 	bne	0x8f81cca8
+8f81cc88:	e59f01fc 	ldr	r0, [pc, #508]	@ 0x8f81ce8c
+8f81cc8c:	e3a0205e 	mov	r2, #94	@ 0x5e
+8f81cc90:	e59f11f8 	ldr	r1, [pc, #504]	@ 0x8f81ce90
+8f81cc94:	e0840000 	add	r0, r4, r0
+8f81cc98:	e0841001 	add	r1, r4, r1
+8f81cc9c:	ebfff787 	bl	0x8f81aac0
+8f81cca0:	e8bd4070 	pop	{r4, r5, r6, lr}
+8f81cca4:	eafffd28 	b	0x8f81c14c
+8f81cca8:	e5932d54 	ldr	r2, [r3, #3412]	@ 0xd54
+8f81ccac:	e2022007 	and	r2, r2, #7
+8f81ccb0:	e3520005 	cmp	r2, #5
+8f81ccb4:	0a000003 	beq	0x8f81ccc8
+8f81ccb8:	e5932d54 	ldr	r2, [r3, #3412]	@ 0xd54
+8f81ccbc:	e2022007 	and	r2, r2, #7
+8f81ccc0:	e3520004 	cmp	r2, #4
+8f81ccc4:	1a000007 	bne	0x8f81cce8
+8f81ccc8:	e59f01c4 	ldr	r0, [pc, #452]	@ 0x8f81ce94
+8f81cccc:	e3a02061 	mov	r2, #97	@ 0x61
+8f81ccd0:	e59f11b8 	ldr	r1, [pc, #440]	@ 0x8f81ce90
+8f81ccd4:	e0840000 	add	r0, r4, r0
+8f81ccd8:	e0841001 	add	r1, r4, r1
+8f81ccdc:	ebfff777 	bl	0x8f81aac0
+8f81cce0:	e8bd4070 	pop	{r4, r5, r6, lr}
+8f81cce4:	eaffff64 	b	0x8f81ca7c
+8f81cce8:	e59f21a8 	ldr	r2, [pc, #424]	@ 0x8f81ce98
+8f81ccec:	e59211a8 	ldr	r1, [r2, #424]	@ 0x1a8
+8f81ccf0:	e5930d4c 	ldr	r0, [r3, #3404]	@ 0xd4c
+8f81ccf4:	e59f21a0 	ldr	r2, [pc, #416]	@ 0x8f81ce9c
+8f81ccf8:	e1510002 	cmp	r1, r2
+8f81ccfc:	1350001b 	cmpne	r0, #27
+8f81cd00:	1a00000b 	bne	0x8f81cd34
+8f81cd04:	e5932d54 	ldr	r2, [r3, #3412]	@ 0xd54
+8f81cd08:	e2022007 	and	r2, r2, #7
+8f81cd0c:	e3520003 	cmp	r2, #3
+8f81cd10:	03a05001 	moveq	r5, #1
+8f81cd14:	0a000004 	beq	0x8f81cd2c
+8f81cd18:	e5935d54 	ldr	r5, [r3, #3412]	@ 0xd54
+8f81cd1c:	e2055007 	and	r5, r5, #7
+8f81cd20:	e3550001 	cmp	r5, #1
+8f81cd24:	13a05000 	movne	r5, #0
+8f81cd28:	03a05001 	moveq	r5, #1
+8f81cd2c:	e6ef5075 	uxtb	r5, r5
+8f81cd30:	ea000004 	b	0x8f81cd48
+8f81cd34:	e5935d54 	ldr	r5, [r3, #3412]	@ 0xd54
+8f81cd38:	e2055007 	and	r5, r5, #7
+8f81cd3c:	e3550003 	cmp	r5, #3
+8f81cd40:	13a05000 	movne	r5, #0
+8f81cd44:	03a05001 	moveq	r5, #1
+8f81cd48:	e3550000 	cmp	r5, #0
+8f81cd4c:	0a000007 	beq	0x8f81cd70
+8f81cd50:	e59f0148 	ldr	r0, [pc, #328]	@ 0x8f81cea0
+8f81cd54:	e3a02066 	mov	r2, #102	@ 0x66
+8f81cd58:	e59f1130 	ldr	r1, [pc, #304]	@ 0x8f81ce90
+8f81cd5c:	e0840000 	add	r0, r4, r0
+8f81cd60:	e0841001 	add	r1, r4, r1
+8f81cd64:	ebfff755 	bl	0x8f81aac0
+8f81cd68:	e8bd4070 	pop	{r4, r5, r6, lr}
+8f81cd6c:	eafffe41 	b	0x8f81c678
+8f81cd70:	e59f310c 	ldr	r3, [pc, #268]	@ 0x8f81ce84
+8f81cd74:	e5933d54 	ldr	r3, [r3, #3412]	@ 0xd54
+8f81cd78:	e3130007 	tst	r3, #7
+8f81cd7c:	1a00003e 	bne	0x8f81ce7c
+8f81cd80:	e59f011c 	ldr	r0, [pc, #284]	@ 0x8f81cea4
+8f81cd84:	e0840000 	add	r0, r4, r0
+8f81cd88:	ebfff74c 	bl	0x8f81aac0
+8f81cd8c:	e59f0114 	ldr	r0, [pc, #276]	@ 0x8f81cea8
+8f81cd90:	e1a01005 	mov	r1, r5
+8f81cd94:	e0840000 	add	r0, r4, r0
+8f81cd98:	eb0014bd 	bl	0x8f822094
+8f81cd9c:	e3500000 	cmp	r0, #0
+8f81cda0:	1a00000c 	bne	0x8f81cdd8
+8f81cda4:	e59f0100 	ldr	r0, [pc, #256]	@ 0x8f81ceac
+8f81cda8:	e3a0206d 	mov	r2, #109	@ 0x6d
+8f81cdac:	e59f10dc 	ldr	r1, [pc, #220]	@ 0x8f81ce90
+8f81cdb0:	e0840000 	add	r0, r4, r0
+8f81cdb4:	e0841001 	add	r1, r4, r1
+8f81cdb8:	ebfff740 	bl	0x8f81aac0
+8f81cdbc:	e59f30ec 	ldr	r3, [pc, #236]	@ 0x8f81ceb0
+8f81cdc0:	e59f20ec 	ldr	r2, [pc, #236]	@ 0x8f81ceb4
+8f81cdc4:	e7943003 	ldr	r3, [r4, r3]
+8f81cdc8:	e0844002 	add	r4, r4, r2
+8f81cdcc:	e5834000 	str	r4, [r3]
+8f81cdd0:	ebffff29 	bl	0x8f81ca7c
+8f81cdd4:	ea000028 	b	0x8f81ce7c
+8f81cdd8:	e59f00d8 	ldr	r0, [pc, #216]	@ 0x8f81ceb8
+8f81cddc:	e1a01005 	mov	r1, r5
+8f81cde0:	e0840000 	add	r0, r4, r0
+8f81cde4:	eb0014aa 	bl	0x8f822094
+8f81cde8:	e3500000 	cmp	r0, #0
+8f81cdec:	1a00000c 	bne	0x8f81ce24
+8f81cdf0:	e59f00c4 	ldr	r0, [pc, #196]	@ 0x8f81cebc
+8f81cdf4:	e3a02071 	mov	r2, #113	@ 0x71
+8f81cdf8:	e59f1090 	ldr	r1, [pc, #144]	@ 0x8f81ce90
+8f81cdfc:	e0840000 	add	r0, r4, r0
+8f81ce00:	e0841001 	add	r1, r4, r1
+8f81ce04:	ebfff72d 	bl	0x8f81aac0
+8f81ce08:	e59f30a0 	ldr	r3, [pc, #160]	@ 0x8f81ceb0
+8f81ce0c:	e59f20ac 	ldr	r2, [pc, #172]	@ 0x8f81cec0
+8f81ce10:	e7943003 	ldr	r3, [r4, r3]
+8f81ce14:	e0844002 	add	r4, r4, r2
+8f81ce18:	e5834000 	str	r4, [r3]
+8f81ce1c:	ebfffcca 	bl	0x8f81c14c
+8f81ce20:	ea000015 	b	0x8f81ce7c
+8f81ce24:	e59f0098 	ldr	r0, [pc, #152]	@ 0x8f81cec4
+8f81ce28:	e1a01005 	mov	r1, r5
+8f81ce2c:	e0840000 	add	r0, r4, r0
+8f81ce30:	eb001497 	bl	0x8f822094
+8f81ce34:	e3500000 	cmp	r0, #0
+8f81ce38:	1a00000c 	bne	0x8f81ce70
+8f81ce3c:	e59f0084 	ldr	r0, [pc, #132]	@ 0x8f81cec8
+8f81ce40:	e3a02077 	mov	r2, #119	@ 0x77
+8f81ce44:	e59f1044 	ldr	r1, [pc, #68]	@ 0x8f81ce90
+8f81ce48:	e0840000 	add	r0, r4, r0
+8f81ce4c:	e0841001 	add	r1, r4, r1
+8f81ce50:	ebfff71a 	bl	0x8f81aac0
+8f81ce54:	e59f3054 	ldr	r3, [pc, #84]	@ 0x8f81ceb0
+8f81ce58:	e59f206c 	ldr	r2, [pc, #108]	@ 0x8f81cecc
+8f81ce5c:	e7943003 	ldr	r3, [r4, r3]
+8f81ce60:	e0844002 	add	r4, r4, r2
+8f81ce64:	e5834000 	str	r4, [r3]
+8f81ce68:	ebfffe02 	bl	0x8f81c678
+8f81ce6c:	ea000002 	b	0x8f81ce7c
+8f81ce70:	e59f0058 	ldr	r0, [pc, #88]	@ 0x8f81ced0
+8f81ce74:	e0840000 	add	r0, r4, r0
+8f81ce78:	ebfff710 	bl	0x8f81aac0
+8f81ce7c:	e3a00000 	mov	r0, #0
+8f81ce80:	e8bd8070 	pop	{r4, r5, r6, pc}
+8f81ce84:	c1107000 	tstgt	r0, r0
+8f81ce88:	0008f1fc 	strdeq	pc, [r8], -ip
+8f81ce8c:	fffe7d5f 			@ <UNDEFINED> instruction: 0xfffe7d5f
+8f81ce90:	fffdc764 			@ <UNDEFINED> instruction: 0xfffdc764
+8f81ce94:	fffe7d7f 			@ <UNDEFINED> instruction: 0xfffe7d7f
+8f81ce98:	c1108000 	tstgt	r0, r0
+8f81ce9c:	11111112 	tstne	r1, r2, lsl r1
+8f81cea0:	fffe7d9e 			@ <UNDEFINED> instruction: 0xfffe7d9e
+8f81cea4:	fffe7dbe 			@ <UNDEFINED> instruction: 0xfffe7dbe
+8f81cea8:	fffe7dcf 			@ <UNDEFINED> instruction: 0xfffe7dcf
+8f81ceac:	fffe7dda 			@ <UNDEFINED> instruction: 0xfffe7dda
+8f81ceb0:	0000009c 	muleq	r0, ip, r0
+8f81ceb4:	fffe7df8 			@ <UNDEFINED> instruction: 0xfffe7df8
+8f81ceb8:	fffe7e02 			@ <UNDEFINED> instruction: 0xfffe7e02
+8f81cebc:	fffe7e0d 			@ <UNDEFINED> instruction: 0xfffe7e0d
+8f81cec0:	fffe7e2d 			@ <UNDEFINED> instruction: 0xfffe7e2d
+8f81cec4:	fffe7e32 			@ <UNDEFINED> instruction: 0xfffe7e32
+8f81cec8:	fffe7e3c 			@ <UNDEFINED> instruction: 0xfffe7e3c
+8f81cecc:	fffe7e5b 			@ <UNDEFINED> instruction: 0xfffe7e5b
+8f81ced0:	fffe7e60 			@ <UNDEFINED> instruction: 0xfffe7e60
+8f81ced4:	e59f322c 	ldr	r3, [pc, #556]	@ 0x8f81d108
+
+
+### modify_cmdline->call_0x8f86982c 0x8f86982c-0x8f86992c
+
+/mnt/f/coding/otherPrj/mibox/phone-tools/runtime/2026-11-14/bootloader-ucl/bootloader-expanded.bin:     file format binary
+
+
+Disassembly of section .data:
+
+8f86982c <.data+0x6982c>:
+8f86982c:	e3a03000 	mov	r3, #0
+8f869830:	e7d12003 	ldrb	r2, [r1, r3]
+8f869834:	e3520000 	cmp	r2, #0
+8f869838:	e7c02003 	strb	r2, [r0, r3]
+8f86983c:	e2833001 	add	r3, r3, #1
+8f869840:	1afffffa 	bne	0x8f869830
+8f869844:	e12fff1e 	bx	lr
+8f869848:	e3a03000 	mov	r3, #0
+8f86984c:	e3520000 	cmp	r2, #0
+8f869850:	012fff1e 	bxeq	lr
+8f869854:	e7d1c003 	ldrb	ip, [r1, r3]
+8f869858:	e2422001 	sub	r2, r2, #1
+8f86985c:	e35c0000 	cmp	ip, #0
+8f869860:	e7c0c003 	strb	ip, [r0, r3]
+8f869864:	e2833001 	add	r3, r3, #1
+8f869868:	1afffff7 	bne	0x8f86984c
+8f86986c:	e12fff1e 	bx	lr
+8f869870:	e1a02000 	mov	r2, r0
+8f869874:	ea000000 	b	0x8f86987c
+8f869878:	e2822001 	add	r2, r2, #1
+8f86987c:	e5d23000 	ldrb	r3, [r2]
+8f869880:	e3530000 	cmp	r3, #0
+8f869884:	1afffffb 	bne	0x8f869878
+8f869888:	e7d1c003 	ldrb	ip, [r1, r3]
+8f86988c:	e35c0000 	cmp	ip, #0
+8f869890:	e7c2c003 	strb	ip, [r2, r3]
+8f869894:	e2833001 	add	r3, r3, #1
+8f869898:	1afffffa 	bne	0x8f869888
+8f86989c:	e12fff1e 	bx	lr
+8f8698a0:	e3520000 	cmp	r2, #0
+8f8698a4:	e92d4030 	push	{r4, r5, lr}
+8f8698a8:	11a03000 	movne	r3, r0
+8f8698ac:	1a000001 	bne	0x8f8698b8
+8f8698b0:	e8bd8030 	pop	{r4, r5, pc}
+8f8698b4:	e2833001 	add	r3, r3, #1
+8f8698b8:	e5d3c000 	ldrb	ip, [r3]
+8f8698bc:	e35c0000 	cmp	ip, #0
+8f8698c0:	1afffffb 	bne	0x8f8698b4
+8f8698c4:	ea000006 	b	0x8f8698e4
+8f8698c8:	e28cc001 	add	ip, ip, #1
+8f8698cc:	e2833001 	add	r3, r3, #1
+8f8698d0:	e152000c 	cmp	r2, ip
+8f8698d4:	1a000003 	bne	0x8f8698e8
+8f8698d8:	e3a02000 	mov	r2, #0
+8f8698dc:	e5c32000 	strb	r2, [r3]
+8f8698e0:	e8bd8030 	pop	{r4, r5, pc}
+8f8698e4:	e1a05003 	mov	r5, r3
+8f8698e8:	e7d1400c 	ldrb	r4, [r1, ip]
+8f8698ec:	e3540000 	cmp	r4, #0
+8f8698f0:	e7c5400c 	strb	r4, [r5, ip]
+8f8698f4:	1afffff3 	bne	0x8f8698c8
+8f8698f8:	e8bd8030 	pop	{r4, r5, pc}
+8f8698fc:	e3a03000 	mov	r3, #0
+8f869900:	e7d0c003 	ldrb	ip, [r0, r3]
+8f869904:	e7d12003 	ldrb	r2, [r1, r3]
+8f869908:	e062200c 	rsb	r2, r2, ip
+8f86990c:	e6ef2072 	uxtb	r2, r2
+8f869910:	e3520000 	cmp	r2, #0
+8f869914:	1a000002 	bne	0x8f869924
+8f869918:	e35c0000 	cmp	ip, #0
+8f86991c:	e2833001 	add	r3, r3, #1
+8f869920:	1afffff6 	bne	0x8f869900
+8f869924:	e6af0072 	sxtb	r0, r2
+8f869928:	e12fff1e 	bx	lr
+
+
+### modify_cmdline->call_0x8f869848 0x8f869848-0x8f86992c
+
+/mnt/f/coding/otherPrj/mibox/phone-tools/runtime/2026-11-14/bootloader-ucl/bootloader-expanded.bin:     file format binary
+
+
+Disassembly of section .data:
+
+8f869848 <.data+0x69848>:
+8f869848:	e3a03000 	mov	r3, #0
+8f86984c:	e3520000 	cmp	r2, #0
+8f869850:	012fff1e 	bxeq	lr
+8f869854:	e7d1c003 	ldrb	ip, [r1, r3]
+8f869858:	e2422001 	sub	r2, r2, #1
+8f86985c:	e35c0000 	cmp	ip, #0
+8f869860:	e7c0c003 	strb	ip, [r0, r3]
+8f869864:	e2833001 	add	r3, r3, #1
+8f869868:	1afffff7 	bne	0x8f86984c
+8f86986c:	e12fff1e 	bx	lr
+8f869870:	e1a02000 	mov	r2, r0
+8f869874:	ea000000 	b	0x8f86987c
+8f869878:	e2822001 	add	r2, r2, #1
+8f86987c:	e5d23000 	ldrb	r3, [r2]
+8f869880:	e3530000 	cmp	r3, #0
+8f869884:	1afffffb 	bne	0x8f869878
+8f869888:	e7d1c003 	ldrb	ip, [r1, r3]
+8f86988c:	e35c0000 	cmp	ip, #0
+8f869890:	e7c2c003 	strb	ip, [r2, r3]
+8f869894:	e2833001 	add	r3, r3, #1
+8f869898:	1afffffa 	bne	0x8f869888
+8f86989c:	e12fff1e 	bx	lr
+8f8698a0:	e3520000 	cmp	r2, #0
+8f8698a4:	e92d4030 	push	{r4, r5, lr}
+8f8698a8:	11a03000 	movne	r3, r0
+8f8698ac:	1a000001 	bne	0x8f8698b8
+8f8698b0:	e8bd8030 	pop	{r4, r5, pc}
+8f8698b4:	e2833001 	add	r3, r3, #1
+8f8698b8:	e5d3c000 	ldrb	ip, [r3]
+8f8698bc:	e35c0000 	cmp	ip, #0
+8f8698c0:	1afffffb 	bne	0x8f8698b4
+8f8698c4:	ea000006 	b	0x8f8698e4
+8f8698c8:	e28cc001 	add	ip, ip, #1
+8f8698cc:	e2833001 	add	r3, r3, #1
+8f8698d0:	e152000c 	cmp	r2, ip
+8f8698d4:	1a000003 	bne	0x8f8698e8
+8f8698d8:	e3a02000 	mov	r2, #0
+8f8698dc:	e5c32000 	strb	r2, [r3]
+8f8698e0:	e8bd8030 	pop	{r4, r5, pc}
+8f8698e4:	e1a05003 	mov	r5, r3
+8f8698e8:	e7d1400c 	ldrb	r4, [r1, ip]
+8f8698ec:	e3540000 	cmp	r4, #0
+8f8698f0:	e7c5400c 	strb	r4, [r5, ip]
+8f8698f4:	1afffff3 	bne	0x8f8698c8
+8f8698f8:	e8bd8030 	pop	{r4, r5, pc}
+8f8698fc:	e3a03000 	mov	r3, #0
+8f869900:	e7d0c003 	ldrb	ip, [r0, r3]
+8f869904:	e7d12003 	ldrb	r2, [r1, r3]
+8f869908:	e062200c 	rsb	r2, r2, ip
+8f86990c:	e6ef2072 	uxtb	r2, r2
+8f869910:	e3520000 	cmp	r2, #0
+8f869914:	1a000002 	bne	0x8f869924
+8f869918:	e35c0000 	cmp	ip, #0
+8f86991c:	e2833001 	add	r3, r3, #1
+8f869920:	1afffff6 	bne	0x8f869900
+8f869924:	e6af0072 	sxtb	r0, r2
+8f869928:	e12fff1e 	bx	lr
+
+
+### modify_cmdline->call_0x8f869870 0x8f869870-0x8f86992c
+
+/mnt/f/coding/otherPrj/mibox/phone-tools/runtime/2026-11-14/bootloader-ucl/bootloader-expanded.bin:     file format binary
+
+
+Disassembly of section .data:
+
+8f869870 <.data+0x69870>:
+8f869870:	e1a02000 	mov	r2, r0
+8f869874:	ea000000 	b	0x8f86987c
+8f869878:	e2822001 	add	r2, r2, #1
+8f86987c:	e5d23000 	ldrb	r3, [r2]
+8f869880:	e3530000 	cmp	r3, #0
+8f869884:	1afffffb 	bne	0x8f869878
+8f869888:	e7d1c003 	ldrb	ip, [r1, r3]
+8f86988c:	e35c0000 	cmp	ip, #0
+8f869890:	e7c2c003 	strb	ip, [r2, r3]
+8f869894:	e2833001 	add	r3, r3, #1
+8f869898:	1afffffa 	bne	0x8f869888
+8f86989c:	e12fff1e 	bx	lr
+8f8698a0:	e3520000 	cmp	r2, #0
+8f8698a4:	e92d4030 	push	{r4, r5, lr}
+8f8698a8:	11a03000 	movne	r3, r0
+8f8698ac:	1a000001 	bne	0x8f8698b8
+8f8698b0:	e8bd8030 	pop	{r4, r5, pc}
+8f8698b4:	e2833001 	add	r3, r3, #1
+8f8698b8:	e5d3c000 	ldrb	ip, [r3]
+8f8698bc:	e35c0000 	cmp	ip, #0
+8f8698c0:	1afffffb 	bne	0x8f8698b4
+8f8698c4:	ea000006 	b	0x8f8698e4
+8f8698c8:	e28cc001 	add	ip, ip, #1
+8f8698cc:	e2833001 	add	r3, r3, #1
+8f8698d0:	e152000c 	cmp	r2, ip
+8f8698d4:	1a000003 	bne	0x8f8698e8
+8f8698d8:	e3a02000 	mov	r2, #0
+8f8698dc:	e5c32000 	strb	r2, [r3]
+8f8698e0:	e8bd8030 	pop	{r4, r5, pc}
+8f8698e4:	e1a05003 	mov	r5, r3
+8f8698e8:	e7d1400c 	ldrb	r4, [r1, ip]
+8f8698ec:	e3540000 	cmp	r4, #0
+8f8698f0:	e7c5400c 	strb	r4, [r5, ip]
+8f8698f4:	1afffff3 	bne	0x8f8698c8
+8f8698f8:	e8bd8030 	pop	{r4, r5, pc}
+8f8698fc:	e3a03000 	mov	r3, #0
+8f869900:	e7d0c003 	ldrb	ip, [r0, r3]
+8f869904:	e7d12003 	ldrb	r2, [r1, r3]
+8f869908:	e062200c 	rsb	r2, r2, ip
+8f86990c:	e6ef2072 	uxtb	r2, r2
+8f869910:	e3520000 	cmp	r2, #0
+8f869914:	1a000002 	bne	0x8f869924
+8f869918:	e35c0000 	cmp	ip, #0
+8f86991c:	e2833001 	add	r3, r3, #1
+8f869920:	1afffff6 	bne	0x8f869900
+8f869924:	e6af0072 	sxtb	r0, r2
+8f869928:	e12fff1e 	bx	lr
+
+
+### modify_cmdline->call_0x8f8698fc 0x8f8698fc-0x8f86992c
+
+/mnt/f/coding/otherPrj/mibox/phone-tools/runtime/2026-11-14/bootloader-ucl/bootloader-expanded.bin:     file format binary
+
+
+Disassembly of section .data:
+
+8f8698fc <.data+0x698fc>:
+8f8698fc:	e3a03000 	mov	r3, #0
+8f869900:	e7d0c003 	ldrb	ip, [r0, r3]
+8f869904:	e7d12003 	ldrb	r2, [r1, r3]
+8f869908:	e062200c 	rsb	r2, r2, ip
+8f86990c:	e6ef2072 	uxtb	r2, r2
+8f869910:	e3520000 	cmp	r2, #0
+8f869914:	1a000002 	bne	0x8f869924
+8f869918:	e35c0000 	cmp	ip, #0
+8f86991c:	e2833001 	add	r3, r3, #1
+8f869920:	1afffff6 	bne	0x8f869900
+8f869924:	e6af0072 	sxtb	r0, r2
+8f869928:	e12fff1e 	bx	lr
+
+
+### modify_cmdline->call_0x8f8699a0 0x8f8699a0-0x8f8699c0
+
+/mnt/f/coding/otherPrj/mibox/phone-tools/runtime/2026-11-14/bootloader-ucl/bootloader-expanded.bin:     file format binary
+
+
+Disassembly of section .data:
+
+8f8699a0 <.data+0x699a0>:
+8f8699a0:	e1a03000 	mov	r3, r0
+8f8699a4:	ea000000 	b	0x8f8699ac
+8f8699a8:	e2833001 	add	r3, r3, #1
+8f8699ac:	e5d32000 	ldrb	r2, [r3]
+8f8699b0:	e3520000 	cmp	r2, #0
+8f8699b4:	1afffffb 	bne	0x8f8699a8
+8f8699b8:	e0600003 	rsb	r0, r0, r3
+8f8699bc:	e12fff1e 	bx	lr
+
+
+### modify_cmdline->call_0x8f869bac 0x8f869bac-0x8f869d10
+
+/mnt/f/coding/otherPrj/mibox/phone-tools/runtime/2026-11-14/bootloader-ucl/bootloader-expanded.bin:     file format binary
+
+
+Disassembly of section .data:
+
+8f869bac <.data+0x69bac>:
+8f869bac:	e2103003 	ands	r3, r0, #3
+8f869bb0:	e92d4010 	push	{r4, lr}
+8f869bb4:	e1a0c000 	mov	ip, r0
+8f869bb8:	1a000010 	bne	0x8f869c00
+8f869bbc:	e1a04003 	mov	r4, r3
+8f869bc0:	e2833001 	add	r3, r3, #1
+8f869bc4:	e201c0ff 	and	ip, r1, #255	@ 0xff
+8f869bc8:	e3530004 	cmp	r3, #4
+8f869bcc:	e18c4404 	orr	r4, ip, r4, lsl #8
+8f869bd0:	1afffffa 	bne	0x8f869bc0
+8f869bd4:	e1a0c002 	mov	ip, r2
+8f869bd8:	e3a03000 	mov	r3, #0
+8f869bdc:	ea000002 	b	0x8f869bec
+8f869be0:	e7804003 	str	r4, [r0, r3]
+8f869be4:	e24cc004 	sub	ip, ip, #4
+8f869be8:	e2833004 	add	r3, r3, #4
+8f869bec:	e35c0003 	cmp	ip, #3
+8f869bf0:	8afffffa 	bhi	0x8f869be0
+8f869bf4:	e3c2c003 	bic	ip, r2, #3
+8f869bf8:	e2022003 	and	r2, r2, #3
+8f869bfc:	e080c00c 	add	ip, r0, ip
+8f869c00:	e3a03000 	mov	r3, #0
+8f869c04:	ea000002 	b	0x8f869c14
+8f869c08:	e7cc1003 	strb	r1, [ip, r3]
+8f869c0c:	e2422001 	sub	r2, r2, #1
+8f869c10:	e2833001 	add	r3, r3, #1
+8f869c14:	e3520000 	cmp	r2, #0
+8f869c18:	1afffffa 	bne	0x8f869c08
+8f869c1c:	e8bd8010 	pop	{r4, pc}
+8f869c20:	e1a03000 	mov	r3, r0
+8f869c24:	e3a00000 	mov	r0, #0
+8f869c28:	ea000002 	b	0x8f869c38
+8f869c2c:	e7d3c000 	ldrb	ip, [r3, r0]
+8f869c30:	e7c1c000 	strb	ip, [r1, r0]
+8f869c34:	e2800001 	add	r0, r0, #1
+8f869c38:	e2522001 	subs	r2, r2, #1
+8f869c3c:	2afffffa 	bcs	0x8f869c2c
+8f869c40:	e1a00001 	mov	r0, r1
+8f869c44:	e12fff1e 	bx	lr
+8f869c48:	e1813000 	orr	r3, r1, r0
+8f869c4c:	e92d4010 	push	{r4, lr}
+8f869c50:	e2133003 	ands	r3, r3, #3
+8f869c54:	e1a0c001 	mov	ip, r1
+8f869c58:	e1a04000 	mov	r4, r0
+8f869c5c:	01a0c002 	moveq	ip, r2
+8f869c60:	0a000004 	beq	0x8f869c78
+8f869c64:	ea000009 	b	0x8f869c90
+8f869c68:	e7914003 	ldr	r4, [r1, r3]
+8f869c6c:	e24cc004 	sub	ip, ip, #4
+8f869c70:	e7804003 	str	r4, [r0, r3]
+8f869c74:	e2833004 	add	r3, r3, #4
+8f869c78:	e35c0003 	cmp	ip, #3
+8f869c7c:	8afffff9 	bhi	0x8f869c68
+8f869c80:	e3c2c003 	bic	ip, r2, #3
+8f869c84:	e2022003 	and	r2, r2, #3
+8f869c88:	e080400c 	add	r4, r0, ip
+8f869c8c:	e081c00c 	add	ip, r1, ip
+8f869c90:	e3a03000 	mov	r3, #0
+8f869c94:	ea000003 	b	0x8f869ca8
+8f869c98:	e7dc1003 	ldrb	r1, [ip, r3]
+8f869c9c:	e2422001 	sub	r2, r2, #1
+8f869ca0:	e7c41003 	strb	r1, [r4, r3]
+8f869ca4:	e2833001 	add	r3, r3, #1
+8f869ca8:	e3520000 	cmp	r2, #0
+8f869cac:	1afffff9 	bne	0x8f869c98
+8f869cb0:	e8bd8010 	pop	{r4, pc}
+8f869cb4:	e1500001 	cmp	r0, r1
+8f869cb8:	e92d4010 	push	{r4, lr}
+8f869cbc:	93a03000 	movls	r3, #0
+8f869cc0:	9a000004 	bls	0x8f869cd8
+8f869cc4:	ea000006 	b	0x8f869ce4
+8f869cc8:	e7d1c003 	ldrb	ip, [r1, r3]
+8f869ccc:	e2422001 	sub	r2, r2, #1
+8f869cd0:	e7c0c003 	strb	ip, [r0, r3]
+8f869cd4:	e2833001 	add	r3, r3, #1
+8f869cd8:	e3520000 	cmp	r2, #0
+8f869cdc:	1afffff9 	bne	0x8f869cc8
+8f869ce0:	e8bd8010 	pop	{r4, pc}
+8f869ce4:	e080c002 	add	ip, r0, r2
+8f869ce8:	e0811002 	add	r1, r1, r2
+8f869cec:	e3a03000 	mov	r3, #0
+8f869cf0:	ea000002 	b	0x8f869d00
+8f869cf4:	e7d14003 	ldrb	r4, [r1, r3]
+8f869cf8:	e2422001 	sub	r2, r2, #1
+8f869cfc:	e7cc4003 	strb	r4, [ip, r3]
+8f869d00:	e3520000 	cmp	r2, #0
+8f869d04:	e2433001 	sub	r3, r3, #1
+8f869d08:	1afffff9 	bne	0x8f869cf4
+8f869d0c:	e8bd8010 	pop	{r4, pc}
+
+
+### modify_cmdline->call_0x8f869d78 0x8f869d78-0x8f869e04
+
+/mnt/f/coding/otherPrj/mibox/phone-tools/runtime/2026-11-14/bootloader-ucl/bootloader-expanded.bin:     file format binary
+
+
+Disassembly of section .data:
+
+8f869d78 <.data+0x69d78>:
+8f869d78:	e92d40f8 	push	{r3, r4, r5, r6, r7, lr}
+8f869d7c:	e1a04000 	mov	r4, r0
+8f869d80:	e1a00001 	mov	r0, r1
+8f869d84:	e1a07001 	mov	r7, r1
+8f869d88:	ebffff04 	bl	0x8f8699a0
+8f869d8c:	e2506000 	subs	r6, r0, #0
+8f869d90:	0a00000e 	beq	0x8f869dd0
+8f869d94:	e1a00004 	mov	r0, r4
+8f869d98:	ebffff00 	bl	0x8f8699a0
+8f869d9c:	e1a05000 	mov	r5, r0
+8f869da0:	ea000007 	b	0x8f869dc4
+8f869da4:	e1a00004 	mov	r0, r4
+8f869da8:	e1a01007 	mov	r1, r7
+8f869dac:	e1a02006 	mov	r2, r6
+8f869db0:	ebffffd6 	bl	0x8f869d10
+8f869db4:	e3500000 	cmp	r0, #0
+8f869db8:	0a000004 	beq	0x8f869dd0
+8f869dbc:	e2455001 	sub	r5, r5, #1
+8f869dc0:	e2844001 	add	r4, r4, #1
+8f869dc4:	e1550006 	cmp	r5, r6
+8f869dc8:	aafffff5 	bge	0x8f869da4
+8f869dcc:	e3a04000 	mov	r4, #0
+8f869dd0:	e1a00004 	mov	r0, r4
+8f869dd4:	e8bd80f8 	pop	{r3, r4, r5, r6, r7, pc}
+8f869dd8:	ea000005 	b	0x8f869df4
+8f869ddc:	e5d0c000 	ldrb	ip, [r0]
+8f869de0:	e6ef3071 	uxtb	r3, r1
+8f869de4:	e2422001 	sub	r2, r2, #1
+8f869de8:	e15c0003 	cmp	ip, r3
+8f869dec:	012fff1e 	bxeq	lr
+8f869df0:	e2800001 	add	r0, r0, #1
+8f869df4:	e3520000 	cmp	r2, #0
+8f869df8:	1afffff7 	bne	0x8f869ddc
+8f869dfc:	e1a00002 	mov	r0, r2
+8f869e00:	e12fff1e 	bx	lr
+
+
+### modify_cmdline->call_0x8f86abc4 0x8f86abc4-0x8f86ac2c
+
+/mnt/f/coding/otherPrj/mibox/phone-tools/runtime/2026-11-14/bootloader-ucl/bootloader-expanded.bin:     file format binary
+
+
+Disassembly of section .data:
+
+8f86abc4 <.data+0x6abc4>:
+8f86abc4:	e92d000e 	push	{r1, r2, r3}
+8f86abc8:	e92d4003 	push	{r0, r1, lr}
+8f86abcc:	e28d2010 	add	r2, sp, #16
+8f86abd0:	e59d100c 	ldr	r1, [sp, #12]
+8f86abd4:	e58d2004 	str	r2, [sp, #4]
+8f86abd8:	ebfffeca 	bl	0x8f86a708
+8f86abdc:	e8bd400c 	pop	{r2, r3, lr}
+8f86abe0:	e28dd00c 	add	sp, sp, #12
+8f86abe4:	e12fff1e 	bx	lr
+8f86abe8:	e59f202c 	ldr	r2, [pc, #44]	@ 0x8f86ac1c
+8f86abec:	e3000bbb 	movw	r0, #3003	@ 0xbbb
+8f86abf0:	e59f1028 	ldr	r1, [pc, #40]	@ 0x8f86ac20
+8f86abf4:	e5923004 	ldr	r3, [r2, #4]
+8f86abf8:	e592202c 	ldr	r2, [r2, #44]	@ 0x2c
+8f86abfc:	e1520000 	cmp	r2, r0
+8f86ac00:	01530001 	cmpeq	r3, r1
+8f86ac04:	012fff1e 	bxeq	lr
+8f86ac08:	e59f0014 	ldr	r0, [pc, #20]	@ 0x8f86ac24
+8f86ac0c:	e1520000 	cmp	r2, r0
+8f86ac10:	01a00003 	moveq	r0, r3
+8f86ac14:	13a00000 	movne	r0, #0
+8f86ac18:	e12fff1e 	bx	lr
+8f86ac1c:	d9040000 	stmdble	r4, {}	@ <UNPREDICTABLE>
+8f86ac20:	e2000003 	and	r0, r0, #3
+8f86ac24:	e3a01000 	mov	r1, #0
+8f86ac28:	e5902048 	ldr	r2, [r0, #72]	@ 0x48

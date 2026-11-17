@@ -1,0 +1,935 @@
+{
+  "source_sha256": "99f701ac15a155aa07b7204d240b82a0a5c91457513ae1e246146e3f8b8753a2",
+  "link_base": "0x8f800000",
+  "commands": {
+    "switch_bootpart": {
+      "registration": {
+        "table_offset": 721124,
+        "max_args": 32,
+        "repeatable": 1,
+        "function": "0x8f870b7c",
+        "usage": "switch_bootpart   -  swich boot partition form boot or boot1.\n",
+        "help": null
+      },
+      "functions": [
+        {
+          "name": "switch_bootpart",
+          "depth": 0,
+          "start": "0x8f870b7c",
+          "end": "0x8f870dc4",
+          "strings": [
+            {
+              "at": "0x8f870cfc",
+              "literal": "0xffff3524",
+              "string": "storeboot",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870d00",
+              "literal": "0xfffef901",
+              "string": "bootsystem",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870d08",
+              "literal": "0xffff352e",
+              "string": "store read boot1 ",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870d0c",
+              "literal": "0xffff3540",
+              "string": "store read boot ",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870d10",
+              "literal": "0xffff34e1",
+              "string": "boot_args",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870d14",
+              "literal": "0xffff3551",
+              "string": "androidboot.system=",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870d18",
+              "literal": "0xffff34eb",
+              "string": " %s%s",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870d60",
+              "literal": "0xffff3565",
+              "string": "hdmi tx power init\n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870dbc",
+              "literal": "0xffff3579",
+              "string": " %s return %d\n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870dc0",
+              "literal": "0xfffe02a0",
+              "string": "sdio_detect",
+              "via": "string_base"
+            }
+          ],
+          "calls": [
+            "0x8f815710",
+            "0x8f815710",
+            "0x8f8698fc",
+            "0x8f870a9c",
+            "0x8f815ccc",
+            "0x8f869bac",
+            "0x8f869bac",
+            "0x8f815710",
+            "0x8f815710",
+            "0x8f86982c",
+            "0x8f86abc4",
+            "0x8f869d78",
+            "0x8f869870",
+            "0x8f8699a0",
+            "0x8f8699a0",
+            "0x8f869848",
+            "0x8f815ccc",
+            "0x8f815710",
+            "0x8f8698fc",
+            "0x8f800e54",
+            "0x8f800ed0",
+            "0x8f81aac0"
+          ]
+        },
+        {
+          "name": "switch_bootpart->call_0x8f800e54",
+          "depth": 1,
+          "start": "0x8f800e54",
+          "end": "0x8f800f5c",
+          "strings": [],
+          "calls": []
+        },
+        {
+          "name": "switch_bootpart->call_0x8f800ed0",
+          "depth": 1,
+          "start": "0x8f800ed0",
+          "end": "0x8f800f5c",
+          "strings": [],
+          "calls": []
+        },
+        {
+          "name": "switch_bootpart->call_0x8f815710",
+          "depth": 1,
+          "start": "0x8f815710",
+          "end": "0x8f81583c",
+          "strings": [
+            {
+              "at": "0x8f815838",
+              "literal": "0xfffe581a",
+              "string": "%s=%s\n",
+              "via": "string_base"
+            }
+          ],
+          "calls": [
+            "0x8f8670cc",
+            "0x8f815648",
+            "0x8f8670cc",
+            "0x8f81aac0",
+            "0x8f866e54",
+            "0x8f81a9fc",
+            "0x8f81b0bc"
+          ]
+        },
+        {
+          "name": "switch_bootpart->call_0x8f815ccc",
+          "depth": 1,
+          "start": "0x8f815ccc",
+          "end": "0x8f816258",
+          "strings": [
+            {
+              "at": "0x8f815d28",
+              "literal": "0xffff358a",
+              "string": "setenv",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f815f80",
+              "literal": "0xfffdc69c",
+              "string": "do_env_import",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f815f88",
+              "literal": "0xfffe5924",
+              "string": "ERROR: Cannot export environment: errno = %d\n\nat %s:%d/%s()\n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f815f8c",
+              "literal": "0xfffe5743",
+              "string": "cmd_nvedit.c",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f815f90",
+              "literal": "0xfffe5961",
+              "string": "%zX",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f815f94",
+              "literal": "0xfffe1f84",
+              "string": "filesize",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f815f98",
+              "literal": "0xfffe5750",
+              "string": "## %s: only one of \"-b\", \"-c\" or \"-t\" allowed\n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81622c",
+              "literal": "0xfffe5a76",
+              "string": "storage",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f816230",
+              "literal": "0xfffe57c9",
+              "string": "store",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f816234",
+              "literal": "0xfffe5965",
+              "string": "initargs",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f816238",
+              "literal": "0xfffe596e",
+              "string": "%s storage=%d",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81623c",
+              "literal": "0xfffe597c",
+              "string": "@put_storage: no storage in initargs: failed\n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f816240",
+              "literal": "0xfffe5971",
+              "string": "storage=%d",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f816244",
+              "literal": "0xfffe59aa",
+              "string": "@put_storage : initargs %s\n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f816248",
+              "literal": "0xfffe59c6",
+              "string": "no initargs,put storage to bootargs\n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81624c",
+              "literal": "0xfffe5f72",
+              "string": "bootargs",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f816250",
+              "literal": "0xfffe59eb",
+              "string": "@put_storage: no storage in bootargs: failed\n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f816254",
+              "literal": "0xfffe5a19",
+              "string": "@put_storage : bootargs %s\n",
+              "via": "string_base"
+            }
+          ],
+          "calls": [
+            "0x8f8158d4",
+            "0x8f819ec4",
+            "0x8f869f34",
+            "0x8f869bac",
+            "0x8f866e54",
+            "0x8f866e54",
+            "0x8f81aac0",
+            "0x8f86670c",
+            "0x8f86abc4",
+            "0x8f815ccc",
+            "0x8f81aac0",
+            "0x8f869f34",
+            "0x8f8698fc",
+            "0x8f815710",
+            "0x8f869f34",
+            "0x8f815710",
+            "0x8f869d78",
+            "0x8f815710",
+            "0x8f86abc4",
+            "0x8f815ccc",
+            "0x8f81cc58",
+            "0x8f869d78",
+            "0x8f8699a0",
+            "0x8f869f34",
+            "0x8f86abc4",
+            "0x8f8699a0",
+            "0x8f869c48",
+            "0x8f815710",
+            "0x8f81aac0",
+            "0x8f81aac0",
+            "0x8f815710",
+            "0x8f869d78",
+            "0x8f815710",
+            "0x8f86abc4",
+            "0x8f815ccc",
+            "0x8f81cc58",
+            "0x8f869d78",
+            "0x8f81aac0",
+            "0x8f8699a0",
+            "0x8f869f34",
+            "0x8f86abc4",
+            "0x8f8699a0",
+            "0x8f869c48",
+            "0x8f81cc58",
+            "0x8f815710",
+            "0x8f81aac0",
+            "0x8f8698fc",
+            "0x8f822c94",
+            "0x8f819ec4"
+          ]
+        },
+        {
+          "name": "switch_bootpart->call_0x8f81aac0",
+          "depth": 1,
+          "start": "0x8f81aac0",
+          "end": "0x8f81ab10",
+          "strings": [],
+          "calls": [
+            "0x8f86a708",
+            "0x8f81a9fc"
+          ]
+        },
+        {
+          "name": "switch_bootpart->call_0x8f86982c",
+          "depth": 1,
+          "start": "0x8f86982c",
+          "end": "0x8f86992c",
+          "strings": [],
+          "calls": []
+        },
+        {
+          "name": "switch_bootpart->call_0x8f869848",
+          "depth": 1,
+          "start": "0x8f869848",
+          "end": "0x8f86992c",
+          "strings": [],
+          "calls": []
+        },
+        {
+          "name": "switch_bootpart->call_0x8f869870",
+          "depth": 1,
+          "start": "0x8f869870",
+          "end": "0x8f86992c",
+          "strings": [],
+          "calls": []
+        },
+        {
+          "name": "switch_bootpart->call_0x8f8698fc",
+          "depth": 1,
+          "start": "0x8f8698fc",
+          "end": "0x8f86992c",
+          "strings": [],
+          "calls": []
+        },
+        {
+          "name": "switch_bootpart->call_0x8f8699a0",
+          "depth": 1,
+          "start": "0x8f8699a0",
+          "end": "0x8f8699c0",
+          "strings": [],
+          "calls": []
+        },
+        {
+          "name": "switch_bootpart->call_0x8f869bac",
+          "depth": 1,
+          "start": "0x8f869bac",
+          "end": "0x8f869d10",
+          "strings": [],
+          "calls": []
+        },
+        {
+          "name": "switch_bootpart->call_0x8f869d78",
+          "depth": 1,
+          "start": "0x8f869d78",
+          "end": "0x8f869e04",
+          "strings": [],
+          "calls": [
+            "0x8f8699a0",
+            "0x8f8699a0",
+            "0x8f869d10"
+          ]
+        },
+        {
+          "name": "switch_bootpart->call_0x8f86abc4",
+          "depth": 1,
+          "start": "0x8f86abc4",
+          "end": "0x8f86ac2c",
+          "strings": [],
+          "calls": [
+            "0x8f86a708"
+          ]
+        },
+        {
+          "name": "switch_bootpart->call_0x8f870a9c",
+          "depth": 1,
+          "start": "0x8f870a9c",
+          "end": "0x8f870b7c",
+          "strings": [],
+          "calls": [
+            "0x8f8699a0",
+            "0x8f8699a0",
+            "0x8f8698fc",
+            "0x8f869d78",
+            "0x8f8699a0",
+            "0x8f8699a0",
+            "0x8f8699a0",
+            "0x8f81b318",
+            "0x8f869848",
+            "0x8f869870",
+            "0x8f8699a0",
+            "0x8f869870",
+            "0x8f869e04",
+            "0x8f81b0bc"
+          ]
+        }
+      ]
+    },
+    "modify_cmdline": {
+      "registration": {
+        "table_offset": 721152,
+        "max_args": 1,
+        "repeatable": 0,
+        "function": "0x8f87078c",
+        "usage": "modify_cmdline",
+        "help": "/N\nmodify boot args\n"
+      },
+      "functions": [
+        {
+          "name": "modify_cmdline",
+          "depth": 0,
+          "start": "0x8f87078c",
+          "end": "0x8f870a9c",
+          "strings": [
+            {
+              "at": "0x8f870a68",
+              "literal": "0xfffe8f38",
+              "string": "ethaddr",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870a6c",
+              "literal": "0xffff34e1",
+              "string": "boot_args",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870a70",
+              "literal": "0xffff3506",
+              "string": "mac=",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870a74",
+              "literal": "0xffff34eb",
+              "string": " %s%s",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870a78",
+              "literal": "0xffff34f1",
+              "string": "btaddr",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870a7c",
+              "literal": "0xffff34f8",
+              "string": "androidboot.btmac=",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870a80",
+              "literal": "0xfffe5fb1",
+              "string": "sn",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870a84",
+              "literal": "0xffff32b7",
+              "string": "<NULL>",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870a88",
+              "literal": "0xffff350b",
+              "string": "123456789ABCDEF",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870a8c",
+              "literal": "0xfffe746e",
+              "string": "androidboot.serialno=",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870a90",
+              "literal": "0xfffe60bb",
+              "string": "%s",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870a94",
+              "literal": "0xffff31b3",
+              "string": "1671",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f870a98",
+              "literal": "0xffff351b",
+              "string": "ubootver",
+              "via": "string_base"
+            }
+          ],
+          "calls": [
+            "0x8f869bac",
+            "0x8f869bac",
+            "0x8f815710",
+            "0x8f815710",
+            "0x8f86982c",
+            "0x8f86abc4",
+            "0x8f869d78",
+            "0x8f869870",
+            "0x8f8699a0",
+            "0x8f8699a0",
+            "0x8f869848",
+            "0x8f815ccc",
+            "0x8f869bac",
+            "0x8f869bac",
+            "0x8f815710",
+            "0x8f815710",
+            "0x8f86982c",
+            "0x8f86abc4",
+            "0x8f869d78",
+            "0x8f869870",
+            "0x8f8699a0",
+            "0x8f8699a0",
+            "0x8f869848",
+            "0x8f815ccc",
+            "0x8f869bac",
+            "0x8f869bac",
+            "0x8f815710",
+            "0x8f8698fc",
+            "0x8f815ccc",
+            "0x8f81cc58",
+            "0x8f815710",
+            "0x8f86982c",
+            "0x8f86abc4",
+            "0x8f869d78",
+            "0x8f869870",
+            "0x8f8699a0",
+            "0x8f8699a0",
+            "0x8f869848",
+            "0x8f815ccc",
+            "0x8f86abc4",
+            "0x8f815ccc"
+          ]
+        },
+        {
+          "name": "modify_cmdline->call_0x8f815710",
+          "depth": 1,
+          "start": "0x8f815710",
+          "end": "0x8f81583c",
+          "strings": [
+            {
+              "at": "0x8f815838",
+              "literal": "0xfffe581a",
+              "string": "%s=%s\n",
+              "via": "string_base"
+            }
+          ],
+          "calls": [
+            "0x8f8670cc",
+            "0x8f815648",
+            "0x8f8670cc",
+            "0x8f81aac0",
+            "0x8f866e54",
+            "0x8f81a9fc",
+            "0x8f81b0bc"
+          ]
+        },
+        {
+          "name": "modify_cmdline->call_0x8f815ccc",
+          "depth": 1,
+          "start": "0x8f815ccc",
+          "end": "0x8f816258",
+          "strings": [
+            {
+              "at": "0x8f815d28",
+              "literal": "0xffff358a",
+              "string": "setenv",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f815f80",
+              "literal": "0xfffdc69c",
+              "string": "do_env_import",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f815f88",
+              "literal": "0xfffe5924",
+              "string": "ERROR: Cannot export environment: errno = %d\n\nat %s:%d/%s()\n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f815f8c",
+              "literal": "0xfffe5743",
+              "string": "cmd_nvedit.c",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f815f90",
+              "literal": "0xfffe5961",
+              "string": "%zX",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f815f94",
+              "literal": "0xfffe1f84",
+              "string": "filesize",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f815f98",
+              "literal": "0xfffe5750",
+              "string": "## %s: only one of \"-b\", \"-c\" or \"-t\" allowed\n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81622c",
+              "literal": "0xfffe5a76",
+              "string": "storage",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f816230",
+              "literal": "0xfffe57c9",
+              "string": "store",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f816234",
+              "literal": "0xfffe5965",
+              "string": "initargs",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f816238",
+              "literal": "0xfffe596e",
+              "string": "%s storage=%d",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81623c",
+              "literal": "0xfffe597c",
+              "string": "@put_storage: no storage in initargs: failed\n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f816240",
+              "literal": "0xfffe5971",
+              "string": "storage=%d",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f816244",
+              "literal": "0xfffe59aa",
+              "string": "@put_storage : initargs %s\n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f816248",
+              "literal": "0xfffe59c6",
+              "string": "no initargs,put storage to bootargs\n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81624c",
+              "literal": "0xfffe5f72",
+              "string": "bootargs",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f816250",
+              "literal": "0xfffe59eb",
+              "string": "@put_storage: no storage in bootargs: failed\n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f816254",
+              "literal": "0xfffe5a19",
+              "string": "@put_storage : bootargs %s\n",
+              "via": "string_base"
+            }
+          ],
+          "calls": [
+            "0x8f8158d4",
+            "0x8f819ec4",
+            "0x8f869f34",
+            "0x8f869bac",
+            "0x8f866e54",
+            "0x8f866e54",
+            "0x8f81aac0",
+            "0x8f86670c",
+            "0x8f86abc4",
+            "0x8f815ccc",
+            "0x8f81aac0",
+            "0x8f869f34",
+            "0x8f8698fc",
+            "0x8f815710",
+            "0x8f869f34",
+            "0x8f815710",
+            "0x8f869d78",
+            "0x8f815710",
+            "0x8f86abc4",
+            "0x8f815ccc",
+            "0x8f81cc58",
+            "0x8f869d78",
+            "0x8f8699a0",
+            "0x8f869f34",
+            "0x8f86abc4",
+            "0x8f8699a0",
+            "0x8f869c48",
+            "0x8f815710",
+            "0x8f81aac0",
+            "0x8f81aac0",
+            "0x8f815710",
+            "0x8f869d78",
+            "0x8f815710",
+            "0x8f86abc4",
+            "0x8f815ccc",
+            "0x8f81cc58",
+            "0x8f869d78",
+            "0x8f81aac0",
+            "0x8f8699a0",
+            "0x8f869f34",
+            "0x8f86abc4",
+            "0x8f8699a0",
+            "0x8f869c48",
+            "0x8f81cc58",
+            "0x8f815710",
+            "0x8f81aac0",
+            "0x8f8698fc",
+            "0x8f822c94",
+            "0x8f819ec4"
+          ]
+        },
+        {
+          "name": "modify_cmdline->call_0x8f81cc58",
+          "depth": 1,
+          "start": "0x8f81cc58",
+          "end": "0x8f81ced8",
+          "strings": [
+            {
+              "at": "0x8f81ce8c",
+              "literal": "0xfffe7d5f",
+              "string": "NAND BOOT,nand_saveenv :%s %d \n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81ce90",
+              "literal": "0xfffdc764",
+              "string": "saveenv",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81ce94",
+              "literal": "0xfffe7d7f",
+              "string": "SPI BOOT,spi_saveenv : %s %d \n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81cea0",
+              "literal": "0xfffe7d9e",
+              "string": "MMC BOOT,emmc_saveenv : %s %d \n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81cea4",
+              "literal": "0xfffe7dbe",
+              "string": "BOOT FROM CARD?\n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81cea8",
+              "literal": "0xfffe7dcf",
+              "string": "sf probe 2",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81ceac",
+              "literal": "0xfffe7dda",
+              "string": "SPI BOOT, spi_saveenv %s %d \n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81ceb4",
+              "literal": "0xfffe7df8",
+              "string": "SPI Flash",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81ceb8",
+              "literal": "0xfffe7e02",
+              "string": "nand exist",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81cebc",
+              "literal": "0xfffe7e0d",
+              "string": "NAND BOOT, nand_saveenv %s %d \n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81cec0",
+              "literal": "0xfffe7e2d",
+              "string": "NAND",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81cec4",
+              "literal": "0xfffe7e32",
+              "string": "mmcinfo 1",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81cec8",
+              "literal": "0xfffe7e3c",
+              "string": "MMC BOOT, emmc_saveenv %s %d \n",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81cecc",
+              "literal": "0xfffe7e5b",
+              "string": "eMMC",
+              "via": "string_base"
+            },
+            {
+              "at": "0x8f81ced0",
+              "literal": "0xfffe7e60",
+              "string": "error init devices, saveenv fail\n",
+              "via": "string_base"
+            }
+          ],
+          "calls": [
+            "0x8f81aac0",
+            "0x8f81aac0",
+            "0x8f81aac0",
+            "0x8f81aac0",
+            "0x8f822094",
+            "0x8f81aac0",
+            "0x8f81ca7c",
+            "0x8f822094",
+            "0x8f81aac0",
+            "0x8f81c14c",
+            "0x8f822094",
+            "0x8f81aac0",
+            "0x8f81c678",
+            "0x8f81aac0"
+          ]
+        },
+        {
+          "name": "modify_cmdline->call_0x8f86982c",
+          "depth": 1,
+          "start": "0x8f86982c",
+          "end": "0x8f86992c",
+          "strings": [],
+          "calls": []
+        },
+        {
+          "name": "modify_cmdline->call_0x8f869848",
+          "depth": 1,
+          "start": "0x8f869848",
+          "end": "0x8f86992c",
+          "strings": [],
+          "calls": []
+        },
+        {
+          "name": "modify_cmdline->call_0x8f869870",
+          "depth": 1,
+          "start": "0x8f869870",
+          "end": "0x8f86992c",
+          "strings": [],
+          "calls": []
+        },
+        {
+          "name": "modify_cmdline->call_0x8f8698fc",
+          "depth": 1,
+          "start": "0x8f8698fc",
+          "end": "0x8f86992c",
+          "strings": [],
+          "calls": []
+        },
+        {
+          "name": "modify_cmdline->call_0x8f8699a0",
+          "depth": 1,
+          "start": "0x8f8699a0",
+          "end": "0x8f8699c0",
+          "strings": [],
+          "calls": []
+        },
+        {
+          "name": "modify_cmdline->call_0x8f869bac",
+          "depth": 1,
+          "start": "0x8f869bac",
+          "end": "0x8f869d10",
+          "strings": [],
+          "calls": []
+        },
+        {
+          "name": "modify_cmdline->call_0x8f869d78",
+          "depth": 1,
+          "start": "0x8f869d78",
+          "end": "0x8f869e04",
+          "strings": [],
+          "calls": [
+            "0x8f8699a0",
+            "0x8f8699a0",
+            "0x8f869d10"
+          ]
+        },
+        {
+          "name": "modify_cmdline->call_0x8f86abc4",
+          "depth": 1,
+          "start": "0x8f86abc4",
+          "end": "0x8f86ac2c",
+          "strings": [],
+          "calls": [
+            "0x8f86a708"
+          ]
+        }
+      ]
+    }
+  }
+}

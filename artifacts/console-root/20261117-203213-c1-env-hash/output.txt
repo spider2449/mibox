@@ -1,0 +1,2 @@
+env dev=179:3 sectors=8192 sha256=6142e34ffd40682add106f466a4859365c15ad19bc7cc8d74335fd03f464ca2c
+bootsystem/storeboot: bootsystem=1 storeboot=store read boot1 ${loadaddr} 0 800000;bootm;run recovery 
