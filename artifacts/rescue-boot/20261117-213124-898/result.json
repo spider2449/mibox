@@ -1,0 +1,17 @@
+﻿{
+    "Action":  "Check",
+    "Stage":  "LocalCheckPassed",
+    "Candidate":  "Slim",
+    "ImageSHA256":  "dd1e6756bbbc8b5b5f268ac3b79a11ded792a6c4ee7ad43318ab641de3b14f2e",
+    "BulkUpload":  false,
+    "DeviceAccessed":  false,
+    "LoaderRequestSent":  false,
+    "FlashCommandSent":  false,
+    "EnvironmentWriteSent":  false,
+    "CustomBootVerified":  false,
+    "IndependentColdEntryVerified":  false,
+    "EntryOrigin":  "UNKNOWN: supplied externally; this launcher does not establish a cold-start trigger",
+    "StartedAt":  "2026-11-17T13:31:24.9212431Z",
+    "Evidence":  "F:\\coding\\otherPrj\\mibox\\artifacts\\rescue-boot\\20261117-213124-898",
+    "FinishedAt":  "2026-11-17T13:31:25.6868574Z"
+}

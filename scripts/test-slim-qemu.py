@@ -184,10 +184,35 @@ def main(private_key):
                 record(f'boot{boot_index}-ram-copy-of-public-key', r.stdout.split()[:2] == host_key)
                 r = remote('grep " /mnt/mibox-data " /proc/1/mountinfo')
                 record(f'boot{boot_index}-data-mounted', ' - ext4 /dev/vda ' in r.stdout, r.stdout.strip())
+                integrity = remote('cat /proc/1/root/run/mibox-alpine-integrity').stdout.strip()
                 if boot_index == 1:
+                    record('boot1-alpine-integrity-match', integrity == 'MATCH', integrity)
                     r = remote('echo SLIM_SENTINEL > /root/slim-sentinel && sync && echo WROTE')
                     record('boot1-write-sentinel', 'WROTE' in r.stdout)
+                    # B3: kill the SSH listener (parent PID1); PID1 must restart it.
+                    r = remote('for p in /proc/[0-9]*; do [ "$(cat $p/comm 2>/dev/null)" = dropbear ] && '
+                               '[ "$(awk \'/^PPid:/{print $2}\' $p/status)" = 1 ] && echo ${p#/proc/}; done')
+                    listener = r.stdout.split()
+                    killed = len(listener) == 1 and remote(f'kill -TERM {listener[0]} && echo KILLED').stdout.strip() == 'KILLED'
+                    back = False
+                    for _ in range(20):
+                        time.sleep(2)
+                        if remote('echo BACK', 10).stdout.strip() == 'BACK':
+                            back = True
+                            break
+                    text = serial.read_text(errors='replace')
+                    record('boot1-pid1-restarts-killed-ssh-listener', killed and back
+                           and f'MIBOX_ALPINE_SSH_EXITED pid={listener[0] if listener else "?"}' in text
+                           and text.count('MIBOX_ALPINE_SSH_STARTED') >= 2, ' '.join(listener))
+                    # Make one pinned file differ (trailing byte; ELF loading unaffected).
+                    r = remote('printf X >> /usr/lib/libz.so.1.3.2 && sync && echo ALTERED')
+                    record('boot1-alter-pinned-library', 'ALTERED' in r.stdout)
                 else:
+                    # Owner policy: report the mismatch, still start SSH (this session).
+                    record('boot2-integrity-mismatch-reported-ssh-still-up',
+                           integrity == 'MISMATCH usr/lib/libz.so.1.3.2'
+                           and 'MIBOX_ALPINE_INTEGRITY=MISMATCH usr/lib/libz.so.1.3.2' in serial.read_text(errors='replace'),
+                           integrity)
                     r = remote('cat /root/slim-sentinel')
                     record('boot2-sentinel-retained', r.stdout.strip() == 'SLIM_SENTINEL')
                 if boot_index == 1:

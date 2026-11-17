@@ -298,12 +298,24 @@ B1. [ ] PID1 automatically activates the existing Alpine chroot after virtual
    data. Capture mount results and kernel errors. A failed mount or detected
    filesystem error enters RAM recovery without starting Alpine or attempting
    additional automatic repair. Document future policy changes with evidence.
-B2. [ ] Define rootfs readiness and integrity checks. Pin expected immutable
+B2. [x] Define rootfs readiness and integrity checks. Pin expected immutable
    startup files or a versioned baseline manifest in the initramfs; do not trust
    a manifest solely because it sits beside its payload. Treat package upgrades,
    `/etc`, `/root`, logs and keys as explicitly mutable state with a controlled
    baseline-update procedure. Preserve existing packages and owner data.
-B3. [ ] Start and supervise the selected Alpine services from the outer PID1.
+   Done 2026-11-17. Readiness (boot mode): tree marker, os-release ID, host
+   key 0:600, dropbear executable, authorized_keys present; no tree package
+   tool runs as root at boot (the `apk info` check is launcher-mode only).
+   Integrity: `/etc/mibox-alpine-baseline` in the slim initramfs (sha
+   `3f6db0e5…`, built by `build-slim-rootfs.py` from the committed S2 device
+   hashes, cross-checked against the hash-pinned S2 archive) pins dropbear,
+   musl loader, libz, libutmps, libskarnet, busybox and 6 links. Owner policy
+   (2026-11-17): report, still start SSH. Result in `/run/mibox-alpine-integrity`
+   and kmsg `MIBOX_ALPINE_INTEGRITY=MATCH|MISMATCH <paths>`. Baseline update:
+   rebuild Slim from a new verified tree backup and re-pin. QEMU: MATCH on the
+   S2 tree, MISMATCH naming the altered libz with SSH still up. Physical Slim
+   `dd1e6756…`: MATCH (`artifacts/rescue-boot/20261117-213138-728/`).
+B3. [x] Start and supervise the selected Alpine services from the outer PID1.
    Reuse or migrate existing SSH host keys and owner authorized keys with correct
    permissions; verify that server identity survives a restart without the host
    launcher re-pinning a newly generated key. Establish time synchronization
@@ -322,6 +334,18 @@ B3. [ ] Start and supervise the selected Alpine services from the outer PID1.
    kernel start. Files the helper writes before the first sync carry 1970
    mtimes (cosmetic). Still open: supervision is a shell restart loop in the
    start script (reparented to PID1's reaper), not PID1 itself.
+   Closed the same day: PID1 (init `4d6dae1f…`) supervises Alpine dropbear.
+   The start script only writes `/run/mibox-alpine-ready`; a PID1 thread
+   starts `/usr/sbin/dropbear` via chroot to the fixed tree path (env cleared),
+   learns its exit from the reaper (no waitpid race; spawn under the reaper
+   lock), restarts with 5..60 s back-off and stops on `/run/mibox-alpine.stop`
+   (set first by the helper's stop). QEMU slim 35 checks PASS incl. killed
+   listener restarted (`artifacts/slim-qemu/20261117-212251/`); PID1 regression
+   PASS (`artifacts/pid1-supervisor-regression/`); the kpanic fault case lost
+   its console marker in 2 of 3 runs (panic output overran it), fixed with a
+   500 ms drain pause in fault builds only, then 5/5 PASS. Physical: listener
+   181 killed, SSH back after ~6 s, new listener 437 with parent 1
+   (`artifacts/console-root/20261117-213307-b3-supervision/`).
 B3a. [ ] Optional experiment, disabled by default and not a startup gate:
    extracted MiBOX config has CONFIG_SWAP=y and CONFIG_ZRAM=y; verify the live
    device/control interface, supported compression and setup/teardown behavior
@@ -475,8 +499,8 @@ C3. [x] Prepare a concrete write AND restoration procedure for the proven target
    with no ext4 mounted and no persistent shell PASS (`artifacts/console-root/20261117-211336-c3-failsafe-prep/`):
    restore direction reports AlreadyInstalled (boot1 still stock), install
    direction DryRunVerified, no node left behind.
-   C4 gate status: B2 (integrity manifest), B3 PID1 supervision and the rest of
-   B7 (cold power-on of Slim, HDMI if display files are added) are open.
+   C4 gate status: B2 and B3 closed 2026-11-17; the rest of B7 (cold
+   power-on of Slim, HDMI if display files are added) is open.
 C4. [ ] Once mandatory B gates (B1-B7, excluding optional B3a) pass and C1-C3
    evidence is ready, obtain explicit owner
    authorization for the specific boot-partition write. Install the identical

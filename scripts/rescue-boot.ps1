@@ -32,8 +32,8 @@ if($Candidate -eq 'Slim') {
     # Slim A3 image: FailSafe rootfs without package tools/RAM SSH, PID1 and
     # /bin/mibox with PERSIST-STOP; activates the persistent Alpine tree at boot.
     # Physically RAM-booted 2026-11-17 (artifacts/rescue-boot/20261117-202114-211).
-    $hash='87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28'
-    $initHash='b1f3b6540fe22d1c33ea2f19f37ca1662f0ad6da5ec9b484946d9b6fd5a21fbc'
+    $hash='dd1e6756bbbc8b5b5f268ac3b79a11ded792a6c4ee7ad43318ab641de3b14f2e'
+    $initHash='4d6dae1f9da50c63679c9a5c9446dc6f7282211dde4d9cef614796cdddf8c4e5'
     $miboxHash='c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226'
 }
 $proof=[ordered]@{Action=$Action;Stage='LocalCheck';Candidate=$Candidate;ImageSHA256=$hash;BulkUpload=[bool]$Bulk

@@ -2,9 +2,9 @@
   "status": "HOST_BUILT_NOT_PHYSICALLY_VALIDATED",
   "profile": "slim-a3",
   "source_rootfs_sha256": "266bdba6eb6efd39580edc742855a37ede189bf4a8925483b03462e73c9612ed",
-  "gzip_bytes": 1718000,
-  "gzip_sha256": "349e74a8748cc83ee369054cfd97701d1edb14dace0bbd8c5a2678f547ad6c67",
-  "cpio_bytes": 2793492,
+  "gzip_bytes": 1724791,
+  "gzip_sha256": "a3be4149d839549ff8da437f99b970ebdc7304e5d2c71235669c46cd79707f2c",
+  "cpio_bytes": 2807696,
   "kept_unchanged": {
     "sbin/adbd": "f2a875f1f6230fde084264e2927d1dbf3bf95bcf5e494809814a488caf532afc",
     "system/bin/sh": "d44fd1bb1a8a84fe6ed0b4d850dd05d506aaf4fefdb54d24eb99690fb6583fc6",
@@ -18,8 +18,8 @@
   "replaced_from_release": {
     "init": {
       "failsafe_sha256": "a24de13aecd55829483099ab921fdd3651a481656e404b68874017c99267680c",
-      "sha256": "b1f3b6540fe22d1c33ea2f19f37ca1662f0ad6da5ec9b484946d9b6fd5a21fbc",
-      "bytes": 515592
+      "sha256": "4d6dae1f9da50c63679c9a5c9446dc6f7282211dde4d9cef614796cdddf8c4e5",
+      "bytes": 528168
     },
     "bin/mibox": {
       "failsafe_sha256": "e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07",
@@ -27,6 +27,7 @@
       "bytes": 515460
     }
   },
+  "alpine_baseline_sha256": "3f6db0e57a26f74c891c0736e9038b9e7c4db45e1211183b6b51c89bc4a16b7e",
   "removed": [
     "etc/apk",
     "etc/apk/arch",
@@ -144,8 +145,8 @@
       "sha256": "34bb515834345724107dc1cefaeaee3fa0f522e0fec85caae889f348804e14a6"
     },
     "init": {
-      "bytes": 515592,
-      "sha256": "b1f3b6540fe22d1c33ea2f19f37ca1662f0ad6da5ec9b484946d9b6fd5a21fbc"
+      "bytes": 528168,
+      "sha256": "4d6dae1f9da50c63679c9a5c9446dc6f7282211dde4d9cef614796cdddf8c4e5"
     },
     "bin/busybox": {
       "bytes": 713964,
@@ -268,8 +269,8 @@
       "sha256": "b4a2c06db38742e8c42c3c9838b285a7d8cdac6c091ff3df5ff9a15f1e41b9c7"
     },
     "sbin/mibox-console-start": {
-      "bytes": 3302,
-      "sha256": "bd4c781c6c62df6dc62ff0ac802eb080757d38dc2d27338f6ca1733f8e32cbe6"
+      "bytes": 2892,
+      "sha256": "940885b71d8bbcfa892168c995f7da9f7e2a3e132415a1fc3256344a7bf8e8e1"
     },
     "etc/busybox-paths.d/busybox": {
       "bytes": 3989,
@@ -351,9 +352,13 @@
       "bytes": 3811,
       "sha256": "1cf94e3918ce389c722f4408490ae7334321a5ca2aec2c945b0c47662aa274a6"
     },
+    "etc/mibox-alpine-baseline": {
+      "bytes": 865,
+      "sha256": "3f6db0e57a26f74c891c0736e9038b9e7c4db45e1211183b6b51c89bc4a16b7e"
+    },
     "sbin/mibox-persistent-console": {
-      "bytes": 10209,
-      "sha256": "e29258be42bd2ac4b155293cb8f808547855c09f696a8f264f7f242a11c590ea"
+      "bytes": 11248,
+      "sha256": "3b7617979f89f3b58e3658efa11b672e908e7800e7136d91e4963640357dcb1a"
     }
   }
 }

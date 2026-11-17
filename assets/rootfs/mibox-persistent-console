@@ -97,7 +97,10 @@ start)
         if ! mountpoint -q "$root/$path"; then mount -o bind "/$path" "$root/$path"; fi
     done
     if ! mountpoint -q "$root/dev/pts"; then mount -o bind /dev/pts "$root/dev/pts"; fi
-    chroot "$root" /sbin/apk info -e dropbear
+    if [ -z "$boot" ]; then
+        # Launcher mode only: at boot no tree package tool runs as root.
+        chroot "$root" /sbin/apk info -e dropbear
+    fi
     # Package changes go through a guard that refuses them below the floor.
     # Rewritten on every start; /sbin/apk itself is unchanged.
     mkdir -p "$root/usr/local/sbin"
@@ -176,6 +179,27 @@ APKHOOK
         test -s "$key.pub" ; test ! -L "$key.pub"
         test -x "$root/usr/sbin/dropbear"
         test -s "$root/root/.ssh/authorized_keys"
+        # B2 (owner policy 2026-11-17: report, still start SSH): compare the
+        # tree's boot-time root code with the baseline pinned in this image.
+        state=MATCH
+        mismatches=
+        if [ -r /etc/mibox-alpine-baseline ]; then
+            while read -r kind value path; do
+                case "$kind" in
+                file)
+                    actual=$(sha256sum "$root/$path" 2>/dev/null | cut -d' ' -f1)
+                    [ "$actual" = "$value" ] || mismatches="$mismatches $path" ;;
+                link)
+                    actual=$(readlink "$root/$path" 2>/dev/null || true)
+                    [ "$actual" = "$value" ] || mismatches="$mismatches $path" ;;
+                esac
+            done < /etc/mibox-alpine-baseline
+        else
+            mismatches=" (no baseline in image)"
+        fi
+        [ -n "$mismatches" ] && state=MISMATCH
+        echo "$state$mismatches" > /run/mibox-alpine-integrity
+        kmsg "MIBOX_ALPINE_INTEGRITY=$state$mismatches"
         # USB ADB (uid 2000) cannot read data; publish the public key in RAM so
         # the host can authenticate the persistent SSH identity over USB.
         mkdir -p /etc/dropbear
@@ -211,10 +235,9 @@ stop)
     # process rooted in the tree, which can include the caller's SSH session.
     test "$(readlink /proc/self/root)" = /
     trap '' HUP PIPE
-    if [ -f /run/mibox-alpine-supervisor.pid ]; then
-        touch /run/mibox-alpine.stop
-        kill "$(cat /run/mibox-alpine-supervisor.pid)" 2>/dev/null || true
-    fi
+    # Suppress PID1's SSH restarts before killing anything (slim image).
+    touch /run/mibox-alpine.stop
+    rm -f /run/mibox-alpine-ready
     rooted() {
         for p in /proc/[0-9]*; do
             if [ "$(readlink "$p/root" 2>/dev/null)" = "$root" ]; then echo "${p#/proc/}"; fi
@@ -233,7 +256,7 @@ stop)
     fi
     sync
     if ! unmount_all; then kmsg MIBOX_PERSISTENT_STOP_UNMOUNT_FAILED; exit 1; fi
-    rm -f /run/mibox-alpine-supervisor.pid /etc/dropbear/dropbear_ed25519_host_key.pub
+    rm -f /etc/dropbear/dropbear_ed25519_host_key.pub
     kmsg MIBOX_PERSISTENT_CONSOLE_STOPPED
     ;;
 *) echo 'Usage: mibox-persistent-console start|stop [--boot] [--qemu]' >&2; exit 2 ;;

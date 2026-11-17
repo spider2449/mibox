@@ -225,7 +225,7 @@
     "target/mibox-boot-candidate-slim/boot1-custom.NOT_READY.img": {
       "file": "target/mibox-boot-candidate-slim/boot1-custom.NOT_READY.img",
       "bytes": 8388608,
-      "sha256": "87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28",
+      "sha256": "dd1e6756bbbc8b5b5f268ac3b79a11ded792a6c4ee7ad43318ab641de3b14f2e",
       "header": {
         "name": "",
         "cmdline": "",
@@ -244,18 +244,18 @@
         },
         "ramdisk": {
           "start": 3901440,
-          "size": 1718000,
-          "end": 5619440,
-          "sha256": "349e74a8748cc83ee369054cfd97701d1edb14dace0bbd8c5a2678f547ad6c67"
+          "size": 1724791,
+          "end": 5626231,
+          "sha256": "a3be4149d839549ff8da437f99b970ebdc7304e5d2c71235669c46cd79707f2c"
         },
         "second": {
-          "start": 5619712,
+          "start": 5627904,
           "size": 11414,
-          "end": 5631126,
+          "end": 5639318,
           "sha256": "24b30f1aafe26845839966721b3c083cb3ed49280178276b6114df6d725cb95c"
         }
       },
-      "aligned_end": 5632000,
+      "aligned_end": 5640192,
       "uimage": {
         "magic": "0x27051956",
         "load": "0x80008000",
@@ -275,8 +275,8 @@
         "totalsize": 11414
       },
       "ramdisk": {
-        "gzip_bytes": 1718000,
-        "cpio_bytes": 2793492
+        "gzip_bytes": 1724791,
+        "cpio_bytes": 2807696
       },
       "regions": [
         {
@@ -301,9 +301,9 @@
         },
         {
           "name": "ramdisk page padding",
-          "start": 5619440,
-          "end": 5619712,
-          "bytes": 272,
+          "start": 5626231,
+          "end": 5627904,
+          "bytes": 1673,
           "classification": "ZERO",
           "nonzero_bytes": 0,
           "first_nonzero": null,
@@ -311,8 +311,8 @@
         },
         {
           "name": "second page padding",
-          "start": 5631126,
-          "end": 5632000,
+          "start": 5639318,
+          "end": 5640192,
           "bytes": 874,
           "classification": "ZERO",
           "nonzero_bytes": 0,
@@ -321,120 +321,9 @@
         },
         {
           "name": "tail after last section",
-          "start": 5632000,
+          "start": 5640192,
           "end": 8388608,
-          "bytes": 2756608,
-          "classification": "ZERO",
-          "nonzero_bytes": 0,
-          "first_nonzero": null,
-          "last_nonzero": null
-        }
-      ],
-      "problems": [],
-      "status": "PASS"
-    },
-    "target/mibox-boot-candidate-console-failsafe/boot1-custom.NOT_READY.img": {
-      "file": "target/mibox-boot-candidate-console-failsafe/boot1-custom.NOT_READY.img",
-      "bytes": 8388608,
-      "sha256": "f5e9cd6b8677504429340dcc1f51261fd10108020366461c0cede198afcd6d93",
-      "header": {
-        "name": "",
-        "cmdline": "",
-        "page_size": 2048,
-        "kernel_addr": "0x10008000",
-        "ramdisk_addr": "0x11000000",
-        "second_addr": "0x10f00000",
-        "tags_addr": "0x10000100"
-      },
-      "sections": {
-        "kernel": {
-          "start": 2048,
-          "size": 3897711,
-          "end": 3899759,
-          "sha256": "0cfa74c8cde102c877aa9605910e10f5541480e1dc9e0fb6bee02b75d0a638f7"
-        },
-        "ramdisk": {
-          "start": 3901440,
-          "size": 4441336,
-          "end": 8342776,
-          "sha256": "266bdba6eb6efd39580edc742855a37ede189bf4a8925483b03462e73c9612ed"
-        },
-        "second": {
-          "start": 8343552,
-          "size": 11414,
-          "end": 8354966,
-          "sha256": "24b30f1aafe26845839966721b3c083cb3ed49280178276b6114df6d725cb95c"
-        }
-      },
-      "aligned_end": 8355840,
-      "uimage": {
-        "magic": "0x27051956",
-        "load": "0x80008000",
-        "entry": "0x80008000",
-        "data_size": 3897647,
-        "name": "Linux-3.10.33",
-        "os": 5,
-        "arch": 2,
-        "type": 2,
-        "compression": 3,
-        "header_crc_ok": true,
-        "data_crc_ok": true,
-        "trailing_bytes_after_data": 0
-      },
-      "fdt": {
-        "magic": "0xd00dfeed",
-        "totalsize": 11414
-      },
-      "ramdisk": {
-        "gzip_bytes": 4441336,
-        "cpio_bytes": 7737428
-      },
-      "regions": [
-        {
-          "name": "header slack after image ID",
-          "start": 608,
-          "end": 2048,
-          "bytes": 1440,
-          "classification": "ZERO",
-          "nonzero_bytes": 0,
-          "first_nonzero": null,
-          "last_nonzero": null
-        },
-        {
-          "name": "kernel page padding",
-          "start": 3899759,
-          "end": 3901440,
-          "bytes": 1681,
-          "classification": "ZERO",
-          "nonzero_bytes": 0,
-          "first_nonzero": null,
-          "last_nonzero": null
-        },
-        {
-          "name": "ramdisk page padding",
-          "start": 8342776,
-          "end": 8343552,
-          "bytes": 776,
-          "classification": "ZERO",
-          "nonzero_bytes": 0,
-          "first_nonzero": null,
-          "last_nonzero": null
-        },
-        {
-          "name": "second page padding",
-          "start": 8354966,
-          "end": 8355840,
-          "bytes": 874,
-          "classification": "ZERO",
-          "nonzero_bytes": 0,
-          "first_nonzero": null,
-          "last_nonzero": null
-        },
-        {
-          "name": "tail after last section",
-          "start": 8355840,
-          "end": 8388608,
-          "bytes": 32768,
+          "bytes": 2748416,
           "classification": "ZERO",
           "nonzero_bytes": 0,
           "first_nonzero": null,
@@ -457,11 +346,6 @@
       "header_addresses_equal_boot1": true
     },
     "target/mibox-boot-candidate-slim/boot1-custom.NOT_READY.img": {
-      "kernel_equal_boot1": true,
-      "dtb_equal_boot1": true,
-      "header_addresses_equal_boot1": true
-    },
-    "target/mibox-boot-candidate-console-failsafe/boot1-custom.NOT_READY.img": {
       "kernel_equal_boot1": true,
       "dtb_equal_boot1": true,
       "header_addresses_equal_boot1": true

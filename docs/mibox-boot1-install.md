@@ -20,7 +20,7 @@ bootloader, env, boot, recovery, system or data partitions.
 | Item | SHA256 |
 | --- | --- |
 | Current boot1 = stock backup `phone-tools/backup/2026-11-13/boot1.img` | `06d9eb7e4c93ff97bcaff7dc0f4d274ddd8a51efe8bd3639bca2cc31f8314222` |
-| Candidate: Slim `target/mibox-boot-candidate-slim/boot1-custom.NOT_READY.img` | `87daa0d3e6836a4bff422fb7d1ab6d6ca8643317dd13b188555205a696e08e28` |
+| Candidate: Slim `target/mibox-boot-candidate-slim/boot1-custom.NOT_READY.img` | `dd1e6756bbbc8b5b5f268ac3b79a11ded792a6c4ee7ad43318ab641de3b14f2e` |
 | Tool `mibox-partwrite` (armv7 static, built from `src/bin/mibox-partwrite.rs`) | `e4750d65206780f16a44a957188a87a591d24f1dbdfe16ba8acb0c2d9707d1ec` |
 
 A read-only dry run from FailSafe (RAM root, no data mounted) passed on 2026-11-17
@@ -49,13 +49,13 @@ backup and the candidate, and the device's boot1 still hashes `06d9eb7e…`.
 1. Box on Slim or FailSafe in RAM, PC attached, data may stay mounted (boot1
    is never mounted). Confirm `adb … shell cat /proc/sys/kernel/random/boot_id`.
 2. Upload tool and candidate into RAM (`/proc/1/root/tmp`), check both hashes.
-3. Dry run: `--image /tmp/slim.img --image-sha256 87daa0d3… --expect-current-sha256 06d9eb7e… --dry-run`
+3. Dry run: `--image /tmp/slim.img --image-sha256 dd1e6756… --expect-current-sha256 06d9eb7e… --dry-run`
    must print `DryRunVerified`.
 4. Write: the same without `--dry-run`; must print
-   `MIBOX_PARTWRITE_READBACK_VERIFIED=87daa0d3…` and `RESULT=Written`.
+   `MIBOX_PARTWRITE_READBACK_VERIFIED=dd1e6756…` and `RESULT=Written`.
 5. Independent second collection, separate command:
    `echo 3 > /proc/sys/vm/drop_caches; dd if=<boot1 node> bs=65536 | sha256sum`
-   (node via `scripts/device/a3a-hash-boot-partitions.sh`) must give `87daa0d3…`.
+   (node via `scripts/device/a3a-hash-boot-partitions.sh`) must give `dd1e6756…`.
 6. Remove uploads. Verification of the result is C5 (cold start without PC).
 
 ## Restore (back to stock boot1)
@@ -65,11 +65,15 @@ with the PC attached -> C003):
 
 1. Upload the tool and `boot1.img` (`06d9eb7e…`).
 2. `--image /tmp/boot1.img --image-sha256 06d9eb7e… --expect-current-sha256 <current>`
-   where `<current>` is the hash read in step 5 above (normally `87daa0d3…`).
+   where `<current>` is the hash read in step 5 above (normally `dd1e6756…`).
    If boot1's content is unknown, first hash it read-only and name that hash.
 3. Same readback and independent re-hash, expecting `06d9eb7e…`.
 
 ## Rehearsal evidence
+
+The dry runs below used the earlier Slim `87daa0d3…`; the tool is image-agnostic.
+The current candidate `dd1e6756…` (B2 baseline, PID1 SSH supervision) passed
+A3a-style checks via `verify-boot-backups.py` in the same session.
 
 - Host unit tests (`cargo test --target x86_64-unknown-linux-gnu --bin mibox-partwrite`):
   7 pass — SHA-256 vectors, write then restore, refusals leave the target

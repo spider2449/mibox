@@ -26,6 +26,13 @@ mod usb_adb;
 mod usb_console;
 
 static LAST_REAPED: AtomicI32 = AtomicI32::new(0);
+/// PID of the supervised Alpine SSH server; the generic reaper records its
+/// exit status here (-1 while running) so the supervisor never races it.
+static SUPERVISED_PID: AtomicI32 = AtomicI32::new(0);
+static SUPERVISED_STATUS: AtomicI32 = AtomicI32::new(-1);
+const ALPINE_ROOT: &str = "/mnt/mibox-data/mibox-console/rootfs";
+const ALPINE_READY: &str = "/run/mibox-alpine-ready";
+const ALPINE_STOP: &str = "/run/mibox-alpine.stop";
 static REAPER_LOCK: Mutex<()> = Mutex::new(());
 
 unsafe extern "C" {
@@ -139,6 +146,71 @@ fn hardware_test(action: &str) -> io::Result<String> {
         status.code().unwrap_or(1)
     ));
     Ok(output)
+}
+
+/// Plan B3: PID1 supervises Alpine's dropbear once the slim start script has
+/// activated the tree (`/run/mibox-alpine-ready`). Restarts with back-off;
+/// `/run/mibox-alpine.stop` (set by the persistence stop) suppresses restarts.
+/// The tree path is fixed here, never taken from the marker.
+fn supervise_alpine_ssh() {
+    use std::os::unix::process::CommandExt;
+    unsafe extern "C" {
+        fn chroot(path: *const c_char) -> c_int;
+        fn chdir(path: *const c_char) -> c_int;
+    }
+    let mut delay = 5u64;
+    loop {
+        let ready = std::path::Path::new(ALPINE_READY).exists();
+        let stopped = std::path::Path::new(ALPINE_STOP).exists();
+        if !ready || stopped {
+            thread::sleep(Duration::from_secs(1));
+            continue;
+        }
+        let root = CString::new(ALPINE_ROOT).unwrap();
+        let slash = CString::new("/").unwrap();
+        let mut command = Command::new("/usr/sbin/dropbear");
+        command
+            .args(["-F", "-E", "-s", "-j", "-k", "-p", "22", "-r", "/etc/dropbear/dropbear_ed25519_host_key"])
+            .env_clear()
+            .env("PATH", "/usr/sbin:/usr/bin:/sbin:/bin")
+            .stdin(Stdio::null());
+        unsafe {
+            command.pre_exec(move || {
+                if chroot(root.as_ptr()) != 0 || chdir(slash.as_ptr()) != 0 {
+                    return Err(io::Error::last_os_error());
+                }
+                Ok(())
+            });
+        }
+        SUPERVISED_STATUS.store(-1, Ordering::SeqCst);
+        let started = std::time::Instant::now();
+        let spawned = {
+            // A failed exec makes spawn wait for the child; keep the reaper out.
+            let _guard = REAPER_LOCK.lock().unwrap_or_else(|e| e.into_inner());
+            command.spawn()
+        };
+        match spawned {
+            Ok(child) => {
+                let pid = child.id() as c_int;
+                SUPERVISED_PID.store(pid, Ordering::SeqCst);
+                drop(child); // PID1's reaper collects it and records the status.
+                eprintln!("MIBOX_ALPINE_SSH_STARTED pid={pid}");
+                while SUPERVISED_STATUS.load(Ordering::SeqCst) == -1 {
+                    thread::sleep(Duration::from_millis(200));
+                }
+                let status = SUPERVISED_STATUS.load(Ordering::SeqCst);
+                SUPERVISED_PID.store(0, Ordering::SeqCst);
+                eprintln!("MIBOX_ALPINE_SSH_EXITED pid={pid} status={status:#x}");
+            }
+            Err(error) => eprintln!("MIBOX_ALPINE_SSH_SPAWN_FAILED {error}"),
+        }
+        if std::path::Path::new(ALPINE_STOP).exists() {
+            continue;
+        }
+        // A run that lasted a minute resets the back-off.
+        delay = if started.elapsed() > Duration::from_secs(60) { 5 } else { (delay * 2).min(60) };
+        thread::sleep(Duration::from_secs(delay));
+    }
 }
 
 const PERSISTENCE_HELPER: &str = "/sbin/mibox-persistent-console";
@@ -346,6 +418,9 @@ fn main() {
             // Bypasses the PID1 fail-safe on purpose: PID1 exit makes the kernel
             // panic ("Attempted to kill init"), testing kernel.panic=20 restart.
             eprintln!("MIBOX_KERNEL_PANIC_TEST pid1-exit");
+            // Fault builds only: let the serial console drain the marker before
+            // the kernel's panic output (observed lost in 2 of 3 QEMU runs).
+            thread::sleep(Duration::from_millis(500));
             std::process::exit(1);
         }
     }
@@ -421,6 +496,7 @@ fn main() {
             Err(error) => eprintln!("mibox-init: console services unavailable: {error}"),
         }
     }
+    thread::spawn(supervise_alpine_ssh);
     thread::spawn(|| loop {
         let mut status = 0;
         {
@@ -433,6 +509,9 @@ fn main() {
                     break;
                 }
                 LAST_REAPED.store(pid, Ordering::SeqCst);
+                if pid == SUPERVISED_PID.load(Ordering::SeqCst) {
+                    SUPERVISED_STATUS.store(status & 0xffff, Ordering::SeqCst);
+                }
             }
         }
         thread::sleep(Duration::from_millis(100));

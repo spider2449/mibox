@@ -63,20 +63,8 @@ if ! /sbin/mibox-persistent-console start --boot $qemu > /run/mibox-persistent-s
     say MIBOX_PERSISTENT_UNAVAILABLE
     exit 0
 fi
-root=/mnt/mibox-data/mibox-console/rootfs
 rm -f /run/mibox-alpine.stop
-echo $$ > /run/mibox-alpine-supervisor.pid
+# PID1 supervises Alpine's dropbear from here on (plan B3): it starts and
+# restarts it while this marker exists and the stop marker does not.
+echo ready > /run/mibox-alpine-ready
 say MIBOX_ALPINE_SSH_STARTING
-# Supervise Alpine's dropbear: restart after an exit, with a fixed back-off,
-# until the persistence helper's stop marks /run/mibox-alpine.stop.
-trap 'exit 0' TERM
-while [ ! -e /run/mibox-alpine.stop ]; do
-    chroot "$root" /usr/sbin/dropbear -F -E -s -j -k -p 22 \
-        -r /etc/dropbear/dropbear_ed25519_host_key < /dev/null &
-    child=$!
-    wait "$child"
-    status=$?
-    [ -e /run/mibox-alpine.stop ] && break
-    say "MIBOX_ALPINE_SSH_EXITED status=$status; restarting in 5 s"
-    sleep 5
-done

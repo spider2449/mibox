@@ -15,9 +15,44 @@ import importlib.util
 import json
 import posixpath
 import stat
+import tarfile
 from pathlib import Path
 
 SOURCE_SHA256 = '266bdba6eb6efd39580edc742855a37ede189bf4a8925483b03462e73c9612ed'
+# B2 baseline: Alpine files the slim boot runs as root (dropbear, what it
+# links, the musl loader, busybox as the root login shell) and the links that
+# resolve to them. Hashes come from the committed S2 device evidence; link
+# targets from the S2 backup archive, whose hash is pinned.
+BASELINE_FILES = ['usr/sbin/dropbear', 'lib/ld-musl-armhf.so.1', 'usr/lib/libz.so.1.3.2',
+                  'usr/lib/libutmps.so.0.1.3.1', 'usr/lib/libskarnet.so.2.14.4.0', 'bin/busybox']
+BASELINE_LINKS = ['lib/libc.musl-armv7.so.1', 'usr/lib/libz.so.1', 'usr/lib/libutmps.so.0.1',
+                  'usr/lib/libskarnet.so.2.14', 'bin/sh', 'bin/ash']
+S2_SHA256 = 'artifacts/storage/s2-20261117/device-sha256.txt'
+S2_TAR = 'phone-tools/backup/2026-11-17-s2/mibox-console.tar'
+S2_TAR_SHA256 = '5d655f74e0ccc9af7d1b4b6169b8c5a9cf8bfbfed73d6768358e4d22e6b492ae'
+
+
+def alpine_baseline(root):
+    digests = {}
+    for line in (root / S2_SHA256).read_text().splitlines():
+        digest, path = line.split('  ', 1)
+        digests[path.removeprefix('mibox-console/rootfs/')] = digest
+    if hashlib.sha256((root / S2_TAR).read_bytes()).hexdigest() != S2_TAR_SHA256:
+        raise ValueError('S2 backup archive hash mismatch')
+    with tarfile.open(root / S2_TAR) as tar:
+        members = {m.name.removeprefix('mibox-console/rootfs/'): m for m in tar.getmembers()}
+        lines = ['# MIBOX_ALPINE_BASELINE_V1 from S2 2026-11-17 (sha256 or link target)']
+        for path in BASELINE_FILES:
+            data = tar.extractfile(members[path]).read()
+            if hashlib.sha256(data).hexdigest() != digests[path]:
+                raise ValueError(f'S2 archive and device hash differ: {path}')
+            lines.append(f'file {digests[path]} {path}')
+        for path in BASELINE_LINKS:
+            member = members[path]
+            if not member.issym():
+                raise ValueError(f'not a symlink in S2: {path}')
+            lines.append(f'link {member.linkname} {path}')
+    return ('\n'.join(lines) + '\n').encode()
 # init and bin/mibox come from the current release build (PERSIST-STOP, B5).
 REPLACED_FROM_RELEASE = {'init': 'mibox-init', 'bin/mibox': 'mibox-userland'}
 KEEP_UNCHANGED = ['sbin/adbd', 'system/bin/sh', 'bin/busybox',
@@ -67,6 +102,8 @@ def build(root, output):
                     removed.append(name)
                     del entries[name]
                     changed = True
+    baseline = alpine_baseline(root)
+    entries['etc/mibox-alpine-baseline'] = (0o100444, baseline, 0, 0)
     assets = root / 'assets/rootfs'
     base_spec = importlib.util.spec_from_file_location('base', root / 'scripts/build-mibox-rootfs.py')
     base = importlib.util.module_from_spec(base_spec)
@@ -97,7 +134,7 @@ def build(root, output):
     report = dict(status='HOST_BUILT_NOT_PHYSICALLY_VALIDATED', profile='slim-a3',
                   source_rootfs_sha256=SOURCE_SHA256,
                   gzip_bytes=len(compressed), gzip_sha256=hashlib.sha256(compressed).hexdigest(),
-                  cpio_bytes=len(archive), kept_unchanged=kept, replaced_from_release=replaced, removed=sorted(removed),
+                  cpio_bytes=len(archive), kept_unchanged=kept, replaced_from_release=replaced, alpine_baseline_sha256=hashlib.sha256(baseline).hexdigest(), removed=sorted(removed),
                   busybox_applet_links=busybox_links,
                   ssh_server='persistent Alpine tree (/usr/sbin/dropbear) after data activation',
                   usb_adb_enabled_by_rootfs_marker=True, private_keys_included=False,
