@@ -189,7 +189,7 @@ A1. [x] Inventory the current pinned Console initramfs and existing persistent
    | apk, libapk, OpenSSL, CA certs, scanelf, apk keys | Alpine | package management only (~2.1 MB gzip) |
 
    The A3 minimal set projects to 1547200 bytes gzip (S5).
-A2. [ ] Preserve `/mnt/mibox-data/mibox-console/rootfs` as the canonical Alpine
+A2. [x] Preserve `/mnt/mibox-data/mibox-console/rootfs` as the canonical Alpine
    tree. Before changing it, create and verify a recoverable backup of that tree,
    configuration and keys. Do not duplicate the whole distribution, format data,
    or overwrite unrelated Android files. Device identity gates remain 179:11,
@@ -209,7 +209,7 @@ A2. [ ] Preserve `/mnt/mibox-data/mibox-console/rootfs` as the canonical Alpine
    `mibox-console.replaced-<date>` (never delete), stream
    `tar -xpf - --numeric-owner` of `mibox-console.tar` into the data root,
    unmount, then rerun the S2 `list`/`hashes` modes and diff with S2.
-A3. [~] Build a separate slim initramfs with custom PID1, authenticated USB ADB,
+A3. [x] Build a separate slim initramfs with custom PID1, authenticated USB ADB,
    required BusyBox applets/libraries, fixed-IP network setup, the data/chroot
    lifecycle helper and a usable RAM recovery shell. Keep SSH in RAM only if
    needed for recovery; otherwise start it in Alpine. Do not add DHCP by default:
@@ -234,6 +234,9 @@ A3. [~] Build a separate slim initramfs with custom PID1, authenticated USB ADB,
    (`test-console-qemu.py --persistent`, disk raised to 512 MiB for the S4
    floor) PASS (`artifacts/slim-qemu/regression-helper-launcher-mode-20261117/`).
    Open before any physical boot: see B5 note (restart with data mounted).
+   Status 2026-11-18: closed. The B5 PERSIST-STOP gap was fixed before the
+   physical boots; Slim passed B7 in RAM and runs from flash since C4/C5
+   (current boot1 `f11de99e…` after A5).
 A3a. [x] Before A4 or any new boot-image packaging, revalidate the complete
    hash-checked boot/boot1 backups and their parsed section bounds/tails.
    Start from `docs/mibox-stock-images.md`, its verified backup manifest, and
@@ -261,12 +264,18 @@ A3a. [x] Before A4 or any new boot-image packaging, revalidate the complete
    07:47:46 UTC. Android on 2026-11-13 reported `#1 SMP PREEMPT Mon Feb 20
    15:47:21 CST 2017` (07:47:21 UTC), i.e. that cold Android boot ran boot1's
    kernel. One observation; it does not establish current env selection.
-A4. [ ] After A3a passes, preserve stock kernel/uImage, DTB, cmdline and load
+A4. [x] After A3a passes, preserve stock kernel/uImage, DTB, cmdline and load
    addresses. Recalculate
    Android header sizes, section offsets, alignment and total size for the new
    ramdisk; independently inspect and hash the resulting image. Target a
    compressed initramfs <= 1.5 MiB if the required functions fit; the mandatory
    limit is the complete image <= 8388608 bytes with measured slack.
+   Status 2026-11-18: mandatory limit met. Every Slim candidate carries
+   boot1's exact kernel, DTB and header addresses and passes the independent
+   A3a parser (zero tails). The 1.5 MiB (1572864-byte) target was NOT met:
+   ramdisk 1717239 before A5 (owner kept `system/bin/sh` and the persistence
+   helper) and 1945354 in the installed `f11de99e…` (fbhandoff and splash),
+   slack 2529280.
 A5. [x] Add fbhandoff and splash after slimming provides sufficient measured
    capacity. Record final image size and slack; optional display assets must not
    block a functional independent console boot.
@@ -302,7 +311,7 @@ the old pinned image and a compatible persistent-tree backup for rollback.
 
 ## Phase B — automatic Alpine startup, recovery and restart
 
-B1. [ ] PID1 automatically activates the existing Alpine chroot after virtual
+B1. [x] PID1 automatically activates the existing Alpine chroot after virtual
    filesystems, authenticated ADB and the verified static network are ready.
    Reuse and harden the existing helper: validate device and filesystem identity,
    mount location, directory ownership/permissions and symlink guards; create
@@ -370,7 +379,7 @@ B3a. [ ] Optional experiment, disabled by default and not a startup gate:
    unnecessary unless separately justified and verified. Record swap usage,
    physical zram allocation, responsiveness, OOM and shutdown behavior; a
    compressible workload alone does not establish practical capacity or benefit.
-B4. [ ] If data is absent, wrong, full, invalid, or fails to mount/start, keep
+B4. [x] If data is absent, wrong, full, invalid, or fails to mount/start, keep
    PID1, authenticated USB ADB and a RAM shell available. Do not start partial
    services or overwrite the failed tree. Record failure and allow explicit
    recovery. C003 RAM rescue is available on the next bootloader entry, not as a
@@ -382,6 +391,14 @@ B1/B4 progress 2026-11-17 (QEMU only, see A3): the slim start script runs
    failure (`MIBOX_PERSISTENT_BOOT_FAILED`), and otherwise leaves PID1 + USB
    ADB only (`MIBOX_PERSISTENT_UNAVAILABLE`). Alpine dropbear runs under a
    shell restart loop, not yet PID1 supervision (B3).
+B1/B4 status 2026-11-18: B1 closed physically (B7 RAM boots, C5 flash boots:
+   data mounted ~6 s after kernel start, Alpine SSH under PID1). B4: absent
+   disk and an ext4 without the tree are exercised in QEMU (RAM-only, no SSH,
+   nothing created, fsck clean). Wrong device identity (not 179:11 or not
+   5168640 sectors) is refused by the helper's guard but not exercised by any
+   test. Data below the 256 MiB floor is reported (`MIBOX_DATA_BELOW_FLOOR`)
+   and SSH still starts by design; only apk refuses (S4). PID1 does not
+   enforce the floor itself (S4 open item).
 B5 gap 2026-11-17: `stop` now kills every process rooted in the tree and
    unmounts, but only root can run it, and with the slim image root is only
    reachable over Alpine SSH. PID1's RESTART/CHECK refuse while data is
@@ -407,15 +424,28 @@ B5 gap 2026-11-17: `stop` now kills every process rooted in the tree and
    regression on the new source PASS (`artifacts/pid1-persist-stop-regression/`:
    console 11/11, restart incl. uid 2000 and LOADER, fail-safe normal/panic/
    usb/hang/kpanic). Physical validation pending (B7).
-B5. [~] Extend the restart lifecycle for mounted data. Stop services and sessions,
+B5. [x] Extend the restart lifecycle for mounted data. Stop services and sessions,
    synchronize state, unmount chroot binds and data, then request normal restart.
    Existing restart control refuses block filesystem mounts; preserve that guard
    until teardown is verified. A busy/unmount failure must be reported and must
    prevent the normal controlled restart, rather than forcing through it.
-B6. [ ] Host/QEMU validation: actual slim rootfs startup and supervision; fixture
+   Status 2026-11-18: clean teardown verified in QEMU and physically (B7 over
+   USB ADB; C5 and `scripts/Stop-Mibox.ps1 -Restart` over SSH without USB).
+   RESTART stays refused while data is mounted. The busy-unmount failure
+   path is implemented (the helper's stop fails on a busy unmount, and RESTART
+   then remains refused) but not exercised by a test; see B6.
+B6. [~] Host/QEMU validation: actual slim rootfs startup and supervision; fixture
    data tree success, absent/invalid data, partial mount cleanup, unexpected
    identity, key persistence, and clean/busy shutdown. Generic QEMU validates
    userspace behavior, not stock Meson6 kernel or bootloader compatibility.
+   Status 2026-11-18, `scripts/test-slim-qemu.py` (35 checks): covered startup,
+   PID1 supervision restart, success with the S2 fixture tree, key persistence
+   and sentinel across boots, integrity MATCH/MISMATCH, clean stop (also from
+   the caller's own session), CHECK/RESTART refusal while mounted, stale
+   PERSIST-STOP refusal, absent disk, ext4 without the tree. Not covered:
+   partial mount cleanup (a bind failing after data is mounted), unexpected
+   identity (wrong dev or size), busy shutdown (a process outside the tree
+   holding data open, stop must fail and RESTART stay refused).
 B7 progress 2026-11-17 (owner-approved RAM boots, Slim `8d7849d9…`, bulk):
    boot 1 `artifacts/rescue-boot/20261117-200923-128/` and boot 2
    `…/20261117-201116-028/` both `CustomBootVerified` with init `b1f3b654…`
@@ -525,7 +555,8 @@ C3. [x] Prepare a concrete write AND restoration procedure for the proven target
    restore direction reports AlreadyInstalled (boot1 still stock), install
    direction DryRunVerified, no node left behind.
    C4 gate status: B2 and B3 closed 2026-11-17; the rest of B7 (cold
-   power-on of Slim, HDMI if display files are added) is open.
+   power-on of Slim, HDMI if display files are added) is open. Later the same
+   day: cold power-on of Slim passed before C4; HDMI closed by A5.
 C4. [x] Once mandatory B gates (B1-B7, excluding optional B3a) pass and C1-C3
    evidence is ready, obtain explicit owner
    authorization for the specific boot-partition write. Install the identical
