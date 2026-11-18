@@ -1,0 +1,18 @@
+﻿dev=253:0
+node=0:0
+initstate=1 disksize=469762048
+Setting up swapspace version 1, size = 469757952 bytes
+UUID=061670ed-3ad7-40f0-be08-e024127ee96b
+Filename				Type		Size	Used	Priority
+/dev/mibox-zram0                        partition	458748	0	100
+              total        used        free      shared  buff/cache   available
+Mem:         877072       25324      832436           0       19312           0
+-/+ buffers/cache:        25324      851748
+mem_used_total=4096
+after: initstate=0 disksize=0 mem_used_total=0
+Filename				Type		Size	Used	Priority
+[    2.012261@0] zram: Created 1 device(s) ...
+[    4.708100@0] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 3.10.33-250909-g9f9cb70 #1
+[    5.102517@0] CPU: 0 PID: 1 Comm: swapper/0 Tainted: G        W    3.10.33-250909-g9f9cb70 #1
+[ 9165.243221@0] Adding 458748k swap on /dev/mibox-zram0.  Priority:100 extents:1 across:458748k SSFS
+SETUP_TEARDOWN_OK

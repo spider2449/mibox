@@ -409,6 +409,32 @@ B3a. [ ] Optional experiment, disabled by default and not a startup gate:
    unnecessary unless separately justified and verified. Record swap usage,
    physical zram allocation, responsiveness, OOM and shutdown behavior; a
    compressible workload alone does not establish practical capacity or benefit.
+   Result 2026-11-18 (`artifacts/b3a-zram/2026-11-18/`): keep disabled.
+   Live interface: zram0 253:0, legacy 3.10 driver without `comp_algorithm`
+   or `max_comp_streams` (LZO only). Memory: 877072 kB total (lowmem 606736,
+   highmem 270336), ~833 MB free, whole userspace ~3 MB, swappiness 60.
+   Setup/teardown on a fresh node (`mknod 253:0`, 448 MiB disksize, BusyBox
+   mkswap/swapon -p 100, swapoff, reset) worked and returned initstate 0,
+   disksize 0. Finding: Alpine BusyBox 1.37 `stat -c %t:%T` and `ls -l` show
+   every device node as 0:0 on this kernel (Python and the RAM BusyBox read
+   253:0, b3:b, 1:3 correctly); the RAM-side helper is unaffected, but
+   Alpine-side scripts must not trust those fields.
+   Pressure test (`scripts/device/b3a-zram-pressure.sh`: python3 allocating
+   1 KiB random + 3 KiB pattern pages in 32 MiB steps toward 960 MiB) froze
+   userspace within minutes (~21:45): SSH timed out in the banner exchange or
+   was reset, USB ADB enumerated but stayed `offline`, ping answered <1 ms.
+   No OOM kill recovered it within ~20 min. The script's guards ran only
+   between steps, so a stalled step never reached them, and its output went
+   only to the SSH stream, so no step data survived. Owner power-cycled
+   (USB unplugged) at ~22:05 with data mounted: boot `a0e2b7c5…`, ext4
+   `recovery complete` then a normal mount, integrity MATCH, sentinels kept,
+   zram reset. This is one unplanned power-loss with data mounted, not B8/C5a
+   acceptance. Conclusion: with ~833 MB free there is no measured need, and
+   an overcommit with zram swap on this kernel can hang the whole box
+   (including the RAM-side recovery transport) rather than OOM-kill. Any
+   retry needs a hard bound (e.g. a total allocation below MemFree plus a
+   small swap share, a watchdog that kills the workload from a separate
+   process, and step logs written to kmsg as they happen).
 B4. [x] If data is absent, wrong, full, invalid, or fails to mount/start, keep
    PID1, authenticated USB ADB and a RAM shell available. Do not start partial
    services or overwrite the failed tree. Record failure and allow explicit

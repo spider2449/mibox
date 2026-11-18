@@ -1,0 +1,28 @@
+﻿a0e2b7c5-8c13-4be0-aa41-1593ab109c97
+33.09 58.76
+MATCH
+SYNCED 2026-11-18T14:05:56Z
+18 1 179:11 / /mnt/mibox-data rw,nosuid,nodev,relatime - ext4 /dev/mibox-data rw,data=ordered
+19 18 0:5 / /mnt/mibox-data/mibox-console/rootfs/dev rw,nosuid,noexec,relatime - devtmpfs devtmpfs rw,size=437340k,nr_inodes=109335,mode=755
+20 18 0:3 / /mnt/mibox-data/mibox-console/rootfs/proc rw,nosuid,noexec,relatime - proc proc rw
+21 18 0:12 / /mnt/mibox-data/mibox-console/rootfs/sys rw,nosuid,noexec,relatime - sysfs sysfs rw
+22 19 0:10 / /mnt/mibox-data/mibox-console/rootfs/dev/pts rw,nosuid,noexec,relatime - devpts devpts rw,mode=600,ptmxmode=000
+ssh.exe : sh: sh: mibox-persistent: not foundsh: sh: error: not foundsh: jbd: not found
+At line:2 char:30
++ ... 0;$i++){ $o=& ssh.exe -i $k -o BatchMode=yes -o IdentitiesOnly=yes -o ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (sh: sh: mibox-p... jbd: not found:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+
+recover: not found
+orphan: not found
+Filename				Type		Size	Used	Priority
+0
+0
+ls: cannot access '/root/slim-sentinel': No such file or directory
+-rw-r--r-- 1 root root 255 Jan  1  1970 /root/slim-physical-sentinel
+-rw-r--r-- 1 root root 3057 Nov 18 13:42 /tmp/b3a.sh
+MIBOX_DATA_FREE_KIB=2056956 FLOOR_KIB=262144 STATE=OK
+data: 2008 MiB free (floor 256 MiB).

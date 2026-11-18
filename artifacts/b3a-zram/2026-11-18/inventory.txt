@@ -1,0 +1,84 @@
+﻿f313a3a6-1d5b-43cb-b3f8-d8458702f0fd
+3.10.33
+MemTotal:         877072 kB
+MemFree:          833340 kB
+Buffers:             764 kB
+Cached:            13912 kB
+SwapCached:            0 kB
+Active:             9308 kB
+Inactive:           6376 kB
+Active(anon):       1004 kB
+Inactive(anon):      128 kB
+Active(file):       8304 kB
+Inactive(file):     6248 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+HighTotal:        270336 kB
+HighFree:         254136 kB
+LowTotal:         606736 kB
+---swaps
+Filename				Type		Size	Used	Priority
+---zram
+lrwxrwxrwx 1 root root 0 Nov 18 13:41 zram0 -> ../devices/virtual/block/zram0
+alignment_offset
+bdi
+capability
+compr_data_size
+dev
+discard_alignment
+disksize
+ext_range
+holders
+inflight
+initstate
+invalid_io
+mem_used_total
+notify_free
+num_reads
+num_writes
+orig_data_size
+power
+queue
+range
+removable
+reset
+ro
+size
+slaves
+stat
+subsystem
+uevent
+zero_pages
+comp_algorithm=cat: /sys/block/zram0/comp_algorithm: No such file or directory
+max_comp_streams=cat: /sys/block/zram0/max_comp_streams: No such file or directory
+disksize=0
+initstate=0
+mem_used_total=0
+orig_data_size=0
+compr_data_size=0
+ls: cannot access '/dev/block/zram*': No such file or directory
+brw------- 1 root root 0, 0 Jan  1  1970 /dev/zram0
+/proc/devices:253 zram
+---tools
+mkswap:/sbin/mkswap
+swapon:/sbin/swapon
+swapoff:/sbin/swapoff
+free:/usr/bin/free
+BusyBox v1.37.0 (2025-11-21 22:40:56 UTC) multi-call binary.
+mkswap
+swapoff
+swapon
+---vm
+swappiness=60
+overcommit_memory=0
+min_free_kbytes=3109
+panic_on_oom=0
+oom_kill_allocating_task=0
+  190  276 sleep
+  105  280 sh
+    1  348 init
+  299  356 ps
+  272  448 sh
+  187  480 dropbear
+  271  532 dropbear
+  301 1164 tail

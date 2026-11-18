@@ -1,0 +1,4 @@
+﻿/dev/zram0 alpine=0:0 ram=fd:0
+/dev/mibox-data alpine=0:0 ram=b3:b
+/dev/null alpine=0:0 ram=1:3
+python rdev 253 0

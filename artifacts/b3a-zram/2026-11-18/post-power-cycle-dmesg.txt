@@ -1,0 +1,17 @@
+﻿[    1.802949@1] hdmitx: edid: 108 errors between two reading
+[    2.853425@1] ERROR::dwc_otg_set_param_host_perio_tx_fifo_size:5919: 500 invalid for host_perio_tx_fifo_size. Check HW configuration. default 0
+[    3.740381@1] mmc driver version: 1.07, 2015-01-21: fix a bug in tuning which caused eMMC data CRC error
+[    4.136075@0] device name=nand_key open error 
+[    4.150305@0] device name=emmc_key open error 
+[    4.247760@1] [mmcblk0p05]             recovery  offset 0x000000c00000, size 0x000000800000 
+[    5.798098@0] force enable DISCARD here for ext4 fs
+[    6.086867@0] EXT4-fs (mmcblk0p11): recovery complete
+[    6.098266@0] checked enable EXT4 DISCARD here
+[    6.098310@0] EXT4-fs (mmcblk0p11): mounting with "discard" option, but the device does not support discard
+[    6.106872@0] EXT4-fs (mmcblk0p11): mounted filesystem with ordered data mode. Opts: (null)
+[    6.417342@1] mibox-persistent: MIBOX_ALPINE_INTEGRITY=MATCH
+[    6.429636@1] mibox-persistent: MIBOX_PERSISTENT_BOOT_READY free_kib=2056956 floor_kib=262144
+SLIM_PHYSICAL_f291711f-1a26-4593-81e9-be8aec3b4132
+SLIM_PHYSICAL_8b3eba61-c57b-4a65-8f9c-58b0e50f8262
+SLIM_PHYSICAL_741a8eb7-d51c-41cc-8f6e-b56baab35ce8
+TMP_REMOVED
