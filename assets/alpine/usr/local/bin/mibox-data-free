@@ -1,0 +1,38 @@
+#!/bin/sh
+# MIBOX_DATA_FREE_V1 (plan S4): free space on the data filesystem, read from
+# inside the persistent Alpine tree (its / lives on data).
+#   mibox-data-free      machine line + human line, always
+#   mibox-data-free -q   human warning only when not OK (login hook)
+# Exit: 0 OK, 1 LOW (below 2x floor), 2 BELOW_FLOOR (apk add/upgrade refused),
+#       3 UNKNOWN (free space unreadable).
+floor_kib=262144
+low_kib=$((floor_kib * 2))
+quiet=
+[ "${1:-}" = -q ] && quiet=1
+# statfs via `stat -f` needs no mount table; BusyBox df fails inside the chroot.
+available=$(stat -f -c '%a %S' / 2>/dev/null | awk 'NF == 2 && $1 ~ /^[0-9]+$/ && $2 ~ /^[0-9]+$/ {printf "%d", $1 * $2 / 1024}')
+case "$available" in
+''|*[!0-9]*)
+    [ -n "$quiet" ] || echo "MIBOX_DATA_FREE_KIB=unknown FLOOR_KIB=$floor_kib STATE=UNKNOWN"
+    echo "WARNING: cannot read free space on the data filesystem." >&2
+    exit 3 ;;
+esac
+mib=$((available / 1024))
+floor_mib=$((floor_kib / 1024))
+if [ "$available" -lt "$floor_kib" ]; then
+    state=BELOW_FLOOR code=2
+    message="WARNING: data has $mib MiB free, below the $floor_mib MiB floor. apk add/upgrade are refused. Free space first (apk cache clean, remove files)."
+elif [ "$available" -lt "$low_kib" ]; then
+    state=LOW code=1
+    message="NOTICE: data has $mib MiB free; apk refuses changes below $floor_mib MiB."
+else
+    state=OK code=0
+    message="data: $mib MiB free (floor $floor_mib MiB)."
+fi
+if [ -n "$quiet" ]; then
+    [ "$code" -eq 0 ] || echo "$message"
+else
+    echo "MIBOX_DATA_FREE_KIB=$available FLOOR_KIB=$floor_kib STATE=$state"
+    echo "$message"
+fi
+exit "$code"

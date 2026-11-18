@@ -1,0 +1,5 @@
+﻿WARNING: data has 2008 MiB free, below the 3906 MiB floor. apk add/upgrade are refused. Free space first (apk cache clean, remove files).
+EXIT=2
+MIBOX_DATA_FREE_KIB=2056944 FLOOR_KIB=1500000 STATE=LOW
+NOTICE: data has 2008 MiB free; apk refuses changes below 1464 MiB.
+EXIT=1

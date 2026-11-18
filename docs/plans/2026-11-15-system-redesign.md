@@ -98,7 +98,7 @@ S3. [x] Reclaim Android files on data by deleting directories, not formatting.
    Note: the S1-S3 device scripts used `test a && test b` chains, which
    `set -e` enforces only for the last test. The S3 output shows every guarded
    path existed, so the run was unaffected; the scripts now use `;`.
-S4. [~] Budgets and guards: keep a data free-space floor (initially the
+S4. [x] Budgets and guards: keep a data free-space floor (initially the
    launcher's 64 MiB; revise from S1) enforced before apk installs and by PID1;
    bound logs (size cap/rotation); keep Docker test storage in RAM until data
    space is measured, since VFS copies every layer.
@@ -133,6 +133,24 @@ S4. [~] Budgets and guards: keep a data free-space floor (initially the
    Open, moved to Phase B: PID1 enforcement of the floor once it mounts data
    (B1/B4 "full" case), and a size-capped log rotation (e.g. BusyBox
    `syslogd -s 1024 -b 2`) when B3 starts any persistent logging service.
+   Closed 2026-11-18. Floor (owner choice: Alpine-side monitor, no initramfs
+   change or boot1 write; below the floor SSH still starts, apk refuses):
+   `/usr/local/bin/mibox-data-free` (`590c5070…`, statfs on the tree's /;
+   exit 0 OK, 1 LOW below 2x floor, 2 BELOW_FLOOR, 3 UNKNOWN; machine line
+   `MIBOX_DATA_FREE_KIB=… STATE=…`) and login hook
+   `/etc/profile.d/90mibox-data-free.sh` (`1a5c0ccc…`, prints only when not
+   OK, never ends the session). No cron daemon runs, so the check runs at
+   each SSH login and on demand, not periodically. Host test
+   `scripts/test-data-free.py` 14 cases PASS (incl. floor value equal to the
+   helper's). Installed with `scripts/Install-MiboxDataMonitor.ps1` (strict
+   host key; refuses foreign files; hash-verified; `-Remove` rolls back) on
+   flash Slim boot `f313a3a6…`: 2008 MiB free, STATE=OK, login shell OK;
+   high-floor copies in /tmp gave WARNING/exit 2 and NOTICE/exit 1; a rerun
+   reported both files current (`artifacts/alpine-data-monitor/20261118-213819/`,
+   `…-213833/`). The tree now differs from the S2 PC backup by these two
+   files. Logs: condition not triggered: still no persistent log writer
+   (no syslog in Alpine, PID1 logs in RAM, Docker test logs in RAM); add the
+   size cap when one is introduced.
 S5. [x] Boot image budget: record kernel, DTB and per-component initramfs
    sizes and slack for every candidate (A4/A5).
    Done 2026-11-17, offline: `scripts/report-boot-budget.py` ->

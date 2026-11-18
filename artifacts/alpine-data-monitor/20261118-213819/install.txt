@@ -1,0 +1,8 @@
+﻿boot f313a3a6-1d5b-43cb-b3f8-d8458702f0fd action=install
+/usr/local/bin/mibox-data-free before: ABSENT
+/usr/local/bin/mibox-data-free installed 590c50706672a0d21de1e2e2cd3be7c78472da84806e5d0301f1d03f55b8ad26 mode 755
+/etc/profile.d/90mibox-data-free.sh before: ABSENT
+/etc/profile.d/90mibox-data-free.sh installed 1a5c0ccc24e861e122e6269c6478d640d584550389435978f093f60fa4ea8589 mode 644
+mibox-data-free: MIBOX_DATA_FREE_KIB=2056960 FLOOR_KIB=262144 STATE=OK | data: 2008 MiB free (floor 256 MiB). | EXIT=0
+login shell: LOGIN_SHELL_OK
+MIBOX_DATA_MONITOR_INSTALLED
