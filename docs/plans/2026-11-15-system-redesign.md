@@ -434,7 +434,7 @@ B5. [x] Extend the restart lifecycle for mounted data. Stop services and session
    RESTART stays refused while data is mounted. The busy-unmount failure
    path is implemented (the helper's stop fails on a busy unmount, and RESTART
    then remains refused) but not exercised by a test; see B6.
-B6. [~] Host/QEMU validation: actual slim rootfs startup and supervision; fixture
+B6. [x] Host/QEMU validation: actual slim rootfs startup and supervision; fixture
    data tree success, absent/invalid data, partial mount cleanup, unexpected
    identity, key persistence, and clean/busy shutdown. Generic QEMU validates
    userspace behavior, not stock Meson6 kernel or bootloader compatibility.
@@ -446,6 +446,27 @@ B6. [~] Host/QEMU validation: actual slim rootfs startup and supervision; fixtur
    partial mount cleanup (a bind failing after data is mounted), unexpected
    identity (wrong dev or size), busy shutdown (a process outside the tree
    holding data open, stop must fail and RESTART stay refused).
+   Closed 2026-11-18: 57 checks PASS (`artifacts/slim-qemu/20261118-212649/`,
+   slim rootfs = installed ramdisk, 1945354 bytes). Added: (1) helper without
+   `--qemu` on the QEMU platform refuses `start --boot` and `stop` with all 5
+   data mounts left in place; (2) the full S2 tree on ext2 stays RAM-only and
+   the image bytes are unchanged (never mounted; the kernel's ext4 driver
+   would accept it, so the `TYPE="ext4"` check is what refuses); (3) partial
+   start failures, one with the `sys` bind target removed (dev/proc binds up)
+   and one with authorized_keys removed (all binds up): BOOT_FAILED, no SSH,
+   ext4 `needs_recovery` clear and fsck clean after QEMU is killed, so data
+   and every bind were undone; a control boot killed with data mounted does
+   show `needs_recovery`; (4) busy shutdown: a RAM-rooted process with cwd on
+   data makes stop fail (`MIBOX_PERSISTENT_STOP_UNMOUNT_FAILED`), data stays
+   mounted, RESTART is refused; after the holder exits a second stop succeeds
+   and RESTART is accepted, filesystem clean. Not covered in QEMU: the
+   physical 179:11 / 5168640-sector / ro gates (code paths only run on the
+   MiBOX). Runs 20261118-210828, -211549 and -212256 failed on test-driver
+   bugs, not helper behavior (a subshell left the holder alive; the driver's
+   own /dev/null fd, opened through the tree's bind-mounted /dev, kept data
+   busy; a log-split boundary). Lesson for operators: any RAM-rooted process
+   holding a file opened via the tree's /dev bind blocks the unmount;
+   `Stop-Mibox.ps1` opens none.
 B7 progress 2026-11-17 (owner-approved RAM boots, Slim `8d7849d9…`, bulk):
    boot 1 `artifacts/rescue-boot/20261117-200923-128/` and boot 2
    `…/20261117-201116-028/` both `CustomBootVerified` with init `b1f3b654…`

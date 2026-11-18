@@ -1,0 +1,297 @@
+{
+  "scope": "Generic ARM QEMU (Debian 6.12) only; not stock 3.10.33 or physical MiBOX proof",
+  "fixture_differences": [
+    "USB ADB marker removed (no UDC in QEMU)",
+    "QEMU virtio/ext4 modules loaded by start script"
+  ],
+  "slim_rootfs_sha256": "50c1ff4ee8e70aac6020ef2512b45d1921b310dee883c5f7ea6e9cd9d01c378f",
+  "data_disk_source": "S2 backup 5d655f74e0ccc9af7d1b4b6169b8c5a9cf8bfbfed73d6768358e4d22e6b492ae",
+  "checks": [
+    {
+      "name": "boot1-ssh-strict-persistent-host-key",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot1-session-in-alpine-with-apk-guard",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot1-apk-floor-hook-installed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot1-time-synced-by-ntp",
+      "passed": true,
+      "detail": "SYNCED 2026-11-18T13:27:19Z"
+    },
+    {
+      "name": "boot1-ram-copy-of-public-key",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot1-data-mounted",
+      "passed": true,
+      "detail": "24 1 254:0 / /mnt/mibox-data rw,nosuid,nodev,relatime - ext4 /dev/vda rw"
+    },
+    {
+      "name": "boot1-alpine-integrity-match",
+      "passed": true,
+      "detail": "MATCH"
+    },
+    {
+      "name": "boot1-wrong-platform-start-refused-mounts-kept",
+      "passed": true,
+      "detail": "rc=1 mounts under data before=5 after=5"
+    },
+    {
+      "name": "boot1-wrong-platform-stop-refused-mounts-kept",
+      "passed": true,
+      "detail": "rc=1 mounts under data before=5 after=5"
+    },
+    {
+      "name": "boot1-write-sentinel",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot1-pid1-restarts-killed-ssh-listener",
+      "passed": true,
+      "detail": "240"
+    },
+    {
+      "name": "boot1-alter-pinned-library",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot1-stop-from-own-session",
+      "passed": true,
+      "detail": "ssh exit 255"
+    },
+    {
+      "name": "boot1-ssh-gone-after-stop",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot1-filesystem-clean-after-stop",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-ssh-strict-persistent-host-key",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-session-in-alpine-with-apk-guard",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-apk-floor-hook-installed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-time-synced-by-ntp",
+      "passed": true,
+      "detail": "SYNCED 2026-11-18T13:28:09Z"
+    },
+    {
+      "name": "boot2-ram-copy-of-public-key",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-data-mounted",
+      "passed": true,
+      "detail": "24 1 254:0 / /mnt/mibox-data rw,nosuid,nodev,relatime - ext4 /dev/vda rw"
+    },
+    {
+      "name": "boot2-integrity-mismatch-reported-ssh-still-up",
+      "passed": true,
+      "detail": "MISMATCH usr/lib/libz.so.1.3.2"
+    },
+    {
+      "name": "boot2-sentinel-retained",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-check-refused-while-data-mounted",
+      "passed": true,
+      "detail": "Error: Custom { kind: Other, error: \"control request rejected or invalid response\" }"
+    },
+    {
+      "name": "boot2-restart-refused-while-data-mounted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-persist-stop-stale-boot-id-refused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-persist-stop-via-pid1-as-uid2000",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-restart-accepted-after-stop",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "boot2-filesystem-clean-after-stop",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no-disk-stays-ram-only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no-disk-pid1-console-alive",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no-disk-no-ssh",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "empty-disk-stays-ram-only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "empty-disk-boot-failed-marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "empty-disk-no-ssh",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "empty-disk-tree-not-created",
+      "passed": true,
+      "detail": "2  (12) .    2  (12) ..    11  (4060) lost+found"
+    },
+    {
+      "name": "empty-disk-unmounted-clean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "control-killed-while-mounted-shows-needs-recovery",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "partial-bind-stays-ram-only",
+      "passed": true,
+      "detail": "sys bind target missing; dev and proc binds already up"
+    },
+    {
+      "name": "partial-bind-no-ssh",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "partial-bind-all-mounts-undone",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "partial-bind-filesystem-clean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "partial-keys-stays-ram-only",
+      "passed": true,
+      "detail": "authorized_keys missing; all four binds already up"
+    },
+    {
+      "name": "partial-keys-no-ssh",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "partial-keys-all-mounts-undone",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "partial-keys-filesystem-clean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "busy-boot-ssh",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "busy-stop-fails-and-reports-unmount",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "busy-holder-outside-tree-on-data",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "busy-data-left-mounted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "busy-restart-refused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "busy-second-stop-after-holder-exits",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "busy-restart-accepted-after-stop",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "busy-filesystem-unmounted-clean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "ext2-tree-stays-ram-only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "ext2-tree-no-ssh",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "ext2-tree-never-mounted",
+      "passed": true,
+      "detail": "6bd20576bc3eacd866180285320d6ed544e99b1f88e448fbe4f951a9e7b4b8cc"
+    }
+  ],
+  "all_passed": true
+}

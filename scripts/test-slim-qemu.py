@@ -8,6 +8,14 @@ backup of the real Alpine tree, so SSH uses its real persistent host key.
 
 Cases: two boots with the tree (strict host key, persistence, stop/unmount,
 clean fsck), no data disk, and an empty ext4 disk (tree never created).
+B6 additions: the helper run without --qemu refuses on a non-MiBOX platform
+without touching mounts; the full tree on ext2 is never mounted (image bytes
+unchanged); partial start failures (the sys bind fails, or authorized_keys is
+missing after every bind is up) undo all mounts; a busy data unmount fails
+stop, keeps RESTART refused, and a second stop after the holder exits
+succeeds. "Unmounted" is judged by the ext4 needs_recovery flag after QEMU is
+killed; a control boot killed with data mounted shows that the flag is set.
+The physical 179:11 / 5168640-sector gates cannot run in QEMU.
 Run under WSL: python3 scripts/test-slim-qemu.py --private-key KEY
 """
 import argparse
@@ -16,6 +24,7 @@ import hashlib
 import importlib.util
 import json
 import lzma
+import shlex
 import shutil
 import socket
 import subprocess
@@ -70,16 +79,16 @@ def fixture(work):
     return path, hashlib.sha256(slim).hexdigest()
 
 
-def disk_from_tree(work, name):
+def disk_from_tree(work, name, fstype='ext4'):
     if hashlib.sha256(BACKUP.read_bytes()).hexdigest() != BACKUP_SHA256:
         raise RuntimeError('S2 backup hash mismatch')
     image = work / name
     stage = work / 'stage'
     # Inside a user namespace uid 0 maps to the caller: tar restores 0:0 and
-    # mkfs.ext4 -d records it. Device nodes in the leftover test dir fail (ok).
+    # mkfs -d records it. Device nodes in the leftover test dir fail (ok).
     subprocess.run(['unshare', '-r', 'sh', '-c',
                     f'mkdir -p {stage} && tar --numeric-owner -xpf {BACKUP} -C {stage} 2>/dev/null; '
-                    f'mkfs.ext4 -q -F -d {stage} {image} 256M'], check=True)
+                    f'mkfs.{fstype} -q -F -d {stage} {image} 256M'], check=True)
     subprocess.run(['unshare', '-r', 'rm', '-rf', str(stage)], check=True)
     pub = subprocess.run(['debugfs', '-R', 'cat /mibox-console/rootfs/etc/dropbear/dropbear_ed25519_host_key.pub',
                           str(image)], capture_output=True, text=True, check=True).stdout.split()
@@ -99,6 +108,29 @@ def stop_qemu(process, log):
         process.kill()
         process.wait()
     log.close()
+
+
+def sha256_file(path):
+    digest = hashlib.sha256()
+    with open(path, 'rb') as f:
+        for block in iter(lambda: f.read(1 << 20), b''):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def superblock(image, evidence_path):
+    out = subprocess.run(['dumpe2fs', '-h', str(image)], capture_output=True, text=True).stdout
+    evidence_path.write_text(out)
+    features = next((line for line in out.splitlines() if line.startswith('Filesystem features:')), '')
+    return 'needs_recovery' in features.split()
+
+
+def debugfs_remove(image, verb, path):
+    # debugfs exits 0 even when a command fails: verify the path is gone.
+    subprocess.run(['debugfs', '-w', '-R', f'{verb} {path}', str(image)], capture_output=True, check=True)
+    r = subprocess.run(['debugfs', '-R', f'stat {path}', str(image)], capture_output=True, text=True)
+    if 'File not found' not in r.stderr:
+        raise RuntimeError(f'debugfs {verb} {path} did not remove it: {r.stderr.strip()}')
 
 
 def wait_serial(path, text, seconds):
@@ -140,6 +172,13 @@ def main(private_key):
                            '-device', 'virtio-blk-device,drive=data']
 
         image, host_key = disk_from_tree(work, 'data.img')
+        # Pristine copies for the B6 cases, taken before the tree boots change it.
+        variants = {}
+        for name in ('control', 'partial-bind', 'partial-keys', 'busy'):
+            variants[name] = work / f'{name}.img'
+            subprocess.run(['cp', '--sparse=always', str(image), str(variants[name])], check=True)
+        debugfs_remove(variants['partial-bind'], 'rmdir', '/mibox-console/rootfs/sys')
+        debugfs_remove(variants['partial-keys'], 'rm', '/mibox-console/rootfs/root/.ssh/authorized_keys')
         known = work / 'known_hosts'
         known.write_text(f'[127.0.0.1]:{port} {host_key[0]} {host_key[1]}\n')
         ssh = ['ssh', '-i', str(key), '-p', str(port), '-o', 'BatchMode=yes', '-o', 'IdentitiesOnly=yes',
@@ -187,6 +226,19 @@ def main(private_key):
                 integrity = remote('cat /proc/1/root/run/mibox-alpine-integrity').stdout.strip()
                 if boot_index == 1:
                     record('boot1-alpine-integrity-match', integrity == 'MATCH', integrity)
+                    # B6 identity: without --qemu the helper requires the MiBOX
+                    # platform; it must refuse before touching mounts or processes.
+                    count = 'grep -c " /mnt/mibox-data" /proc/1/mountinfo'
+                    before = remote(count).stdout.strip()
+                    for action in ('start --boot', 'stop'):
+                        r = remote(f'chroot /proc/1/root /sbin/mibox-persistent-console {action}; echo rc=$?', 30)
+                        rc = r.stdout.strip().splitlines()[-1] if r.stdout.strip() else ''
+                        mounted = remote(count).stdout.strip()
+                        record(f'boot1-wrong-platform-{action.split()[0]}-refused-mounts-kept',
+                               rc not in ('', 'rc=0') and mounted == before and int(before or 0) >= 5
+                               and 'MIBOX_PERSISTENT_BOOT_FAILED' not in serial.read_text(errors='replace')
+                               and 'MIBOX_PERSISTENT_CONSOLE_STOPPED' not in serial.read_text(errors='replace'),
+                               f'{rc} mounts under data before={before} after={mounted}')
                     r = remote('echo SLIM_SENTINEL > /root/slim-sentinel && sync && echo WROTE')
                     record('boot1-write-sentinel', 'WROTE' in r.stdout)
                     # B3: kill the SSH listener (parent PID1); PID1 must restart it.
@@ -280,6 +332,101 @@ def main(private_key):
         record('empty-disk-tree-not-created', 'mibox-console' not in listing, listing.strip())
         fsck = subprocess.run(['e2fsck', '-fn', str(empty)], capture_output=True, text=True)
         record('empty-disk-unmounted-clean', fsck.returncode == 0)
+
+        # Control for the indicator: killed with data mounted -> needs_recovery.
+        serial = evidence / 'serial-control-killed-mounted.log'
+        process, log = boot(with_disk(variants['control']), serial)
+        try:
+            up = wait_ssh(process)
+        finally:
+            stop_qemu(process, log)
+        record('control-killed-while-mounted-shows-needs-recovery',
+               up and superblock(variants['control'], evidence / 'dumpe2fs-control.txt'))
+
+        # B6 partial mount cleanup: start --boot fails after data is mounted.
+        for name, detail in (('partial-bind', 'sys bind target missing; dev and proc binds already up'),
+                             ('partial-keys', 'authorized_keys missing; all four binds already up')):
+            serial = evidence / f'serial-{name}.log'
+            process, log = boot(with_disk(variants[name]), serial)
+            try:
+                unavailable = wait_serial(serial, 'MIBOX_PERSISTENT_UNAVAILABLE', 120)
+                text = serial.read_text(errors='replace')
+                record(f'{name}-stays-ram-only', unavailable and 'MIBOX_PERSISTENT_BOOT_FAILED' in text, detail)
+                record(f'{name}-no-ssh', remote('true', 10).returncode == 255)
+            finally:
+                stop_qemu(process, log)
+            # The data unmount runs last and fails while any bind remains, so
+            # an unmounted data filesystem also shows the binds were undone.
+            record(f'{name}-all-mounts-undone',
+                   not superblock(variants[name], evidence / f'dumpe2fs-{name}.txt'))
+            fsck = subprocess.run(['e2fsck', '-fn', str(variants[name])], capture_output=True, text=True)
+            record(f'{name}-filesystem-clean', fsck.returncode == 0)
+
+        # B6 busy shutdown. A RAM-rooted shell (not killed by stop) holds data
+        # open via its cwd and drives the sequence, logging to kmsg/serial.
+        serial = evidence / 'serial-busy.log'
+        process, log = boot(with_disk(variants['busy']), serial)
+        try:
+            up = wait_ssh(process)
+            record('busy-boot-ssh', up)
+            if up:
+                boot_id = remote('cat /proc/sys/kernel/random/boot_id').stdout.strip()
+                script = (
+                    # Redirect here, after the chroot: a /dev/null opened by the Alpine
+                    # shell is the tree's bind-mounted /dev and keeps data busy.
+                    'exec </dev/null >/dev/null 2>&1; '
+                    'trap "" HUP PIPE; m() { echo "TEST_BUSY $*" > /dev/kmsg; }; '
+                    # sleep itself is the holder (a subshell wrapper could leave it running).
+                    'cd /mnt/mibox-data; sleep 600 & holder=$!; cd /; sleep 1; '
+                    'm holder_cwd=$(readlink /proc/$holder/cwd); '
+                    '/sbin/mibox-persistent-console stop --qemu > /tmp/busy-stop1.out 2>&1; m stop1_exit=$?; '
+                    'if grep -q " /mnt/mibox-data " /proc/self/mountinfo; then m data_still_mounted; fi; '
+                    f'mibox reboot-android --boot-id {boot_id} > /tmp/busy-restart1.out 2>&1; m restart1_exit=$?; '
+                    'kill $holder; wait $holder; '
+                    'if [ -e /proc/$holder ]; then m holder_alive; else m holder_gone; fi; '
+                    '/sbin/mibox-persistent-console stop --qemu > /tmp/busy-stop2.out 2>&1; m stop2_exit=$?; '
+                    f'mibox reboot-android --boot-id {boot_id} > /tmp/busy-restart2.out 2>&1; m restart2_exit=$?')
+                remote('exec chroot /proc/1/root /bin/sh -c ' + shlex.quote(script), 120)
+                try:
+                    process.wait(timeout=180)
+                    exited = True
+                except subprocess.TimeoutExpired:
+                    exited = False
+                text = serial.read_text(errors='replace')
+                # Everything before the holder is killed belongs to the first stop.
+                first = text.split('TEST_BUSY holder_gone')[0]
+                record('busy-stop-fails-and-reports-unmount', 'TEST_BUSY stop1_exit=0' not in text
+                       and 'TEST_BUSY stop1_exit=' in text and 'MIBOX_PERSISTENT_STOP_UNMOUNT_FAILED' in first
+                       and 'MIBOX_PERSISTENT_CONSOLE_STOPPED' not in first)
+                record('busy-holder-outside-tree-on-data', 'TEST_BUSY holder_cwd=/mnt/mibox-data' in text)
+                record('busy-data-left-mounted', 'TEST_BUSY data_still_mounted' in text)
+                record('busy-restart-refused', 'TEST_BUSY restart1_exit=' in text
+                       and 'TEST_BUSY restart1_exit=0' not in text
+                       and 'MIBOX_NORMAL_RESTART_REQUESTED' not in first)
+                record('busy-second-stop-after-holder-exits', 'TEST_BUSY holder_gone' in text
+                       and 'TEST_BUSY stop2_exit=0' in text
+                       and 'MIBOX_PERSISTENT_CONSOLE_STOPPED' in text)
+                record('busy-restart-accepted-after-stop', exited and 'MIBOX_NORMAL_RESTART_REQUESTED' in text)
+        finally:
+            stop_qemu(process, log)
+        record('busy-filesystem-unmounted-clean',
+               not superblock(variants['busy'], evidence / 'dumpe2fs-busy.txt')
+               and subprocess.run(['e2fsck', '-fn', str(variants['busy'])], capture_output=True).returncode == 0)
+
+        # B6 unexpected identity: the full tree on ext2. The kernel's ext4
+        # driver would mount it; only the helper's TYPE="ext4" check refuses.
+        ext2, _ = disk_from_tree(work, 'ext2.img', 'ext2')
+        before = sha256_file(ext2)
+        serial = evidence / 'serial-ext2.log'
+        process, log = boot(with_disk(ext2), serial)
+        try:
+            unavailable = wait_serial(serial, 'MIBOX_PERSISTENT_UNAVAILABLE', 120)
+            record('ext2-tree-stays-ram-only', unavailable
+                   and 'MIBOX_PERSISTENT_BOOT_FAILED' in serial.read_text(errors='replace'))
+            record('ext2-tree-no-ssh', remote('true', 10).returncode == 255)
+        finally:
+            stop_qemu(process, log)
+        record('ext2-tree-never-mounted', sha256_file(ext2) == before, before)
 
     passed = all(r['passed'] for r in results)
     (evidence / 'result.json').write_text(json.dumps(dict(
