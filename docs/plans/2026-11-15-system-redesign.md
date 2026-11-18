@@ -151,10 +151,22 @@ S5. [x] Boot image budget: record kernel, DTB and per-component initramfs
    1796171; + RAM dropbear 2111606 (slack 2361344). The 1.5 MiB A4 target is
    met only by the minimal set; fbhandoff (~209 KB) and splash (~9 KB) fit in
    every projection. Projections are not built or booted images.
-S6. [ ] After Phase C passes: decide reuse of system/system1 (1 GiB total) and
+S6. [x] After Phase C passes: decide reuse of system/system1 (1 GiB total) and
    cache (192 MiB), e.g. as separate ext4 for containers, or a clean reformat
    of data. Requires verified backups, a revised partition-scope rule and
    physical restart evidence. Not part of Phases A–C.
+   Decided 2026-11-18 (owner): leave system, system1 and cache unchanged; no
+   partition write. Basis: data has ~2.0 GiB free with no consumer needing
+   more; the stock kernel has `# CONFIG_NAMESPACES is not set`
+   (`artifacts/platform/2026-11-14/stock-kernel.config`), so the space could
+   not hold Docker storage until a kernel replacement. Options considered:
+   one 512 MiB system partition as Alpine-mounted ext4 outside the boot path
+   (reversible from the 2026-11-14 PC images); a dm-linear volume over
+   179:8+179:9+179:10 (`CONFIG_BLK_DEV_DM=y`; most complex, any member loss
+   loses all, cache has no backup); cache as disk swap (with B3a). Merging
+   into data is excluded: the partition table is bootloader-side.
+   Unconfirmed: which of 179:8/179:9 is named system vs system1 (read-only
+   check required before any future write). Revisit with the Docker kernel.
 
 ## Phase A — prepare the small RAM supervisor and persistent userspace
 
