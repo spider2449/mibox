@@ -1,0 +1,12 @@
+{
+  "source_sha256": "1e3442e2f542b355543113be5e53afabbc66a23915dd2192e4a0374c02b89b4b",
+  "font_header_sha256": "b5f60a28047f484ed206bb2a05bd6edffbd09e2a2ab2e2431d9b34254a7d5f26",
+  "fonts": {
+    "/usr/share/consolefonts/Uni2-TerminusBold32x16.psf.gz": "7923369ee8eac3e9d597f6e8a952ba205963a6354548e6ef2d17850b6781fdff",
+    "/usr/share/consolefonts/Uni2-TerminusBold20x10.psf.gz": "9f54143da97f01ce285f371f31d036d9699ad69594d19d803825f3a3bfcca922"
+  },
+  "arm_binary_sha256": "86e3e6a78f1fc823caa7ecbdcf361574f9133a443e4d5e97d74b293899299cb2",
+  "arm_bytes": 443620,
+  "static_arm_elf": true,
+  "physical_validation": false
+}

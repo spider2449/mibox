@@ -1,0 +1,6 @@
+2026-11-18 live trial of mibox-fbstatus on the running flash Slim f11de99e (no partition write).
+v1 225baa81... copied to RAM /tmp, run 60 s under timeout: MIBOX_FBSTATUS_RUNNING, exit=0 on SIGTERM.
+fb0 captured during v1 (live-trial-v1-fb0.png); owner saw it on the TV ("有了", "很好").
+v1 findings: 3.10 kernel logs most printk at level 4 (all lines amber), \x0d escapes, hostname "android".
+v2 86e3e6a7... (fixes) left running from RAM /tmp until the next restart; steady CPU 0% in top.
+Candidate boot1 with v2: 955ea3e8... used_aligned 6123520, slack 2265088; QEMU slim PASS 20261118-222611.

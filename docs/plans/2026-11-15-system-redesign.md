@@ -324,6 +324,16 @@ A5. [x] Add fbhandoff and splash after slimming provides sufficient measured
    independent re-hash OK); restart from flash logged
    `MIBOX_SPLASH_SHOWN window=0 0 1919 1079` and the owner confirmed the
    full-screen, correctly reading status splash.
+A5b. [ ] Live HDMI status screen (`src/hardware/mibox-fbstatus.c`, built by
+   `scripts/build-fbstatus.py`): clock, network/SSH/uptime/memory/data cards
+   and a /dev/kmsg tail, redrawn each second; fb0 is its only write, and the
+   splash is restored if it exits with an error. 2026-11-18: run from RAM
+   `/tmp` on the flash Slim `f11de99e…` (no partition write); owner saw it
+   on the TV and approved the look (`artifacts/a5-flash-display/2026-11-18-fbstatus/`).
+   Candidate `target/mibox-boot-candidate-slim-fbstatus/` = `955ea3e8…`
+   (used 6123520, slack 2265088), QEMU slim PASS
+   (`artifacts/slim-qemu/20261118-222611/`). Pending: owner-approved boot1
+   write (expect-current `f11de99e…`), read-back, restart from flash.
 
 Optional space experiment, only if needed: inspect the already extracted config
 for `CONFIG_RD_GZIP`, `CONFIG_RD_LZMA`, `CONFIG_RD_LZ4` and `CONFIG_RD_XZ`.

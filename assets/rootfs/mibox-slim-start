@@ -72,6 +72,17 @@ if [ -x /sbin/mibox-fbhandoff ] && [ -e /etc/mibox-splash.rgba ]; then
                 echo 1 > "$g/free_scale"
             fi
             say "MIBOX_SPLASH_SHOWN window=${window:-unscaled}"
+            # Live status screen (clock, cards, kernel log) replaces the
+            # splash; if it exits with an error the splash is copied back.
+            # Local time is UTC+8.
+            if [ -x /sbin/mibox-fbstatus ]; then
+                TZ=CST-8 /sbin/mibox-fbstatus > /run/mibox-fbstatus.log 2>&1
+                status=$?
+                if [ "$status" -ne 0 ]; then
+                    dd if=/etc/mibox-splash.rgba of=/dev/fb0 bs=5120 count=1080 2>/dev/null
+                    say "MIBOX_FBSTATUS_FAILED status=$status"
+                fi
+            fi
         else
             say MIBOX_SPLASH_HANDOFF_FAILED
         fi

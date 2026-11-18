@@ -29,6 +29,7 @@ BASELINE_LINKS = ['lib/libc.musl-armv7.so.1', 'usr/lib/libz.so.1', 'usr/lib/libu
                   'usr/lib/libskarnet.so.2.14', 'bin/sh', 'bin/ash']
 HANDOFF_SHA256 = 'b2b5bfb7319e2c14b8f3b47ef0355318d399083bd6284a75d2f4db413b531014'  # source b56e8073…
 SPLASH_SHA256 = 'f8f95140a0c010a2fefd36e18a14028a331b7fab9e3ae917f7ff15640f5a5aac'   # build-splash-ppm.py (LSB-left glyphs)
+FBSTATUS_SHA256 = '86e3e6a78f1fc823caa7ecbdcf361574f9133a443e4d5e97d74b293899299cb2'  # build-fbstatus.py
 S2_SHA256 = 'artifacts/storage/s2-20261117/device-sha256.txt'
 
 
@@ -136,6 +137,12 @@ def build(root, output):
     rgba[0::4], rgba[1::4], rgba[2::4] = pixels[0::3], pixels[1::3], pixels[2::3]
     rgba[3::4] = b'\xff' * (1280 * 1080)
     entries['etc/mibox-splash.rgba'] = (0o100644, bytes(rgba), 0, 0)
+    # Live status screen drawn over the splash once a second (its only write
+    # is fb0); the splash stays as the fallback if it cannot run.
+    fbstatus = (root / 'target/fbstatus/mibox-fbstatus').read_bytes()
+    if hashlib.sha256(fbstatus).hexdigest() != FBSTATUS_SHA256:
+        raise ValueError('fbstatus differs from its build manifest pin')
+    entries['sbin/mibox-fbstatus'] = (0o100700, base_arm_static(root, fbstatus), 0, 0)
     assets = root / 'assets/rootfs'
     base_spec = importlib.util.spec_from_file_location('base', root / 'scripts/build-mibox-rootfs.py')
     base = importlib.util.module_from_spec(base_spec)
