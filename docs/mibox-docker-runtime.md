@@ -331,5 +331,30 @@ Update 2026-11-19: HDMI works on 3.10.99 (fb0 reports BGRA; owner confirmed colo
 and full 1080p). boot1 now holds this system (`bccbad4f…`); a flash boot without
 the PC started SSH, Docker and the restored nginx container by itself
 (`artifacts/console-root/20261119-211306-c7-kernel-boot1-write/flash-boot-check.txt`).
-Remaining: remote Docker API with TLS; overlayfs and a pids controller would need
-kernel changes.
+Remaining: overlayfs and a pids controller would need kernel changes.
+
+## Remote Docker API over mutual TLS, 2026-11-19
+
+`scripts/setup-docker-tls.sh [host]` (Git Bash on the PC) creates once a
+private CA (EC P-256, 10 years) with a server certificate (SAN
+IP:192.168.1.222, DNS:mibox, IP:127.0.0.1) and a client certificate in
+`~/.docker/mibox` (`ca.pem cert.pem key.pem`, the `DOCKER_CERT_PATH` layout;
+`ca-key.pem` stays on the PC only). It installs the server files in the tree
+under `/etc/docker/tls`, saves the previous config as
+`/etc/docker/daemon.json.pre-tls`, writes a `daemon.json` that keeps the Unix
+socket and adds `tcp://0.0.0.0:2376` with `tlsverify` (checked with
+`dockerd --validate`), and signals dockerd so the supervisor restarts it.
+Data-side change only; boot1 is unchanged. Re-running reuses the certificates.
+
+| Check (physical) | Result |
+| --- | --- |
+| `GET /version`, `/containers/json` with the client cert | PASS (Engine 28.3.3, API 1.51) |
+| TLS without a client cert | Rejected: `alert certificate required` |
+| dockerd restart, `mibox-web` back on :8080 | PASS |
+
+Evidence: `artifacts/docker-runtime/20261119-tls-remote-api/result.txt`.
+The PC has no Docker CLI; with one installed:
+`DOCKER_HOST=tcp://192.168.1.222:2376 DOCKER_TLS_VERIFY=1 DOCKER_CERT_PATH=~/.docker/mibox docker ps`.
+Git for Windows curl (Schannel) cannot load PEM client keys; use
+`openssl s_client` or a non-Schannel curl. Anyone holding `key.pem` has root
+on the box. To revert: restore `daemon.json.pre-tls` and restart dockerd.

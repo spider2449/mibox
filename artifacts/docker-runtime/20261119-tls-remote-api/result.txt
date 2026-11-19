@@ -1,0 +1,18 @@
+# with client cert: GET /containers/json
+[{"Id":"63459b413a16f3f6b16b6b06372147684c6521bc8d04a89f25cf4fd13d8bae1e","Names":["/mibox-web"],"Image":"nginx:alpine","ImageID":"sha256:d9b2ece7de1a36a62ba2220178727e7437005fc1ffa66ce1058b943ec015f5ac","Command":"/docker-entrypoint.sh nginx -g 'daemon off;'","Created":1795092718,"Ports":[{"IP":"0.0.0.0","PrivatePort":80,"PublicPort":8080,"Type":"tcp"},{"IP":"::","PrivatePort":80,"PublicPort":8080,"Type":"tcp"}],"Labels":{"maintainer":"NGINX Docker Maintainers <docker-maint@nginx.com>"},"State":"running","Status":"Up 35 seconds","HostConfig":{"NetworkMode":"bridge"},"NetworkSettings":{"Networ
+# without client cert
+alert certificate required
+# server cert
+subject=CN=mibox
+X509v3 Subject Alternative Name: 
+    IP Address:192.168.1.222, DNS:mibox, IP Address:127.0.0.1
+notAfter=Nov 16 13:39:38 2036 GMT
+# client cert
+subject=CN=mibox-docker-client
+notAfter=Nov 16 13:39:38 2036 GMT
+# setup run
+server-cert.pem: OK
+cert.pem: OK
+configuration OK
+Installed; waiting for the supervisor to restart dockerd
+MIBOX_DOCKER_TLS_READY https://192.168.1.222:2376

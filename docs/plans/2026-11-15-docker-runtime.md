@@ -12,8 +12,10 @@ design. This is not a host Docker build request.
 5. [x] Build the development kernel and prove physical RAM boot, six container
    primitive diagnostics and software return to Android. Full peripheral
    validation remains outstanding; the default boot path was not changed.
-6. [ ] Integrate one engine with PID1 supervision, dedicated persistent storage,
-   networking, clock/CA setup and authenticated remote control.
+6. [x] Integrate one engine with PID1 supervision, dedicated persistent storage,
+   networking, clock/CA setup and authenticated remote control. Done 2026-11-19:
+   Alpine docker-engine 28.3.3 supervised by `mibox-docker`, data-backed tree,
+   bridge/NAT, mTLS API on 2376 (see ../mibox-docker-runtime.md).
 7. [ ] Prove image pull, run/exec/stop, published ports, resource limits,
    persistent volumes and restart on the physical box.
 
