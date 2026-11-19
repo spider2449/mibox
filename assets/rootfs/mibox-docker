@@ -1,0 +1,107 @@
+#!/bin/sh
+# Docker engine in the persistent Alpine tree (container kernel only).
+#   supervise  started by mibox-slim-start once the tree is ready. Needs kernel
+#              namespaces, the owner opt-in /etc/mibox-docker.enabled in the
+#              tree and an installed dockerd. Mounts a tmpfs /run and the cgroup
+#              v1 hierarchies inside the tree, points iptables at the legacy
+#              backend (the 3.10 kernel has no nf_tables), then runs dockerd in
+#              the tree and restarts it with back-off. Runs from the RAM root,
+#              so the persistence stop does not kill it; it ends at the stop
+#              marker.
+#   stop       TERM dockerd and wait up to 30 s for it and containerd to exit.
+#              Called by the persistence stop before it kills the tree.
+set -u
+export PATH=/usr/sbin:/usr/bin:/sbin:/bin
+root=/mnt/mibox-data/mibox-console/rootfs
+kmsg() { echo "mibox-docker: $*" > /dev/kmsg 2>/dev/null || true; echo "$*" 2>/dev/null || true; }
+is_mounted() { awk -v p="$1" '$5 == p {found=1} END {exit !found}' /proc/self/mountinfo; }
+rooted_named() {
+    for p in /proc/[0-9]*; do
+        if [ "$(readlink "$p/root" 2>/dev/null)" = "$root" ] && [ "$(cat "$p/comm" 2>/dev/null)" = "$1" ]; then
+            echo "${p#/proc/}"
+        fi
+    done
+}
+
+case "${1:-}" in
+supervise)
+    test "$(id -u)" = 0 || exit 1
+    test "$(readlink /proc/self/root)" = / || exit 1
+    if [ ! -e /proc/self/ns/pid ] || [ ! -e /proc/self/ns/net ]; then exit 0; fi
+    if [ ! -e "$root/etc/mibox-docker.enabled" ]; then exit 0; fi
+    if [ ! -x "$root/usr/bin/dockerd" ]; then kmsg MIBOX_DOCKER_NOT_INSTALLED; exit 0; fi
+    is_mounted "$root" || { kmsg MIBOX_DOCKER_TREE_NOT_MOUNTED; exit 1; }
+    # Engine state (sockets, pid files, containerd state) must not survive a
+    # power cut on data: a tmpfs /run inside the tree.
+    if ! is_mounted "$root/run"; then mount -t tmpfs -o mode=755,nosuid,nodev,size=32m tmpfs "$root/run"; fi
+    cg=$root/sys/fs/cgroup
+    if ! is_mounted "$cg"; then mount -t tmpfs -o mode=755,nosuid,nodev,noexec,size=64k cgroup_root "$cg"; fi
+    for c in cpuset cpu,cpuacct memory devices freezer net_cls,net_prio blkio; do
+        if grep -q "^${c%%,*}[[:space:]]" /proc/cgroups; then
+            mkdir -p "$cg/$c"
+            if ! is_mounted "$cg/$c"; then mount -t cgroup -o "$c,nosuid,nodev,noexec" cgroup "$cg/$c"; fi
+        fi
+    done
+    for alias in cpu:cpu,cpuacct cpuacct:cpu,cpuacct net_cls:net_cls,net_prio net_prio:net_cls,net_prio; do
+        name=${alias%%:*}; target=${alias#*:}
+        if [ -d "$cg/$target" ] && [ ! -e "$cg/$name" ]; then ln -s "$target" "$cg/$name"; fi
+    done
+    legacy=
+    for dir in /usr/sbin /sbin; do
+        if [ -x "$root$dir/xtables-legacy-multi" ]; then legacy=$dir/xtables-legacy-multi; break; fi
+    done
+    if [ -n "$legacy" ]; then
+        mkdir -p "$root/usr/local/sbin"
+        for name in iptables iptables-save iptables-restore; do
+            ln -sfn "$legacy" "$root/usr/local/sbin/$name"
+        done
+        iptables=true
+    else
+        kmsg MIBOX_DOCKER_NO_LEGACY_IPTABLES
+        iptables=false
+    fi
+    mkdir -p "$root/etc/docker"
+    if [ ! -e "$root/etc/docker/daemon.json" ]; then
+        # vfs: this kernel has no overlayfs. Bounded local logs.
+        cat > "$root/etc/docker/daemon.json" <<'JSON'
+{
+  "storage-driver": "vfs",
+  "ip6tables": false,
+  "log-driver": "local",
+  "log-opts": {"max-size": "10m", "max-file": "3"}
+}
+JSON
+    fi
+    log=$root/var/log/dockerd.log
+    delay=5
+    while [ -e /run/mibox-alpine-ready ] && [ ! -e /run/mibox-alpine.stop ]; do
+        if [ -f "$log" ] && [ "$(wc -c < "$log")" -gt 8388608 ]; then mv -f "$log" "$log.1"; fi
+        started=$(cut -d. -f1 /proc/uptime)
+        kmsg "MIBOX_DOCKERD_STARTING iptables=$iptables"
+        env -i PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin HOME=/root \
+            chroot "$root" /usr/bin/dockerd --iptables="$iptables" >> "$log" 2>&1 < /dev/null
+        status=$?
+        if [ -e /run/mibox-alpine.stop ]; then break; fi
+        kmsg "MIBOX_DOCKERD_EXITED status=$status"
+        if [ $(( $(cut -d. -f1 /proc/uptime) - started )) -gt 300 ]; then delay=5; fi
+        sleep "$delay"
+        [ "$delay" -lt 300 ] && delay=$((delay * 2))
+    done
+    kmsg MIBOX_DOCKER_SUPERVISOR_DONE
+    ;;
+stop)
+    pids=$(rooted_named dockerd)
+    if [ -z "$pids" ]; then exit 0; fi
+    kill -s TERM $pids 2>/dev/null || true
+    for _ in $(seq 30); do
+        if [ -z "$(rooted_named dockerd)$(rooted_named containerd)" ]; then
+            kmsg MIBOX_DOCKERD_STOPPED
+            exit 0
+        fi
+        sleep 1
+    done
+    kmsg MIBOX_DOCKERD_STOP_TIMEOUT
+    exit 1
+    ;;
+*) echo 'Usage: mibox-docker supervise|stop' >&2; exit 2 ;;
+esac

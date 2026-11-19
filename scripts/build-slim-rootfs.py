@@ -166,6 +166,7 @@ def build(root, output, kernel_dev=False):
         entries['etc/mibox-kernel-development'] = (0o100444, marker, 0, 0)
     entries['sbin/mibox-console-start'] = (0o100755, (assets / 'mibox-slim-start').read_bytes().replace(b'\r\n', b'\n'), 0, 0)
     entries['sbin/mibox-persistent-console'] = (0o100755, (assets / 'mibox-persistent-console').read_bytes().replace(b'\r\n', b'\n'), 0, 0)
+    entries['sbin/mibox-docker'] = (0o100755, (assets / 'mibox-docker').read_bytes().replace(b'\r\n', b'\n'), 0, 0)
     for directory in ('etc/dropbear', 'mnt', 'run'):
         entries.setdefault(directory, (0o040755, b'', 0, 0))
     for name, digest in kept.items():

@@ -97,3 +97,7 @@ rm -f /run/mibox-alpine.stop
 # restarts it while this marker exists and the stop marker does not.
 echo ready > /run/mibox-alpine-ready
 say MIBOX_ALPINE_SSH_STARTING
+# Docker engine: container kernel and owner opt-in only (see mibox-docker).
+if [ -x /sbin/mibox-docker ]; then
+    ( trap '' HUP; /sbin/mibox-docker supervise > /run/mibox-docker.log 2>&1 < /dev/null ) &
+fi

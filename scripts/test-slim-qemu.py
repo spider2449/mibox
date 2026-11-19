@@ -227,6 +227,15 @@ def main(private_key):
                 # make its / private (failed in the plain chroot on 3.10.99).
                 r = remote('grep -c " /mnt/mibox-data/mibox-console/rootfs " /proc/1/mountinfo; '
                            'unshare -m sh -c "echo MNTNS_OK"')
+                # No /etc/mibox-docker.enabled in this tree: the Docker
+                # supervisor must exit without mounting anything.
+                tree = '/mnt/mibox-data/mibox-console/rootfs'
+                docker_log = remote('test -e /proc/1/root/run/mibox-docker.log && echo LOG').stdout.split()
+                mounts = remote(f"awk '$5 == \"{tree}/run\" || $5 == \"{tree}/sys/fs/cgroup\" {{n++}} "
+                                "END {print n+0}' /proc/1/mountinfo").stdout.split()
+                procs = remote("ps -o args | awk '/[m]ibox-docker supervise/ {n++} END {print n+0}'").stdout.split()
+                record(f'boot{boot_index}-docker-supervisor-idle-without-opt-in',
+                       docker_log + mounts + procs == ['LOG', '0', '0'], f'{docker_log} {mounts} {procs}')
                 record(f'boot{boot_index}-tree-root-mounted-mount-ns-works',
                        r.stdout.split()[:1] == ['1'] and 'MNTNS_OK' in r.stdout, (r.stdout + r.stderr).strip()[-160:])
                 integrity = remote('cat /proc/1/root/run/mibox-alpine-integrity').stdout.strip()

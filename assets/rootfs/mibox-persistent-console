@@ -253,6 +253,9 @@ stop)
     # Suppress PID1's SSH restarts before killing anything (slim image).
     touch /run/mibox-alpine.stop
     rm -f /run/mibox-alpine-ready
+    # Let dockerd shut its containers down before the generic kill (its
+    # supervisor ends at the stop marker). A timeout falls through to KILL.
+    if [ -x /sbin/mibox-docker ]; then /sbin/mibox-docker stop || true; fi
     rooted() {
         for p in /proc/[0-9]*; do
             if [ "$(readlink "$p/root" 2>/dev/null)" = "$root" ]; then echo "${p#/proc/}"; fi

@@ -2,7 +2,7 @@
 # No Android query, software reboot, flash or environment command is issued.
 param(
     [ValidateSet('Check','WaitAndBoot')][string]$Action='Check',
-    [ValidateSet('Console','FailSafe','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4')][string]$Candidate='Console',
+    [ValidateSet('Console','FailSafe','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4','SlimKernelDev5')][string]$Candidate='Console',
     [ValidateRange(1,600)][int]$WaitSeconds=120,
     [ValidateRange(60,7200)][int]$TransferTimeoutSeconds=3600,
     # Bulk OUT upload verified by loader crc32 (see Test-MiboxLoaderRam.ps1).
@@ -62,6 +62,14 @@ if($Candidate -eq 'SlimKernelDev4') {
     # As SlimKernelDev3; the persistence stop unmounts every mount below the
     # tree, deepest first (dockerd leaves /var/lib/docker bound after exit).
     $hash='b11422d78b8e0cd54b565bd5dd61d065509cae20d4423c3ae45296d8dde0de76'
+    $initHash='628b3453a92b66a17008b87e1e4d07f2bd4f32342d6757d351bf92015d363fc5'
+    $miboxHash='c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226'
+}
+if($Candidate -eq 'SlimKernelDev5') {
+    # As SlimKernelDev4, plus /sbin/mibox-docker: supervised dockerd in the
+    # tree (opt-in /etc/mibox-docker.enabled), cgroup v1 mounts, legacy
+    # iptables, graceful engine stop before the persistence stop.
+    $hash='7f3fb6b1db84376bd8c666800197da164ab84006a040b6eb7902ef0d0ea4fec0'
     $initHash='628b3453a92b66a17008b87e1e4d07f2bd4f32342d6757d351bf92015d363fc5'
     $miboxHash='c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226'
 }

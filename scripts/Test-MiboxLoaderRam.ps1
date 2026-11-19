@@ -1,8 +1,8 @@
 param([Parameter(Mandatory=$true)][ValidateSet('SelfTest','BulkTest','Status','Reset','UploadCandidate','BootCandidate','UploadAndBoot')][string]$Action,[switch]$Bulk,
-    [ValidateSet('Baseline','Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture','Console','ContainerKernel','ContainerKernel2','DockerKernel','DockerKernel2','FailSafe','FaultPanic','FaultUsb','FaultHang','FaultKPanic','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4')][string]$Candidate='Baseline',[switch]$VerifyOnly,
+    [ValidateSet('Baseline','Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture','Console','ContainerKernel','ContainerKernel2','DockerKernel','DockerKernel2','FailSafe','FaultPanic','FaultUsb','FaultHang','FaultKPanic','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4','SlimKernelDev5')][string]$Candidate='Baseline',[switch]$VerifyOnly,
     [ValidateRange(3000,15000)][int]$ControlTimeoutMilliseconds=3000)
 $ErrorActionPreference='Stop'
-if($Candidate -in @('Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture','Console','ContainerKernel','ContainerKernel2','DockerKernel','DockerKernel2','FailSafe','FaultPanic','FaultUsb','FaultHang','FaultKPanic','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4') -and $Action -ne 'UploadAndBoot') {
+if($Candidate -in @('Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture','Console','ContainerKernel','ContainerKernel2','DockerKernel','DockerKernel2','FailSafe','FaultPanic','FaultUsb','FaultHang','FaultKPanic','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4','SlimKernelDev5') -and $Action -ne 'UploadAndBoot') {
     throw 'Versioned candidate requires full upload/readback/boot in one session'
 }
 if($VerifyOnly -and $Action -notin @('UploadCandidate','BootCandidate','UploadAndBoot')) {
@@ -192,6 +192,7 @@ namespace MiboxLoader {
       else if(preset=="SlimKernelDev2")expected="11b85b1fcb35edc9062f2227a9394dec29557ab741f5abb69483da52f49f560e";
       else if(preset=="SlimKernelDev3")expected="6f500cfdc256517455d91568d1612dd93bff60a31b1ffb181766b86f3c031738";
       else if(preset=="SlimKernelDev4")expected="b11422d78b8e0cd54b565bd5dd61d065509cae20d4423c3ae45296d8dde0de76";
+      else if(preset=="SlimKernelDev5")expected="7f3fb6b1db84376bd8c666800197da164ab84006a040b6eb7902ef0d0ea4fec0";
       else throw new Exception("Unknown pinned candidate");
       if(image==null || image.Length!=8388608 || Hash(image)!=expected)throw new Exception("Candidate hash/size mismatch before USB access");
       return expected;
@@ -373,6 +374,7 @@ if($Action -in @('UploadCandidate','BootCandidate','UploadAndBoot')) {
         'SlimKernelDev2' {'mibox-boot-candidate-slim-kernel-dev2'}
         'SlimKernelDev3' {'mibox-boot-candidate-slim-kernel-dev3'}
         'SlimKernelDev4' {'mibox-boot-candidate-slim-kernel-dev4'}
+        'SlimKernelDev5' {'mibox-boot-candidate-slim-kernel-dev5'}
         default {'mibox-boot-candidate'}
     }
     $candidatePath=Join-Path $PSScriptRoot ('../target/'+$directory+'/boot1-custom.NOT_READY.img')
