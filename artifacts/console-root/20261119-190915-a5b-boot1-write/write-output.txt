@@ -1,0 +1,25 @@
+== local inputs
+e4750d65206780f16a44a957188a87a591d24f1dbdfe16ba8acb0c2d9707d1ec  target/armv7-unknown-linux-musleabihf/release/mibox-partwrite
+955ea3e8a36f5f13b69dd09476a7c03d763d825024323bc92fd6e507799e4c66  target/mibox-boot-candidate-slim-fbstatus/boot1-custom.NOT_READY.img
+== device
+Thu Nov 19 11:09:54 UTC 2026
+ddf41083-5819-4520-b24a-811948a0f90f
+ID=mibox-custom
+e4750d65206780f16a44a957188a87a591d24f1dbdfe16ba8acb0c2d9707d1ec  mibox-partwrite
+955ea3e8a36f5f13b69dd09476a7c03d763d825024323bc92fd6e507799e4c66  slim.img
+== step 3: dry run
+MIBOX_PARTWRITE_TARGET name=boot1 dev=179:7 node=/dev/mibox-partwrite-boot1 dry_run=true
+MIBOX_PARTWRITE_CURRENT_VERIFIED=f11de99e04362e5cb6cb4c84aa077bc534613185ea98c3461e77d229e71e1505
+MIBOX_PARTWRITE_RESULT=DryRunVerified target=boot1 image_sha256=955ea3e8a36f5f13b69dd09476a7c03d763d825024323bc92fd6e507799e4c66
+== step 4: write
+MIBOX_PARTWRITE_TARGET name=boot1 dev=179:7 node=/dev/mibox-partwrite-boot1 dry_run=false
+MIBOX_PARTWRITE_CURRENT_VERIFIED=f11de99e04362e5cb6cb4c84aa077bc534613185ea98c3461e77d229e71e1505
+MIBOX_PARTWRITE_WRITING bytes=8388608
+MIBOX_PARTWRITE_READBACK_VERIFIED=955ea3e8a36f5f13b69dd09476a7c03d763d825024323bc92fd6e507799e4c66
+MIBOX_PARTWRITE_RESULT=Written target=boot1 image_sha256=955ea3e8a36f5f13b69dd09476a7c03d763d825024323bc92fd6e507799e4c66
+== step 5: independent re-hash
+boot dev=179:6 sectors=16384 sha256=ff4fa440044709b92652afea0306286534c9da2f57e41308d67459b97e800a56
+boot1 dev=179:7 sectors=16384 sha256=955ea3e8a36f5f13b69dd09476a7c03d763d825024323bc92fd6e507799e4c66
+== cleanup
+ls: cannot access '/dev/mibox-partwrite-*': No such file or directory
+A5B_SEQUENCE_DONE

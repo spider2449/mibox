@@ -1,8 +1,9 @@
 # Writing and restoring boot1 (plan C3)
 
-Status: **boot1 holds Slim `f11de99e…` (with HDMI splash) since 2026-11-17**, after C4
-(`dd1e6756…`) and two owner-approved A5 rewrites (`35e1d4d2…`, `f11de99e…`).
-For a restore, name `f11de99e…` as the expected current content.
+Status: **boot1 holds Slim `955ea3e8…` (live HDMI status screen) since 2026-11-19**, after C4
+(`dd1e6756…`), two owner-approved A5 rewrites (`35e1d4d2…`, `f11de99e…`) and the
+owner-approved A5b rewrite (`artifacts/console-root/20261119-190915-a5b-boot1-write/`).
+For a restore, name `955ea3e8…` as the expected current content.
 Stock boot1 `06d9eb7e…` remains restorable with the restore section below. Writing boot1
 (C4) needs explicit owner approval at that time. Nothing here touches the
 bootloader, env, boot, recovery, system or data partitions.

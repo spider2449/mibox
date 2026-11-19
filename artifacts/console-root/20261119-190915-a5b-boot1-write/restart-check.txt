@@ -1,0 +1,9 @@
+045a3380-7175-45f3-88ad-afcd66e6a173
+[    5.873952@1] mibox-slim: MIBOX_SPLASH_SHOWN window=0 0 1919 1079
+[    6.177874@0] mibox-persistent: MIBOX_ALPINE_INTEGRITY=MATCH
+[    6.190242@0] mibox-persistent: MIBOX_PERSISTENT_BOOT_READY free_kib=2056964 floor_kib=262144
+[    6.197219@1] mibox-slim: MIBOX_ALPINE_SSH_STARTING
+[   12.896514@1] mibox-slim: MIBOX_TIME_SYNCED 2026-11-19T11:10:51Z
+MIBOX_FBSTATUS_RUNNING
+-rwx------    1 root     root        443620 Jan  1  1970 /sbin/mibox-fbstatus
+  133   106 root     SN   27968   3%   1   0% /sbin/mibox-fbstatus
