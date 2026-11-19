@@ -1,0 +1,20 @@
+USB ADB: boot 02cf1702-d04c-4ad6-99bc-14bd3e737942
+MIBOX_PERSISTENT_STOP_UNMOUNT_FAILED
+
+umount: can't unmount /mnt/mibox-data/mibox-console/rootfs: Resource busy
+
+umount: can't unmount /mnt/mibox-data: Resource busy
+
+MIBOX_PERSIST_STOP_EXIT=1
+
+Error: Custom { kind: Other, error: "persistence stop failed or response invalid" }
+
+MOUNTED=3
+
+Persistence stop FAILED or data still mounted: do NOT cut power. See the output above.
+At F:\coding\otherPrj\mibox\scripts\Stop-Mibox.ps1:55 char:9
++         throw 'Persistence stop FAILED or data still mounted: do NOT  ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Persistence sto...e output above.:String) [], RuntimeException
+    + FullyQualifiedErrorId : Persistence stop FAILED or data still mounted: do NOT cut power. See the output above.
+ 

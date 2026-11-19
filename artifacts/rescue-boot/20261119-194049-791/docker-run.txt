@@ -1,0 +1,32 @@
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+8593da9e4aa9: Pulling fs layer
+8593da9e4aa9: Verifying Checksum
+8593da9e4aa9: Download complete
+8593da9e4aa9: Pull complete
+Digest: sha256:1e4c05b897a751332ce85c7e9449da2d93514ea2dea6dbb0e2753c9e949b2bfa
+Status: Downloaded newer image for hello-world:latest
+exit=0
+Unable to find image 'alpine:3.22' locally
+3.22: Pulling from library/alpine
+44a8751e514f: Pulling fs layer
+44a8751e514f: Verifying Checksum
+44a8751e514f: Download complete
+44a8751e514f: Pull complete
+Digest: sha256:49340b346798875b5592e5d420241f2f9cfba5f47e62ebb1446a1b34734e898f
+Status: Downloaded newer image for alpine:3.22
+WARNING: Your kernel does not support PIDs limit capabilities or the cgroup is not mounted. PIDs limit discarded.
+3.22.8
+3ecdb8433d00
+pid=1
+67108864
+armv7l
+exit=0
+REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
+alpine        3.22      79f8c66e5f43   13 days ago    5.36MB
+hello-world   latest    02c0e64f19f3   8 months ago   4.11kB
+exit=0
+Hello from Docker!
+    (arm32v7)
+Mem:            856          51         609           0         196           0
+/dev/mibox-data  2.2G  321M  1.9G  15% /

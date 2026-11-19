@@ -37,10 +37,11 @@ kmsg() { echo "mibox-persistent: $*" > /dev/kmsg 2>/dev/null || true; echo "$*" 
 # so mount points are read from mountinfo.
 is_mounted() { awk -v p="$1" '$5 == p {found=1} END {exit !found}' /proc/self/mountinfo; }
 unmount_all() {
-    for path in dev/pts dev proc sys; do
-        if mountpoint -q "$root/$path"; then umount "$root/$path"; fi
-    done
-    if is_mounted "$root"; then umount "$root"; fi
+    # Every mount at or below the tree, deepest first: the dev/proc/sys binds,
+    # the self-bind, and mounts left inside it (dockerd keeps a bind of
+    # /var/lib/docker after it exits; cgroup hierarchies under /sys).
+    awk -v p="$root" '$5 == p || index($5, p "/") == 1 {print length($5), $5}' /proc/self/mountinfo |
+        sort -rn | while read -r _ path; do umount "$path" || exit 1; done || return 1
     if mountpoint -q "$store"; then umount "$store"; fi
 }
 if [ -n "$qemu" ]; then

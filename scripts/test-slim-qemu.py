@@ -274,6 +274,16 @@ def main(private_key):
                     r = remote('cat /root/slim-sentinel')
                     record('boot2-sentinel-retained', r.stdout.strip() == 'SLIM_SENTINEL')
                 if boot_index == 1:
+                    # Mounts left inside the tree, as dockerd (self-bind of
+                    # /var/lib/docker, kept after exit) and a cgroup tmpfs leave
+                    # them: the stop must still unmount everything (found on the
+                    # box 2026-11-19).
+                    r = remote('mkdir -p /var/lib/mibox-leftover && '
+                               'mount --bind /var/lib/mibox-leftover /var/lib/mibox-leftover && '
+                               'mount --make-shared /var/lib/mibox-leftover && '
+                               'mount -t tmpfs leftover /sys/fs/cgroup && '
+                               'grep -c -e " /var/lib/mibox-leftover " -e " /sys/fs/cgroup " /proc/self/mountinfo')
+                    record('boot1-leftover-mounts-inside-tree', r.stdout.strip() == '2', (r.stdout + r.stderr).strip())
                     # Root stop from inside an Alpine SSH session: the session is killed.
                     r = remote('exec chroot /proc/1/root /sbin/mibox-persistent-console stop --qemu', 90)
                     stopped = wait_serial(serial, 'MIBOX_PERSISTENT_CONSOLE_STOPPED', 30)

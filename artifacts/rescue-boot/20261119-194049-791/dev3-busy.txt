@@ -1,0 +1,3 @@
+19 1 179:11 / /mnt/mibox-data rw,nosuid,nodev,relatime - ext4 /dev/mibox-data rw,data=ordered
+20 19 179:11 /mibox-console/rootfs /mnt/mibox-data/mibox-console/rootfs rw,nosuid,nodev,relatime - ext4 /dev/mibox-data rw,data=ordered
+33 20 179:11 /mibox-console/rootfs/var/lib/docker /mnt/mibox-data/mibox-console/rootfs/var/lib/docker rw,nosuid,nodev,relatime shared:1 - ext4 /dev/mibox-data rw,data=ordered

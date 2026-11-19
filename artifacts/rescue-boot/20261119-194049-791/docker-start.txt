@@ -1,0 +1,19 @@
+blkio
+cpu
+cpu,cpuacct
+cpuacct
+cpuset
+devices
+freezer
+memory
+net_cls
+net_cls,net_prio
+net_prio
+ Server Version: 28.3.3
+ Storage Driver: vfs
+ Cgroup Driver: cgroupfs
+ Cgroup Version: 1
+ Kernel Version: 3.10.99
+ Operating System: Linux
+ Architecture: armv7l
+WARNING: IPv4 forwarding is disabled

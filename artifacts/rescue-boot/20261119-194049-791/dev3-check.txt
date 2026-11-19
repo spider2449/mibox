@@ -1,0 +1,9 @@
+3.10.99
+MATCH
+1
+MNTNS_OK
+before visible=1280x1080 virtual=1280x3240 offset=0,0 bpp=32 stride=5120 smem_len=16777216
+docker policy:
+  28.3.3-r5:
+    https://dl-cdn.alpinelinux.org/alpine/v3.22/community
+/dev/mibox-data  2.2G  158M  2.0G   8% /
