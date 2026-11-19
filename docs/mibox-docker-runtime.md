@@ -291,3 +291,41 @@ Remaining acceptance: registry pull and CA/clock setup, physical Ethernet and
 bridge/NAT/published ports under this kernel, workload resource enforcement,
 persistent volumes and engine restart/reboot, PID1 service supervision and
 authenticated remote management. This offline PASS does not close those gates.
+
+## Persistent Docker on the Slim system, 2026-11-19 (RAM boot)
+
+Kernel: the pinned 3.10.99 container kernel with board patches
+`kernel/patches/0000-mibox-casablanca-emmc-ethernet.patch` (stock MPT table
+offset 2 MiB; stock Ethernet clock/mode registers, pinctrl and PHY reset) and
+`0002-bridge-local-fdb-for-newlink-address.patch` (a bridge created with an
+address gets its local fdb entry; without it docker0 never passed unicast
+frames up to the host). Userspace: the Slim image built with
+`build-slim-rootfs.py --kernel-dev`, RAM-booted as `SlimKernelDev6`
+(`ac5526de…`). Not written to flash; HDMI is not shown on this kernel yet
+(`mibox-fbhandoff` rejects its fb0 layout).
+
+Engine: Alpine `docker-engine`/`docker-cli` 28.3.3 (containerd 2.1.5,
+runc 1.3.7) and `iptables-legacy` in the persistent tree on data, enabled by
+the owner opt-in file `/etc/mibox-docker.enabled` in the tree.
+`/sbin/mibox-docker supervise` (started by `mibox-slim-start`) mounts a tmpfs
+`/run` and the cgroup v1 hierarchies in the tree, points
+`/usr/local/sbin/iptables*` at `xtables-legacy-multi`, writes a default
+`/etc/docker/daemon.json` (vfs, no ip6tables, local logs 3×10 MB) if absent
+and restarts dockerd with back-off. The persistence stop first runs
+`mibox-docker stop` (TERM, up to 30 s), then unmounts everything below the
+tree deepest first.
+
+| Check (physical) | Result |
+| --- | --- |
+| hello-world (arm32v7), alpine:3.22 with 64 MiB memory limit | PASS |
+| Container → bridge gateway, Internet, DNS | PASS (with patch 0002) |
+| `nginx:alpine -p 8080:80`, fetched from the PC | PASS |
+| Stop-Mibox with a running container | PASS: dockerd stopped, data unmounted |
+| Next RAM boot: dockerd auto-start, `--restart unless-stopped` container back, PC fetch without manual steps | PASS (`artifacts/rescue-boot/20261119-205425-905`) |
+| `--pids-limit` | Not supported (no pids controller) |
+| overlay2 | Not supported; vfs copies every layer |
+
+Day to day: `ssh root@192.168.1.222`, then `docker …` inside Alpine. Disable
+the engine with `rm /etc/mibox-docker.enabled` (takes effect at the next boot).
+Remaining: HDMI on 3.10.99, writing this kernel to boot1 (owner approval),
+remote Docker API with TLS.

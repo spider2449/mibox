@@ -1,0 +1,11 @@
+3.10.99
+20.08 19.27
+[    6.481215@0] mibox-slim: MIBOX_SPLASH_HANDOFF_FAILED
+[    6.916442@1] mibox-persistent: MIBOX_ALPINE_INTEGRITY=MATCH
+[    6.928438@1] mibox-persistent: MIBOX_PERSISTENT_BOOT_READY free_kib=1687788 floor_kib=262144
+[    6.939833@1] mibox-slim: MIBOX_ALPINE_SSH_STARTING
+[    7.136332@1] mibox-docker: MIBOX_DOCKERD_STARTING iptables=true
+[    9.510980@0] mibox-slim: MIBOX_TIME_SYNCED 2026-11-19T12:56:37Z
+mibox-web Up 6 seconds 0.0.0.0:8080->80/tcp, [::]:8080->80/tcp
+bridge_gw_ok
+dns_ok
