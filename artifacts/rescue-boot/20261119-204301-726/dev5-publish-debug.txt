@@ -1,0 +1,12 @@
+httpd: applet not found
+httpd: applet not found
+httpd: applet not found
+Error response from daemon: Container 50ce686c43f738963dceb20bfab12e021abd4aa1b092a84d45e89e7c39575961 is restarting, wait until the container is running
+container ip=
+wget: bad address ''
+Chain DOCKER (2 references)
+ pkts bytes target     prot opt in     out     source               destination         
+   18  1440 RETURN     all  --  docker0 *       0.0.0.0/0            0.0.0.0/0           
+Chain DOCKER (1 references)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 DROP       all  --  !docker0 docker0  0.0.0.0/0            0.0.0.0/0           

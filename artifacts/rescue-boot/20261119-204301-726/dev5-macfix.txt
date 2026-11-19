@@ -1,0 +1,4 @@
+16:46:60:eb:9c:9b
+bridge_gw_ok
+internet_ok
+dns_ok

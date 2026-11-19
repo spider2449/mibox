@@ -7,9 +7,10 @@
   "source_clean": false,
   "patches": {
     "kernel/patches/0000-mibox-casablanca-emmc-ethernet.patch": "9c53e1427ac7532d0cbeeaab1f3ccae96d2f96ecf1328ef87bb99ef24cee7e11",
-    "kernel/patches/0001-meson6-build-fixes.patch": "bde3c3c731a83d84545fcac994087af158fb475b5d1069e6b5b4aaba1405b754"
+    "kernel/patches/0001-meson6-build-fixes.patch": "bde3c3c731a83d84545fcac994087af158fb475b5d1069e6b5b4aaba1405b754",
+    "kernel/patches/0002-bridge-local-fdb-for-newlink-address.patch": "2ffb768ac513ddea0bfe26104bbf9147beb1dba4b10cc27fee72fcc85abd9e10"
   },
-  "source_diff_sha256": "4fc465160d5c82cdba8de7bc171396fbcc071d613a4a90b01df18885abfd452f",
+  "source_diff_sha256": "5fa4c48eb3f906ec72655668afd1535dc6448c8cd122059078600882889462af",
   "build_script_sha256": "30e93db1ccc51c530a5cf30f798a098e022ba87ecd37618f833f72e0b62c3136",
   "recorder_sha256": "a0eb4622e4502e03cd59c3750d346f3f252be28bfb87e64bfa22ad58c7b69361",
   "host_compiler_version": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
@@ -473,38 +474,38 @@
   "elf_arm32": true,
   "zimage_magic_valid": true,
   "compressed_payload_matches_image": true,
-  "compressed_payload_sha256": "94d6e2bd17f7e46a0b7fd741330bbc9b15370f851bbef715c67e4166d56720e8",
+  "compressed_payload_sha256": "a32545e20d8cfbd9735ba56960d34e89336cba6091f85da39d72116ce6170ad5",
   "compressed_payload_offset_in_zimage": 7886,
   "artifacts": {
     "zImage": {
       "path": "/home/morefunfun/.cache/mibox-kernel/build-containers-v1/arch/arm/boot/zImage",
-      "bytes": 4118288,
-      "sha256": "dd429dcf0a770ba9313f50504c4a00838a12750a77e96a58fdf01ed9d15dc740"
+      "bytes": 4118312,
+      "sha256": "00ee5bf8c01063c62477f4e483caf132852c74c5d9a8bdefdc5673ffff7822ef"
     },
     "Image": {
       "path": "/home/morefunfun/.cache/mibox-kernel/build-containers-v1/arch/arm/boot/Image",
       "bytes": 12412276,
-      "sha256": "8de0874bf4d4241b444c8ab6a30d94268bc081920d439bd57bd888eecd435463"
+      "sha256": "1fde0ebc53dc871c8a6e78b89819860997b85538a5659acdba9300072afcb036"
     },
     "vmlinux": {
       "path": "/home/morefunfun/.cache/mibox-kernel/build-containers-v1/vmlinux",
-      "bytes": 117341620,
-      "sha256": "239d63e9067c4086352a2938f50453bf5346992cf6eaec3988625d8bc126ea63"
+      "bytes": 117341700,
+      "sha256": "f26f2cc71de0e9115afcd2d178304a46f065f70b79b9fcc276e74f6aa5aa1dad"
     },
     "System.map": {
       "path": "/home/morefunfun/.cache/mibox-kernel/build-containers-v1/System.map",
       "bytes": 2404548,
-      "sha256": "4e566debc75be233784a366be85ff9bab76131ea742d0698bb365040b4feb6fb"
+      "sha256": "599d8f1331ebd0052c560cbc4f85edc2a3840506a4d80771fde7beb2f0582d25"
     }
   },
-  "build_log_sha256": "787ec58aa9c25903b477947d4d68fc8536da76590c69d67c1ee8a239c676cb44",
+  "build_log_sha256": "a3b34c5c9f9f6cc6b5cbb7606f58cd3bb02e60509a70bcdf8149aab46c0a04c4",
   "warning_lines": [
     "drivers/amlogic/dvb_tv/Kconfig:215: warning: Skip ../hardware/dvb/altobeam/drivers/atbm887x/Kconfig",
     "drivers/amlogic/wifi/broadcm_40181/Kconfig:54:warning: defaults for choice values not supported",
     "warning: (BT_DEVICE && BT_WAKE_CTRL && AMLOGIC_BACKLIGHT && DRM_RADEON && DRM_I915 && DRM_GMA500 && DRM_TILCDC && FB_BACKLIGHT && USB_APPLEDISPLAY && FB_OLPC_DCON && ASUS_LAPTOP && SONY_LAPTOP && THINKPAD_ACPI && EEEPC_LAPTOP && ACPI_CMPC && SAMSUNG_Q10) selects BACKLIGHT_CLASS_DEVICE which has unmet direct dependencies (HAS_IOMEM && BACKLIGHT_LCD_SUPPORT)",
     "warning: (BT_DEVICE && BT_WAKE_CTRL && AMLOGIC_BACKLIGHT && DRM_RADEON && DRM_I915 && DRM_GMA500 && DRM_TILCDC && FB_BACKLIGHT && USB_APPLEDISPLAY && FB_OLPC_DCON && ASUS_LAPTOP && SONY_LAPTOP && THINKPAD_ACPI && EEEPC_LAPTOP && ACPI_CMPC && SAMSUNG_Q10) selects BACKLIGHT_CLASS_DEVICE which has unmet direct dependencies (HAS_IOMEM && BACKLIGHT_LCD_SUPPORT)",
-    "/home/morefunfun/.cache/mibox-kernel/vendor-source/arch/arm/kernel/process.c:76:0: warning: \"CONFIG_ARM_FLUSH_CONSOLE_ON_RESTART\" redefined",
     "/home/morefunfun/.cache/mibox-kernel/vendor-source/arch/arm/kernel/return_address.c:63:2: warning: #warning \"TODO: return_address should use unwind tables\" [-Wcpp]",
+    "/home/morefunfun/.cache/mibox-kernel/vendor-source/arch/arm/kernel/process.c:76:0: warning: \"CONFIG_ARM_FLUSH_CONSOLE_ON_RESTART\" redefined",
     "/home/morefunfun/.cache/mibox-kernel/vendor-source/sound/soc/aml/m6/aml_pcm.c:1674:1: warning: control reaches end of non-void function [-Wreturn-type]",
     "/home/morefunfun/.cache/mibox-kernel/vendor-source/drivers/amlogic/hdmi/hdmi_tx/hdmi_tx_cec.c:743:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]",
     "/home/morefunfun/.cache/mibox-kernel/vendor-source/net/core/sysctl_net_core.c:24:12: warning: 'one' defined but not used [-Wunused-variable]",

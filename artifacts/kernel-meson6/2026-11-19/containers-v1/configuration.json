@@ -7,9 +7,10 @@
   "source_clean": false,
   "patches": {
     "kernel/patches/0000-mibox-casablanca-emmc-ethernet.patch": "9c53e1427ac7532d0cbeeaab1f3ccae96d2f96ecf1328ef87bb99ef24cee7e11",
-    "kernel/patches/0001-meson6-build-fixes.patch": "bde3c3c731a83d84545fcac994087af158fb475b5d1069e6b5b4aaba1405b754"
+    "kernel/patches/0001-meson6-build-fixes.patch": "bde3c3c731a83d84545fcac994087af158fb475b5d1069e6b5b4aaba1405b754",
+    "kernel/patches/0002-bridge-local-fdb-for-newlink-address.patch": "2ffb768ac513ddea0bfe26104bbf9147beb1dba4b10cc27fee72fcc85abd9e10"
   },
-  "source_diff_sha256": "4fc465160d5c82cdba8de7bc171396fbcc071d613a4a90b01df18885abfd452f",
+  "source_diff_sha256": "5fa4c48eb3f906ec72655668afd1535dc6448c8cd122059078600882889462af",
   "build_script_sha256": "30e93db1ccc51c530a5cf30f798a098e022ba87ecd37618f833f72e0b62c3136",
   "recorder_sha256": "a0eb4622e4502e03cd59c3750d346f3f252be28bfb87e64bfa22ad58c7b69361",
   "host_compiler_version": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",

@@ -1,0 +1,8 @@
+docker0 rx=16 tx=7 txdrop=0 rxdrop=0
+veth2d3c42c rx=11 tx=7 txdrop=0 rxdrop=0
+c_eth0 rx=1044 tx=374 rxdrop=688
+after
+docker0 rx=16 tx=7 txdrop=0 rxdrop=0
+veth2d3c42c rx=14 tx=7 txdrop=0 rxdrop=0
+c_eth0 rx=1069 tx=378 rxdrop=708
+Ip: 1 64 265 0 0 0 0 0 264 307 0 0 0 0 0 0 0 0 0

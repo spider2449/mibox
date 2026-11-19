@@ -1,0 +1,43 @@
+Unable to find image 'nginx:alpine' locally
+alpine: Pulling from library/nginx
+65a28aac190a: Pulling fs layer
+c013092365d3: Pulling fs layer
+a1cc4beb1e79: Pulling fs layer
+969b27823383: Pulling fs layer
+508a7662896d: Pulling fs layer
+6a9d29781e9f: Pulling fs layer
+b3d9722979cd: Pulling fs layer
+e375ed833a62: Pulling fs layer
+969b27823383: Waiting
+508a7662896d: Waiting
+6a9d29781e9f: Waiting
+b3d9722979cd: Waiting
+e375ed833a62: Waiting
+a1cc4beb1e79: Verifying Checksum
+a1cc4beb1e79: Download complete
+969b27823383: Verifying Checksum
+969b27823383: Download complete
+c013092365d3: Verifying Checksum
+c013092365d3: Download complete
+65a28aac190a: Verifying Checksum
+65a28aac190a: Download complete
+508a7662896d: Download complete
+6a9d29781e9f: Verifying Checksum
+6a9d29781e9f: Download complete
+b3d9722979cd: Verifying Checksum
+b3d9722979cd: Download complete
+65a28aac190a: Pull complete
+c013092365d3: Pull complete
+a1cc4beb1e79: Pull complete
+e375ed833a62: Verifying Checksum
+e375ed833a62: Download complete
+969b27823383: Pull complete
+508a7662896d: Pull complete
+6a9d29781e9f: Pull complete
+b3d9722979cd: Pull complete
+e375ed833a62: Pull complete
+Digest: sha256:0563c36f94a6d3ec3584161b77859f740f7e20b4853f52c796a864ce6908e8ea
+Status: Downloaded newer image for nginx:alpine
+mibox-web nginx:alpine Up 16 seconds 0.0.0.0:8080->80/tcp, [::]:8080->80/tcp
+hello from mibox docker
+hello from mibox docker

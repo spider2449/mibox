@@ -1,0 +1,48 @@
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: sit0: <NOARP> mtu 1480 qdisc noop state DOWN 
+    link/sit 0.0.0.0 brd 0.0.0.0
+3: ip6tnl0@NONE: <NOARP> mtu 1452 qdisc noop state DOWN 
+    link/tunnel6 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00 brd 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
+4: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP 
+    link/ether 76:25:1f:ff:55:dc brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+default via 172.17.0.1 dev eth0 
+172.17.0.0/16 dev eth0 scope link  src 172.17.0.2 
+PING 172.17.0.1 (172.17.0.1): 56 data bytes
+
+--- 172.17.0.1 ping statistics ---
+2 packets transmitted, 0 packets received, 100% packet loss
+IP address       HW type     Flags       HW address            Mask     Device
+172.17.0.1       0x1         0x2         16:46:60:eb:9c:9b     *        eth0
+=== host
+12: veth2d3c42c: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP 
+    link/ether 2a:ef:b2:5e:d8:40 brd ff:ff:ff:ff:ff:ff
+/sys/class/net/veth2d3c42c master= oper=up carrier=1
+up
+veth2d3c42c
+IP address       HW type     Flags       HW address            Mask     Device
+192.168.1.230    0x1         0x2         24:4b:fe:48:7b:84     *        eth0
+192.168.1.105    0x1         0x2         98:da:c4:3e:ae:03     *        eth0
+172.17.0.2       0x1         0x2         76:25:1f:ff:55:dc     *        docker0
+192.168.1.1      0x1         0x2         30:4f:75:0e:fe:28     *        eth0
+[  115.865670@1] device vetha04a405 entered promiscuous mode
+[  115.878720@0] IPv6: ADDRCONF(NETDEV_UP): vetha04a405: link is not ready
+[  117.092541@0] IPv6: ADDRCONF(NETDEV_CHANGE): vetha04a405: link becomes ready
+[  117.094286@0] docker0: port 1(vetha04a405) entered forwarding state
+[  117.100490@0] docker0: port 1(vetha04a405) entered forwarding state
+[  123.520667@1] docker0: port 1(vetha04a405) entered disabled state
+[  123.641790@1] docker0: port 1(vetha04a405) entered disabled state
+[  123.643564@1] device vetha04a405 left promiscuous mode
+[  123.647405@1] docker0: port 1(vetha04a405) entered disabled state
+[  128.870223@0] hdmitx: hdcp: authenticated failed
+[  136.486042@1] device veth2d3c42c entered promiscuous mode
+[  136.500710@0] IPv6: ADDRCONF(NETDEV_UP): veth2d3c42c: link is not ready
+[  136.751653@1] IPv6: ADDRCONF(NETDEV_CHANGE): veth2d3c42c: link becomes ready
+[  136.753249@1] docker0: port 1(veth2d3c42c) entered forwarding state
+[  136.759359@1] docker0: port 1(veth2d3c42c) entered forwarding state

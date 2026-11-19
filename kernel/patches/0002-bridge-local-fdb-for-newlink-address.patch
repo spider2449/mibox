@@ -1,0 +1,17 @@
+diff --git a/net/bridge/br_netlink.c b/net/bridge/br_netlink.c
+index f16e9e48..76968213 100644
+--- a/net/bridge/br_netlink.c
++++ b/net/bridge/br_netlink.c
+@@ -445,6 +445,12 @@ static int br_dev_newlink(struct net *src_net, struct net_device *dev,
+ 
+ 	if (tb[IFLA_ADDRESS]) {
+ 		spin_lock_bh(&br->lock);
++		/* MiBox: also add the local fdb entry for an address given at
++		 * creation, as br_set_mac_address does. Without it unicast frames
++		 * to the bridge's own MAC (e.g. Docker's docker0, which sets the
++		 * address in RTM_NEWLINK) are flooded to the ports and never
++		 * reach the host. Upstream fixed this after 3.10. */
++		br_fdb_change_mac_address(br, nla_data(tb[IFLA_ADDRESS]));
+ 		br_stp_change_bridge_id(br, nla_data(tb[IFLA_ADDRESS]));
+ 		spin_unlock_bh(&br->lock);
+ 	}

@@ -1,0 +1,16 @@
+USB ADB: boot b1da313d-8885-4aa5-8faa-4516592ce72d
+MIBOX_DOCKERD_STOPPED
+
+MIBOX_PERSISTENT_CONSOLE_STOPPED
+
+MIBOX_PERSIST_STOP_EXIT=0
+
+MOUNTED=0
+
+MIBOX_STOPPED: data unmounted, only RAM filesystems remain. Safe to cut power.
+[    6.905980@1] mibox-persistent: MIBOX_ALPINE_INTEGRITY=MATCH
+[    6.918064@1] mibox-persistent: MIBOX_PERSISTENT_BOOT_READY free_kib=1890460 floor_kib=262144
+[   27.931171@1] mibox-docker: MIBOX_DOCKERD_STARTING iptables=true
+[  612.622596@1] mibox-docker: MIBOX_DOCKER_SUPERVISOR_DONE
+[  613.453081@1] mibox-docker: MIBOX_DOCKERD_STOPPED
+[  617.278818@0] mibox-persistent: MIBOX_PERSISTENT_CONSOLE_STOPPED

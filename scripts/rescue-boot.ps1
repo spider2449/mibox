@@ -2,7 +2,7 @@
 # No Android query, software reboot, flash or environment command is issued.
 param(
     [ValidateSet('Check','WaitAndBoot')][string]$Action='Check',
-    [ValidateSet('Console','FailSafe','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4','SlimKernelDev5')][string]$Candidate='Console',
+    [ValidateSet('Console','FailSafe','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4','SlimKernelDev5','SlimKernelDev6')][string]$Candidate='Console',
     [ValidateRange(1,600)][int]$WaitSeconds=120,
     [ValidateRange(60,7200)][int]$TransferTimeoutSeconds=3600,
     # Bulk OUT upload verified by loader crc32 (see Test-MiboxLoaderRam.ps1).
@@ -70,6 +70,13 @@ if($Candidate -eq 'SlimKernelDev5') {
     # tree (opt-in /etc/mibox-docker.enabled), cgroup v1 mounts, legacy
     # iptables, graceful engine stop before the persistence stop.
     $hash='7f3fb6b1db84376bd8c666800197da164ab84006a040b6eb7902ef0d0ea4fec0'
+    $initHash='628b3453a92b66a17008b87e1e4d07f2bd4f32342d6757d351bf92015d363fc5'
+    $miboxHash='c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226'
+}
+if($Candidate -eq 'SlimKernelDev6') {
+    # As SlimKernelDev5, with kernel patch 0002: a bridge created with an
+    # address (docker0) gets its local fdb entry, so containers reach the host.
+    $hash='ac5526de79281065b7c66bbf556e89d637906d13e94d4c7a24f8dbe185e16946'
     $initHash='628b3453a92b66a17008b87e1e4d07f2bd4f32342d6757d351bf92015d363fc5'
     $miboxHash='c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226'
 }

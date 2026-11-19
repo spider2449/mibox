@@ -1,0 +1,9 @@
+nf_call_arptables
+nf_call_ip6tables
+nf_call_iptables
+/sys/class/net/docker0/bridge/nf_call_arptables=0
+/sys/class/net/docker0/bridge/nf_call_ip6tables=0
+/sys/class/net/docker0/bridge/nf_call_iptables=0
+bridge_gw_fail_nf0
+internet_fail_nf0
+docker0 rx=17

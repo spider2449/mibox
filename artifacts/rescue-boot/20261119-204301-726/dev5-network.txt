@@ -1,0 +1,14 @@
+-N DOCKER
+-A PREROUTING -m addrtype --dst-type LOCAL -j DOCKER
+-A OUTPUT ! -d 127.0.0.0/8 -m addrtype --dst-type LOCAL -j DOCKER
+-A POSTROUTING -s 172.17.0.0/16 ! -o docker0 -j MASQUERADE
+-A DOCKER -i docker0 -j RETURN
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+--- outbound
+default via 172.17.0.1 dev eth0 
+wget: bad address 'dl-cdn.alpinelinux.org'
+--- publish
+55c8b3ceda8ebd22eb26d4f88b8afd32467e20813f20812cae290035fe585241
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: exec: "httpd": executable file not found in $PATH
+
+Run 'docker run --help' for more information
