@@ -223,6 +223,12 @@ def main(private_key):
                 record(f'boot{boot_index}-ram-copy-of-public-key', r.stdout.split()[:2] == host_key)
                 r = remote('grep " /mnt/mibox-data " /proc/1/mountinfo')
                 record(f'boot{boot_index}-data-mounted', ' - ext4 /dev/vda ' in r.stdout, r.stdout.strip())
+                # The tree is bind-mounted onto itself, so a mount namespace can
+                # make its / private (failed in the plain chroot on 3.10.99).
+                r = remote('grep -c " /mnt/mibox-data/mibox-console/rootfs " /proc/1/mountinfo; '
+                           'unshare -m sh -c "echo MNTNS_OK"')
+                record(f'boot{boot_index}-tree-root-mounted-mount-ns-works',
+                       r.stdout.split()[:1] == ['1'] and 'MNTNS_OK' in r.stdout, (r.stdout + r.stderr).strip()[-160:])
                 integrity = remote('cat /proc/1/root/run/mibox-alpine-integrity').stdout.strip()
                 if boot_index == 1:
                     record('boot1-alpine-integrity-match', integrity == 'MATCH', integrity)

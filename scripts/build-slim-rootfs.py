@@ -27,7 +27,7 @@ BASELINE_FILES = ['usr/sbin/dropbear', 'lib/ld-musl-armhf.so.1', 'usr/lib/libz.s
                   'usr/lib/libutmps.so.0.1.3.1', 'usr/lib/libskarnet.so.2.14.4.0', 'bin/busybox']
 BASELINE_LINKS = ['lib/libc.musl-armv7.so.1', 'usr/lib/libz.so.1', 'usr/lib/libutmps.so.0.1',
                   'usr/lib/libskarnet.so.2.14', 'bin/sh', 'bin/ash']
-HANDOFF_SHA256 = 'b2b5bfb7319e2c14b8f3b47ef0355318d399083bd6284a75d2f4db413b531014'  # source b56e8073…
+HANDOFF_SHA256 = '3a1bbb4827ace404fb5705ee65fc8e8516e8a000076502c1f65901f4a1ad0ca2'  # also accepts 3.10.99
 SPLASH_SHA256 = 'f8f95140a0c010a2fefd36e18a14028a331b7fab9e3ae917f7ff15640f5a5aac'   # build-splash-ppm.py (LSB-left glyphs)
 FBSTATUS_SHA256 = '86e3e6a78f1fc823caa7ecbdcf361574f9133a443e4d5e97d74b293899299cb2'  # build-fbstatus.py
 S2_SHA256 = 'artifacts/storage/s2-20261117/device-sha256.txt'

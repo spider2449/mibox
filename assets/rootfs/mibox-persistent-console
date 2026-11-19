@@ -31,10 +31,16 @@ for flag in "$@"; do
 done
 # stdout may be a dead SSH session during stop; the kernel log always records.
 kmsg() { echo "mibox-persistent: $*" > /dev/kmsg 2>/dev/null || true; echo "$*" 2>/dev/null || true; }
+# The tree is bind-mounted onto itself so that its / is a mount point inside
+# the chroot (mount namespaces and pivot_root need one, e.g. for containers).
+# BusyBox mountpoint compares st_dev and cannot see a same-filesystem bind,
+# so mount points are read from mountinfo.
+is_mounted() { awk -v p="$1" '$5 == p {found=1} END {exit !found}' /proc/self/mountinfo; }
 unmount_all() {
     for path in dev/pts dev proc sys; do
         if mountpoint -q "$root/$path"; then umount "$root/$path"; fi
     done
+    if is_mounted "$root"; then umount "$root"; fi
     if mountpoint -q "$store"; then umount "$store"; fi
 }
 if [ -n "$qemu" ]; then
@@ -60,7 +66,8 @@ start)
     fi
     mkdir -p "$store"
     test ! -L "$store"
-    mounted=$(awk -v dev="$expected" '$3 == dev {print $5}' /proc/self/mountinfo)
+    # Only mounts of the filesystem root ($4 == /): the tree's self-bind is not one.
+    mounted=$(awk -v dev="$expected" '$3 == dev && $4 == "/" {print $5}' /proc/self/mountinfo)
     if [ -n "$mounted" ] && [ "$mounted" != "$store" ]; then
         echo 'Data is already mounted elsewhere; refusing' >&2
         exit 1
@@ -93,6 +100,13 @@ start)
     test "$(stat -c '%u:%a' "$root")" = 0:700
     grep -qx MIBOX_PERSISTENT_CONSOLE_V1 "$root/etc/mibox-persistent-root"
     grep -q '^ID=mibox-custom$' "$root/etc/os-release"
+    if ! is_mounted "$root"; then
+        # A self-bind made after the inner binds would hide them: drop those first.
+        for path in dev/pts dev proc sys; do
+            if mountpoint -q "$root/$path"; then umount "$root/$path"; fi
+        done
+        mount --bind "$root" "$root"
+    fi
     for path in dev proc sys; do
         if ! mountpoint -q "$root/$path"; then mount -o bind "/$path" "$root/$path"; fi
     done

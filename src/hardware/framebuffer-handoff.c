@@ -21,7 +21,10 @@ int main(void) {
     char buffer[1024];
     if (getuid() || geteuid() || text("/proc/1/root/etc/os-release", buffer, sizeof buffer) ||
         !strstr(buffer, "\nID=mibox-custom\n")) { fputs("custom root required\n", stderr); return 2; }
-    if (text("/proc/sys/kernel/osrelease", buffer, sizeof buffer) || strcmp(buffer, "3.10.33\n")) return 2;
+    /* Stock 3.10.33 or the pinned 3.10.99 container kernel (same Meson6 OSD
+     * driver family); the layout checks below still gate every write. */
+    if (text("/proc/sys/kernel/osrelease", buffer, sizeof buffer) ||
+        (strcmp(buffer, "3.10.33\n") && strcmp(buffer, "3.10.99\n"))) return 2;
     if (text("/proc/device-tree/compatible", buffer, sizeof buffer)) return 2;
     { /* compatible may be NUL-separated; scan every entry. */
         ssize_t length = strnlen(buffer, sizeof buffer - 1) + 1;
