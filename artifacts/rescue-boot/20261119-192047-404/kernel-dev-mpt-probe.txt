@@ -1,0 +1,4 @@
+179:0
+mknod: /dev/mibox-ro-mmcblk0: Permission denied
+lba 4096:
+lba 73728:

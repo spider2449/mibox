@@ -15,11 +15,11 @@ def digest(data):
     return hashlib.sha256(data).hexdigest()
 
 
-def build(destination, rootfs=None):
+def build(destination, rootfs=None, kernel_evidence='2026-11-15'):
     if not destination.resolve().is_relative_to((ROOT / 'target').resolve()):
         raise ValueError('output must stay within workspace target')
     evidence = ROOT / 'artifacts/kernel-meson6/2026-11-15'
-    report = json.loads((evidence / 'containers-v1/build.json').read_text())
+    report = json.loads((ROOT / 'artifacts/kernel-meson6' / kernel_evidence / 'containers-v1/build.json').read_text())
     if not all(report.get(k) for k in ['build_complete', 'elf_arm32', 'compressed_payload_matches_image']):
         raise ValueError('kernel build has not passed artifact validation')
     if not json.loads((evidence / 'source-audit.json').read_text())['memory_model_matches_captured_iomem']:
@@ -132,5 +132,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=ROOT / 'target/mibox-boot-candidate-kernel')
     parser.add_argument('--rootfs', type=Path)
+    parser.add_argument('--kernel-evidence', default='2026-11-15',
+                        help='artifacts/kernel-meson6/<name>/containers-v1/build.json to pin')
     args = parser.parse_args()
-    build(args.output, args.rootfs)
+    build(args.output, args.rootfs, args.kernel_evidence)

@@ -1,0 +1,54 @@
+3.10.99
+Linux version 3.10.99 (mibox@mibox-wsl) (gcc version 4.9.x 20150123 (prerelease) (GCC) ) #1 SMP PREEMPT 2026-11-15 00:00:00 UTC
+10cbd4dc-e78e-461c-9517-cc1e5381d689
+ 00:00:13 up 0 min,  0 users,  load average: 0.28, 0.06, 0.02
+[    4.030671@0] eth0: PHY ID 00000000 at 0 IRQ -1 (0:00) active
+[    4.034987@0] eth0: PHY ID 00000000 at 1 IRQ 0 (0:01)
+[    4.040212@0] eth0: PHY ID 00000000 at 2 IRQ 0 (0:02)
+[    4.045057@0] eth0: PHY ID 00000000 at 3 IRQ 0 (0:03)
+[    4.050305@0] eth0: PHY ID 00000000 at 4 IRQ 0 (0:04)
+[    4.055126@0] eth0: PHY ID 00000000 at 5 IRQ 0 (0:05)
+[    4.060227@0] eth0: PHY ID 00000000 at 6 IRQ 0 (0:06)
+[    4.065201@0] eth0: PHY ID 00000000 at 7 IRQ 0 (0:07)
+[    4.070304@0] eth0: PHY ID 00000000 at 8 IRQ 0 (0:08)
+[    4.075263@0] eth0: PHY ID 00000000 at 9 IRQ 0 (0:09)
+[    4.080370@0] eth0: PHY ID 00000000 at 10 IRQ 0 (0:0a)
+[    4.085418@0] eth0: PHY ID 00000000 at 11 IRQ 0 (0:0b)
+[    4.090599@0] eth0: PHY ID 00000000 at 12 IRQ 0 (0:0c)
+[    4.095661@0] eth0: PHY ID 00000000 at 13 IRQ 0 (0:0d)
+[    4.100846@0] eth0: PHY ID 00000000 at 14 IRQ 0 (0:0e)
+[    4.105903@0] eth0: PHY ID 00000000 at 15 IRQ 0 (0:0f)
+[    4.111075@0] eth0: PHY ID 00000000 at 16 IRQ 0 (0:10)
+[    4.116152@0] eth0: PHY ID 00000000 at 17 IRQ 0 (0:11)
+[    4.121317@0] eth0: PHY ID 00000000 at 18 IRQ 0 (0:12)
+[    4.126388@0] eth0: PHY ID 00000000 at 19 IRQ 0 (0:13)
+[    4.131563@0] eth0: PHY ID 00000000 at 20 IRQ 0 (0:14)
+[    4.136630@0] eth0: PHY ID 00000000 at 21 IRQ 0 (0:15)
+[    4.141802@0] eth0: PHY ID 00000000 at 22 IRQ 0 (0:16)
+[    4.146879@0] eth0: PHY ID 00000000 at 23 IRQ 0 (0:17)
+[    4.152058@0] eth0: PHY ID 00000000 at 24 IRQ 0 (0:18)
+[    4.157115@0] eth0: PHY ID 00000000 at 25 IRQ 0 (0:19)
+[    4.162285@0] eth0: PHY ID 00000000 at 26 IRQ 0 (0:1a)
+[    4.167363@0] eth0: PHY ID 00000000 at 27 IRQ 0 (0:1b)
+[    4.172531@0] eth0: PHY ID 00000000 at 28 IRQ 0 (0:1c)
+[    4.177599@0] eth0: PHY ID 00000000 at 29 IRQ 0 (0:1d)
+[    4.182777@0] eth0: PHY ID 00000000 at 30 IRQ 0 (0:1e)
+[    4.187842@0] eth0: PHY ID 00000000 at 31 IRQ 0 (0:1f)
+[    5.349462@0] WARNING: at /home/morefunfun/.cache/mibox-kernel/vendor-source/kernel/smp.c:382 smp_call_function_many+0xb4/0x300()
+[    5.364288@0] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 3.10.99-mibox-container-dev+ #1
+[    5.747687@0] WARNING: at /home/morefunfun/.cache/mibox-kernel/vendor-source/kernel/smp.c:244 smp_call_function_single+0xc0/0x21c()
+[    5.762699@0] CPU: 0 PID: 1 Comm: swapper/0 Tainted: G        W    3.10.99-mibox-container-dev+ #1
+[    6.261988@1] BUG: sleeping function called from invalid context at /home/morefunfun/.cache/mibox-kernel/vendor-source/mm/slub.c:926
+[    6.280317@1] CPU: 1 PID: 162 Comm: ip Tainted: G        W    3.10.99-mibox-container-dev+ #1
+[    6.462981@0] mibox-slim: MIBOX_SPLASH_HANDOFF_FAILED
+[    6.475386@1] mibox-slim: MIBOX_PERSISTENT_UNAVAILABLE
+[1;36mloop0[m         [1;36mloop3[m         [1;36mloop6[m         [1;36mmmcblk0boot0[m
+[1;36mloop1[m         [1;36mloop4[m         [1;36mloop7[m         [1;36mmmcblk0boot1[m
+[1;36mloop2[m         [1;36mloop5[m         [1;36mmmcblk0[m       [1;36mzram0[m
+/system/bin/sh: cat: /sys/class/block/data/dev: No such file or directory
+/system/bin/sh: cat: /sys/class/block/data/size: No such file or directory
+/system/bin/sh: ip: not found
+[1;34mlock[m                        [0;0mmibox-persistent-start.log[m
+[0;0mmibox-fbhandoff.log[m         [0;0mmibox-time-state[m
+[0;0mmibox-ntpd.log[m
+cat: can't open '/sys/class/block/data/dev': No such file or directory

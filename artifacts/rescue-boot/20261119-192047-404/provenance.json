@@ -1,0 +1,26 @@
+﻿[
+    {
+        "SHA256":  "4728fff1d9cc964318a56e0aac46ab64e41491c8f68fc798e1b9a04fc11ac5ab",
+        "File":  "rescue-boot.ps1"
+    },
+    {
+        "SHA256":  "de07ce9b48fee94be1bb698fa3d9b14b743b932744127b52a63fb6a31bd2fb1a",
+        "File":  "RamBootProcess.ps1"
+    },
+    {
+        "SHA256":  "edb7c39f8751c5dc8f7239aec5a4a35ef1e0440d518e22806c14702056e5ce24",
+        "File":  "RamBootValidation.ps1"
+    },
+    {
+        "SHA256":  "0043831aee4e3849fb4bb106b330ae44d43ac94d5f592c9da20597b5c962fb1f",
+        "File":  "Probe-MiboxUsbLoader.ps1"
+    },
+    {
+        "SHA256":  "f7cd170800c7dcb0692e9162407dea886ec06264388d21cf162ac3578cbe84ee",
+        "File":  "Test-MiboxLoaderRam.ps1"
+    },
+    {
+        "SHA256":  "ca89524999990fc0f3ff511ae5037c0a8cefe45dc646671fb8045ff50ce2855e",
+        "File":  "Observe-MiboxRamBoot.ps1"
+    }
+]

@@ -1,0 +1,58 @@
+diff --git a/drivers/amlogic/ethernet/am_net8218.c b/drivers/amlogic/ethernet/am_net8218.c
+index cc8cf723..e997576b 100755
+--- a/drivers/amlogic/ethernet/am_net8218.c
++++ b/drivers/amlogic/ethernet/am_net8218.c
+@@ -3157,9 +3157,29 @@ static int ethernet_probe(struct platform_device *pdev)
+ 	if (ret) {
+ 		printk("Please config new_maclogic.\n");
+ 	}
++	/* MiBox casablanca: the stock 3.10.33 ethernet_probe writes these DT
++	 * values to HHI_ETH_CLK_CNTL and PREG_ETHERNET_ADDR0, selects the
++	 * default pinctrl state and resets the PHY right after the GPIO
++	 * request. Without them the MDIO bus reads PHY ID 0 at every address. */
++	{
++		unsigned int value;
++		struct pinctrl *pins;
++		if (of_property_read_u32(pdev->dev.of_node, "clock_phase", &value))
++			printk("Please config clock_phase.\n");
++		else
++			aml_write_reg32(P_HHI_ETH_CLK_CNTL, value);
++		if (of_property_read_u32(pdev->dev.of_node, "interface_mode", &value))
++			printk("Please config interface_mode.\n");
++		else
++			aml_write_reg32(P_PREG_ETHERNET_ADDR0, value);
++		pins = devm_pinctrl_get_select_default(&pdev->dev);
++		if (IS_ERR(pins))
++			printk("ethernet pinctrl default state failed\n");
++	}
+ 	if(reset_pin_enable){
+ 		reset_pin_num = amlogic_gpio_name_map_num(reset_pin);
+ 		amlogic_gpio_request(reset_pin_num, OWNER_NAME);
++		hardware_reset_phy();
+ 	}
+ #ifdef CONFIG_AML1220
+ 	ret = of_property_read_u32(pdev->dev.of_node,"used_pmu4_phy",&used_pmu4_phy);
+diff --git a/drivers/mmc/card/emmc_partitions.c b/drivers/mmc/card/emmc_partitions.c
+index af3731ee..51e16a49 100755
+--- a/drivers/mmc/card/emmc_partitions.c
++++ b/drivers/mmc/card/emmc_partitions.c
+@@ -175,7 +175,9 @@ int get_reserve_partition_off (struct mmc_card *card) // byte unit
+ 
+     storage_flag = host->storage_flag;
+     if (storage_flag == EMMC_BOOT_FLAG) {
+-        off = MMC_BOOT_PARTITION_SIZE + MMC_BOOT_PARTITION_RESERVED;
++        /* MiBox casablanca: the stock 3.10.33 kernel (get_reserve_partition_off)
++         * returns 2 MiB, where its bootloader writes the MPT table. */
++        off = 2 * SZ_1M;
+     } else if (storage_flag == SPI_EMMC_FLAG) {
+ #if MESON_CPU_TYPE >= MESON_CPU_TYPE_MESON8B
+         off = MMC_BOOT_PARTITION_SIZE + MMC_BOOT_PARTITION_RESERVED;
+@@ -184,7 +186,7 @@ int get_reserve_partition_off (struct mmc_card *card) // byte unit
+ #endif
+     } else if ((storage_flag == 0) || (storage_flag == -1)){ // if storage_flag is invalid
+         if (POR_EMMC_BOOT()) {
+-            off = MMC_BOOT_PARTITION_SIZE + MMC_BOOT_PARTITION_RESERVED;
++            off = 2 * SZ_1M; /* MiBox casablanca, as above */
+         } else if(POR_SPI_BOOT() || POR_CARD_BOOT()){
+             off = 0;
+         } else { // POR_NAND_BOOT

@@ -39,7 +39,8 @@ def record(work, profile, configure_only):
     source, compiler = work / 'vendor-source', work / 'toolchain'
     output = work / ('build-' + profile)
     exported = ROOT / 'target/kernel-meson6' / profile
-    evidence = ROOT / 'artifacts/kernel-meson6/2026-11-15' / profile
+    # MIBOX_KERNEL_EVIDENCE keeps a later build from overwriting earlier records.
+    evidence = ROOT / 'artifacts/kernel-meson6' / os.environ.get('MIBOX_KERNEL_EVIDENCE', '2026-11-15') / profile
     evidence.mkdir(parents=True, exist_ok=True)
     revision = command('git', '-C', str(source), 'rev-parse', 'HEAD')
     compiler_revision = command('git', '-C', str(compiler), 'rev-parse', 'HEAD')

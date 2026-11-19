@@ -2,7 +2,7 @@
 # No Android query, software reboot, flash or environment command is issued.
 param(
     [ValidateSet('Check','WaitAndBoot')][string]$Action='Check',
-    [ValidateSet('Console','FailSafe','Loader','Slim','SlimKernelDev')][string]$Candidate='Console',
+    [ValidateSet('Console','FailSafe','Loader','Slim','SlimKernelDev','SlimKernelDev2')][string]$Candidate='Console',
     [ValidateRange(1,600)][int]$WaitSeconds=120,
     [ValidateRange(60,7200)][int]$TransferTimeoutSeconds=3600,
     # Bulk OUT upload verified by loader crc32 (see Test-MiboxLoaderRam.ps1).
@@ -41,6 +41,13 @@ if($Candidate -eq 'SlimKernelDev') {
     # Slim rootfs; PID1 from the container-kernel-test feature build plus its
     # marker. Never written to flash. HDMI stays muted on C003 boots.
     $hash='7279a88a6b2755dbc44c903a312ce3efcc77d1295d3565faee9850108712c0c7'
+    $initHash='628b3453a92b66a17008b87e1e4d07f2bd4f32342d6757d351bf92015d363fc5'
+    $miboxHash='c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226'
+}
+if($Candidate -eq 'SlimKernelDev2') {
+    # As SlimKernelDev, with kernel patch 0000 (stock MPT offset 2 MiB; stock
+    # Ethernet clock/mode registers, pinctrl and PHY reset in probe).
+    $hash='11b85b1fcb35edc9062f2227a9394dec29557ab741f5abb69483da52f49f560e'
     $initHash='628b3453a92b66a17008b87e1e4d07f2bd4f32342d6757d351bf92015d363fc5'
     $miboxHash='c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226'
 }
