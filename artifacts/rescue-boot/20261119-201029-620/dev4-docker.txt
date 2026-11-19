@@ -1,0 +1,5 @@
+alpine:3.22
+hello-world:latest
+Hello from Docker!
+engine_stopped
+13
