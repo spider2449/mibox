@@ -1,0 +1,23 @@
+3.10.99
+084ce7c8-5c4f-4d38-90fa-4c10b316314e
+before visible=1280x1080 virtual=1280x3240 offset=0,0 bpp=32 stride=5120 smem_len=16777216
+format type=0 visual=2 r=16/8 g=8/8 b=0/8 a=24/8 nonstd=0
+FRAMEBUFFER_HANDOFF_PASS same_geometry=1 pan_current_offset=1 unblank=1 order=bgra
+MIBOX_FBSTATUS_RUNNING order=bgra
+free_scale_enable:[0x1]
+[    0.000000@0] Linux version 3.10.99-mibox-container-dev+ (mibox@mibox-wsl) (gcc version 4.9.x 20150123 (prerelease) (GCC) ) #1 SMP PREEMPT 2026-11-15 00:00:00 UTC
+[    0.832708@1] BUG: sleeping function called from invalid context at /home/morefunfun/.cache/mibox-kernel/vendor-source/kernel/mutex.c:95
+[    0.851877@1] CPU: 1 PID: 0 Comm: swapper/1 Not tainted 3.10.99-mibox-container-dev+ #1
+[    5.265064@0] WARNING: at /home/morefunfun/.cache/mibox-kernel/vendor-source/kernel/smp.c:382 smp_call_function_many+0xb4/0x300()
+[    5.279890@0] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 3.10.99-mibox-container-dev+ #1
+[    5.658687@0] WARNING: at /home/morefunfun/.cache/mibox-kernel/vendor-source/kernel/smp.c:244 smp_call_function_single+0xc0/0x21c()
+[    5.673700@0] CPU: 0 PID: 1 Comm: swapper/0 Tainted: G        W    3.10.99-mibox-container-dev+ #1
+[    6.171350@0] BUG: sleeping function called from invalid context at /home/morefunfun/.cache/mibox-kernel/vendor-source/mm/slub.c:926
+[    6.189617@0] CPU: 0 PID: 101 Comm: ip Tainted: G        W    3.10.99-mibox-container-dev+ #1
+[    6.514022@1] mibox-slim: MIBOX_SPLASH_SHOWN window=0 0 1919 1079 splash=skipped-bgra
+[    6.925644@1] mibox-persistent: MIBOX_ALPINE_INTEGRITY=MATCH
+[    6.937908@1] mibox-persistent: MIBOX_PERSISTENT_BOOT_READY free_kib=1687764 floor_kib=262144
+[    6.949620@0] mibox-slim: MIBOX_ALPINE_SSH_STARTING
+[    7.154027@0] mibox-docker: MIBOX_DOCKERD_STARTING iptables=true
+[    9.519164@0] mibox-slim: MIBOX_TIME_SYNCED 2026-11-19T13:12:32Z
+mibox-web Up 19 seconds 0.0.0.0:8080->80/tcp, [::]:8080->80/tcp
