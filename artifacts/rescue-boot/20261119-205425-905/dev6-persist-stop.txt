@@ -1,0 +1,10 @@
+﻿USB ADB: boot 17b844c4-58f7-4c03-993f-95e5bb95be92
+MIBOX_DOCKERD_STOPPED
+
+MIBOX_PERSISTENT_CONSOLE_STOPPED
+
+MIBOX_PERSIST_STOP_EXIT=0
+
+MOUNTED=0
+
+MIBOX_STOPPED: data unmounted, only RAM filesystems remain. Safe to cut power.
