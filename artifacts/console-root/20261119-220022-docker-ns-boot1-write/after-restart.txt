@@ -1,0 +1,13 @@
+cfa1c5c3-d24f-458f-9dd3-23d48ffdd3cd
+3.10.99
+dockerd ns=mnt:[4026533985] host=mnt:[4026531840]
+ed752f2a5f60075810ccb879d0af68b94346625b92a3f79a9b1c8f11c3cf7f19  /proc/1/root/sbin/mibox-docker
+acc-limits Exited (0) 9 minutes ago
+mibox-web Up 24 seconds
+# volume after reboot
+316d4f05-d5c6-4257-b1d3-de5b3daa6d81
+# exec isolation
+bin dev docker-entrypoint.d docker-entrypoint.sh etc home lib media mnt opt proc root run sbin srv sys tmp usr var 
+nginx version: nginx/1.31.9
+6
+316d4f05-d5c6-4257-b1d3-de5b3daa6d81

@@ -16,8 +16,9 @@ design. This is not a host Docker build request.
    networking, clock/CA setup and authenticated remote control. Done 2026-11-19:
    Alpine docker-engine 28.3.3 supervised by `mibox-docker`, data-backed tree,
    bridge/NAT, mTLS API on 2376 (see ../mibox-docker-runtime.md).
-7. [ ] Prove image pull, run/exec/stop, published ports, resource limits,
-   persistent volumes and restart on the physical box.
+7. [x] Prove image pull, run/exec/stop, published ports, resource limits,
+   persistent volumes and restart on the physical box. Done 2026-11-19 after
+   the docker exec mount-namespace fix (SlimKernelDev9 on boot1).
 
 ## Engine payload preparation
 

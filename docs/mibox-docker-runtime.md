@@ -358,3 +358,40 @@ The PC has no Docker CLI; with one installed:
 Git for Windows curl (Schannel) cannot load PEM client keys; use
 `openssl s_client` or a non-Schannel curl. Anyone holding `key.pem` has root
 on the box. To revert: restore `daemon.json.pre-tls` and restart dockerd.
+
+## Acceptance and the `docker exec` namespace fix, 2026-11-19
+
+Physical acceptance (plan item 7), evidence in
+`artifacts/docker-runtime/20261119-acceptance/`:
+
+| Check | Result |
+| --- | --- |
+| Registry pull `alpine:3.22` (arm/v7) | PASS |
+| Named volume written, read after engine restart and after a flash reboot | PASS |
+| `-p 8081:80` fetched from the PC | PASS |
+| `--memory 32m --cpus 0.5`: cgroup values 33554432 / 50000 per 100000 | PASS |
+| OOM: `tail /dev/zero` under 32 MiB without swap | Killed, exit 137 |
+| CPU: busy loop under `--cpus 0.5` | ~20 % of the two cores |
+| `docker exec` | FAILED before the fix, PASS after |
+
+Bug: `docker exec` processes ran in the box's RAM root (they saw `/init`,
+`adb_keys`, the host `/proc`), not in the container. dockerd was only chrooted
+into the tree, so its mount namespace root was the initramfs; runc's
+`pivot_root` left that unchanged, and the 3.10 kernel's `setns(CLONE_NEWNS)`
+puts the caller at the namespace root. Container main processes were
+unaffected. runc's `NoPivotRoot` (via a `daemon.json` runtime) did not help
+because runc init inherits dockerd's chroot.
+
+Fix (`assets/rootfs/mibox-docker`, SlimKernelDev9 `c3e952e8…`): dockerd starts
+via `unshare -m`, `mount --make-rprivate /`, `mount --move <tree> /`, `chroot .`
+(the `switch_root` pattern), so the namespace root is the tree. `stop` now
+finds Docker processes by mount namespace (anything outside PID1's, except
+kernel threads such as `kdevtmpfs`), TERMs dockerd, then TERM/KILLs leftovers
+so no private namespace keeps data referenced. After the fix `docker exec`
+sees the image's root and its own PID namespace (6 PIDs), the stop takes ~6 s
+and leaves nothing behind. QEMU slim 63/63 PASS
+(`artifacts/slim-qemu/20261119-215936/`). Written to boot1 (owner-approved,
+`artifacts/console-root/20261119-220022-docker-ns-boot1-write/`); after
+`Stop-Mibox -Restart` (24 s) the flash boot showed dockerd in its own
+namespace, `mibox-web` restored, the volume intact, exec isolated, :8080,
+:8081 and the mTLS API working. Test container and volume removed afterwards.
