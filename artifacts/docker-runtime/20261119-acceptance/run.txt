@@ -1,0 +1,340 @@
++ docker pull alpine:3.22
+3.22: Pulling from library/alpine
+Digest: sha256:49340b346798875b5592e5d420241f2f9cfba5f47e62ebb1446a1b34734e898f
+Status: Image is up to date for alpine:3.22
+docker.io/library/alpine:3.22
++ docker image inspect alpine:3.22 --format '{{.Id}} {{.Architecture}}/{{.Variant}}'
+sha256:79f8c66e5f43fb3202701da08f2fcd6e0c28bf9a237da9cddef3fa2cb290fc54 arm/v7
++ docker volume create mibox-acceptance
+mibox-acceptance
++ cat /proc/sys/kernel/random/uuid
++ token=316d4f05-d5c6-4257-b1d3-de5b3daa6d81
++ docker run --rm -v mibox-acceptance:/v alpine:3.22 sh -c 'echo 316d4f05-d5c6-4257-b1d3-de5b3daa6d81 > /v/token; sync; cat /v/token'
+316d4f05-d5c6-4257-b1d3-de5b3daa6d81
++ docker run -d --name acc-limits --memory 32m --cpus 0.5 -p 8081:80 -v mibox-acceptance:/v:ro alpine:3.22 sh -c 'cp /v/token /tmp/index.html; cd /tmp; httpd -f -p 80 -h /tmp'
+072a9fc7c0d5854eb6c0693c230e3f09051525376ee908b4ea87d86453349746
++ sleep 3
++ docker exec acc-limits cat /sys/fs/cgroup/memory/memory.limit_in_bytes
+Error response from daemon: container 072a9fc7c0d5854eb6c0693c230e3f09051525376ee908b4ea87d86453349746 is not running
++ docker exec acc-limits sh -c 'cat /sys/fs/cgroup/cpu/cpu.cfs_quota_us /sys/fs/cgroup/cpu/cpu.cfs_period_us'
+Error response from daemon: container 072a9fc7c0d5854eb6c0693c230e3f09051525376ee908b4ea87d86453349746 is not running
++ docker inspect acc-limits --format 'mem={{.HostConfig.Memory}} nanocpus={{.HostConfig.NanoCpus}}'
+mem=33554432 nanocpus=500000000
+TOKEN=316d4f05-d5c6-4257-b1d3-de5b3daa6d81
++ echo 'TOKEN=316d4f05-d5c6-4257-b1d3-de5b3daa6d81'
++ docker run --rm --memory 32m --memory-swap 32m alpine:3.22 sh -c 'dd if=/dev/zero bs=1M count=64 | tail -c 1 >/dev/null; echo survived'
+64+0 records in
+64+0 records out
+67108864 bytes (64.0MB) copied, 1.107065 seconds, 57.8MB/s
+survived
+oom_exit=0
++ echo 'oom_exit=0'
++ docker stop -t 5 acc-limits
+acc-limits
++ docker ps -a --filter 'name=acc-limits' --format '{{.Status}}'
+Exited (127) 9 seconds ago
++ docker start acc-limits
+acc-limits
++ sleep 2
++ pidof dockerd
++ pid=1071
++ kill -TERM 1071
++ seq 60
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ break
++ docker run --rm -v mibox-acceptance:/v alpine:3.22 cat /v/token
+316d4f05-d5c6-4257-b1d3-de5b3daa6d81
++ docker ps --format '{{.Names}} {{.Status}}'
+mibox-web Up 6 seconds
++ docker rm -f acc-limits
+acc-limits
++ docker run -d --name acc-limits --memory 32m --cpus 0.5 -p 8081:80 -v mibox-acceptance:/usr/share/nginx/html:ro nginx:alpine
+749ca6fff5b1fcd5d107d89502ae62cc67c972ba3e0f77c16213a7b7e9880b97
++ sleep 4
++ docker ps --filter 'name=acc-limits' --format '{{.Status}} {{.Ports}}'
+Up 14 seconds 0.0.0.0:8081->80/tcp, [::]:8081->80/tcp
++ docker inspect -f '{{.Id}}' acc-limits
++ cid=749ca6fff5b1fcd5d107d89502ae62cc67c972ba3e0f77c16213a7b7e9880b97
++ cat /sys/fs/cgroup/memory/docker/749ca6fff5b1fcd5d107d89502ae62cc67c972ba3e0f77c16213a7b7e9880b97/memory.limit_in_bytes /sys/fs/cgroup/cpu/docker/749ca6fff5b1fcd5d107d89502ae62cc67c972ba3e0f77c16213a7b7e9880b97/cpu.cfs_quota_us /sys/fs/cgroup/cpu/docker/749ca6fff5b1fcd5d107d89502ae62cc67c972ba3e0f77c16213a7b7e9880b97/cpu.cfs_period_us
+33554432
+50000
+100000
++ docker exec acc-limits cat /usr/share/nginx/html/token
+cat: can't open '/usr/share/nginx/html/token': No such file or directory
++ docker run --rm --memory 32m --memory-swap 32m alpine:3.22 sh -c 'tail /dev/zero'
+oom_exit=137
++ echo 'oom_exit=137'
++ docker run --rm --cpus 0.5 alpine:3.22 sh -c 'timeout 5 sh -c "while :; do :; done" & sleep 1; top -bn1 | head -8'
+Mem: 438492K used, 438060K free, 356K shrd, 24740K buff, 313608K cached
+CPU:  20% usr   0% sys   0% nic  80% idle   0% io   0% irq   0% sirq
+Load average: 3.05 2.01 1.26 4/191 14
+  PID  PPID USER     STAT   VSZ %VSZ CPU %CPU COMMAND
+    9     1 root     R     1388   0%   1  20% sh -c while :; do :; done
+    1     0 root     S     1392   0%   0   0% sh -c timeout 5 sh -c "while :; do :; done" & sleep 1; top -bn1 | head -8
+   13     1 root     R     1392   0%   0   0% top -bn1
+   12     1 root     S     1376   0%   1   0% timeout 5 sh -c while :; do :; done
++ docker exec acc-limits ls -la /usr/share/nginx/html
+ls: /usr/share/nginx/html: No such file or directory
++ docker exec acc-limits cat /usr/share/nginx/html/token
+cat: can't open '/usr/share/nginx/html/token': No such file or directory
++ docker exec acc-limits sh -c 'grep nginx/html /proc/mounts'
+/dev/mibox-data /mnt/mibox-data/mibox-console/rootfs/usr/share/nginx/html ext4 ro,relatime,data=ordered 0 0
++ docker exec acc-limits sh -c 'ls /; head -2 /etc/os-release; cat /proc/1/cmdline | tr "\0" " "; echo; ls /proc | head -3; wc -l /proc/mounts'
+adb_keys
+bin
+dev
+etc
+home
+init
+lib
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+system
+tmp
+usr
+var
+NAME="MiBOX Custom Userspace"
+ID=mibox-custom
+/init 
+1
+10
+104
+38 /proc/mounts
++ docker exec mibox-web sh -c 'ls /; nginx -v'
+adb_keys
+bin
+dev
+etc
+home
+init
+lib
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+system
+tmp
+usr
+var
+sh: nginx: not found
++ docker top acc-limits
+PID                 USER                TIME                COMMAND
+2373                root                0:00                nginx: master process nginx -g daemon off;
+2437                101                 0:00                nginx: worker process
+2438                101                 0:00                nginx: worker process
++ docker exec acc-limits sh -c 'readlink /proc/self/root; ls -l /proc/self/ns'
+/
+total 0
+lrwxrwxrwx    1 root     root             0 Nov 19 13:49 ipc -> ipc:[4026534061]
+lrwxrwxrwx    1 root     root             0 Nov 19 13:49 mnt -> mnt:[4026534059]
+lrwxrwxrwx    1 root     root             0 Nov 19 13:49 net -> net:[4026534064]
+lrwxrwxrwx    1 root     root             0 Nov 19 13:49 pid -> pid:[4026534062]
+lrwxrwxrwx    1 root     root             0 Nov 19 13:49 user -> user:[4026531837]
+lrwxrwxrwx    1 root     root             0 Nov 19 13:49 uts -> uts:[4026534060]
++ docker inspect mibox-web --format '{{json .HostConfig.PortBindings}} {{.HostConfig.RestartPolicy.Name}} {{json .Mounts}} {{.HostConfig.Runtime}}'
+{"80/tcp":[{"HostIp":"","HostPort":"8080"}]} unless-stopped [{"Type":"bind","Source":"/root/web","Destination":"/usr/share/nginx/html","Mode":"ro","RW":false,"Propagation":"rprivate"}] runc
++ cp -p /etc/docker/daemon.json /etc/docker/daemon.json.pre-nopivot
++ sed -i 's|^  "tlskey": "/etc/docker/tls/server-key.pem"$|  "tlskey": "/etc/docker/tls/server-key.pem",\n  "runtimes": {"mibox-runc": {"runtimeType": "io.containerd.runc.v2", "options": {"NoPivotRoot": true}}},\n  "default-runtime": "mibox-runc"|' /etc/docker/daemon.json
++ cat /etc/docker/daemon.json
+{
+  "storage-driver": "vfs",
+  "ip6tables": false,
+  "log-driver": "local",
+  "log-opts": {"max-size": "10m", "max-file": "3"},
+  "hosts": ["unix:///var/run/docker.sock", "tcp://0.0.0.0:2376"],
+  "tls": true,
+  "tlsverify": true,
+  "tlscacert": "/etc/docker/tls/ca.pem",
+  "tlscert": "/etc/docker/tls/server-cert.pem",
+  "tlskey": "/etc/docker/tls/server-key.pem",
+  "runtimes": {"mibox-runc": {"runtimeType": "io.containerd.runc.v2", "options": {"NoPivotRoot": true}}},
+  "default-runtime": "mibox-runc"
+}
++ dockerd --validate --config-file /etc/docker/daemon.json
+configuration OK
++ pidof dockerd
++ kill -TERM 1929
++ seq 60
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ break
++ docker info --format 'default runtime: {{.DefaultRuntime}}'
+default runtime: mibox-runc
++ docker run --rm alpine:3.22 sh -c 'head -1 /etc/os-release; readlink /proc/self/root'
+NAME="Alpine Linux"
+/
++ docker run -d --name acc-nopivot -v mibox-acceptance:/v:ro alpine:3.22 sleep 600
+76d823f0057c200318b27cfd1f01ff4d511ee427aa4ba662d0894990a7476ff9
++ sleep 2
++ docker exec acc-nopivot sh -c 'head -1 /etc/os-release; cat /v/token; cat /proc/1/cmdline | tr "\0" " "; echo; ls /proc | grep -c "^[0-9]"; grep " / " /proc/mounts'
+NAME="MiBOX Custom Userspace"
+cat: can't open '/v/token': No such file or directory
+/init 
+89
+rootfs / rootfs rw 0 0
++ docker rm -f acc-nopivot
+acc-nopivot
++ cp -p /etc/docker/daemon.json.pre-nopivot /etc/docker/daemon.json
++ pidof dockerd
++ kill -TERM 3069
++ seq 60
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ sleep 2
++ docker info
++ break
++ docker info --format 'default runtime: {{.DefaultRuntime}}'
+default runtime: runc
++ docker ps --format '{{.Names}} {{.Status}}'
+mibox-web Up 1 second
++ which nsenter unshare
+/usr/bin/nsenter
+/usr/bin/unshare
++ nsenter --version
+nsenter: unrecognized option: version
+BusyBox v1.37.0 (2025-11-21 22:40:56 UTC) multi-call binary.
+
+Usage: nsenter [OPTIONS] [PROG ARGS]
+
+	-t PID		Target process to get namespaces from
+	-m[FILE]	Enter mount namespace
+	-u[FILE]	Enter UTS namespace (hostname etc)
+	-i[FILE]	Enter System V IPC namespace
+	-n[FILE]	Enter network namespace
+	-p[FILE]	Enter pid namespace
+	-U[FILE]	Enter user namespace
+	-S UID		Set uid in entered namespace
+	-G GID		Set gid in entered namespace
+	--preserve-credentials	Don't touch uids or gids
+	-r[DIR]		Set root directory
+	-w[DIR]		Set working directory
+	-F		Don't fork before exec'ing PROG

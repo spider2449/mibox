@@ -1,8 +1,8 @@
 param([Parameter(Mandatory=$true)][ValidateSet('SelfTest','BulkTest','Status','Reset','UploadCandidate','BootCandidate','UploadAndBoot')][string]$Action,[switch]$Bulk,
-    [ValidateSet('Baseline','Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture','Console','ContainerKernel','ContainerKernel2','DockerKernel','DockerKernel2','FailSafe','FaultPanic','FaultUsb','FaultHang','FaultKPanic','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4','SlimKernelDev5','SlimKernelDev6','SlimKernelDev7','SlimKernelDev8')][string]$Candidate='Baseline',[switch]$VerifyOnly,
+    [ValidateSet('Baseline','Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture','Console','ContainerKernel','ContainerKernel2','DockerKernel','DockerKernel2','FailSafe','FaultPanic','FaultUsb','FaultHang','FaultKPanic','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4','SlimKernelDev5','SlimKernelDev6','SlimKernelDev7','SlimKernelDev8','SlimKernelDev9')][string]$Candidate='Baseline',[switch]$VerifyOnly,
     [ValidateRange(3000,15000)][int]$ControlTimeoutMilliseconds=3000)
 $ErrorActionPreference='Stop'
-if($Candidate -in @('Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture','Console','ContainerKernel','ContainerKernel2','DockerKernel','DockerKernel2','FailSafe','FaultPanic','FaultUsb','FaultHang','FaultKPanic','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4','SlimKernelDev5','SlimKernelDev6','SlimKernelDev7','SlimKernelDev8') -and $Action -ne 'UploadAndBoot') {
+if($Candidate -in @('Restart','Health','Hardware','Hardware2','Hardware3','Capture','DisplayCapture','Console','ContainerKernel','ContainerKernel2','DockerKernel','DockerKernel2','FailSafe','FaultPanic','FaultUsb','FaultHang','FaultKPanic','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4','SlimKernelDev5','SlimKernelDev6','SlimKernelDev7','SlimKernelDev8','SlimKernelDev9') -and $Action -ne 'UploadAndBoot') {
     throw 'Versioned candidate requires full upload/readback/boot in one session'
 }
 if($VerifyOnly -and $Action -notin @('UploadCandidate','BootCandidate','UploadAndBoot')) {
@@ -196,6 +196,7 @@ namespace MiboxLoader {
       else if(preset=="SlimKernelDev6")expected="ac5526de79281065b7c66bbf556e89d637906d13e94d4c7a24f8dbe185e16946";
       else if(preset=="SlimKernelDev7")expected="bccbad4ff8e7e104de544537ddc1d89ea07fced3c34645b92ae74ac6e0268b4a";
       else if(preset=="SlimKernelDev8")expected="0d549c0fd27a12fc42e4d11b8dfb1c3cfce4067bd9b3ef521d84c8543588d9a2";
+      else if(preset=="SlimKernelDev9")expected="c3e952e88517f1cb49d37b166d5f2e573cf6bc36e9021ff6e49bcb4a46c6a36d";
       else throw new Exception("Unknown pinned candidate");
       if(image==null || image.Length!=8388608 || Hash(image)!=expected)throw new Exception("Candidate hash/size mismatch before USB access");
       return expected;
@@ -381,6 +382,7 @@ if($Action -in @('UploadCandidate','BootCandidate','UploadAndBoot')) {
         'SlimKernelDev6' {'mibox-boot-candidate-slim-kernel-dev6'}
         'SlimKernelDev7' {'mibox-boot-candidate-slim-kernel-dev7'}
         'SlimKernelDev8' {'mibox-boot-candidate-slim-kernel-dev8'}
+        'SlimKernelDev9' {'mibox-boot-candidate-slim-kernel-dev9'}
         default {'mibox-boot-candidate'}
     }
     $candidatePath=Join-Path $PSScriptRoot ('../target/'+$directory+'/boot1-custom.NOT_READY.img')

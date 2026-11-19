@@ -1,0 +1,5 @@
+sleeper=4574 root=/
+bin dev etc lib opt proc root run sbin sys tmp usr var 
+rootfs / rootfs rw 0 0
+/dev/mibox-data / ext4 rw,nosuid,nodev,relatime,data=ordered 0 0
+23

@@ -1,0 +1,8 @@
+supervisor=4979 foreign_before=15
+MIBOX_DOCKER_STOP_BUSY pids=18
+stop_status=1 seconds=12
+foreign_after=1 dockerd= containerd= shims=
+[ 1330.205832@0] mibox-docker: MIBOX_DOCKERD_STARTING iptables=true
+[ 1476.548693@1] mibox-docker: MIBOX_DOCKERD_STARTING iptables=true
+[ 1557.859331@0] mibox-docker: MIBOX_DOCKER_STOP_BUSY pids=18
+restarted

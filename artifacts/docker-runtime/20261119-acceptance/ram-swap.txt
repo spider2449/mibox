@@ -1,0 +1,6 @@
+supervisor=194
+dockerd=3934
+after-stop dockerd= containerd= shims=
+efd4ab4393cae4c6d88d387c58ea1d68c5793e06def58a1d05c2238a9783b9a5  /sbin/mibox-docker
+-rw-r--r--    1 root     root             6 Jan  1  1970 /run/mibox-alpine-ready
+started

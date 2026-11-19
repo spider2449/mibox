@@ -1,0 +1,57 @@
+Filesystem volume name:   <none>
+Last mounted on:          /mnt/mibox-data
+Filesystem UUID:          678280da-bc64-4859-9731-0080968caf69
+Filesystem magic number:  0xEF53
+Filesystem revision #:    1 (dynamic)
+Filesystem features:      has_journal ext_attr resize_inode dir_index filetype extent 64bit flex_bg sparse_super large_file huge_file dir_nlink extra_isize metadata_csum
+Filesystem flags:         signed_directory_hash 
+Default mount options:    user_xattr acl
+Filesystem state:         clean
+Errors behavior:          Continue
+Filesystem OS type:       Linux
+Inode count:              65536
+Block count:              65536
+Reserved block count:     3276
+Overhead clusters:        8262
+Free blocks:              41406
+Free inodes:              62179
+First block:              0
+Block size:               4096
+Fragment size:            4096
+Group descriptor size:    64
+Reserved GDT blocks:      31
+Blocks per group:         32768
+Fragments per group:      32768
+Inodes per group:         32768
+Inode blocks per group:   2048
+Flex block group size:    16
+Filesystem created:       Thu Nov 19 21:59:48 2026
+Last mount time:          Thu Nov 19 22:02:25 2026
+Last write time:          Thu Nov 19 22:02:26 2026
+Mount count:              1
+Maximum mount count:      -1
+Last checked:             Thu Nov 19 21:59:48 2026
+Check interval:           0 (<none>)
+Lifetime writes:          66 MB
+Reserved blocks uid:      0 (user root)
+Reserved blocks gid:      0 (group root)
+First inode:              11
+Inode size:	          256
+Required extra isize:     32
+Desired extra isize:      32
+Journal inode:            8
+Default directory hash:   half_md4
+Directory Hash Seed:      3dfb332c-23cc-4020-ab5c-08b1d3f0652d
+Journal backup:           inode blocks
+Checksum type:            crc32c
+Checksum:                 0x850eff12
+Journal features:         journal_64bit journal_checksum_v3
+Total journal size:       16M
+Total journal blocks:     4096
+Max transaction length:   4096
+Fast commit length:       0
+Journal sequence:         0x00000004
+Journal start:            0
+Journal checksum type:    crc32c
+Journal checksum:         0xbcd0c006
+

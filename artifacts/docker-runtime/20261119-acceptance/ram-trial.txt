@@ -1,0 +1,23 @@
+dockerd=5014 ns=mnt:[4026533986] host=mnt:[4026531840] root=/
+mibox-web Up 33 seconds
+# exec in acc-limits (nginx:alpine)
+bin dev docker-entrypoint.d docker-entrypoint.sh etc home lib media mnt opt proc root run sbin srv sys tmp usr var 
+316d4f05-d5c6-4257-b1d3-de5b3daa6d81
+nginx version: nginx/1.31.9
+rootfs / rootfs rw 0 0
+/dev/mibox-data / ext4 rw,nosuid,nodev,relatime,data=ordered 0 0
+6
+# exec in mibox-web
+nginx version: nginx/1.31.9
+nginx: master process nginx -g daemon off;
+# run + volume
+316d4f05-d5c6-4257-b1d3-de5b3daa6d81
+# exec -it-less interactive check
+hello
+time="2026-11-19T13:55:33.142664000Z" level=warning msg="failed to load plugin" error="unable to load CRI runtime service plugin dependency: invalid plugin config: unprivileged_icmp and unprivileged_port require kernel version greater than or equal to 4.11" id=io.containerd.grpc.v1.sandbox-controllers type=io.containerd.grpc.v1
+time="2026-11-19T13:55:33.145043000Z" level=info msg="skip loading plugin" error="skip plugin: tracing endpoint not configured" id=io.containerd.tracing.processor.v1.otlp type=io.containerd.tracing.processor.v1
+time="2026-11-19T13:55:33.145536000Z" level=info msg="skip loading plugin" error="skip plugin: tracing endpoint not configured" id=io.containerd.internal.v1.tracing type=io.containerd.internal.v1
+time="2026-11-19T13:55:33.494038000Z" level=warning msg="Could not load necessary modules for IPSEC rules: protocol not supported"
+time="2026-11-19T13:55:34.140611000Z" level=warning msg="Error (Unable to complete atomic operation, key modified) deleting object [endpoint_count b24589c166603757e7cf709dc0a9ff505133da323b9b733956cb881b121f5bde], retrying...."
+8080 http=200 bytes=24
+OK <- 2376 mTLS ping
