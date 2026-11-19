@@ -1,12 +1,12 @@
 # Writing and restoring boot1 (plan C3)
 
-Status: **boot1 holds the container-kernel Slim `bccbad4f…` (3.10.99 with board
-patches, Docker, live HDMI screen) since 2026-11-19**
+Status: **boot1 holds the container-kernel Slim `0d549c0f…` (3.10.99 with board
+patches, Docker, live HDMI screen, SSH password logins allowed) since 2026-11-19**
 (`artifacts/console-root/20261119-211306-c7-kernel-boot1-write/`), after C4
 (`dd1e6756…`), two A5 rewrites (`35e1d4d2…`, `f11de99e…`) and A5b (`955ea3e8…`,
 stock 3.10.33 kernel), all owner-approved. A flash boot without the PC came up
-with SSH, Docker and the HDMI screen. For a restore, name `bccbad4f…` as the
-expected current content; `955ea3e8…` (`target/mibox-boot-candidate-slim-fbstatus/`)
+with SSH, Docker and the HDMI screen. For a restore, name the current image as the
+expected current content (`0d549c0f…`; before the password change `bccbad4f…`); `955ea3e8…` (`target/mibox-boot-candidate-slim-fbstatus/`)
 is the last stock-kernel image.
 Stock boot1 `06d9eb7e…` remains restorable with the restore section below. Writing boot1
 (C4) needs explicit owner approval at that time. Nothing here touches the

@@ -209,6 +209,16 @@ def main(private_key):
                 r = remote('test -f /etc/mibox-persistent-root && grep -q "^ID=mibox-custom$" /etc/os-release '
                            '&& test "$(id -u)" = 0 && test -x /usr/local/sbin/apk && echo IN_ALPINE')
                 record(f'boot{boot_index}-session-in-alpine-with-apk-guard', 'IN_ALPINE' in r.stdout, r.stderr.strip())
+                if boot_index == 1:
+                    # dropbear runs without -s (owner decision 2026-11-19): the
+                    # server must offer password auth. The fixture root has no
+                    # usable password, so the attempt itself must still fail.
+                    p = subprocess.run([a for a in ssh if a not in ('-i', str(key))] [:-1] +
+                                       ['-o', 'PreferredAuthentications=password', '-o', 'PubkeyAuthentication=no',
+                                        '-o', 'NumberOfPasswordPrompts=0', 'root@127.0.0.1', 'true'],
+                                       capture_output=True, text=True, timeout=30)
+                    record('boot1-password-auth-offered-no-password-login',
+                           p.returncode == 255 and 'password' in p.stderr, p.stderr.strip()[-120:])
                 r = remote('test -x /etc/apk/commit_hooks.d/mibox-floor.sh && '
                            'grep -q MIBOX_APK_FLOOR_HOOK_V1 /etc/apk/commit_hooks.d/mibox-floor.sh && echo HOOK')
                 record(f'boot{boot_index}-apk-floor-hook-installed', 'HOOK' in r.stdout)

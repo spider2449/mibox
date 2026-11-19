@@ -1,0 +1,3 @@
+﻿SSH: boot 0686e428-949f-4561-8778-12e88721fddf
+Restarting; waiting up to 180 s for SSH...
+MIBOX_RESTARTED: new boot 166b36c3-a676-4c3f-97c9-3661ded8a208 after 25 s

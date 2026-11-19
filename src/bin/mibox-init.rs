@@ -170,7 +170,10 @@ fn supervise_alpine_ssh() {
         let slash = CString::new("/").unwrap();
         let mut command = Command::new("/usr/sbin/dropbear");
         command
-            .args(["-F", "-E", "-s", "-j", "-k", "-p", "22", "-r", "/etc/dropbear/dropbear_ed25519_host_key"])
+            // Password logins allowed (owner decision 2026-11-19: a root
+            // password set in the tree's /etc/shadow is the fallback when
+            // the PC with the keys is lost); 3 tries per connection.
+            .args(["-F", "-E", "-j", "-k", "-T", "3", "-p", "22", "-r", "/etc/dropbear/dropbear_ed25519_host_key"])
             .env_clear()
             .env("PATH", "/usr/sbin:/usr/bin:/sbin:/bin")
             .stdin(Stdio::null());

@@ -2,7 +2,7 @@
 # No Android query, software reboot, flash or environment command is issued.
 param(
     [ValidateSet('Check','WaitAndBoot')][string]$Action='Check',
-    [ValidateSet('Console','FailSafe','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4','SlimKernelDev5','SlimKernelDev6','SlimKernelDev7')][string]$Candidate='Console',
+    [ValidateSet('Console','FailSafe','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4','SlimKernelDev5','SlimKernelDev6','SlimKernelDev7','SlimKernelDev8')][string]$Candidate='Console',
     [ValidateRange(1,600)][int]$WaitSeconds=120,
     [ValidateRange(60,7200)][int]$TransferTimeoutSeconds=3600,
     # Bulk OUT upload verified by loader crc32 (see Test-MiboxLoaderRam.ps1).
@@ -85,6 +85,13 @@ if($Candidate -eq 'SlimKernelDev7') {
     # 3.10.99 BSP reports (owner saw correct colors, full 1080p after scaling).
     $hash='bccbad4ff8e7e104de544537ddc1d89ea07fced3c34645b92ae74ac6e0268b4a'
     $initHash='628b3453a92b66a17008b87e1e4d07f2bd4f32342d6757d351bf92015d363fc5'
+    $miboxHash='c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226'
+}
+if($Candidate -eq 'SlimKernelDev8') {
+    # As SlimKernelDev7; PID1 starts dropbear without -s (password logins
+    # allowed, -T 3) so a root password is the fallback if the PC is lost.
+    $hash='0d549c0fd27a12fc42e4d11b8dfb1c3cfce4067bd9b3ef521d84c8543588d9a2'
+    $initHash='5b5cfb5f7f79a6e56f15fae5afd262803f73ab518181cfd5cf11de863d076dde'
     $miboxHash='c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226'
 }
 $proof=[ordered]@{Action=$Action;Stage='LocalCheck';Candidate=$Candidate;ImageSHA256=$hash;BulkUpload=[bool]$Bulk

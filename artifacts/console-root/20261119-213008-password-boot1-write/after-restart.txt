@@ -1,0 +1,5 @@
+3.10.99
+/usr/sbin/dropbear -F -E -j -k -T 3 -p 22 -r /etc/dropbear/dropbear_ed25519_host_key
+*
+mibox-web Up 3 seconds
+root@192.168.1.222: Permission denied (publickey,password).
