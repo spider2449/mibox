@@ -1,0 +1,6 @@
+fbset: option 'i' not handled
+fbset: option 'i' not handled
+32
+1280,3240
+5120
+1080p

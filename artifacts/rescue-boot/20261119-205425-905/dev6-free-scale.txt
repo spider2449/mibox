@@ -1,0 +1,6 @@
+free_scale
+free_scale_axis
+window_axis
+free_scale_enable:[0x1]
+window axis is [0 0 1919 1079]
+0 0 1279 1079

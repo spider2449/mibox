@@ -48,13 +48,20 @@ int main(void) {
     printf("before visible=%ux%u virtual=%ux%u offset=%u,%u bpp=%u stride=%u smem_len=%u\n",
            original.xres, original.yres, original.xres_virtual, original.yres_virtual,
            original.xoffset, original.yoffset, original.bits_per_pixel, fixed.line_length, fixed.smem_len);
+    printf("format type=%u visual=%u r=%u/%u g=%u/%u b=%u/%u a=%u/%u nonstd=%u\n",
+           fixed.type, fixed.visual, original.red.offset, original.red.length,
+           original.green.offset, original.green.length, original.blue.offset, original.blue.length,
+           original.transp.offset, original.transp.length, original.nonstd);
+    /* Stock 3.10.33 reports RGBA (R at bit 0); the 3.10.99 BSP reports BGRA
+     * (R at bit 16). Both are 8-bit channels with alpha at bit 24. */
+    int rgba = original.red.offset == 0 && original.blue.offset == 16;
+    int bgra = original.red.offset == 16 && original.blue.offset == 0;
     if (fixed.type != FB_TYPE_PACKED_PIXELS || fixed.visual != FB_VISUAL_TRUECOLOR ||
         original.xres != 1280 || original.yres != 1080 || original.xres_virtual != 1280 ||
         original.yres_virtual != 3240 || original.bits_per_pixel != 32 || fixed.line_length != 5120 ||
         original.xoffset || original.yoffset + original.yres > original.yres_virtual ||
-        original.red.offset != 0 || original.red.length != 8 ||
-        original.green.offset != 8 || original.green.length != 8 ||
-        original.blue.offset != 16 || original.blue.length != 8 ||
+        !(rgba || bgra) || original.red.length != 8 ||
+        original.green.offset != 8 || original.green.length != 8 || original.blue.length != 8 ||
         original.transp.offset != 24 || original.transp.length != 8) {
         fputs("unexpected measured framebuffer layout\n", stderr); goto done;
     }
@@ -69,7 +76,8 @@ int main(void) {
         after.bits_per_pixel != original.bits_per_pixel || after.xoffset != original.xoffset || after.yoffset != original.yoffset) {
         fputs("geometry changed unexpectedly\n", stderr); goto done;
     }
-    puts("FRAMEBUFFER_HANDOFF_PASS same_geometry=1 pan_current_offset=1 unblank=1");
+    printf("FRAMEBUFFER_HANDOFF_PASS same_geometry=1 pan_current_offset=1 unblank=1 order=%s\n",
+           rgba ? "rgba" : "bgra");
     result = 0;
 done:
     close(fd);

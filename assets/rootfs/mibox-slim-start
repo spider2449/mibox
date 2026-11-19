@@ -53,13 +53,18 @@ echo UNSYNCHRONIZED > /run/mibox-time-state
 ) < /dev/null > /dev/null 2>&1 &
 # HDMI status splash (plan A5). Only on a flash boot does the bootloader run
 # init_display and load the HDCP keys; a C003-intercepted boot leaves HDMI
-# muted. The handoff verifies fb0 is 1280x1080x32 with R/G/B/A at bit offsets
-# 0/8/16/24, so the opaque RGBA splash is copied straight into fb0, then the
-# OSD scaler stretches it to the output mode (both verified on the box).
+# muted. The handoff verifies fb0 is 1280x1080x32 with 8-bit channels and
+# reports the channel order: RGBA (stock 3.10.33) or BGRA (3.10.99 BSP). The
+# opaque RGBA splash is copied straight into fb0 only for RGBA; mibox-fbstatus
+# handles both. The OSD scaler stretches fb0 to the output mode.
 if [ -x /sbin/mibox-fbhandoff ] && [ -e /etc/mibox-splash.rgba ]; then
     (
         if /sbin/mibox-fbhandoff > /run/mibox-fbhandoff.log 2>&1; then
-            dd if=/etc/mibox-splash.rgba of=/dev/fb0 bs=5120 count=1080 2>/dev/null
+            splash=
+            if grep -q 'order=rgba' /run/mibox-fbhandoff.log; then
+                splash=1
+                dd if=/etc/mibox-splash.rgba of=/dev/fb0 bs=5120 count=1080 2>/dev/null
+            fi
             g=/sys/class/graphics/fb0
             case "$(cat /sys/class/display/mode 2>/dev/null)" in
             1080p*) window='0 0 1919 1079' ;;
@@ -71,7 +76,7 @@ if [ -x /sbin/mibox-fbhandoff ] && [ -e /etc/mibox-splash.rgba ]; then
                 echo "$window" > "$g/window_axis"
                 echo 1 > "$g/free_scale"
             fi
-            say "MIBOX_SPLASH_SHOWN window=${window:-unscaled}"
+            say "MIBOX_SPLASH_SHOWN window=${window:-unscaled} splash=${splash:-skipped-bgra}"
             # Live status screen (clock, cards, kernel log) replaces the
             # splash; if it exits with an error the splash is copied back.
             # Local time is UTC+8.
@@ -79,7 +84,9 @@ if [ -x /sbin/mibox-fbhandoff ] && [ -e /etc/mibox-splash.rgba ]; then
                 TZ=CST-8 /sbin/mibox-fbstatus > /run/mibox-fbstatus.log 2>&1
                 status=$?
                 if [ "$status" -ne 0 ]; then
-                    dd if=/etc/mibox-splash.rgba of=/dev/fb0 bs=5120 count=1080 2>/dev/null
+                    if [ -n "$splash" ]; then
+                        dd if=/etc/mibox-splash.rgba of=/dev/fb0 bs=5120 count=1080 2>/dev/null
+                    fi
                     say "MIBOX_FBSTATUS_FAILED status=$status"
                 fi
             fi

@@ -496,10 +496,15 @@ static int run_device(void) {
     if (fix.type != FB_TYPE_PACKED_PIXELS || fix.visual != FB_VISUAL_TRUECOLOR || var.xres != W || var.yres != H ||
         var.bits_per_pixel != 32 || fix.line_length != STRIDE || var.xoffset ||
         var.yoffset + var.yres > var.yres_virtual || (unsigned long long)(var.yoffset + H) * STRIDE > fix.smem_len ||
-        var.red.offset != 0 || var.green.offset != 8 || var.blue.offset != 16 || var.transp.offset != 24) {
+        var.green.offset != 8 || var.transp.offset != 24 ||
+        !((var.red.offset == 0 && var.blue.offset == 16) || (var.red.offset == 16 && var.blue.offset == 0))) {
         fputs("unexpected framebuffer layout\n", stderr);
         return 1;
     }
+    /* Frames are drawn as RGBA (stock 3.10.33); the 3.10.99 BSP reports BGRA,
+     * so red and blue are swapped while copying to fb0. */
+    int bgra = var.red.offset == 16;
+    static uint32_t row_out[W];
     unsigned char *map = mmap(NULL, fix.smem_len, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
     if (map == MAP_FAILED) { perror("mmap"); return 1; }
     uint32_t *screen = (uint32_t *)(map + (size_t)var.yoffset * STRIDE);
@@ -509,7 +514,7 @@ static int run_device(void) {
     signal(SIGHUP, SIG_IGN);
     if (nice(10) == -1 && errno) perror("nice");
     memset(shown, 0, sizeof shown);  /* forces the first full copy */
-    puts("MIBOX_FBSTATUS_RUNNING");
+    printf("MIBOX_FBSTATUS_RUNNING order=%s\n", bgra ? "bgra" : "rgba");
     fflush(stdout);
     for (unsigned tick = 0; !stop_requested; tick++) {
         if (kmsg >= 0) kmsg_drain(kmsg);
@@ -518,7 +523,15 @@ static int run_device(void) {
         render(&s, tick);
         for (int row = 0; row < H; row++) {
             if (memcmp(frame + row * W, shown + row * W, W * 4) == 0) continue;
-            memcpy(screen + row * W, frame + row * W, W * 4);
+            if (bgra) {
+                for (int col = 0; col < W; col++) {
+                    uint32_t p = frame[row * W + col];
+                    row_out[col] = (p & 0xFF00FF00u) | (p & 0xFFu) << 16 | (p >> 16 & 0xFFu);
+                }
+                memcpy(screen + row * W, row_out, W * 4);
+            } else {
+                memcpy(screen + row * W, frame + row * W, W * 4);
+            }
             memcpy(shown + row * W, frame + row * W, W * 4);
         }
         struct timespec now, wait;

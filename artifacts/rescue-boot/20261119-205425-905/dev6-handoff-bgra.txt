@@ -1,0 +1,6 @@
+before visible=1280x1080 virtual=1280x3240 offset=0,0 bpp=32 stride=5120 smem_len=16777216
+format type=0 visual=2 r=16/8 g=8/8 b=0/8 a=24/8 nonstd=0
+FRAMEBUFFER_HANDOFF_PASS same_geometry=1 pan_current_offset=1 unblank=1 order=bgra
+rc=0
+MIBOX_FBSTATUS_RUNNING order=bgra
+exit=0

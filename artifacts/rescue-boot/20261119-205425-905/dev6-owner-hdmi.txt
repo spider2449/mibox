@@ -1,0 +1,1 @@
+owner_observation 2026-11-19: TV showed the live screen on the RAM boot (3.10.99 via C003) with correct colors; right third black until OSD free_scale was enabled by hand, then full 1080p (owner: OK)
