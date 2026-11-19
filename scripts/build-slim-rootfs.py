@@ -87,7 +87,7 @@ def resolve(name, target):
     return posixpath.normpath(posixpath.join('/', base, target)).lstrip('/')
 
 
-def build(root, output):
+def build(root, output, kernel_dev=False):
     if not output.resolve().is_relative_to((root / 'target').resolve()):
         raise ValueError('output must be under target')
     spec = importlib.util.spec_from_file_location('console', root / 'scripts/build-console-rootfs.py')
@@ -147,7 +147,10 @@ def build(root, output):
     base_spec = importlib.util.spec_from_file_location('base', root / 'scripts/build-mibox-rootfs.py')
     base = importlib.util.module_from_spec(base_spec)
     base_spec.loader.exec_module(base)
-    release_dir = root / 'target/armv7-unknown-linux-musleabihf/release'
+    # --kernel-dev: PID1 from the container-kernel-test feature build, which
+    # also accepts the pinned 3.10.99 development kernel, plus its marker.
+    release_dir = root / ('target/kernel-userspace/armv7-unknown-linux-musleabihf/release' if kernel_dev
+                          else 'target/armv7-unknown-linux-musleabihf/release')
     replaced = {}
     for name, binary in REPLACED_FROM_RELEASE.items():
         data = base.arm_static(release_dir / binary)
@@ -156,6 +159,11 @@ def build(root, output):
         replaced[name] = dict(failsafe_sha256=hashlib.sha256(entries[name][1]).hexdigest(),
                               sha256=hashlib.sha256(data).hexdigest(), bytes=len(data))
         entries[name] = (entries[name][0], data, 0, 0)
+    if kernel_dev:
+        marker = b'MIBOX_KERNEL_DEV_V1 8b1bb2b31a8e94b773a4b8ab907a0473a0951192 3.10.99-mibox-container-dev+\n'
+        if marker not in entries['init'][1]:
+            raise ValueError('init lacks the container-kernel-test feature marker')
+        entries['etc/mibox-kernel-development'] = (0o100444, marker, 0, 0)
     entries['sbin/mibox-console-start'] = (0o100755, (assets / 'mibox-slim-start').read_bytes().replace(b'\r\n', b'\n'), 0, 0)
     entries['sbin/mibox-persistent-console'] = (0o100755, (assets / 'mibox-persistent-console').read_bytes().replace(b'\r\n', b'\n'), 0, 0)
     for directory in ('etc/dropbear', 'mnt', 'run'):
@@ -170,7 +178,8 @@ def build(root, output):
     (output / 'initramfs.NOT_READY.cpio.gz').write_bytes(compressed)
     files = {name: dict(bytes=len(payload), sha256=hashlib.sha256(payload).hexdigest())
              for name, (mode, payload, _, _) in entries.items() if stat.S_ISREG(mode)}
-    report = dict(status='HOST_BUILT_NOT_PHYSICALLY_VALIDATED', profile='slim-a3',
+    report = dict(status='HOST_BUILT_NOT_PHYSICALLY_VALIDATED', profile='slim-a3-kernel-dev' if kernel_dev else 'slim-a3',
+                  container_kernel_test=kernel_dev,
                   source_rootfs_sha256=SOURCE_SHA256,
                   gzip_bytes=len(compressed), gzip_sha256=hashlib.sha256(compressed).hexdigest(),
                   cpio_bytes=len(archive), kept_unchanged=kept, replaced_from_release=replaced, alpine_baseline_sha256=hashlib.sha256(baseline).hexdigest(), removed=sorted(removed),
@@ -188,5 +197,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument('--output', type=Path, default=None)
+    parser.add_argument('--kernel-dev', action='store_true',
+                        help='RAM-test variant for the 3.10.99 container kernel')
     args = parser.parse_args()
-    build(args.root, args.output or args.root / 'target/mibox-rootfs-slim')
+    default = 'target/mibox-rootfs-slim-kernel-dev' if args.kernel_dev else 'target/mibox-rootfs-slim'
+    build(args.root, args.output or args.root / default, args.kernel_dev)

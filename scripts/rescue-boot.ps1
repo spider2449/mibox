@@ -2,7 +2,7 @@
 # No Android query, software reboot, flash or environment command is issued.
 param(
     [ValidateSet('Check','WaitAndBoot')][string]$Action='Check',
-    [ValidateSet('Console','FailSafe','Loader','Slim')][string]$Candidate='Console',
+    [ValidateSet('Console','FailSafe','Loader','Slim','SlimKernelDev')][string]$Candidate='Console',
     [ValidateRange(1,600)][int]$WaitSeconds=120,
     [ValidateRange(60,7200)][int]$TransferTimeoutSeconds=3600,
     # Bulk OUT upload verified by loader crc32 (see Test-MiboxLoaderRam.ps1).
@@ -34,6 +34,14 @@ if($Candidate -eq 'Slim') {
     # Physically RAM-booted 2026-11-17 (artifacts/rescue-boot/20261117-202114-211).
     $hash='f11de99e04362e5cb6cb4c84aa077bc534613185ea98c3461e77d229e71e1505'
     $initHash='4d6dae1f9da50c63679c9a5c9446dc6f7282211dde4d9cef614796cdddf8c4e5'
+    $miboxHash='c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226'
+}
+if($Candidate -eq 'SlimKernelDev') {
+    # RAM-only test: the pinned 3.10.99 container kernel (stock DTB) with the
+    # Slim rootfs; PID1 from the container-kernel-test feature build plus its
+    # marker. Never written to flash. HDMI stays muted on C003 boots.
+    $hash='7279a88a6b2755dbc44c903a312ce3efcc77d1295d3565faee9850108712c0c7'
+    $initHash='628b3453a92b66a17008b87e1e4d07f2bd4f32342d6757d351bf92015d363fc5'
     $miboxHash='c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226'
 }
 $proof=[ordered]@{Action=$Action;Stage='LocalCheck';Candidate=$Candidate;ImageSHA256=$hash;BulkUpload=[bool]$Bulk
