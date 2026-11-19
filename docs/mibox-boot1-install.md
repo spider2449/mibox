@@ -1,14 +1,15 @@
 # Writing and restoring boot1 (plan C3)
 
-Status: **boot1 holds the container-kernel Slim `c3e952e8…` (SlimKernelDev9: 3.10.99 with
-board patches, Docker with dockerd in its own mount namespace, live HDMI screen,
-SSH password logins allowed) since 2026-11-19**
-(`artifacts/console-root/20261119-220022-docker-ns-boot1-write/`), after `0d549c0f…`
+Status: **boot1 holds the container-kernel Slim `760288f6…` (SlimKernelDev10: 3.10.99 with
+board patches, Docker with dockerd in its own mount namespace, live HDMI screen
+with a SoC temperature card, SSH password logins allowed) since 2026-11-19**
+(`artifacts/console-root/20261119-222407-c8-temp-boot1-write/`), after `c3e952e8…`
+(Dev9, `artifacts/console-root/20261119-220022-docker-ns-boot1-write/`), `0d549c0f…`
 (Dev8), `bccbad4f…` (Dev7), C4
 (`dd1e6756…`), two A5 rewrites (`35e1d4d2…`, `f11de99e…`) and A5b (`955ea3e8…`,
 stock 3.10.33 kernel), all owner-approved. A flash boot without the PC came up
 with SSH, Docker and the HDMI screen. For a restore, name the current image as the
-expected current content (`c3e952e8…`; before it `0d549c0f…`, before the password change `bccbad4f…`); `955ea3e8…` (`target/mibox-boot-candidate-slim-fbstatus/`)
+expected current content (`760288f6…`; before it `c3e952e8…`, `0d549c0f…`, before the password change `bccbad4f…`); `955ea3e8…` (`target/mibox-boot-candidate-slim-fbstatus/`)
 is the last stock-kernel image.
 Stock boot1 `06d9eb7e…` remains restorable with the restore section below. Writing boot1
 (C4) needs explicit owner approval at that time. Nothing here touches the
@@ -106,3 +107,16 @@ A3a-style checks via `verify-boot-backups.py` in the same session.
   C003 does.
 - Without the PC, a Slim that fails early restarts through the fail-safe and
   loops; recovery then needs the PC attached (rescue procedure limits).
+
+## SoC temperature on the HDMI screen (Dev10)
+
+Neither the stock nor the 3.10.99 config enables `MESON_CPU_TEMP_SENSOR`, so
+there is no thermal zone. `mibox-slim-start` writes `1` to
+`/sys/class/saradc/saradc_temperature` once before starting `mibox-fbstatus`
+(SARADC channel 6 -> on-die sensor, tempsen mode 2; the driver logs
+`enter temperature mode`) and creates `/run/mibox-cpu-temp`. fbstatus reads
+`saradc_ch6` once a second and shows the 8-sample mean of
+`raw * 0.23077 - 88` (the vendor driver's meson6 formula, untrimmed), plus the
+peak since start; amber from 75 C, red from 85 C, `N/A` without the marker.
+Writing `0` returns channel 6 to its normal input. After the Dev10 flash boot
+the screen showed 73 C (peak 78 during boot); raw 686-726 under light load.

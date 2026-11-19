@@ -29,7 +29,7 @@ BASELINE_LINKS = ['lib/libc.musl-armv7.so.1', 'usr/lib/libz.so.1', 'usr/lib/libu
                   'usr/lib/libskarnet.so.2.14', 'bin/sh', 'bin/ash']
 HANDOFF_SHA256 = '5c58171d9427689246a0c1942aecb65b4d97ce2ac3925481fc2c6e28eee6deec'  # 3.10.33 RGBA or 3.10.99 BGRA
 SPLASH_SHA256 = 'f8f95140a0c010a2fefd36e18a14028a331b7fab9e3ae917f7ff15640f5a5aac'   # build-splash-ppm.py (LSB-left glyphs)
-FBSTATUS_SHA256 = '1d2824a9ead0d98027d7631b181fb4f02e9a9e6dad242a8577bb22188a2c9bc1'  # build-fbstatus.py
+FBSTATUS_SHA256 = 'c3e84fa3195a7c0326838001c1dc9e6deccab362d0d9d3b0a9e2a1b05554c1b7'  # build-fbstatus.py
 S2_SHA256 = 'artifacts/storage/s2-20261117/device-sha256.txt'
 
 

@@ -2,12 +2,18 @@
  *
  * After mibox-fbhandoff has verified fb0 (1280x1080, 32 bpp, R/G/B/A at bit
  * offsets 0/8/16/24, 5120-byte stride), this redraws once a second: a header
- * with the clock, status cards (network, SSH, uptime, memory, data) and a
- * tail of /dev/kmsg. It only reads system state; its only write is fb0.
+ * with the clock, status cards (network, SSH, uptime, memory, SoC temperature,
+ * data) and a tail of /dev/kmsg. It only reads system state; its only write
+ * is fb0.
+ *
+ * Temperature: mibox-slim-start switches SARADC channel 6 to the on-die sensor
+ * and writes /run/mibox-cpu-temp; the raw value is converted with the vendor
+ * driver's meson6 formula (saradc.c get_celius, tempsen mode 2):
+ * C = raw * 0.23077 - 88.
  *
  *   mibox-fbstatus                  run on the box (custom root required)
  *   mibox-fbstatus --preview OUT.ppm [--kmsg FILE] [--run DIR] [--data PATH]
- *                  [--iface NAME] [--stretch]
+ *                  [--iface NAME] [--temp-raw PATH] [--stretch]
  *                                   render one frame to a PPM on the host
  */
 #define _GNU_SOURCE
@@ -116,6 +122,7 @@ static void bar(int x, int y, int w, int h, int percent, unsigned color) {
 static const char *run_dir = "/run";
 static const char *data_path = "/mnt/mibox-data";
 static const char *iface = "eth0";
+static const char *temp_raw_path = "/sys/class/saradc/saradc_ch6";
 static int preview;
 
 static int read_text(const char *path, char *buffer, size_t size) {
@@ -146,6 +153,7 @@ struct status {
     unsigned ip_color, link_color, ssh_color;
     unsigned long long mem_total, mem_used, data_total, data_free;
     int data_mounted, synced;
+    int temp_valid, temp_c, temp_peak;   /* whole degrees Celsius */
     char host[65], kernel[65], machine[65];
 };
 
@@ -201,11 +209,33 @@ static void gather_ssh(struct status *s) {
     int procs = count_processes("dropbear");
     if (stopping) { snprintf(s->ssh, sizeof s->ssh, "STOPPED"); s->ssh_color = AMBER; }
     else if (ready && procs) { snprintf(s->ssh, sizeof s->ssh, "READY"); s->ssh_color = GREEN; }
-    else if (ready) { snprintf(s->ssh, sizeof s->ssh, "RESTARTING"); s->ssh_color = AMBER; }
+    else if (ready) { snprintf(s->ssh, sizeof s->ssh, "RESTART"); s->ssh_color = AMBER; }
     else { snprintf(s->ssh, sizeof s->ssh, "WAITING"); s->ssh_color = AMBER; }
     int sessions = procs > 1 ? procs - 1 : 0;
-    if (procs) snprintf(s->ssh_sub, sizeof s->ssh_sub, "%d session%s  :22", sessions, sessions == 1 ? "" : "s");
+    if (procs) snprintf(s->ssh_sub, sizeof s->ssh_sub, "%d session%s", sessions, sessions == 1 ? "" : "s");
     else snprintf(s->ssh_sub, sizeof s->ssh_sub, "no dropbear");
+}
+
+/* 1 Hz samples jitter by a few ADC counts (~1 C); show an 8-sample mean. */
+#define TEMP_WINDOW 8
+static int temp_samples[TEMP_WINDOW], temp_count, temp_peak = -1000;
+
+static void gather_temperature(struct status *s) {
+    char text[32];
+    if (run_file("mibox-cpu-temp", text, sizeof text) || strcmp(text, "on") != 0) return;
+    if (read_text(temp_raw_path, text, sizeof text) || !isdigit((unsigned char)text[0])) return;
+    int raw = atoi(text);
+    if (raw <= 0 || raw >= 1023) return;  /* rail values: sensor not selected */
+    temp_samples[temp_count++ % TEMP_WINDOW] = raw;
+    int n = temp_count < TEMP_WINDOW ? temp_count : TEMP_WINDOW;
+    long long sum = 0;
+    for (int i = 0; i < n; i++) sum += temp_samples[i];
+    /* tenths of a degree: mean raw * 0.23077 - 88 */
+    int c10 = (int)(sum * 23077 / n / 10000) - 880;
+    s->temp_c = (c10 + (c10 >= 0 ? 5 : -5)) / 10;
+    if (s->temp_c > temp_peak) temp_peak = s->temp_c;
+    s->temp_peak = temp_peak;
+    s->temp_valid = 1;
 }
 
 static unsigned long long meminfo_kib(const char *text, const char *key) {
@@ -234,6 +264,7 @@ static void gather(struct status *s) {
     }
     gather_network(s);
     gather_ssh(s);
+    gather_temperature(s);
     char text[2048];
     read_text("/proc/uptime", text, sizeof text);
     long up = atol(text);
@@ -242,7 +273,7 @@ static void gather(struct status *s) {
     read_text("/proc/loadavg", text, sizeof text);
     double l1 = 0, l5 = 0, l15 = 0;
     sscanf(text, "%lf %lf %lf", &l1, &l5, &l15);
-    snprintf(s->load, sizeof s->load, "load %.1f %.1f %.1f", l1, l5, l15);
+    snprintf(s->load, sizeof s->load, "%.2f %.2f %.2f", l1, l5, l15);
     read_text("/proc/meminfo", text, sizeof text);
     unsigned long long total = meminfo_kib(text, "MemTotal:");
     unsigned long long avail = meminfo_kib(text, "MemAvailable:");
@@ -391,15 +422,16 @@ static void render(const struct status *s, unsigned tick) {
     draw_text(small, right - 16 - (int)strlen(date) * small->w, 50, date, DIM, -1);
 
     /* status cards */
-    const int top = 100, height = 150, margin = 28, gap = 14, first = 300;
-    int each = (W - 2 * margin - first - 4 * gap) / 4;
+    /* Six cards: 256 + 5 x 179 (+ remainder); a narrow card fits 9 big / 14 small chars. */
+    const int top = 100, height = 150, margin = 28, gap = 14, first = 256;
+    int each = (W - 2 * margin - first - 5 * gap) / 5;
     char value[48], sub[64], a[24], b[24];
     x = margin;
     card(x, top, first, height, "NETWORK", BLUE, s->ip, s->ip_color, s->link, s->link_color, -1);
     x += first + gap;
     card(x, top, each, height, "SSH", s->ssh_color, s->ssh, s->ssh_color, s->ssh_sub, DIM, -1);
     x += each + gap;
-    card(x, top, each, height, "UPTIME", VIOLET, s->uptime, TEXT, s->load, DIM, -1);
+    card(x, top, each, height, "UPTIME / LOAD", VIOLET, s->uptime, TEXT, s->load, DIM, -1);
     x += each + gap;
     int mem_percent = s->mem_total ? (int)(s->mem_used * 100 / s->mem_total) : 0;
     human(s->mem_used, a, sizeof a);
@@ -409,17 +441,30 @@ static void render(const struct status *s, unsigned tick) {
     unsigned mem_color = mem_percent >= 90 ? RED : mem_percent >= 75 ? AMBER : CYAN;
     card(x, top, each, height, "MEMORY", mem_color, value, TEXT, sub, DIM, mem_percent);
     x += each + gap;
+    if (s->temp_valid) {
+        /* The font is ASCII only: leave a blank cell and draw the degree ring. */
+        snprintf(value, sizeof value, "%d  C", s->temp_c);
+        snprintf(sub, sizeof sub, "SoC  peak %d", s->temp_peak);
+        unsigned color = s->temp_c >= 85 ? RED : s->temp_c >= 75 ? AMBER : GREEN;
+        card(x, top, each, height, "TEMPERATURE", color, value, TEXT, sub, DIM, s->temp_c);
+        int ring_x = x + 16 + ((int)strlen(value) - 2) * big->w + big->w / 2 + 2, ring_y = top + 44 + 10;
+        dot(ring_x, ring_y, 5, rgb(TEXT));
+        dot(ring_x, ring_y, 3, rgb(PANEL));
+    } else {
+        card(x, top, each, height, "TEMPERATURE", AMBER, "N/A", AMBER, "sensor off", DIM, -1);
+    }
+    x += each + gap;
     int last = W - margin - x;
     if (s->data_mounted) {
         human(s->data_free, a, sizeof a);
         human(s->data_total, b, sizeof b);
         snprintf(value, sizeof value, "%s free", a);
-        snprintf(sub, sizeof sub, "of %s, min 256M", b);
+        snprintf(sub, sizeof sub, "of %s", b);
         int used = s->data_total ? (int)((s->data_total - s->data_free) * 100 / s->data_total) : 0;
         unsigned color = s->data_free < 256ULL << 20 ? RED : s->data_free < 512ULL << 20 ? AMBER : GREEN;
         card(x, top, last, height, "DATA", color, value, TEXT, sub, DIM, used);
     } else {
-        card(x, top, last, height, "DATA", AMBER, "NOT MOUNTED", AMBER, data_path, DIM, -1);
+        card(x, top, last, height, "DATA", AMBER, "UNMOUNTED", AMBER, data_path, DIM, -1);
     }
 
     /* kernel log */
@@ -552,6 +597,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[i], "--run") && i + 1 < argc) run_dir = argv[++i];
         else if (!strcmp(argv[i], "--data") && i + 1 < argc) data_path = argv[++i];
         else if (!strcmp(argv[i], "--iface") && i + 1 < argc) iface = argv[++i];
+        else if (!strcmp(argv[i], "--temp-raw") && i + 1 < argc) temp_raw_path = argv[++i];
         else if (!strcmp(argv[i], "--stretch")) stretch = 1;
         else { fprintf(stderr, "unknown argument: %s\n", argv[i]); return 2; }
     }

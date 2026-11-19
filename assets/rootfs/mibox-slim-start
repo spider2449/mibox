@@ -81,6 +81,13 @@ if [ -x /sbin/mibox-fbhandoff ] && [ -e /etc/mibox-splash.rgba ]; then
             # splash; if it exits with an error the splash is copied back.
             # Local time is UTC+8.
             if [ -x /sbin/mibox-fbstatus ]; then
+                # SoC temperature: neither kernel enables MESON_CPU_TEMP_SENSOR,
+                # so switch SARADC channel 6 to the on-die sensor once here
+                # (the driver logs each switch); fbstatus reads saradc_ch6.
+                t=/sys/class/saradc/saradc_temperature
+                if [ -w "$t" ] && echo 1 > "$t" 2>/dev/null; then
+                    echo on > /run/mibox-cpu-temp
+                fi
                 TZ=CST-8 /sbin/mibox-fbstatus > /run/mibox-fbstatus.log 2>&1
                 status=$?
                 if [ "$status" -ne 0 ]; then

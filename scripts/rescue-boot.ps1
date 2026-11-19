@@ -2,7 +2,7 @@
 # No Android query, software reboot, flash or environment command is issued.
 param(
     [ValidateSet('Check','WaitAndBoot')][string]$Action='Check',
-    [ValidateSet('Console','FailSafe','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4','SlimKernelDev5','SlimKernelDev6','SlimKernelDev7','SlimKernelDev8','SlimKernelDev9')][string]$Candidate='Console',
+    [ValidateSet('Console','FailSafe','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4','SlimKernelDev5','SlimKernelDev6','SlimKernelDev7','SlimKernelDev8','SlimKernelDev9','SlimKernelDev10')][string]$Candidate='Console',
     [ValidateRange(1,600)][int]$WaitSeconds=120,
     [ValidateRange(60,7200)][int]$TransferTimeoutSeconds=3600,
     # Bulk OUT upload verified by loader crc32 (see Test-MiboxLoaderRam.ps1).
@@ -99,6 +99,13 @@ if($Candidate -eq 'SlimKernelDev9') {
     # with the tree moved over /, so docker exec lands in the container, not
     # in the RAM root.
     $hash='c3e952e88517f1cb49d37b166d5f2e573cf6bc36e9021ff6e49bcb4a46c6a36d'
+    $initHash='5b5cfb5f7f79a6e56f15fae5afd262803f73ab518181cfd5cf11de863d076dde'
+    $miboxHash='c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226'
+}
+if($Candidate -eq 'SlimKernelDev10') {
+    # As SlimKernelDev9; the HDMI status screen gains a SoC temperature card
+    # (slim start switches SARADC channel 6 to the on-die sensor).
+    $hash='760288f637c7f769dcad94a87a142fd3b1c7a60d159d143b5751b1f23df02ab6'
     $initHash='5b5cfb5f7f79a6e56f15fae5afd262803f73ab518181cfd5cf11de863d076dde'
     $miboxHash='c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226'
 }

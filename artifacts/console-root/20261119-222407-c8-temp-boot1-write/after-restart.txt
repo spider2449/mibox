@@ -1,0 +1,11 @@
+eebd9506-b75d-49dc-8fac-ade4c2cc943a
+3.10.99
+c3e84fa3195a7c0326838001c1dc9e6deccab362d0d9d3b0a9e2a1b05554c1b7  /proc/1/root/sbin/mibox-fbstatus
+ed14e335a3fe2998d348edc2e4290d25a0e938b93453bcc9ab62e85c7cb0d12b  /proc/1/root/sbin/mibox-console-start
+on
+MIBOX_FBSTATUS_RUNNING order=bgra
+[    6.488269@0] mibox-slim: MIBOX_SPLASH_SHOWN window=0 0 1919 1079 splash=skipped-bgra
+[    6.491411@0] enter temperature mode(trimming=0),please get the value from chan6
+725 726 723 
+1
+mibox-web Up 2 seconds
