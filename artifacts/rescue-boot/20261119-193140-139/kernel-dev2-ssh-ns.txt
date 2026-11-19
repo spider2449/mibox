@@ -1,0 +1,30 @@
+3.10.99
+3.22.8
+ipc
+mnt
+net
+pid
+user
+uts
+nodev	cgroup
+#subsys_name	hierarchy	num_cgroups	enabled
+cpuset	0	1	1
+debug	0	1	1
+cpu	0	1	1
+cpuacct	0	1	1
+memory	0	1	1
+devices	0	1	1
+freezer	0	1	1
+net_cls	0	1	1
+blkio	0	1	1
+net_prio	0	1	1
+unshare_present
+unshare: can't mount none on / (flags:0x44000): Invalid argument
+-               2.2G  158M  2.0G   8% /
+              total        used        free      shared  buff/cache   available
+Mem:            856          21         816           0          19           0
+host=nsprobe
+links=3
+pid=1
+parent_host=android
+4

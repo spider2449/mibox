@@ -1,0 +1,17 @@
+3.10.99
+389cd267-f2c8-46cf-af2d-1cfc99175fd1
+ 11:32:58 up 0 min,  0 users,  load average: 0.28, 0.06, 0.02
+179:11
+5168640
+/dev/mibox-data /mnt/mibox-data ext4 rw,nosuid,nodev,relatime,data=ordered 0 0
+devtmpfs /mnt/mibox-data/mibox-console/rootfs/dev devtmpfs rw,nosuid,noexec,relatime,size=436936k,nr_inodes=109234,mode=755 0 0
+proc /mnt/mibox-data/mibox-console/rootfs/proc proc rw,nosuid,noexec,relatime 0 0
+sysfs /mnt/mibox-data/mibox-console/rootfs/sys sysfs rw,nosuid,noexec,relatime 0 0
+devpts /mnt/mibox-data/mibox-console/rootfs/dev/pts devpts rw,nosuid,noexec,relatime,mode=600,ptmxmode=000 0 0
+up
+1
+100
+[1;34mlock[m                        [0;0mmibox-ntpd.log[m
+[0;0mmibox-alpine-integrity[m      [0;0mmibox-persistent-start.log[m
+[0;0mmibox-alpine-ready[m          [0;0mmibox-time-state[m
+[0;0mmibox-fbhandoff.log[m
