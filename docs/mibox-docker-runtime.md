@@ -327,5 +327,9 @@ tree deepest first.
 
 Day to day: `ssh root@192.168.1.222`, then `docker …` inside Alpine. Disable
 the engine with `rm /etc/mibox-docker.enabled` (takes effect at the next boot).
-Remaining: HDMI on 3.10.99, writing this kernel to boot1 (owner approval),
-remote Docker API with TLS.
+Update 2026-11-19: HDMI works on 3.10.99 (fb0 reports BGRA; owner confirmed colors
+and full 1080p). boot1 now holds this system (`bccbad4f…`); a flash boot without
+the PC started SSH, Docker and the restored nginx container by itself
+(`artifacts/console-root/20261119-211306-c7-kernel-boot1-write/flash-boot-check.txt`).
+Remaining: remote Docker API with TLS; overlayfs and a pids controller would need
+kernel changes.
