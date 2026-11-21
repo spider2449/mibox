@@ -1,0 +1,118 @@
+diff --git a/arch/arm/mach-meson6/clock.c b/arch/arm/mach-meson6/clock.c
+index d1f42756..733c43eb 100755
+--- a/arch/arm/mach-meson6/clock.c
++++ b/arch/arm/mach-meson6/clock.c
+@@ -2836,7 +2836,9 @@ static int __init meson_clock_init(void)
+ 	CLK_DEFINE(a9_clk, pll_sys, -1, clk_set_rate_a9, clk_get_rate_a9, NULL, NULL, NULL);
+ 	clk_a9_clk.min = setup_a9_clk_min;
+ 	clk_a9_clk.max = setup_a9_clk_max;
+-	//clk_a9_clk.open_irq = 1;
++	/* Synchronous SMP calls must run with local IRQs enabled.
++	 * clock_ops_lock and clockfw_lock still serialize the change. */
++	clk_a9_clk.open_irq = 1;
+ 	CLK_PLL_CHILD_DEF(a9_clk,sys);
+ 
+ #ifdef CONFIG_HAVE_ARM_TWD
+diff --git a/arch/arm/mach-meson6/time.c b/arch/arm/mach-meson6/time.c
+index bbe0885d..61e4dc68 100644
+--- a/arch/arm/mach-meson6/time.c
++++ b/arch/arm/mach-meson6/time.c
+@@ -90,6 +90,8 @@ static void __init meson_clocksource_init(void)
+ struct meson_clock {
+ 	struct clock_event_device   clockevent;
+     struct irqaction            irq;
++    struct clock_event_device   *local_evt;
++    bool                        local_irq_ready;
+     unsigned id;
+     unsigned mux_reg;
+     unsigned reg;
+@@ -366,6 +368,43 @@ static int meson_tick_set_next_event(unsigned long evt,
+     int timer =2*smp_processor_id()+1;
+      return   meson_set_next_event(evt,&meson_timers[timer].clockevent);
+ }
++/* Register handlers before secondary startup, where setup_irq() would reach
++ * sleeping procfs allocation from the idle thread with IRQs disabled. The
++ * stable clock cookie dispatches to the event supplied by each CPU later. */
++static irqreturn_t meson_local_timer_interrupt(int irq, void *dev_id)
++{
++    struct meson_clock *clk = dev_id;
++    struct clock_event_device *evt = ACCESS_ONCE(clk->local_evt);
++
++    if (!evt)
++        return IRQ_HANDLED;
++    return meson_timer_interrupt(irq, evt);
++}
++
++static void __init meson_local_timer_irqs_init(void)
++{
++    unsigned int cpu;
++
++    for_each_possible_cpu(cpu) {
++        unsigned int timer = 2 * cpu + 1;
++        struct meson_clock *clk;
++        int ret;
++
++        if (timer >= ARRAY_SIZE(meson_timers)) {
++            pr_err("Meson local timer unavailable for CPU%u\n", cpu);
++            continue;
++        }
++        clk = &meson_timers[timer];
++        clk->irq.handler = meson_local_timer_interrupt;
++        clk->irq.dev_id = clk;
++        ret = setup_irq(clk->irq.irq, &clk->irq);
++        if (ret)
++            pr_err("Meson local timer IRQ CPU%u: %d\n", cpu, ret);
++        else
++            clk->local_irq_ready = true;
++    }
++}
++
+ int  __cpuinit meson_local_timer_setup(struct clock_event_device *evt)
+ {
+ 	int cpu;
+@@ -379,8 +418,19 @@ int  __cpuinit meson_local_timer_setup(struct clock_event_device *evt)
+ 
+ 	cpu = smp_processor_id();
+ 	timer=2*cpu+1;
++	if (timer >= ARRAY_SIZE(meson_timers))
++		return -EINVAL;
+ 
+ 	clk=&meson_timers[timer];
++	if (!clk->local_irq_ready)
++		return -ENXIO;
++	/* The IRQ is already registered: route it before enabling the timer,
++	 * otherwise CPU0 could dispatch CPU1's event during this setup. */
++	if (cpu) {
++		int ret = irq_set_affinity(clk->irq.irq, cpumask_of(cpu));
++		if (ret)
++			return ret;
++	}
+ 	aml_set_reg32_mask(clk->mux_reg,
+ 		(1<<(TIMER_A_ENABLE_BIT+clk->id))
+ 		|(1<<(TIMER_A_PERIODIC_BIT+clk->id))
+@@ -392,15 +442,11 @@ int  __cpuinit meson_local_timer_setup(struct clock_event_device *evt)
+ 		clk->clockevent.name,clk,cpu);
+ 
+ 	*evt=clk->clockevent;
+-	clk->irq.dev_id=evt;
++	ACCESS_ONCE(clk->local_evt) = evt;
+ 
+ 	clockevents_register_device(evt);
+ 
+-	if(cpu){
+-		irq_set_affinity(clk->irq.irq, cpumask_of(cpu));
+-	}
+-	/* Set up the IRQ handler */
+-	setup_irq(clk->irq.irq, &clk->irq);
++	/* Handler registration was completed before secondary startup. */
+ 
+ 	return 0;
+ }
+@@ -436,6 +482,7 @@ void __init meson_timer_init(void)
+ #ifdef CONFIG_HAVE_ARM_TWD
+ 	meson_twd_private_timer_init();
+ #else
++	meson_local_timer_irqs_init();
+ 	local_timer_register(&meson_local_timer_ops);
+ #endif
+ #endif

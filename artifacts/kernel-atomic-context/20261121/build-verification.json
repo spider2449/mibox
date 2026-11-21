@@ -1,0 +1,10 @@
+{
+  "build_complete": true,
+  "artifact_sizes_and_hashes_match": true,
+  "exports_match": true,
+  "patches_and_config_match": true,
+  "build_log_matches": true,
+  "warning_count": 10,
+  "physical_validation": false,
+  "boot_readiness": "NOT READY"
+}

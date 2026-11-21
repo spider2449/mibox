@@ -3,6 +3,16 @@
 Target: Xiaomi MDZ-06-AA / casablanca, Amlogic Meson6, ARMv7.
 First milestone: retain the device's stock kernel and develop custom userspace.
 
+Current status (2026-11-21): boot1 was updated to SlimKernelDev10 on
+2026-11-19, with the Linux 3.10.99 development kernel and HDMI temperature
+display. Persistent Docker 28.3.3, networking, volumes, restart and the mTLS
+API passed the [physical acceptance](docs/mibox-docker-runtime.md).
+The [latest read-only health check](docs/plans/2026-11-21-runtime-health.md)
+confirmed SSH, Docker and HTTP on port 8080; it also recorded vendor-kernel
+startup warnings. [Dev11 RAM validation](docs/mibox-kernel-atomic-context.md)
+passed the targeted kernel checks. Automatic IPv4 default-route recovery
+after Ethernet down/up remains open.
+
 P0 [custom-system ADB rescue and automatic return to
 the USB loader](docs/plans/2026-11-15-custom-system-rescue.md) is **READY** (2026-11-16);
 see the [rescue procedure](docs/mibox-rescue-procedure.md). The installed
@@ -29,7 +39,8 @@ has now passed physical RAM boot, namespace/veth/bridge/seccomp and cgroup-v1
 diagnostics, and software return to Android. Docker 24.0.9 has also passed a
 [physical offline container test](docs/mibox-docker-runtime.md) using VFS and
 cgroup v1 in RAM. Persistent engine services, container networking and
-installation as the default power-on system remain unverified.
+installation as the default power-on system were unverified at that earlier
+RAM-only milestone; later acceptance is linked above.
 
 The separate [console, SSH and apk workflow](docs/mibox-console-ssh.md) adds
 Alpine ARMv7 userspace and a host launcher for persistent software/configuration

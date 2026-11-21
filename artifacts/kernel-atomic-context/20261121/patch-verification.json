@@ -1,0 +1,22 @@
+{
+  "source_commit": "8b1bb2b31a8e94b773a4b8ab907a0473a0951192",
+  "clean_apply": true,
+  "source_files_match": true,
+  "files": [
+    "arch/arm/mach-meson6/clock.c",
+    "arch/arm/mach-meson6/time.c",
+    "drivers/amlogic/ethernet/am_net8218.c",
+    "drivers/mmc/card/emmc_partitions.c",
+    "fs/proc/base.c",
+    "fs/pstore/ram.c",
+    "include/linux/pstore_ram.h",
+    "kernel/sched/core.c",
+    "net/bridge/br_netlink.c"
+  ],
+  "patches": {
+    "0000-meson6-atomic-context.patch": "d1a29326cf342c5603d48378c6a48200865fe2fd0be027d5c4cf7ffb40cc65c0",
+    "0000-mibox-casablanca-emmc-ethernet.patch": "36a118be4ac0567577adbf5cfb1d4e9b66d4bf8542c436bd201ce99063f85679",
+    "0001-meson6-build-fixes.patch": "bde3c3c731a83d84545fcac994087af158fb475b5d1069e6b5b4aaba1405b754",
+    "0002-bridge-local-fdb-for-newlink-address.patch": "2ffb768ac513ddea0bfe26104bbf9147beb1dba4b10cc27fee72fcc85abd9e10"
+  }
+}

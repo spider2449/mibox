@@ -1,0 +1,156 @@
+﻿Linux android 3.10.99 #1 SMP PREEMPT 2026-11-15 00:00:00 UTC armv7l GNU/Linux
+0db89f9b-4414-4b75-9c4d-8992295dc278
+117.62 168.26
+Filesystem       Size  Used Avail Use% Mounted on
+/dev/mibox-data  2.2G  519M  1.7G  24% /
+Client:
+ Version:    28.3.3
+ Context:    default
+ Debug Mode: false
+
+Server:
+ Containers: 1
+  Running: 1
+  Paused: 0
+  Stopped: 0
+ Images: 3
+ Server Version: 28.3.3
+ Storage Driver: vfs
+ Logging Driver: local
+ Cgroup Driver: cgroupfs
+ Cgroup Version: 1
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+ CDI spec directories:
+  /etc/cdi
+  /var/run/cdi
+ Swarm: inactive
+ Runtimes: runc io.containerd.runc.v2
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: fcd43222d6b07379a4be9786bda52438f0dd16a1
+ runc version: a78754feb393d108d3da36700decf1e228a53a7f
+ init version: 
+ Security Options:
+  seccomp
+   Profile: builtin
+ Kernel Version: 3.10.99
+ Operating System: Linux
+ OSType: linux
+ Architecture: armv7l
+ CPUs: 2
+ Total Memory: 856MiB
+ Name: android
+ ID: 9a6fdc0b-d970-438b-93b7-f798363052de
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ Experimental: false
+ Insecure Registries:
+  ::1/128
+  127.0.0.0/8
+ Live Restore Enabled: false
+
+CONTAINER ID   IMAGE          COMMAND                  CREATED        STATUS              PORTS                                     NAMES
+63459b413a16   nginx:alpine   "/docker-entrypoint.…"   35 hours ago   Up About a minute   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   mibox-web
+623
+cat: /run/mibox-cpu-temp: No such file or directory
+MemTotal:         876552 kB
+MemFree:          640452 kB
+Buffers:            3000 kB
+Cached:           163584 kB
+SwapCached:            0 kB
+Active:            56072 kB
+Inactive:         151168 kB
+Active(anon):      40704 kB
+Inactive(anon):      164 kB
+Active(file):      15368 kB
+Inactive(file):   151004 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+HighTotal:        270336 kB
+HighFree:          64476 kB
+LowTotal:         606216 kB
+LowFree:          575976 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:                 0 kB
+Writeback:             0 kB
+AnonPages:         40592 kB
+Mapped:            44288 kB
+Shmem:               216 kB
+Slab:              10816 kB
+SReclaimable:       5580 kB
+SUnreclaim:         5236 kB
+KernelStack:        1096 kB
+PageTables:          564 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:      438276 kB
+Committed_AS:     121036 kB
+VmallocTotal:     245760 kB
+VmallocUsed:      104784 kB
+VmallocChunk:      49076 kB
+[    6.399686@0] [<c05cb200>] (dev_change_flags+0x20/0x54) from [<c06571f0>] (devinet_ioctl+0x38c/0x78c)
+[    6.408883@0] [<c06571f0>] (devinet_ioctl+0x38c/0x78c) from [<c0658bb4>] (inet_ioctl+0xe4/0x114)
+[    6.417654@0] [<c0658bb4>] (inet_ioctl+0xe4/0x114) from [<c05b0dd0>] (sock_ioctl+0x2b0/0x324)
+[    6.426160@0] [<c05b0dd0>] (sock_ioctl+0x2b0/0x324) from [<c014de90>] (do_vfs_ioctl+0x5c8/0x650)
+[    6.434923@0] [<c014de90>] (do_vfs_ioctl+0x5c8/0x650) from [<c014df7c>] (SyS_ioctl+0x64/0x88)
+[    6.443429@0] [<c014df7c>] (SyS_ioctl+0x64/0x88) from [<c000e920>] (ret_fast_syscall+0x0/0x50)
+[    6.452019@0] NET MDA descpter start addr=ed8b1000
+[    6.457767@0] phy_interface = 0
+[    6.459958@0] aml_phy_init:  trying to attach to 0:01
+[    6.465125@0] --1--write mac add to:ef3fc688: 10 48 b1 ec 20 eb |H.. .|
+[    6.471631@0] --2--write mac add to:ef3fc688: 10 48 b1 ec 20 eb |H.. .|
+[    6.478316@0] write mac add to:ef3fc688: 10 48 b1 ec 20 eb |H.. .|
+[    6.484569@0] Current DMA mode=0, set mode=621c100
+[    6.489383@0] eth0: opened (irq 40).
+[    6.489396@0] ether leave promiscuous mode
+[    6.493451@0] ether leave all muticast mode
+[    6.497585@0] changed the Multicast,mcount=1
+[    6.501842@0] add mac address:33:33:00:00:00:01,bit=1
+[    6.506885@0] set hash low=2,high=0
+[    6.510356@0] changed the filter setting to :4
+[    6.514834@0] changed the Multicast,mcount=1
+[    6.519027@0] add mac address:33:33:00:00:00:01,bit=1
+[    6.524174@0] changed the Multicast,mcount=2
+[    6.528331@0] add mac address:33:33:00:00:00:01,bit=1
+[    6.533366@0] add mac address:01:00:5e:00:00:01,bit=32
+[    6.538468@0] set hash low=2,high=1
+[    6.541952@0] changed the filter setting to :4
+[    6.546441@0] IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+[    6.600722@1] osd0 free scale ENABLE
+[    6.608369@1] mibox-slim: MIBOX_SPLASH_SHOWN window=0 0 1919 1079 splash=skipped-bgra
+[    6.611143@1] enter temperature mode(trimming=0),please get the value from chan6
+[    6.628425@0] force enable DISCARD here for ext4 fs
+[    6.643252@0] checked enable EXT4 DISCARD here
+[    6.643319@0] EXT4-fs (mmcblk0p11): mounting with "discard" option, but the device does not support discard
+[    6.651828@0] EXT4-fs (mmcblk0p11): mounted filesystem with ordered data mode. Opts: (null)
+[    7.017192@0] mibox-persistent: MIBOX_ALPINE_INTEGRITY=MATCH
+[    7.029365@0] mibox-persistent: MIBOX_PERSISTENT_BOOT_READY free_kib=1687428 floor_kib=262144
+[    7.036174@0] mibox-slim: MIBOX_ALPINE_SSH_STARTING
+[    7.062355@0] libphy: 0:01 - Link is Up - 100/Full
+[    7.062466@0] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+[    7.068022@0] changed the Multicast,mcount=3
+[    7.072218@0] add mac address:33:33:00:00:00:01,bit=1
+[    7.077268@0] add mac address:01:00:5e:00:00:01,bit=32
+[    7.082387@0] add mac address:33:33:ff:ec:20:eb,bit=34
+[    7.087491@0] set hash low=2,high=5
+[    7.090934@0] changed the filter setting to :4
+[    7.249250@1] mibox-docker: MIBOX_DOCKERD_STARTING iptables=true
+[    9.645268@1] mibox-slim: MIBOX_TIME_SYNCED 2026-11-21T00:12:43Z
+[   14.898790@1] IPv6: ADDRCONF(NETDEV_UP): docker0: link is not ready
+[   16.137488@1] cgroup: runc (445) created nested cgroup for controller "memory" which has incomplete hierarchy support. Nested cgroups may change behavior in the future.
+[   16.152413@0] cgroup: "memory" requires setting use_hierarchy to 1 on the root.
+[   16.158429@0] cgroup: runc (445) created nested cgroup for controller "blkio" which has incomplete hierarchy support. Nested cgroups may change behavior in the future.
+[   16.679448@0] device veth25a4849 entered promiscuous mode
+[   16.691147@0] IPv6: ADDRCONF(NETDEV_UP): veth25a4849: link is not ready
+[   16.912977@0] IPv6: ADDRCONF(NETDEV_CHANGE): veth25a4849: link becomes ready
+[   16.914528@0] docker0: port 1(veth25a4849) entered forwarding state
+[   16.920667@0] docker0: port 1(veth25a4849) entered forwarding state
+[   16.927120@0] IPv6: ADDRCONF(NETDEV_CHANGE): docker0: link becomes ready
+[   22.449952@0] nf_conntrack: automatic helper assignment is deprecated and it will be removed soon. Use the iptables CT target to attach helpers instead.
+[   31.952307@0] docker0: port 1(veth25a4849) entered forwarding state
+ssh_exit=0

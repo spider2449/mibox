@@ -1,8 +1,55 @@
 diff --git a/drivers/amlogic/ethernet/am_net8218.c b/drivers/amlogic/ethernet/am_net8218.c
-index cc8cf723..e997576b 100755
+index cc8cf723..d348ef8e 100755
 --- a/drivers/amlogic/ethernet/am_net8218.c
 +++ b/drivers/amlogic/ethernet/am_net8218.c
-@@ -3157,9 +3157,29 @@ static int ethernet_probe(struct platform_device *pdev)
+@@ -321,14 +321,16 @@ static int alloc_ringdesc(struct net_device *dev)
+ {
+ 	struct am_net_private *np = netdev_priv(dev);
+ 
++	/* Both reset callers hold np->lock with IRQs disabled. */
+ 	np->rx_buf_sz = (dev->mtu <= 1500 ? PKT_BUF_SZ : dev->mtu + 32);
+ #ifdef USE_COHERENT_MEMORY
+ 	np->rx_ring = dma_alloc_coherent(&dev->dev,
+ 	                                 sizeof(struct _rx_desc) * RX_RING_SIZE,
+-	                                 (dma_addr_t *)&np->rx_ring_dma, GFP_KERNEL);
++	                                 (dma_addr_t *)&np->rx_ring_dma, GFP_ATOMIC);
+ #else
+-	np->rx_ring = kmalloc(sizeof(struct _rx_desc) * RX_RING_SIZE, GFP_KERNEL | GFP_DMA);
+-	np->rx_ring_dma = (void*)virt_to_phys(np->rx_ring);
++	np->rx_ring = kmalloc(sizeof(struct _rx_desc) * RX_RING_SIZE, GFP_ATOMIC | GFP_DMA);
++	if (np->rx_ring)
++		np->rx_ring_dma = (void*)virt_to_phys(np->rx_ring);
+ #endif
+ 	if (!np->rx_ring) {
+ 		return -ENOMEM;
+@@ -341,11 +343,23 @@ static int alloc_ringdesc(struct net_device *dev)
+ #ifdef USE_COHERENT_MEMORY
+ 	np->tx_ring = dma_alloc_coherent(&dev->dev,
+ 	                                 sizeof(struct _tx_desc) * TX_RING_SIZE ,
+-	                                 (dma_addr_t *)&np->tx_ring_dma, GFP_KERNEL);
++	                                 (dma_addr_t *)&np->tx_ring_dma, GFP_ATOMIC);
+ #else
+-	np->tx_ring = kmalloc(sizeof(struct _tx_desc) * TX_RING_SIZE, GFP_KERNEL | GFP_DMA);
+-	np->tx_ring_dma = (void*)virt_to_phys(np->tx_ring);
++	np->tx_ring = kmalloc(sizeof(struct _tx_desc) * TX_RING_SIZE, GFP_ATOMIC | GFP_DMA);
++	if (np->tx_ring)
++		np->tx_ring_dma = (void*)virt_to_phys(np->tx_ring);
+ #endif
++	if (!np->tx_ring) {
++#ifdef USE_COHERENT_MEMORY
++		dma_free_coherent(&dev->dev,
++		                  sizeof(struct _rx_desc) * RX_RING_SIZE,
++		                  np->rx_ring, (dma_addr_t)np->rx_ring_dma);
++#else
++		kfree(np->rx_ring);
++#endif
++		np->rx_ring = NULL;
++		return -ENOMEM;
++	}
+ 	if (init_rxtx_rings(dev)) {
+ 		printk("init rx tx ring failed!!\n");
+ 		return -1;
+@@ -3157,9 +3171,29 @@ static int ethernet_probe(struct platform_device *pdev)
  	if (ret) {
  		printk("Please config new_maclogic.\n");
  	}

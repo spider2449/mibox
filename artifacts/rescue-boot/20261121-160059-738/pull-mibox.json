@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "F:\\coding\\otherPrj\\mibox\\phone-tools\\platform-tools\\adb.exe",
+    "Arguments":  "-s 248243005297 pull /bin/mibox \"F:\\coding\\otherPrj\\mibox\\artifacts\\rescue-boot\\20261121-160059-738\\mibox.elf\"",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  20,
+    "ProcessId":  14660,
+    "StartedAt":  "2026-11-21T08:01:20.2888140Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "",
+    "Error":  "/bin/mibox: 1 file pulled, 0 skipped. 8.1 MB/s (515460 bytes in 0.061s)",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.0987663,
+    "FinishedAt":  "2026-11-21T08:01:20.3868528Z"
+}

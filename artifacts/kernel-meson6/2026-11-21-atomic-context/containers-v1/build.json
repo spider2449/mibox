@@ -1,0 +1,515 @@
+{
+  "schema": 1,
+  "profile": "containers-v1",
+  "source_repository": "https://github.com/codesnake/linux-amlogic",
+  "source_commit": "8b1bb2b31a8e94b773a4b8ab907a0473a0951192",
+  "source_path": "/home/morefunfun/.cache/mibox-kernel/vendor-source",
+  "source_clean": false,
+  "patches": {
+    "kernel/patches/0000-meson6-atomic-context.patch": "d1a29326cf342c5603d48378c6a48200865fe2fd0be027d5c4cf7ffb40cc65c0",
+    "kernel/patches/0000-mibox-casablanca-emmc-ethernet.patch": "36a118be4ac0567577adbf5cfb1d4e9b66d4bf8542c436bd201ce99063f85679",
+    "kernel/patches/0001-meson6-build-fixes.patch": "bde3c3c731a83d84545fcac994087af158fb475b5d1069e6b5b4aaba1405b754",
+    "kernel/patches/0002-bridge-local-fdb-for-newlink-address.patch": "2ffb768ac513ddea0bfe26104bbf9147beb1dba4b10cc27fee72fcc85abd9e10"
+  },
+  "source_diff_sha256": "1fcaec446c7380f33ef9046a4257005486de12f712faf658f759fbea8ff62d0f",
+  "build_script_sha256": "30e93db1ccc51c530a5cf30f798a098e022ba87ecd37618f833f72e0b62c3136",
+  "recorder_sha256": "a0eb4622e4502e03cd59c3750d346f3f252be28bfb87e64bfa22ad58c7b69361",
+  "host_compiler_version": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "host_compiler_extra_flags": [
+    "-fcommon"
+  ],
+  "linker_version": "GNU ld (binutils-2.27-bd24d23f) 2.27.0.20170315",
+  "compiler_repository": "https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9",
+  "compiler_commit": "111258a10e017f067b27e6cfcea7619d753f3309",
+  "compiler_version": "real-arm-linux-androideabi-gcc (GCC) 4.9.x 20150123 (prerelease)",
+  "stock_config_sha256": "bd2a94b6aa84afda30661c3a4b41f9759fcc6734ee32daf8335882ba6b43c918",
+  "config_sha256": "ace17f68a0d1d0c9084dae437d8456b6719fcb720b43b92f6295951c4c67ab5c",
+  "bsp_fragment_sha256": "91a530218a47344afb60d8523c16d65a00170c28443e31ec6c6e7b128ca5a7b4",
+  "fragment_sha256": "a8e7fe8c03d908c5a8f4be395087c52d7ae77a7048dd973f29bcca5a1a8b9c6d",
+  "requested_config_failures": {},
+  "board_config_failures": {},
+  "config_changes": {
+    "CONFIG_AMLOGIC_SYS_LED": {
+      "stock": "UNKNOWN",
+      "resolved": "y"
+    },
+    "CONFIG_AMLOGIC_THERMAL": {
+      "stock": "n",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_AMLOGIC_USB_3": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_AML_HDMI_TX_20": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_AML_HDMI_TX_CTS_DVI": {
+      "stock": "y",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_AML_NEXT_GEN_NAND": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_AML_NEXT_NAND": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_AML_NFTL_NEW": {
+      "stock": "UNKNOWN",
+      "resolved": "m"
+    },
+    "CONFIG_AML_PLATFORM_THERMAL": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_AML_TOUCH_ALGORITHM_SUPPORT": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_AML_TV_LCD_V2": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_AML_VDAC_HW_SWITCH": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_AML_VOUT_FRAMERATE_AUTOMATION": {
+      "stock": "UNKNOWN",
+      "resolved": "y"
+    },
+    "CONFIG_AMREMOTE_BUTTONSLIGHT": {
+      "stock": "y",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_AM_ATVDEMOD": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_AM_IR_IRBLASTER": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_AM_NAND": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_AM_PHY": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_ANDROID_LOW_MEMORY_KILLER": {
+      "stock": "y",
+      "resolved": "n"
+    },
+    "CONFIG_ANDROID_LOW_MEMORY_KILLER_AUTODETECT_OOM_ADJ_VALUES": {
+      "stock": "y",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_ANDROID_PARANOID_NETWORK": {
+      "stock": "y",
+      "resolved": "n"
+    },
+    "CONFIG_ARCH_CPU_PROBE_RELEASE": {
+      "stock": "y",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_ARCH_HIBERNATION_POSSIBLE": {
+      "stock": "UNKNOWN",
+      "resolved": "y"
+    },
+    "CONFIG_ARCH_MESONG9BB": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_ARCH_SUPPORTS_ATOMIC_RMW": {
+      "stock": "UNKNOWN",
+      "resolved": "y"
+    },
+    "CONFIG_ASYMMETRIC_KEY_TYPE": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_BCMDHD_4354_AMPAK": {
+      "stock": "n",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_BCMDHD_CONFIG_PATH": {
+      "stock": "\"/system/etc/firmware/config.txt\"",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_BCMDHD_FW_PATH": {
+      "stock": "\"/system/etc/wifi/fw_bcmdhd.bin\"",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_BCMDHD_NVRAM_PATH": {
+      "stock": "\"/system/etc/wifi/nvram.txt\"",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_BCMDHD_OOB": {
+      "stock": "y",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_BCMDHD_POWER_OFF_IN_SUSPEND": {
+      "stock": "n",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_CIFS_DFS_UPCALL": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_CIFS_UPCALL": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_CRYPTO_AML_HW_CRYPRO": {
+      "stock": "y",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_CRYPTO_AML_HW_CRYPTO": {
+      "stock": "UNKNOWN",
+      "resolved": "y"
+    },
+    "CONFIG_CRYPTO_DEVICE_DRIVER": {
+      "stock": "y",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_DEFEND_IMG": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_DNS_RESOLVER": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_DVBC": {
+      "stock": "m",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_ECRYPT_FS": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_EMMC_IPANIC": {
+      "stock": "y",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_ENCRYPTED_KEYS": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_EVM": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_FB_OSD_SUPPORT_SYNC_FENCE": {
+      "stock": "UNKNOWN",
+      "resolved": "y"
+    },
+    "CONFIG_FORCE_POWER_ON_STATE_AFTER_RESUME": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_GENERIC_ACL": {
+      "stock": "UNKNOWN",
+      "resolved": "y"
+    },
+    "CONFIG_GPS_UM220": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_HIBERNATION": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_HID_FLYDIGI": {
+      "stock": "y",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_HID_MIFF": {
+      "stock": "y",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_HW_RANDOM_MESON": {
+      "stock": "UNKNOWN",
+      "resolved": "y"
+    },
+    "CONFIG_IKCONFIG_PROC": {
+      "stock": "n",
+      "resolved": "y"
+    },
+    "CONFIG_IPC_NS": {
+      "stock": "UNKNOWN",
+      "resolved": "y"
+    },
+    "CONFIG_IR_MESON6_MI": {
+      "stock": "y",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_KEYS": {
+      "stock": "n",
+      "resolved": "y"
+    },
+    "CONFIG_KEYS_DEBUG_PROC_KEYS": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_LOCALVERSION": {
+      "stock": "\"\"",
+      "resolved": "\"-mibox-container-dev\""
+    },
+    "CONFIG_LOCALVERSION_AUTO": {
+      "stock": "y",
+      "resolved": "n"
+    },
+    "CONFIG_MACVLAN": {
+      "stock": "n",
+      "resolved": "y"
+    },
+    "CONFIG_MACVTAP": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_MALI400_POWER_PERFORMANCE_POLICY": {
+      "stock": "n",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_MALI_DT": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_MALI_DVFS": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_NAMESPACES": {
+      "stock": "n",
+      "resolved": "y"
+    },
+    "CONFIG_NETFILTER_XT_MATCH_ADDRTYPE": {
+      "stock": "n",
+      "resolved": "y"
+    },
+    "CONFIG_NETFILTER_XT_MATCH_MULTIPORT": {
+      "stock": "n",
+      "resolved": "y"
+    },
+    "CONFIG_NETFILTER_XT_MATCH_QTAGUID": {
+      "stock": "y",
+      "resolved": "n"
+    },
+    "CONFIG_NETFILTER_XT_MATCH_QUOTA2": {
+      "stock": "y",
+      "resolved": "n"
+    },
+    "CONFIG_NETFILTER_XT_MATCH_QUOTA2_LOG": {
+      "stock": "y",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_NETFILTER_XT_TARGET_CHECKSUM": {
+      "stock": "n",
+      "resolved": "y"
+    },
+    "CONFIG_NET_CLS_CGROUP": {
+      "stock": "n",
+      "resolved": "y"
+    },
+    "CONFIG_NET_NS": {
+      "stock": "UNKNOWN",
+      "resolved": "y"
+    },
+    "CONFIG_PID_NS": {
+      "stock": "UNKNOWN",
+      "resolved": "y"
+    },
+    "CONFIG_POSIX_MQUEUE": {
+      "stock": "n",
+      "resolved": "y"
+    },
+    "CONFIG_POSIX_MQUEUE_SYSCTL": {
+      "stock": "UNKNOWN",
+      "resolved": "y"
+    },
+    "CONFIG_PRINTK_NOBLOCK_MODE": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_RTL8188EU": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_RTL8188EU_MP": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_RTL8189ES": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_RTL8192CU": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_RTL8192DU": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_RTL8192EU": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_RTL8723AS": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_RTL8723AU": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_RTL8723BS": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_RTL8812AU": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_RTL8821AU": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_SDIO_DHD_CDC_WIFI_4330_MODULE": {
+      "stock": "m",
+      "resolved": "UNKNOWN"
+    },
+    "CONFIG_SECCOMP": {
+      "stock": "n",
+      "resolved": "y"
+    },
+    "CONFIG_SECCOMP_FILTER": {
+      "stock": "UNKNOWN",
+      "resolved": "y"
+    },
+    "CONFIG_SENSORS_NTC_THERMISTOR": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_SW_SYNC": {
+      "stock": "n",
+      "resolved": "y"
+    },
+    "CONFIG_SW_SYNC_USER": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_TMPFS_POSIX_ACL": {
+      "stock": "n",
+      "resolved": "y"
+    },
+    "CONFIG_TMPFS_XATTR": {
+      "stock": "n",
+      "resolved": "y"
+    },
+    "CONFIG_TVIN_VIUIN": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_UIDGID_STRICT_TYPE_CHECKS": {
+      "stock": "n",
+      "resolved": "y"
+    },
+    "CONFIG_USB_ARCH_HAS_XHCI": {
+      "stock": "n",
+      "resolved": "y"
+    },
+    "CONFIG_USB_NET_QF9700": {
+      "stock": "UNKNOWN",
+      "resolved": "y"
+    },
+    "CONFIG_USB_NET_SR9600": {
+      "stock": "UNKNOWN",
+      "resolved": "y"
+    },
+    "CONFIG_USB_XHCI_HCD": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_USER_NS": {
+      "stock": "UNKNOWN",
+      "resolved": "y"
+    },
+    "CONFIG_UTS_NS": {
+      "stock": "UNKNOWN",
+      "resolved": "y"
+    },
+    "CONFIG_VETH": {
+      "stock": "n",
+      "resolved": "y"
+    },
+    "CONFIG_VFD": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    },
+    "CONFIG_VIDEO_AMLOGIC_CAPTURE_HM1375": {
+      "stock": "UNKNOWN",
+      "resolved": "n"
+    }
+  },
+  "build_complete": true,
+  "board_boot": "UNKNOWN",
+  "physical_validation": false,
+  "boot_readiness": "NOT READY",
+  "pi2_os_native_engine_readiness": "NOT READY",
+  "limitations": [
+    "No cgroup v2, overlayfs or pids controller in this pinned BSP.",
+    "Only legacy cgroup-v1/VFS engine research is possible with this profile.",
+    "Source is a Meson6 reference BSP, not the recovered Xiaomi commit.",
+    "No boot image packaging or device deployment is performed."
+  ],
+  "runtime_release": "3.10.99",
+  "full_build_release": "3.10.99-mibox-container-dev+",
+  "kernel_banner": "Linux version 3.10.99-mibox-container-dev+ (mibox@mibox-wsl) (gcc version 4.9.x 20150123 (prerelease) (GCC) ) #1 SMP PREEMPT 2026-11-15 00:00:00 UTC",
+  "elf_arm32": true,
+  "zimage_magic_valid": true,
+  "compressed_payload_matches_image": true,
+  "compressed_payload_sha256": "ecd2956f9b913f06786e8a841f20167cea0b856bf66d38517343657889fca99a",
+  "compressed_payload_offset_in_zimage": 7886,
+  "artifacts": {
+    "zImage": {
+      "path": "/home/morefunfun/.cache/mibox-kernel/build-containers-v1/arch/arm/boot/zImage",
+      "bytes": 4119056,
+      "sha256": "8c9af782423ba21c5e6952d47887503cb3f4d906b298b182fe8c449b8a15ca63"
+    },
+    "Image": {
+      "path": "/home/morefunfun/.cache/mibox-kernel/build-containers-v1/arch/arm/boot/Image",
+      "bytes": 12412276,
+      "sha256": "c9c4137420a322356234f140074deee95025ef4af33985b32c3335bc5544a6f8"
+    },
+    "vmlinux": {
+      "path": "/home/morefunfun/.cache/mibox-kernel/build-containers-v1/vmlinux",
+      "bytes": 117342984,
+      "sha256": "dec63cf02688b7d84ca5ab138d6f5238141045ff6b9f164c86b6c3cecbda181d"
+    },
+    "System.map": {
+      "path": "/home/morefunfun/.cache/mibox-kernel/build-containers-v1/System.map",
+      "bytes": 2404587,
+      "sha256": "402e4da508fa82ca438daab11fc5d026df55ce0f6d99ea33c56198a7b40ad008"
+    }
+  },
+  "build_log_sha256": "3afc73900277d678d78296b7c7ea993ee134c0426c1f35ba002709a61069d320",
+  "warning_lines": [
+    "drivers/amlogic/dvb_tv/Kconfig:215: warning: Skip ../hardware/dvb/altobeam/drivers/atbm887x/Kconfig",
+    "drivers/amlogic/wifi/broadcm_40181/Kconfig:54:warning: defaults for choice values not supported",
+    "warning: (BT_DEVICE && BT_WAKE_CTRL && AMLOGIC_BACKLIGHT && DRM_RADEON && DRM_I915 && DRM_GMA500 && DRM_TILCDC && FB_BACKLIGHT && USB_APPLEDISPLAY && FB_OLPC_DCON && ASUS_LAPTOP && SONY_LAPTOP && THINKPAD_ACPI && EEEPC_LAPTOP && ACPI_CMPC && SAMSUNG_Q10) selects BACKLIGHT_CLASS_DEVICE which has unmet direct dependencies (HAS_IOMEM && BACKLIGHT_LCD_SUPPORT)",
+    "warning: (BT_DEVICE && BT_WAKE_CTRL && AMLOGIC_BACKLIGHT && DRM_RADEON && DRM_I915 && DRM_GMA500 && DRM_TILCDC && FB_BACKLIGHT && USB_APPLEDISPLAY && FB_OLPC_DCON && ASUS_LAPTOP && SONY_LAPTOP && THINKPAD_ACPI && EEEPC_LAPTOP && ACPI_CMPC && SAMSUNG_Q10) selects BACKLIGHT_CLASS_DEVICE which has unmet direct dependencies (HAS_IOMEM && BACKLIGHT_LCD_SUPPORT)",
+    "/home/morefunfun/.cache/mibox-kernel/vendor-source/arch/arm/kernel/process.c:76:0: warning: \"CONFIG_ARM_FLUSH_CONSOLE_ON_RESTART\" redefined",
+    "/home/morefunfun/.cache/mibox-kernel/vendor-source/arch/arm/kernel/return_address.c:63:2: warning: #warning \"TODO: return_address should use unwind tables\" [-Wcpp]",
+    "/home/morefunfun/.cache/mibox-kernel/vendor-source/sound/soc/aml/m6/aml_pcm.c:1674:1: warning: control reaches end of non-void function [-Wreturn-type]",
+    "/home/morefunfun/.cache/mibox-kernel/vendor-source/drivers/amlogic/hdmi/hdmi_tx/hdmi_tx_cec.c:743:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]",
+    "/home/morefunfun/.cache/mibox-kernel/vendor-source/net/core/sysctl_net_core.c:24:12: warning: 'one' defined but not used [-Wunused-variable]",
+    "/home/morefunfun/.cache/mibox-kernel/vendor-source/net/netfilter/xt_addrtype.c:58:44: warning: passing argument 3 of 'v6ops->chk_addr' discards 'const' qualifier from pointer target type"
+  ]
+}

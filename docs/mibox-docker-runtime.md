@@ -1,17 +1,20 @@
 # Docker containers on MiBox, 2026-11-15
 
-Status: **physical offline Docker container test PASS on the replacement
-kernel**; **NOT READY on the recovered stock kernel**. The goal is device-side
-containers managed from the PC, as in pi2-os. Persistent service integration,
-registry pull, bridge/NAT/published ports and authenticated remote API remain
-outstanding.
+Status: **persistent Docker 28.3.3 physical acceptance PASS on the replacement
+kernel** (2026-11-19); **NOT READY on the recovered stock kernel**. Registry
+pull, bridge/NAT/published ports, volumes, restart, exec isolation and the mTLS
+API passed; see the acceptance sections below. The 2026-11-21 read-only
+follow-up confirmed a running container and HTTP 200, with vendor-kernel
+warnings recorded in [the health plan](plans/2026-11-21-runtime-health.md).
+Overlayfs, a pids controller and power-loss acceptance remain unfinished.
 
 Update: a replacement [Meson6 development kernel](mibox-container-kernel.md)
 has now passed physical RAM boot, six container primitive diagnostics and
 software return to Android. It enables a legacy cgroup-v1/VFS development path;
 it does not supply the cgroup-v2/overlay requirements of pi2-os's native engine.
 Docker 24.0.9 now runs an offline ARMv7 workload in a temporary private RAM
-environment. Complete persistent service integration remains outstanding.
+environment. This was the earlier offline milestone; persistent integration
+and flash installation were subsequently validated as recorded below.
 
 ## Reference design
 

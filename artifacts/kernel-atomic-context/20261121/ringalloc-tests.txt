@@ -1,0 +1,8 @@
+﻿coherent=False
+NET MDA descpter start addr=0x506000000020
+NET MDA descpter start addr=0x506000000080
+PASS: RX failure, TX failure cleanup, successful initialization
+coherent=True
+NET MDA descpter start addr=0x506000000020
+NET MDA descpter start addr=0x506000000080
+PASS: RX failure, TX failure cleanup, successful initialization

@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "Arguments":  "-NoProfile -File \"F:\\coding\\otherPrj\\mibox\\scripts\\Test-MiboxLoaderRam.ps1\" -Action UploadAndBoot -Candidate SlimKernelDev11 -ControlTimeoutMilliseconds 10000 -Bulk",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  3600,
+    "ProcessId":  1468,
+    "StartedAt":  "2026-11-21T08:01:02.0160716Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "{\r\n    \"Found\":  true,\r\n    \"DevicePath\":  \"\\\\\\\\?\\\\usb#vid_1b8e\\u0026pid_c003#6\\u00262b113eed\\u00260\\u00265#{d925a7f0-61a4-4018-bcd3-f3e5225f3532}\",\r\n    \"VidPid\":  \"1B8E:C003\",\r\n    \"IdentifyHex\":  \"00-08-00-10\",\r\n    \"VendorRequestSent\":  true,\r\n    \"InterfaceGuid\":  \"d925a7f0-61a4-4018-bcd3-f3e5225f3532\",\r\n    \"BootBufferAddress\":  \"0x82000000\",\r\n    \"BootBufferHex\":  \"AA-AA-AA-AA-7F-FF-7F-FF-FF-DF-FF-FF-FF-F7-FF-FF-FF-FF-FF-FF-7F-FF-FF-FF-FD-FF-FF-FF-F7-FF-FF-FF-FF-FF-FF-FF-FF-FF-FB-FF-FF-FF-FF-FF-FE-FB-FF-FF-FF-DF-FF-FF-EF-FF-FF-EF-FF-FF-FF-FF-FF-FF-FF-FF\",\r\n    \"Action\":  \"UploadAndBoot\",\r\n    \"PatternVerified\":  false,\r\n    \"OriginalRestored\":  false,\r\n    \"VerifiedBytes\":  8388608,\r\n    \"VerifiedSha256\":  null,\r\n    \"CommandAttempted\":  true,\r\n    \"CommandTransferCompleted\":  false,\r\n    \"StatusHex\":  null,\r\n    \"StatusText\":  null,\r\n    \"BulkMode\":  true,\r\n    \"VerificationMethod\":  \"BulkOutCrc32\",\r\n    \"SourceSha256\":  \"d84d6ebf0018101e5ef8b713a1df390d595aa298ffefa3e5025cbf6893e395b3\",\r\n    \"ExpectedCrc32\":  \"a6a2214f\",\r\n    \"DeviceCrc32\":  \"a6a2214f\",\r\n    \"DeviceCrc32Order\":  \"little-endian\",\r\n    \"CrcCommandStatus\":  \"success\",\r\n    \"SampledBlocks\":  129,\r\n    \"UploadSeconds\":  8.1970559,\r\n    \"ControlTimeoutMilliseconds\":  10000\r\n}",
+    "Error":  "Bulk-written RAM bytes: 1048576\r\nBulk-written RAM bytes: 2097152\r\nBulk-written RAM bytes: 3145728\r\nBulk-written RAM bytes: 4194304\r\nBulk-written RAM bytes: 5242880\r\nBulk-written RAM bytes: 6291456\r\nBulk-written RAM bytes: 7340032\r\nBulk-written RAM bytes: 8388608",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  9.7808499,
+    "FinishedAt":  "2026-11-21T08:01:11.7954730Z"
+}
