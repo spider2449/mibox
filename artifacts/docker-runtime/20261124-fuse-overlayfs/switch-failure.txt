@@ -1,0 +1,35 @@
+[    6.037180@1] mibox-docker: MIBOX_DOCKERD_STARTING iptables=true
+[  472.772082@1] mibox-docker: MIBOX_DOCKERD_EXITED status=0
+[  477.828194@1] mibox-docker: MIBOX_DOCKERD_STARTING iptables=true
+[  480.110224@1] mibox-docker: MIBOX_DOCKERD_EXITED status=1
+[  490.194271@1] mibox-docker: MIBOX_DOCKERD_STARTING iptables=true
+[  492.458218@0] mibox-docker: MIBOX_DOCKERD_EXITED status=1
+[  512.564515@0] mibox-docker: MIBOX_DOCKERD_STARTING iptables=true
+[  514.988963@1] mibox-docker: MIBOX_DOCKERD_EXITED status=1
+[  555.060811@1] mibox-docker: MIBOX_DOCKERD_STARTING iptables=true
+[  557.268652@1] mibox-docker: MIBOX_DOCKERD_EXITED status=1
+time="2026-11-24T13:09:22.427400000Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.tasks type=io.containerd.grpc.v1
+time="2026-11-24T13:09:22.427685000Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.transfer type=io.containerd.grpc.v1
+time="2026-11-24T13:09:22.427975000Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.version type=io.containerd.grpc.v1
+time="2026-11-24T13:09:22.428233000Z" level=info msg="loading plugin" id=io.containerd.monitor.container.v1.restart type=io.containerd.monitor.container.v1
+time="2026-11-24T13:09:22.428734000Z" level=info msg="loading plugin" id=io.containerd.tracing.processor.v1.otlp type=io.containerd.tracing.processor.v1
+time="2026-11-24T13:09:22.429404000Z" level=info msg="skip loading plugin" error="skip plugin: tracing endpoint not configured" id=io.containerd.tracing.processor.v1.otlp type=io.containerd.tracing.processor.v1
+time="2026-11-24T13:09:22.429778000Z" level=info msg="loading plugin" id=io.containerd.internal.v1.tracing type=io.containerd.internal.v1
+time="2026-11-24T13:09:22.430257000Z" level=info msg="skip loading plugin" error="skip plugin: tracing endpoint not configured" id=io.containerd.internal.v1.tracing type=io.containerd.internal.v1
+time="2026-11-24T13:09:22.430653000Z" level=info msg="loading plugin" id=io.containerd.ttrpc.v1.otelttrpc type=io.containerd.ttrpc.v1
+time="2026-11-24T13:09:22.431036000Z" level=info msg="loading plugin" id=io.containerd.grpc.v1.healthcheck type=io.containerd.grpc.v1
+time="2026-11-24T13:09:22.431392000Z" level=info msg="loading plugin" id=io.containerd.nri.v1.nri type=io.containerd.nri.v1
+time="2026-11-24T13:09:22.431766000Z" level=info msg="runtime interface created"
+time="2026-11-24T13:09:22.432020000Z" level=info msg="created NRI interface"
+time="2026-11-24T13:09:22.440119000Z" level=info msg=serving... address=/var/run/docker/containerd/containerd-debug.sock
+time="2026-11-24T13:09:22.441014000Z" level=info msg=serving... address=/var/run/docker/containerd/containerd.sock.ttrpc
+time="2026-11-24T13:09:22.441829000Z" level=info msg=serving... address=/var/run/docker/containerd/containerd.sock
+time="2026-11-24T13:09:22.442144000Z" level=info msg="containerd successfully booted in 0.168966s"
+time="2026-11-24T13:09:22.494300000Z" level=info msg="OTEL tracing is not configured, using no-op tracer provider"
+time="2026-11-24T13:09:22.495343000Z" level=info msg="CDI directory does not exist, skipping: failed to monitor for changes: no such file or directory" dir=/etc/cdi
+time="2026-11-24T13:09:22.495569000Z" level=info msg="CDI directory does not exist, skipping: failed to monitor for changes: no such file or directory" dir=/var/run/cdi
+time="2026-11-24T13:09:22.585705000Z" level=info msg="Creating a containerd client" address=/var/run/docker/containerd/containerd.sock timeout=1m0s
+time="2026-11-24T13:09:22.637026000Z" level=info msg="[graphdriver] trying configured driver: fuse-overlayfs"
+time="2026-11-24T13:09:22.646092000Z" level=info msg="stopping healthcheck following graceful shutdown" module=libcontainerd
+time="2026-11-24T13:09:22.652679000Z" level=info msg="stopping event stream following graceful shutdown" error="context canceled" module=libcontainerd namespace=plugins.moby
+failed to start daemon: error initializing graphdriver: driver not supported: fuse-overlayfs

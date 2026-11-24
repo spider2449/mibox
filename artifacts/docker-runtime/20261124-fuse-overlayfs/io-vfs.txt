@@ -1,0 +1,4 @@
+67108864 bytes (64.0MB) copied, 27.561700 seconds, 2.3MB/s
+write_s=28 read_s=0
+42
+readtree_s=0

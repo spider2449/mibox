@@ -1,0 +1,17 @@
+/var/tmp/fovl-test/m fuse-overlayfs rw,user_id=0,group_id=0,default_permissions,allow_other
+low1
+low2
+total 12
+drwxr-xr-x 2 root root 4096 Nov 24 13:07 .
+-rw-r--r-- 1 root root    9 Nov 24 13:07 a
+-rw-r--r-- 1 root root    4 Nov 24 13:07 c
+upper:
+total 16
+drwxr-xr-x 2 root root 4096 Nov 24 13:07 .
+drwxr-xr-x 7 root root 4096 Nov 24 13:07 ..
+-rwx------ 1 root root    0 Nov 24 13:07 .wh.b
+-rw-r--r-- 1 root root    9 Nov 24 13:07 a
+-rw-r--r-- 1 root root    4 Nov 24 13:07 c
+unmounted
+low1
+FOVL_STANDALONE_OK

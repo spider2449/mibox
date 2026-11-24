@@ -1,0 +1,4 @@
+5104937eb3b2fa2cde8a4647dcf203c0ed132980eb355ec322b2c13573d5adb4  daemon.json
+driver=vfs
+mibox-web Up 6 seconds
+http=200

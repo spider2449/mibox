@@ -1,0 +1,15 @@
+(4/4) Installing fuse-overlayfs (1.15-r0)
+Executing fuse-overlayfs-1.15-r0.post-install
+modprobe: can't change directory to '/lib/modules': No such file or directory
+Executing busybox-1.37.0-r20.trigger
+OK: 200 MiB in 72 packages
+fuse-overlayfs: FUSE implementation for overlayfs
+fuse-overlayfs: https://github.com/containers/fuse-overlayfs
+fuse-overlayfs: 57 KiB
+fuse3: Reference implementation of the Linux FUSE (Filesystem in Userspace) interface
+fuse3: https://github.com/libfuse/libfuse
+fuse3: 30 KiB
+/usr/bin/fuse-overlayfs
+fuse-overlayfs: version 1.15
+fusermount3 version: 3.16.2
+FUSE library version 3.16.2

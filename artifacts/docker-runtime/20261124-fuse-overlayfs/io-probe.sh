@@ -1,0 +1,1 @@
+docker run --rm alpine:3.22 sh -c "s=\$(date +%s); dd if=/dev/zero of=/f bs=1M count=64 conv=fsync 2>&1 | tail -1; s2=\$(date +%s); cat /f > /dev/null; e=\$(date +%s); echo write_s=\$((s2-s)) read_s=\$((e-s2)); find /usr /lib /bin -type f | wc -l; s=\$(date +%s); find / -xdev -type f -exec cat {} + > /dev/null 2>&1; echo readtree_s=\$((\$(date +%s)-s))"

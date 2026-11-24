@@ -1,0 +1,5 @@
+  "storage-driver": "fuse-overlayfs",
+04df3df368aa5ddd639458d5e404aa77b47897075a55c391c335f567da8b2287  daemon.json
+5104937eb3b2fa2cde8a4647dcf203c0ed132980eb355ec322b2c13573d5adb4  daemon.json.pre-fuse
+Tue Nov 24 13:07:56 UTC 2026
+driver= after ~120s

@@ -1,0 +1,48 @@
++ date -u
+Tue Nov 24 13:06:30 UTC 2026
++ docker version --format '{{.Server.Version}}'
+28.3.3
++ docker info --format '{{.Driver}}'
+vfs
++ docker ps -a --format '{{.Names}} {{.Image}} {{.Status}}'
+mibox-web nginx:alpine Up 6 minutes
++ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
+nginx         alpine    d9b2ece7de1a   5 days ago     41.9MB
+alpine        3.22      79f8c66e5f43   2 weeks ago    5.36MB
+hello-world   latest    02c0e64f19f3   8 months ago   4.11kB
++ docker volume ls
+DRIVER    VOLUME NAME
++ du -sm /var/lib/docker/vfs /var/lib/docker
+204	/var/lib/docker/vfs
+2	/var/lib/docker
++ df -k /
+Filesystem      1K-blocks   Used Available Use% Mounted on
+/dev/mibox-data   2234556 530828   1687344  24% /
++ date '+%s.%N'
++ s=1795525592.212077000
++ docker run --rm alpine:3.22 true
++ date '+%s.%N'
++ e=1795525596.443683000
++ echo+ bc
+ '1795525596.443683000 - 1795525592.212077000'
++ echo 'run_rm_s=4.231606000'
+run_rm_s=4.231606000
++ date '+%s.%N'
++ s=1795525596.463617000
++ docker run --rm alpine:3.22 true
++ date '+%s.%N'
++ e=1795525599.491163000
++ echo '1795525599.491163000 - 1795525596.463617000'
++ bc
+run_rm_s=3.027546000
++ echo 'run_rm_s=3.027546000'
++ date '+%s.%N'
++ s=1795525599.508921000
++ docker run --rm alpine:3.22 true
++ date '+%s.%N'
++ e=1795525603.434445000
++ echo+ bc
+ '1795525603.434445000 - 1795525599.508921000'
++ echo 'run_rm_s=3.925524000'
+run_rm_s=3.925524000
