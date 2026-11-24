@@ -1,15 +1,17 @@
 # Writing and restoring boot1 (plan C3)
 
-Status: **boot1 holds the container-kernel Slim `760288f6…` (SlimKernelDev10: 3.10.99 with
-board patches, Docker with dockerd in its own mount namespace, live HDMI screen
-with a SoC temperature card, SSH password logins allowed) since 2026-11-19**
-(`artifacts/console-root/20261119-222407-c8-temp-boot1-write/`), after `c3e952e8…`
+Status: **boot1 holds the container-kernel Slim `772c2210…` (SlimKernelDev12: Dev10
+plus the atomic-context kernel fixes and `mibox-netwatch` default-route recovery)
+since 2026-11-24** (`artifacts/console-root/20261124-205717-c9-dev12-boot1-write/`), after
+`760288f6…` (Dev10: 3.10.99 with board patches, Docker with dockerd in its own mount
+namespace, live HDMI screen with a SoC temperature card, SSH password logins allowed,
+`artifacts/console-root/20261119-222407-c8-temp-boot1-write/`), `c3e952e8…`
 (Dev9, `artifacts/console-root/20261119-220022-docker-ns-boot1-write/`), `0d549c0f…`
 (Dev8), `bccbad4f…` (Dev7), C4
 (`dd1e6756…`), two A5 rewrites (`35e1d4d2…`, `f11de99e…`) and A5b (`955ea3e8…`,
 stock 3.10.33 kernel), all owner-approved. A flash boot without the PC came up
 with SSH, Docker and the HDMI screen. For a restore, name the current image as the
-expected current content (`760288f6…`; before it `c3e952e8…`, `0d549c0f…`, before the password change `bccbad4f…`); `955ea3e8…` (`target/mibox-boot-candidate-slim-fbstatus/`)
+expected current content (`772c2210…`; before it `760288f6…`, `c3e952e8…`, `0d549c0f…`, before the password change `bccbad4f…`); `955ea3e8…` (`target/mibox-boot-candidate-slim-fbstatus/`)
 is the last stock-kernel image.
 Stock boot1 `06d9eb7e…` remains restorable with the restore section below. Writing boot1
 (C4) needs explicit owner approval at that time. Nothing here touches the

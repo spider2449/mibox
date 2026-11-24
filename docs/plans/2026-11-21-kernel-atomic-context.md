@@ -60,4 +60,13 @@ Details: [source analysis and acceptance](../mibox-kernel-atomic-context.md).
      truncated pings in `after.txt` came from SSH queries that started before
      the delayed link-down and spanned the outage (see `dmesg-final.txt`
      timestamps). `pings-after.txt` is the clean recheck. Dev12 was left running
-     in RAM; boot1 still holds Dev10.
+     in RAM.
+10. [x] 2026-11-24 owner-approved boot1 write of Dev12 (expect-current Dev10
+   `760288f6…`; dry run, write, readback, independent re-hash `772c2210…`; boot
+   `ff4fa440…` unchanged). With USB unplugged, `Stop-Mibox -Restart` came back from
+   flash in 21 s (boot ID `a9a31b0a-82f7-40c8-9102-272fcd2e2b1c`): Dev12 scripts
+   hash-matched, netwatch running, mibox-web up, HTTP 200, SoC temperature on, no
+   atomic-context diagnostics. Flash-boot link test: carrier back at 36.17 s,
+   route restored at 40.86 s; box->gateway 3/3, container->gateway 3/3,
+   container->1.1.1.1 2/2, HTTP 200. Evidence:
+   `artifacts/console-root/20261124-205717-c9-dev12-boot1-write/`.

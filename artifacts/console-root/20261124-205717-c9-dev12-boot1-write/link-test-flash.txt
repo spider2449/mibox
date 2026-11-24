@@ -1,0 +1,16 @@
+a9a31b0a-82f7-40c8-9102-272fcd2e2b1c
+default via 192.168.1.1 dev eth0 
+172.17.0.0/16 dev docker0 scope link  src 172.17.0.1 
+192.168.1.0/24 dev eth0 scope link  src 192.168.1.222 
+[    5.826150@1] libphy: 0:01 - Link is Up - 100/Full
+[   30.374946@1] MIBOX_TEST_LINK_DOWN
+[   35.526625@1] MIBOX_TEST_LINK_UP
+[   36.166175@0] libphy: 0:01 - Link is Up - 100/Full
+[   40.863599@1] mibox-netwatch: MIBOX_NET_ROUTE_RESTORED default via 192.168.1.1 dev eth0
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max = 1.458/1.710/2.206 ms
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max = 1.968/2.642/3.853 ms
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max = 13.360/16.509/19.659 ms
+http=200

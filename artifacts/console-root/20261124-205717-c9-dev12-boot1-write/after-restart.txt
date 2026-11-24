@@ -1,0 +1,22 @@
+a9a31b0a-82f7-40c8-9102-272fcd2e2b1c
+13.64
+3.10.99
+6fdc2d422157c5b36213d23c63e7e0e70975efeee2d64b242377297c20608455  /proc/1/root/sbin/mibox-console-start
+db9c981cf48d7b7984ced3ad3ac62d8b06242009598005844a31866c17e5dbdc  /proc/1/root/sbin/mibox-netwatch
+  104 root      0:00 {mibox-netwatch} /bin/sh /sbin/mibox-netwatch eth0 192.168.1.222/24 192.168.1.1
+  380 root      0:00 sh -c cat /proc/sys/kernel/random/boot_id; cut -d" " -f1 /proc/uptime; uname -r; sha256sum /proc/1/root/sbin/mibox-console-start /proc/1/root/sbin/mibox-netwatch; ps | grep "[m]ibox-netwatch"; ip route; docker ps --format "{{.Names}} {{.Status}}"; grep -c . /proc/1/root/run/mibox-fbstatus.log 2>/dev/null; cat /proc/1/root/run/mibox-cpu-temp 2>/dev/null; dmesg | grep -c -E "sleeping function called|scheduling while atomic|WARNING: at"; dmesg | grep -E "MIBOX_|splash|temperature mode" | head
+default via 192.168.1.1 dev eth0 
+172.17.0.0/16 dev docker0 scope link  src 172.17.0.1 
+192.168.1.0/24 dev eth0 scope link  src 192.168.1.222 
+mibox-web Up 2 seconds
+1
+on
+0
+[    5.374943@1] mibox-slim: MIBOX_SPLASH_SHOWN window=0 0 1919 1079 splash=skipped-bgra
+[    5.377758@1] enter temperature mode(trimming=0),please get the value from chan6
+[    5.802553@0] mibox-persistent: MIBOX_ALPINE_INTEGRITY=MATCH
+[    5.814632@0] mibox-persistent: MIBOX_PERSISTENT_BOOT_READY free_kib=1687364 floor_kib=262144
+[    5.821470@1] mibox-slim: MIBOX_ALPINE_SSH_STARTING
+[    6.037180@1] mibox-docker: MIBOX_DOCKERD_STARTING iptables=true
+[    7.486130@0] mibox-slim: MIBOX_TIME_SYNCED 2026-11-24T13:00:13Z
+http=200

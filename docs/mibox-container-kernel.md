@@ -3,7 +3,7 @@
 2026-11-21: [atomic-context fixes](mibox-kernel-atomic-context.md) address
 the timer IRQ, A9 clock and Ethernet allocation diagnostics found in the
 Dev10 startup log. Dev11 passed the targeted RAM tests; Dev12 adds automatic
-IPv4 default-route recovery (RAM-verified 2026-11-24). Dev10 remains installed.
+IPv4 default-route recovery (RAM-verified 2026-11-24). Dev12 is installed in boot1 since 2026-11-24.
 
 Two kernels have been cross-built: the recovered-stock-configuration hardware
 baseline and development build tag `3.10.99-mibox-container-dev+`. The BSP exposes

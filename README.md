@@ -3,16 +3,16 @@
 Target: Xiaomi MDZ-06-AA / casablanca, Amlogic Meson6, ARMv7.
 First milestone: retain the device's stock kernel and develop custom userspace.
 
-Current status (2026-11-21): boot1 was updated to SlimKernelDev10 on
-2026-11-19, with the Linux 3.10.99 development kernel and HDMI temperature
-display. Persistent Docker 28.3.3, networking, volumes, restart and the mTLS
+Current status (2026-11-24): boot1 holds SlimKernelDev12 (Linux 3.10.99 with
+the atomic-context fixes, HDMI temperature display and automatic default-route
+recovery); a flash boot passed SSH, Docker, HTTP and an Ethernet down/up test. Persistent Docker 28.3.3, networking, volumes, restart and the mTLS
 API passed the [physical acceptance](docs/mibox-docker-runtime.md).
 The [latest read-only health check](docs/plans/2026-11-21-runtime-health.md)
 confirmed SSH, Docker and HTTP on port 8080; it also recorded vendor-kernel
 startup warnings. [Dev11 RAM validation](docs/mibox-kernel-atomic-context.md)
 passed the targeted kernel checks. SlimKernelDev12 (Dev11 kernel plus
 `mibox-netwatch`) restored the IPv4 default route automatically after two
-Ethernet down/up cycles from RAM (2026-11-24). boot1 still holds Dev10.
+Ethernet down/up cycles from RAM, and again after the flash write (2026-11-24).
 
 P0 [custom-system ADB rescue and automatic return to
 the USB loader](docs/plans/2026-11-15-custom-system-rescue.md) is **READY** (2026-11-16);
