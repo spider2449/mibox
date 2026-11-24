@@ -10,8 +10,9 @@ API passed the [physical acceptance](docs/mibox-docker-runtime.md).
 The [latest read-only health check](docs/plans/2026-11-21-runtime-health.md)
 confirmed SSH, Docker and HTTP on port 8080; it also recorded vendor-kernel
 startup warnings. [Dev11 RAM validation](docs/mibox-kernel-atomic-context.md)
-passed the targeted kernel checks. Automatic IPv4 default-route recovery
-after Ethernet down/up remains open.
+passed the targeted kernel checks. SlimKernelDev12 (Dev11 kernel plus
+`mibox-netwatch`) restored the IPv4 default route automatically after two
+Ethernet down/up cycles from RAM (2026-11-24). boot1 still holds Dev10.
 
 P0 [custom-system ADB rescue and automatic return to
 the USB loader](docs/plans/2026-11-15-custom-system-rescue.md) is **READY** (2026-11-16);

@@ -31,7 +31,7 @@ Details: [source analysis and acceptance](../mibox-kernel-atomic-context.md).
 
 8. [x] RAM-boot Dev11 and verify the CPU timer, frequency, Ethernet and Docker
    behavior. The final log has none of the four baseline diagnostics.
-9. [ ] Resolve and retest default-route recovery after administrative Ethernet
+9. [x] Resolve and retest default-route recovery after administrative Ethernet
    down/up before considering installation. The test restored the route manually.
    - [x] 2026-11-24 offline fix: `mibox-slim-start` starts `/sbin/mibox-netwatch`
      after the static profile. Every 5 s, if eth0 is up with carrier, it restores
@@ -48,5 +48,16 @@ Details: [source analysis and acceptance](../mibox-kernel-atomic-context.md).
      and the new `sbin/mibox-netwatch` (`db9c981c…`). Pinned in
      `Test-MiboxLoaderRam.ps1` and `rescue-boot.ps1`; rescue local check passed
      (`artifacts/rescue-boot/20261124-204623-866/`).
-   - [ ] RAM-boot Dev12 and repeat the administrative Ethernet down/up. Expect the
-     default route back within about 5 s of carrier, with no manual step.
+   - [x] 2026-11-24 RAM-boot Dev12 from the C003 loader (rescue
+     `artifacts/rescue-boot/20261124-204842-616/`, CustomBootVerified, no
+     flash/env command; boot ID `c54d5123-678f-4ec1-95ac-2d2b8e35a47a`). Two
+     detached `ip link set eth0 down; sleep 5; ip link set eth0 up` cycles were
+     run. Carrier returned at 38.80 s and 75.70 s; netwatch restored the default
+     route at 40.73 s and 76.48 s, with no manual step. Afterwards, gateway ping
+     from the box was 3/3, container to gateway 3/3, container to 1.1.1.1 2/2,
+     and HTTP on port 8080 returned 200. The final kernel log has no atomic-context
+     diagnostics. Evidence: `artifacts/netwatch/20261124/dev12-ram/`. The
+     truncated pings in `after.txt` came from SSH queries that started before
+     the delayed link-down and spanned the outage (see `dmesg-final.txt`
+     timestamps). `pings-after.txt` is the clean recheck. Dev12 was left running
+     in RAM; boot1 still holds Dev10.

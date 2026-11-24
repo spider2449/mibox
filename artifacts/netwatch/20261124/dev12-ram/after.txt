@@ -1,0 +1,22 @@
+c54d5123-678f-4ec1-95ac-2d2b8e35a47a
+--- route while down
+--- route now
+default via 192.168.1.1 dev eth0 
+172.17.0.0/16 dev docker0 scope link  src 172.17.0.1 
+192.168.1.0/24 dev eth0 scope link  src 192.168.1.222 
+--- kmsg
+[   33.117198@1] MIBOX_TEST_LINK_DOWN
+[   33.142361@1] eth0: closed
+[   38.236740@1] eth0: opened (irq 40).
+[   38.257472@1] IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+[   38.265116@1] MIBOX_TEST_LINK_UP
+[   38.803617@1] libphy: 0:01 - Link is Up - 100/Full
+[   38.803862@1] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+[   40.728410@1] mibox-netwatch: MIBOX_NET_ROUTE_RESTORED default via 192.168.1.1 dev eth0
+--- host ping
+64 bytes from 192.168.1.1: seq=0 ttl=64 time=1.222 ms
+64 bytes from 192.168.1.1: seq=1 ttl=64 time=1.300 ms
+--- container ping
+--- 192.168.1.1 ping statistics ---
+3 packets transmitted, 0 packets received, 100% packet loss
+http=200

@@ -1,0 +1,27 @@
+97.53
+PING 192.168.1.1 (192.168.1.1): 56 data bytes
+64 bytes from 192.168.1.1: seq=0 ttl=64 time=1.759 ms
+64 bytes from 192.168.1.1: seq=1 ttl=64 time=1.208 ms
+64 bytes from 192.168.1.1: seq=2 ttl=64 time=1.375 ms
+
+--- 192.168.1.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max = 1.208/1.447/1.759 ms
+host_exit=0
+PING 192.168.1.1 (192.168.1.1): 56 data bytes
+64 bytes from 192.168.1.1: seq=0 ttl=63 time=2.729 ms
+64 bytes from 192.168.1.1: seq=1 ttl=63 time=1.984 ms
+64 bytes from 192.168.1.1: seq=2 ttl=63 time=1.722 ms
+
+--- 192.168.1.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max = 1.722/2.145/2.729 ms
+container_exit=0
+PING 1.1.1.1 (1.1.1.1): 56 data bytes
+64 bytes from 1.1.1.1: seq=0 ttl=55 time=179.296 ms
+64 bytes from 1.1.1.1: seq=1 ttl=55 time=183.472 ms
+
+--- 1.1.1.1 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max = 179.296/181.384/183.472 ms
+inet_exit=0

@@ -1,8 +1,9 @@
 # Meson6 kernel atomic-context follow-up, 2026-11-21
 
 Status: offline fixes built successfully for the pinned 3.10.99 vendor kernel.
-Dev11 passed targeted hardware validation from RAM. Automatic default-route
-recovery after Ethernet down/up remains open. Dev10 remains installed.
+Dev11 passed targeted hardware validation from RAM. Dev12 (same kernel plus
+`mibox-netwatch`) recovered the default route automatically after Ethernet
+down/up from RAM on 2026-11-24 (see the plan, item 9). Dev10 remains installed.
 
 The [runtime log](../artifacts/health/20261121/dmesg.txt) contains four
 diagnostics from three vendor paths. They are retained as the baseline.
