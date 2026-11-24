@@ -33,3 +33,20 @@ Details: [source analysis and acceptance](../mibox-kernel-atomic-context.md).
    behavior. The final log has none of the four baseline diagnostics.
 9. [ ] Resolve and retest default-route recovery after administrative Ethernet
    down/up before considering installation. The test restored the route manually.
+   - [x] 2026-11-24 offline fix: `mibox-slim-start` starts `/sbin/mibox-netwatch`
+     after the static profile. Every 5 s, if eth0 is up with carrier, it restores
+     a missing 192.168.1.222/24 address and a missing default route via
+     192.168.1.1. It logs `MIBOX_NET_*_RESTORED` to kmsg and never brings the link
+     up or removes anything. `scripts/test-netwatch.py` (WSL, the image's own ARM
+     busybox under qemu-arm, dummy eth0 in an unprivileged netns) passed six cases:
+     initial, down drops route, down/up restores, admin-down left alone, lost
+     address restored, foreign default route kept. Evidence:
+     `artifacts/netwatch/20261124/`.
+   - [x] SlimKernelDev12 `772c22101c68440ee6bcf0280dd83d1b42ab30a684b42452be0a297c41c807ec`
+     (`target/mibox-boot-candidate-slim-kernel-dev12/`) uses the Dev11 kernel,
+     uImage and DTB. Its rootfs differs from Dev11 only in `sbin/mibox-console-start`
+     and the new `sbin/mibox-netwatch` (`db9c981c…`). Pinned in
+     `Test-MiboxLoaderRam.ps1` and `rescue-boot.ps1`; rescue local check passed
+     (`artifacts/rescue-boot/20261124-204623-866/`).
+   - [ ] RAM-boot Dev12 and repeat the administrative Ethernet down/up. Expect the
+     default route back within about 5 s of carrier, with no manual step.

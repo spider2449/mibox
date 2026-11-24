@@ -28,6 +28,11 @@ elif grep -q '^MIBOX_STATIC_IPV4_V1 192.168.1.222 255.255.255.0 192.168.1.1$' /e
     ip link set eth0 up
     ip addr add 192.168.1.222/24 dev eth0
     ip route add default via 192.168.1.1
+    # Put the address and default route back after a link down/up (the
+    # kernel drops routes on link down); see mibox-netwatch.
+    if [ -x /sbin/mibox-netwatch ]; then
+        /sbin/mibox-netwatch eth0 192.168.1.222/24 192.168.1.1 < /dev/null > /dev/null 2>&1 &
+    fi
 else
     say MIBOX_NETWORK_PROFILE_INVALID
 fi

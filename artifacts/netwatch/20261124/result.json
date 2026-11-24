@@ -1,0 +1,28 @@
+{
+  "exit_code": 0,
+  "checks": {
+    "initial": true,
+    "down-drops-route": true,
+    "down-up": true,
+    "admin-down": true,
+    "addr-lost": true,
+    "foreign": true
+  },
+  "stdout": [
+    "initial route=[default via 192.168.1.1 dev eth0 ]",
+    "after-down route=[]",
+    "down-up route=[default via 192.168.1.1 dev eth0 ]",
+    "admin-down route=[] state=down",
+    "addr-lost addr=ok route=[default via 192.168.1.1 dev eth0 ]",
+    "foreign route=[default via 192.168.1.254 dev eth0 ]"
+  ],
+  "stderr": [],
+  "watcher_log": [
+    "MIBOX_NET_ROUTE_RESTORED default via 192.168.1.1 dev eth0",
+    "MIBOX_NET_ROUTE_RESTORED default via 192.168.1.1 dev eth0",
+    "MIBOX_NET_ADDRESS_RESTORED eth0 192.168.1.222/24",
+    "MIBOX_NET_ROUTE_RESTORED default via 192.168.1.1 dev eth0"
+  ],
+  "busybox_sha256": "750e37d6f1ade60d65e3a87e4287afcb50e7ca2a6e440b28282c5bebcd3b088e",
+  "status": "PASS"
+}

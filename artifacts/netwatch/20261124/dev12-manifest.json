@@ -1,0 +1,443 @@
+{
+  "status": "EXPERIMENTAL_RAM_TEST_ONLY",
+  "image_sha256": "772c22101c68440ee6bcf0280dd83d1b42ab30a684b42452be0a297c41c807ec",
+  "image_bytes": 8388608,
+  "used_bytes": 6338560,
+  "kernel_release": "3.10.99",
+  "kernel_build_tag": "3.10.99-mibox-container-dev+",
+  "kernel_Image_sha256": "c9c4137420a322356234f140074deee95025ef4af33985b32c3335bc5544a6f8",
+  "uimage_sha256": "4681de18093cf4bfb13988e6c536797883c5f116a326b080372fcd627767d44e",
+  "uimage_bytes": 4107402,
+  "uimage_load": "0x80008000",
+  "uimage_entry": "0x80008000",
+  "uimage_timestamp": 0,
+  "lzma_dictionary_bytes": 8388608,
+  "lzma_header_matches_stock": true,
+  "stock_dtb_sha256": "24b30f1aafe26845839966721b3c083cb3ed49280178276b6114df6d725cb95c",
+  "stock_dtb_unchanged": true,
+  "rootfs": {
+    "status": "HOST_BUILT_NOT_PHYSICALLY_VALIDATED",
+    "profile": "slim-a3-kernel-dev",
+    "container_kernel_test": true,
+    "source_rootfs_sha256": "266bdba6eb6efd39580edc742855a37ede189bf4a8925483b03462e73c9612ed",
+    "gzip_bytes": 2214388,
+    "gzip_sha256": "ad32397dd39e076da7f10ed11df109f90e4084a57bd01f03570715adb2548523",
+    "cpio_bytes": 9153500,
+    "kept_unchanged": {
+      "sbin/adbd": "f2a875f1f6230fde084264e2927d1dbf3bf95bcf5e494809814a488caf532afc",
+      "system/bin/sh": "d44fd1bb1a8a84fe6ed0b4d850dd05d506aaf4fefdb54d24eb99690fb6583fc6",
+      "bin/busybox": "750e37d6f1ade60d65e3a87e4287afcb50e7ca2a6e440b28282c5bebcd3b088e",
+      "lib/ld-musl-armhf.so.1": "20729cec964a7ab5cc4be6d3817ef23129cf61e7159fd501527f5d1aa8b0717b",
+      "adb_keys": "34bb515834345724107dc1cefaeaee3fa0f522e0fec85caae889f348804e14a6",
+      "etc/mibox-usb-adb.enabled": "160cd2767f649fa039a8af2387cf36c3e9d5d6de38babb4840aaea9b6bf6ca0a",
+      "etc/mibox-network-static": "43e8795e5d62b243fe85a37232be8a9036d4f11508d4377940f327a4844a33f8",
+      "etc/os-release": "b50d9caa29142f02bee2b72d0d8dc2f73cf25e6cc7e1d2d10633b5d24caab3fb"
+    },
+    "replaced_from_release": {
+      "init": {
+        "failsafe_sha256": "a24de13aecd55829483099ab921fdd3651a481656e404b68874017c99267680c",
+        "sha256": "5b5cfb5f7f79a6e56f15fae5afd262803f73ab518181cfd5cf11de863d076dde",
+        "bytes": 530776
+      },
+      "bin/mibox": {
+        "failsafe_sha256": "e275d1d0520dc74f0043bc32e693a99b05af37a6855881681821a6e0dede4b07",
+        "sha256": "c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226",
+        "bytes": 515460
+      }
+    },
+    "alpine_baseline_sha256": "3f6db0e57a26f74c891c0736e9038b9e7c4db45e1211183b6b51c89bc4a16b7e",
+    "removed": [
+      "etc/apk",
+      "etc/apk/arch",
+      "etc/apk/keys",
+      "etc/apk/keys/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
+      "etc/apk/keys/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub",
+      "etc/apk/keys/alpine-devel@lists.alpinelinux.org-616a9724.rsa.pub",
+      "etc/apk/keys/alpine-devel@lists.alpinelinux.org-616adfeb.rsa.pub",
+      "etc/apk/keys/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
+      "etc/apk/protected_paths.d",
+      "etc/apk/repositories",
+      "etc/apk/world",
+      "etc/ssl",
+      "etc/ssl/cert.pem",
+      "etc/ssl/certs",
+      "etc/ssl/certs/ca-certificates.crt",
+      "etc/ssl/ct_log_list.cnf",
+      "etc/ssl/ct_log_list.cnf.dist",
+      "etc/ssl/openssl.cnf",
+      "etc/ssl/openssl.cnf.dist",
+      "etc/ssl/private",
+      "etc/ssl1.1",
+      "etc/ssl1.1/cert.pem",
+      "etc/ssl1.1/certs",
+      "lib/apk",
+      "lib/apk/db",
+      "lib/apk/db/installed",
+      "lib/apk/db/lock",
+      "lib/apk/db/scripts.tar",
+      "lib/apk/db/triggers",
+      "lib/apk/exec",
+      "root/.ssh/authorized_keys",
+      "sbin/apk",
+      "sbin/mibox-hardware",
+      "usr/bin/dropbearkey",
+      "usr/bin/scanelf",
+      "usr/bin/ssl_client",
+      "usr/lib/engines-3",
+      "usr/lib/engines-3/afalg.so",
+      "usr/lib/engines-3/capi.so",
+      "usr/lib/engines-3/loader_attic.so",
+      "usr/lib/engines-3/padlock.so",
+      "usr/lib/libapk.so.2.14.10",
+      "usr/lib/libcrypto.so.3",
+      "usr/lib/libskarnet.so.2.14",
+      "usr/lib/libskarnet.so.2.14.4.0",
+      "usr/lib/libssl.so.3",
+      "usr/lib/libutmps.so.0.1",
+      "usr/lib/libutmps.so.0.1.3.1",
+      "usr/lib/libz.so.1",
+      "usr/lib/libz.so.1.3.2",
+      "usr/lib/ossl-modules",
+      "usr/lib/ossl-modules/legacy.so",
+      "usr/sbin/dropbear",
+      "usr/share/apk",
+      "usr/share/apk/keys",
+      "usr/share/apk/keys/aarch64",
+      "usr/share/apk/keys/aarch64/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub",
+      "usr/share/apk/keys/aarch64/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5243ef4b.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5261cecb.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58cbb476.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58e4f17d.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5e69ca50.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-60ac2099.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-6165ee59.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-61666e3f.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616a9724.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616abc23.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616ac3bc.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616adfeb.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616db30d.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-66ba20fe.rsa.pub",
+      "usr/share/apk/keys/armhf",
+      "usr/share/apk/keys/armhf/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
+      "usr/share/apk/keys/armhf/alpine-devel@lists.alpinelinux.org-616a9724.rsa.pub",
+      "usr/share/apk/keys/armv7",
+      "usr/share/apk/keys/armv7/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
+      "usr/share/apk/keys/armv7/alpine-devel@lists.alpinelinux.org-616adfeb.rsa.pub",
+      "usr/share/apk/keys/loongarch64",
+      "usr/share/apk/keys/loongarch64/alpine-devel@lists.alpinelinux.org-66ba20fe.rsa.pub",
+      "usr/share/apk/keys/mips64",
+      "usr/share/apk/keys/mips64/alpine-devel@lists.alpinelinux.org-5e69ca50.rsa.pub",
+      "usr/share/apk/keys/ppc64le",
+      "usr/share/apk/keys/ppc64le/alpine-devel@lists.alpinelinux.org-58cbb476.rsa.pub",
+      "usr/share/apk/keys/ppc64le/alpine-devel@lists.alpinelinux.org-616abc23.rsa.pub",
+      "usr/share/apk/keys/riscv64",
+      "usr/share/apk/keys/riscv64/alpine-devel@lists.alpinelinux.org-60ac2099.rsa.pub",
+      "usr/share/apk/keys/riscv64/alpine-devel@lists.alpinelinux.org-616db30d.rsa.pub",
+      "usr/share/apk/keys/s390x",
+      "usr/share/apk/keys/s390x/alpine-devel@lists.alpinelinux.org-58e4f17d.rsa.pub",
+      "usr/share/apk/keys/s390x/alpine-devel@lists.alpinelinux.org-616ac3bc.rsa.pub",
+      "usr/share/apk/keys/x86",
+      "usr/share/apk/keys/x86/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+      "usr/share/apk/keys/x86/alpine-devel@lists.alpinelinux.org-5243ef4b.rsa.pub",
+      "usr/share/apk/keys/x86/alpine-devel@lists.alpinelinux.org-61666e3f.rsa.pub",
+      "usr/share/apk/keys/x86_64",
+      "usr/share/apk/keys/x86_64/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+      "usr/share/apk/keys/x86_64/alpine-devel@lists.alpinelinux.org-5261cecb.rsa.pub",
+      "usr/share/apk/keys/x86_64/alpine-devel@lists.alpinelinux.org-6165ee59.rsa.pub"
+    ],
+    "busybox_applet_links": 304,
+    "ssh_server": "persistent Alpine tree (/usr/sbin/dropbear) after data activation",
+    "usb_adb_enabled_by_rootfs_marker": true,
+    "private_keys_included": false,
+    "qemu_probe_included": false,
+    "ssh_server_host_key_included": false,
+    "files": {
+      "adb_keys": {
+        "bytes": 713,
+        "sha256": "34bb515834345724107dc1cefaeaee3fa0f522e0fec85caae889f348804e14a6"
+      },
+      "init": {
+        "bytes": 530776,
+        "sha256": "5b5cfb5f7f79a6e56f15fae5afd262803f73ab518181cfd5cf11de863d076dde"
+      },
+      "bin/busybox": {
+        "bytes": 713964,
+        "sha256": "750e37d6f1ade60d65e3a87e4287afcb50e7ca2a6e440b28282c5bebcd3b088e"
+      },
+      "bin/mibox": {
+        "bytes": 515460,
+        "sha256": "c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226"
+      },
+      "dev/null": {
+        "bytes": 45,
+        "sha256": "88486e47c468a96e7dd25efdb95d5b89ab35691e33435a73e6bcd13ad1eaa632"
+      },
+      "dev/urandom": {
+        "bytes": 32,
+        "sha256": "1431e1394e351c614b4bc961f5420367434c2f57fbd4b4f0b8aba576e45ad026"
+      },
+      "etc/alpine-release": {
+        "bytes": 7,
+        "sha256": "e758029138089636b1bf6186a6a3af9496489bb1509f9a125a5d29ac759f5898"
+      },
+      "etc/fstab": {
+        "bytes": 89,
+        "sha256": "a3efca2e8d62785c87517283092b4c800d88612b6f3f06b80a4c2f39d8e68841"
+      },
+      "etc/group": {
+        "bytes": 510,
+        "sha256": "6fb6ab5a5526e6f4896b70c7e3c350fd475158a1f0d7b5fc0f3f9bd57f1c3be8"
+      },
+      "etc/hostname": {
+        "bytes": 10,
+        "sha256": "d906aecb61d076a967d9ffe8821c7b04b063f72df9d9e35b33ef36b1c0d98f16"
+      },
+      "etc/hosts": {
+        "bytes": 79,
+        "sha256": "e3998dbe02b51dada33de87ae43d18a93ab6915b9e34f5a751bf2b9b25a55492"
+      },
+      "etc/inittab": {
+        "bytes": 570,
+        "sha256": "7326d8ad56bf5fea63b1ca516a747ff6e6723e25ae84a93c31620b03de6c001d"
+      },
+      "etc/issue": {
+        "bytes": 51,
+        "sha256": "9b89537422a64a9a9407d3cafdf58c802375849629b8f43e64f1cfd7f07c782a"
+      },
+      "etc/mibox-network-static": {
+        "bytes": 61,
+        "sha256": "43e8795e5d62b243fe85a37232be8a9036d4f11508d4377940f327a4844a33f8"
+      },
+      "etc/mibox-udhcpc": {
+        "bytes": 410,
+        "sha256": "7563390c7908499c7a00411530130b5a11b8d58bee10a702b4d9ec82105796eb"
+      },
+      "etc/mibox-usb-adb.enabled": {
+        "bytes": 31,
+        "sha256": "160cd2767f649fa039a8af2387cf36c3e9d5d6de38babb4840aaea9b6bf6ca0a"
+      },
+      "etc/modules": {
+        "bytes": 15,
+        "sha256": "2c881de75a5409c35d2433a24f180b8b02ba478ef2c1c60ea3434a35bcbc335d"
+      },
+      "etc/motd": {
+        "bytes": 284,
+        "sha256": "ff044e9be5daa2eee2d3d10a4da72e5477e4c24c16f1792de2c91dae844c0e30"
+      },
+      "etc/nsswitch.conf": {
+        "bytes": 205,
+        "sha256": "0afd94c183d30a348b45057f6bf468e121aa448a7641109addb5bb8e282f514d"
+      },
+      "etc/os-release": {
+        "bytes": 63,
+        "sha256": "b50d9caa29142f02bee2b72d0d8dc2f73cf25e6cc7e1d2d10633b5d24caab3fb"
+      },
+      "etc/passwd": {
+        "bytes": 702,
+        "sha256": "31a94f06f17bc3b9085fccab1d0fa6ee9e79c4a1e4d91f617fa5de95863be015"
+      },
+      "etc/profile": {
+        "bytes": 547,
+        "sha256": "87e8643d3ce156de0c09370d4d39446f30bd00d264bea248abc191c4d7b9df3e"
+      },
+      "etc/protocols": {
+        "bytes": 3144,
+        "sha256": "4959498abbadaa1e50894a266f8d0d94500101cfe5b5f09dcad82e9d5bdfab46"
+      },
+      "etc/resolv.conf": {
+        "bytes": 38,
+        "sha256": "d49ee1c49a47cef58cd2a9e84abb59696651b899c59892562fd13d97a226157f"
+      },
+      "etc/securetty": {
+        "bytes": 156,
+        "sha256": "713fcea5109728883b9147e822429133fcc8b5e253afd3c2a197b10cd0bc3b4d"
+      },
+      "etc/services": {
+        "bytes": 12813,
+        "sha256": "f6183055fd949f9c53d49ee620f85d0150123ea691d25ed1bba0c641b4ee2f48"
+      },
+      "etc/shadow": {
+        "bytes": 260,
+        "sha256": "d5992a27f05f380fc5faeb82a3359e2f230fd1d6ea6517b45892b771a2194ddb"
+      },
+      "etc/shells": {
+        "bytes": 38,
+        "sha256": "24be6ceb236610df45684c83b06c918ae45635be55f69975e43676b7595bbc5f"
+      },
+      "etc/sysctl.conf": {
+        "bytes": 53,
+        "sha256": "8bba47da45bc8715c69ac904a60410eabffaa7bbbef640f9c1368ab9c48493d0"
+      },
+      "lib/ld-musl-armhf.so.1": {
+        "bytes": 530140,
+        "sha256": "20729cec964a7ab5cc4be6d3817ef23129cf61e7159fd501527f5d1aa8b0717b"
+      },
+      "sbin/adbd": {
+        "bytes": 166052,
+        "sha256": "f2a875f1f6230fde084264e2927d1dbf3bf95bcf5e494809814a488caf532afc"
+      },
+      "sbin/ldconfig": {
+        "bytes": 393,
+        "sha256": "b4a2c06db38742e8c42c3c9838b285a7d8cdac6c091ff3df5ff9a15f1e41b9c7"
+      },
+      "sbin/mibox-console-start": {
+        "bytes": 5585,
+        "sha256": "6fdc2d422157c5b36213d23c63e7e0e70975efeee2d64b242377297c20608455"
+      },
+      "etc/busybox-paths.d/busybox": {
+        "bytes": 3989,
+        "sha256": "e12e0822f5c6426b62f07799a0fc20394241535c5bc2cc8f10c8a25088b8defa"
+      },
+      "etc/crontabs/root": {
+        "bytes": 283,
+        "sha256": "575d810a9fae5f2f0671c9b2c0ce973e46c7207fbe5cb8d1b0d1836a6a0470e3"
+      },
+      "etc/logrotate.d/acpid": {
+        "bytes": 140,
+        "sha256": "d608a3b7715886b5735def0cc50a6359fd364fac2e0e0a459c588c04be471031"
+      },
+      "etc/modprobe.d/aliases.conf": {
+        "bytes": 1545,
+        "sha256": "3ebaba946f213670170c7d69949f690a3854553bd0b1560f1d980cba4c83a942"
+      },
+      "etc/modprobe.d/blacklist.conf": {
+        "bytes": 2136,
+        "sha256": "5cd46031fc7dc7186e67c97fd34780597de4ebff51dbe41eba27220fe5e0d866"
+      },
+      "etc/modprobe.d/i386.conf": {
+        "bytes": 122,
+        "sha256": "6c46c4cbfb8b7594f19eb94801a350fa2221ae9ac5239a8819d15555caa76ae8"
+      },
+      "etc/profile.d/20locale.sh": {
+        "bytes": 97,
+        "sha256": "284a6ef56ab97a13a777c6b01ae14f2cc3d2b7a29c19e750e622e70cc3c73186"
+      },
+      "etc/profile.d/README": {
+        "bytes": 249,
+        "sha256": "b73284f27fe2da9ae1902b1fe9596c3ffc61a154e2805a034184f0468f8b09b0"
+      },
+      "etc/profile.d/color_prompt.sh.disabled": {
+        "bytes": 447,
+        "sha256": "ba24425c6864a5d17fa0fdaf914c4d21419e47c4d62080c33830af059fe46617"
+      },
+      "etc/secfixes.d/alpine": {
+        "bytes": 97,
+        "sha256": "808a19d200c575a9bd9898b113ca4538bb142878dd6a8e5f14804ba9ae3f5c38"
+      },
+      "etc/udhcpc/udhcpc.conf": {
+        "bytes": 287,
+        "sha256": "5b372209e01cda07c87b8afa6d1ab3d7e8daf18a1f2332d744203a6dc289eb1a"
+      },
+      "system/bin/sh": {
+        "bytes": 214916,
+        "sha256": "d44fd1bb1a8a84fe6ed0b4d850dd05d506aaf4fefdb54d24eb99690fb6583fc6"
+      },
+      "usr/bin/getconf": {
+        "bytes": 9440,
+        "sha256": "e60c573433088f706c6de171b800aa6c6cddc176b833fa5513a987a80038528e"
+      },
+      "usr/bin/getent": {
+        "bytes": 13640,
+        "sha256": "1d22dfb6d8f786975558de86a1aba4b7cfdf6e8c9cbf1ea75673c016c91063ef"
+      },
+      "usr/bin/iconv": {
+        "bytes": 5292,
+        "sha256": "5eba3eb59398d3fd25041913e0b537f6a18647bd1c5ddc6aa482778ca572caf6"
+      },
+      "usr/bin/ldd": {
+        "bytes": 51,
+        "sha256": "64d116cee1e48f7a43cf34ed5e94005558e3d6aaa77c7449f2daadacbca987b9"
+      },
+      "usr/lib/os-release": {
+        "bytes": 188,
+        "sha256": "ffc34174096af1fd7799a1bbabb033c47199b90d0432f5761a2f249612813c9a"
+      },
+      "etc/network/if-up.d/dad": {
+        "bytes": 285,
+        "sha256": "2fd20d1bc67d9ee711990002b24f156635a73f56b8935b2f76592938817fa4e7"
+      },
+      "usr/lib/sysctl.d/00-alpine.conf": {
+        "bytes": 1278,
+        "sha256": "ee169bea2cb6859420b55ca7a9c23fb68b50adc1d26c951f904dec9e8f767380"
+      },
+      "usr/share/udhcpc/default.script": {
+        "bytes": 3811,
+        "sha256": "1cf94e3918ce389c722f4408490ae7334321a5ca2aec2c945b0c47662aa274a6"
+      },
+      "etc/mibox-alpine-baseline": {
+        "bytes": 865,
+        "sha256": "3f6db0e57a26f74c891c0736e9038b9e7c4db45e1211183b6b51c89bc4a16b7e"
+      },
+      "sbin/mibox-fbhandoff": {
+        "bytes": 357572,
+        "sha256": "5c58171d9427689246a0c1942aecb65b4d97ce2ac3925481fc2c6e28eee6deec"
+      },
+      "etc/mibox-splash.rgba": {
+        "bytes": 5529600,
+        "sha256": "cd89d8b0f2cd35091585265751638020be791d0abd51ea148f5fe8ce1b100a6c"
+      },
+      "sbin/mibox-fbstatus": {
+        "bytes": 443628,
+        "sha256": "c3e84fa3195a7c0326838001c1dc9e6deccab362d0d9d3b0a9e2a1b05554c1b7"
+      },
+      "etc/mibox-kernel-development": {
+        "bytes": 90,
+        "sha256": "edf1a70cc444fac7f25e1776c972361bec346d4073bdc1cb67a2a9b2686c45ba"
+      },
+      "sbin/mibox-persistent-console": {
+        "bytes": 12518,
+        "sha256": "acdbeb2888f211d19328fc7aa83268c5f4de787ac5003fd6980a62355ae39008"
+      },
+      "sbin/mibox-docker": {
+        "bytes": 6277,
+        "sha256": "ed752f2a5f60075810ccb879d0af68b94346625b92a3f79a9b1c8f11c3cf7f19"
+      },
+      "sbin/mibox-netwatch": {
+        "bytes": 1260,
+        "sha256": "db9c981cf48d7b7984ced3ad3ac62d8b06242009598005844a31866c17e5dbdc"
+      }
+    }
+  },
+  "build_config_sha256": "ace17f68a0d1d0c9084dae437d8456b6719fcb720b43b92f6295951c4c67ab5c",
+  "source_commit": "8b1bb2b31a8e94b773a4b8ab907a0473a0951192",
+  "patches": {
+    "kernel/patches/0000-meson6-atomic-context.patch": "d1a29326cf342c5603d48378c6a48200865fe2fd0be027d5c4cf7ffb40cc65c0",
+    "kernel/patches/0000-mibox-casablanca-emmc-ethernet.patch": "36a118be4ac0567577adbf5cfb1d4e9b66d4bf8542c436bd201ce99063f85679",
+    "kernel/patches/0001-meson6-build-fixes.patch": "bde3c3c731a83d84545fcac994087af158fb475b5d1069e6b5b4aaba1405b754",
+    "kernel/patches/0002-bridge-local-fdb-for-newlink-address.patch": "2ffb768ac513ddea0bfe26104bbf9147beb1dba4b10cc27fee72fcc85abd9e10"
+  },
+  "boot_acceptance": "UNKNOWN",
+  "software_return": "UNKNOWN",
+  "physical_validation": false,
+  "uploaded": false,
+  "flashed": false,
+  "sections": [
+    {
+      "name": "kernel",
+      "start": 2048,
+      "size": 4107402,
+      "end": 4109450,
+      "sha256": "4681de18093cf4bfb13988e6c536797883c5f116a326b080372fcd627767d44e"
+    },
+    {
+      "name": "ramdisk",
+      "start": 4110336,
+      "size": 2214388,
+      "end": 6324724,
+      "sha256": "ad32397dd39e076da7f10ed11df109f90e4084a57bd01f03570715adb2548523"
+    },
+    {
+      "name": "second",
+      "start": 6326272,
+      "size": 11414,
+      "end": 6337686,
+      "sha256": "24b30f1aafe26845839966721b3c083cb3ed49280178276b6114df6d725cb95c"
+    }
+  ]
+}

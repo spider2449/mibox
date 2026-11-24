@@ -1,0 +1,25 @@
+#!/bin/sh
+# Static IPv4 keeper for the physical LAN profile (plan item 9 of
+# docs/plans/2026-11-21-kernel-atomic-context.md). When eth0 goes down, the
+# kernel deletes every route through it, including the default route, and the
+# static profile added that route only once at boot. Every INTERVAL seconds,
+# while eth0 is administratively up with carrier, this puts back a missing
+# address and a missing default route. It never brings the link up itself, so
+# an operator's `ip link set eth0 down` stays down, and it never removes
+# anything. Usage: mibox-netwatch IFACE ADDRESS/PREFIX GATEWAY [INTERVAL]
+set -u
+iface=$1 cidr=$2 gateway=$3 interval=${4:-5}
+say() { echo "mibox-netwatch: $*" 2>/dev/null > /dev/kmsg || true; echo "$*"; }
+trap '' HUP
+while :; do
+    if [ "$(cat "/sys/class/net/$iface/carrier" 2>/dev/null)" = 1 ]; then
+        if ! ip -4 addr show dev "$iface" | grep -q " inet $cidr "; then
+            ip addr add "$cidr" dev "$iface" && say "MIBOX_NET_ADDRESS_RESTORED $iface $cidr"
+        fi
+        if ! ip -4 route | grep -q '^default '; then
+            ip route replace default via "$gateway" dev "$iface" &&
+                say "MIBOX_NET_ROUTE_RESTORED default via $gateway dev $iface"
+        fi
+    fi
+    sleep "$interval"
+done
