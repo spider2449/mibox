@@ -398,3 +398,34 @@ and leaves nothing behind. QEMU slim 63/63 PASS
 `Stop-Mibox -Restart` (24 s) the flash boot showed dockerd in its own
 namespace, `mibox-web` restored, the volume intact, exec isolated, :8080,
 :8081 and the mTLS API working. Test container and volume removed afterwards.
+
+## fuse-overlayfs storage driver, 2026-11-24/25: blocked by a kernel version check
+
+Goal: share image layers instead of vfs's full per-layer copies (three small
+images already use 204 MB). FUSE is built in (`CONFIG_FUSE_FS=y`, `/dev/fuse`
+10:229 opens), and Alpine `fuse-overlayfs` 1.15 (fuse3 3.16.2) is installed in
+the tree. A standalone mount passed: two lower layers, copy-up, whiteout, and the
+lower layers untouched.
+
+Switching `daemon.json` to `"storage-driver": "fuse-overlayfs"` made dockerd
+exit with `error initializing graphdriver: driver not supported: fuse-overlayfs`.
+The log shows no lookup error, so the binary was found. The cause is in Docker
+28.3.3's driver init
+([source](../artifacts/docker-runtime/20261124-fuse-overlayfs/moby-v28.3.3-fuseoverlayfs.go),
+`Init`): after `exec.LookPath`, it requires `kernel.CheckKernelVersion(4, 18, 0)`
+and returns `ErrNotSupported` silently otherwise. This box runs 3.10.99. The
+limit dates from FUSE mounts inside user namespaces (rootless Docker), not from
+root use. `daemon.json` was restored from `daemon.json.pre-fuse` (`5104937e…`).
+dockerd returned on vfs with `mibox-web` and HTTP 200; Docker was down about
+4 minutes. Evidence: `artifacts/docker-runtime/20261124-fuse-overlayfs/`. The
+unused `fuse-overlayfs`/`fuse3` packages remain installed.
+
+Ways around it, none attempted:
+- Run containerd's external fuse-overlayfs snapshotter
+  (`containerd-fuse-overlayfs`) with Docker's containerd image store. It needs
+  a separately run and configured containerd. It probes with a real mount
+  instead of a version check, but it is not packaged in Alpine.
+- Patch the version check out of a self-built dockerd. This replaces the
+  pinned official binary.
+- Backport overlayfs into the 3.10.99 kernel (large) and use overlay2 directly.
+- Do not fake the reported kernel release: other Docker checks also read it.
