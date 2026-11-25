@@ -1,0 +1,323 @@
+diff --git a/include/linux/cgroup.h b/include/linux/cgroup.h
+index 32a4f95d..1bd37d15 100644
+--- a/include/linux/cgroup.h
++++ b/include/linux/cgroup.h
+@@ -894,4 +894,13 @@ static inline int cgroup_attach_task_all(struct task_struct *from,
+ 
+ #endif /* !CONFIG_CGROUPS */
+ 
++#ifdef CONFIG_CGROUP_PIDS
++/* copy_process() hooks of the pids controller (kernel/cgroup_pids.c) */
++int cgroup_pids_can_fork(struct task_struct *child);
++void cgroup_pids_cancel_fork(struct task_struct *child);
++#else
++static inline int cgroup_pids_can_fork(struct task_struct *child) { return 0; }
++static inline void cgroup_pids_cancel_fork(struct task_struct *child) {}
++#endif
++
+ #endif /* _LINUX_CGROUP_H */
+diff --git a/include/linux/cgroup_subsys.h b/include/linux/cgroup_subsys.h
+index 6e7ec64b..87ed7094 100644
+--- a/include/linux/cgroup_subsys.h
++++ b/include/linux/cgroup_subsys.h
+@@ -84,3 +84,9 @@ SUBSYS(bcache)
+ #endif
+ 
+ /* */
++
++#if IS_SUBSYS_ENABLED(CONFIG_CGROUP_PIDS)
++SUBSYS(pids)
++#endif
++
++/* */
+diff --git a/init/Kconfig b/init/Kconfig
+index 79b356f8..3400d59d 100644
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -834,6 +834,13 @@ config CGROUP_FREEZER
+ 	  Provides a way to freeze and unfreeze all tasks in a
+ 	  cgroup.
+ 
++config CGROUP_PIDS
++	bool "PIDs cgroup subsystem"
++	help
++	  Provides enforcement of process number limits in the scope of a
++	  cgroup (pids.max, pids.current). Backport of the Linux 4.3
++	  controller; fork() and clone() fail with EAGAIN at the limit.
++
+ config CGROUP_DEVICE
+ 	bool "Device controller for cgroups"
+ 	help
+diff --git a/kernel/Makefile b/kernel/Makefile
+index 271fd311..9f1a16e1 100644
+--- a/kernel/Makefile
++++ b/kernel/Makefile
+@@ -61,6 +61,7 @@ obj-$(CONFIG_BACKTRACE_SELF_TEST) += backtracetest.o
+ obj-$(CONFIG_COMPAT) += compat.o
+ obj-$(CONFIG_CGROUPS) += cgroup.o
+ obj-$(CONFIG_CGROUP_FREEZER) += cgroup_freezer.o
++obj-$(CONFIG_CGROUP_PIDS) += cgroup_pids.o
+ obj-$(CONFIG_CPUSETS) += cpuset.o
+ obj-$(CONFIG_UTS_NS) += utsname.o
+ obj-$(CONFIG_USER_NS) += user_namespace.o
+diff --git a/kernel/cgroup_pids.c b/kernel/cgroup_pids.c
+new file mode 100755
+index 00000000..bcab47ac
+--- /dev/null
++++ b/kernel/cgroup_pids.c
+@@ -0,0 +1,231 @@
++/*
++ * Process number limiting controller for cgroups.
++ *
++ * Backport of the Linux 4.3 pids controller (kernel/cgroup_pids.c,
++ * Copyright (C) 2015 Aleksa Sarai <cyphar@cyphar.com>) to the 3.10 cgroup
++ * API. 3.10 has no can_fork/cancel_fork subsystem callbacks, so copy_process()
++ * calls cgroup_pids_can_fork() right after cgroup_fork() and
++ * cgroup_pids_cancel_fork() on its error path. The charge goes to the
++ * cgroup in the child's own css_set (inherited at cgroup_fork()), which is
++ * where the child lives until it exits or is migrated.
++ *
++ * Interface (cgroup v1, like the 4.3 controller):
++ *   pids.max      "max" or a number of tasks; fork()/clone() fails with
++ *                 EAGAIN once any ancestor-or-self limit would be exceeded.
++ *   pids.current  tasks charged to this cgroup and its descendants.
++ * The root cgroup is never charged and has no files. Migration charges the
++ * target even above its limit (as upstream): limits gate fork only.
++ *
++ * This file is subject to the terms and conditions of version 2 of the GNU
++ * General Public License.
++ */
++
++#include <linux/kernel.h>
++#include <linux/threads.h>
++#include <linux/atomic.h>
++#include <linux/cgroup.h>
++#include <linux/slab.h>
++#include <linux/sched.h>
++#include <linux/seq_file.h>
++
++#define PIDS_MAX (PID_MAX_LIMIT + 1LL)
++#define PIDS_MAX_STR "max"
++
++struct pids_cgroup {
++	struct cgroup_subsys_state css;
++	atomic64_t counter;
++	atomic64_t limit;	/* 64-bit stores are not single-copy atomic on ARMv7 */
++};
++
++static struct pids_cgroup *css_pids(struct cgroup_subsys_state *css)
++{
++	return container_of(css, struct pids_cgroup, css);
++}
++
++static struct pids_cgroup *cgroup_pids(struct cgroup *cgrp)
++{
++	return css_pids(cgroup_subsys_state(cgrp, pids_subsys_id));
++}
++
++static struct pids_cgroup *parent_pids(struct pids_cgroup *pids)
++{
++	struct cgroup *parent = pids->css.cgroup->parent;
++
++	return parent ? cgroup_pids(parent) : NULL;
++}
++
++static struct cgroup_subsys_state *pids_css_alloc(struct cgroup *cgrp)
++{
++	struct pids_cgroup *pids = kzalloc(sizeof(*pids), GFP_KERNEL);
++
++	if (!pids)
++		return ERR_PTR(-ENOMEM);
++	atomic64_set(&pids->counter, 0);
++	atomic64_set(&pids->limit, PIDS_MAX);
++	return &pids->css;
++}
++
++static void pids_css_free(struct cgroup *cgrp)
++{
++	kfree(cgroup_pids(cgrp));
++}
++
++/* Undo a charge of one level only; a negative counter is an accounting bug. */
++static void pids_cancel(struct pids_cgroup *pids, int num)
++{
++	WARN_ON_ONCE(atomic64_add_negative(-num, &pids->counter));
++}
++
++/* Uncharge @pids and its ancestors, excluding the root. */
++static void pids_uncharge(struct pids_cgroup *pids, int num)
++{
++	struct pids_cgroup *p;
++
++	for (p = pids; parent_pids(p); p = parent_pids(p))
++		pids_cancel(p, num);
++}
++
++/* Charge @pids and its ancestors (excluding the root), ignoring limits. */
++static void pids_charge(struct pids_cgroup *pids, int num)
++{
++	struct pids_cgroup *p;
++
++	for (p = pids; parent_pids(p); p = parent_pids(p))
++		atomic64_add(num, &p->counter);
++}
++
++/* Charge @pids and its ancestors unless that would pass any level's limit. */
++static int pids_try_charge(struct pids_cgroup *pids, int num)
++{
++	struct pids_cgroup *p, *q;
++
++	for (p = pids; parent_pids(p); p = parent_pids(p)) {
++		long long new = atomic64_add_return(num, &p->counter);
++
++		if (new > atomic64_read(&p->limit))
++			goto revert;
++	}
++	return 0;
++
++revert:
++	for (q = pids; q != p; q = parent_pids(q))
++		pids_cancel(q, num);
++	pids_cancel(p, num);
++	return -EAGAIN;
++}
++
++/*
++ * Migration: the task's thread group is locked by cgroup_attach_task()
++ * (threadgroup_lock), so it can neither exit nor add threads until the
++ * attach completes or is cancelled. Move the charge here so that a fork or
++ * exit after the css_set switch is accounted against the new cgroup.
++ */
++static int pids_can_attach(struct cgroup *cgrp, struct cgroup_taskset *tset)
++{
++	struct pids_cgroup *pids = cgroup_pids(cgrp);
++	struct task_struct *task;
++
++	cgroup_taskset_for_each(task, cgrp, tset) {
++		pids_charge(pids, 1);
++		pids_uncharge(cgroup_pids(cgroup_taskset_cur_cgroup(tset)), 1);
++	}
++	return 0;
++}
++
++static void pids_cancel_attach(struct cgroup *cgrp, struct cgroup_taskset *tset)
++{
++	struct pids_cgroup *pids = cgroup_pids(cgrp);
++	struct task_struct *task;
++
++	cgroup_taskset_for_each(task, cgrp, tset) {
++		pids_charge(cgroup_pids(cgroup_taskset_cur_cgroup(tset)), 1);
++		pids_uncharge(pids, 1);
++	}
++}
++
++int cgroup_pids_can_fork(struct task_struct *child)
++{
++	int err;
++
++	rcu_read_lock();
++	err = pids_try_charge(css_pids(task_subsys_state(child, pids_subsys_id)), 1);
++	rcu_read_unlock();
++	return err;
++}
++
++void cgroup_pids_cancel_fork(struct task_struct *child)
++{
++	rcu_read_lock();
++	pids_uncharge(css_pids(task_subsys_state(child, pids_subsys_id)), 1);
++	rcu_read_unlock();
++}
++
++/* Called from cgroup_exit(tsk, 1) under task_lock; @old_cgrp held the charge. */
++static void pids_exit(struct cgroup *cgrp, struct cgroup *old_cgrp,
++		      struct task_struct *task)
++{
++	pids_uncharge(cgroup_pids(old_cgrp), 1);
++}
++
++static int pids_max_write(struct cgroup *cgrp, struct cftype *cft,
++			  const char *buf)
++{
++	long long limit;
++	int err;
++
++	if (!strcmp(buf, PIDS_MAX_STR)) {
++		limit = PIDS_MAX;
++	} else {
++		err = kstrtoll(buf, 0, &limit);
++		if (err)
++			return err;
++		if (limit < 0 || limit >= PIDS_MAX)
++			return -EINVAL;
++	}
++	/* Racing forks may still follow the old limit, as upstream. */
++	atomic64_set(&cgroup_pids(cgrp)->limit, limit);
++	return 0;
++}
++
++static int pids_max_show(struct cgroup *cgrp, struct cftype *cft,
++			 struct seq_file *sf)
++{
++	long long limit = atomic64_read(&cgroup_pids(cgrp)->limit);
++
++	if (limit >= PIDS_MAX)
++		seq_printf(sf, "%s\n", PIDS_MAX_STR);
++	else
++		seq_printf(sf, "%lld\n", limit);
++	return 0;
++}
++
++static s64 pids_current_read(struct cgroup *cgrp, struct cftype *cft)
++{
++	return atomic64_read(&cgroup_pids(cgrp)->counter);
++}
++
++static struct cftype pids_files[] = {
++	{
++		.name = "max",
++		.write_string = pids_max_write,
++		.read_seq_string = pids_max_show,
++		.flags = CFTYPE_NOT_ON_ROOT,
++	},
++	{
++		.name = "current",
++		.read_s64 = pids_current_read,
++		.flags = CFTYPE_NOT_ON_ROOT,
++	},
++	{ }	/* terminate */
++};
++
++struct cgroup_subsys pids_subsys = {
++	.name		= "pids",
++	.subsys_id	= pids_subsys_id,
++	.css_alloc	= pids_css_alloc,
++	.css_free	= pids_css_free,
++	.can_attach	= pids_can_attach,
++	.cancel_attach	= pids_cancel_attach,
++	.exit		= pids_exit,
++	.base_cftypes	= pids_files,
++};
+diff --git a/kernel/fork.c b/kernel/fork.c
+index 21e63626..79cb09b6 100644
+--- a/kernel/fork.c
++++ b/kernel/fork.c
+@@ -1286,6 +1286,10 @@ static struct task_struct *copy_process(unsigned long clone_flags,
+ 	if (clone_flags & CLONE_THREAD)
+ 		threadgroup_change_begin(current);
+ 	cgroup_fork(p);
++	if (cgroup_pids_can_fork(p)) {
++		retval = -EAGAIN;
++		goto bad_fork_cleanup_cgroup_nopids;
++	}
+ #ifdef CONFIG_NUMA
+ 	p->mempolicy = mpol_dup(p->mempolicy);
+ 	if (IS_ERR(p->mempolicy)) {
+@@ -1546,6 +1550,8 @@ bad_fork_cleanup_policy:
+ 	mpol_put(p->mempolicy);
+ bad_fork_cleanup_cgroup:
+ #endif
++	cgroup_pids_cancel_fork(p);
++bad_fork_cleanup_cgroup_nopids:
+ 	if (clone_flags & CLONE_THREAD)
+ 		threadgroup_change_end(current);
+ 	cgroup_exit(p, 0);

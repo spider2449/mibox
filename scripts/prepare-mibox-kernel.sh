@@ -24,14 +24,13 @@ fetch_pin() {
         for patch_file in "$patch_dir"/*.patch; do
             if ! git -C "$destination" apply --reverse --check "$patch_file" 2>/dev/null; then
                 git -C "$destination" apply --check "$patch_file"
-                git -C "$destination" apply "$patch_file"
+                # --intent-to-add: new files appear in `git diff`, so the
+                # recorded source diff hash covers them.
+                git -C "$destination" apply --intent-to-add "$patch_file"
             fi
         done
-        cmp <(git -C "$destination" diff --no-ext-diff --binary --abbrev=8) <(cat "$patch_dir"/*.patch) || {
+        bash "$ROOT/scripts/verify-kernel-patches.sh" "$destination" "$patch_dir" > /dev/null || {
             echo "Unrecorded source changes at $destination; preserving it" >&2; exit 2;
-        }
-        [[ -z "$(git -C "$destination" ls-files --others --exclude-standard)" ]] || {
-            echo 'Untracked kernel source files require review' >&2; exit 2;
         }
     else
         [[ -z "$(git -C "$destination" status --porcelain)" ]] || {

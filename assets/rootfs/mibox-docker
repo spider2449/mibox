@@ -50,7 +50,7 @@ supervise)
     if ! is_mounted "$root/run"; then mount -t tmpfs -o mode=755,nosuid,nodev,size=32m tmpfs "$root/run"; fi
     cg=$root/sys/fs/cgroup
     if ! is_mounted "$cg"; then mount -t tmpfs -o mode=755,nosuid,nodev,noexec,size=64k cgroup_root "$cg"; fi
-    for c in cpuset cpu,cpuacct memory devices freezer net_cls,net_prio blkio; do
+    for c in cpuset cpu,cpuacct memory devices freezer net_cls,net_prio blkio pids; do
         if grep -q "^${c%%,*}[[:space:]]" /proc/cgroups; then
             mkdir -p "$cg/$c"
             if ! is_mounted "$cg/$c"; then mount -t cgroup -o "$c,nosuid,nodev,noexec" cgroup "$cg/$c"; fi

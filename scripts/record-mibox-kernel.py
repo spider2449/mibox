@@ -49,7 +49,10 @@ def record(work, profile, configure_only):
     patches = sorted((ROOT / 'kernel/patches').glob('*.patch'))
     source_diff = subprocess.check_output(['git', '-C', str(source), 'diff',
                                             '--no-ext-diff', '--binary', '--abbrev=8'])
-    if not patches or source_diff != b''.join(p.read_bytes() for p in patches):
+    # Exact tree comparison (HEAD + patches vs working tree, new files
+    # included); the concatenated diff no longer has to match byte for byte.
+    if not patches or subprocess.run(['bash', str(ROOT / 'scripts/verify-kernel-patches.sh'), str(source),
+                                      str(ROOT / 'kernel/patches')], stdout=subprocess.DEVNULL).returncode:
         raise ValueError('unrecorded kernel source modifications')
     expected_diff_sha = os.environ.get('MIBOX_KERNEL_SOURCE_DIFF_SHA256')
     if not configure_only:

@@ -2,7 +2,7 @@
 # No Android query, software reboot, flash or environment command is issued.
 param(
     [ValidateSet('Check','WaitAndBoot')][string]$Action='Check',
-    [ValidateSet('Console','FailSafe','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4','SlimKernelDev5','SlimKernelDev6','SlimKernelDev7','SlimKernelDev8','SlimKernelDev9','SlimKernelDev10','SlimKernelDev11','SlimKernelDev12')][string]$Candidate='Console',
+    [ValidateSet('Console','FailSafe','Loader','Slim','SlimKernelDev','SlimKernelDev2','SlimKernelDev3','SlimKernelDev4','SlimKernelDev5','SlimKernelDev6','SlimKernelDev7','SlimKernelDev8','SlimKernelDev9','SlimKernelDev10','SlimKernelDev11','SlimKernelDev12','SlimKernelDev13')][string]$Candidate='Console',
     [ValidateRange(1,600)][int]$WaitSeconds=120,
     [ValidateRange(60,7200)][int]$TransferTimeoutSeconds=3600,
     # Bulk OUT upload verified by loader crc32 (see Test-MiboxLoaderRam.ps1).
@@ -118,6 +118,13 @@ if($Candidate -eq 'SlimKernelDev12') {
     # As SlimKernelDev11 (same kernel and DTB); mibox-netwatch restores the
     # static address and default route after an Ethernet down/up.
     $hash='772c22101c68440ee6bcf0280dd83d1b42ab30a684b42452be0a297c41c807ec'
+    $initHash='5b5cfb5f7f79a6e56f15fae5afd262803f73ab518181cfd5cf11de863d076dde'
+    $miboxHash='c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226'
+}
+if($Candidate -eq 'SlimKernelDev13') {
+    # Dev12 plus the backported pids cgroup controller (kernel patch 0003);
+    # mibox-docker also mounts the pids hierarchy.
+    $hash='614861f672f6ef24aa1e1a803cb6ec4ddcecb173683a978ed06cbc837af5ef24'
     $initHash='5b5cfb5f7f79a6e56f15fae5afd262803f73ab518181cfd5cf11de863d076dde'
     $miboxHash='c7f2b1b1e8fc25e310540e991148282ca26cc38a7b3bf2af62e78eb05443b226'
 }
