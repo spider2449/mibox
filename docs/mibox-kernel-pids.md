@@ -1,7 +1,7 @@
 # pids cgroup controller backport, 2026-11-25
 
-Status: **SlimKernelDev13 `614861f6…` passed RAM validation on the box.** It is
-not installed; boot1 still holds Dev12 `772c2210…`.
+Status: **SlimKernelDev13 `614861f6…` is installed in boot1 (2026-11-25)** after RAM
+validation; a flash boot passed the same 27-check test (see the end of this file).
 
 ## What and why
 
@@ -83,3 +83,16 @@ Regression ([output](../artifacts/kernel-meson6/2026-11-25-pids/dev13-ram/regres
 
 Not covered: long-duration behavior, a flash boot of Dev13, and contention
 stress between fork and migration.
+
+## Installation, 2026-11-25
+
+The owner approved the boot1 write
+(`artifacts/console-root/20261125-205240-c10-dev13-boot1-write/`): current
+content verified as Dev12 `772c2210…`, dry run, write, readback and an
+independent re-hash `614861f6…`; boot `ff4fa440…` unchanged. With USB
+unplugged, `Stop-Mibox -Restart` came back from flash in 21 s (boot
+`f76bc3dc-8c4f-4e42-84ec-dc87c5321558`). `mibox-docker` matched Dev13
+(`96322e9f…`), the pids hierarchy was mounted, and `mibox-web`, the route,
+netwatch and HTTP 200 came up. There were no kernel warnings, integrity read
+MATCH, and `pids-test.sh` passed 27/27. For a restore, the expected current
+content is now `614861f6…`.

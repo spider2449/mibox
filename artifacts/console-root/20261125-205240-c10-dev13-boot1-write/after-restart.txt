@@ -1,0 +1,12 @@
+f76bc3dc-8c4f-4e42-84ec-dc87c5321558
+3.10.99
+96322e9fa15e
+db9c981cf48d
+pids	8	3	1
+default via 192.168.1.1 dev eth0 
+2
+mibox-web Up 11 seconds
+0
+[    5.436634@1] EXT4-fs (mmcblk0p11): mounted filesystem with ordered data mode. Opts: (null)
+[    5.799583@1] mibox-persistent: MIBOX_ALPINE_INTEGRITY=MATCH
+http=200
