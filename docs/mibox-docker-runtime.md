@@ -6,7 +6,8 @@ pull, bridge/NAT/published ports, volumes, restart, exec isolation and the mTLS
 API passed; see the acceptance sections below. The 2026-11-21 read-only
 follow-up confirmed a running container and HTTP 200, with vendor-kernel
 warnings recorded in [the health plan](plans/2026-11-21-runtime-health.md).
-Overlayfs and a pids controller remain unfinished. Power-loss acceptance (C5a)
+Overlayfs remains unfinished; a backported pids controller passed RAM tests
+([Dev13](mibox-kernel-pids.md)). Power-loss acceptance (C5a)
 passed on 2026-11-25 for one cut during fsync-heavy writes; see the
 [system redesign plan](plans/2026-11-15-system-redesign.md).
 

@@ -1,0 +1,34 @@
+== interface
+PASS proc-cgroups-lists-pids
+PASS hierarchy-mounted
+PASS root-has-no-max
+PASS new-max-is-max
+PASS new-current-is-0
+PASS reject--1
+PASS reject-abc
+PASS reject-32769
+PASS accept-32768
+PASS accept-max
+== fork limit
+PASS limit-counts-1-2-3
+PASS limit-fork-refused
+PASS limit-survivors-2
+PASS exit-uncharges
+== hierarchy
+PASS child-max-is-max
+PASS parent-limit-binds-child
+PASS parent-counts-child
+PASS hierarchy-uncharged
+== migration
+PASS migrate-in-charges
+PASS migrate-across-moves
+PASS migrate-ignores-limit
+PASS migrate-to-root-uncharges
+== docker
+PASS docker-no-unsupported-warning
+PASS docker-limit-enforced
+PASS bomb-capped-at-32
+PASS box-still-forks
+== kernel log
+PASS no-accounting-warning
+PIDS_TEST passed=27 failed=0

@@ -26,7 +26,7 @@ cleanup
 
 echo "== interface"
 check proc-cgroups-lists-pids grep -q '^pids[[:space:]].*[[:space:]]1$' /proc/cgroups
-check hierarchy-mounted grep -q " $cg cgroup .*pids" /proc/self/mountinfo
+check hierarchy-mounted sh -c "awk '\$5 == \"$cg\"' /proc/self/mountinfo | grep -q ' cgroup rw.*pids'"
 check root-has-no-max test ! -e "$cg/pids.max"
 mkdir "$t"
 check new-max-is-max test "$(cat "$t/pids.max")" = max
@@ -39,23 +39,27 @@ check accept-max sh -c "echo max > $t/pids.max && test \$(cat $t/pids.max) = max
 
 echo "== fork limit"
 echo 3 > "$t/pids.max"
-# A shell joins the cgroup (1 task) and starts 4 background sleeps: two fit
-# under the limit of 3, the other two must fail with EAGAIN.
-sh -c "echo \$\$ > $t/cgroup.procs; for i in 1 2 3 4; do sleep 30 & done; wait" > /tmp/pids-fork.out 2>&1 &
-sleep 2
-check limit-current-is-3 test "$(cur "$t")" = 3
-nfail=$(grep -c -i "can't fork\|resource temporarily unavailable" /tmp/pids-fork.out)
-check limit-two-forks-refused test "$nfail" -ge 2
+# A shell joins the cgroup (1 task) and starts background sleeps, reading
+# pids.current with builtins (no fork) after each: 1, 2, 3, then the fourth
+# fork fails with EAGAIN. busybox ash exits on a failed fork, so the two
+# sleeps remain (current 2).
+sh -c "echo \$\$ > $t/cgroup.procs; read c < $t/pids.current; echo join=\$c; for i in 1 2 3 4; do sleep 30 & read c < $t/pids.current; echo sleep\$i=\$c; done; wait" > /tmp/pids-fork.out 2>&1 &
+sleep 3
+check limit-counts-1-2-3 test "$(grep -E '^(join|sleep)' /tmp/pids-fork.out | tr '\n' ' ')" = "join=1 sleep1=2 sleep2=3 "
+check limit-fork-refused grep -q "can't fork: Resource temporarily unavailable" /tmp/pids-fork.out
+check limit-survivors-2 test "$(cur "$t")" = 2
 for p in $(cat "$t/cgroup.procs"); do kill -9 "$p"; done; sleep 1
 check exit-uncharges test "$(cur "$t")" = 0
 
 echo "== hierarchy"
 mkdir "$t/child"; echo 2 > "$t/pids.max"
 check child-max-is-max test "$(cat "$t/child/pids.max")" = max
-sh -c "echo \$\$ > $t/child/cgroup.procs; for i in 1 2 3; do sleep 30 & done; wait" > /tmp/pids-hier.out 2>&1 &
-sleep 2
-check parent-limit-binds-child test "$(cur "$t/child")" = 2
-check parent-counts-child test "$(cur "$t")" = 2
+# Parent limit 2, child unlimited: join (1) and one sleep (2); the next fork
+# is refused by the parent's limit, the shell exits and one sleep remains.
+sh -c "echo \$\$ > $t/child/cgroup.procs; for i in 1 2 3; do sleep 30 & read c < $t/pids.current; echo sleep\$i=\$c; done; wait" > /tmp/pids-hier.out 2>&1 &
+sleep 3
+check parent-limit-binds-child sh -c "grep -q '^sleep1=2' /tmp/pids-hier.out && grep -q \"can't fork\" /tmp/pids-hier.out"
+check parent-counts-child test "$(cur "$t")$(cur "$t/child")" = 11
 for p in $(cat "$t/child/cgroup.procs"); do kill -9 "$p"; done; sleep 1
 check hierarchy-uncharged test "$(cur "$t")$(cur "$t/child")" = 00
 

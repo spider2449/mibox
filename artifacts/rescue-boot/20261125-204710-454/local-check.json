@@ -1,0 +1,18 @@
+﻿{
+    "Executable":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "Arguments":  "-NoProfile -File \"F:\\coding\\otherPrj\\mibox\\scripts\\Test-MiboxLoaderRam.ps1\" -Action UploadAndBoot -Candidate SlimKernelDev13 -VerifyOnly",
+    "WorkingDirectory":  "F:\\coding\\otherPrj\\mibox",
+    "DeadlineSeconds":  30,
+    "ProcessId":  15972,
+    "StartedAt":  "2026-11-25T12:47:10.5992787Z",
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "OutputComplete":  true,
+    "Output":  "{\r\n    \"Candidate\":  \"SlimKernelDev13\",\r\n    \"Bytes\":  8388608,\r\n    \"Sha256\":  \"614861f672f6ef24aa1e1a803cb6ec4ddcecb173683a978ed06cbc837af5ef24\",\r\n    \"UsbAccessed\":  false\r\n}",
+    "Error":  "",
+    "CleanupAttempted":  false,
+    "StdoutComplete":  true,
+    "StderrComplete":  true,
+    "ElapsedSeconds":  0.5949312,
+    "FinishedAt":  "2026-11-25T12:47:11.1922444Z"
+}
