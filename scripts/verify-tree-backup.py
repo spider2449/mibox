@@ -15,7 +15,7 @@ import tarfile
 
 TYPES = {'directory': tarfile.DIRTYPE, 'regular file': tarfile.REGTYPE,
          'regular empty file': tarfile.REGTYPE, 'symbolic link': tarfile.SYMTYPE,
-         'character special file': tarfile.CHRTYPE}
+         'character special file': tarfile.CHRTYPE, 'block special file': tarfile.BLKTYPE}
 
 
 def sha256(path):

@@ -1,0 +1,12 @@
+{
+  "listing_entries": 4321,
+  "files_hashed": 2823,
+  "skipped_sockets": [
+    "local/tmp/mibox-system-chunk-6512-1794612202277/client.sock"
+  ],
+  "archives": {
+    "phone-tools/backup/2026-11-25-c5a/mibox-tree.tar": "ad2b5144b28c507c3883b1833c055b29d61d0e81b3667d4fff1f196c2da4f45b"
+  },
+  "problems": [],
+  "status": "PASS"
+}

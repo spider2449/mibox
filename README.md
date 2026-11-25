@@ -13,6 +13,9 @@ startup warnings. [Dev11 RAM validation](docs/mibox-kernel-atomic-context.md)
 passed the targeted kernel checks. SlimKernelDev12 (Dev11 kernel plus
 `mibox-netwatch`) restored the IPv4 default route automatically after two
 Ethernet down/up cycles from RAM, and again after the flash write (2026-11-24).
+Power-loss acceptance (C5a) passed on 2026-11-25: power was pulled during
+fsynced writes, and the box cold-started from flash without the PC. The journal
+recovered, and all synced data, test files and services were intact.
 
 P0 [custom-system ADB rescue and automatic return to
 the USB loader](docs/plans/2026-11-15-custom-system-rescue.md) is **READY** (2026-11-16);

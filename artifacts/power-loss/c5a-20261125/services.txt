@@ -1,0 +1,5 @@
+default via 192.168.1.1 dev eth0 
+1
+mibox-web Up 20 seconds
+/dev/mibox-data   2234556 549668   1668504  25% /
+http=200

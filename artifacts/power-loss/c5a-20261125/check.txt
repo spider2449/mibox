@@ -1,0 +1,20 @@
+== known
+KNOWN k1: OK
+KNOWN k2: OK
+KNOWN k3: OK
+KNOWN k4: OK
+KNOWN k5: OK
+KNOWN k6: OK
+KNOWN k7: OK
+KNOWN k8: OK
+== counter
+COUNTER_LINES total=13 well_formed=13 bytes=914
+COUNTER_LAST 13
+0000260   5   7   7   9   4   c   2   6   6   d   b   2   0   e   b   3
+0000300   d   c   9   d   8   3   3  \n
+0000310
+== scratch (latest counter entry per file)
+SCRATCH s0 size=4194304 latest_line=12 match=yes
+SCRATCH s1 size=4194304 latest_line=13 match=yes
+SCRATCH s2 size=4194304 latest_line=10 match=yes
+SCRATCH s3 size=4194304 latest_line=11 match=yes

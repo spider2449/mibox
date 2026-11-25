@@ -682,7 +682,7 @@ C5. [x] Owner-observed cold boot with the USB host disconnected: bootloader
    mounted without journal recovery, integrity MATCH. Power-on-to-SSH total
    for the cold start awaits the owner's stopwatch reading. No Android
    dependency: Android's boot partition and system1 were not involved.
-C5a. [ ] Separate persistence acceptance after C5 and C6 pass; not a prerequisite
+C5a. [x] Separate persistence acceptance after C5 and C6 pass; not a prerequisite
    for installation or basic independent boot. Apply all B8 backup, offline
    recovery, bounded-write and owner-power prerequisites even if B8 was skipped.
    Cut power during test-file writes, then cold start without a host. Verify
@@ -690,6 +690,31 @@ C5a. [ ] Separate persistence acceptance after C5 and C6 pass; not a prerequisit
    errors, known-good file integrity and completed synced counter lines.
    Record journal behavior without requiring replay messages on every cut.
    Report power-loss acceptance separately; one pass covers that scenario only.
+   PASS 2026-11-25 for one scenario. Evidence: `artifacts/power-loss/c5a-20261125/`.
+   Prerequisites:
+   - Live tree backup with `scripts/device/live-tree-backup.sh`: 4321 entries,
+     Docker vfs layers excluded because they can be re-pulled. Verified PASS for
+     all 2823 file hashes (`artifacts/storage/c5a-backup-20261125-202716/`). The
+     tar is kept only on the host, in `phone-tools/backup/2026-11-25-c5a/`.
+   - Offline recovery: the rescue procedure and the pinned RAM rescue.
+   - Bounded writer `scripts/device/c5a-writer.sh`: about 19 MiB in
+     `/var/tmp/mibox-c5a`; it refuses to start below 1 GiB free (1.69 GB free).
+   Test: Dev12 on flash, USB unplugged, data mounted, Docker running. The owner
+   pulled power just after the host confirmed fsynced counter line 13
+   (12:31:12 UTC).
+   Result:
+   - The cold start came up without the PC: SSH at 12:32:13, new boot `4befcf72…`.
+   - ext4 printed `recovery complete`, then mounted normally. No ext4 errors or
+     kernel warnings; integrity MATCH.
+   - All 8 known-good files matched.
+   - The counter held exactly lines 1-13, all well formed, with no partial line.
+   - Each 4 MiB scratch file matched its latest counter entry. The interrupted
+     overwrite #14 left the previous version of s2 intact.
+   - Route, netwatch, mibox-web and HTTP 200 came back automatically.
+   - Test directory removed.
+   This is not an e2fsck verdict: e2fsprogs is not in the tree, and data stays
+   mounted. Not covered: cuts during metadata-heavy work (package install, image
+   pull) or repeated cuts.
 C6. [x] Rehearse host-attached cold C003 interception with the persistent custom
    image installed, then reload the known-good pinned RAM rescue and verify it
    can identify/read the target and access the restoration material. Never damage
