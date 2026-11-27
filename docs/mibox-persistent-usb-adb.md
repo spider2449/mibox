@@ -115,3 +115,12 @@ The rollback validates the known script before restoring the original script.
 It does not change the current ADB setting. It requires the temporary root mechanism to remain
 available. OTA updates or switching the active system partition may replace or
 bypass this hook.
+
+## Hot-plug after a flash boot (Dev13), 2026-11-27
+
+Booted from flash without the PC (boot `f5750d1c…`), USB plugged in about 28
+minutes later. The gadget went DISCONNECTED -> CONFIGURED (high-speed, `ffs`);
+`adb devices` listed `248243005297 recovery … model:MiBOX1S` and
+`adb shell` answered as uid 2000 with the same boot ID, kernel 3.10.99. The
+kernel logged one `ep0_do_stall … req 80.06 protocol STALL` during
+enumeration (a refused descriptor request), with no effect on ADB.
