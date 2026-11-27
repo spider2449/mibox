@@ -192,6 +192,16 @@ S6. [x] After Phase C passes: decide reuse of system/system1 (1 GiB total) and
    free: Alpine tree 434 MB (Docker vfs 204 MB), local/tmp 48 MB (Nov 13-14
    project tools/logs), Android leftovers ~46 MB (dalvik-cache 26.5 MB, log
    10.3 MB, duokancache 4.6 MB, system 2.6 MB, rest < 1 MB).
+S7. [x] 2026-11-27, owner-approved: remove every remaining Android entry from
+   data, including local/tmp (no current code path reads any of them; ADB
+   keys are in the Slim image). `scripts/device/s7-reclaim-android-rest.sh`
+   on the live mount: 695 files backed up to the PC
+   (`phone-tools/backup/2026-11-27-s7/android-rest.tar`, 93577728 bytes,
+   sha256 `167b8c79…`), every file re-hashed against the device list
+   (0 mismatches), then deleted. data now holds only `mibox-console` and
+   `lost+found`: 437556 KiB used, 1780616 KiB free (was 531288/1686884).
+   Afterwards: mibox-web Up, HTTP 200 from the PC, no new kernel warnings.
+   Partitions were not touched.
 
 ## Phase A — prepare the small RAM supervisor and persistent userspace
 
