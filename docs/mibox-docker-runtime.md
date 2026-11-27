@@ -328,7 +328,7 @@ tree deepest first.
 | `nginx:alpine -p 8080:80`, fetched from the PC | PASS |
 | Stop-Mibox with a running container | PASS: dockerd stopped, data unmounted |
 | Next RAM boot: dockerd auto-start, `--restart unless-stopped` container back, PC fetch without manual steps | PASS (`artifacts/rescue-boot/20261119-205425-905`) |
-| `--pids-limit` | Not supported (no pids controller) |
+| `--pids-limit` | Not supported at the time; supported since Dev13 (2026-11-25, [pids backport](mibox-kernel-pids.md)) |
 | overlay2 | Not supported; vfs copies every layer |
 
 Day to day: `ssh root@192.168.1.222`, then `docker …` inside Alpine. Disable
@@ -337,7 +337,7 @@ Update 2026-11-19: HDMI works on 3.10.99 (fb0 reports BGRA; owner confirmed colo
 and full 1080p). boot1 now holds this system (`bccbad4f…`); a flash boot without
 the PC started SSH, Docker and the restored nginx container by itself
 (`artifacts/console-root/20261119-211306-c7-kernel-boot1-write/flash-boot-check.txt`).
-Remaining: overlayfs and a pids controller would need kernel changes.
+Remaining: overlayfs would need kernel changes (the pids controller was backported in Dev13).
 
 ## Remote Docker API over mutual TLS, 2026-11-19
 
