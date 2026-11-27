@@ -1,0 +1,36 @@
+== local inputs
+ee69569fb0360fd382c8f85588ec0bcc8bad8e7a7c2624c95a5dcac204b92719  target/armv7-unknown-linux-musleabihf/release/mibox-partwrite
+614861f672f6ef24aa1e1a803cb6ec4ddcecb173683a978ed06cbc837af5ef24  target/mibox-boot-candidate-slim-kernel-dev13/boot1-custom.NOT_READY.img
+ff4fa440044709b92652afea0306286534c9da2f57e41308d67459b97e800a56  phone-tools/backup/2026-11-13/boot.img
+== device
+Fri Nov 27 14:01:39 UTC 2026
+f5750d1c-345f-43b5-b1ec-2f7ebac8ba47
+ID=mibox-custom
+boot 179:6 ro=0
+boot1 179:7 ro=0
+recovery 179:5 ro=0
+env 179:3 ro=0
+== partition hashes (read-only)
+boot dev=179:6 sectors=16384 sha256=ff4fa440044709b92652afea0306286534c9da2f57e41308d67459b97e800a56
+boot1 dev=179:7 sectors=16384 sha256=614861f672f6ef24aa1e1a803cb6ec4ddcecb173683a978ed06cbc837af5ef24
+ee69569fb0360fd382c8f85588ec0bcc8bad8e7a7c2624c95a5dcac204b92719  mibox-partwrite
+614861f672f6ef24aa1e1a803cb6ec4ddcecb173683a978ed06cbc837af5ef24  slim.img
+== dry run: boot <- Dev13 (expect-current = stock boot)
+MIBOX_PARTWRITE_TARGET name=boot dev=179:6 node=/dev/mibox-partwrite-boot dry_run=true
+MIBOX_PARTWRITE_CURRENT_VERIFIED=ff4fa440044709b92652afea0306286534c9da2f57e41308d67459b97e800a56
+MIBOX_PARTWRITE_RESULT=DryRunVerified target=boot image_sha256=614861f672f6ef24aa1e1a803cb6ec4ddcecb173683a978ed06cbc837af5ef24
+== refusal: boot with wrong expect-current (must fail)
+MIBOX_PARTWRITE_TARGET name=boot dev=179:6 node=/dev/mibox-partwrite-boot dry_run=true
+MIBOX_PARTWRITE_FAILED: target content ff4fa440044709b92652afea0306286534c9da2f57e41308d67459b97e800a56 differs from --expect-current-sha256; refusing
+== refusal: recovery not allowed (must fail)
+MIBOX_PARTWRITE_FAILED: target not allowed on this platform
+== boot1 already holds Dev13 (dry run)
+MIBOX_PARTWRITE_TARGET name=boot1 dev=179:7 node=/dev/mibox-partwrite-boot1 dry_run=true
+MIBOX_PARTWRITE_CURRENT=614861f672f6ef24aa1e1a803cb6ec4ddcecb173683a978ed06cbc837af5ef24
+MIBOX_PARTWRITE_RESULT=AlreadyInstalled target=boot1 image_sha256=614861f672f6ef24aa1e1a803cb6ec4ddcecb173683a978ed06cbc837af5ef24
+== hashes again (unchanged?)
+boot dev=179:6 sectors=16384 sha256=ff4fa440044709b92652afea0306286534c9da2f57e41308d67459b97e800a56
+boot1 dev=179:7 sectors=16384 sha256=614861f672f6ef24aa1e1a803cb6ec4ddcecb173683a978ed06cbc837af5ef24
+== cleanup
+ls: cannot access '/dev/mibox-partwrite-*': No such file or directory
+S8_DRYRUN_DONE

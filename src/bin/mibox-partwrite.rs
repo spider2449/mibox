@@ -1,10 +1,10 @@
-//! Verified write of one 8 MiB boot image to boot1 (plan C3/C4), or restore.
+//! Verified write of one 8 MiB boot image to boot1 or boot (plan C3/C4, S8), or restore.
 //!
-//! mibox-partwrite --target boot1 --image PATH --image-sha256 HEX
+//! mibox-partwrite --target boot1|boot --image PATH --image-sha256 HEX
 //!                 --expect-current-sha256 HEX [--dry-run]
 //!
 //! Runs as root on the custom RAM system. The only accepted targets are
-//! boot1 on the stock Meson6 (sysfs name `boot1`, 179:7, 16384 sectors,
+//! boot1 (179:7) or boot (179:6) on the stock Meson6 (16384 sectors,
 //! writable, not mounted) and, for QEMU rehearsal only, `vdb` when the kernel
 //! command line has `mibox.test_partwrite=1`. The target is opened through a
 //! private device node created from the verified major:minor.
@@ -26,15 +26,24 @@ fn compatible(value: &[u8]) -> io::Result<bool> {
     Ok(fs::read("/proc/device-tree/compatible")?.split(|b| *b == 0).any(|v| v == value))
 }
 
+/// The fixed target table: sysfs name and required major:minor. `boot` (179:6)
+/// is the partition a default/reset env boots (plan S8); `boot1` (179:7) is
+/// the one the installed env boots (C1). Nothing else on the Meson6.
+fn allowed(target: &str, meson6: bool, qemu: bool) -> Option<(&'static str, Option<(u32, u32)>)> {
+    match target {
+        "boot1" if meson6 => Some(("boot1", Some((179, 7)))),
+        "boot" if meson6 => Some(("boot", Some((179, 6)))),
+        "vdb" if qemu => Some(("vdb", None)),
+        _ => None,
+    }
+}
+
 /// Returns (sysfs name, major, minor) for the requested, allowed target.
 fn resolve(target: &str) -> io::Result<(String, u32, u32)> {
     let qemu = compatible(b"linux,dummy-virt")?
         && read_trim("/proc/cmdline")?.split_whitespace().any(|v| v == "mibox.test_partwrite=1");
-    let (name, expected) = match target {
-        "boot1" if compatible(b"AMLOGIC,8726_MX")? => ("boot1", Some((179, 7))),
-        "vdb" if qemu => ("vdb", None),
-        _ => return Err(io::Error::other("target not allowed on this platform")),
-    };
+    let (name, expected) = allowed(target, compatible(b"AMLOGIC,8726_MX")?, qemu)
+        .ok_or_else(|| io::Error::other("target not allowed on this platform"))?;
     let dev = read_trim(&format!("/sys/class/block/{name}/dev"))?;
     let (major, minor) = dev
         .split_once(':')
@@ -107,7 +116,7 @@ fn run() -> io::Result<()> {
     let (Some(target), Some(image), Some(image_sha), Some(current_sha)) = (target, image, image_sha, current_sha)
     else {
         return Err(io::Error::other(
-            "usage: mibox-partwrite --target boot1 --image PATH --image-sha256 HEX --expect-current-sha256 HEX [--dry-run]",
+            "usage: mibox-partwrite --target boot1|boot --image PATH --image-sha256 HEX --expect-current-sha256 HEX [--dry-run]",
         ));
     };
     if unsafe { getuid() } != 0 {
@@ -131,5 +140,27 @@ fn main() {
     if let Err(error) = run() {
         eprintln!("MIBOX_PARTWRITE_FAILED: {error}");
         process::exit(1);
+    }
+}
+
+#[cfg(test)]
+mod target_tests {
+    use super::allowed;
+
+    #[test]
+    fn meson6_allows_only_boot_and_boot1_with_fixed_numbers() {
+        assert_eq!(allowed("boot1", true, false), Some(("boot1", Some((179, 7)))));
+        assert_eq!(allowed("boot", true, false), Some(("boot", Some((179, 6)))));
+        for other in ["recovery", "env", "bootloader", "system", "system1", "cache", "data", "vdb", "mmcblk0", ""] {
+            assert_eq!(allowed(other, true, false), None, "{other}");
+        }
+    }
+
+    #[test]
+    fn other_platforms_refuse_board_targets() {
+        assert_eq!(allowed("boot", false, false), None);
+        assert_eq!(allowed("boot1", false, true), None);
+        assert_eq!(allowed("vdb", false, true), Some(("vdb", None)));
+        assert_eq!(allowed("vdb", false, false), None);
     }
 }

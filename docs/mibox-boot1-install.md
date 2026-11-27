@@ -123,3 +123,14 @@ there is no thermal zone. `mibox-slim-start` writes `1` to
 peak since start; amber from 75 C, red from 85 C, `N/A` without the marker.
 Writing `0` returns channel 6 to its normal input. After the Dev10 flash boot
 the screen showed 73 C (peak 78 during boot); raw 686-726 under light load.
+
+## boot (179:6) as a fallback copy (plan S8)
+
+Since tool `ee69569f…` (2026-11-27) `mibox-partwrite` also accepts
+`--target boot` on the Meson6 (179:6, same size/ro/mount/hash guards); every
+other partition is still refused. A default/reset env boots `boot` and has no
+USB window, so a Slim copy there keeps the box reachable over SSH. Stock boot
+`ff4fa440…` is `phone-tools/backup/2026-11-13/boot.img`; restore it with the
+same tool and `--target boot`. Real-box dry run:
+`artifacts/console-root/20261127-220131-s8-boot-dryrun/`. Writing it needs
+explicit owner approval.

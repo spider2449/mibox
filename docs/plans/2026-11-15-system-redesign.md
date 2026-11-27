@@ -202,6 +202,25 @@ S7. [x] 2026-11-27, owner-approved: remove every remaining Android entry from
    `lost+found`: 437556 KiB used, 1780616 KiB free (was 531288/1686884).
    Afterwards: mibox-web Up, HTTP 200 from the PC, no new kernel warnings.
    Partitions were not touched.
+S8. [ ] Fallback boot: write the Slim image that is in boot1 into boot (179:6)
+   as well. Reason: the bootloader saves the env on every boot; an env
+   reset to the built-in defaults (CRC error, `defenv`) selects boot
+   (`bootsystem=0`, `storeboot=store read boot …`) and drops the
+   `update 10000` USB window, so with Android's kernel in boot that path
+   ends in Android's boot loop with no C003 rescue. Default `bootargs`
+   differ only in missing `androidboot.system=1`/MAC values (compared
+   offline: built-in strings of the expanded loader `99f701ac…` vs the
+   installed env). Preparation done 2026-11-27: `mibox-partwrite` target
+   table now allows `boot` (179:6) besides `boot1` (179:7) on Meson6 only
+   (tool `ee69569f…`); host tests 9 PASS, QEMU rehearsal PASS
+   (`artifacts/partwrite-qemu/20261127-215949/`); PC backup `boot.img` =
+   device boot = `ff4fa440…`; real-box dry run boot <- Dev13 `614861f6…`
+   DryRunVerified, wrong expect-current and target `recovery` refused, boot
+   and boot1 unchanged
+   (`artifacts/console-root/20261127-220131-s8-boot-dryrun/`).
+   Write pending explicit owner approval. Limit: booting from boot cannot be
+   tested without changing env, so the fallback would be installed, not
+   boot-verified.
 
 ## Phase A — prepare the small RAM supervisor and persistent userspace
 
