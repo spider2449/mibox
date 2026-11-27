@@ -337,7 +337,7 @@ Update 2026-11-19: HDMI works on 3.10.99 (fb0 reports BGRA; owner confirmed colo
 and full 1080p). boot1 now holds this system (`bccbad4f…`); a flash boot without
 the PC started SSH, Docker and the restored nginx container by itself
 (`artifacts/console-root/20261119-211306-c7-kernel-boot1-write/flash-boot-check.txt`).
-Remaining: overlayfs would need kernel changes (the pids controller was backported in Dev13).
+Remaining: overlayfs would need kernel changes (the pids controller was backported in Dev13). Owner decision 2026-11-27: keep vfs; no overlayfs work planned.
 
 ## Remote Docker API over mutual TLS, 2026-11-19
 
