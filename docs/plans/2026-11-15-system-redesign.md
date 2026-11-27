@@ -202,7 +202,7 @@ S7. [x] 2026-11-27, owner-approved: remove every remaining Android entry from
    `lost+found`: 437556 KiB used, 1780616 KiB free (was 531288/1686884).
    Afterwards: mibox-web Up, HTTP 200 from the PC, no new kernel warnings.
    Partitions were not touched.
-S8. [ ] Fallback boot: write the Slim image that is in boot1 into boot (179:6)
+S8. [x] Fallback boot: write the Slim image that is in boot1 into boot (179:6)
    as well. Reason: the bootloader saves the env on every boot; an env
    reset to the built-in defaults (CRC error, `defenv`) selects boot
    (`bootsystem=0`, `storeboot=store read boot …`) and drops the
@@ -218,7 +218,12 @@ S8. [ ] Fallback boot: write the Slim image that is in boot1 into boot (179:6)
    DryRunVerified, wrong expect-current and target `recovery` refused, boot
    and boot1 unchanged
    (`artifacts/console-root/20261127-220131-s8-boot-dryrun/`).
-   Write pending explicit owner approval. Limit: booting from boot cannot be
+   Written 2026-11-27 with owner approval: dry run, write, full readback and
+   independent re-hash after drop_caches all `614861f6…`; boot1 unchanged
+   `614861f6…`, no mmc errors
+   (`artifacts/console-root/20261127-220257-s8-boot-write/`).
+   Restore: `boot.img` `ff4fa440…` with `--target boot --expect-current-sha256
+   614861f6…`. Limit: booting from boot cannot be
    tested without changing env, so the fallback would be installed, not
    boot-verified.
 

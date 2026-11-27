@@ -1,0 +1,31 @@
+== local inputs
+ee69569fb0360fd382c8f85588ec0bcc8bad8e7a7c2624c95a5dcac204b92719  target/armv7-unknown-linux-musleabihf/release/mibox-partwrite
+614861f672f6ef24aa1e1a803cb6ec4ddcecb173683a978ed06cbc837af5ef24  target/mibox-boot-candidate-slim-kernel-dev13/boot1-custom.NOT_READY.img
+== device
+Fri Nov 27 14:03:11 UTC 2026
+f5750d1c-345f-43b5-b1ec-2f7ebac8ba47
+ID=mibox-custom
+ee69569fb0360fd382c8f85588ec0bcc8bad8e7a7c2624c95a5dcac204b92719  mibox-partwrite
+614861f672f6ef24aa1e1a803cb6ec4ddcecb173683a978ed06cbc837af5ef24  slim.img
+== dry run
+MIBOX_PARTWRITE_TARGET name=boot dev=179:6 node=/dev/mibox-partwrite-boot dry_run=true
+MIBOX_PARTWRITE_CURRENT_VERIFIED=ff4fa440044709b92652afea0306286534c9da2f57e41308d67459b97e800a56
+MIBOX_PARTWRITE_RESULT=DryRunVerified target=boot image_sha256=614861f672f6ef24aa1e1a803cb6ec4ddcecb173683a978ed06cbc837af5ef24
+== write
+MIBOX_PARTWRITE_TARGET name=boot dev=179:6 node=/dev/mibox-partwrite-boot dry_run=false
+MIBOX_PARTWRITE_CURRENT_VERIFIED=ff4fa440044709b92652afea0306286534c9da2f57e41308d67459b97e800a56
+MIBOX_PARTWRITE_WRITING bytes=8388608
+MIBOX_PARTWRITE_READBACK_VERIFIED=614861f672f6ef24aa1e1a803cb6ec4ddcecb173683a978ed06cbc837af5ef24
+MIBOX_PARTWRITE_RESULT=Written target=boot image_sha256=614861f672f6ef24aa1e1a803cb6ec4ddcecb173683a978ed06cbc837af5ef24
+== independent re-hash
+boot dev=179:6 sectors=16384 sha256=614861f672f6ef24aa1e1a803cb6ec4ddcecb173683a978ed06cbc837af5ef24
+boot1 dev=179:7 sectors=16384 sha256=614861f672f6ef24aa1e1a803cb6ec4ddcecb173683a978ed06cbc837af5ef24
+== kernel
+[    5.012846@1]  mmcblk0boot1: unknown partition table
+[    5.034760@1]  mmcblk0boot0: p1
+[    5.037687@1] mmcblk0boot0: p1 start 16065 is beyond EOD, truncated
+[    5.430402@0] EXT4-fs (mmcblk0p11): mounting with "discard" option, but the device does not support discard
+[    5.440485@0] EXT4-fs (mmcblk0p11): mounted filesystem with ordered data mode. Opts: (null)
+== cleanup
+ls: cannot access '/dev/mibox-partwrite-*': No such file or directory
+S8_WRITE_SEQUENCE_DONE

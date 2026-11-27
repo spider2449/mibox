@@ -15,7 +15,7 @@ with SSH, Docker and the HDMI screen. For a restore, name the current image as t
 expected current content (`614861f6…`; before it `772c2210…`, `760288f6…`, `c3e952e8…`, `0d549c0f…`, before the password change `bccbad4f…`); `955ea3e8…` (`target/mibox-boot-candidate-slim-fbstatus/`)
 is the last stock-kernel image.
 Stock boot1 `06d9eb7e…` remains restorable with the restore section below. Writing boot1
-(C4) needs explicit owner approval at that time. Nothing here touches the
+(C4) needs explicit owner approval at that time. Apart from the S8 section at the end (boot), nothing here touches the
 bootloader, env, boot, recovery, system or data partitions.
 
 ## Why boot1, and why it is recoverable
@@ -134,3 +134,8 @@ USB window, so a Slim copy there keeps the box reachable over SSH. Stock boot
 same tool and `--target boot`. Real-box dry run:
 `artifacts/console-root/20261127-220131-s8-boot-dryrun/`. Writing it needs
 explicit owner approval.
+
+Written 2026-11-27 (owner-approved): boot = `614861f6…` (same Dev13 as boot1),
+readback and independent re-hash verified
+(`artifacts/console-root/20261127-220257-s8-boot-write/`). Restore expect-current
+for boot is now `614861f6…`. Never boot-tested: only a default/reset env reads boot.
