@@ -185,6 +185,13 @@ S6. [x] After Phase C passes: decide reuse of system/system1 (1 GiB total) and
    into data is excluded: the partition table is bootloader-side.
    Unconfirmed: which of 179:8/179:9 is named system vs system1 (read-only
    check required before any future write). Revisit with the Docker kernel.
+   2026-11-27 read-only check on Dev13 (`/sys/class/block`, superblocks via
+   PID1's `/dev`): system = 179:8, system1 = 179:9, cache = 179:10; all ext4,
+   never mounted by the custom system. Used: system ~457 MiB, system1
+   ~450 MiB, cache ~7 MiB. data (179:11) 2.2 GiB ext4, 531 MB used, 1.69 GB
+   free: Alpine tree 434 MB (Docker vfs 204 MB), local/tmp 48 MB (Nov 13-14
+   project tools/logs), Android leftovers ~46 MB (dalvik-cache 26.5 MB, log
+   10.3 MB, duokancache 4.6 MB, system 2.6 MB, rest < 1 MB).
 
 ## Phase A — prepare the small RAM supervisor and persistent userspace
 
